@@ -1,0 +1,705 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed Apr  3 18:43:48 2024
+# Process ID: 25464
+# Current directory: c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1
+# Command line: vivado.exe -log example_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source example_top.tcl
+# Log file: c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/example_top.vds
+# Journal file: c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1\vivado.jou
+# Running On: DESKTOP-U9NB2CD, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 24, Host memory: 68638 MB
+#-----------------------------------------------------------
+source example_top.tcl -notrace
+Command: synth_design -top example_top -part xc7a200tfbg484-3
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg484-3
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 32948
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mig_7series_v4_2_axi4_wrapper' with formal parameter declaration list [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_wrapper.v:202]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mig_7series_v4_2_axi4_wrapper' with formal parameter declaration list [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_wrapper.v:209]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mig_7series_v4_2_tg' with formal parameter declaration list [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_tg.v:167]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1633.898 ; gain = 4.797
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'example_top' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:74]
+INFO: [Synth 8-6157] synthesizing module 'vio_twm_ddrx' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/.Xil/Vivado-25464-DESKTOP-U9NB2CD/realtime/vio_twm_ddrx_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'vio_twm_ddrx' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/.Xil/Vivado-25464-DESKTOP-U9NB2CD/realtime/vio_twm_ddrx_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ila_ddr2_axi' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/.Xil/Vivado-25464-DESKTOP-U9NB2CD/realtime/ila_ddr2_axi_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'ila_ddr2_axi' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/.Xil/Vivado-25464-DESKTOP-U9NB2CD/realtime/ila_ddr2_axi_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_chk_win' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_chk_win.v:70]
+	Parameter TCQ bound to: 100 - type: integer 
+	Parameter nCK_PER_CLK bound to: 4 - type: integer 
+	Parameter DLY_WIDTH bound to: 26 - type: integer 
+	Parameter DQ_PER_DQS bound to: 8 - type: integer 
+	Parameter DQ_WIDTH bound to: 16 - type: integer 
+	Parameter SC_WIDTH bound to: 3 - type: integer 
+	Parameter SDC_WIDTH bound to: 5 - type: integer 
+	Parameter WIN_SIZE bound to: 6 - type: integer 
+	Parameter SIM_OPTION bound to: FALSE - type: string 
+INFO: [Synth 8-6157] synthesizing module 'RAM128X1D' [C:/Xilinx/Xilinx2022/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97796]
+	Parameter INIT bound to: 128'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'RAM128X1D' (0#1) [C:/Xilinx/Xilinx2022/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97796]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator !== with logical equality operator != [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_chk_win.v:673]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_chk_win' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_chk_win.v:70]
+WARNING: [Synth 8-7071] port 'win_bit_select' of module 'mig_7series_v4_2_chk_win' is unconnected for instance 'u_chk_win' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:1347]
+WARNING: [Synth 8-7023] instance 'u_chk_win' of module 'mig_7series_v4_2_chk_win' has 28 connections declared, but only 27 given [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:1347]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/.Xil/Vivado-25464-DESKTOP-U9NB2CD/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/.Xil/Vivado-25464-DESKTOP-U9NB2CD/realtime/mig_7series_0_stub.v:5]
+WARNING: [Synth 8-689] width (391) of port connection 'ddr2_ila_wrpath' does not match port width (256) of module 'mig_7series_0' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:713]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_axi4_tg' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_tg.v:70]
+	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
+	Parameter C_AXI_ADDR_WIDTH bound to: 28 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 128 - type: integer 
+	Parameter C_AXI_NBURST_SUPPORT bound to: 0 - type: integer 
+	Parameter C_EN_WRAP_TRANS bound to: 0 - type: integer 
+	Parameter C_BEGIN_ADDRESS bound to: 0 - type: integer 
+	Parameter C_END_ADDRESS bound to: 16777215 - type: integer 
+	Parameter PRBS_EADDR_MASK_POS bound to: -16777216 - type: integer 
+	Parameter DBG_WR_STS_WIDTH bound to: 40 - type: integer 
+	Parameter DBG_RD_STS_WIDTH bound to: 40 - type: integer 
+	Parameter ENFORCE_RD_WR bound to: 0 - type: integer 
+	Parameter ENFORCE_RD_WR_CMD bound to: 8'b00010001 
+	Parameter EN_UPSIZER bound to: 0 - type: integer 
+	Parameter ENFORCE_RD_WR_PATTERN bound to: 3'b000 
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_axi4_wrapper' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_wrapper.v:70]
+	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
+	Parameter C_AXI_ADDR_WIDTH bound to: 28 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 128 - type: integer 
+	Parameter C_AXI_NBURST_SUPPORT bound to: 0 - type: integer 
+	Parameter C_BEGIN_ADDRESS bound to: 0 - type: integer 
+	Parameter C_END_ADDRESS bound to: 16777215 - type: integer 
+	Parameter CTL_SIG_WIDTH bound to: 3 - type: integer 
+	Parameter WR_STS_WIDTH bound to: 16 - type: integer 
+	Parameter RD_STS_WIDTH bound to: 16 - type: integer 
+	Parameter EN_UPSIZER bound to: 0 - type: integer 
+	Parameter WDG_TIMER_WIDTH bound to: 11 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_wrapper.v:375]
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_wrapper.v:663]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_axi4_wrapper' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_wrapper.v:70]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_tg' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_tg.v:69]
+	Parameter C_AXI_ADDR_WIDTH bound to: 28 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 128 - type: integer 
+	Parameter C_AXI_NBURST_SUPPORT bound to: 0 - type: integer 
+	Parameter C_BEGIN_ADDRESS bound to: 0 - type: integer 
+	Parameter C_END_ADDRESS bound to: 16777215 - type: integer 
+	Parameter C_EN_WRAP_TRANS bound to: 0 - type: integer 
+	Parameter CTL_SIG_WIDTH bound to: 3 - type: integer 
+	Parameter WR_STS_WIDTH bound to: 16 - type: integer 
+	Parameter RD_STS_WIDTH bound to: 16 - type: integer 
+	Parameter DBG_WR_STS_WIDTH bound to: 40 - type: integer 
+	Parameter DBG_RD_STS_WIDTH bound to: 40 - type: integer 
+	Parameter ENFORCE_RD_WR bound to: 0 - type: integer 
+	Parameter ENFORCE_RD_WR_CMD bound to: 8'b00010001 
+	Parameter PRBS_EADDR_MASK_POS bound to: -16777216 - type: integer 
+	Parameter PRBS_SADDR_MASK_POS bound to: 8192 - type: integer 
+	Parameter ENFORCE_RD_WR_PATTERN bound to: 3'b000 
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_tg.v:233]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_data_gen_chk' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_data_gen_chk.v:70]
+	Parameter C_AXI_DATA_WIDTH bound to: 128 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_data_gen_chk' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_data_gen_chk.v:70]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_cmd_prbs_gen_axi' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_cmd_prbs_gen_axi.v:71]
+	Parameter ADDR_WIDTH bound to: 28 - type: integer 
+	Parameter PRBS_CMD bound to: BLEN - type: string 
+	Parameter PRBS_WIDTH bound to: 32 - type: integer 
+	Parameter SEED_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_cmd_prbs_gen_axi' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_cmd_prbs_gen_axi.v:71]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_cmd_prbs_gen_axi__parameterized0' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_cmd_prbs_gen_axi.v:71]
+	Parameter FAMILY bound to: VIRTEX7 - type: string 
+	Parameter ADDR_WIDTH bound to: 28 - type: integer 
+	Parameter PRBS_CMD bound to: ADDRESS - type: string 
+	Parameter PRBS_WIDTH bound to: 32 - type: integer 
+	Parameter SEED_WIDTH bound to: 32 - type: integer 
+	Parameter PRBS_EADDR_MASK_POS bound to: -16777216 - type: integer 
+	Parameter PRBS_SADDR_MASK_POS bound to: 8192 - type: integer 
+	Parameter PRBS_EADDR bound to: 16777215 - type: integer 
+	Parameter PRBS_SADDR bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_cmd_prbs_gen_axi__parameterized0' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_cmd_prbs_gen_axi.v:71]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_tg' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_tg.v:69]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_axi4_tg' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_axi4_tg.v:70]
+WARNING: [Synth 8-689] width (1) of port connection 'axi_wlock' does not match port width (2) of module 'mig_7series_v4_2_axi4_tg' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:784]
+WARNING: [Synth 8-689] width (1) of port connection 'axi_wd_wid' does not match port width (4) of module 'mig_7series_v4_2_axi4_tg' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:791]
+WARNING: [Synth 8-689] width (1) of port connection 'axi_rlock' does not match port width (2) of module 'mig_7series_v4_2_axi4_tg' [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:810]
+INFO: [Synth 8-6155] done synthesizing module 'example_top' (0#1) [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:74]
+WARNING: [Synth 8-6014] Unused sequential element po_curr_tap_cnt_r2_reg was removed.  [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_chk_win.v:233]
+WARNING: [Synth 8-3848] Net win_current_bit in module/entity mig_7series_v4_2_chk_win does not have driver. [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/mig_7series_v4_2_chk_win.v:107]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'CHIPSCOPE_INST.u_vio_twm_ddrx'. This will prevent further optimization [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:855]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'CHIPSCOPE_INST.u_ila_ddr2_axi'. This will prevent further optimization [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:1142]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_mig_7series_0'. This will prevent further optimization [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:632]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'CHIPSCOPE_INST.u_chk_win'. This will prevent further optimization [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:1347]
+WARNING: [Synth 8-6014] Unused sequential element CHIPSCOPE_INST.app_rd_data_valid_r3_reg was removed.  [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:1303]
+WARNING: [Synth 8-6014] Unused sequential element CHIPSCOPE_INST.app_rd_data_r3_reg was removed.  [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:1306]
+WARNING: [Synth 8-3848] Net mem_pattern_init_done in module/entity example_top does not have driver. [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:282]
+WARNING: [Synth 8-3848] Net app_rd_data_valid in module/entity example_top does not have driver. [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:279]
+WARNING: [Synth 8-3848] Net app_rd_data in module/entity example_top does not have driver. [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.v:280]
+WARNING: [Synth 8-7129] Port prbs_seed_i[31] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[30] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[29] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[28] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[27] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[26] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[25] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[24] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[23] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[22] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[21] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[20] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[19] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[18] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[17] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[16] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prbs_seed_i[15] in module mig_7series_v4_2_cmd_prbs_gen_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cmd[1] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[31] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[30] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[29] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[28] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[15] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[14] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[13] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[12] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[11] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[10] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[9] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[8] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[7] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[6] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[5] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[4] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[3] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[2] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[1] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrdata_bvld[0] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_rd_rresp[0] in module mig_7series_v4_2_axi4_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[6] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[5] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[4] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[3] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[2] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[1] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[0] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[6] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[5] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[4] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[3] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[2] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[1] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[0] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1743.465 ; gain = 114.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1743.465 ; gain = 114.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1743.465 ; gain = 114.363
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.089 . Memory (MB): peak = 1743.465 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 30 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc] for cell 'u_mig_7series_0'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc] for cell 'u_mig_7series_0'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/vio_twm_ddrx/vio_twm_ddrx/vio_twm_ddrx_in_context.xdc] for cell 'CHIPSCOPE_INST.u_vio_twm_ddrx'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/vio_twm_ddrx/vio_twm_ddrx/vio_twm_ddrx_in_context.xdc] for cell 'CHIPSCOPE_INST.u_vio_twm_ddrx'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/ila_ddr2_axi/ila_ddr2_axi/ila_ddr2_axi_in_context.xdc] for cell 'CHIPSCOPE_INST.u_ila_ddr2_axi'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/ila_ddr2_axi/ila_ddr2_axi/ila_ddr2_axi_in_context.xdc] for cell 'CHIPSCOPE_INST.u_ila_ddr2_axi'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.xdc]
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/example_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/example_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1816.152 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 30 instances were transformed.
+  RAM128X1D => RAM128X1D (MUXF7(x2), RAMD64E(x4)): 30 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1816.152 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1816.152 ; gain = 187.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-3
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1816.152 ; gain = 187.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[10]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[10]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 6).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[11]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 7).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[11]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 8).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[12]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 9).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[12]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 10).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[13]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 11).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[13]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 12).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 13).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 14).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[2]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 15).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[2]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 16).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[3]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 17).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[3]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 18).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[4]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 19).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[4]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 20).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[5]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 21).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[5]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 22).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[6]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 23).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[6]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 24).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[7]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 25).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[7]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 26).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[8]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 27).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[8]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 28).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_addr[9]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 29).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_addr[9]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 30).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_ba[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 31).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_ba[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 32).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_ba[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 33).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_ba[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 34).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_ba[2]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 35).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_ba[2]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 36).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_cas_n. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 37).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_cas_n. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 38).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_ck_n[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 39).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_ck_n[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 40).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_ck_p[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 41).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_ck_p[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 42).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_cke[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 43).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_cke[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 44).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_cs_n[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 45).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_cs_n[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 46).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dm[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 47).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dm[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 48).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dm[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 49).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dm[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 50).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 51).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 52).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[10]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 53).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[10]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 54).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[11]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 55).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[11]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 56).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[12]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 57).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[12]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 58).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[13]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 59).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[13]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 60).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[14]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 61).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[14]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 62).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[15]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 63).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[15]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 64).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 65).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 66).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[2]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 67).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[2]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 68).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[3]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 69).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[3]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 70).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[4]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 71).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[4]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 72).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[5]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 73).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[5]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 74).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[6]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 75).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[6]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 76).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[7]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 77).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[7]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 78).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[8]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 79).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[8]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 80).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dq[9]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 81).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dq[9]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 82).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dqs_n[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 83).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dqs_n[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 84).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dqs_n[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 85).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dqs_n[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 86).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dqs_p[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 87).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dqs_p[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 88).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_dqs_p[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 89).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_dqs_p[1]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 90).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_odt[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 91).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_odt[0]. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 92).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_ras_n. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 93).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_ras_n. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 94).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr2_we_n. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 95).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr2_we_n. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 96).
+Applied set_property IO_BUFFER_TYPE = NONE for sys_clk_i. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 97).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk_i. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 98).
+Applied set_property IO_BUFFER_TYPE = NONE for sys_rst. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 99).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_rst. (constraint file  c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.gen/sources_1/ip/mig_7series_0/mig_7series_0/mig_7series_0_in_context.xdc, line 100).
+Applied set_property KEEP_HIERARCHY = SOFT for u_mig_7series_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for \CHIPSCOPE_INST.u_vio_twm_ddrx . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for \CHIPSCOPE_INST.u_ila_ddr2_axi . (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1816.152 ; gain = 187.051
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'win_state_r_reg' in module 'mig_7series_v4_2_chk_win'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                WIN_IDLE |                  000000000000001 |                             0000
+           WIN_SHORT_DLY |                  000000000000010 |                             0010
+             WIN_INC_TAP |                  000000000000100 |                             0001
+            WIN_WAIT_INC |                  000000000001000 |                             0011
+           WIN_CHK_ERR_R |                  000000000010000 |                             0100
+              WIN_BACK_R |                  000000000100000 |                             0101
+                WIN_SS_R |                  000000001000000 |                             0110
+           WIN_RTN_TAP_R |                  000000010000000 |                             0111
+             WIN_DEC_TAP |                  000000100000000 |                             1000
+            WIN_WAIT_DEC |                  000001000000000 |                             1001
+           WIN_CHK_ERR_L |                  000010000000000 |                             1010
+              WIN_BACK_L |                  000100000000000 |                             1011
+                WIN_SS_L |                  001000000000000 |                             1100
+           WIN_RTN_TAP_L |                  010000000000000 |                             1101
+             WIN_CK_DONE |                  100000000000000 |                             1110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'win_state_r_reg' using encoding 'one-hot' in module 'mig_7series_v4_2_chk_win'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1816.152 ; gain = 187.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   26 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input    9 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 8     
+	   2 Input    7 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 3     
+	   2 Input    3 Bit       Adders := 3     
+	   2 Input    2 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 7     
++---Registers : 
+	             1024 Bit    Registers := 1     
+	              391 Bit    Registers := 1     
+	              256 Bit    Registers := 1     
+	              128 Bit    Registers := 7     
+	               64 Bit    Registers := 2     
+	               32 Bit    Registers := 8     
+	               28 Bit    Registers := 2     
+	               26 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	               11 Bit    Registers := 2     
+	                9 Bit    Registers := 4     
+	                8 Bit    Registers := 18    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 6     
+	                3 Bit    Registers := 6     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 81    
++---Muxes : 
+	   2 Input  128 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 6     
+	   6 Input   32 Bit        Muxes := 1     
+	   2 Input   26 Bit        Muxes := 1     
+	   2 Input   25 Bit        Muxes := 1     
+	  15 Input   15 Bit        Muxes := 1     
+	   2 Input   15 Bit        Muxes := 9     
+	   2 Input    9 Bit        Muxes := 5     
+	   4 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 12    
+	   4 Input    7 Bit        Muxes := 1     
+	   3 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 5     
+	   2 Input    6 Bit        Muxes := 3     
+	   3 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 3     
+	   3 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 8     
+	   2 Input    3 Bit        Muxes := 2     
+	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 7     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 48    
+	  15 Input    1 Bit        Muxes := 11    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port axi_rd_rresp[0] in module mig_7series_v4_2_axi4_tg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[6] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[5] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[4] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[3] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[2] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[1] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_current_bit[0] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[6] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[5] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[4] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[3] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[2] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[1] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+WARNING: [Synth 8-7129] Port win_bit_select[0] in module mig_7series_v4_2_chk_win is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1816.152 ; gain = 187.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1816.152 ; gain = 187.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1832.723 ; gain = 203.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3295] tying undriven pin win_current_byte_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin vio_sel_mux_rdd_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_valid_inferred:in0 to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_error_inferred:in0 to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[63] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[62] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[61] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[60] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[59] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[58] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[57] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[56] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[55] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[54] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[53] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[52] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[51] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[50] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[49] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[48] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[47] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[46] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[45] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[44] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[43] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[42] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[41] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[40] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[39] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[38] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[37] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[36] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[35] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[34] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[33] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[32] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[31] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[30] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[29] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[28] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[27] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[26] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[25] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[24] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[23] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[22] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[21] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[20] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[19] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[18] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[17] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[16] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[15] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[14] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[13] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[12] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[11] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[10] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[9] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[8] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[2] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[1] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_data_r_inferred:in0[0] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[2] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[1] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_dq_error_bytelane_cmp_inferred:in0[0] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[2] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[1] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cumlative_dq_lane_error_inferred:in0[0] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[31] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[30] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[29] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[28] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[27] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[26] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[25] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[24] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[23] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[22] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[21] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[20] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[19] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[18] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[17] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin dbg_cmp_addr_i_inferred:in0[16] to constant 0
+INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+-----------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                      | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+-----------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|example_top | CHIPSCOPE_INST.dbg_extn_trig_out_ack_r_reg[7] | 8      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++------------+-----------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |vio_twm_ddrx  |         1|
+|2     |ila_ddr2_axi  |         1|
+|3     |mig_7series_0 |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-------------+------+
+|      |Cell         |Count |
++------+-------------+------+
+|1     |ila_ddr2_axi |     1|
+|2     |mig_7series  |     1|
+|3     |vio_twm_ddrx |     1|
+|4     |CARRY4       |    12|
+|5     |LUT1         |   327|
+|6     |LUT2         |    65|
+|7     |LUT3         |   137|
+|8     |LUT4         |   284|
+|9     |LUT5         |   107|
+|10    |LUT6         |   296|
+|11    |RAM128X1D    |    30|
+|12    |SRL16E       |     1|
+|13    |FDRE         |  2281|
+|14    |FDSE         |    47|
+|15    |OBUF         |     2|
++------+-------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1850.812 ; gain = 221.711
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 143 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:36 . Memory (MB): peak = 1850.812 ; gain = 149.023
+Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1850.812 ; gain = 221.711
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 1850.812 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 42 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1859.906 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 30 instances were transformed.
+  RAM128X1D => RAM128X1D (MUXF7(x2), RAMD64E(x4)): 30 instances
+
+Synth Design complete, checksum: 244973e
+INFO: [Common 17-83] Releasing license: Synthesis
+51 Infos, 186 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:01:02 . Memory (MB): peak = 1859.906 ; gain = 230.805
+INFO: [Common 17-1381] The checkpoint 'c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/mig_7series_0_ex.runs/synth_1/example_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file example_top_utilization_synth.rpt -pb example_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  3 18:45:04 2024...

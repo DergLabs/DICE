@@ -1,0 +1,108 @@
+-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- --------------------------------------------------------------------------------
+-- Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+-- Date        : Wed Apr  3 18:33:18 2024
+-- Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/Users/johnh/Desktop/DICE-Project/200T_MEMORY/200T_MEMORY.gen/sources_1/ip/mig_7series_0/mig_7series_0_stub.vhdl
+-- Design      : mig_7series_0
+-- Purpose     : Stub declaration of top-level module interface
+-- Device      : xc7a200tfbg484-3
+-- --------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mig_7series_0 is
+  Port ( 
+    ddr2_dq : inout STD_LOGIC_VECTOR ( 15 downto 0 );
+    ddr2_dqs_n : inout STD_LOGIC_VECTOR ( 1 downto 0 );
+    ddr2_dqs_p : inout STD_LOGIC_VECTOR ( 1 downto 0 );
+    ddr2_addr : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    ddr2_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    ddr2_ras_n : out STD_LOGIC;
+    ddr2_cas_n : out STD_LOGIC;
+    ddr2_we_n : out STD_LOGIC;
+    ddr2_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    ddr2_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    ddr2_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
+    ddr2_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    ddr2_dm : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    ddr2_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    sys_clk_i : in STD_LOGIC;
+    ui_clk : out STD_LOGIC;
+    ui_clk_sync_rst : out STD_LOGIC;
+    mmcm_locked : out STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    app_sr_req : in STD_LOGIC;
+    app_ref_req : in STD_LOGIC;
+    app_zq_req : in STD_LOGIC;
+    app_sr_active : out STD_LOGIC;
+    app_ref_ack : out STD_LOGIC;
+    app_zq_ack : out STD_LOGIC;
+    s_axi_awid : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_awaddr : in STD_LOGIC_VECTOR ( 27 downto 0 );
+    s_axi_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axi_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_awburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_awlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axi_awcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_awvalid : in STD_LOGIC;
+    s_axi_awready : out STD_LOGIC;
+    s_axi_wdata : in STD_LOGIC_VECTOR ( 127 downto 0 );
+    s_axi_wstrb : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axi_wlast : in STD_LOGIC;
+    s_axi_wvalid : in STD_LOGIC;
+    s_axi_wready : out STD_LOGIC;
+    s_axi_bready : in STD_LOGIC;
+    s_axi_bid : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_bvalid : out STD_LOGIC;
+    s_axi_arid : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_araddr : in STD_LOGIC_VECTOR ( 27 downto 0 );
+    s_axi_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axi_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_arlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axi_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_arvalid : in STD_LOGIC;
+    s_axi_arready : out STD_LOGIC;
+    s_axi_rready : in STD_LOGIC;
+    s_axi_rid : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_rdata : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_rlast : out STD_LOGIC;
+    s_axi_rvalid : out STD_LOGIC;
+    ddr2_ila_wrpath : out STD_LOGIC_VECTOR ( 255 downto 0 );
+    ddr2_ila_rdpath : out STD_LOGIC_VECTOR ( 1023 downto 0 );
+    ddr2_ila_basic : out STD_LOGIC_VECTOR ( 119 downto 0 );
+    ddr2_vio_sync_out : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dbg_byte_sel : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    dbg_sel_pi_incdec : in STD_LOGIC;
+    dbg_pi_f_inc : in STD_LOGIC;
+    dbg_pi_f_dec : in STD_LOGIC;
+    dbg_sel_po_incdec : in STD_LOGIC;
+    dbg_po_f_inc : in STD_LOGIC;
+    dbg_po_f_stg23_sel : in STD_LOGIC;
+    dbg_po_f_dec : in STD_LOGIC;
+    dbg_pi_counter_read_val : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    dbg_po_counter_read_val : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    dbg_prbs_final_dqs_tap_cnt_r : out STD_LOGIC_VECTOR ( 107 downto 0 );
+    dbg_prbs_first_edge_taps : out STD_LOGIC_VECTOR ( 107 downto 0 );
+    dbg_prbs_second_edge_taps : out STD_LOGIC_VECTOR ( 107 downto 0 );
+    init_calib_complete : out STD_LOGIC;
+    sys_rst : in STD_LOGIC
+  );
+
+end mig_7series_0;
+
+architecture stub of mig_7series_0 is
+attribute syn_black_box : boolean;
+attribute black_box_pad_pin : string;
+attribute syn_black_box of stub : architecture is true;
+attribute black_box_pad_pin of stub : architecture is "ddr2_dq[15:0],ddr2_dqs_n[1:0],ddr2_dqs_p[1:0],ddr2_addr[13:0],ddr2_ba[2:0],ddr2_ras_n,ddr2_cas_n,ddr2_we_n,ddr2_ck_p[0:0],ddr2_ck_n[0:0],ddr2_cke[0:0],ddr2_cs_n[0:0],ddr2_dm[1:0],ddr2_odt[0:0],sys_clk_i,ui_clk,ui_clk_sync_rst,mmcm_locked,aresetn,app_sr_req,app_ref_req,app_zq_req,app_sr_active,app_ref_ack,app_zq_ack,s_axi_awid[3:0],s_axi_awaddr[27:0],s_axi_awlen[7:0],s_axi_awsize[2:0],s_axi_awburst[1:0],s_axi_awlock[0:0],s_axi_awcache[3:0],s_axi_awprot[2:0],s_axi_awqos[3:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[127:0],s_axi_wstrb[15:0],s_axi_wlast,s_axi_wvalid,s_axi_wready,s_axi_bready,s_axi_bid[3:0],s_axi_bresp[1:0],s_axi_bvalid,s_axi_arid[3:0],s_axi_araddr[27:0],s_axi_arlen[7:0],s_axi_arsize[2:0],s_axi_arburst[1:0],s_axi_arlock[0:0],s_axi_arcache[3:0],s_axi_arprot[2:0],s_axi_arqos[3:0],s_axi_arvalid,s_axi_arready,s_axi_rready,s_axi_rid[3:0],s_axi_rdata[127:0],s_axi_rresp[1:0],s_axi_rlast,s_axi_rvalid,ddr2_ila_wrpath[255:0],ddr2_ila_rdpath[1023:0],ddr2_ila_basic[119:0],ddr2_vio_sync_out[13:0],dbg_byte_sel[1:0],dbg_sel_pi_incdec,dbg_pi_f_inc,dbg_pi_f_dec,dbg_sel_po_incdec,dbg_po_f_inc,dbg_po_f_stg23_sel,dbg_po_f_dec,dbg_pi_counter_read_val[5:0],dbg_po_counter_read_val[8:0],dbg_prbs_final_dqs_tap_cnt_r[107:0],dbg_prbs_first_edge_taps[107:0],dbg_prbs_second_edge_taps[107:0],init_calib_complete,sys_rst";
+begin
+end;
