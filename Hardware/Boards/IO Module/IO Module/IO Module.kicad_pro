@@ -274,9 +274,43 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "FIFO_BUS",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(0, 255, 248)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "FT2232_IO",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(0, 46, 255)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "FT600_IO",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(199, 255, 0)",
         "track_width": 0.2,
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -325,9 +359,60 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "I2C1",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(209, 255, 183)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "JTAG",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(247, 0, 255)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MCU_BUS",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(199, 234, 255)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MCU_IO",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(113, 9, 255)",
         "track_width": 0.2,
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -875,6 +960,54 @@
       {
         "netclass": "UART",
         "pattern": "/Top/USB-JTAG/UART*"
+      },
+      {
+        "netclass": "FT600_IO",
+        "pattern": "/Top/USB-FIFO/FT600_*"
+      },
+      {
+        "netclass": "FIFO_BUS",
+        "pattern": "/Top/USB-FIFO/FIFO_*"
+      },
+      {
+        "netclass": "USB2_FIFO",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_D*"
+      },
+      {
+        "netclass": "USB3_FIFO",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_T*"
+      },
+      {
+        "netclass": "USB3_FIFO",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_RX_*"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/USB-FIFO/PP_VUSB"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/MCU/USB_MCU_D_*"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/MCU/QSPI_*"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/MCU/MCU_*"
+      },
+      {
+        "netclass": "I2C0",
+        "pattern": "/Top/MCU/I2C0_*"
+      },
+      {
+        "netclass": "I2C1",
+        "pattern": "/Top/MCU/I2C1_*"
+      },
+      {
+        "netclass": "MCU_BUS",
+        "pattern": "/Top/MCU/MBUS*"
       }
     ]
   },
