@@ -1263,7 +1263,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -15.24 180)
+					(at -2.54 -95.25 0)
 					(length 2.54)
 					(name "IN_CLKp"
 						(effects
@@ -1281,7 +1281,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -17.78 180)
+					(at -2.54 -88.9 0)
 					(length 2.54)
 					(name "IN_CLKn"
 						(effects
@@ -1425,7 +1425,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 0 180)
+					(at -2.54 -53.34 0)
 					(length 2.54)
 					(name "IN_D2p"
 						(effects
@@ -1533,7 +1533,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -88.9 0)
+					(at 35.56 -17.78 180)
 					(length 2.54)
 					(name "OUT_CLKn"
 						(effects
@@ -1551,7 +1551,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -95.25 0)
+					(at 35.56 -15.24 180)
 					(length 2.54)
 					(name "OUT_CLKp"
 						(effects
@@ -1587,7 +1587,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -74.93 0)
+					(at 35.56 -12.7 180)
 					(length 2.54)
 					(name "OUT_D0n"
 						(effects
@@ -1605,7 +1605,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -81.28 0)
+					(at 35.56 -10.16 180)
 					(length 2.54)
 					(name "OUT_D0p"
 						(effects
@@ -1623,7 +1623,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -2.54 180)
+					(at -2.54 -46.99 0)
 					(length 2.54)
 					(name "IN_D2n"
 						(effects
@@ -1659,7 +1659,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -60.96 0)
+					(at 35.56 -7.62 180)
 					(length 2.54)
 					(name "OUT_D1n"
 						(effects
@@ -1677,7 +1677,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -67.31 0)
+					(at 35.56 -5.08 180)
 					(length 2.54)
 					(name "OUT_D1p"
 						(effects
@@ -1713,7 +1713,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -46.99 0)
+					(at 35.56 -2.54 180)
 					(length 2.54)
 					(name "OUT_D2n"
 						(effects
@@ -1731,7 +1731,7 @@
 					)
 				)
 				(pin passive line
-					(at -2.54 -53.34 0)
+					(at 35.56 0 180)
 					(length 2.54)
 					(name "OUT_D2p"
 						(effects
@@ -2019,7 +2019,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -5.08 180)
+					(at -2.54 -67.31 0)
 					(length 2.54)
 					(name "IN_D1p"
 						(effects
@@ -2037,7 +2037,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -7.62 180)
+					(at -2.54 -60.96 0)
 					(length 2.54)
 					(name "IN_D1n"
 						(effects
@@ -2073,7 +2073,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -10.16 180)
+					(at -2.54 -81.28 0)
 					(length 2.54)
 					(name "IN_D0p"
 						(effects
@@ -2091,7 +2091,7 @@
 					)
 				)
 				(pin passive line
-					(at 35.56 -12.7 180)
+					(at -2.54 -74.93 0)
 					(length 2.54)
 					(name "IN_D0n"
 						(effects
@@ -6252,6 +6252,26 @@
 		)
 		(uuid 4e1197b2-a450-4d20-b27e-de862d86db17)
 	)
+	(text_box "NOTE: FPGA IO Bank is 1V8, Must use LVL Shifter"
+		(exclude_from_sim no)
+		(at 265.43 170.815 0)
+		(size 50.165 9.525)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "4760b8af-2d18-455f-b816-7c950356b6e0")
+	)
 	(text "1V1 Core LDO"
 		(exclude_from_sim no)
 		(at 88.265 18.415 0)
@@ -6274,7 +6294,7 @@
 		)
 		(uuid "a4c00b48-3dea-431e-a8b5-4dac5e60877b")
 	)
-	(label "HDMI_C_D1_P"
+	(label "HDMI_CON_D1_P"
 		(at 259.08 58.42 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6307,7 +6327,7 @@
 		)
 		(uuid "0660ce82-1a1e-4480-a50b-356fed8589ce")
 	)
-	(label "HDMI_C_D0_P"
+	(label "HDMI_CON_D0_P"
 		(at 259.08 63.5 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6637,7 +6657,7 @@
 		)
 		(uuid "8429503a-729b-4359-afc7-8d196441d61b")
 	)
-	(label "HDMI_C_D0_N"
+	(label "HDMI_CON_D0_N"
 		(at 259.08 66.04 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6648,7 +6668,7 @@
 		)
 		(uuid "87bffd0e-30e8-468e-ba1d-57827950af7c")
 	)
-	(label "HDMI_C_D1_N"
+	(label "HDMI_CON_D1_N"
 		(at 259.08 60.96 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6681,7 +6701,7 @@
 		)
 		(uuid "93309206-b741-43fa-8704-ac6197a9310a")
 	)
-	(label "HDMI_C_D2_P"
+	(label "HDMI_CON_D2_P"
 		(at 259.08 53.34 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6759,7 +6779,7 @@
 		)
 		(uuid "9e03838b-8d9a-44ec-b394-a22424d68ff2")
 	)
-	(label "HDMI_C_CLK_P"
+	(label "HDMI_CON_CLK_P"
 		(at 259.08 68.58 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6803,7 +6823,7 @@
 		)
 		(uuid "a7c31891-a75a-40c8-9150-3a4e5d5f24e9")
 	)
-	(label "HDMI_C_D2_N"
+	(label "HDMI_CON_D2_N"
 		(at 259.08 55.88 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6891,7 +6911,7 @@
 		)
 		(uuid "c6ced68e-f2cb-4477-87a9-fc081c939c69")
 	)
-	(label "HDMI_C_CLK_N"
+	(label "HDMI_CON_CLK_N"
 		(at 259.08 71.12 0)
 		(fields_autoplaced yes)
 		(effects
