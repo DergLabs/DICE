@@ -816,6 +816,24 @@
 					)
 				)
 				(pin passive line
+					(at -2.54 -90.17 0)
+					(length 2.54)
+					(name "RREF"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at -2.54 -36.83 0)
 					(length 2.54)
 					(name "VDDA"
@@ -2364,6 +2382,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 157.48) (xy 179.07 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b786f02-9d6f-4cb2-8844-c6470ad36509")
+	)
+	(wire
+		(pts
 			(xy 176.53 129.54) (xy 193.04 129.54)
 		)
 		(stroke
@@ -3544,6 +3572,16 @@
 	)
 	(wire
 		(pts
+			(xy 189.23 157.48) (xy 193.04 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e26d3d26-0105-4f23-96f6-a3603c833722")
+	)
+	(wire
+		(pts
 			(xy 156.21 69.85) (xy 167.64 69.85)
 		)
 		(stroke
@@ -3711,6 +3749,16 @@
 			(type default)
 		)
 		(uuid "f22bdcf9-77f1-4991-9f23-9a1688f76811")
+	)
+	(wire
+		(pts
+			(xy 181.61 157.48) (xy 179.07 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2d4b5a5-6119-4715-a062-f78a11fd2f79")
 	)
 	(wire
 		(pts
@@ -5452,6 +5500,9 @@
 		)
 		(pin "51"
 			(uuid "3a099a99-78e1-4efb-b5d6-9f09caac1009")
+		)
+		(pin "21"
+			(uuid "738f280a-527a-48e8-a661-b53aa7c456af")
 		)
 		(instances
 			(project ""
@@ -7350,6 +7401,71 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 179.07 161.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca984f42-c488-4e4a-9bf6-8988e72abaa7")
+		(property "Reference" "#PWR0273"
+			(at 179.07 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 179.07 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 179.07 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 179.07 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab21b225-4592-4aac-ba5e-13d46303fa08")
+		)
+		(instances
+			(project "IO Module"
+				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/0caf3050-48d7-4c2b-bd75-8084d37ef6b3"
+					(reference "#PWR0273")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 176.53 111.76 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7808,6 +7924,74 @@
 			(project "IO Module"
 				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/0caf3050-48d7-4c2b-bd75-8084d37ef6b3"
 					(reference "R46")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 185.42 157.48 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eb6a7663-74be-49ce-b5dc-55a206c1abcb")
+		(property "Reference" "R103"
+			(at 185.42 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1.6K"
+			(at 185.42 153.67 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 185.166 158.496 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 185.42 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2c082e84-2234-4f87-b20c-dd90f86bde84")
+		)
+		(pin "1"
+			(uuid "542f61b4-7f96-48c2-bf9a-33d10fa48e53")
+		)
+		(instances
+			(project "IO Module"
+				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/0caf3050-48d7-4c2b-bd75-8084d37ef6b3"
+					(reference "R103")
 					(unit 1)
 				)
 			)
