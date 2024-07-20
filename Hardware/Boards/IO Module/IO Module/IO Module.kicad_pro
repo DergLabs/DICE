@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.65,
+          "height": 0.65,
+          "width": 0.65
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -138,8 +138,8 @@
         "max_error": 0.005,
         "min_clearance": 0.09,
         "min_connection": 0.09,
-        "min_copper_edge_clearance": 0.5,
-        "min_hole_clearance": 0.15,
+        "min_copper_edge_clearance": 0.2,
+        "min_hole_clearance": 0.1,
         "min_hole_to_hole": 0.15,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
@@ -235,8 +235,8 @@
           "drill": 0.0
         },
         {
-          "diameter": 0.3,
-          "drill": 0.2
+          "diameter": 0.25,
+          "drill": 0.15
         },
         {
           "diameter": 0.4,
@@ -1359,23 +1359,11 @@
       },
       {
         "netclass": "USB2_JTAG",
-        "pattern": "/Top/USB Hub/USB2D*"
-      },
-      {
-        "netclass": "USB2_JTAG",
         "pattern": "/Top/USB Hub/USB_JTAG_*"
       },
       {
         "netclass": "USB2_MCU",
-        "pattern": "/Top/USB Hub/USB3D_*"
-      },
-      {
-        "netclass": "USB2_MCU",
         "pattern": "/Top/USB Hub/USB_MCU_D_*"
-      },
-      {
-        "netclass": "USB2_SYSMON",
-        "pattern": "/Top/USB Hub/USB4D_*"
       },
       {
         "netclass": "USB2_SYSMON",
@@ -1788,6 +1776,22 @@
       {
         "netclass": "GND",
         "pattern": "/Top/B2B/GND"
+      },
+      {
+        "netclass": "USB2_SYSMON",
+        "pattern": "/Top/USB Hub/USB2D_*"
+      },
+      {
+        "netclass": "USB2_JTAG",
+        "pattern": "/Top/USB Hub/USB3D_*"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/USB Hub/USB4D_P"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/USB Hub/USB4D_N"
       }
     ]
   },
