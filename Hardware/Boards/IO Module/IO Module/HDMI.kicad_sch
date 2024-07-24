@@ -3629,6 +3629,12 @@
 		(uuid "25dd63ee-346b-4d4f-bc3a-1983f95fd979")
 	)
 	(junction
+		(at 266.7 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2611a3bd-154c-4acd-93ac-5b9e295a7ac6")
+	)
+	(junction
 		(at 168.91 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4272,6 +4278,16 @@
 	)
 	(wire
 		(pts
+			(xy 266.7 123.19) (xy 266.7 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "406ba1e2-935c-4b3f-8052-0d506a42ba78")
+	)
+	(wire
+		(pts
 			(xy 154.94 184.15) (xy 191.77 184.15)
 		)
 		(stroke
@@ -4512,13 +4528,13 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 123.19) (xy 266.7 121.92)
+			(xy 266.7 123.19) (xy 275.59 123.19)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5ab1bc50-7718-4e23-bf53-2c40f97471ed")
+		(uuid "5ca639e2-a894-4555-a7db-d82623c7c92b")
 	)
 	(wire
 		(pts
@@ -5272,6 +5288,16 @@
 	)
 	(wire
 		(pts
+			(xy 266.7 156.21) (xy 266.7 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9feaeea-5437-4656-9c16-6c5c66085f4b")
+	)
+	(wire
+		(pts
 			(xy 167.64 142.24) (xy 191.77 142.24)
 		)
 		(stroke
@@ -5462,6 +5488,16 @@
 	)
 	(wire
 		(pts
+			(xy 252.73 99.06) (xy 266.7 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "babd840b-039c-46b8-9249-a515b95c2da9")
+	)
+	(wire
+		(pts
 			(xy 190.5 55.88) (xy 191.77 55.88)
 		)
 		(stroke
@@ -5542,7 +5578,7 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 123.19) (xy 275.59 123.19)
+			(xy 260.35 123.19) (xy 266.7 123.19)
 		)
 		(stroke
 			(width 0)
@@ -5579,16 +5615,6 @@
 			(type default)
 		)
 		(uuid "c3a97538-5734-416d-b35c-e7f5e33bc26a")
-	)
-	(wire
-		(pts
-			(xy 266.7 113.03) (xy 266.7 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c5a764ea-1748-452e-b700-18daae411d5f")
 	)
 	(wire
 		(pts
@@ -6382,6 +6408,17 @@
 		)
 		(uuid "1c04185f-c224-4516-8f82-95b85e8f288c")
 	)
+	(label "HDMI_BUFF_EN"
+		(at 260.35 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1e0d56bf-9388-473c-b836-31bf5b232b9f")
+	)
 	(label "HDMI_TX_TERM_CTL"
 		(at 321.31 138.43 180)
 		(fields_autoplaced yes)
@@ -6623,6 +6660,17 @@
 			(justify left bottom)
 		)
 		(uuid "6aba9e6c-8ffa-473c-9d48-e5718486915e")
+	)
+	(label "HDMI_BUFF_EN"
+		(at 252.73 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "72816782-474f-430c-bc6c-151f0d6e7da8")
 	)
 	(label "HDMI_CLK_N"
 		(at 138.43 142.24 0)
@@ -7143,6 +7191,18 @@
 			(justify right)
 		)
 		(uuid "81ff1f34-3d05-4ac1-97a7-d0521e0f7ee0")
+	)
+	(hierarchical_label "HDMI_BUFF_EN"
+		(shape input)
+		(at 252.73 99.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "820a5e11-55e9-4235-86b1-9d2f59a58f27")
 	)
 	(hierarchical_label "HDMI_D2_N"
 		(shape input)
@@ -9772,6 +9832,71 @@
 			(project "IO Module"
 				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/84e0983c-4a92-4326-b25d-d105fd964129"
 					(reference "#PWR0221")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 266.7 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "53796e33-29af-453c-97b5-a1643e36e5b6")
+		(property "Reference" "#PWR088"
+			(at 266.7 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 266.7 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 266.7 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 266.7 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 266.7 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bcf465f5-7464-4315-8b22-34d48c0ae109")
+		)
+		(instances
+			(project "IO Module"
+				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/84e0983c-4a92-4326-b25d-d105fd964129"
+					(reference "#PWR088")
 					(unit 1)
 				)
 			)
@@ -12736,7 +12861,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 266.7 118.11 180)
+		(at 266.7 152.4 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12744,7 +12869,7 @@
 		(dnp no)
 		(uuid "c60d649f-1bc8-4bd4-8e3c-49a0d2d5c5fc")
 		(property "Reference" "R80"
-			(at 271.145 119.38 0)
+			(at 271.145 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12752,7 +12877,7 @@
 			)
 		)
 		(property "Value" "100K"
-			(at 271.145 116.84 0)
+			(at 271.145 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12760,7 +12885,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
-			(at 265.684 117.856 90)
+			(at 265.684 152.146 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12769,7 +12894,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 266.7 118.11 0)
+			(at 266.7 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12778,7 +12903,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 266.7 118.11 0)
+			(at 266.7 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13259,71 +13384,6 @@
 			(project "IO Module"
 				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/84e0983c-4a92-4326-b25d-d105fd964129"
 					(reference "#PWR0227")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 266.7 113.03 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cd849fc4-c165-45bd-9f92-be2e4de6ceec")
-		(property "Reference" "#PWR0159"
-			(at 266.7 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 266.7 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 266.7 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 266.7 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 266.7 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ff0a8385-44f2-4937-8e9a-2b7697131767")
-		)
-		(instances
-			(project "IO Module"
-				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/84e0983c-4a92-4326-b25d-d105fd964129"
-					(reference "#PWR0159")
 					(unit 1)
 				)
 			)

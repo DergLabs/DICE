@@ -641,6 +641,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 201.93) (xy 248.92 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03b4a381-9b12-4638-8c0a-5b6a96cc683c")
+	)
+	(wire
+		(pts
 			(xy 209.55 118.11) (xy 250.19 118.11)
 		)
 		(stroke
@@ -668,6 +678,16 @@
 			(type default)
 		)
 		(uuid "0913c6ec-2552-4aaf-b7ff-2b331761f379")
+	)
+	(wire
+		(pts
+			(xy 248.92 175.26) (xy 209.55 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a7c5617-2e98-4e31-9b7a-f5bb8a786db7")
 	)
 	(wire
 		(pts
@@ -751,6 +771,16 @@
 	)
 	(wire
 		(pts
+			(xy 360.68 201.93) (xy 248.92 201.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "210ed476-e84a-4482-a28b-b3c6f14adf98")
+	)
+	(wire
+		(pts
 			(xy 289.56 97.79) (xy 325.12 97.79)
 		)
 		(stroke
@@ -758,6 +788,16 @@
 			(type default)
 		)
 		(uuid "217837c9-7440-4f22-8f34-50a21047d48f")
+	)
+	(wire
+		(pts
+			(xy 360.68 133.35) (xy 360.68 201.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "217b77d5-7076-4477-893b-d9279d1d6304")
 	)
 	(wire
 		(pts
@@ -2258,6 +2298,16 @@
 			(type default)
 		)
 		(uuid "fbdd330f-4249-4af8-ad02-71bdf7e0fdad")
+	)
+	(wire
+		(pts
+			(xy 356.87 133.35) (xy 360.68 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fd53babe-7655-48b2-8415-44436e676341")
 	)
 	(wire
 		(pts
@@ -3800,16 +3850,6 @@
 			)
 			(uuid "4cdce259-37e8-434c-94b1-7cd6179e9471")
 		)
-		(pin "MBUS_D[0..15]" input
-			(at 250.19 156.21 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "cc6c7bb8-ac11-4c3f-9486-cf317e50b141")
-		)
 		(pin "FIFO_D[0..15]" input
 			(at 250.19 134.62 180)
 			(effects
@@ -3939,6 +3979,16 @@
 				(justify right)
 			)
 			(uuid "00f596d6-02ea-4f3c-8f78-c1eb98085c5a")
+		)
+		(pin "MBUS_D[0..14]" input
+			(at 250.19 156.21 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "80e7221b-c283-4aff-923d-b71042dfd43e")
 		)
 		(instances
 			(project "IO Module"
@@ -4536,6 +4586,16 @@
 			)
 			(uuid "8ce21bad-c88e-402c-b7d5-101da2235484")
 		)
+		(pin "HDMI_BUFF_EN" input
+			(at 356.87 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "4e5d2f7a-e9d6-4d3f-8d29-b203500b7b80")
+		)
 		(instances
 			(project "IO Module"
 				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65"
@@ -5128,16 +5188,6 @@
 				(justify left top)
 			)
 		)
-		(pin "MBUS_D[0..15]" input
-			(at 209.55 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "5fd97c6b-90cb-4704-ab37-7f9e7064d3ba")
-		)
 		(pin "CAM_PWR_EN" input
 			(at 209.55 185.42 0)
 			(effects
@@ -5287,6 +5337,26 @@
 				(justify left)
 			)
 			(uuid "6fdf0a7d-feb8-47c6-8bf1-7292cde4dab7")
+		)
+		(pin "MBUS_D[0..14]" input
+			(at 209.55 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9c2cfe3a-46ec-4a84-ae15-0f1f79b80bd9")
+		)
+		(pin "HDMI_BUFF_EN" input
+			(at 209.55 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9bec652a-2175-4312-8dbe-2fb2b2eb6680")
 		)
 		(instances
 			(project "IO Module"

@@ -1485,6 +1485,12 @@
 		(uuid "c4b880d0-c4a6-4388-8bf0-e05d8454ba08")
 	)
 	(junction
+		(at 297.18 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c791b525-90c9-43dc-a393-4ce76563d3ed")
+	)
+	(junction
 		(at 118.11 118.11)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1633,15 +1639,6 @@
 			(type default)
 		)
 		(uuid "5beaa4a4-85d2-45ea-8d61-7100e99751be")
-	)
-	(bus_entry
-		(at 335.28 69.85)
-		(size 2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60d110b2-676b-4555-b133-ff88c7361101")
 	)
 	(bus_entry
 		(at 335.28 52.07)
@@ -2274,16 +2271,6 @@
 	)
 	(wire
 		(pts
-			(xy 295.91 130.81) (xy 311.15 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "316c0e30-8ea3-46d9-8037-764252baa205")
-	)
-	(wire
-		(pts
 			(xy 146.05 92.71) (xy 146.05 90.17)
 		)
 		(stroke
@@ -2344,16 +2331,6 @@
 	)
 	(wire
 		(pts
-			(xy 295.91 69.85) (xy 335.28 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "33c5b552-93e7-49a1-84bc-d332d65f468c")
-	)
-	(wire
-		(pts
 			(xy 93.98 168.91) (xy 119.38 168.91)
 		)
 		(stroke
@@ -2391,6 +2368,16 @@
 			(type default)
 		)
 		(uuid "34c82fb3-717e-4a56-92fc-e84a3464a33e")
+	)
+	(wire
+		(pts
+			(xy 297.18 130.81) (xy 297.18 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "367354d0-d18e-45fd-b819-502568a3116c")
 	)
 	(bus
 		(pts
@@ -3154,6 +3141,16 @@
 	)
 	(wire
 		(pts
+			(xy 295.91 130.81) (xy 297.18 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cd72065-f0eb-4acf-85a6-a9b9d6eaab8f")
+	)
+	(wire
+		(pts
 			(xy 295.91 59.69) (xy 335.28 59.69)
 		)
 		(stroke
@@ -3191,16 +3188,6 @@
 			(type default)
 		)
 		(uuid "919bdec3-5306-4018-aecc-c5d96ed7630f")
-	)
-	(bus
-		(pts
-			(xy 337.82 67.31) (xy 337.82 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "91ddd767-8533-4289-8baf-09883aa19cc1")
 	)
 	(wire
 		(pts
@@ -3514,7 +3501,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 110.49) (xy 297.18 133.35)
+			(xy 297.18 110.49) (xy 297.18 130.81)
 		)
 		(stroke
 			(width 0)
@@ -4204,17 +4191,6 @@
 		)
 		(uuid "0d1486c3-6f72-438a-866c-90279ac02d7c")
 	)
-	(label "MBUS_D15"
-		(at 307.34 69.85 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "108f9f3e-a197-49b1-9fae-fda61ba8d32c")
-	)
 	(label "FIFO_D10"
 		(at 251.46 60.96 180)
 		(fields_autoplaced yes)
@@ -4644,17 +4620,6 @@
 		)
 		(uuid "61dee056-a16c-4b7b-be64-c6d7213b3135")
 	)
-	(label "MBUS_D15"
-		(at 311.15 130.81 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "622c30e0-916c-45e1-bb96-41dd27972a4b")
-	)
 	(label "HDMI_SDA_SRC"
 		(at 93.98 163.83 0)
 		(fields_autoplaced yes)
@@ -4831,7 +4796,7 @@
 		)
 		(uuid "80b746de-9369-41b3-b393-e6902dfee974")
 	)
-	(label "MBUS_D[0..15]"
+	(label "MBUS_D[0..14]"
 		(at 342.9 29.21 0)
 		(fields_autoplaced yes)
 		(effects
@@ -5972,7 +5937,7 @@
 		)
 		(uuid "afa6db38-e42f-4a7e-b41e-99ab54d6e5d4")
 	)
-	(hierarchical_label "MBUS_D[0..15]"
+	(hierarchical_label "MBUS_D[0..14]"
 		(shape input)
 		(at 361.95 29.21 0)
 		(fields_autoplaced yes)
