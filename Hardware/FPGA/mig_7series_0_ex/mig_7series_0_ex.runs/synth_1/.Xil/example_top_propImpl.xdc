@@ -1,5 +1,0 @@
-set_property SRC_FILE_INFO {cfile:c:/Users/johnh/Desktop/DICE-Project/mig_7series_0_ex/imports/example_top.xdc rfile:../../../imports/example_top.xdc id:1 order:EARLY} [current_design]
-set_property src_info {type:XDC file:1 line:31 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN A14 [get_ports {init_calib_complete}]
-set_property src_info {type:XDC file:1 line:35 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN A15 [get_ports {tg_compare_error}]
