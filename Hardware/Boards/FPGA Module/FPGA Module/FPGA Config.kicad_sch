@@ -4,6 +4,13 @@
 	(generator_version "8.0")
 	(uuid "da4e7d18-3666-49ff-ac79-1791d20ff271")
 	(paper "A3")
+	(title_block
+		(title "FPGA Configuration")
+		(date "2024-07-31")
+		(rev "1.0")
+		(company "Drexel University")
+		(comment 1 "Designed by John Hofmeyr")
+	)
 	(lib_symbols
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
@@ -15123,6 +15130,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 194.31) (xy 134.62 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "410031b8-c0df-4a38-93f1-f562ef04d586")
+	)
+	(wire
+		(pts
 			(xy 92.71 96.52) (xy 92.71 107.95)
 		)
 		(stroke
@@ -15643,16 +15660,6 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 203.2) (xy 134.62 204.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a9d36aa4-1bb8-48dc-801e-87ab8a43e3c0")
-	)
-	(wire
-		(pts
 			(xy 107.95 219.71) (xy 119.38 219.71)
 		)
 		(stroke
@@ -15750,6 +15757,16 @@
 			(type default)
 		)
 		(uuid "bb3226d3-d34d-4c03-9f3e-73b3592c09d4")
+	)
+	(wire
+		(pts
+			(xy 134.62 203.2) (xy 134.62 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc991c7f-d08d-4225-8e04-507c6a449d4d")
 	)
 	(wire
 		(pts
@@ -21919,7 +21936,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 134.62 203.2 0)
+		(at 134.62 194.31 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21927,7 +21944,7 @@
 		(dnp no)
 		(uuid "bb6b9ccb-4545-483a-a77d-e0f090d49099")
 		(property "Reference" "#PWR0176"
-			(at 134.62 207.01 0)
+			(at 134.62 198.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21936,7 +21953,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 134.62 199.39 0)
+			(at 134.62 190.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21944,7 +21961,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 203.2 0)
+			(at 134.62 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21953,7 +21970,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 203.2 0)
+			(at 134.62 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21962,7 +21979,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 134.62 203.2 0)
+			(at 134.62 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22133,6 +22150,76 @@
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
 					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 134.62 199.39 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c2319c0e-35f7-4d3b-8f01-2ad3294ec43e")
+		(property "Reference" "R81"
+			(at 137.16 198.1199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4.7K"
+			(at 137.16 200.6599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 133.604 199.136 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 134.62 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26f5902e-1029-4c81-8863-fb034a548956")
+		)
+		(pin "2"
+			(uuid "3bf3db85-7c41-4ce9-9105-fc3dbb3506f9")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
+					(reference "R81")
 					(unit 1)
 				)
 			)
