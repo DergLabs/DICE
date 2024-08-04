@@ -3165,6 +3165,12 @@
 		(uuid "070accd6-d66f-4c4c-8a51-dbaf21876814")
 	)
 	(junction
+		(at 375.92 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0dc16591-474f-4313-81c0-10e48aa55ca2")
+	)
+	(junction
 		(at 210.82 331.47)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3355,12 +3361,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "52655963-90d9-4481-86f3-0fa562295dff")
-	)
-	(junction
-		(at 364.49 74.93)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "52ad8ec0-ff74-4ece-b19d-ef47a50e2c1a")
 	)
 	(junction
 		(at 293.37 41.91)
@@ -3795,6 +3795,16 @@
 			(type default)
 		)
 		(uuid "046033b4-a5f9-48e3-b1d4-ff4987a2bdbb")
+	)
+	(wire
+		(pts
+			(xy 375.92 74.93) (xy 384.81 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0546812b-63c0-4326-83d1-1db507d49f10")
 	)
 	(wire
 		(pts
@@ -5048,7 +5058,7 @@
 	)
 	(wire
 		(pts
-			(xy 308.61 74.93) (xy 364.49 74.93)
+			(xy 308.61 74.93) (xy 375.92 74.93)
 		)
 		(stroke
 			(width 0)
@@ -6298,7 +6308,7 @@
 	)
 	(wire
 		(pts
-			(xy 364.49 63.5) (xy 364.49 66.04)
+			(xy 375.92 63.5) (xy 375.92 66.04)
 		)
 		(stroke
 			(width 0)
@@ -6318,7 +6328,7 @@
 	)
 	(wire
 		(pts
-			(xy 364.49 73.66) (xy 364.49 74.93)
+			(xy 375.92 73.66) (xy 375.92 74.93)
 		)
 		(stroke
 			(width 0)
@@ -6755,16 +6765,6 @@
 			(type default)
 		)
 		(uuid "b31203a7-cc56-40f5-922e-031e11c316f6")
-	)
-	(wire
-		(pts
-			(xy 364.49 74.93) (xy 373.38 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b32e5eda-dbe4-4a7b-9d76-d25383c17b2b")
 	)
 	(wire
 		(pts
@@ -8905,6 +8905,18 @@
 		)
 		(uuid "f026bea2-8016-4cf7-902e-4ea9e03af121")
 	)
+	(hierarchical_label "I2C0_SCL"
+		(shape input)
+		(at 356.87 62.23 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "05ef3ef1-e33c-47a8-b7ab-95e8b40cf835")
+	)
 	(hierarchical_label "1V8_ISNS_ALERT"
 		(shape input)
 		(at 417.83 304.8 0)
@@ -8928,6 +8940,18 @@
 			(justify right)
 		)
 		(uuid "13c8831a-8604-4b04-8092-fe9a0c921cf8")
+	)
+	(hierarchical_label "I2C0_SDA"
+		(shape input)
+		(at 356.87 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1beb2b76-a984-40d6-8520-4f2d35e720cd")
 	)
 	(hierarchical_label "1V2_ISNS_ALERT"
 		(shape input)
@@ -8967,7 +8991,7 @@
 	)
 	(hierarchical_label "0V85_ISNS_ALERT"
 		(shape input)
-		(at 373.38 74.93 0)
+		(at 384.81 74.93 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13239,7 +13263,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 364.49 69.85 180)
+		(at 375.92 69.85 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13248,7 +13272,7 @@
 		(fields_autoplaced yes)
 		(uuid "56a7cd67-46f9-4683-a5bc-48c2557b7aa4")
 		(property "Reference" "R98"
-			(at 367.03 68.5799 0)
+			(at 378.46 68.5799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13257,7 +13281,7 @@
 			)
 		)
 		(property "Value" "4.7K"
-			(at 367.03 71.1199 0)
+			(at 378.46 71.1199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13266,7 +13290,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 363.474 69.596 90)
+			(at 374.904 69.596 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13275,7 +13299,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 364.49 69.85 0)
+			(at 375.92 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13284,7 +13308,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 364.49 69.85 0)
+			(at 375.92 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22569,7 +22593,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 364.49 63.5 0)
+		(at 375.92 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22577,7 +22601,7 @@
 		(dnp no)
 		(uuid "f0606f9f-eae7-4cd3-9ade-7e3686780818")
 		(property "Reference" "#PWR032"
-			(at 364.49 67.31 0)
+			(at 375.92 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22586,7 +22610,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 364.49 59.69 0)
+			(at 375.92 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22594,7 +22618,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 364.49 63.5 0)
+			(at 375.92 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22603,7 +22627,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 364.49 63.5 0)
+			(at 375.92 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22612,7 +22636,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 364.49 63.5 0)
+			(at 375.92 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
