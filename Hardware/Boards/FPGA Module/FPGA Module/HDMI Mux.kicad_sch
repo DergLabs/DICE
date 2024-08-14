@@ -12,6 +12,108 @@
 		(comment 1 "Designed by John Hofmeyr")
 	)
 	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
 			(pin_names
@@ -823,6 +925,12 @@
 		(color 0 0 0 0)
 		(uuid "b050ab87-bf4f-4577-b76a-06496052b482")
 	)
+	(junction
+		(at 179.07 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e7ff00f2-0a70-42f8-ac69-e9ae4f1bc35e")
+	)
 	(wire
 		(pts
 			(xy 218.44 154.94) (xy 218.44 162.56)
@@ -845,6 +953,16 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 166.37) (xy 198.12 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "120ea7f7-5b27-48c8-9561-4a3b3e195231")
+	)
+	(wire
+		(pts
 			(xy 218.44 128.27) (xy 218.44 129.54)
 		)
 		(stroke
@@ -862,6 +980,16 @@
 			(type default)
 		)
 		(uuid "26ef4df9-dba8-4ace-a0a3-5c96a88bb036")
+	)
+	(wire
+		(pts
+			(xy 179.07 152.4) (xy 185.42 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bf2bb8b-089d-4721-89ed-7175ee6aa3f4")
 	)
 	(wire
 		(pts
@@ -925,7 +1053,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 152.4) (xy 185.42 152.4)
+			(xy 175.26 152.4) (xy 179.07 152.4)
 		)
 		(stroke
 			(width 0)
@@ -935,13 +1063,13 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 154.94) (xy 198.12 162.56)
+			(xy 198.12 154.94) (xy 198.12 158.75)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b19ce938-7662-4e43-84bf-114f4fa10940")
+		(uuid "b0a64c12-72b2-456a-b5ca-ebf174b6a761")
 	)
 	(wire
 		(pts
@@ -1141,7 +1269,7 @@
 	)
 	(hierarchical_label "HDMI_CLK_SEL"
 		(shape input)
-		(at 181.61 152.4 180)
+		(at 175.26 152.4 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1367,6 +1495,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_US")
+		(at 198.12 162.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5083de1e-d952-43f0-b975-8b501d3752b7")
+		(property "Reference" "R129"
+			(at 200.66 161.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4.7K"
+			(at 200.66 163.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 197.104 162.306 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 198.12 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 198.12 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c91846e1-72e4-4d4a-be46-94936df6bb26")
+		)
+		(pin "2"
+			(uuid "7c012215-7f91-44e5-81e7-cf9b2f23d77a")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
+					(reference "R129")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "FPGA Module:TS3USB221A")
 		(at 214.63 129.54 0)
 		(mirror y)
@@ -1526,71 +1723,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 198.12 162.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "74731a9f-420e-46f7-b7bd-d8e9e55c5cb6")
-		(property "Reference" "#PWR0268"
-			(at 198.12 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 198.12 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 198.12 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 198.12 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 198.12 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8121d51c-faaf-44c4-ad4c-3247ada46c5c")
-		)
-		(instances
-			(project "FPGA Module"
-				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "#PWR0268")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 218.44 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1649,6 +1781,138 @@
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
 					(reference "#PWR0265")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 179.07 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "db9ac86f-9bf0-48c1-bbbe-e7f923a26288")
+		(property "Reference" "TP45"
+			(at 176.53 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Test Point"
+			(at 173.99 146.685 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+			(at 184.15 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 184.15 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 179.07 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9d32e407-96a3-4966-a8be-0c4733ab7f89")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
+					(reference "TP45")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 198.12 167.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e9f86f83-779c-42d0-ba07-46a4fd8a37bf")
+		(property "Reference" "#PWR0268"
+			(at 198.12 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 198.12 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 198.12 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "42b9c7f5-429f-42de-a729-ef4e3a73f685")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
+					(reference "#PWR0268")
 					(unit 1)
 				)
 			)

@@ -12,6 +12,108 @@
 		(comment 1 "Designed by John Hofmeyr")
 	)
 	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
 			(pin_names
@@ -14697,6 +14799,12 @@
 		(uuid "05892b59-0616-4e7a-810d-355b53580e0e")
 	)
 	(junction
+		(at 125.73 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "130bf5d6-b201-4e45-9491-cbc0140aeb74")
+	)
+	(junction
 		(at 205.74 219.71)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -14779,6 +14887,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c6956bb8-e180-4d59-bfba-3a8790b62439")
+	)
+	(junction
+		(at 125.73 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c893aae1-b378-4524-b20a-3cdd9d78f12a")
 	)
 	(junction
 		(at 199.39 59.69)
@@ -14907,6 +15021,16 @@
 			(type default)
 		)
 		(uuid "160f3541-3fd6-40fa-b58b-fb39d819481f")
+	)
+	(wire
+		(pts
+			(xy 125.73 128.27) (xy 92.71 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19ad9b6a-ad38-492c-ad21-f809c737a91b")
 	)
 	(wire
 		(pts
@@ -15500,6 +15624,16 @@
 	)
 	(wire
 		(pts
+			(xy 125.73 113.03) (xy 118.11 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87e38b7a-3ac1-47f5-86f2-010cc78c2e82")
+	)
+	(wire
+		(pts
 			(xy 133.35 168.91) (xy 133.35 175.26)
 		)
 		(stroke
@@ -15750,7 +15884,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 113.03) (xy 118.11 113.03)
+			(xy 134.62 113.03) (xy 125.73 113.03)
 		)
 		(stroke
 			(width 0)
@@ -16090,7 +16224,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 128.27) (xy 92.71 128.27)
+			(xy 138.43 128.27) (xy 125.73 128.27)
 		)
 		(stroke
 			(width 0)
@@ -17206,6 +17340,73 @@
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
 					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 125.73 113.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1e4ceb5f-88dd-44cd-928c-c082994e7bf9")
+		(property "Reference" "TP46"
+			(at 123.19 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Test Point"
+			(at 120.65 107.315 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+			(at 130.81 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 130.81 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 125.73 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b87cb5c5-a665-488c-a3cc-5b1dc061728a")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
+					(reference "TP46")
 					(unit 1)
 				)
 			)
@@ -21601,6 +21802,73 @@
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
 					(reference "FB4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 125.73 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ad3246bb-9bef-47c8-a131-eaef44ea74f5")
+		(property "Reference" "TP47"
+			(at 123.19 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Test Point"
+			(at 120.65 122.555 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+			(at 130.81 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 130.81 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 125.73 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c6e5efca-8bc7-4695-af79-3a738660a0e6")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
+					(reference "TP47")
 					(unit 1)
 				)
 			)

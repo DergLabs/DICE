@@ -693,6 +693,23 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "FPGA_IO",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(255, 182, 22)",
+        "track_width": 0.1,
+        "via_diameter": 0.3,
+        "via_drill": 0.2,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "FPGA_MODE",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(31, 255, 60)",
@@ -713,6 +730,23 @@
         "name": "FPGA_REF",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(23, 255, 211)",
+        "track_width": 0.1,
+        "via_diameter": 0.3,
+        "via_drill": 0.2,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "FPGA_SPI",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(143, 152, 255)",
         "track_width": 0.1,
         "via_diameter": 0.3,
         "via_drill": 0.2,
@@ -931,6 +965,23 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "MCU_3V3",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(255, 24, 3)",
+        "track_width": 0.1,
+        "via_diameter": 0.3,
+        "via_drill": 0.2,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "MCU_BUS",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(199, 234, 255)",
@@ -951,6 +1002,23 @@
         "name": "MCU_IO",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(113, 9, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.3,
+        "via_drill": 0.2,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MCU_SPI",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(86, 234, 255)",
         "track_width": 0.1,
         "via_diameter": 0.3,
         "via_drill": 0.2,
@@ -1656,6 +1724,42 @@
       {
         "netclass": "HDMI_CTRL_IO",
         "pattern": "/Top/FPGA IO/HDMI_I2C_EN"
+      },
+      {
+        "netclass": "MCU_SPI",
+        "pattern": "/Top/System Controller/SYS_SPI_*"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/System Controller/*_EN"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/LVL_SHIFT_EN"
+      },
+      {
+        "netclass": "MCU_SPI",
+        "pattern": "/Top/SYS_SPI_*"
+      },
+      {
+        "netclass": "FPGA_SPI",
+        "pattern": "/Top/FPGA IO/FPGA_SPI*"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/Top/FPGA IO/IO*"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/Top/FPGA IO/LED*"
+      },
+      {
+        "netclass": "MCU_3V3",
+        "pattern": "/Top/System Controller/MCU_3V3"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/System Controller/PP_VUSB"
       }
     ]
   },
