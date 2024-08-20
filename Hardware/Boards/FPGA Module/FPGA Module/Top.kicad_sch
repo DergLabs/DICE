@@ -12,6 +12,108 @@
 		(comment 1 "Designed by Michael Haahr")
 	)
 	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:R_US"
 			(pin_numbers hide)
 			(pin_names
@@ -182,18 +284,144 @@
 				)
 			)
 		)
+		(symbol "power:GND"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy -0.635 -1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.127 -2.54) (xy 0.127 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 	)
 	(junction
 		(at 67.31 223.52)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2069fd62-97f1-4167-a500-57944c5e25b1")
-	)
-	(junction
-		(at 144.78 45.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "403c5fc5-cbe7-47d6-9285-fdef664a7e87")
 	)
 	(junction
 		(at 200.66 193.04)
@@ -212,6 +440,16 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e3bc1424-1d03-4efd-9454-f310bd3ea1d2")
+	)
+	(wire
+		(pts
+			(xy 44.45 266.7) (xy 44.45 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0180e17e-f802-4dee-be58-027f0fd48e08")
 	)
 	(wire
 		(pts
@@ -385,16 +623,6 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 87.63) (xy 144.78 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "10a05f62-7702-4b52-87db-189dde5b1df0")
-	)
-	(wire
-		(pts
 			(xy 96.52 95.25) (xy 81.28 95.25)
 		)
 		(stroke
@@ -535,16 +763,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 45.72) (xy 144.78 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "27525b12-3c54-4034-a8d7-e30dc0f6ed9e")
-	)
-	(wire
-		(pts
 			(xy 81.28 95.25) (xy 81.28 60.96)
 		)
 		(stroke
@@ -652,16 +870,6 @@
 			(type default)
 		)
 		(uuid "39ffe428-9f35-4f0e-89bf-260e129a3c71")
-	)
-	(wire
-		(pts
-			(xy 142.24 71.12) (xy 142.24 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3a6480ae-9cf6-45bf-b0de-1746b942b457")
 	)
 	(wire
 		(pts
@@ -785,6 +993,16 @@
 	)
 	(wire
 		(pts
+			(xy 82.55 266.7) (xy 82.55 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c689eae-4757-4f4f-8cf9-81e359121bef")
+	)
+	(wire
+		(pts
 			(xy 280.67 151.13) (xy 300.99 151.13)
 		)
 		(stroke
@@ -845,13 +1063,23 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 45.72) (xy 144.78 45.72)
+			(xy 139.7 45.72) (xy 149.86 45.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "585f1295-84a8-4adc-a1f5-b78b55b5ac70")
+	)
+	(wire
+		(pts
+			(xy 139.7 71.12) (xy 142.24 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58fa6811-d899-4b5f-bcab-db6fd6f1dfeb")
 	)
 	(wire
 		(pts
@@ -1225,6 +1453,16 @@
 	)
 	(wire
 		(pts
+			(xy 25.4 266.7) (xy 25.4 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d7de151-25aa-4094-9cbc-eb0ebe14f680")
+	)
+	(wire
+		(pts
 			(xy 66.04 109.22) (xy 66.04 48.26)
 		)
 		(stroke
@@ -1262,6 +1500,16 @@
 			(type default)
 		)
 		(uuid "9024bf4b-a32b-412c-ae72-bcd6b13a88cf")
+	)
+	(wire
+		(pts
+			(xy 144.78 85.09) (xy 139.7 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9214b076-5882-441e-a9f5-512d087073a4")
 	)
 	(wire
 		(pts
@@ -1355,13 +1603,13 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 71.12) (xy 142.24 71.12)
+			(xy 63.5 266.7) (xy 63.5 269.24)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9e69dc3e-e8b4-41d5-bce8-20c4c36d45f6")
+		(uuid "9c93f94e-275d-45d2-bfe8-43cbf44f23db")
 	)
 	(wire
 		(pts
@@ -1392,6 +1640,16 @@
 			(type default)
 		)
 		(uuid "a23d378d-42b7-4aec-94b5-7bba07e6aa17")
+	)
+	(wire
+		(pts
+			(xy 142.24 82.55) (xy 139.7 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a47999a0-0366-4a9b-8261-827206ce1b65")
 	)
 	(wire
 		(pts
@@ -1432,6 +1690,16 @@
 			(type default)
 		)
 		(uuid "a91d0c26-ae2a-41e0-bf92-9efe65be64a5")
+	)
+	(wire
+		(pts
+			(xy 144.78 68.58) (xy 144.78 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abed50df-ef5c-4931-a2e4-fc4707672c0f")
 	)
 	(wire
 		(pts
@@ -1575,6 +1843,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 68.58) (xy 144.78 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c374b22c-8f87-4a51-9ae1-9897847b9660")
+	)
+	(wire
+		(pts
 			(xy 77.47 149.86) (xy 96.52 149.86)
 		)
 		(stroke
@@ -1665,16 +1943,6 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 82.55) (xy 139.7 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d20ee1c0-8c63-4d25-8f1e-7d000bd13353")
-	)
-	(wire
-		(pts
 			(xy 186.69 50.8) (xy 236.22 50.8)
 		)
 		(stroke
@@ -1705,16 +1973,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 45.72) (xy 149.86 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d7c080f2-5cd0-40f7-b332-4439f5f6c2dc")
-	)
-	(wire
-		(pts
 			(xy 280.67 157.48) (xy 300.99 157.48)
 		)
 		(stroke
@@ -1722,6 +1980,16 @@
 			(type default)
 		)
 		(uuid "d98f0fe2-63f7-441a-ab22-b999cb15c719")
+	)
+	(wire
+		(pts
+			(xy 142.24 71.12) (xy 142.24 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "daf8e90e-9ba2-4b56-88e4-8559bba2267c")
 	)
 	(wire
 		(pts
@@ -2104,6 +2372,136 @@
 		(uuid "f615cadd-aa8a-4f8a-810b-c2100fd380b6")
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 82.55 269.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2176c3bb-f651-44fb-b52b-a43a00ba266e")
+		(property "Reference" "#PWR04"
+			(at 82.55 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 82.55 273.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 82.55 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 82.55 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2926a201-3a70-41b9-bd4f-bee29117c200")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 44.45 269.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "29ac68ce-f5f8-4da7-a9be-6458c87ece49")
+		(property "Reference" "#PWR02"
+			(at 44.45 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 44.45 273.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 44.45 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 44.45 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 44.45 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0f906450-ceef-40b9-98d4-6bc3eef4769d")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 77.47 223.52 90)
 		(unit 1)
@@ -2112,7 +2510,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "556997d0-c03a-474b-88b7-a04b410d5f31")
-		(property "Reference" "R111"
+		(property "Reference" "R2"
 			(at 77.47 228.6 90)
 			(effects
 				(font
@@ -2128,7 +2526,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 77.724 222.504 90)
 			(effects
 				(font
@@ -2164,7 +2562,271 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
-					(reference "R111")
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 25.4 266.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6338cf8a-f6c1-4e7f-99a0-e888c37c9b7a")
+		(property "Reference" "TP1"
+			(at 27.94 262.1279 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mounting Hole"
+			(at 27.94 264.6679 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 30.48 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 30.48 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 25.4 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "21f32e58-4927-4094-a236-85857a435e6b")
+		)
+		(instances
+			(project ""
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 63.5 266.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "69092d7d-e43e-49f4-820e-12e663748062")
+		(property "Reference" "TP3"
+			(at 66.04 262.1279 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mounting Hole"
+			(at 66.04 264.6679 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 68.58 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 63.5 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e7bf00d1-4f32-4f67-b885-af44ee6b065e")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 25.4 269.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "863a734c-9e48-4c67-ad9a-89262c0a7ab0")
+		(property "Reference" "#PWR01"
+			(at 25.4 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 25.4 273.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 25.4 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 25.4 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "18bbfc84-aeae-40a5-bc81-98497ad20f54")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 63.5 269.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "92cb7ac7-8b04-402b-9dd3-5e4150aedf4d")
+		(property "Reference" "#PWR03"
+			(at 63.5 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 63.5 273.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 63.5 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 63.5 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 63.5 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cb744ba9-7321-4497-a404-fef8b39850ce")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -2179,7 +2841,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cbdeb453-c3d6-4eb7-9bc4-1a8d35babe0c")
-		(property "Reference" "R112"
+		(property "Reference" "R1"
 			(at 77.47 218.44 90)
 			(effects
 				(font
@@ -2195,7 +2857,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 77.724 212.344 90)
 			(effects
 				(font
@@ -2231,7 +2893,141 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
-					(reference "R112")
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 44.45 266.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ea6e8ba3-f0e3-4dff-baf5-72cc4f2c24ad")
+		(property "Reference" "TP2"
+			(at 46.99 262.1279 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mounting Hole"
+			(at 46.99 264.6679 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 49.53 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 49.53 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 44.45 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "91beb055-2c63-4d99-bc5c-a24b3b52b19d")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 82.55 266.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eaba841a-c682-4558-a44c-7b53a527c7f7")
+		(property "Reference" "TP4"
+			(at 85.09 262.1279 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mounting Hole"
+			(at 85.09 264.6679 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2_Pad_Via"
+			(at 87.63 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 87.63 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 82.55 266.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b9276b84-e804-4740-b511-1a8597569f5a")
+		)
+		(instances
+			(project "FPGA Module"
+				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8"
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -2466,7 +3262,7 @@
 			(uuid "94fc2d85-e7bb-4b1e-b29a-583774d264a7")
 		)
 		(pin "3V3_EN" input
-			(at 139.7 71.12 0)
+			(at 139.7 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2474,6 +3270,16 @@
 				(justify right)
 			)
 			(uuid "b1eb534d-2fce-48f1-8b59-8d54f284ab54")
+		)
+		(pin "3V3_AON" input
+			(at 139.7 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "5287ebb0-34e6-4593-997d-810e82003372")
 		)
 		(instances
 			(project "FPGA Module"
@@ -3920,7 +4726,7 @@
 			(uuid "c5df26a3-6dab-4e7b-a2af-803dd555920e")
 		)
 		(pin "3V3_EN" input
-			(at 139.7 82.55 0)
+			(at 139.7 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3929,15 +4735,15 @@
 			)
 			(uuid "fc938306-9f03-4e3b-93eb-0717f09a99f0")
 		)
-		(pin "PP_VUSB" input
-			(at 139.7 87.63 0)
+		(pin "3V3_AON" input
+			(at 139.7 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "2dc86d02-cc53-467e-b87b-ae8353ef920b")
+			(uuid "cc74be9a-ed6d-4d8c-b12c-d56cd7897b0b")
 		)
 		(instances
 			(project "FPGA Module"
@@ -4175,16 +4981,6 @@
 			)
 			(uuid "51896672-010b-4a4d-9a5a-b2f3d06573a6")
 		)
-		(pin "IC21_SCL" input
-			(at 331.47 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "0062994b-45e4-4a55-8569-f8100b4dae0d")
-		)
 		(pin "I2C1_SDA" input
 			(at 331.47 138.43 0)
 			(effects
@@ -4194,6 +4990,16 @@
 				(justify right)
 			)
 			(uuid "5b73654c-b13d-4dcb-8367-b6de54c13635")
+		)
+		(pin "I2C1_SCL" input
+			(at 331.47 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "580e01c8-0616-4c37-8478-b032b674784a")
 		)
 		(instances
 			(project "FPGA Module"

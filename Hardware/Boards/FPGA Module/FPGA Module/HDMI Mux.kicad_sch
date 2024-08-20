@@ -943,6 +943,16 @@
 	)
 	(wire
 		(pts
+			(xy 175.26 144.78) (xy 199.39 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c7884f3-0446-405a-958d-fff613f09893")
+	)
+	(wire
+		(pts
 			(xy 185.42 153.67) (xy 185.42 152.4)
 		)
 		(stroke
@@ -953,6 +963,16 @@
 	)
 	(wire
 		(pts
+			(xy 175.26 129.54) (xy 199.39 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f65a81d-5a8c-45ad-8c7a-94f71cd5c020")
+	)
+	(wire
+		(pts
 			(xy 198.12 166.37) (xy 198.12 167.64)
 		)
 		(stroke
@@ -960,6 +980,16 @@
 			(type default)
 		)
 		(uuid "120ea7f7-5b27-48c8-9561-4a3b3e195231")
+	)
+	(wire
+		(pts
+			(xy 175.26 142.24) (xy 199.39 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fb9d798-df37-4626-b29d-1e08c889b70b")
 	)
 	(wire
 		(pts
@@ -1003,16 +1033,6 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 129.54) (xy 199.39 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c3f4d8d-b1dc-4e3b-939a-7e3c22e2a68f")
-	)
-	(wire
-		(pts
 			(xy 217.17 144.78) (xy 233.68 144.78)
 		)
 		(stroke
@@ -1029,27 +1049,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6c2fcd29-2d8d-4c26-b893-508ec08411a7")
-	)
-	(wire
-		(pts
-			(xy 175.26 142.24) (xy 199.39 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6fe66c25-c141-4a90-ac2a-a8c3a6229ee0")
-	)
-	(wire
-		(pts
-			(xy 175.26 144.78) (xy 199.39 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9f1b1810-7e48-446a-9e02-2c024252b856")
+		(uuid "8def77c9-e010-4f15-bc1c-af416282653e")
 	)
 	(wire
 		(pts
@@ -1111,7 +1111,7 @@
 		)
 		(uuid "fd58d3db-83e7-414e-896d-131e568a3587")
 	)
-	(text_box "NOTE: Default is Output ON, HDMI_CLK <- LVDS IO\nPull Sel HIGH to connect HDMI_CLK to MGT IO"
+	(text_box "NOTE: Default is Output ON, HDMI_CLK <- MGT IO\nPull Sel HIGH to connect HDMI_CLK to LVDS IO"
 		(exclude_from_sim no)
 		(at 150.495 155.575 0)
 		(size 29.845 8.89)
@@ -1130,6 +1130,17 @@
 		)
 		(uuid "5798e926-ec12-4596-8a48-5a4f18f6daa0")
 	)
+	(label "HDMI_GTCLK_P"
+		(at 175.26 129.54 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2d5d19c0-2903-4226-828a-8392cc3c05ce")
+	)
 	(label "HDMI_CLK_SEL"
 		(at 181.61 152.4 0)
 		(fields_autoplaced yes)
@@ -1141,7 +1152,7 @@
 		)
 		(uuid "60d245f7-a6ea-4c2e-9bbb-86758be5d89b")
 	)
-	(label "HDMI_LVCLK_N"
+	(label "HDMI_GTCLK_N"
 		(at 175.26 132.08 0)
 		(fields_autoplaced yes)
 		(effects
@@ -1150,9 +1161,9 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "8b02f330-9bb4-40aa-bd58-3bdf509e505c")
+		(uuid "6693145d-4c97-4aff-ab33-4de1bd8b1958")
 	)
-	(label "HDMI_GTCLK_P"
+	(label "HDMI_LVCLK_P"
 		(at 175.26 142.24 0)
 		(fields_autoplaced yes)
 		(effects
@@ -1161,9 +1172,9 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "9c3a8c76-dd52-4905-911a-23da39e99212")
+		(uuid "745ebab5-6b33-4d1e-8af1-7b8aad50d8bb")
 	)
-	(label "HDMI_GTCLK_N"
+	(label "HDMI_LVCLK_N"
 		(at 175.26 144.78 0)
 		(fields_autoplaced yes)
 		(effects
@@ -1172,7 +1183,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "9f971e2d-57c6-49cf-a9c9-252318ff20d3")
+		(uuid "77ab03f9-4858-49f6-bff7-5aef4184cf7b")
 	)
 	(label "HDMI_CLK_P"
 		(at 233.68 142.24 180)
@@ -1184,17 +1195,6 @@
 			(justify right bottom)
 		)
 		(uuid "b5ea9643-08f8-4ca7-908b-1f8cad963ee5")
-	)
-	(label "HDMI_LVCLK_P"
-		(at 175.26 129.54 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e88df015-e56c-4a67-b506-bbb55e8c24fd")
 	)
 	(label "HDMI_CLK_N"
 		(at 233.68 144.78 180)
@@ -1209,7 +1209,7 @@
 	)
 	(hierarchical_label "HDMI_LVCLK_N"
 		(shape input)
-		(at 175.26 132.08 180)
+		(at 175.26 144.78 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1217,9 +1217,9 @@
 			)
 			(justify right)
 		)
-		(uuid "0a819c19-0f4f-46dc-a1b9-fb847d920722")
+		(uuid "00130634-b745-48a4-9d8c-95aa039cfc25")
 	)
-	(hierarchical_label "HDMI_GTCLK_P"
+	(hierarchical_label "HDMI_LVCLK_P"
 		(shape input)
 		(at 175.26 142.24 180)
 		(fields_autoplaced yes)
@@ -1229,31 +1229,7 @@
 			)
 			(justify right)
 		)
-		(uuid "192cf717-ad4e-48bb-9f0d-c862ee5ceb8c")
-	)
-	(hierarchical_label "HDMI_LVCLK_P"
-		(shape input)
-		(at 175.26 129.54 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1ebde545-ecf2-4c03-b148-22b421e6f2b9")
-	)
-	(hierarchical_label "HDMI_GTCLK_N"
-		(shape input)
-		(at 175.26 144.78 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2119e081-a4d6-4881-b473-2163d1b67665")
+		(uuid "1c98c223-c723-4a39-9d1e-f03aefa914e8")
 	)
 	(hierarchical_label "HDMI_CLK_P"
 		(shape input)
@@ -1291,6 +1267,30 @@
 		)
 		(uuid "b1240457-c9f3-4810-9d5d-0b733de24140")
 	)
+	(hierarchical_label "HDMI_GTCLK_P"
+		(shape input)
+		(at 175.26 129.54 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bd2070c1-8b6c-47e2-914a-241fff178969")
+	)
+	(hierarchical_label "HDMI_GTCLK_N"
+		(shape input)
+		(at 175.26 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cf8603b0-4317-4401-833e-244ae38ba11f")
+	)
 	(symbol
 		(lib_id "Device:R_US")
 		(at 185.42 157.48 180)
@@ -1300,7 +1300,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0c8bc098-49a1-41a6-b276-3e8a2e7bc847")
-		(property "Reference" "R109"
+		(property "Reference" "R127"
 			(at 187.96 156.2099 0)
 			(effects
 				(font
@@ -1318,7 +1318,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 184.404 157.226 90)
 			(effects
 				(font
@@ -1354,7 +1354,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "R109")
+					(reference "R127")
 					(unit 1)
 				)
 			)
@@ -1369,7 +1369,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "216a11a8-d5fc-4f7f-98aa-96d804ab81b0")
-		(property "Reference" "C136"
+		(property "Reference" "C125"
 			(at 220.98 130.8162 0)
 			(effects
 				(font
@@ -1387,7 +1387,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 218.44 132.08 0)
 			(effects
 				(font
@@ -1423,7 +1423,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "C136")
+					(reference "C125")
 					(unit 1)
 				)
 			)
@@ -1438,7 +1438,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "50254710-2a84-4e28-8b02-b65c418998a2")
-		(property "Reference" "#PWR0267"
+		(property "Reference" "#PWR0276"
 			(at 218.44 168.91 0)
 			(effects
 				(font
@@ -1488,7 +1488,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "#PWR0267")
+					(reference "#PWR0276")
 					(unit 1)
 				)
 			)
@@ -1503,7 +1503,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5083de1e-d952-43f0-b975-8b501d3752b7")
-		(property "Reference" "R129"
+		(property "Reference" "R128"
 			(at 200.66 161.2899 0)
 			(effects
 				(font
@@ -1521,7 +1521,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 197.104 162.306 90)
 			(effects
 				(font
@@ -1557,7 +1557,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "R129")
+					(reference "R128")
 					(unit 1)
 				)
 			)
@@ -1574,7 +1574,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "58057641-98a4-49e4-be80-b581a6467a73")
-		(property "Reference" "U14"
+		(property "Reference" "U22"
 			(at 208.28 121.92 0)
 			(effects
 				(font
@@ -1650,7 +1650,7 @@
 		(instances
 			(project ""
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "U14")
+					(reference "U22")
 					(unit 1)
 				)
 			)
@@ -1665,7 +1665,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "699a6824-b85d-476c-8772-a7150ce7d8d3")
-		(property "Reference" "#PWR0269"
+		(property "Reference" "#PWR0275"
 			(at 185.42 168.91 0)
 			(effects
 				(font
@@ -1715,7 +1715,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "#PWR0269")
+					(reference "#PWR0275")
 					(unit 1)
 				)
 			)
@@ -1730,7 +1730,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dac636eb-07b3-4850-b074-4d2c4ac414bd")
-		(property "Reference" "#PWR0265"
+		(property "Reference" "#PWR0274"
 			(at 218.44 140.97 0)
 			(effects
 				(font
@@ -1780,7 +1780,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "#PWR0265")
+					(reference "#PWR0274")
 					(unit 1)
 				)
 			)
@@ -1795,7 +1795,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "db9ac86f-9bf0-48c1-bbbe-e7f923a26288")
-		(property "Reference" "TP45"
+		(property "Reference" "TP52"
 			(at 176.53 147.32 0)
 			(effects
 				(font
@@ -1847,7 +1847,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "TP45")
+					(reference "TP52")
 					(unit 1)
 				)
 			)
@@ -1862,7 +1862,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e9f86f83-779c-42d0-ba07-46a4fd8a37bf")
-		(property "Reference" "#PWR0268"
+		(property "Reference" "#PWR0277"
 			(at 198.12 173.99 0)
 			(effects
 				(font
@@ -1912,7 +1912,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "#PWR0268")
+					(reference "#PWR0277")
 					(unit 1)
 				)
 			)
@@ -1928,7 +1928,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ebd058e0-2816-4518-a64c-4c3df3eb2bc6")
-		(property "Reference" "#PWR0266"
+		(property "Reference" "#PWR0273"
 			(at 218.44 132.08 0)
 			(effects
 				(font
@@ -1978,7 +1978,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e6896036-c481-4794-bc56-64749c97c534"
-					(reference "#PWR0266")
+					(reference "#PWR0273")
 					(unit 1)
 				)
 			)

@@ -14811,6 +14811,12 @@
 		(uuid "1eb545a6-ab1b-48c2-8b2c-c3b2e705f607")
 	)
 	(junction
+		(at 118.11 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "25e1318b-c16f-443a-8c9a-eb5a7b05253a")
+	)
+	(junction
 		(at 294.64 219.71)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -15024,7 +15030,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 128.27) (xy 92.71 128.27)
+			(xy 125.73 128.27) (xy 118.11 128.27)
 		)
 		(stroke
 			(width 0)
@@ -15384,7 +15390,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 66.04) (xy 199.39 67.31)
+			(xy 199.39 66.04) (xy 199.39 69.85)
 		)
 		(stroke
 			(width 0)
@@ -15734,6 +15740,16 @@
 	)
 	(wire
 		(pts
+			(xy 199.39 69.85) (xy 210.82 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99b79481-ce07-4b56-a0a8-0663edc8d420")
+	)
+	(wire
+		(pts
 			(xy 204.47 173.99) (xy 204.47 171.45)
 		)
 		(stroke
@@ -15741,6 +15757,16 @@
 			(type default)
 		)
 		(uuid "9a0f0f9c-61fc-43e7-94a2-1fdf21c93be9")
+	)
+	(wire
+		(pts
+			(xy 118.11 128.27) (xy 92.71 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ab8567d-375b-468f-bb30-e46b28445554")
 	)
 	(wire
 		(pts
@@ -16054,7 +16080,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 113.03) (xy 118.11 114.3)
+			(xy 118.11 113.03) (xy 118.11 118.11)
 		)
 		(stroke
 			(width 0)
@@ -16144,7 +16170,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 110.49) (xy 193.04 110.49)
+			(xy 186.69 110.49) (xy 195.58 110.49)
 		)
 		(stroke
 			(width 0)
@@ -16214,7 +16240,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 119.38) (xy 118.11 120.65)
+			(xy 118.11 123.19) (xy 118.11 128.27)
 		)
 		(stroke
 			(width 0)
@@ -16264,7 +16290,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 110.49) (xy 204.47 110.49)
+			(xy 203.2 110.49) (xy 204.47 110.49)
 		)
 		(stroke
 			(width 0)
@@ -16422,6 +16448,17 @@
 		)
 		(uuid "29aadb29-1bb8-4fc0-8306-604f82418c65")
 	)
+	(label "GNDADC"
+		(at 187.96 110.49 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2f3b0a7c-b060-4e46-a3f1-c40176245897")
+	)
 	(label "PUDC_B_0"
 		(at 142.24 82.55 0)
 		(fields_autoplaced yes)
@@ -16498,6 +16535,17 @@
 			(justify left bottom)
 		)
 		(uuid "62c9b29a-0ff1-44e8-906e-d59c43208243")
+	)
+	(label "GNDADC"
+		(at 203.2 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7558c026-c48d-4535-882a-19175994841c")
 	)
 	(label "FPGA_VREF_P"
 		(at 138.43 101.6 0)
@@ -16821,7 +16869,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "06636634-6997-4b7e-ad12-ff58d8c3a774")
-		(property "Reference" "R55"
+		(property "Reference" "R122"
 			(at 252.73 213.3599 0)
 			(effects
 				(font
@@ -16839,7 +16887,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 249.174 214.376 90)
 			(effects
 				(font
@@ -16875,7 +16923,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R55")
+					(reference "R122")
 					(unit 1)
 				)
 			)
@@ -16890,7 +16938,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "096b1eda-5039-4ea0-85a7-89a0cb484503")
-		(property "Reference" "#PWR0180"
+		(property "Reference" "#PWR0258"
 			(at 133.35 163.83 0)
 			(effects
 				(font
@@ -16940,73 +16988,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0180")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 118.11 120.65 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0c002d20-9f33-4082-a44d-0f379409d9cd")
-		(property "Reference" "#PWR085"
-			(at 118.11 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 118.11 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 118.11 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 118.11 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 118.11 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9e062791-d63c-40f5-8c7a-aeb5477f1303")
-		)
-		(instances
-			(project "FPGA Module"
-				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR085")
+					(reference "#PWR0258")
 					(unit 1)
 				)
 			)
@@ -17021,7 +17003,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0c799629-c98c-4ef5-861b-99d7b219a18e")
-		(property "Reference" "#PWR0181"
+		(property "Reference" "#PWR0259"
 			(at 142.24 163.83 0)
 			(effects
 				(font
@@ -17071,7 +17053,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0181")
+					(reference "#PWR0259")
 					(unit 1)
 				)
 			)
@@ -17103,7 +17085,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_0201_0603Metric"
 			(at 209.55 61.468 90)
 			(effects
 				(font
@@ -17154,7 +17136,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "11f9fdcf-2123-4f38-891f-f0ec7efe0c38")
-		(property "Reference" "#PWR0175"
+		(property "Reference" "#PWR0265"
 			(at 119.38 213.36 0)
 			(effects
 				(font
@@ -17204,7 +17186,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0175")
+					(reference "#PWR0265")
 					(unit 1)
 				)
 			)
@@ -17219,7 +17201,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1b15e257-678c-42c1-b441-0155f19c815b")
-		(property "Reference" "#PWR081"
+		(property "Reference" "#PWR0253"
 			(at 204.47 123.19 0)
 			(effects
 				(font
@@ -17269,7 +17251,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR081")
+					(reference "#PWR0253")
 					(unit 1)
 				)
 			)
@@ -17285,8 +17267,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1dd48cff-4150-44a3-b7b7-b57a0f332a41")
-		(property "Reference" "D8"
-			(at 139.065 207.01 90)
+		(property "Reference" "D12"
+			(at 140.335 207.645 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17339,7 +17321,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "D8")
+					(reference "D12")
 					(unit 1)
 				)
 			)
@@ -17354,7 +17336,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1e4ceb5f-88dd-44cd-928c-c082994e7bf9")
-		(property "Reference" "TP46"
+		(property "Reference" "TP50"
 			(at 123.19 107.95 0)
 			(effects
 				(font
@@ -17406,7 +17388,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "TP46")
+					(reference "TP50")
 					(unit 1)
 				)
 			)
@@ -17419,10 +17401,10 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2269618c-58e6-4eb9-8886-ba855731b2af")
-		(property "Reference" "R54"
+		(property "Reference" "R124"
 			(at 208.28 223.5199 0)
 			(effects
 				(font
@@ -17440,7 +17422,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 204.724 224.536 90)
 			(effects
 				(font
@@ -17476,7 +17458,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R54")
+					(reference "R124")
 					(unit 1)
 				)
 			)
@@ -17492,7 +17474,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2356ae34-d26d-4804-bb45-21d93910766a")
-		(property "Reference" "C42"
+		(property "Reference" "C119"
 			(at 201.93 62.2362 0)
 			(effects
 				(font
@@ -17501,7 +17483,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF"
+		(property "Value" "100nF"
 			(at 201.93 64.7762 0)
 			(effects
 				(font
@@ -17510,7 +17492,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 199.39 63.5 0)
 			(effects
 				(font
@@ -17546,7 +17528,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "C42")
+					(reference "C119")
 					(unit 1)
 				)
 			)
@@ -17562,7 +17544,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "331eba7d-5504-4ff0-a1ef-75d493ba432b")
-		(property "Reference" "#PWR087"
+		(property "Reference" "#PWR0256"
 			(at 92.71 146.05 0)
 			(effects
 				(font
@@ -17612,7 +17594,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR087")
+					(reference "#PWR0256")
 					(unit 1)
 				)
 			)
@@ -17627,7 +17609,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "37992f1e-201a-4e64-8204-6af52ce80ee5")
-		(property "Reference" "#PWR080"
+		(property "Reference" "#PWR0252"
 			(at 187.96 123.19 0)
 			(effects
 				(font
@@ -17677,7 +17659,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR080")
+					(reference "#PWR0252")
 					(unit 1)
 				)
 			)
@@ -17693,7 +17675,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3c547e0d-db69-4ae4-96b8-da1febb0978a")
-		(property "Reference" "R49"
+		(property "Reference" "R114"
 			(at 288.29 80.0099 0)
 			(effects
 				(font
@@ -17711,7 +17693,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 284.734 81.026 90)
 			(effects
 				(font
@@ -17747,7 +17729,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R49")
+					(reference "R114")
 					(unit 1)
 				)
 			)
@@ -17763,7 +17745,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3ca8fc93-e348-42cc-b1b1-08e552e438fd")
-		(property "Reference" "C45"
+		(property "Reference" "C123"
 			(at 77.47 121.9262 0)
 			(effects
 				(font
@@ -17781,7 +17763,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 80.01 123.19 0)
 			(effects
 				(font
@@ -17817,7 +17799,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "C45")
+					(reference "C123")
 					(unit 1)
 				)
 			)
@@ -17832,7 +17814,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "486d28fc-2c10-4be3-bcbf-ccb78b629b17")
-		(property "Reference" "#PWR084"
+		(property "Reference" "#PWR0249"
 			(at 80.01 114.3 0)
 			(effects
 				(font
@@ -17882,7 +17864,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR084")
+					(reference "#PWR0249")
 					(unit 1)
 				)
 			)
@@ -17897,7 +17879,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4933fd86-ab6f-4e6c-9a6c-6744f4e81e09")
-		(property "Reference" "#PWR0179"
+		(property "Reference" "#PWR0257"
 			(at 124.46 163.83 0)
 			(effects
 				(font
@@ -17947,7 +17929,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0179")
+					(reference "#PWR0257")
 					(unit 1)
 				)
 			)
@@ -17963,7 +17945,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4aba07a8-22a4-4b71-a793-8d85c663fd71")
-		(property "Reference" "C56"
+		(property "Reference" "C120"
 			(at 297.18 71.1262 0)
 			(effects
 				(font
@@ -17981,7 +17963,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 299.72 72.39 0)
 			(effects
 				(font
@@ -18017,7 +17999,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "C56")
+					(reference "C120")
 					(unit 1)
 				)
 			)
@@ -18032,7 +18014,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "532e1c2b-33eb-4e74-b943-574a2ffd6675")
-		(property "Reference" "#PWR0174"
+		(property "Reference" "#PWR0270"
 			(at 250.19 236.22 0)
 			(effects
 				(font
@@ -18082,72 +18064,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0174")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 199.39 67.31 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "54e2d2ae-e1cc-44ad-aba2-b95d3d7d6dad")
-		(property "Reference" "#PWR078"
-			(at 199.39 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 199.39 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 199.39 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 199.39 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 199.39 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6deb4a58-f111-400d-bb3b-2e1e13910859")
-		)
-		(instances
-			(project "FPGA Module"
-				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR078")
+					(reference "#PWR0270")
 					(unit 1)
 				)
 			)
@@ -18163,7 +18080,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5513161c-1eca-47e2-8ee2-0d308acb42b8")
-		(property "Reference" "R51"
+		(property "Reference" "R112"
 			(at 267.97 80.0099 0)
 			(effects
 				(font
@@ -18181,7 +18098,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 264.414 81.026 90)
 			(effects
 				(font
@@ -18217,7 +18134,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R51")
+					(reference "R112")
 					(unit 1)
 				)
 			)
@@ -18233,7 +18150,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "55690f4f-e1e3-4be2-af25-5b596da274a7")
-		(property "Reference" "U19"
+		(property "Reference" "U21"
 			(at 94.9041 105.41 0)
 			(effects
 				(font
@@ -18303,7 +18220,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "U19")
+					(reference "U21")
 					(unit 1)
 				)
 			)
@@ -18318,7 +18235,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5eebf4bc-56a8-44e1-a9d6-2cdb30e2262a")
-		(property "Reference" "#PWR077"
+		(property "Reference" "#PWR0240"
 			(at 222.25 59.69 0)
 			(effects
 				(font
@@ -18368,7 +18285,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR077")
+					(reference "#PWR0240")
 					(unit 1)
 				)
 			)
@@ -18383,7 +18300,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6081a881-7d35-419d-a1d7-92f475818bb5")
-		(property "Reference" "#PWR0177"
+		(property "Reference" "#PWR0272"
 			(at 134.62 237.49 0)
 			(effects
 				(font
@@ -18433,7 +18350,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0177")
+					(reference "#PWR0272")
 					(unit 1)
 				)
 			)
@@ -18448,7 +18365,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6de3e628-2e71-4b4d-a2b1-34fce7b42f95")
-		(property "Reference" "#PWR0164"
+		(property "Reference" "#PWR0244"
 			(at 275.59 80.01 0)
 			(effects
 				(font
@@ -18498,7 +18415,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0164")
+					(reference "#PWR0244")
 					(unit 1)
 				)
 			)
@@ -18514,7 +18431,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6f54a129-7047-4d59-b146-b449930cd8ef")
-		(property "Reference" "C57"
+		(property "Reference" "C124"
 			(at 203.2 176.5362 0)
 			(effects
 				(font
@@ -18532,7 +18449,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 205.74 177.8 0)
 			(effects
 				(font
@@ -18568,7 +18485,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "C57")
+					(reference "C124")
 					(unit 1)
 				)
 			)
@@ -18584,7 +18501,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "70de2a1f-692f-4fb7-9480-bd8c5df2fa07")
-		(property "Reference" "#PWR083"
+		(property "Reference" "#PWR0248"
 			(at 87.63 110.49 0)
 			(effects
 				(font
@@ -18634,7 +18551,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR083")
+					(reference "#PWR0248")
 					(unit 1)
 				)
 			)
@@ -18717,7 +18634,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "74f92fee-cc13-4a9c-a7c5-f2b1b9ba7c50")
-		(property "Reference" "#PWR0169"
+		(property "Reference" "#PWR0262"
 			(at 205.74 187.96 0)
 			(effects
 				(font
@@ -18767,7 +18684,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0169")
+					(reference "#PWR0262")
 					(unit 1)
 				)
 			)
@@ -18782,7 +18699,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "77228965-a5f6-4439-8911-d44b3b96c78a")
-		(property "Reference" "#PWR0172"
+		(property "Reference" "#PWR0269"
 			(at 205.74 236.22 0)
 			(effects
 				(font
@@ -18832,7 +18749,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0172")
+					(reference "#PWR0269")
 					(unit 1)
 				)
 			)
@@ -18848,7 +18765,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "776a5c63-b950-4e37-8b98-48dbea3b1ef7")
-		(property "Reference" "C43"
+		(property "Reference" "C121"
 			(at 85.09 99.0662 0)
 			(effects
 				(font
@@ -18866,7 +18783,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 87.63 100.33 0)
 			(effects
 				(font
@@ -18902,7 +18819,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "C43")
+					(reference "C121")
 					(unit 1)
 				)
 			)
@@ -18910,7 +18827,7 @@
 	)
 	(symbol
 		(lib_id "Device:FerriteBead")
-		(at 196.85 110.49 90)
+		(at 199.39 110.49 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18918,8 +18835,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "77879c69-0e0b-4ff8-bbda-a0b8bc58c63c")
-		(property "Reference" "FB3"
-			(at 196.7992 102.87 90)
+		(property "Reference" "FB2"
+			(at 199.3392 102.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18927,15 +18844,15 @@
 			)
 		)
 		(property "Value" "BKP0603HS121"
-			(at 196.7992 105.41 90)
+			(at 199.3392 105.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 196.85 112.268 90)
+		(property "Footprint" "Inductor_SMD:L_0201_0603Metric"
+			(at 199.39 112.268 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18944,7 +18861,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 110.49 0)
+			(at 199.39 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18953,7 +18870,7 @@
 			)
 		)
 		(property "Description" "Ferrite bead"
-			(at 196.85 110.49 0)
+			(at 199.39 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18970,7 +18887,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "FB3")
+					(reference "FB2")
 					(unit 1)
 				)
 			)
@@ -18985,7 +18902,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7e814df9-cf91-427b-a2a0-04cddde66b98")
-		(property "Reference" "#PWR0170"
+		(property "Reference" "#PWR0261"
 			(at 222.25 184.15 0)
 			(effects
 				(font
@@ -19035,7 +18952,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0170")
+					(reference "#PWR0261")
 					(unit 1)
 				)
 			)
@@ -19050,7 +18967,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "80587b80-610a-4937-869d-c76b93268dd4")
-		(property "Reference" "#PWR0173"
+		(property "Reference" "#PWR0267"
 			(at 250.19 213.36 0)
 			(effects
 				(font
@@ -19100,7 +19017,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0173")
+					(reference "#PWR0267")
 					(unit 1)
 				)
 			)
@@ -19113,10 +19030,10 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8bca609c-6d58-439d-8b46-93586f815491")
-		(property "Reference" "R56"
+		(property "Reference" "R125"
 			(at 252.73 223.5199 0)
 			(effects
 				(font
@@ -19134,7 +19051,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 249.174 224.536 90)
 			(effects
 				(font
@@ -19170,7 +19087,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R56")
+					(reference "R125")
 					(unit 1)
 				)
 			)
@@ -19185,7 +19102,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "909cdb66-6b66-41ef-814a-82c61bd8ba79")
-		(property "Reference" "#PWR0178"
+		(property "Reference" "#PWR0263"
 			(at 102.87 190.5 0)
 			(effects
 				(font
@@ -19235,7 +19152,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0178")
+					(reference "#PWR0263")
 					(unit 1)
 				)
 			)
@@ -19251,7 +19168,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "96a65bab-5db1-4596-9ed3-b0ea37c01610")
-		(property "Reference" "R57"
+		(property "Reference" "R120"
 			(at 121.92 213.3599 0)
 			(effects
 				(font
@@ -19269,7 +19186,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 118.364 214.376 90)
 			(effects
 				(font
@@ -19305,7 +19222,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R57")
+					(reference "R120")
 					(unit 1)
 				)
 			)
@@ -19321,7 +19238,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "98162ed9-6c63-4535-ae2d-99a8b4bd3c38")
-		(property "Reference" "R58"
+		(property "Reference" "R115"
 			(at 127 163.8299 0)
 			(effects
 				(font
@@ -19339,7 +19256,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 123.444 164.846 90)
 			(effects
 				(font
@@ -19375,7 +19292,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R58")
+					(reference "R115")
 					(unit 1)
 				)
 			)
@@ -19391,7 +19308,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9c3c442a-59ab-4900-b311-8a1cb1a98a88")
-		(property "Reference" "R53"
+		(property "Reference" "R121"
 			(at 208.28 213.3599 0)
 			(effects
 				(font
@@ -19409,7 +19326,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 204.724 214.376 90)
 			(effects
 				(font
@@ -19445,7 +19362,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R53")
+					(reference "R121")
 					(unit 1)
 				)
 			)
@@ -19460,7 +19377,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9d60d701-f0c8-4e2b-8943-9c436164c2a3")
-		(property "Reference" "#PWR0168"
+		(property "Reference" "#PWR0260"
 			(at 204.47 166.37 0)
 			(effects
 				(font
@@ -19510,7 +19427,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0168")
+					(reference "#PWR0260")
 					(unit 1)
 				)
 			)
@@ -19525,7 +19442,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a0726ead-8262-488f-ba39-8542359eebaa")
-		(property "Reference" "#PWR0171"
+		(property "Reference" "#PWR0266"
 			(at 205.74 213.36 0)
 			(effects
 				(font
@@ -19575,7 +19492,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0171")
+					(reference "#PWR0266")
 					(unit 1)
 				)
 			)
@@ -21680,7 +21597,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a2ff5a1b-b9b7-471b-a7a8-47f3d8ef9cab")
-		(property "Reference" "#PWR076"
+		(property "Reference" "#PWR0239"
 			(at 190.5 59.69 0)
 			(effects
 				(font
@@ -21730,7 +21647,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR076")
+					(reference "#PWR0239")
 					(unit 1)
 				)
 			)
@@ -21747,7 +21664,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a92d3dee-aea6-4d2c-a19f-2501e17c5755")
-		(property "Reference" "FB4"
+		(property "Reference" "FB3"
 			(at 96.52 133.2991 0)
 			(effects
 				(font
@@ -21765,7 +21682,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_0201_0603Metric"
 			(at 94.488 134.62 90)
 			(effects
 				(font
@@ -21801,7 +21718,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "FB4")
+					(reference "FB3")
 					(unit 1)
 				)
 			)
@@ -21816,7 +21733,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ad3246bb-9bef-47c8-a131-eaef44ea74f5")
-		(property "Reference" "TP47"
+		(property "Reference" "TP51"
 			(at 123.19 123.19 0)
 			(effects
 				(font
@@ -21868,7 +21785,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "TP47")
+					(reference "TP51")
 					(unit 1)
 				)
 			)
@@ -21883,7 +21800,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "aefe8665-e0f2-43a1-8df7-ab33c7ab4bfa")
-		(property "Reference" "#PWR0163"
+		(property "Reference" "#PWR0245"
 			(at 285.75 80.01 0)
 			(effects
 				(font
@@ -21933,7 +21850,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0163")
+					(reference "#PWR0245")
 					(unit 1)
 				)
 			)
@@ -21949,7 +21866,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b35a34b3-b066-484d-a112-60db0a867f06")
-		(property "Reference" "#PWR0162"
+		(property "Reference" "#PWR0250"
 			(at 308.61 118.11 0)
 			(effects
 				(font
@@ -21999,7 +21916,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0162")
+					(reference "#PWR0250")
 					(unit 1)
 				)
 			)
@@ -22014,7 +21931,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b48120fe-cc02-42de-bbf9-e5408c0da5bf")
-		(property "Reference" "R25"
+		(property "Reference" "R108"
 			(at 130.175 55.88 90)
 			(effects
 				(font
@@ -22030,7 +21947,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 135.636 58.166 90)
 			(effects
 				(font
@@ -22066,7 +21983,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R25")
+					(reference "R108")
 					(unit 1)
 				)
 			)
@@ -22081,7 +21998,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b683ab85-8c36-4ade-ac13-9e6e30fe9e34")
-		(property "Reference" "#PWR082"
+		(property "Reference" "#PWR0247"
 			(at 92.71 99.06 0)
 			(effects
 				(font
@@ -22131,7 +22048,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR082")
+					(reference "#PWR0247")
 					(unit 1)
 				)
 			)
@@ -22146,7 +22063,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b87f117c-ffd4-428c-ac9b-947de9fda66e")
-		(property "Reference" "#PWR0166"
+		(property "Reference" "#PWR0251"
 			(at 153.67 123.19 0)
 			(effects
 				(font
@@ -22196,7 +22113,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0166")
+					(reference "#PWR0251")
 					(unit 1)
 				)
 			)
@@ -22211,7 +22128,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bb6b9ccb-4545-483a-a77d-e0f090d49099")
-		(property "Reference" "#PWR0176"
+		(property "Reference" "#PWR0264"
 			(at 134.62 198.12 0)
 			(effects
 				(font
@@ -22261,7 +22178,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0176")
+					(reference "#PWR0264")
 					(unit 1)
 				)
 			)
@@ -22276,7 +22193,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c0a63817-54ad-4ddd-898b-219f13e24408")
-		(property "Reference" "R26"
+		(property "Reference" "R109"
 			(at 130.175 58.42 90)
 			(effects
 				(font
@@ -22292,7 +22209,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 135.636 60.706 90)
 			(effects
 				(font
@@ -22328,7 +22245,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R26")
+					(reference "R109")
 					(unit 1)
 				)
 			)
@@ -22433,7 +22350,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c2319c0e-35f7-4d3b-8f01-2ad3294ec43e")
-		(property "Reference" "R81"
+		(property "Reference" "R119"
 			(at 137.16 198.1199 0)
 			(effects
 				(font
@@ -22451,7 +22368,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 133.604 199.136 90)
 			(effects
 				(font
@@ -22487,7 +22404,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R81")
+					(reference "R119")
 					(unit 1)
 				)
 			)
@@ -22503,7 +22420,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c2a5dc17-6b5f-4fd1-900a-fa43ee660ef0")
-		(property "Reference" "R60"
+		(property "Reference" "R117"
 			(at 144.78 163.8299 0)
 			(effects
 				(font
@@ -22521,7 +22438,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 141.224 164.846 90)
 			(effects
 				(font
@@ -22557,7 +22474,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R60")
+					(reference "R117")
 					(unit 1)
 				)
 			)
@@ -22565,7 +22482,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 118.11 116.84 0)
+		(at 118.11 120.65 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -22573,8 +22490,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c369de78-8259-49e0-a352-de020b14811e")
-		(property "Reference" "C44"
-			(at 115.57 115.5762 0)
+		(property "Reference" "C122"
+			(at 115.57 119.3862 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22583,7 +22500,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 115.57 118.1162 0)
+			(at 115.57 121.9262 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22591,8 +22508,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 118.11 116.84 0)
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+			(at 118.11 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22601,7 +22518,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 118.11 116.84 0)
+			(at 118.11 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22610,7 +22527,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 118.11 116.84 0)
+			(at 118.11 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22627,7 +22544,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "C44")
+					(reference "C122")
 					(unit 1)
 				)
 			)
@@ -22643,7 +22560,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c3b3f3fe-4ac4-49e2-9cb9-3f230c42032d")
-		(property "Reference" "#PWR086"
+		(property "Reference" "#PWR0255"
 			(at 80.01 133.35 0)
 			(effects
 				(font
@@ -22693,7 +22610,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR086")
+					(reference "#PWR0255")
 					(unit 1)
 				)
 			)
@@ -22708,7 +22625,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c5fdf27c-03af-47e7-9bca-ac988b73be42")
-		(property "Reference" "#PWR0161"
+		(property "Reference" "#PWR0242"
 			(at 308.61 71.12 0)
 			(effects
 				(font
@@ -22758,7 +22675,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0161")
+					(reference "#PWR0242")
 					(unit 1)
 				)
 			)
@@ -22774,7 +22691,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cbf6bc31-6f61-49e7-9177-3f82eea3b158")
-		(property "Reference" "R62"
+		(property "Reference" "R126"
 			(at 297.18 223.5199 0)
 			(effects
 				(font
@@ -22792,7 +22709,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 293.624 224.536 90)
 			(effects
 				(font
@@ -22828,7 +22745,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R62")
+					(reference "R126")
 					(unit 1)
 				)
 			)
@@ -22844,7 +22761,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cc4ffa78-44a4-43c4-a01a-ab77096b0ab2")
-		(property "Reference" "R59"
+		(property "Reference" "R116"
 			(at 135.89 163.8299 0)
 			(effects
 				(font
@@ -22862,7 +22779,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 132.334 164.846 90)
 			(effects
 				(font
@@ -22898,7 +22815,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R59")
+					(reference "R116")
 					(unit 1)
 				)
 			)
@@ -22911,10 +22828,10 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d4b3041c-60db-4f73-957a-40996373d725")
-		(property "Reference" "R61"
+		(property "Reference" "R123"
 			(at 297.18 213.3599 0)
 			(effects
 				(font
@@ -22932,7 +22849,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 293.624 214.376 90)
 			(effects
 				(font
@@ -22968,7 +22885,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R61")
+					(reference "R123")
 					(unit 1)
 				)
 			)
@@ -22983,7 +22900,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d900a845-1a24-45d4-8bf3-6e067f6fe8ca")
-		(property "Reference" "#PWR0182"
+		(property "Reference" "#PWR0268"
 			(at 294.64 213.36 0)
 			(effects
 				(font
@@ -23033,7 +22950,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0182")
+					(reference "#PWR0268")
 					(unit 1)
 				)
 			)
@@ -23049,7 +22966,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "daf71766-5e29-44b1-82e7-c7a9b3c59572")
-		(property "Reference" "R50"
+		(property "Reference" "R113"
 			(at 278.13 80.0099 0)
 			(effects
 				(font
@@ -23067,7 +22984,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 274.574 81.026 90)
 			(effects
 				(font
@@ -23103,7 +23020,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R50")
+					(reference "R113")
 					(unit 1)
 				)
 			)
@@ -23119,7 +23036,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e004cba1-746f-4878-869d-9093a4608a07")
-		(property "Reference" "Q1"
+		(property "Reference" "Q10"
 			(at 138.43 218.4399 0)
 			(effects
 				(font
@@ -23179,7 +23096,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "Q1")
+					(reference "Q10")
 					(unit 1)
 				)
 			)
@@ -23195,7 +23112,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e25f9e41-7612-431c-b62e-02bdea55df49")
-		(property "Reference" "R52"
+		(property "Reference" "R118"
 			(at 207.01 166.3699 0)
 			(effects
 				(font
@@ -23213,7 +23130,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 203.454 167.386 90)
 			(effects
 				(font
@@ -23249,7 +23166,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R52")
+					(reference "R118")
 					(unit 1)
 				)
 			)
@@ -23264,7 +23181,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e678458e-341b-4e9a-a508-70e50f01ebc8")
-		(property "Reference" "#PWR0183"
+		(property "Reference" "#PWR0271"
 			(at 294.64 236.22 0)
 			(effects
 				(font
@@ -23314,7 +23231,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0183")
+					(reference "#PWR0271")
 					(unit 1)
 				)
 			)
@@ -23330,7 +23247,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e90acb5b-166f-4a44-a070-cf59658d012c")
-		(property "Reference" "#PWR0160"
+		(property "Reference" "#PWR0246"
 			(at 299.72 82.55 0)
 			(effects
 				(font
@@ -23380,7 +23297,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0160")
+					(reference "#PWR0246")
 					(unit 1)
 				)
 			)
@@ -23395,7 +23312,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "eecf19a4-a3f3-44a4-a820-c7621ae626ce")
-		(property "Reference" "R27"
+		(property "Reference" "R110"
 			(at 130.175 60.96 90)
 			(effects
 				(font
@@ -23411,7 +23328,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 135.636 63.246 90)
 			(effects
 				(font
@@ -23447,7 +23364,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R27")
+					(reference "R110")
 					(unit 1)
 				)
 			)
@@ -23463,7 +23380,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3e71e27-6a99-4a59-b10d-7d82919b66cc")
-		(property "Reference" "U11"
+		(property "Reference" "U20"
 			(at 317.5 93.9799 0)
 			(effects
 				(font
@@ -23538,7 +23455,7 @@
 		(instances
 			(project ""
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "U11")
+					(reference "U20")
 					(unit 1)
 				)
 			)
@@ -23553,7 +23470,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f9adb361-e0a1-4031-91f6-cde5ce31543c")
-		(property "Reference" "#PWR0165"
+		(property "Reference" "#PWR0243"
 			(at 265.43 80.01 0)
 			(effects
 				(font
@@ -23603,7 +23520,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "#PWR0165")
+					(reference "#PWR0243")
 					(unit 1)
 				)
 			)
@@ -23618,7 +23535,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fefe78df-4864-4ccc-a11e-9da87976c07f")
-		(property "Reference" "R28"
+		(property "Reference" "R111"
 			(at 130.175 63.5 90)
 			(effects
 				(font
@@ -23634,7 +23551,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 135.636 65.786 90)
 			(effects
 				(font
@@ -23670,7 +23587,7 @@
 		(instances
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/2e9d2356-e08c-4cea-be34-327b495582c0"
-					(reference "R28")
+					(reference "R111")
 					(unit 1)
 				)
 			)
