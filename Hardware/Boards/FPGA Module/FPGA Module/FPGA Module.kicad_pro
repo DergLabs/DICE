@@ -619,7 +619,7 @@
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "3V3_AON",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgb(255, 0, 211)",
         "schematic_color": "rgb(255, 0, 211)",
         "track_width": 0.1,
         "via_diameter": 0.3,
@@ -1845,6 +1845,22 @@
       {
         "netclass": "3V3_AON",
         "pattern": "/Top/System Controller/3V3_AON"
+      },
+      {
+        "netclass": "FPGA_MODE",
+        "pattern": "/Top/FPGA Config/FPGA_M*"
+      },
+      {
+        "netclass": "FPGA_MODE",
+        "pattern": "/Top/System Controller/FPGA_MCU_M*"
+      },
+      {
+        "netclass": "FPGA_MODE",
+        "pattern": "/Top/FPGA IO/FPGA_MCU_M*"
+      },
+      {
+        "netclass": "FPGA_MODE",
+        "pattern": "/Top/FPGA IO/FPGA_M*"
       }
     ]
   },

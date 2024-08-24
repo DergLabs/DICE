@@ -2523,10 +2523,6 @@
 		(uuid "fff0d654-595d-4c49-8f1d-bb4c38feb821")
 	)
 	(no_connect
-		(at 218.44 121.92)
-		(uuid "0880302a-8cbf-4cce-b2cd-d12a0c5fb170")
-	)
-	(no_connect
 		(at 218.44 193.04)
 		(uuid "2792e6fe-2c69-458d-8e9e-19ab00e8312e")
 	)
@@ -2545,14 +2541,6 @@
 	(no_connect
 		(at 218.44 190.5)
 		(uuid "8efcf4c1-02e4-4f82-8927-48dfc7d065a9")
-	)
-	(no_connect
-		(at 218.44 119.38)
-		(uuid "b39fa2ab-72a4-46ef-aab4-d53225961b48")
-	)
-	(no_connect
-		(at 218.44 124.46)
-		(uuid "bc1b011c-647c-4e21-8f02-3070422b9ae2")
 	)
 	(no_connect
 		(at 167.64 116.84)
@@ -3110,6 +3098,16 @@
 	)
 	(wire
 		(pts
+			(xy 218.44 124.46) (xy 243.84 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "770a62ba-e3ee-4aec-bdd1-b556db2c0acf")
+	)
+	(wire
+		(pts
 			(xy 218.44 132.08) (xy 243.84 132.08)
 		)
 		(stroke
@@ -3197,6 +3195,16 @@
 			(type default)
 		)
 		(uuid "8a2c1b4c-b735-4d83-8d16-9ca4fe4f4d5e")
+	)
+	(wire
+		(pts
+			(xy 218.44 119.38) (xy 243.84 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a2d9690-ed60-4ab7-9273-aebb9ec20ab8")
 	)
 	(wire
 		(pts
@@ -3710,6 +3718,16 @@
 	)
 	(wire
 		(pts
+			(xy 218.44 121.92) (xy 243.84 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbea7f97-10d4-4b07-9a89-160f3f0b46e4")
+	)
+	(wire
+		(pts
 			(xy 149.86 149.86) (xy 167.64 149.86)
 		)
 		(stroke
@@ -3879,6 +3897,17 @@
 		)
 		(uuid "2b40ca6e-79e5-4acf-831a-91dc31c9c828")
 	)
+	(label "FPGA_MCU_M2"
+		(at 243.84 124.46 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2daa3b0f-0cc7-46e4-bfc7-7a3dc5d3dd20")
+	)
 	(label "GND"
 		(at 113.03 149.86 0)
 		(fields_autoplaced yes)
@@ -3956,6 +3985,17 @@
 			(justify right bottom)
 		)
 		(uuid "55fb54cb-ca1f-45e3-8960-0c4bef58a941")
+	)
+	(label "FPGA_MCU_M0"
+		(at 243.84 119.38 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6b420a47-8703-40b6-9321-7a98a083e830")
 	)
 	(label "I2C1_SDA"
 		(at 243.84 132.08 180)
@@ -4045,6 +4085,17 @@
 			(justify left bottom)
 		)
 		(uuid "87e070c5-173c-4380-80d7-4a55f82a6a53")
+	)
+	(label "FPGA_MCU_M1"
+		(at 243.84 121.92 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8d1b6df7-29b2-43f5-b113-080b384d2302")
 	)
 	(label "I2C0_SCL"
 		(at 149.86 205.74 180)
@@ -4393,6 +4444,30 @@
 		)
 		(uuid "4e4a40e8-4ce7-41f4-a08f-4ea449a0ab20")
 	)
+	(hierarchical_label "FPGA_MCU_M0"
+		(shape input)
+		(at 243.84 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4f8a99a3-d233-421e-b2d0-0ec4efec21b4")
+	)
+	(hierarchical_label "FPGA_MCU_M2"
+		(shape input)
+		(at 243.84 124.46 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "52a58f4b-c727-4ff5-9eca-fefa0406639c")
+	)
 	(hierarchical_label "1V2_ISNS_ALERT"
 		(shape input)
 		(at 243.84 142.24 0)
@@ -4441,6 +4516,18 @@
 			(justify left)
 		)
 		(uuid "8c780880-5291-4f25-acb3-f8d99c8698dc")
+	)
+	(hierarchical_label "FPGA_MCU_M1"
+		(shape input)
+		(at 243.84 121.92 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8e1e125c-54f5-466c-9555-88f493c0749b")
 	)
 	(hierarchical_label "SYS_SPI_CS"
 		(shape input)
