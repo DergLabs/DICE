@@ -1,1 +1,33 @@
+(version 1)
+(rule "cu2_ddr_data"
+	(layer In2.Cu)
+	(condition "A.NetClass == 'DDR_DATA'")
+	(constraint skew (max 0.1mm))
+	(constraint clearance (min "0.15mm"))
+)
 
+(rule "cu5_ddr_addr"
+	(layer In5.Cu)
+	(condition "A.NetClass == 'DDR_ADDR'")
+	(constraint skew (max 0.1mm))
+	(constraint clearance (min "0.15mm"))
+)
+
+(rule "cu2_bus"
+	(layer In2.Cu)
+	(constraint clearance (min "0.1mm"))
+)
+
+(rule "top_diffpair"
+	(layer F.Cu)
+	(constraint diff_pair_gap (min 0.13mm) (opt 0.15mm))
+	(constraint track_width (min 0.1mm))
+	(constraint clearance (min "0.1mm"))
+)
+
+(rule "bot_diffpair"
+	(layer B.Cu)
+	(constraint diff_pair_gap (min 0.13mm) (opt 0.15mm))
+	(constraint track_width (min 0.1mm))
+	(constraint clearance (min "0.1mm"))
+)
