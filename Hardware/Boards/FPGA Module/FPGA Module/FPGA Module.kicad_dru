@@ -1,33 +1,35 @@
 (version 1)
-(rule "cu2_ddr_data"
-	(layer In2.Cu)
-	(condition "A.NetClass == 'DDR_DATA'")
-	(constraint skew (max 0.1mm))
-	(constraint clearance (min "0.15mm"))
-)
 
-(rule "cu5_ddr_addr"
-	(layer In5.Cu)
-	(condition "A.NetClass == 'DDR_ADDR'")
-	(constraint skew (max 0.1mm))
-	(constraint clearance (min "0.15mm"))
-)
-
-(rule "cu2_bus"
-	(layer In2.Cu)
-	(constraint clearance (min "0.1mm"))
-)
-
-(rule "top_diffpair"
+(rule "HDMI_100R_DiffPair_Top"
 	(layer F.Cu)
-	(constraint diff_pair_gap (min 0.13mm) (opt 0.15mm))
-	(constraint track_width (min 0.1mm))
-	(constraint clearance (min "0.1mm"))
+	(condition "A.NetClass == 'HDMI_*'")
+	(constraint diff_pair_gap (min 0.15mm) (opt 0.15mm))
+	(constraint track_width (min 0.12mm) (opt 0.12mm))
+	(constraint clearance (min "0.2mm"))
 )
 
-(rule "bot_diffpair"
+(rule "HDMI_100R_DiffPair_Bot"
 	(layer B.Cu)
-	(constraint diff_pair_gap (min 0.13mm) (opt 0.15mm))
-	(constraint track_width (min 0.1mm))
-	(constraint clearance (min "0.1mm"))
+	(condition "A.NetClass == 'HDMI_*'")
+	(constraint diff_pair_gap (min 0.15mm) (opt 0.15mm))
+	(constraint track_width (min 0.12mm) (opt 0.12mm))
+	(constraint clearance (min "0.2mm"))
 )
+
+(rule "MIPI_100R_DiffPair_Top"
+	(layer F.Cu)
+	(condition "A.NetClass == 'MIPI_*'")
+	(constraint diff_pair_gap (min 0.15mm) (opt 0.15mm))
+	(constraint track_width (min 0.12mm) (opt 0.12mm))
+	(constraint clearance (min "0.2mm"))
+)
+
+(rule "MIPI_100R_DiffPair_Bot"
+	(layer B.Cu)
+	(condition "A.NetClass == 'MIPI_*'")
+	(constraint diff_pair_gap (min 0.15mm) (opt 0.15mm))
+	(constraint track_width (min 0.12mm) (opt 0.12mm))
+	(constraint clearance (min "0.2mm"))
+)
+
+

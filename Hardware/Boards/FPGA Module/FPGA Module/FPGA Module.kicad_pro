@@ -58,22 +58,22 @@
           "width": 0.0
         },
         {
-          "gap": 0.15,
-          "via_gap": 0.2,
-          "width": 0.1
-        },
-        {
-          "gap": 0.15,
-          "via_gap": 0.2,
-          "width": 0.1
-        },
-        {
           "gap": 0.2,
           "via_gap": 0.2,
-          "width": 0.15
+          "width": 0.11
         },
         {
-          "gap": 0.25,
+          "gap": 0.1,
+          "via_gap": 0.2,
+          "width": 0.125
+        },
+        {
+          "gap": 0.15,
+          "via_gap": 0.2,
+          "width": 0.125
+        },
+        {
+          "gap": 0.15,
           "via_gap": 0.2,
           "width": 0.15
         }
@@ -200,8 +200,14 @@
       "track_widths": [
         0.0,
         0.1,
+        0.11,
+        0.12,
+        0.125,
+        0.15,
         0.2,
-        0.3
+        0.3,
+        0.5,
+        1.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -241,6 +247,10 @@
         {
           "diameter": 0.4,
           "drill": 0.3
+        },
+        {
+          "diameter": 0.45,
+          "drill": 0.2
         }
       ],
       "zones_allow_external_fillets": false
@@ -1861,6 +1871,22 @@
       {
         "netclass": "FPGA_MODE",
         "pattern": "/Top/FPGA IO/FPGA_M*"
+      },
+      {
+        "netclass": "DDR_ADDR",
+        "pattern": "/Top/FPGA IO/BG0"
+      },
+      {
+        "netclass": "DDR_CTRL",
+        "pattern": "/Top/FPGA IO/BG1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/Top/FPGA IO/BG2"
+      },
+      {
+        "netclass": "FPGA_SPI",
+        "pattern": "/Top/FPGA IO/BG3"
       }
     ]
   },
