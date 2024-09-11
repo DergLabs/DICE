@@ -2,7 +2,7 @@
 
 (rule "HDMI_100R_DiffPair_Top"
 	(layer F.Cu)
-	(condition "A.NetClass == 'HDMI_*'")
+	(condition "A.NetClass == 'HDMI_FPGA_DATA' || A.NetClass == 'HDMI_GTCLK' || A.NetClass == 'HDMI_CLK'")
 	(constraint diff_pair_gap (min 0.15mm) (opt 0.15mm))
 	(constraint track_width (min 0.12mm) (opt 0.12mm))
 	(constraint clearance (min "0.1mm"))
@@ -10,7 +10,7 @@
 
 (rule "HDMI_100R_DiffPair_Bot"
 	(layer B.Cu)
-	(condition "A.NetClass == 'HDMI_*'")
+	(condition "A.NetClass == 'HDMI_FPGA_DATA' || A.NetClass == 'HDMI_GTCLK' || A.NetClass == 'HDMI_CLK'")
 	(constraint diff_pair_gap (min 0.15mm) (opt 0.15mm))
 	(constraint track_width (min 0.12mm) (opt 0.12mm))
 	(constraint clearance (min "0.1mm"))

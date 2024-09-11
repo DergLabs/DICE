@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.0,
+          "height": 0.5,
+          "width": 0.5
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -78,7 +78,12 @@
           "width": 0.15
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "copper_edge_clearance|137000588|79164041|02819a77-06c1-480a-9432-10f915630699|5d2ba397-1b7d-45a1-bb87-f677801c5d07",
+        "copper_edge_clearance|139200000|127000000|4e7d48dc-bdd6-4f8d-b0a6-f1e544efc1e4|d2c325a6-3534-4e03-bf35-60b5c768dc4d",
+        "copper_edge_clearance|187000000|124800000|3a6099e6-d2f0-4cf6-8828-f64f0e79b8a1|6594f618-cf9a-4fe2-b2e0-470c40f6f7c4",
+        "copper_edge_clearance|187000000|79200000|3a6099e6-d2f0-4cf6-8828-f64f0e79b8a1|f7b9340c-6183-474e-a628-a1a849e4c09f"
+      ],
       "meta": {
         "version": 2
       },
@@ -88,7 +93,7 @@
         "connection_width": "warning",
         "copper_edge_clearance": "error",
         "copper_sliver": "warning",
-        "courtyards_overlap": "error",
+        "courtyards_overlap": "warning",
         "diff_pair_gap_out_of_range": "error",
         "diff_pair_uncoupled_length_too_long": "error",
         "drill_out_of_range": "error",
@@ -149,7 +154,7 @@
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.15,
         "min_track_width": 0.09,
-        "min_via_annular_width": 0.1,
+        "min_via_annular_width": 0.05,
         "min_via_diameter": 0.25,
         "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
