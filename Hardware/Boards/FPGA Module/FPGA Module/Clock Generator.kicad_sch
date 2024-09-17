@@ -1733,12 +1733,6 @@
 		(uuid "70c31773-12e7-435b-ab6d-9d0d6b633118")
 	)
 	(junction
-		(at 186.69 161.29)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7cc818de-be2d-4b6b-bb9a-d702a76d4f02")
-	)
-	(junction
 		(at 229.87 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1749,12 +1743,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9fa07d72-f97f-4acb-9ee3-b9225f728ec9")
-	)
-	(junction
-		(at 157.48 161.29)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a2727744-f85a-43e0-bea1-a6c40adefb03")
 	)
 	(junction
 		(at 264.16 104.14)
@@ -2020,16 +2008,6 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 161.29) (xy 187.96 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c8d3f7e-7f04-412f-8bc6-ab550f4bc78b")
-	)
-	(wire
-		(pts
 			(xy 281.94 147.32) (xy 281.94 144.78)
 		)
 		(stroke
@@ -2137,16 +2115,6 @@
 			(type default)
 		)
 		(uuid "6183d1be-4ef3-4e6a-8bdd-560dfd8821a1")
-	)
-	(wire
-		(pts
-			(xy 156.21 161.29) (xy 157.48 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "61929eef-c8b7-4591-bf99-d25b55cadef9")
 	)
 	(wire
 		(pts
@@ -2798,7 +2766,7 @@
 		)
 		(uuid "fd098d8f-e118-44de-b4da-cc6635f7e495")
 	)
-	(text_box "NOTE: I2C ADDR is 0x70"
+	(text_box "NOTE: I2C ADDR is 0x70, set using IN4"
 		(exclude_from_sim no)
 		(at 162.56 127.635 0)
 		(size 21.59 6.35)
@@ -3457,7 +3425,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 243.84 149.86 0)
 			(effects
 				(font
@@ -3926,7 +3894,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 231.14 160.02 0)
 			(effects
 				(font
@@ -3993,7 +3961,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 179.07 123.19 0)
 			(effects
 				(font
@@ -4268,7 +4236,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 220.98 124.46 0)
 			(effects
 				(font
@@ -4874,7 +4842,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 254 147.32 0)
 			(effects
 				(font
@@ -4985,73 +4953,6 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 156.21 161.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9f1808aa-e37c-49e7-b8b9-dfc97dbb3bd6")
-		(property "Reference" "TP61"
-			(at 153.67 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Test Point"
-			(at 151.13 155.575 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
-			(at 161.29 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 161.29 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 156.21 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9cbbc680-689c-4d40-a9f9-fcbce3a16708")
-		)
-		(instances
-			(project "FPGA Module"
-				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e820f7e1-8a3d-4d78-a9b1-ec9a846520a7"
-					(reference "TP61")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
 		(at 242.57 137.16 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5078,7 +4979,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 237.49 137.16 0)
 			(effects
 				(font
@@ -5350,7 +5251,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 231.14 121.92 0)
 			(effects
 				(font
@@ -5748,7 +5649,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 220.98 162.56 0)
 			(effects
 				(font
@@ -5782,73 +5683,6 @@
 			(project "FPGA Module"
 				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e820f7e1-8a3d-4d78-a9b1-ec9a846520a7"
 					(reference "TP32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 187.96 161.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e2fb9035-e486-4534-87a7-ebd9b4921c45")
-		(property "Reference" "TP62"
-			(at 185.42 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Test Point"
-			(at 182.88 155.575 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
-			(at 193.04 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 193.04 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 187.96 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "92624f92-ae18-44de-8eec-60f569ad37d0")
-		)
-		(instances
-			(project "FPGA Module"
-				(path "/199f10e2-d4b4-4a27-9e84-7b1ce2ae6bf0/0c296310-f788-47f0-8a3f-43c3444563e8/e820f7e1-8a3d-4d78-a9b1-ec9a846520a7"
-					(reference "TP62")
 					(unit 1)
 				)
 			)
@@ -6356,7 +6190,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "FPGA Module:Test Point 0.75mm"
+		(property "Footprint" "FPGA Module:Test Point 0.5mm No Silk"
 			(at 247.65 134.62 0)
 			(effects
 				(font
