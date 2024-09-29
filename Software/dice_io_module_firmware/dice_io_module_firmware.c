@@ -5,7 +5,9 @@
 #include "hardware/clocks.h"
 #include "hardware/uart.h"
 
-static const int CLK_SPEED = 250 * 1000 * 1000; // 250 MHz
+// Will Be multiplied by 1000 when used, in a call that takes in kHz
+// making the result 250MHz
+static const int CLK_SPEED = 250;
 
 // IO Module Pins
 static const int USBPD_FLT_IN = 26;
@@ -48,6 +50,7 @@ static const int MBUS[] = {
 
 // I2C Device Addresses
 static const uint8_t INA700_ADDR = 0x44;
+// TODO: Add description from HDMI_R and HDMI_W not sure what they are for
 static const uint8_t HDMI_R = 0xB6;
 static const uint8_t HDMI_W = 0xB7;
 
@@ -90,8 +93,7 @@ int main()
     stdio_init_all();
 
     // Set clock speed
-    // TODO: Figures out why this is not working
-    //set_sys_clock_khz(CLK_SPEED, true); 
+    set_sys_clock_khz(CLK_SPEED*1000, true); 
 
     // Init all pins we'll be using
     gpio_init(USBPD_FLT_IN);
@@ -115,13 +117,13 @@ int main()
     }
 
     // Set directions of pins
-    gpio_set_dir(USBPD_FLT_IN, GPIO_OUT);
     gpio_set_dir(USBPD_SINK_EN, GPIO_IN);
     gpio_set_dir(USBPD_DBG_ACC, GPIO_IN);
     gpio_set_dir(USBPD_CAP_MIS, GPIO_IN);
     gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
     gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
 
+    gpio_set_dir(USBPD_FLT_IN, GPIO_OUT);
     gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
     gpio_set_dir(CAM_LED_EN, GPIO_OUT);
     gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
@@ -133,6 +135,7 @@ int main()
     // Pull Up/Down resistors
 
     // Up
+    gpio_pull_up(USBPD_FLT_IN);
     gpio_pull_up(USBPD_SINK_EN);
     gpio_pull_up(USBPD_DBG_ACC);
     gpio_pull_up(USBPD_CAP_MIS);
@@ -144,7 +147,6 @@ int main()
     gpio_pull_up(I2C1_SDA);
 
     // Down
-    gpio_pull_down(USBPD_FLT_IN);
     gpio_pull_down(CAM_PWR_EN);
     gpio_pull_down(CAM_LED_EN);
     gpio_pull_down(HDMI_BUFF_EN);
@@ -173,6 +175,10 @@ int main()
     bool usbpd_plg_flip = gpio_get(USBPD_PLG_FLIP);
     bool usbpd_plg_evnt = gpio_get(USBPD_PLG_EVNT);
 
+	// Wait 4 seconds to allow terminal to set up
+	sleep_ms(4000);
+
+	// Display USBPD IO Values
     printf("USBPD Sink Enable: %d\n", usbpd_sink_en);
     printf("USBPD Debug Access: %d\n", usbpd_dbg_acc);
     printf("USBPD Capacity Mismatch: %d\n", usbpd_cap_mis);
@@ -182,9 +188,9 @@ int main()
 
     while (true) {
         gpio_put(MCU_HUB_LED, false); 
-        sleep_ms(1000);
+        sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
-        sleep_ms(1000);
+        sleep_ms(500);
 
         // INA700 Readings 
         int16_t ina700_temp;
@@ -212,7 +218,7 @@ int main()
         printf("Temperature: %dC\n", ina700_calculated_temp);
         printf("Current: %dA\n", ina700_calculated_current);
         printf("Voltage: %dV\n", ina700_calculated_voltage);
-        print("-----------------------------\n");
+        printf("-----------------------------\n");
     }
 
 
