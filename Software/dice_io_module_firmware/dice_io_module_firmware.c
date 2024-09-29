@@ -54,9 +54,6 @@ static const int MBUS[] = {
 
 // I2C Device Addresses
 static const uint8_t INA700_ADDR = 0x44;
-// TODO: Add description from HDMI_R and HDMI_W not sure what they are for
-static const uint8_t HDMI_R = 0xB6;
-static const uint8_t HDMI_W = 0xB7;
 
 // INA700 Registers
 static const uint16_t INA700_DIETEMP = 0x6;
