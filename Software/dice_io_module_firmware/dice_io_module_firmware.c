@@ -76,7 +76,7 @@ bool ina700_read_32_reg(uint8_t reg, uint32_t* data) {
     if (i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
         return false;
     }
-    *data = ((buf[0] << 8) | buf[1]) && (buf[2] << 24 | buf[3] << 16);
+	*data = (buf[3] << 24 | buf[3] << 16) && (buf[1] << 8 | buf[0]);
     return true;
 }
 
@@ -88,7 +88,7 @@ bool ina700_read_16_reg(uint8_t reg, int16_t* data) {
     if (i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
         return false;
     }
-    *data = (buf[0] << 8) | buf[1];
+    *data = (buf[1] << 8) | buf[0];
     return true;
 }
 
