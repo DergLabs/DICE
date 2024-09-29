@@ -26,9 +26,13 @@ static const int I2C1_SCL = 7;
 static const int HDMI_BUFF_EN = 8;
 static const int MCU_HUB_LED = 25;
 
-static const float mC = 0.001;
-static const float uA = 0.000001;
-static const float uW = 0.000001;
+static const float mili = 0.001;
+static const float micro = 0.0000001;
+
+static const float temp_resolution = 125 * mili; // mili degree Celsius
+static const float current_resolution = 480 * micro; // micro Amp
+static const float voltage_resolution = 3.125 * mili; // mili Volt
+static const float power_resolution = 96 * micro; // micro Watt
 
 static const int MBUS[] = {
     16, // MBUS_D0
@@ -57,6 +61,7 @@ static const uint8_t HDMI_W = 0xB7;
 // INA700 Registers
 static const uint16_t INA700_DIETEMP = 0x6;
 static const uint16_t INA700_CURRENT = 0x7;
+static const uint16_t INA700_VBUS = 0x5;
 static const uint32_t INA700_POWER = 0x8;
 
 // I2c Ports 
@@ -75,7 +80,7 @@ bool ina700_read_32_reg(uint8_t reg, uint32_t* data) {
     return true;
 }
 
-bool ina700_read_16_reg(uint8_t reg, uint16_t* data) {
+bool ina700_read_16_reg(uint8_t reg, int16_t* data) {
     uint8_t buf[2];
     if (i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
         return false;
@@ -195,6 +200,7 @@ int main()
         // INA700 Readings 
         int16_t ina700_temp;
         int16_t ina700_current;
+		int16_t ina700_voltage;
         uint32_t ina700_power;
 
         if (!ina700_read_16_reg(INA700_DIETEMP, &ina700_temp)) {
@@ -205,19 +211,25 @@ int main()
             printf("Failed to read INA700 Current\n");
         }
 
+        if (!ina700_read_16_reg(INA700_CURRENT, &ina700_voltage)) {
+            printf("Failed to read INA700 Voltage\n");
+        }
+
         if (!ina700_read_32_reg(INA700_POWER, &ina700_power)) {
             printf("Failed to read INA700 Power\n");
         }
 
         // INA700 Calculated Values;
-        int16_t ina700_calculated_temp = ina700_temp * 125 * mC;
-        int16_t ina700_calculated_current = ina700_current * 480 * uA;
-        uint32_t ina700_calculated_voltage = (ina700_power * 96 * uW)/ina700_calculated_current; // P=IV => V = P/I
+        int16_t ina700_calculated_temp = ina700_temp * temp_resolution;
+        int16_t ina700_calculated_current = ina700_current * current_resolution;
+        int16_t ina700_calculated_voltage = ina700_voltage * voltage_resolution;
+        int16_t ina700_calculated_power = ina700_power * power_resolution;
 
         printf("INA700 Readings\n");
         printf("Temperature: %dC\n", ina700_calculated_temp);
         printf("Current: %dA\n", ina700_calculated_current);
         printf("Voltage: %dV\n", ina700_calculated_voltage);
+		printf("Current: %dW\n", ina700_calculated_power);
         printf("-----------------------------\n");
     }
 
