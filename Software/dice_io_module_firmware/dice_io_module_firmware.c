@@ -27,12 +27,13 @@ static const int HDMI_BUFF_EN = 8;
 static const int MCU_HUB_LED = 25;
 
 static const float mili = 0.001;
-// static const float micro = 0.000001;
+static const float micro = 0.000001;
+
 // TODO: fix these labels
 static const float temp_resolution = 125 * mili;      // mili degree Celsius
-static const float current_resolution = 480 * mili;   // micro Amp
+static const float current_resolution = 480 * mili;  // micro Amp
 static const float voltage_resolution = 3.125 * mili; // mili Volt
-static const float power_resolution = 96 * mili;      // micro Watt
+static const float power_resolution = 96 * micro;     // micro Watt
 
 static const int MBUS[] = {
     16, // MBUS_D0
@@ -56,10 +57,10 @@ static const int MBUS[] = {
 static const uint8_t INA700_ADDR = 0x44;
 
 // INA700 Registers
-static const uint16_t INA700_DIETEMP = 0x6;
-static const uint16_t INA700_CURRENT = 0x7;
-static const uint16_t INA700_VBUS = 0x5;
-static const uint32_t INA700_POWER = 0x8;
+static const uint16_t INA700_DIETEMP = 0x06;
+static const uint16_t INA700_CURRENT = 0x07;
+static const uint16_t INA700_VBUS = 0x05;
+static const uint32_t INA700_POWER = 0x08;
 
 // I2c Ports
 i2c_inst_t *I2C_PORT0 = i2c0;
@@ -67,25 +68,27 @@ i2c_inst_t *I2C_PORT1 = i2c1;
 
 bool ina700_read_32_reg(uint8_t reg, uint32_t *data) {
     uint8_t buf[4];
-    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
+    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 2, false) != 2) {
         return false;
     }
-    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
+    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 4, true) != 4) {
         return false;
     }
-    *data = (buf[3] << 24 | buf[2] << 16) && (buf[1] << 8 | buf[0]);
+    printf("Raw Bytes: %x | %x | %x\n", buf[0], buf[1], buf[2]);
+    *data = (buf[0] << 16 | buf[1] << 8 | buf[2]);
     return true;
 }
 
 bool ina700_read_16_reg(uint8_t reg, int16_t *data) {
     uint8_t buf[2];
-    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
+    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 2, false) != 2) {
         return false;
     }
-    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
+    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, true) != 2) {
         return false;
     }
-    *data = (buf[1] << 8) | buf[0];
+    printf("Raw Bytes: %x | %x |\n", buf[0], buf[1]);
+    *data = (buf[0] << 8) | buf[1];
     return true;
 }
 
@@ -207,7 +210,7 @@ int main() {
             printf("Failed to read INA700 Current\n");
         }
 
-        if(!ina700_read_16_reg(INA700_CURRENT, &ina700_voltage)) {
+        if(!ina700_read_16_reg(INA700_VBUS, &ina700_voltage)) {
             printf("Failed to read INA700 Voltage\n");
         }
 
@@ -216,18 +219,20 @@ int main() {
         }
 
         // INA700 Calculated Values;
-        int16_t ina700_calculated_temp = ina700_temp * temp_resolution;
+        float ina700_calculated_temp = ina700_temp * temp_resolution;
         int16_t ina700_calculated_current = ina700_current * current_resolution;
-        int16_t ina700_calculated_voltage = ina700_voltage * voltage_resolution;
-        int16_t ina700_calculated_power = ina700_power * power_resolution;
+        float ina700_calculated_voltage = ina700_voltage * voltage_resolution;
+        float ina700_calculated_power = ina700_power * power_resolution;
 
         printf("INA700 Readings\n");
-        printf("Temperature: %dC(%02X)\n", ina700_calculated_temp, ina700_temp);
-        printf("Current: %dA(%02X)\n", ina700_calculated_current,
+        printf("Temperature: %.2fC(%02X)\n", ina700_calculated_temp,
+               ina700_temp);
+        printf("Current: %dmA(%02X)\n", ina700_calculated_current,
                ina700_current);
-        printf("Voltage: %dV(%02X)\n", ina700_calculated_voltage,
+        printf("Voltage: %.2fV(%02X)\n", ina700_calculated_voltage,
                ina700_voltage);
-        printf("Current: %dW(%02X)\n", ina700_calculated_power, ina700_power);
+        printf("Power: %.2fW(%02X)\n", ina700_calculated_power,
+               ina700_power);
         printf("-----------------------------\n");
     }
 }
