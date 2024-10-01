@@ -27,12 +27,22 @@ static const int HDMI_BUFF_EN = 8;
 static const int MCU_HUB_LED = 25;
 
 static const float mili = 0.001;
+<<<<<<< HEAD
 static const float micro = 0.000001;
 
 static const float temp_resolution = 125 * mili; // mili degree Celsius
 static const float current_resolution = 480 * mili; // micro Amp
 static const float voltage_resolution = 3.125 * mili; // mili Volt
 static const float power_resolution = 96 * mili; // micro Watt
+=======
+//static const float micro = 0.0000001;
+
+// TODO: fix these labels
+static const float temp_resolution = 125 * mili;      // mili degree Celsius
+static const float current_resolution = 480 * mili;  // micro Amp
+static const float voltage_resolution = 3.125 * mili; // mili Volt
+static const float power_resolution = 96 * mili;     // micro Watt
+>>>>>>> 1e5f6a7 (Potential Fixes for IO Board Firmware)
 
 static const int MBUS[] = {
     16, // MBUS_D0
@@ -40,7 +50,7 @@ static const int MBUS[] = {
     14, // MBUS_D2
     13, // MBUS_D3
     12, // MBUS_D4
-     9, // MBUS_D5
+    9,  // MBUS_D5
     10, // MBUS_D6
     11, // MBUS_D7
     18, // MBUS_D8
@@ -61,41 +71,40 @@ static const uint16_t INA700_CURRENT = 0x7;
 static const uint16_t INA700_VBUS = 0x5;
 static const uint32_t INA700_POWER = 0x8;
 
-// I2c Ports 
+// I2c Ports
 i2c_inst_t *I2C_PORT0 = i2c0;
 i2c_inst_t *I2C_PORT1 = i2c1;
 
-bool ina700_read_32_reg(uint8_t reg, uint32_t* data) {
+bool ina700_read_32_reg(uint8_t reg, uint32_t *data) {
     uint8_t buf[4];
-    if (i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
+    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
         return false;
     }
-    if (i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
+    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
         return false;
     }
-	*data = (buf[3] << 24 | buf[3] << 16) && (buf[1] << 8 | buf[0]);
+    *data = (buf[3] << 24 | buf[3] << 16) && (buf[1] << 8 | buf[0]);
     return true;
 }
 
-bool ina700_read_16_reg(uint8_t reg, int16_t* data) {
+bool ina700_read_16_reg(uint8_t reg, int16_t *data) {
     uint8_t buf[2];
-    if (i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
+    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 1, true) != 1) {
         return false;
     }
-    if (i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
+    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
         return false;
     }
     *data = (buf[1] << 8) | buf[0];
     return true;
 }
 
-int main()
-{
+int main() {
     const size_t MBUS_SIZE = sizeof(MBUS) / sizeof(MBUS[0]);
     stdio_init_all();
 
     // Set clock speed
-    set_sys_clock_khz(CLK_SPEED*1000, true); 
+    set_sys_clock_khz(CLK_SPEED * 1000, true);
 
     // Init all pins we'll be using
     gpio_init(USBPD_FLT_IN);
@@ -114,7 +123,7 @@ int main()
     gpio_init(HDMI_BUFF_EN);
     gpio_init(MCU_HUB_LED);
 
-    for (int i = 0; i < MBUS_SIZE; i++) {
+    for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
     }
 
@@ -131,7 +140,7 @@ int main()
     gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
     gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
 
-    for (int i = 0; i < MBUS_SIZE; i++)
+    for(int i = 0; i < MBUS_SIZE; i++)
         gpio_set_dir(MBUS[i], GPIO_OUT);
 
     // Pull Up/Down resistors
@@ -143,26 +152,26 @@ int main()
     gpio_pull_up(USBPD_CAP_MIS);
     gpio_pull_up(USBPD_PLG_FLIP);
     gpio_pull_up(USBPD_PLG_EVNT);
-    gpio_pull_up(I2C0_SCL);
-    gpio_pull_up(I2C0_SDA);
-    gpio_pull_up(I2C1_SCL);
-    gpio_pull_up(I2C1_SDA);
 
-    // Down
-    gpio_pull_down(CAM_PWR_EN);
-    gpio_pull_down(CAM_LED_EN);
-    gpio_pull_down(HDMI_BUFF_EN);
+    // Set Pin States
 
-    for (int i = 0; i < MBUS_SIZE; i++)
-        gpio_pull_down(MBUS[i]);
+    // LOW
+    gpio_put(USBPD_FLT_IN, 0);
+    gpio_put(CAM_PWR_EN, 0);
+    gpio_put(CAM_LED_EN, 0);
+    gpio_put(HDMI_BUFF_EN, 0);
+    gpio_put(MCU_HUB_LED, 0);
+    for(int i = 0; i < MBUS_SIZE; i++)
+        gpio_put(MBUS[i], 0);
 
-
-    // i2c ex https://www.digikey.com/en/maker/projects/raspberry-pi-pico-rp2040-i2c-example-with-micropython-and-cc/47d0c922b79342779cdbd4b37b7eb7e2
+    // i2c ex
+    // https://www.digikey.com/en/maker/projects/raspberry-pi-pico-rp2040-i2c-example-with-micropython-and-cc/47d0c922b79342779cdbd4b37b7eb7e2
     // Set up I2C
 
     // Initialize I2C port at 400 kHz
-    i2c_init(I2C_PORT0, 400 * 1000);
-    i2c_init(I2C_PORT1, 400 * 1000);
+    // TODO: testing at 100 kHz
+    i2c_init(I2C_PORT0, 100 * 1000);
+    i2c_init(I2C_PORT1, 100 * 1000);
 
     // Initialize I2C pins
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
@@ -177,10 +186,10 @@ int main()
     bool usbpd_plg_flip = gpio_get(USBPD_PLG_FLIP);
     bool usbpd_plg_evnt = gpio_get(USBPD_PLG_EVNT);
 
-	// Wait 4 seconds to allow terminal to set up
-	sleep_ms(4000);
+    // Wait 4 seconds to allow terminal to set up
+    sleep_ms(4000);
 
-	// Display USBPD IO Values
+    // Display USBPD IO Values
     printf("USBPD Sink Enable: %d\n", usbpd_sink_en);
     printf("USBPD Debug Access: %d\n", usbpd_dbg_acc);
     printf("USBPD Capacity Mismatch: %d\n", usbpd_cap_mis);
@@ -188,31 +197,31 @@ int main()
     printf("USBPD Plug Event: %d\n", usbpd_plg_evnt);
     printf("-----------------------------\n");
 
-    while (true) {
-        gpio_put(MCU_HUB_LED, false); 
+    while(true) {
+        gpio_put(MCU_HUB_LED, false);
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
 
-        // INA700 Readings 
+        // INA700 Readings
         int16_t ina700_temp;
         int16_t ina700_current;
-		int16_t ina700_voltage;
+        int16_t ina700_voltage;
         uint32_t ina700_power;
 
-        if (!ina700_read_16_reg(INA700_DIETEMP, &ina700_temp)) {
+        if(!ina700_read_16_reg(INA700_DIETEMP, &ina700_temp)) {
             printf("Failed to read INA700 Temperature\n");
         }
 
-        if (!ina700_read_16_reg(INA700_CURRENT, &ina700_current)) {
+        if(!ina700_read_16_reg(INA700_CURRENT, &ina700_current)) {
             printf("Failed to read INA700 Current\n");
         }
 
-        if (!ina700_read_16_reg(INA700_CURRENT, &ina700_voltage)) {
+        if(!ina700_read_16_reg(INA700_CURRENT, &ina700_voltage)) {
             printf("Failed to read INA700 Voltage\n");
         }
 
-        if (!ina700_read_32_reg(INA700_POWER, &ina700_power)) {
+        if(!ina700_read_32_reg(INA700_POWER, &ina700_power)) {
             printf("Failed to read INA700 Power\n");
         }
 
@@ -223,13 +232,14 @@ int main()
         int16_t ina700_calculated_power = ina700_power * power_resolution;
 
         printf("INA700 Readings\n");
-        printf("Temperature: %dC\n", ina700_calculated_temp);
-        printf("Current: %dA\n", ina700_calculated_current);
-        printf("Voltage: %dV\n", ina700_calculated_voltage);
-		printf("Current: %dW\n", ina700_calculated_power);
+        printf("Temperature: %dC(%02X)\n", ina700_calculated_temp,
+               ina700_temp);
+        printf("Current: %dA(%02X)\n", ina700_calculated_current,
+               ina700_current);
+        printf("Voltage: %dV(%02X)\n", ina700_calculated_voltage,
+               ina700_voltage);
+        printf("Current: %dW(%02X)\n", ina700_calculated_power,
+               ina700_power);
         printf("-----------------------------\n");
     }
-
-
-    
 }
