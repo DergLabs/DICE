@@ -8,6 +8,9 @@
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 250MHz
 static const int CLK_SPEED = 250;
+// Will Be multiplied by 1000 when used, in a call that takes in kHz
+// making the result 400MHz
+static const int I2C_SPEED = 400;
 
 // IO Module Pins
 static const int USBPD_FLT_IN = 26;
@@ -29,11 +32,10 @@ static const int MCU_HUB_LED = 25;
 static const float mili = 0.001;
 static const float micro = 0.000001;
 
-// TODO: fix these labels
-static const float temp_resolution = 125 * mili;      // mili degree Celsius
-static const float current_resolution = 480 * mili;  // micro Amp
-static const float voltage_resolution = 3.125 * mili; // mili Volt
-static const float power_resolution = 96 * micro;     // micro Watt
+static const float temp_resolution = 125 * mili;
+static const float current_resolution = 480 * mili;
+static const float voltage_resolution = 3.125 * mili;
+static const float power_resolution = 96 * micro;
 
 static const int MBUS[] = {
     16, // MBUS_D0
@@ -162,9 +164,8 @@ int main() {
     // Set up I2C
 
     // Initialize I2C port at 400 kHz
-    // TODO: testing at 100 kHz
-    i2c_init(I2C_PORT0, 100 * 1000);
-    i2c_init(I2C_PORT1, 100 * 1000);
+    i2c_init(I2C_PORT0, I2C_SPEED * 1000);
+    i2c_init(I2C_PORT1, I2C_SPEED * 1000);
 
     // Initialize I2C pins
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
@@ -231,8 +232,7 @@ int main() {
                ina700_current);
         printf("Voltage: %.2fV(%02X)\n", ina700_calculated_voltage,
                ina700_voltage);
-        printf("Power: %.2fW(%02X)\n", ina700_calculated_power,
-               ina700_power);
+        printf("Power: %.2fW(%02X)\n", ina700_calculated_power, ina700_power);
         printf("-----------------------------\n");
     }
 }
