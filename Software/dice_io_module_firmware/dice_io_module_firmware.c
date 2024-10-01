@@ -27,22 +27,12 @@ static const int HDMI_BUFF_EN = 8;
 static const int MCU_HUB_LED = 25;
 
 static const float mili = 0.001;
-<<<<<<< HEAD
-static const float micro = 0.000001;
-
-static const float temp_resolution = 125 * mili; // mili degree Celsius
-static const float current_resolution = 480 * mili; // micro Amp
-static const float voltage_resolution = 3.125 * mili; // mili Volt
-static const float power_resolution = 96 * mili; // micro Watt
-=======
-//static const float micro = 0.0000001;
-
+// static const float micro = 0.000001;
 // TODO: fix these labels
 static const float temp_resolution = 125 * mili;      // mili degree Celsius
-static const float current_resolution = 480 * mili;  // micro Amp
+static const float current_resolution = 480 * mili;   // micro Amp
 static const float voltage_resolution = 3.125 * mili; // mili Volt
-static const float power_resolution = 96 * mili;     // micro Watt
->>>>>>> 1e5f6a7 (Potential Fixes for IO Board Firmware)
+static const float power_resolution = 96 * mili;      // micro Watt
 
 static const int MBUS[] = {
     16, // MBUS_D0
@@ -83,7 +73,7 @@ bool ina700_read_32_reg(uint8_t reg, uint32_t *data) {
     if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, false) != 2) {
         return false;
     }
-    *data = (buf[3] << 24 | buf[3] << 16) && (buf[1] << 8 | buf[0]);
+    *data = (buf[3] << 24 | buf[2] << 16) && (buf[1] << 8 | buf[0]);
     return true;
 }
 
@@ -232,14 +222,12 @@ int main() {
         int16_t ina700_calculated_power = ina700_power * power_resolution;
 
         printf("INA700 Readings\n");
-        printf("Temperature: %dC(%02X)\n", ina700_calculated_temp,
-               ina700_temp);
+        printf("Temperature: %dC(%02X)\n", ina700_calculated_temp, ina700_temp);
         printf("Current: %dA(%02X)\n", ina700_calculated_current,
                ina700_current);
         printf("Voltage: %dV(%02X)\n", ina700_calculated_voltage,
                ina700_voltage);
-        printf("Current: %dW(%02X)\n", ina700_calculated_power,
-               ina700_power);
+        printf("Current: %dW(%02X)\n", ina700_calculated_power, ina700_power);
         printf("-----------------------------\n");
     }
 }
