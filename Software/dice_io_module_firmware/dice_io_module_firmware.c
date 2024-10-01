@@ -27,12 +27,12 @@ static const int HDMI_BUFF_EN = 8;
 static const int MCU_HUB_LED = 25;
 
 static const float mili = 0.001;
-static const float micro = 0.0000001;
+static const float micro = 0.000001;
 
 static const float temp_resolution = 125 * mili; // mili degree Celsius
-static const float current_resolution = 480 * micro; // micro Amp
+static const float current_resolution = 480 * mili; // micro Amp
 static const float voltage_resolution = 3.125 * mili; // mili Volt
-static const float power_resolution = 96 * micro; // micro Watt
+static const float power_resolution = 96 * mili; // micro Watt
 
 static const int MBUS[] = {
     16, // MBUS_D0
