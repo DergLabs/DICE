@@ -4834,16 +4834,6 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 133.35) (xy 195.58 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "68a6167f-1524-4a81-9cf1-7d831b897ce1")
-	)
-	(wire
-		(pts
 			(xy 43.18 132.08) (xy 43.18 133.35)
 		)
 		(stroke
@@ -6758,6 +6748,25 @@
 		)
 		(uuid e31f73ad-298d-4b44-bd5f-07312381c8cd)
 	)
+	(text_box "NOTE: 1V8 used since VBUS can vary from 5V to 15V\nDivider outputs ~1.3V"
+		(exclude_from_sim no)
+		(at 174.625 136.525 0)
+		(size 17.78 15.24)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "9ad6437d-b66e-48ba-9c1e-f058dd0fec7b")
+	)
 	(text "USB Conditioning + MUX"
 		(exclude_from_sim no)
 		(at 55.245 95.25 0)
@@ -7710,18 +7719,6 @@
 			(justify left bottom)
 		)
 		(uuid "ff1a5673-926b-457f-93f2-cf7d0c64579d")
-	)
-	(hierarchical_label "PP_VUSB"
-		(shape input)
-		(at 186.69 133.35 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "0171ed3a-ab00-4493-8ff7-076b031184ae")
 	)
 	(hierarchical_label "USB_FIFO_TX_N"
 		(shape input)
@@ -9802,7 +9799,7 @@
 				)
 			)
 		)
-		(property "Value" "1K"
+		(property "Value" "33K"
 			(at 200.025 147.32 0)
 			(effects
 				(font
@@ -15976,7 +15973,7 @@
 				)
 			)
 		)
-		(property "Value" "33K"
+		(property "Value" "10K"
 			(at 200.025 137.16 0)
 			(effects
 				(font
@@ -18719,6 +18716,71 @@
 			(project "IO Module"
 				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/7fc8cead-139b-409c-a5e7-289301bfab42"
 					(reference "#PWR0196")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+1V8")
+		(at 195.58 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f894ce8c-759f-4374-804e-759aa3dad523")
+		(property "Reference" "#PWR0173"
+			(at 195.58 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+1V8"
+			(at 195.58 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 195.58 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+1V8\""
+			(at 195.58 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b2bd0d34-bc50-4d41-b9cd-6faa5789c3b2")
+		)
+		(instances
+			(project "IO Module"
+				(path "/884396b6-238b-495e-b731-e47ad2523f76/dcc99803-8acd-4632-9c0b-7f677477cf65/7fc8cead-139b-409c-a5e7-289301bfab42"
+					(reference "#PWR0173")
 					(unit 1)
 				)
 			)
