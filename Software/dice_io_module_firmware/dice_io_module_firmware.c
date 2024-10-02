@@ -254,10 +254,9 @@ int main() {
                ina700_current);
         printf("Voltage: %.2fV(%02X)\n", ina700_calculated_voltage,
                ina700_voltage);
-<<<<<<< Updated upstream
+
         printf("Power: %.2fW(%02X)\n", ina700_calculated_power, ina700_power);
         printf("-----------------------------\n");
-=======
         printf("Power: %.2fW(%02X)\n", ina700_calculated_power,
                ina700_power);
         printf("\n");
@@ -295,6 +294,5 @@ int main() {
             sleep_ms(1);
             gpio_put(MBUS[1], 0);
         }
->>>>>>> Stashed changes
     }
 }
