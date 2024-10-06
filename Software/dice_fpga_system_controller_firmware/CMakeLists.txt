@@ -60,6 +60,7 @@ target_link_libraries(dice_fpga_system_controller_firmware
         hardware_i2c
         hardware_timer
         hardware_clocks
+        hardware_pwm
         )
 
 pico_add_extra_outputs(dice_fpga_system_controller_firmware)

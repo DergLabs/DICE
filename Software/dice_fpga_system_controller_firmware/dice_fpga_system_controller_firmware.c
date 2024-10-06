@@ -1,85 +1,23 @@
+#include <pico.h>
+#include <stdio.h>
 #include "pico/stdio.h"
-#include "pico/stdlib.h"
 #include "hardware/spi.h"
 #include "hardware/i2c.h"
-#include "hardware/timer.h"
 #include "hardware/clocks.h"
 #include "hardware/gpio.h"
-#include "hardware/uart.h"
+#include "hardware/pwm.h"
 #include <boards/pico.h>
 #include <pico/time.h>
-#include <stdint.h>
 
-// Will Be multiplied by 1000 when used, in a call that takes in kHz
-// making the result 250MHz
-static const int CLK_SPEED = 250;
-
-// TODO: explain thsi
-static const int SPI_SPEED = 40;
-static const int I2C_SPEED = 400;
-
-// GPIO Pins
-static const int _3V3_EN = 22;
-static const int _2V5_EN = 21;
-static const int _1V8_EN = 12;
-static const int _1V2_EN = 10;
-static const int _0V9_EN = 14;
-static const int _0V85_EN = 20;
-static const int _3V3_ISNS_ALERT = 9;
-static const int _1V8_ISNS_ALERT = 8;
-static const int _1V2_ISNS_ALERT = 23;
-static const int _0V9_ISNS_ALERT = 24;
-static const int _0V85_ISNS_ALERT = 15;
-
-static const int SYS_SPI_MISO = 16;
-static const int SYS_SPI_MOSI = 19;
-static const int SYS_SPI_SCLK = 18;
-static const int SYS_SPI_CS = 17;
-static const int I2C0_SDA = 4;
-static const int I2C0_SCL = 5;
-static const int I2C1_SDA = 6;
-static const int I2C1_SCL = 7;
-static const int MCU_HUB_LED = 25;
-static const int FPGA_MCU_M0 = 2;
-static const int FPGA_MCU_M1 = 1;
-static const int FPGA_MCU_M2 = 3;
-
-// INA700 Sensors
-static const int INA700_3V3_Sense = 0x47;
-static const int INA700_1V8_Sense = 0x46;
-static const int INA700_1V2_Sense = 0x45;
-static const int INA700_0V9_Sense = 0x44;
-
-// INA700 Registers
-static const uint16_t INA700_DIETEMP = 0x06;
-static const uint16_t INA700_CURRENT = 0x07;
-static const uint16_t INA700_VBUS = 0x05;
-static const uint32_t INA700_POWER = 0x08;
-
-// INA236 Sensor
-static const int _0V85_Sense = 0x48;
-
-// INA236 Registers
-static const uint8_t INA236_VBUS = 0x02;
-static const uint8_t INA236_Power = 0x03;
-static const uint8_t INA236_Current = 0x04;
-
-// INA236 ADCRANGE Set to 1 OR Mask
-static const uint16_t INA236_CONFIG_ADCRANGE_MASK = 0b0001000000000000;
-
-
-// Resolution 
-static const float mili = 0.001;
-static const float VBUS_RESOLUTION = 1.6 * mili;
-
-// TODO: Why do I even need R_SHUNT???
-static const float R_SHUNT = 0.0005; // 500 uOhm
-static const float CURRENT_LSB_MIN = 0.0018310546875;
-static const float SHUNT_CAL = 0.00512/(CURRENT_LSB_MIN * R_SHUNT * 4);
+#include "constants.h"
+#include "functions.h"
 
 int main() {
+    // Set clock speed
+    set_sys_clock_khz(CLK_SPEED * 1000, true);
+
     stdio_init_all();
-    spi_init(spi0, SPI_SPEED * 1000);
+    spi_init(spi0, SPI_SPEED * 1000 * 1000);
     i2c_init(i2c0, I2C_SPEED * 1000);
     i2c_init(i2c1, I2C_SPEED * 1000);
 
@@ -88,63 +26,100 @@ int main() {
     gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
 
-    // TODO: Do MCU_CLK stuff
+    // Set SPI format
+    spi_set_format(spi0,       // SPI instance
+                   8,          // Number of bits per transfer
+                   SPI_CPOL_0, // Polarity (CPOL)
+                   SPI_CPHA_0, // Phase (CPHA)
+                   SPI_MSB_FIRST);
+    // Initialize SPI pins
+    gpio_set_function(SYS_SPI_MISO, GPIO_FUNC_SPI);
+    gpio_set_function(SYS_SPI_SCLK, GPIO_FUNC_SPI);
+    gpio_set_function(SYS_SPI_MOSI, GPIO_FUNC_SPI);
 
-    // Init all pins we'll be using
+    // Chip select is GPIO, so we'll handle it manually
+    gpio_init(SYS_SPI_CS);
+    gpio_set_dir(SYS_SPI_CS, GPIO_OUT);
+    gpio_put(SYS_SPI_CS, 1); // Chip select is active-low
+
+    // TODO: Configure SI5338 with given header file
+    // Currently the pwm is set up but not sure how to actually
+    // use the header file
+
+    // gpio_set_function(MCU_CLK, GPIO_FUNC_PWM);
+    // uint slice_num = pwm_gpio_to_slice_num(MCU_CLK);
+    // uint channel = pwm_gpio_to_channel(MCU_CLK);
+    // pwm_config config = pwm_get_default_config();
+    // float divider = (CLK_SPEED * 1.0) / DESIRED_MCU_CLK_SPEED;
+    // pwm_config_set_clkdiv(&config, divider);
+    // // Wrap value of 1 for 50% duty cycle
+    // pwm_config_set_wrap(&config, 1);
+    // // Initialize the PWM with the config
+    // pwm_init(slice_num, &config, true);
+    // pwm_set_gpio_level(MCU_CLK, 1);
+
+    // Configure GPIO Part 1
     gpio_init(MCU_HUB_LED);
-    gpio_init(_3V3_EN);
-    gpio_init(_2V5_EN);
-    gpio_init(_1V8_EN);
-    gpio_init(_1V2_EN);
-    gpio_init(_0V9_EN);
-    gpio_init(_0V85_EN);
-    gpio_init(_3V3_ISNS_ALERT);
-    gpio_init(_1V8_ISNS_ALERT);
-    gpio_init(_1V2_ISNS_ALERT);
-    gpio_init(_0V9_ISNS_ALERT);
-    gpio_init(_0V85_ISNS_ALERT);
-    gpio_init(FPGA_MCU_M0);
-    gpio_init(FPGA_MCU_M1);
-    gpio_init(FPGA_MCU_M2);
-
-    // Set direction of all pins
     gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
+    gpio_put(MCU_HUB_LED, 0);
+
+    gpio_init(_3V3_EN);
     gpio_set_dir(_3V3_EN, GPIO_OUT);
+    gpio_put(_3V3_EN, 0);
+
+    gpio_init(_2V5_EN);
     gpio_set_dir(_2V5_EN, GPIO_OUT);
+    gpio_put(_2V5_EN, 0);
+
+    gpio_init(_1V8_EN);
     gpio_set_dir(_1V8_EN, GPIO_OUT);
+    gpio_put(_1V8_EN, 0);
+
+    gpio_init(_1V2_EN);
     gpio_set_dir(_1V2_EN, GPIO_OUT);
+    gpio_put(_1V2_EN, 0);
+
+    gpio_init(_0V9_EN);
     gpio_set_dir(_0V9_EN, GPIO_OUT);
+    gpio_put(_0V9_EN, 0);
+
+    gpio_init(_0V85_EN);
     gpio_set_dir(_0V85_EN, GPIO_OUT);
+    gpio_put(_0V85_EN, 0);
 
-    gpio_set_dir(FPGA_MCU_M0, GPIO_OUT);
-    gpio_set_dir(FPGA_MCU_M1, GPIO_OUT);
-    gpio_set_dir(FPGA_MCU_M2, GPIO_OUT);
-
+    gpio_init(_3V3_ISNS_ALERT);
     gpio_set_dir(_3V3_ISNS_ALERT, GPIO_IN);
+
+    gpio_init(_1V8_ISNS_ALERT);
     gpio_set_dir(_1V8_ISNS_ALERT, GPIO_IN);
+
+    gpio_init(_1V2_ISNS_ALERT);
     gpio_set_dir(_1V2_ISNS_ALERT, GPIO_IN);
+
+    gpio_init(_0V9_ISNS_ALERT);
     gpio_set_dir(_0V9_ISNS_ALERT, GPIO_IN);
+
+    gpio_init(_0V85_ISNS_ALERT);
     gpio_set_dir(_0V85_ISNS_ALERT, GPIO_IN);
 
-    // Pull Up
+    // Configure GPIO Part 2
+
+    gpio_init(FPGA_MCU_M0);
+    gpio_set_dir(FPGA_MCU_M0, GPIO_OUT);
+
+    gpio_init(FPGA_MCU_M1);
+    gpio_set_dir(FPGA_MCU_M1, GPIO_OUT);
+
+    gpio_init(FPGA_MCU_M2);
+    gpio_set_dir(FPGA_MCU_M2, GPIO_OUT);
+
+    gpio_init(MCU_CLK);
+    gpio_set_dir(MCU_CLK, GPIO_OUT);
+
     gpio_pull_up(I2C0_SCL);
     gpio_pull_up(I2C0_SDA);
     gpio_pull_up(I2C1_SCL);
     gpio_pull_up(I2C1_SDA);
-
-    // Write Low
-    gpio_put(_3V3_EN, 0);
-    gpio_put(_2V5_EN, 0);
-    gpio_put(_1V8_EN, 0);
-    gpio_put(_1V2_EN, 0);
-    gpio_put(_0V9_EN, 0);
-    gpio_put(_0V85_EN, 0);
-    gpio_put(FPGA_MCU_M0, 0);
-    gpio_put(FPGA_MCU_M1, 0);
-    gpio_put(FPGA_MCU_M2, 0);
-
-    // Set LED Low
-    gpio_put(MCU_HUB_LED, 0);
 
     // Initialize Power Supplies
     gpio_put(_0V85_EN, 1);
@@ -159,14 +134,229 @@ int main() {
     gpio_put(FPGA_MCU_M1, 0);
     gpio_put(FPGA_MCU_M2, 0);
 
-    // Set clock speed
-    set_sys_clock_khz(CLK_SPEED * 1000, true);
+    // Configure INA236 Over I2C
+    // Set ADC Range to 1(+/- 20.48mV)
+    uint8_t INA236_config_buf[3];
+    // Configuration Register
+    INA236_config_buf[0] = INA236_CONFIGURATION;
+    // HIGH Byte
+    INA236_config_buf[1] = (INA236_CONFIG_ADCRANGE_MASK >> 8) & 0xFF;
+    // LOW Byte
+    INA236_config_buf[2] = INA236_CONFIG_ADCRANGE_MASK & 0x0F;
+    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_config_buf, 3,
+                          false) != 3)
+        return false;
+
+    // Calibration Register for Power and Current Calculations
+    uint8_t INA236_shunt_cal_buf[3];
+    // Calibration Register
+    INA236_shunt_cal_buf[0] = INA236_CALIBRATION;
+    // HIGH Byte
+    INA236_shunt_cal_buf[1] = (SHUNT_CAL_INT >> 8) & 0xFF;
+    // Low Byte
+    INA236_shunt_cal_buf[2] = SHUNT_CAL_INT & 0x0F;
+    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_shunt_cal_buf, 3,
+                          false) != 3)
+        return false;
 
     sleep_ms(4000);
     while(true) {
+        tight_loop_contents(); // PWM
+
         gpio_put(MCU_HUB_LED, 1);
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, 0);
         sleep_ms(500);
+
+        printf("Watchdog\n");
+
+        // INA700 Readings
+        int16_t temp_reading_3V3;
+        int16_t temp_reading_1V8;
+        int16_t temp_reading_1V2;
+        int16_t temp_reading_0V9;
+
+        int16_t current_reading_3V3;
+        int16_t current_reading_1V8;
+        int16_t current_reading_1V2;
+        int16_t current_reading_0V9;
+
+        int16_t voltage_reading_3V3;
+        int16_t voltage_reading_1V8;
+        int16_t voltage_reading_1V2;
+        int16_t voltage_reading_0V9;
+
+        uint32_t power_reading_3V3;
+        uint32_t power_reading_1V8;
+        uint32_t power_reading_1V2;
+        uint32_t power_reading_0V9;
+
+        // INA236 Readings
+        int16_t current_reading_0V85;
+        uint16_t voltage_reading_0V85;
+        uint16_t power_reading_0V85;
+
+        // Temp readings from all INA700 Sensors
+        if(device_i2c_read_i16(i2c0, INA700_3V3_SENSE, &INA700_DIETEMP, 2,
+                               &temp_reading_3V3, 2))
+            printf("Could not read Temp from INA700: 3V3_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_1V8_SENSE, &INA700_DIETEMP, 2,
+                               &temp_reading_1V8, 2))
+            printf("Could not read Temp from INA700: 1V8_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_1V2_SENSE, &INA700_DIETEMP, 2,
+                               &temp_reading_1V2, 2))
+            printf("Could not read Temp from INA700: 1V2_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_0V9_SENSE, &INA700_DIETEMP, 2,
+                               &temp_reading_0V9, 2))
+            printf("Could not read Temp from INA700: 0V9_SENSE");
+
+        // Current readings from all INA700 Sensors
+        if(device_i2c_read_i16(i2c0, INA700_3V3_SENSE, &INA700_CURRENT, 2,
+                               &current_reading_3V3, 2))
+            printf("Could not read Current from INA700: 3V3_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_1V8_SENSE, &INA700_CURRENT, 2,
+                               &current_reading_1V8, 2))
+            printf("Could not read Current from INA700: 1V8_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_1V2_SENSE, &INA700_CURRENT, 2,
+                               &current_reading_1V2, 2))
+            printf("Could not read Current from INA700: 1V2_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_0V9_SENSE, &INA700_CURRENT, 2,
+                               &current_reading_0V9, 2))
+            printf("Could not read Current from INA700: 0V9_SENSE");
+
+        // Voltage readings from all INA700 Sensors
+        if(device_i2c_read_i16(i2c0, INA700_3V3_SENSE, &INA700_VBUS, 2,
+                               &voltage_reading_3V3, 2))
+            printf("Could not read Voltage from INA700: 3V3_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_1V8_SENSE, &INA700_VBUS, 2,
+                               &voltage_reading_1V8, 2))
+            printf("Could not read Voltage from INA700: 1V8_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_1V2_SENSE, &INA700_VBUS, 2,
+                               &voltage_reading_1V2, 2))
+            printf("Could not read Voltage from INA700: 1V2_SENSE");
+        if(device_i2c_read_i16(i2c0, INA700_0V9_SENSE, &INA700_VBUS, 2,
+                               &voltage_reading_0V9, 2))
+            printf("Could not read Voltage from INA700: 0V9_SENSE");
+
+        // Power readings from all INA700 Sensors
+        if(device_i2c_read_u32(i2c0, INA700_3V3_SENSE, &INA700_POWER, 2,
+                               &power_reading_3V3, 2))
+            printf("Could not read Power from INA700: 3V3_SENSE");
+        if(device_i2c_read_u32(i2c0, INA700_1V8_SENSE, &INA700_POWER, 2,
+                               &power_reading_1V8, 2))
+            printf("Could not read Power from INA700: 1V8_SENSE");
+        if(device_i2c_read_u32(i2c0, INA700_1V2_SENSE, &INA700_POWER, 2,
+                               &power_reading_1V2, 2))
+            printf("Could not read Power from INA700: 1V2_SENSE");
+        if(device_i2c_read_u32(i2c0, INA700_0V9_SENSE, &INA700_POWER, 2,
+                               &power_reading_0V9, 2))
+            printf("Could not read Power from INA700: 0V9_SENSE");
+
+        // Readings from INA236 Sensors
+        if(device_i2c_read_u16(i2c0, INA236_0V85_SENSE, &INA236_VBUS, 2,
+                               &voltage_reading_0V85, 2))
+            printf("Could not read Voltage from INA236: 0V85_SENSE");
+        if(device_i2c_read_u16(i2c0, INA236_0V85_SENSE, &INA236_POWER, 2,
+                               &power_reading_0V85, 2))
+            printf("Could not read Power from INA236: 0V85_SENSE");
+        if(device_i2c_read_i16(i2c0, INA236_0V85_SENSE, &INA236_CURRENT, 2,
+                               &current_reading_0V85, 2))
+            printf("Could not read Current from INA236: 0V85_SENSE");
+
+        float ina700_3V3_calculated_temp =
+            (temp_reading_3V3 >> 4) * ina700_temp_resolution;
+        int16_t ina700_3V3_calculated_current =
+            current_reading_3V3 * ina700_current_resolution;
+        float ina700_3V3_calculated_voltage =
+            voltage_reading_3V3 * ina700_voltage_resolution;
+        float ina700_3V3_calculated_power =
+            power_reading_3V3 * ina700_power_resolution;
+
+        float ina700_1V8_calculated_temp =
+            (temp_reading_1V8 >> 4) * ina700_temp_resolution;
+        int16_t ina700_1V8_calculated_current =
+            current_reading_1V8 * ina700_current_resolution;
+        float ina700_1V8_calculated_voltage =
+            voltage_reading_1V8 * ina700_voltage_resolution;
+        float ina700_1V8_calculated_power =
+            power_reading_1V8 * ina700_power_resolution;
+
+        float ina700_1V2_calculated_temp =
+            (temp_reading_1V2 >> 4) * ina700_temp_resolution;
+        int16_t ina700_1V2_calculated_current =
+            current_reading_1V2 * ina700_current_resolution;
+        float ina700_1V2_calculated_voltage =
+            voltage_reading_1V2 * ina700_voltage_resolution;
+        float ina700_1V2_calculated_power =
+            power_reading_1V2 * ina700_power_resolution;
+
+        float ina700_0V9_calculated_temp =
+            (temp_reading_0V9 >> 4) * ina700_temp_resolution;
+        int16_t ina700_0V9_calculated_current =
+            current_reading_0V9 * ina700_current_resolution;
+        float ina700_0V9_calculated_voltage =
+            voltage_reading_0V9 * ina700_voltage_resolution;
+        float ina700_0V9_calculated_power =
+            power_reading_0V9 * ina700_power_resolution;
+
+        float ina236_0V85_calculated_voltage =
+            voltage_reading_0V85 * ina236_bus_voltage_resolution;
+        float ina236_0V85_calculated_power =
+            power_reading_0V85 * INA236_CURRENT_LSB_MIN * 32;
+        float ina236_0V85_calculated_current =
+            current_reading_0V85 * INA236_CURRENT_LSB_MIN;
+
+        printf("INA700 Readings\n");
+
+        printf("\n3V3");
+        printf("Temperature: %.2fC(%02X)\n", ina700_3V3_calculated_temp,
+               temp_reading_3V3);
+        printf("Current: %dmA(%02X)\n", ina700_3V3_calculated_current,
+               current_reading_3V3);
+        printf("Voltage: %.2fV(%02X)\n", ina700_3V3_calculated_voltage,
+               voltage_reading_3V3);
+        printf("Power: %.2fW(%02X)\n", ina700_3V3_calculated_power,
+               power_reading_3V3);
+
+        printf("\n1V8");
+        printf("Temperature: %.2fC(%02X)\n", ina700_1V8_calculated_temp,
+               temp_reading_1V8);
+        printf("Current: %dmA(%02X)\n", ina700_1V8_calculated_current,
+               current_reading_1V8);
+        printf("Voltage: %.2fV(%02X)\n", ina700_1V8_calculated_voltage,
+               voltage_reading_1V8);
+        printf("Power: %.2fW(%02X)\n", ina700_1V8_calculated_power,
+               power_reading_1V8);
+
+        printf("\n1V2");
+        printf("Temperature: %.2fC(%02X)\n", ina700_1V2_calculated_temp,
+               temp_reading_1V2);
+        printf("Current: %dmA(%02X)\n", ina700_1V2_calculated_current,
+               current_reading_1V2);
+        printf("Voltage: %.2fV(%02X)\n", ina700_1V2_calculated_voltage,
+               voltage_reading_1V2);
+        printf("Power: %.2fW(%02X)\n", ina700_1V2_calculated_power,
+               power_reading_1V2);
+
+        printf("\n0V9");
+        printf("Temperature: %.2fC(%02X)\n", ina700_0V9_calculated_temp,
+               temp_reading_0V9);
+        printf("Current: %dmA(%02X)\n", ina700_0V9_calculated_current,
+               current_reading_0V9);
+        printf("Voltage: %.2fV(%02X)\n", ina700_0V9_calculated_voltage,
+               voltage_reading_0V9);
+        printf("Power: %.2fW(%02X)\n", ina700_0V9_calculated_power,
+               power_reading_0V9);
+
+        printf("INA236 Readings\n");
+        printf("\n0V9");
+        printf("Current: %fA(%02X)\n", ina236_0V85_calculated_current,
+               current_reading_0V85);
+        printf("Voltage: %.2fV(%02X)\n", ina236_0V85_calculated_voltage,
+               voltage_reading_0V85);
+        printf("Power: %.2fW(%02X)\n", ina236_0V85_calculated_power,
+               power_reading_0V85);
+        printf("-----------------------------\n");
+        printf("\n");
     }
 }
