@@ -217,9 +217,7 @@ int main() {
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
-        gpio_put(MBUS[1], 0);
-
-        /*// INA700 Readings
+        // INA700 Readings
         int16_t ina700_temp;
         int16_t ina700_current;
         int16_t ina700_voltage;
@@ -257,8 +255,6 @@ int main() {
 
         printf("Power: %.2fW(%02X)\n", ina700_calculated_power, ina700_power);
         printf("-----------------------------\n");
-        printf("Power: %.2fW(%02X)\n", ina700_calculated_power,
-               ina700_power);
         printf("\n");
 
         // USBPD IO Values
@@ -274,25 +270,31 @@ int main() {
         printf("USBPD Capacity Mismatch: %d\n", usbpd_cap_mis);
         printf("USBPD Plug Flip: %d\n", usbpd_plg_flip);
         printf("USBPD Plug Event: %d\n", usbpd_plg_evnt);
-        printf("-----------------------------\n");*/
+        printf("-----------------------------\n");
 
-        fflush(stdout);
+        /*fflush(stdout);
         readInput(buffer);
         printf("Buffer: %s\n", buffer);
 
         if (strcmp(buffer, "tl") == 0) {
+            gpio_put(MCU_HUB_LED, 0);
             printf("Setting RST to LOW\n");
             gpio_put(MBUS[1], 0);
             sleep_ms(1);
+            gpio_put(MCU_HUB_LED, 1);
         } else if (strcmp(buffer, "th") == 0){ 
+            gpio_put(MCU_HUB_LED, 0);
             printf("Setting RST to HIGH\n");
             gpio_put(MBUS[1], 1);
             sleep_ms(1);
+            gpio_put(MCU_HUB_LED, 1);
         } else if (strcmp(buffer, "ph") == 0){
+            gpio_put(MCU_HUB_LED, 0);
             printf("Pulsing RST High for 1ms\n");
             gpio_put(MBUS[1], 1);
             sleep_ms(1);
             gpio_put(MBUS[1], 0);
-        }
+            gpio_put(MCU_HUB_LED, 1);
+        }*/
     }
 }
