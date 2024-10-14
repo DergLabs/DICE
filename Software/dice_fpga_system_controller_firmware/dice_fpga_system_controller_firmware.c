@@ -1,4 +1,5 @@
 #include <pico.h>
+#include <pico/error.h>
 #include <stdio.h>
 #include "pico/stdio.h"
 #include "hardware/spi.h"
@@ -25,7 +26,7 @@ int main() {
     gpio_set_function(I2C0_SCL, GPIO_FUNC_I2C);
     gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
-
+    //
     // Set SPI format
     spi_set_format(spi0,       // SPI instance
                    8,          // Number of bits per transfer
@@ -66,7 +67,6 @@ int main() {
     gpio_init(_3V3_EN);
     gpio_set_dir(_3V3_EN, GPIO_OUT);
     gpio_put(_3V3_EN, 0);
-
     gpio_init(_2V5_EN);
     gpio_set_dir(_2V5_EN, GPIO_OUT);
     gpio_put(_2V5_EN, 0);
@@ -134,8 +134,6 @@ int main() {
     gpio_put(FPGA_MCU_M1, 0);
     gpio_put(FPGA_MCU_M2, 0);
 
-    // Configure INA236 Over I2C
-    // Set ADC Range to 1(+/- 20.48mV)
     uint8_t INA236_config_buf[3];
     // Configuration Register
     INA236_config_buf[0] = INA236_CONFIGURATION;
@@ -143,9 +141,6 @@ int main() {
     INA236_config_buf[1] = (INA236_CONFIG_ADCRANGE_MASK >> 8) & 0xFF;
     // LOW Byte
     INA236_config_buf[2] = INA236_CONFIG_ADCRANGE_MASK & 0x0F;
-    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_config_buf, 3,
-                          false) != 3)
-        return false;
 
     // Calibration Register for Power and Current Calculations
     uint8_t INA236_shunt_cal_buf[3];
@@ -155,11 +150,21 @@ int main() {
     INA236_shunt_cal_buf[1] = (SHUNT_CAL_INT >> 8) & 0xFF;
     // Low Byte
     INA236_shunt_cal_buf[2] = SHUNT_CAL_INT & 0x0F;
-    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_shunt_cal_buf, 3,
-                          false) != 3)
-        return false;
 
     sleep_ms(4000);
+    // Configure INA236 Over I2C
+    // Set ADC Range to 1(+/- 20.48mV)
+    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_config_buf, 3,
+                          false) == PICO_ERROR_GENERIC) {
+        printf(
+            "INA236_0V85_SENSE address not acknowledged, no device present\n");
+    }
+
+    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_shunt_cal_buf, 3,
+                          false) == PICO_ERROR_GENERIC)
+        printf(
+            "INA236_0V85_SENSE address not acknowledged, no device present\n");
+
     while(true) {
         tight_loop_contents(); // PWM
 
@@ -308,7 +313,7 @@ int main() {
 
         printf("INA700 Readings\n");
 
-        printf("\n3V3");
+        printf("\n3V3\n");
         printf("Temperature: %.2fC(%02X)\n", ina700_3V3_calculated_temp,
                temp_reading_3V3);
         printf("Current: %dmA(%02X)\n", ina700_3V3_calculated_current,
@@ -318,7 +323,7 @@ int main() {
         printf("Power: %.2fW(%02X)\n", ina700_3V3_calculated_power,
                power_reading_3V3);
 
-        printf("\n1V8");
+        printf("\n1V8\n");
         printf("Temperature: %.2fC(%02X)\n", ina700_1V8_calculated_temp,
                temp_reading_1V8);
         printf("Current: %dmA(%02X)\n", ina700_1V8_calculated_current,
@@ -328,7 +333,7 @@ int main() {
         printf("Power: %.2fW(%02X)\n", ina700_1V8_calculated_power,
                power_reading_1V8);
 
-        printf("\n1V2");
+        printf("\n1V2\n");
         printf("Temperature: %.2fC(%02X)\n", ina700_1V2_calculated_temp,
                temp_reading_1V2);
         printf("Current: %dmA(%02X)\n", ina700_1V2_calculated_current,
@@ -338,7 +343,7 @@ int main() {
         printf("Power: %.2fW(%02X)\n", ina700_1V2_calculated_power,
                power_reading_1V2);
 
-        printf("\n0V9");
+        printf("\n0V9\n");
         printf("Temperature: %.2fC(%02X)\n", ina700_0V9_calculated_temp,
                temp_reading_0V9);
         printf("Current: %dmA(%02X)\n", ina700_0V9_calculated_current,
@@ -348,8 +353,8 @@ int main() {
         printf("Power: %.2fW(%02X)\n", ina700_0V9_calculated_power,
                power_reading_0V9);
 
-        printf("INA236 Readings\n");
-        printf("\n0V9");
+        printf("\nINA236 Readings\n");
+        printf("\n0V85\n");
         printf("Current: %fA(%02X)\n", ina236_0V85_calculated_current,
                current_reading_0V85);
         printf("Voltage: %.2fV(%02X)\n", ina236_0V85_calculated_voltage,
