@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.1
         }
       },
       "diff_pair_dimensions": [
@@ -58,34 +58,19 @@
           "width": 0.0
         },
         {
-          "gap": 0.12,
+          "gap": 0.11,
           "via_gap": 0.2,
           "width": 0.1
         },
         {
-          "gap": 0.2,
+          "gap": 0.15,
+          "via_gap": 0.2,
+          "width": 0.1
+        },
+        {
+          "gap": 0.11,
           "via_gap": 0.2,
           "width": 0.11
-        },
-        {
-          "gap": 0.15,
-          "via_gap": 0.2,
-          "width": 0.12
-        },
-        {
-          "gap": 0.1,
-          "via_gap": 0.2,
-          "width": 0.125
-        },
-        {
-          "gap": 0.15,
-          "via_gap": 0.2,
-          "width": 0.125
-        },
-        {
-          "gap": 0.15,
-          "via_gap": 0.2,
-          "width": 0.15
         }
       ],
       "drc_exclusions": [],
@@ -247,6 +232,10 @@
         {
           "diameter": 0.25,
           "drill": 0.15
+        },
+        {
+          "diameter": 0.4,
+          "drill": 0.3
         }
       ],
       "zones_allow_external_fillets": false
@@ -932,6 +921,23 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "MBUS_HV",
+        "pcb_color": "rgb(200, 176, 255)",
+        "schematic_color": "rgb(200, 176, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "MCU_BUS",
         "pcb_color": "rgb(199, 234, 255)",
         "schematic_color": "rgb(199, 234, 255)",
@@ -1161,7 +1167,7 @@
         "pattern": "/Top/Power/+1V8_SNS"
       },
       {
-        "netclass": "+3V3",
+        "netclass": "+1V8",
         "pattern": "+1V8"
       },
       {
@@ -1407,6 +1413,10 @@
       {
         "netclass": "FPGA_SPI",
         "pattern": "/Top/*/SYS_SPI*"
+      },
+      {
+        "netclass": "MBUS_HV",
+        "pattern": "/Top/Board to Boards/MBUS_H*"
       }
     ]
   },
