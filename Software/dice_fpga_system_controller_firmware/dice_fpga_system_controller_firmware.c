@@ -135,36 +135,36 @@ int main() {
     gpio_put(FPGA_MCU_M1, 0);
     gpio_put(FPGA_MCU_M2, 0);
 
-    uint8_t INA236_config_buf[3];
+    uint8_t INA236_CONFIG_BUF[3];
     // Configuration Register
-    INA236_config_buf[0] = INA236_CONFIGURATION;
+    INA236_CONFIG_BUF[0] = INA236_CONFIGURATION;
     // HIGH Byte
-    INA236_config_buf[1] = (INA236_CONFIG_ADCRANGE_MASK >> 8) & 0xFF;
+    INA236_CONFIG_BUF[1] = (INA236_CONFIG_ADCRANGE_MASK >> 8) & 0xFF;
     // LOW Byte
-    INA236_config_buf[2] = INA236_CONFIG_ADCRANGE_MASK & 0x0F;
+    INA236_CONFIG_BUF[2] = INA236_CONFIG_ADCRANGE_MASK & 0x0F;
 
     // Calibration Register for Power and Current Calculations
-    uint8_t INA236_shunt_cal_buf[3];
+    uint8_t INA236_SHUNT_CAL_BUF[3];
     // Calibration Register
-    INA236_shunt_cal_buf[0] = INA236_CALIBRATION;
+    INA236_SHUNT_CAL_BUF[0] = INA236_CALIBRATION;
     // HIGH Byte
-    INA236_shunt_cal_buf[1] = (SHUNT_CAL_INT >> 8) & 0xFF;
+    INA236_SHUNT_CAL_BUF[1] = (SHUNT_CAL_INT >> 8) & 0xFF;
     // Low Byte
-    INA236_shunt_cal_buf[2] = SHUNT_CAL_INT & 0x0F;
+    INA236_SHUNT_CAL_BUF[2] = SHUNT_CAL_INT & 0x0F;
 
     sleep_ms(4000);
     // Configure INA236 Over I2C
     // Set ADC Range to 1(+/- 20.48mV)
-    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_config_buf, 3,
+    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_CONFIG_BUF, 3,
                           false) == PICO_ERROR_GENERIC) {
-        printf(
-            "INA236_0V85_SENSE address not acknowledged, no device present\n");
+        printf("INA236_0V85_SENSE address not acknowledged, or no device "
+               "present\n");
     }
 
-    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_shunt_cal_buf, 3,
+    if(i2c_write_blocking(i2c0, INA236_0V85_SENSE, INA236_SHUNT_CAL_BUF, 3,
                           false) == PICO_ERROR_GENERIC)
-        printf(
-            "INA236_0V85_SENSE address not acknowledged, no device present\n");
+        printf("INA236_0V85_SENSE address not acknowledged, or no device "
+               "present\n");
 
     while(true) {
         tight_loop_contents(); // PWM
@@ -259,13 +259,13 @@ int main() {
             printf("Could not read Power from INA700: 0V9_SENSE\n");
 
         // Readings from INA236 Sensors
-        if(!device_i2c_read_u16(i2c1, INA236_0V85_SENSE, &INA236_VBUS, 2,
+        if(!device_i2c_read_u16(i2c0, INA236_0V85_SENSE, &INA236_VBUS, 2,
                                 &voltage_reading_0V85, 2))
             printf("Could not read Voltage from INA236: 0V85_SENSE\n");
-        if(!device_i2c_read_u16(i2c1, INA236_0V85_SENSE, &INA236_POWER, 2,
+        if(!device_i2c_read_u16(i2c0, INA236_0V85_SENSE, &INA236_POWER, 2,
                                 &power_reading_0V85, 2))
             printf("Could not read Power from INA236: 0V85_SENSE\n");
-        if(!device_i2c_read_i16(i2c1, INA236_0V85_SENSE, &INA236_CURRENT, 2,
+        if(!device_i2c_read_i16(i2c0, INA236_0V85_SENSE, &INA236_CURRENT, 2,
                                 &current_reading_0V85, 2))
             printf("Could not read Current from INA236: 0V85_SENSE\n");
 
@@ -298,12 +298,12 @@ int main() {
 
         float ina700_0V9_calculated_temp =
             (temp_reading_0V9 >> 4) * ina700_temp_resolution;
-        int16_t ina700_0V9_calculated_current =
-            current_reading_0V9 * ina700_current_resolution;
+        int16_t ina700_0V9_calculated_current = 
+         current_reading_0V9 * ina700_current_resolution;
         float ina700_0V9_calculated_voltage =
             voltage_reading_0V9 * ina700_voltage_resolution;
-        float ina700_0V9_calculated_power =
-            power_reading_0V9 * ina700_power_resolution;
+        float ina700_0V9_calculated_power = power_reading_0V9;
+            // power_reading_0V9 * ina700_power_resolution;
 
         float ina236_0V85_calculated_voltage =
             voltage_reading_0V85 * ina236_bus_voltage_resolution;

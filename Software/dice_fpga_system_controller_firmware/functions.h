@@ -1,3 +1,4 @@
+#include <pico/error.h>
 #include <pico/types.h>
 #include <stdbool.h>
 #include "hardware/i2c.h"
@@ -7,6 +8,12 @@ bool device_i2c_read_u16(i2c_inst_t *i2c_port, uint8_t addr, const uint8_t *src,
     unsigned char buf[2];
 
     int wrote = i2c_write_blocking(i2c_port, addr, src, src_len, false);
+    if(wrote == PICO_ERROR_GENERIC) {
+        printf("device_i2c_read_u16: Address not acknowledged or no device "
+               "present:\n");
+        printf("device_i2c_read_u16: Address: %x\n", addr);
+        return false;
+    }
     if(wrote != src_len) {
         printf("device_i2c_read_u16: did not write %d, instead wrote %d\n",
                src_len, wrote);
