@@ -44,10 +44,8 @@ int main() {
     gpio_set_dir(SYS_SPI_CS, GPIO_OUT);
     gpio_put(SYS_SPI_CS, 1); // Chip select is active-low
 
-    // TODO: Configure SI5338 with given header file
-    // Currently the pwm is set up but not sure how to actually
-    // use the header file
 
+	// TODO: Repurpose this code for PWM on fan
     // gpio_set_function(MCU_CLK, GPIO_FUNC_PWM);
     // uint slice_num = pwm_gpio_to_slice_num(MCU_CLK);
     // uint channel = pwm_gpio_to_channel(MCU_CLK);
@@ -149,7 +147,7 @@ int main() {
     INA236_SHUNT_CAL_BUF[0] = INA236_CALIBRATION;
     // HIGH Byte
     INA236_SHUNT_CAL_BUF[1] = (SHUNT_CAL_INT >> 8) & 0xFF;
-    // Low Byte
+    // LOW Byte
     INA236_SHUNT_CAL_BUF[2] = SHUNT_CAL_INT & 0x0F;
 
     sleep_ms(4000);
@@ -302,8 +300,8 @@ int main() {
          current_reading_0V9 * ina700_current_resolution;
         float ina700_0V9_calculated_voltage =
             voltage_reading_0V9 * ina700_voltage_resolution;
-        float ina700_0V9_calculated_power = power_reading_0V9;
-            // power_reading_0V9 * ina700_power_resolution;
+        float ina700_0V9_calculated_power = 
+            power_reading_0V9 * ina700_power_resolution;
 
         float ina236_0V85_calculated_voltage =
             voltage_reading_0V85 * ina236_bus_voltage_resolution;

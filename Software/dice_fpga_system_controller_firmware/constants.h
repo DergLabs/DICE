@@ -48,7 +48,7 @@ static const uint8_t INA700_VBUS = 0x05;
 static const uint8_t INA700_POWER = 0x08;
 
 // INA236 Sensor
-static const int INA236_0V85_SENSE = 0x48;
+static const int INA236_0V85_SENSE = 0x40;
 
 // INA236 Registers
 static const uint8_t INA236_CONFIGURATION = 0x00;
@@ -68,7 +68,6 @@ static const float ina700_temp_resolution = 125 * mili;
 static const float ina700_current_resolution = 480 * mili;
 static const float ina700_voltage_resolution = 3.125 * mili;
 static const float ina700_power_resolution = 96 * micro;
-
 static const float ina236_bus_voltage_resolution = 1.6 * mili;
 
 // For the INA236 to report current values in Amperes, a constant conversion
@@ -82,5 +81,3 @@ static const float SHUNT_CAL_CONST = 0.00512;
 static const float SHUNT_CAL =
     (SHUNT_CAL_CONST / (INA236_CURRENT_LSB_MIN * R_SHUNT)) / 4;
 static const uint16_t SHUNT_CAL_INT = (uint16_t)SHUNT_CAL;
-
-static const int SI5338A_ADDR = 0x70;

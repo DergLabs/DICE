@@ -1,9 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
 #include "hardware/timer.h"
 #include "hardware/clocks.h"
 #include "hardware/uart.h"
+
+#define BUFFER_SIZE 32  // Buffer size including space for null terminator
+char buffer[BUFFER_SIZE];
 
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 250MHz
@@ -76,7 +82,7 @@ bool ina700_read_32_reg(uint8_t reg, uint32_t *data) {
     if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 4, true) != 4) {
         return false;
     }
-    printf("Raw Bytes: %x | %x | %x\n", buf[0], buf[1], buf[2]);
+    //printf("Raw Bytes: %x | %x | %x\n", buf[0], buf[1], buf[2]);
     *data = (buf[0] << 16 | buf[1] << 8 | buf[2]);
     return true;
 }
@@ -89,10 +95,25 @@ bool ina700_read_16_reg(uint8_t reg, int16_t *data) {
     if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, true) != 2) {
         return false;
     }
-    printf("Raw Bytes: %x | %x |\n", buf[0], buf[1]);
+    //printf("Raw Bytes: %x | %x |\n", buf[0], buf[1]);
     *data = (buf[0] << 8) | buf[1];
     return true;
 }
+
+void readInput(char *buffer) {
+    int i = 0;
+    int ch;
+
+    // Read characters until we fill the buffer, reach EOF, or encounter a newline
+    while (i < BUFFER_SIZE - 1 && (ch = getchar()) != EOF && ch != '\n') {
+        buffer[i++] = tolower((char) ch); // convert all characters to lowercase
+    }
+
+    // Null-terminate the string
+    buffer[i] = '\0';
+    printf("Buffer: %s\n", buffer); //debug only
+}
+
 
 int main() {
     const size_t MBUS_SIZE = sizeof(MBUS) / sizeof(MBUS[0]);
@@ -145,8 +166,8 @@ int main() {
     gpio_pull_up(USBPD_SINK_EN);
     gpio_pull_up(USBPD_DBG_ACC);
     gpio_pull_up(USBPD_CAP_MIS);
-    gpio_pull_up(USBPD_PLG_FLIP);
-    gpio_pull_up(USBPD_PLG_EVNT);
+    //gpio_pull_up(USBPD_PLG_FLIP);
+    //gpio_pull_up(USBPD_PLG_EVNT);
 
     // Set Pin States
 
@@ -196,8 +217,9 @@ int main() {
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
+        gpio_put(MBUS[1], 0);
 
-        // INA700 Readings
+        /*// INA700 Readings
         int16_t ina700_temp;
         int16_t ina700_current;
         int16_t ina700_voltage;
@@ -220,7 +242,7 @@ int main() {
         }
 
         // INA700 Calculated Values;
-        float ina700_calculated_temp = ina700_temp * temp_resolution;
+        float ina700_calculated_temp = (ina700_temp >> 4) * temp_resolution;
         int16_t ina700_calculated_current = ina700_current * current_resolution;
         float ina700_calculated_voltage = ina700_voltage * voltage_resolution;
         float ina700_calculated_power = ina700_power * power_resolution;
@@ -232,7 +254,45 @@ int main() {
                ina700_current);
         printf("Voltage: %.2fV(%02X)\n", ina700_calculated_voltage,
                ina700_voltage);
+
         printf("Power: %.2fW(%02X)\n", ina700_calculated_power, ina700_power);
         printf("-----------------------------\n");
+        printf("Power: %.2fW(%02X)\n", ina700_calculated_power,
+               ina700_power);
+        printf("\n");
+
+        // USBPD IO Values
+        bool usbpd_sink_en = gpio_get(USBPD_SINK_EN);
+        bool usbpd_dbg_acc = gpio_get(USBPD_DBG_ACC);
+        bool usbpd_cap_mis = gpio_get(USBPD_CAP_MIS);
+        bool usbpd_plg_flip = gpio_get(USBPD_PLG_FLIP);
+        bool usbpd_plg_evnt = gpio_get(USBPD_PLG_EVNT);
+
+        // Display USBPD IO Values
+        printf("USBPD Sink Enable: %d\n", usbpd_sink_en);
+        printf("USBPD Debug Access: %d\n", usbpd_dbg_acc);
+        printf("USBPD Capacity Mismatch: %d\n", usbpd_cap_mis);
+        printf("USBPD Plug Flip: %d\n", usbpd_plg_flip);
+        printf("USBPD Plug Event: %d\n", usbpd_plg_evnt);
+        printf("-----------------------------\n");*/
+
+        fflush(stdout);
+        readInput(buffer);
+        printf("Buffer: %s\n", buffer);
+
+        if (strcmp(buffer, "tl") == 0) {
+            printf("Setting RST to LOW\n");
+            gpio_put(MBUS[1], 0);
+            sleep_ms(1);
+        } else if (strcmp(buffer, "th") == 0){ 
+            printf("Setting RST to HIGH\n");
+            gpio_put(MBUS[1], 1);
+            sleep_ms(1);
+        } else if (strcmp(buffer, "ph") == 0){
+            printf("Pulsing RST High for 1ms\n");
+            gpio_put(MBUS[1], 1);
+            sleep_ms(1);
+            gpio_put(MBUS[1], 0);
+        }
     }
 }
