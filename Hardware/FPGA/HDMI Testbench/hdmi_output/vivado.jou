@@ -1,0 +1,98 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Oct 28 19:39:41 2024
+# Process ID: 20804
+# Current directory: C:/Users/johnh/Desktop/hdmi_output
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8788 C:\Users\johnh\Desktop\hdmi_output\hdmi_output.xpr
+# Log file: C:/Users/johnh/Desktop/hdmi_output/vivado.log
+# Journal file: C:/Users/johnh/Desktop/hdmi_output\vivado.jou
+# Running On: DESKTOP-U9NB2CD, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 24, Host memory: 68638 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/johnh/Desktop/hdmi_output/hdmi_output.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top hdmi_tx_top [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+create_ip_run [get_files -of_objects [get_fileset sources_1] C:/Users/johnh/Desktop/hdmi_output/hdmi_output.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+launch_runs clk_wiz_0_synth_1
+wait_on_run clk_wiz_0_synth_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+refresh_design
+refresh_design
+refresh_design
+set_property IOSTANDARD LVCMOS33 [get_ports [list {video_data[23]} {video_data[22]} {video_data[21]} {video_data[20]} {video_data[19]} {video_data[18]} {video_data[17]} {video_data[16]} {video_data[15]} {video_data[14]} {video_data[13]} {video_data[12]} {video_data[11]} {video_data[10]} {video_data[9]} {video_data[8]} {video_data[7]} {video_data[6]} {video_data[5]} {video_data[4]} {video_data[3]} {video_data[2]} {video_data[1]} {video_data[0]}]]
+set_property OFFCHIP_TERM NONE [get_ports [list {video_data[23]} {video_data[22]} {video_data[21]} {video_data[20]} {video_data[19]} {video_data[18]} {video_data[17]} {video_data[16]} {video_data[15]} {video_data[14]} {video_data[13]} {video_data[12]} {video_data[11]} {video_data[10]} {video_data[9]} {video_data[8]} {video_data[7]} {video_data[6]} {video_data[5]} {video_data[4]} {video_data[3]} {video_data[2]} {video_data[1]} {video_data[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list hdmi_i2c_scl]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list hdmi_i2c_sda]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list hdmi_out_nrst]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list reset]]
+set_property IOSTANDARD LVDS [get_ports [list sysclk_p]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list video_de]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list video_hs]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list video_pixel_clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list video_vs]]
+set_property OFFCHIP_TERM NONE [get_ports [list hdmi_i2c_scl]]
+set_property OFFCHIP_TERM NONE [get_ports [list hdmi_i2c_sda]]
+set_property OFFCHIP_TERM NONE [get_ports [list hdmi_i2c_sda]]
+set_property OFFCHIP_TERM NONE [get_ports [list hdmi_out_nrst]]
+set_property OFFCHIP_TERM NONE [get_ports [list video_de]]
+set_property OFFCHIP_TERM NONE [get_ports [list video_hs]]
+set_property OFFCHIP_TERM NONE [get_ports [list video_pixel_clk]]
+set_property OFFCHIP_TERM NONE [get_ports [list video_vs]]
+file mkdir C:/Users/johnh/Desktop/hdmi_output/hdmi_output.srcs/constrs_1/new
+close [ open C:/Users/johnh/Desktop/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc w ]
+add_files -fileset constrs_1 C:/Users/johnh/Desktop/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc
+set_property target_constrs_file C:/Users/johnh/Desktop/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc [current_fileset -constrset]
+save_constraints -force
+set_property IOSTANDARD LVDS [get_ports [list sysclk_p]]
+place_ports sysclk_p D19
+place_ports reset E22
+place_ports video_de AA15
+place_ports video_hs AB15
+place_ports video_pixel_clk W15
+place_ports video_vs Y15
+place_ports hdmi_out_nrst AF12
+place_ports hdmi_i2c_scl AF15
+place_ports hdmi_i2c_sda AE16
+place_ports {video_data[23]} AD9
+place_ports {video_data[22]} AC9
+place_ports {video_data[21]} AF10
+place_ports {video_data[20]} AE10
+place_ports {video_data[19]} AE11
+place_ports {video_data[18]} AD11
+place_ports {video_data[17]} AC11
+place_ports {video_data[16]} AC12
+place_ports {video_data[15]} AD8
+place_ports {video_data[14]} AC8
+place_ports {video_data[13]} AB11
+place_ports {video_data[12]} AB12
+place_ports {video_data[11]} AC13
+place_ports {video_data[10]} AC14
+place_ports {video_data[9]} AD13
+place_ports {video_data[8]} AD14
+place_ports {video_data[7]} W8
+place_ports {video_data[6]} Y8
+place_ports {video_data[5]} W9
+place_ports {video_data[4]} AA8
+place_ports {video_data[3]} AA9
+place_ports {video_data[2]} AA10
+place_ports {video_data[1]} AB9
+place_ports {video_data[0]} AB10
+save_constraints
+launch_runs synth_1 -jobs 24
+wait_on_run synth_1
+launch_runs impl_1 -jobs 24
+wait_on_run impl_1
+close_design
+open_run synth_1 -name synth_1
+close_design
+open_run impl_1
+ipx::package_project -root_dir C:/Users/johnh/Desktop/hdmi_output/../ip_repo -vendor xilinx.com -library user -taxonomy /UserIP -import_files
+ipx::unload_core c:/Users/johnh/Desktop/ip_repo/component.xml
