@@ -1,0 +1,107 @@
+# For Spartan-6
+# 32-bit Multi-Channel FIFO Bus Master Mode
+#
+#=======================================
+# Pin Assignment 
+#=======================================
+
+#=======================================
+# FIFO INTF 
+#=======================================
+NET "CLK"              LOC = "R10" |IOSTANDARD=LVCMOS25 |SCHMITT_TRIGGER;
+NET "RXF_N"            LOC = "N6"  |IOSTANDARD=LVCMOS25;  #for M600 mode, ACK_N
+NET "TXE_N"            LOC = "P7"  |IOSTANDARD=LVCMOS25;
+NET "SIWU_N"           LOC = "T7" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "WR_N"             LOC = "R7" |IOSTANDARD=LVCMOS25 |SLEW=FAST; 
+NET "RD_N"             LOC = "P8"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "OE_N"             LOC = "N7"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "BE[0]"            LOC = "V4"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "BE[1]"            LOC = "T4"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[0]"          LOC = "V15" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[1]"          LOC = "N9"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[2]"          LOC = "U15" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[3]"          LOC = "M10" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[4]"          LOC = "V12" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[5]"          LOC = "V6"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[6]"          LOC = "T12" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[7]"          LOC = "T6"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[8]"          LOC = "V11" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[9]"          LOC = "N8"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[10]"         LOC = "U11" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[11]"         LOC = "M8"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[12]"         LOC = "V8"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[13]"         LOC = "N11" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[14]"         LOC = "U8"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "DATA[15]"         LOC = "M11" |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+#
+NET "R_OOB"            LOC = "B2"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+NET "W_OOB"            LOC = "A2"  |IOSTANDARD=LVCMOS25 |SLEW=FAST;
+#
+#=======================================
+# SYSTEM INTF 
+#=======================================
+NET "SRST_N"          LOC = "C8";  
+NET "HRST_N"          LOC = "P4";  
+
+NET "STRER[3]"       LOC = "A4";   
+NET "STRER[2]"       LOC = "C4";  
+NET "STRER[1]"       LOC = "C14"; 
+NET "STRER[0]"       LOC = "E13"; 
+
+NET "MLTCN"          LOC = "D14";
+NET "STREN"          LOC = "E12";
+NET "ERDIS"          LOC = "F12";
+
+#=======================================
+# CLOCK 
+#=======================================
+NET "CLK" TNM_NET = "CLK"; 
+TIMESPEC "TS_CLK" = PERIOD "CLK" 10 ns HIGH 50.00% INPUT_JITTER 800 ps PRIORITY 1; 
+
+#=======================================
+# IO constraints 
+#=======================================
+NET "DATA<*>"        TNM = "M_FIFO_IO";
+NET "BE<*>"          TNM = "M_FIFO_IO";
+NET "RXF_N"          TNM = "M_FIFO_I";
+NET "TXE_N"          TNM = "M_FIFO_I1";
+NET "WR_N"           TNM = "M_FIFO_O";
+NET "RD_N"           TNM = "M_FIFO_O";
+NET "OE_N"           TNM = "M_FIFO_O";
+#
+NET "SIWU_N"         TNM = "LED_O";
+NET "STRER<*>"       TNM = "LED_O";
+#
+INST "i1_fsm/odata*" IOB=TRUE;
+INST "i1_fsm/obe*"   IOB=TRUE;
+INST "i1_fsm/wr_n"   IOB=TRUE;
+INST "i1_fsm/rd_n"   IOB=TRUE;
+INST "i1_fsm/oe_n"   IOB=TRUE;
+INST "i1_fsm/irxf_n*" IOB=TRUE;
+
+#=======================================
+# Exceptions 
+#=======================================
+
+NET "i1_fsm/be_oe_n" TPTHRU = "OUT_EN";
+NET "i1_fsm/dt_oe_n" TPTHRU = "OUT_EN";
+
+NET "HRST_N" TNM = "IN_TIG";
+NET "SRST_N" TNM = "IN_TIG";
+NET "R_OOB"  TNM = "IN_TIG";
+NET "W_OOB"  TNM = "IN_TIG";
+NET "MLTCN"  TNM = "IN_TIG";
+NET "STREN"  TNM = "IN_TIG";
+NET "ERDIS"  TNM = "IN_TIG";
+#
+TIMESPEC TS_TIG   = FROM "IN_TIG" TO FFS TIG; 
+TIMESPEC TS_TIG   = FROM FFS TO "LED_O" TIG;
+TIMESPEC TS_TIG   = FROM "M_FIFO_I1" TO FFS TIG; 
+TIMESPEC TS_TIG   = FROM "CLK" THRU "OUT_EN" TO "M_FIFO_IO" TIG; 
+# IO timing 
+TIMEGRP "M_FIFO_IO" OFFSET = IN 6 ns VALID 6.5 ns BEFORE "CLK" RISING;
+TIMEGRP "M_FIFO_I"  OFFSET = IN 6 ns VALID 6.5 ns BEFORE "CLK" RISING;
+
+TIMEGRP "M_FIFO_IO" OFFSET = OUT 9 ns VALID 5.8 ns AFTER "CLK" RISING;
+TIMEGRP "M_FIFO_O"  OFFSET = OUT 9 ns VALID 5.8 ns AFTER "CLK" RISING;
+# End of generated constraints

@@ -1,0 +1,283 @@
+
+*** Running vivado
+    with args -log mst_fifo_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mst_fifo_top.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source mst_fifo_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:17 . Memory (MB): peak = 486.559 ; gain = 182.398
+Command: synth_design -top mst_fifo_top -part xcku3p-ffva676-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 23640
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:13 . Memory (MB): peak = 933.734 ; gain = 443.246
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:389]
+WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:391]
+WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:392]
+WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:393]
+INFO: [Synth 8-6157] synthesizing module 'mst_fifo_top' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:10]
+INFO: [Synth 8-6157] synthesizing module 'mst_fifo_io' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_io.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_io' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_io.v:9]
+INFO: [Synth 8-6157] synthesizing module 'mst_fifo_fsm' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:9]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:185]
+INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_fsm' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:9]
+INFO: [Synth 8-6157] synthesizing module 'mst_pre_fet' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_pre_fet.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'mst_pre_fet' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_pre_fet.v:10]
+INFO: [Synth 8-6157] synthesizing module 'mst_data_chk' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_data_chk.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mst_data_chk' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_data_chk.v:9]
+INFO: [Synth 8-6157] synthesizing module 'mst_data_gen' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_data_gen.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'mst_data_gen' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_data_gen.v:10]
+INFO: [Synth 8-6157] synthesizing module 'mst_fifo_ctl' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_ctl.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_ctl' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_ctl.v:11]
+INFO: [Synth 8-6157] synthesizing module 'sp_sram_16k36' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/sp_sram_16k36.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'sp_sram_16k36' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/sp_sram_16k36.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_top' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:10]
+WARNING: [Synth 8-3917] design mst_fifo_top has port debug_sig[3] driven by constant 1
+WARNING: [Synth 8-3917] design mst_fifo_top has port debug_sig[2] driven by constant 0
+WARNING: [Synth 8-3917] design mst_fifo_top has port debug_sig[1] driven by constant 1
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:18 . Memory (MB): peak = 1052.738 ; gain = 562.250
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:20 . Memory (MB): peak = 1052.738 ; gain = 562.250
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku3p-ffva676-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:20 . Memory (MB): peak = 1052.738 ; gain = 562.250
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-e
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'nxt_state_reg' in module 'mst_fifo_fsm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                    MTRD |                             0010 |                             0010
+                    MDLE |                             0100 |                             0100
+                    MTWR |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'nxt_state_reg' in module 'mst_fifo_fsm'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:22 . Memory (MB): peak = 1052.738 ; gain = 562.250
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 8     
+	   2 Input   16 Bit       Adders := 8     
+	   2 Input   15 Bit       Adders := 1     
+	   2 Input   14 Bit       Adders := 2     
+	   2 Input   13 Bit       Adders := 3     
+	   2 Input   12 Bit       Adders := 6     
+	   2 Input    3 Bit       Adders := 9     
+	   2 Input    2 Bit       Adders := 5     
+	   3 Input    2 Bit       Adders := 4     
++---Registers : 
+	               37 Bit    Registers := 4     
+	               36 Bit    Registers := 16    
+	               32 Bit    Registers := 10    
+	               15 Bit    Registers := 1     
+	               14 Bit    Registers := 2     
+	               13 Bit    Registers := 3     
+	               12 Bit    Registers := 6     
+	                4 Bit    Registers := 14    
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 23    
++---Muxes : 
+	   2 Input   37 Bit        Muxes := 1     
+	   4 Input   37 Bit        Muxes := 1     
+	   4 Input   36 Bit        Muxes := 7     
+	   2 Input   36 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 25    
+	   2 Input   16 Bit        Muxes := 9     
+	   2 Input   14 Bit        Muxes := 3     
+	   4 Input   12 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 16    
+	   5 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
+	   3 Input    3 Bit        Muxes := 4     
+	   2 Input    2 Bit        Muxes := 5     
+	   4 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 66    
+	   3 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 17    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design mst_fifo_top has port debug_sig[3] driven by constant 1
+WARNING: [Synth 8-3917] design mst_fifo_top has port debug_sig[2] driven by constant 0
+WARNING: [Synth 8-3917] design mst_fifo_top has port debug_sig[1] driven by constant 1
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:01:19 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:01:20 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:01:21 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |sp_sram_16k36 |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |sp_sram_16k36 |     1|
+|2     |BUFG          |     1|
+|3     |CARRY8        |    24|
+|4     |LUT1          |    32|
+|5     |LUT2          |   180|
+|6     |LUT3          |    97|
+|7     |LUT4          |    96|
+|8     |LUT5          |   111|
+|9     |LUT6          |   451|
+|10    |MUXF7         |     1|
+|11    |FDCE          |  1037|
+|12    |FDPE          |   128|
+|13    |IBUF          |    11|
+|14    |IOBUF         |    36|
+|15    |OBUF          |    12|
++------+--------------+------+
+
+Report Instance Areas: 
++------+----------+-------------+------+
+|      |Instance  |Module       |Cells |
++------+----------+-------------+------+
+|1     |top       |             |  2253|
+|2     |  i1_fsm  |mst_fifo_fsm |   657|
+|3     |  i2_pref |mst_pre_fet  |   850|
+|4     |  i3_chk  |mst_data_chk |   169|
+|5     |  i4_gen  |mst_data_gen |   190|
+|6     |  i5_ctl  |mst_fifo_ctl |   291|
++------+----------+-------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 11 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:01:33 . Memory (MB): peak = 1981.059 ; gain = 1490.570
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 1981.059 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 73 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1989.594 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 48 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  IBUF => IBUF (IBUFCTRL, INBUF): 11 instances
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 36 instances
+
+The system cannot find the path specified.
+Synth Design complete | Checksum: 9ce680f7
+INFO: [Common 17-83] Releasing license: Synthesis
+32 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:01:40 . Memory (MB): peak = 1989.594 ; gain = 1503.035
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1989.594 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.runs/synth_1/mst_fifo_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file mst_fifo_top_utilization_synth.rpt -pb mst_fifo_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 21 19:32:29 2024...
