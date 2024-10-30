@@ -11,9 +11,18 @@ entity hdmi_tx_top is
         -- Clocks & Reset
         sysclk_p : in std_logic;
         sysclk_n : in std_logic;
-
         reset : in std_logic;
 
+        -- Control signals
+        video_src_sel : in std_logic;
+
+        -- External Video signals
+        ext_video_data : in std_logic_vector(23 downto 0);
+        ext_video_clk_in : in std_logic;
+        ext_video_hsync_in : in std_logic;
+        ext_video_vsync_in : in std_logic;
+        ext_video_de_in : in std_logic;
+        
         -- HDMI Clk & Data
         hdmi_out_nrst : out std_logic;
         video_pixel_clk : out std_logic;
@@ -29,13 +38,14 @@ entity hdmi_tx_top is
 end hdmi_tx_top;
 
 architecture Behavioral of hdmi_tx_top is
-    signal video_clk : std_logic;
+    signal s_video_clk : std_logic;
     signal s_video_hs : std_logic;
     signal s_video_vs : std_logic;
     signal s_video_de : std_logic;
-    signal video_data_r : std_logic_vector(7 downto 0);
-    signal video_data_g : std_logic_vector(7 downto 0);
-    signal video_data_b : std_logic_vector(7 downto 0);
+    --signal video_data_r : std_logic_vector(7 downto 0);
+    --signal video_data_g : std_logic_vector(7 downto 0);
+    --signal video_data_b : std_logic_vector(7 downto 0);
+    signal s_video_data : std_logic_vector(23 downto 0);
 
     signal clk_27m : std_logic;
     signal clk_148_5m : std_logic;   
@@ -78,6 +88,12 @@ begin
         clk_in1_p => sysclk_p,
         clk_in1_n => sysclk_n
     );
+    
+    with VIDEO_RESOLUTION select
+    s_video_clk <= clk_148_5m when "1080P_60",
+                 clk_297m when "3840P_30",
+                 clk_297m when others;
+             
 
     reset_power_on_i2c : entity work.reset_power_on
     generic map(
@@ -126,21 +142,47 @@ begin
 
     color_bar_gen : entity work.color_bar
     port map (
-        clk => video_clk,
+        clk => s_video_clk,
         rst => reset,
         hs => s_video_hs,
         vs => s_video_vs,
         de => s_video_de,
-        rgb_r => video_data_r,
-        rgb_g => video_data_g,
-        rgb_b => video_data_b
+        video_data => s_video_data
+        --rgb_r => s_video_data(7 downto 0),
+        --rgb_g =>   s_video_data(15 downto 8),
+        --rgb_b => s_video_data(23 downto 16)
     );
 
-video_data <= video_data_r & video_data_g & video_data_b;
-video_clk <= clk_297m;
-video_pixel_clk <= clk_297m;
-video_hs <= s_video_hs;
-video_vs <= s_video_vs;
-video_de <= s_video_de;
-hdmi_out_nrst <= hdmi_nrst;
+    video_mux : entity work.video_mux
+    generic map(
+        video_in_width => 24,
+        video_out_width => 24,
+        pixels_per_clk => 1
+    )
+    port map (
+        clk => clk_27m,
+        reset => reset,
+        video_source_sel => '0',
+
+        ext_video_data_in => X"000000",
+        ext_video_clk_in => '0',
+        ext_video_hsync_in => '0',
+        ext_video_vsync_in => '0',
+        ext_video_de_in => '0',
+
+        int_video_data_in => s_video_data,
+        int_video_clk_in => s_video_clk,
+        int_video_hsync_in => s_video_hs,
+        int_video_vsync_in => s_video_vs,
+        int_video_de_in => s_video_de,
+
+        video_data_out => video_data,
+        video_clk_out => video_pixel_clk,
+        video_hsync_out => video_hs,
+        video_vsync_out => video_vs,
+        video_de_out => video_de
+    );
+
+    hdmi_out_nrst <= hdmi_nrst;
+
 end Behavioral;

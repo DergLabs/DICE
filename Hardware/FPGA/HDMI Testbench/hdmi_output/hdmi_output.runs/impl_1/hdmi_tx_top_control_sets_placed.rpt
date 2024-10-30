@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Oct 28 20:00:51 2024
-| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date         : Wed Oct 30 16:00:05 2024
+| Host         : john-linux-desktop running 64-bit Ubuntu 22.04.5 LTS
 | Command      : report_control_sets -verbose -file hdmi_tx_top_control_sets_placed.rpt
 | Design       : hdmi_tx_top
 | Device       : xcku3p
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    17 |
-|    Minimum number of control sets                        |    17 |
+| Total control sets                                       |    18 |
+|    Minimum number of control sets                        |    18 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    20 |
+| Unused register locations in slices containing registers |    24 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    17 |
-| >= 0 to < 4        |     3 |
+| Total control sets |    18 |
+| >= 0 to < 4        |     5 |
 | >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     2 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     1 |
-| >= 16              |     8 |
+| >= 16              |     7 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              25 |            9 |
-| No           | No                    | Yes                    |              40 |           16 |
-| No           | Yes                   | No                     |              16 |            5 |
+| No           | No                    | No                     |              25 |           12 |
+| No           | No                    | Yes                    |              41 |           17 |
+| No           | Yes                   | No                     |              16 |            4 |
 | Yes          | No                    | No                     |              53 |           14 |
-| Yes          | No                    | Yes                    |              68 |           16 |
+| Yes          | No                    | Yes                    |              47 |           15 |
 | Yes          | Yes                   | No                     |              26 |            7 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,23 +73,24 @@ Table of Contents
 +------------------------------+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+------------------+----------------+--------------+
 |         Clock Signal         |                                        Enable Signal                                       |                               Set/Reset Signal                              | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------------+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+------------------+----------------+--------------+
+|  video_clk_gen/inst/clk_27m  |                                                                                            | reset_IBUF_inst/O                                                           |                1 |              1 |         1.00 |
 |  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/fSDA                           |                                                                             |                2 |              2 |         1.00 |
-|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/FSM_sequential_state_reg[0]_0[0]                              | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                1 |              2 |         2.00 |
+|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/FSM_sequential_state_reg[0]_0[0]                              | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                2 |              2 |         1.00 |
+|  video_clk_gen/inst/clk_297m | color_bar_gen/rgb_r_reg0                                                                   | reset_IBUF_inst/O                                                           |                2 |              3 |         1.50 |
 |  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/dcnt                                          |                                                                             |                1 |              3 |         3.00 |
-|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/fSDA                           | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                2 |              4 |         2.00 |
-|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/E[0]                           |                                                                             |                4 |              7 |         1.75 |
+|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/fSDA                           | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                1 |              4 |         4.00 |
+|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/E[0]                           |                                                                             |                3 |              7 |         2.33 |
 |  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/dcnt                                          | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                1 |              8 |         8.00 |
 |  video_clk_gen/inst/clk_27m  |                                                                                            | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/fSDA            |                3 |              9 |         3.00 |
-|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/E[0]                                                          | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                4 |             10 |         2.50 |
-|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/cnt[14]_i_2_n_0                | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/cnt[14]_i_1_n_0 |                4 |             14 |         3.50 |
-|  video_clk_gen/inst/clk_297m | color_bar_gen/v_cnt_0                                                                      | reset_IBUF_inst/O                                                           |                5 |             16 |         3.20 |
+|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/E[0]                                                          | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                3 |             10 |         3.33 |
+|  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/cnt[14]_i_2_n_0                | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/cnt[14]_i_1_n_0 |                5 |             14 |         2.80 |
 |  video_clk_gen/inst/clk_297m | color_bar_gen/active_x[15]_i_1_n_0                                                         | reset_IBUF_inst/O                                                           |                3 |             16 |         5.33 |
+|  video_clk_gen/inst/clk_297m | color_bar_gen/v_cnt_0                                                                      | reset_IBUF_inst/O                                                           |                6 |             16 |         2.67 |
 |  video_clk_gen/inst/clk_27m  | i2c_config/i2c_master_top_m0/byte_controller/bit_controller/FSM_onehot_c_state[17]_i_1_n_0 |                                                                             |                6 |             18 |         3.00 |
 |  video_clk_gen/inst/clk_27m  | reset_power_on_i2c/cnt[0]_i_1__0_n_0                                                       |                                                                             |                3 |             23 |         7.67 |
 |  video_clk_gen/inst/clk_297m |                                                                                            | reset_IBUF_inst/O                                                           |                9 |             23 |         2.56 |
-|  video_clk_gen/inst/clk_27m  |                                                                                            | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |               10 |             24 |         2.40 |
-|  video_clk_gen/inst/clk_297m | color_bar_gen/rgb_r_reg0                                                                   | reset_IBUF_inst/O                                                           |                4 |             24 |         6.00 |
-|  video_clk_gen/inst/clk_27m  |                                                                                            |                                                                             |                9 |             25 |         2.78 |
+|  video_clk_gen/inst/clk_27m  |                                                                                            | reset_power_on_i2c/hdmi_out_nrst_OBUF                                       |                9 |             24 |         2.67 |
+|  video_clk_gen/inst/clk_27m  |                                                                                            |                                                                             |               12 |             25 |         2.08 |
 +------------------------------+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+------------------+----------------+--------------+
 
 

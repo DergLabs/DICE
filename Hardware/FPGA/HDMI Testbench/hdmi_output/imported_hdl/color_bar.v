@@ -37,85 +37,15 @@ module color_bar(
 	output                hs,            //horizontal synchronization
 	output                vs,            //vertical synchronization
 	output                de,            //video valid
-	output[7:0]           rgb_r,         //video red data
-	output[7:0]           rgb_g,         //video green data
-	output[7:0]           rgb_b          //video blue data
+	output[23:0]		  video_data
+	//output[7:0]           rgb_r,         //video red data
+	//output[7:0]           rgb_g,         //video green data
+	//output[7:0]           rgb_b          //video blue data
 );
 
 //video timing parameter definition
-`ifdef  VIDEO_1280_720
-parameter H_ACTIVE = 16'd1280;           //horizontal active time (pixels)
-parameter H_FP = 16'd110;                //horizontal front porch (pixels)
-parameter H_SYNC = 16'd40;               //horizontal sync time(pixels)
-parameter H_BP = 16'd220;                //horizontal back porch (pixels)
-parameter V_ACTIVE = 16'd720;            //vertical active Time (lines)
-parameter V_FP  = 16'd5;                 //vertical front porch (lines)
-parameter V_SYNC  = 16'd5;               //vertical sync time (lines)
-parameter V_BP  = 16'd20;                //vertical back porch (lines)
-parameter HS_POL = 1'b1;                 //horizontal sync polarity, 1 : POSITIVE,0 : NEGATIVE;
-parameter VS_POL = 1'b1;                 //vertical sync polarity, 1 : POSITIVE,0 : NEGATIVE;
-//480x272 9Mhz
-`elsif  VIDEO_480_272
-parameter H_ACTIVE = 16'd480; 
-parameter H_FP = 16'd2;       
-parameter H_SYNC = 16'd41;    
-parameter H_BP = 16'd2;       
-parameter V_ACTIVE = 16'd272; 
-parameter V_FP  = 16'd2;     
-parameter V_SYNC  = 16'd10;   
-parameter V_BP  = 16'd2;     
-parameter HS_POL = 1'b0;
-parameter VS_POL = 1'b0;
-//640x480 25.175Mhz
-`elsif  VIDEO_640_480
-parameter H_ACTIVE = 16'd640; 
-parameter H_FP = 16'd16;      
-parameter H_SYNC = 16'd96;    
-parameter H_BP = 16'd48;      
-parameter V_ACTIVE = 16'd480; 
-parameter V_FP  = 16'd10;    
-parameter V_SYNC  = 16'd2;    
-parameter V_BP  = 16'd33;    
-parameter HS_POL = 1'b0;
-parameter VS_POL = 1'b0;
-//800x480 33Mhz
-`elsif  VIDEO_800_480
-parameter H_ACTIVE = 16'd800; 
-parameter H_FP = 16'd40;      
-parameter H_SYNC = 16'd128;   
-parameter H_BP = 16'd88;      
-parameter V_ACTIVE = 16'd480; 
-parameter V_FP  = 16'd1;     
-parameter V_SYNC  = 16'd3;    
-parameter V_BP  = 16'd21;    
-parameter HS_POL = 1'b0;
-parameter VS_POL = 1'b0;
-//800x600 40Mhz
-`elsif  VIDEO_800_600
-parameter H_ACTIVE = 16'd800; 
-parameter H_FP = 16'd40;      
-parameter H_SYNC = 16'd128;   
-parameter H_BP = 16'd88;      
-parameter V_ACTIVE = 16'd600; 
-parameter V_FP  = 16'd1;     
-parameter V_SYNC  = 16'd4;    
-parameter V_BP  = 16'd23;    
-parameter HS_POL = 1'b1;
-parameter VS_POL = 1'b1;
-//1024x768 65Mhz
-`elsif  VIDEO_1024_768
-parameter H_ACTIVE = 16'd1024;
-parameter H_FP = 16'd24;      
-parameter H_SYNC = 16'd136;   
-parameter H_BP = 16'd160;     
-parameter V_ACTIVE = 16'd768; 
-parameter V_FP  = 16'd3;      
-parameter V_SYNC  = 16'd6;    
-parameter V_BP  = 16'd29;     
-parameter HS_POL = 1'b0;
-parameter VS_POL = 1'b0;
 //1920x1080 148.5Mhz
-`elsif  VIDEO_1920_1080
+`ifdef  VIDEO_1920_1080
 parameter H_ACTIVE = 16'd1920;
 parameter H_FP = 16'd88;
 parameter H_SYNC = 16'd44;
@@ -198,9 +128,10 @@ assign hs = hs_reg_d0;
 assign vs = vs_reg_d0;
 assign video_active = h_active & v_active;
 assign de = video_active_d0;
-assign rgb_r = rgb_r_reg;
-assign rgb_g = rgb_g_reg;
-assign rgb_b = rgb_b_reg;
+assign video_data = {rgb_b_reg, rgb_g_reg, rgb_r_reg};
+//assign rgb_r = rgb_r_reg;
+//assign rgb_g = rgb_g_reg;
+//assign rgb_b = rgb_b_reg;
 always@(posedge clk or posedge rst)
 begin
 	if(rst == 1'b1)

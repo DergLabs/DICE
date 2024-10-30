@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Mon Oct 28 20:01:07 2024
-| Host             : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date             : Wed Oct 30 16:00:16 2024
+| Host             : john-linux-desktop running 64-bit Ubuntu 22.04.5 LTS
 | Command          : report_power -file hdmi_tx_top_power_routed.rpt -pb hdmi_tx_top_power_summary_routed.pb -rpx hdmi_tx_top_power_routed.rpx
 | Design           : hdmi_tx_top
 | Device           : xcku3p-ffva676-2-i
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.641        |
+| Total On-Chip Power (W)  | 0.639        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.167        |
+| Dynamic (W)              | 0.164        |
 | Device Static (W)        | 0.474        |
 | Effective TJA (C/W)      | 1.7          |
 | Max Ambient (C)          | 98.9         |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.006 |        5 |       --- |             --- |
-| CLB Logic      |    <0.001 |      548 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      232 |    162720 |            0.14 |
-|   Register     |    <0.001 |      228 |    325440 |            0.07 |
+| Clocks         |     0.004 |        5 |       --- |             --- |
+| CLB Logic      |    <0.001 |      535 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      236 |    162720 |            0.15 |
+|   Register     |    <0.001 |      208 |    325440 |            0.06 |
 |   CARRY8       |    <0.001 |        5 |     27120 |            0.02 |
-|   Others       |     0.000 |       18 |       --- |             --- |
+|   Others       |     0.000 |       19 |       --- |             --- |
 |   F7/F8 Muxes  |     0.000 |        1 |    216960 |           <0.01 |
-| Signals        |    <0.001 |      387 |       --- |             --- |
+| Signals        |    <0.001 |      368 |       --- |             --- |
 | MMCM           |     0.112 |        0 |       --- |             --- |
-| I/O            |     0.049 |       34 |       256 |           13.28 |
+| I/O            |     0.047 |       34 |       256 |           13.28 |
 | Static Power   |     0.474 |          |           |                 |
-| Total          |     0.641 |          |           |                 |
+| Total          |     0.639 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.147 |       0.008 |      0.139 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.145 |       0.007 |      0.139 |       NA    | Unspecified | NA         |
 | Vccint_io  |       0.850 |     0.036 |       0.001 |      0.035 |       NA    | Unspecified | NA         |
 | Vccbram    |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.190 |       0.062 |      0.128 |       NA    | Unspecified | NA         |
@@ -147,8 +147,8 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| hdmi_tx_top         |     0.167 |
-|   color_bar_gen     |     0.006 |
+| hdmi_tx_top         |     0.164 |
+|   color_bar_gen     |     0.004 |
 |   video_clk_gen     |     0.114 |
 |     inst            |     0.114 |
 |       clkin1_ibufds |     0.002 |
