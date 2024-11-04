@@ -16,25 +16,27 @@ module mst_fifo_top (
   input wire ERDIS, // 1: Disable received data sequence check  
   input wire R_OOB,
   input wire W_OOB,  
-  input wire WAKEUP_N, 
+  //input wire WAKEUP_N, 
   // FIFO Slave interface 
   input wire CLK,
-  inout wire [31:0] DATA,
-  inout wire [3:0] BE,
+  inout wire [15:0] DATA,
+  inout wire [1:0] BE,
   input wire RXF_N,    // ACK_N
   input wire TXE_N,
   output wire WR_N,    // REQ_N
-  output wire SIWU_N,
+  //output wire SIWU_N,
   output wire RD_N,
   output wire OE_N,
   // Miscellaneous Interface 
-  output wire [3:0] debug_sig,
   output wire [3:0] STRER
 );
 
-  assign debug_sig[0]   = WAKEUP_N; 
-  assign debug_sig[3:1] = 3'b101;
-  
+  wire [31:0] temp_data;
+  wire [3:0]  temp_BE;
+
+  assign temp_data[15:0] = DATA;
+  assign temp_BE[1:0] = BE;
+
   wire [31:0] tp_data;
   wire [3:0]  tp_be;
   wire tp_dt_oe_n;
@@ -81,12 +83,12 @@ module mst_fifo_top (
     .W_OOB	(W_OOB), 
     // FIFO Slave interface 
     .CLK		(CLK),
-    .DATA	(DATA),
-    .BE		(BE),
+    .DATA	(temp_data),
+    .BE		(temp_BE),
     .RXF_N	(RXF_N),   
     .TXE_N	(TXE_N),
     .WR_N	(WR_N),
-    .SIWU_N	(SIWU_N),
+    .SIWU_N	(), //Removed SIWU_N output port, unneeded
     .RD_N	(RD_N),
     .OE_N	(OE_N),
     // Miscellaneous Interface 
@@ -283,22 +285,13 @@ module mst_fifo_top (
     .mem_q	(mem_q) 
     );
     //
-  `ifdef ALTERA_FPGA 	
-  sp_sram_16k36 i6_ram (
-    .address	(mem_a),
-    .clock	(tc_clk),
-    .data	(mem_d),
-    .wren	(mem_w),
-    .q		(mem_q) 
-  );
- `else 
-  sp_sram_16k36 i6_ram (
+ 
+  blk_mem_gen_1 i6_ram (
     .clka	(tc_clk),
     .wea	(mem_w),
     .addra	(mem_a),
     .dina	(mem_d),
     .douta	(mem_q) 
   );
- `endif
 //
 endmodule 
