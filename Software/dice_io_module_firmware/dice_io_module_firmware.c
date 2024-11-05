@@ -21,62 +21,54 @@ int main() {
     set_sys_clock_khz(CLK_SPEED * 1000, true);
 
     // Init all pins we'll be using
+
     gpio_init(USBPD_FLT_IN);
+    gpio_set_dir(USBPD_FLT_IN, GPIO_OUT);
+    gpio_pull_up(USBPD_FLT_IN);
+    gpio_put(USBPD_FLT_IN, 0);
+
     gpio_init(USBPD_SINK_EN);
+    gpio_set_dir(USBPD_SINK_EN, GPIO_IN);
+    gpio_pull_up(USBPD_SINK_EN);
+
     gpio_init(USBPD_DBG_ACC);
+    gpio_set_dir(USBPD_DBG_ACC, GPIO_IN);
+    gpio_pull_up(USBPD_DBG_ACC);
+
     gpio_init(USBPD_CAP_MIS);
+    gpio_set_dir(USBPD_CAP_MIS, GPIO_IN);
+    gpio_pull_up(USBPD_CAP_MIS);
+
     gpio_init(USBPD_PLG_FLIP);
+    gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
+
     gpio_init(USBPD_PLG_EVNT);
+    gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
 
     gpio_init(CAM_PWR_EN);
+    gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
+    gpio_put(CAM_PWR_EN, 0);
+
     gpio_init(CAM_LED_EN);
-    gpio_init(I2C0_SDA);
-    gpio_init(I2C0_SCL);
-    gpio_init(I2C1_SDA);
-    gpio_init(I2C1_SCL);
+    gpio_set_dir(CAM_LED_EN, GPIO_OUT);
+    gpio_put(CAM_LED_EN, 0);
+
     gpio_init(HDMI_BUFF_EN);
+    gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
+    gpio_put(HDMI_BUFF_EN, 0);
+
     gpio_init(MCU_HUB_LED);
+    gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
+    gpio_put(MCU_HUB_LED, 0);
+
 
     for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
+        gpio_set_dir(MBUS[i], GPIO_OUT);
+        gpio_put(MBUS[i], 0);
     }
 
-    // Set directions of pins
-    gpio_set_dir(USBPD_SINK_EN, GPIO_IN);
-    gpio_set_dir(USBPD_DBG_ACC, GPIO_IN);
-    gpio_set_dir(USBPD_CAP_MIS, GPIO_IN);
-    gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
-    gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
 
-    gpio_set_dir(USBPD_FLT_IN, GPIO_OUT);
-    gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
-    gpio_set_dir(CAM_LED_EN, GPIO_OUT);
-    gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
-    gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
-
-    for(int i = 0; i < MBUS_SIZE; i++)
-        gpio_set_dir(MBUS[i], GPIO_OUT);
-
-    // Pull Up/Down resistors
-
-    // Up
-    gpio_pull_up(USBPD_FLT_IN);
-    gpio_pull_up(USBPD_SINK_EN);
-    gpio_pull_up(USBPD_DBG_ACC);
-    gpio_pull_up(USBPD_CAP_MIS);
-    // gpio_pull_up(USBPD_PLG_FLIP);
-    // gpio_pull_up(USBPD_PLG_EVNT);
-
-    // Set Pin States
-
-    // LOW
-    gpio_put(USBPD_FLT_IN, 0);
-    gpio_put(CAM_PWR_EN, 0);
-    gpio_put(CAM_LED_EN, 0);
-    gpio_put(HDMI_BUFF_EN, 0);
-    gpio_put(MCU_HUB_LED, 0);
-    for(int i = 0; i < MBUS_SIZE; i++)
-        gpio_put(MBUS[i], 0);
 
     // i2c ex
     // https://www.digikey.com/en/maker/projects/raspberry-pi-pico-rp2040-i2c-example-with-micropython-and-cc/47d0c922b79342779cdbd4b37b7eb7e2
@@ -86,11 +78,18 @@ int main() {
     i2c_init(I2C_PORT0, I2C_SPEED * 1000);
     i2c_init(I2C_PORT1, I2C_SPEED * 1000);
 
-    // Initialize I2C pins
+    gpio_init(I2C0_SDA);
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
+
+    gpio_init(I2C0_SCL);
     gpio_set_function(I2C0_SCL, GPIO_FUNC_I2C);
+
+    gpio_init(I2C1_SDA);
     gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
+
+    gpio_init(I2C1_SCL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
+
 
     // USBPD IO Values
     bool usbpd_sink_en = gpio_get(USBPD_SINK_EN);
