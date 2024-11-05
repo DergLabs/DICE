@@ -61,14 +61,11 @@ int main() {
     gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
     gpio_put(MCU_HUB_LED, 0);
 
-
     for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
         gpio_set_dir(MBUS[i], GPIO_OUT);
         gpio_put(MBUS[i], 0);
     }
-
-
 
     // i2c ex
     // https://www.digikey.com/en/maker/projects/raspberry-pi-pico-rp2040-i2c-example-with-micropython-and-cc/47d0c922b79342779cdbd4b37b7eb7e2
@@ -89,7 +86,6 @@ int main() {
 
     gpio_init(I2C1_SCL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
-
 
     // USBPD IO Values
     bool usbpd_sink_en = gpio_get(USBPD_SINK_EN);

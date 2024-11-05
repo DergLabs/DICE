@@ -47,4 +47,4 @@ void readInput(char *buffer) {
     printf("Buffer: %s\n", buffer); // debug only
 }
 
-#endif //!FUNCTIONS_H
+#endif //! FUNCTIONS_H
