@@ -4,10 +4,6 @@
 #include <ctype.h>
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
-#include "hardware/timer.h"
-#include "hardware/clocks.h"
-#include "hardware/uart.h"
-
 #include "constants.h"
 #include "functions.h"
 
@@ -21,11 +17,16 @@ int main() {
     set_sys_clock_khz(CLK_SPEED * 1000, true);
 
     // Init all pins we'll be using
+    gpio_init(VBUS_ISNS_ALRT);
+    gpio_set_dir(VBUS_ISNS_ALRT, GPIO_IN);
+    gpio_pull_up(VBUS_ISNS_ALRT);
+
+    gpio_init(MIPI_RST_R);
+    gpio_set_dir(MIPI_RST_R, GPIO_OUT);
 
     gpio_init(USBPD_FLT_IN);
-    gpio_set_dir(USBPD_FLT_IN, GPIO_OUT);
+    gpio_set_dir(USBPD_FLT_IN, GPIO_IN);
     gpio_pull_up(USBPD_FLT_IN);
-    gpio_put(USBPD_FLT_IN, 0);
 
     gpio_init(USBPD_SINK_EN);
     gpio_set_dir(USBPD_SINK_EN, GPIO_IN);
@@ -41,21 +42,17 @@ int main() {
 
     gpio_init(USBPD_PLG_FLIP);
     gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
+	gpio_pull_up(USBPD_PLG_FLIP);
 
     gpio_init(USBPD_PLG_EVNT);
     gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
+	gpio_pull_up(USBPD_PLG_EVNT);
 
     gpio_init(CAM_PWR_EN);
     gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
-    gpio_put(CAM_PWR_EN, 0);
 
     gpio_init(CAM_LED_EN);
     gpio_set_dir(CAM_LED_EN, GPIO_OUT);
-    gpio_put(CAM_LED_EN, 0);
-
-    gpio_init(HDMI_BUFF_EN);
-    gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
-    gpio_put(HDMI_BUFF_EN, 0);
 
     gpio_init(MCU_HUB_LED);
     gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
@@ -64,7 +61,6 @@ int main() {
     for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
         gpio_set_dir(MBUS[i], GPIO_OUT);
-        gpio_put(MBUS[i], 0);
     }
 
     // i2c ex
@@ -111,7 +107,6 @@ int main() {
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
-        gpio_put(MBUS[1], 0);
 
         // INA700 Readings
         int16_t ina700_temp;
