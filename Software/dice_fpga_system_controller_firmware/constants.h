@@ -3,37 +3,35 @@
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 250MHz
 static const uint8_t CLK_SPEED = 250;
-static const uint8_t DESIRED_MCU_CLK_SPEED = 100; // MHz
 
-static const uint8_t SPI_SPEED = 40;
-static const uint16_t I2C_SPEED = 400;
+// Will be made into 50MHz
+static const uint8_t SPI_SPEED = 50;
+// Will be made into 100KHz
+static const uint16_t I2C_SPEED = 100;
 
 // GPIO Pins
-static const uint8_t _3V3_EN = 22;
-static const uint8_t _2V5_EN = 21;
-static const uint8_t _1V8_EN = 12;
-static const uint8_t _1V2_EN = 10;
-static const uint8_t _0V9_EN = 14;
-static const uint8_t _0V85_EN = 20;
-static const uint8_t _3V3_ISNS_ALERT = 9;
-static const uint8_t _1V8_ISNS_ALERT = 8;
-static const uint8_t _1V2_ISNS_ALERT = 23;
-static const uint8_t _0V9_ISNS_ALERT = 24;
-static const uint8_t _0V85_ISNS_ALERT = 15;
-
-static const uint8_t SYS_SPI_MISO = 16;
-static const uint8_t SYS_SPI_MOSI = 19;
-static const uint8_t SYS_SPI_SCLK = 18;
-static const uint8_t SYS_SPI_CS = 17;
+static const uint8_t FPGA_MCU_M1 = 1;
+static const uint8_t FPGA_MCU_M0 = 2;
+static const uint8_t FPGA_MCU_M2 = 3;
 static const uint8_t I2C0_SDA = 4;
 static const uint8_t I2C0_SCL = 5;
 static const uint8_t I2C1_SDA = 6;
 static const uint8_t I2C1_SCL = 7;
+static const uint8_t _0V85_EN = 8;
+static const uint8_t _0V85_ISNS_ALERT = 9;
+static const uint8_t _1V2_ISNS_ALERT = 10;
+static const uint8_t _1V8_ISNS_ALERT = 12;
+static const uint8_t FAN_PWM = 13;
+static const uint8_t _3V3_ISNS_ALERT = 14;
+static const uint8_t _1V2_EN = 15;
+static const uint8_t SYS_SPI_MISO = 16;
+static const uint8_t SYS_SPI_CS = 17;
+static const uint8_t SYS_SPI_SCK = 18;
+static const uint8_t SYS_SPI_MOSI = 19;
+static const uint8_t _1V8_EN = 20;
+static const uint8_t _3V3_EN = 22;
+static const uint8_t _5V0_EN = 23;
 static const uint8_t MCU_HUB_LED = 25;
-static const uint8_t FPGA_MCU_M0 = 2;
-static const uint8_t FPGA_MCU_M1 = 1;
-static const uint8_t FPGA_MCU_M2 = 3;
-static const uint8_t MCU_CLK = 0;
 
 // INA700 Sensors
 static const int INA700_3V3_SENSE = 0x47;
