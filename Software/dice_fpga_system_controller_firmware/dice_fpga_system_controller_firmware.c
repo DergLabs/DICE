@@ -112,10 +112,19 @@ int main() {
     gpio_put(MCU_HUB_LED, 1);
 
     // Initialize Power Supplies
-    // gpio_put(_0V85_EN, 1);
-    // gpio_put(_1V8_EN, 1);
-    // gpio_put(_1V2_EN, 1);
-    // gpio_put(_3V3_EN, 1);
+    gpio_put(_0V85_EN, 1);
+    sleep_ms(1);
+    gpio_put(_1V8_EN, 1);
+    gpio_put(_1V2_EN, 1);
+    sleep_ms(1);
+    gpio_put(_3V3_EN, 1);
+    gpio_put(_5V0_EN, 1);
+
+    // Set FPGA Mode Pins
+    sleep_ms(5);
+    gpio_put(FPGA_MCU_M0, 1);
+    gpio_put(FPGA_MCU_M1, 0);
+    gpio_put(FPGA_MCU_M2, 0);
 
     uint8_t INA236_CONFIG_BUF[3];
     // Configuration Register
