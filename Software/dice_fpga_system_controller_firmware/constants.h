@@ -6,8 +6,8 @@ static const uint8_t CLK_SPEED = 250;
 
 // Will be made into 50MHz
 static const uint8_t SPI_SPEED = 50;
-// Will be made into 100KHz
-static const uint16_t I2C_SPEED = 100;
+// Will be made into 100MHz
+static const uint16_t I2C_SPEED = 1000;
 
 // GPIO Pins
 static const uint8_t FPGA_MCU_M1 = 1;
@@ -55,8 +55,7 @@ static const uint8_t INA236_POWER = 0x03;
 static const uint8_t INA236_CURRENT = 0x04;
 static const uint8_t INA236_CALIBRATION = 0x05;
 
-// INA236 ADCRANGE Set to 1 OR Mask
-static const uint16_t INA236_CONFIG_ADCRANGE_MASK = 0b0001000000000000;
+static const uint16_t INA236_CONFIG_ADCRANGE_MASK = 0b0001000100100111;
 
 // Resolution
 static const float mili = 0.001;
