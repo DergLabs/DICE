@@ -185,7 +185,7 @@ int main() {
         uint32_t power_reading_1V2;
 
         // INA236 Readings
-        int16_t current_reading_0V85;
+        uint16_t current_reading_0V85;
         uint16_t voltage_reading_0V85;
         uint16_t power_reading_0V85;
 
@@ -240,7 +240,7 @@ int main() {
         if(!device_i2c_read_u16(i2c0, INA236_0V85_SENSE, &INA236_POWER, 2,
                                 &power_reading_0V85, 2))
             printf("Could not read Power from INA236: 0V85_SENSE\n");
-        if(!device_i2c_read_i16(i2c0, INA236_0V85_SENSE, &INA236_CURRENT, 2,
+        if(!device_i2c_read_u16(i2c0, INA236_0V85_SENSE, &INA236_CURRENT, 2,
                                 &current_reading_0V85, 2))
             printf("Could not read Current from INA236: 0V85_SENSE\n");
 
