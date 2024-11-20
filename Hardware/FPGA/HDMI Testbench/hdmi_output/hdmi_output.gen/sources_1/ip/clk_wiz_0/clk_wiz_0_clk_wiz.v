@@ -56,6 +56,8 @@
 // _clk_27m__27.00000______0.000______50.0______144.622____138.946
 // clk_148_5m__148.50000______0.000______50.0______110.868____138.946
 // clk_297m__297.00000______0.000______50.0_______99.636____138.946
+// _clk_74m__74.25000______0.000______50.0______123.465____138.946
+// _clk_25m__25.16949______0.000______50.0______146.224____138.946
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,6 +73,8 @@ module clk_wiz_0_clk_wiz
   output        clk_27m,
   output        clk_148_5m,
   output        clk_297m,
+  output        clk_74m,
+  output        clk_25m,
   // Status and control signals
   input         reset,
   output        locked,
@@ -99,8 +103,8 @@ wire clk_in2_clk_wiz_0;
   wire        clk_27m_clk_wiz_0;
   wire        clk_148_5m_clk_wiz_0;
   wire        clk_297m_clk_wiz_0;
-  wire        clk_out4_clk_wiz_0;
-  wire        clk_out5_clk_wiz_0;
+  wire        clk_74m_clk_wiz_0;
+  wire        clk_25m_clk_wiz_0;
   wire        clk_out6_clk_wiz_0;
   wire        clk_out7_clk_wiz_0;
 
@@ -113,9 +117,7 @@ wire clk_in2_clk_wiz_0;
     wire clkout0b_unused;
    wire clkout1b_unused;
    wire clkout2b_unused;
-   wire clkout3_unused;
    wire clkout3b_unused;
-   wire clkout4_unused;
   wire        clkout5_unused;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
@@ -146,6 +148,14 @@ wire clk_in2_clk_wiz_0;
     .CLKOUT2_PHASE        (0.000),
     .CLKOUT2_DUTY_CYCLE   (0.500),
     .CLKOUT2_USE_FINE_PS  ("FALSE"),
+    .CLKOUT3_DIVIDE       (20),
+    .CLKOUT3_PHASE        (0.000),
+    .CLKOUT3_DUTY_CYCLE   (0.500),
+    .CLKOUT3_USE_FINE_PS  ("FALSE"),
+    .CLKOUT4_DIVIDE       (59),
+    .CLKOUT4_PHASE        (0.000),
+    .CLKOUT4_DUTY_CYCLE   (0.500),
+    .CLKOUT4_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (5.000))
   
   mmcme4_adv_inst
@@ -159,9 +169,9 @@ wire clk_in2_clk_wiz_0;
     .CLKOUT1B            (clkout1b_unused),
     .CLKOUT2             (clk_297m_clk_wiz_0),
     .CLKOUT2B            (clkout2b_unused),
-    .CLKOUT3             (clkout3_unused),
+    .CLKOUT3             (clk_74m_clk_wiz_0),
     .CLKOUT3B            (clkout3b_unused),
-    .CLKOUT4             (clkout4_unused),
+    .CLKOUT4             (clk_25m_clk_wiz_0),
     .CLKOUT5             (clkout5_unused),
     .CLKOUT6             (clkout6_unused),
      // Input clock control
@@ -216,6 +226,14 @@ wire clk_in2_clk_wiz_0;
   BUFG clkout3_buf
    (.O   (clk_297m),
     .I   (clk_297m_clk_wiz_0));
+
+  BUFG clkout4_buf
+   (.O   (clk_74m),
+    .I   (clk_74m_clk_wiz_0));
+
+  BUFG clkout5_buf
+   (.O   (clk_25m),
+    .I   (clk_25m_clk_wiz_0));
 
 
 

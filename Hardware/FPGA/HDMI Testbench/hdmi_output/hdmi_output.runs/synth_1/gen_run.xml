@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1730318289" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/hdmi_tx_top.dcp">
-  <File Type="VDS-TIMING-PB" Name="hdmi_tx_top_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="hdmi_tx_top_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="hdmi_tx_top.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="hdmi_tx_top_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="hdmi_tx_top_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="hdmi_tx_top_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="hdmi_tx_top.vds"/>
-  <File Type="REPORTS-TCL" Name="hdmi_tx_top_reports.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1732076618" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/hdmi_tx_top.dcp">
   <File Type="PA-TCL" Name="hdmi_tx_top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="hdmi_tx_top_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="hdmi_tx_top_reports.tcl"/>
+  <File Type="RDS-RDS" Name="hdmi_tx_top.vds"/>
+  <File Type="RDS-UTIL" Name="hdmi_tx_top_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="hdmi_tx_top_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="hdmi_tx_top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="hdmi_tx_top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="hdmi_tx_top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/imported_hdl/video_define.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -39,14 +32,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/imported_hdl/i2c_master/i2c_master_defines.v">
+    <File Path="$PPRDIR/imported_hdl/i2c_master/timescale.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/imported_hdl/i2c_master/timescale.v">
+    <File Path="$PPRDIR/imported_hdl/i2c_master/i2c_master_defines.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -88,14 +81,15 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/imported_hdl/video_mux.vhd">
+    <File Path="$PPRDIR/imported_hdl/top.vhd">
       <FileInfo SFType="VHDL2008">
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/imported_hdl/top.vhd">
+    <File Path="$PPRDIR/imported_hdl/video_mux.vhd">
       <FileInfo SFType="VHDL2008">
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -147,4 +141,5 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>

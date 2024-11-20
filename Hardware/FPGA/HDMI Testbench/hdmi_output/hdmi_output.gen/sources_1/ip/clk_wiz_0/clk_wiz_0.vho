@@ -55,6 +55,8 @@
 -- _clk_27m__27.00000______0.000______50.0______144.622____138.946
 -- clk_148_5m__148.50000______0.000______50.0______110.868____138.946
 -- clk_297m__297.00000______0.000______50.0_______99.636____138.946
+-- _clk_74m__74.25000______0.000______50.0______123.465____138.946
+-- _clk_25m__25.16949______0.000______50.0______146.224____138.946
 --
 ------------------------------------------------------------------------------
 -- Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,6 +73,8 @@ port
   clk_27m          : out    std_logic;
   clk_148_5m          : out    std_logic;
   clk_297m          : out    std_logic;
+  clk_74m          : out    std_logic;
+  clk_25m          : out    std_logic;
   -- Status and control signals
   reset             : in     std_logic;
   locked            : out    std_logic;
@@ -89,6 +93,8 @@ your_instance_name : clk_wiz_0
    clk_27m => clk_27m,
    clk_148_5m => clk_148_5m,
    clk_297m => clk_297m,
+   clk_74m => clk_74m,
+   clk_25m => clk_25m,
   -- Status and control signals                
    reset => reset,
    locked => locked,

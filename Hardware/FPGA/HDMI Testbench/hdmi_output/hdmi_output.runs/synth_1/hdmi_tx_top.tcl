@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1/hdmi_tx_top.tcl"
+  variable script "C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1/hdmi_tx_top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,13 +70,16 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param power.enableCarry8RouteBelPower 1
+set_param tcl.collectionResultDisplayLimit 0
+set_param tcl.statsThreshold 360
 set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 6
 set_param power.BramSDPPropagationFix 1
-set_param tcl.statsThreshold 360
 set_param power.enableUnconnectedCarry8PinPower 1
+set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13076-DESKTOP-U9NB2CD/incrSyn
+set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -86,35 +89,32 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.cache/wt} [current_project]
-set_property parent.project_path {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.xpr} [current_project]
+set_property webtalk.parent_dir {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.xpr} [current_project]
 set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.cache/ip} [current_project]
+set_property ip_output_repo {c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/video_define.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/color_bar.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_config.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_defines.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/timescale.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_bit_ctrl.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_byte_ctrl.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_top.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/lut_hdmi_out.v}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/reset_power_on.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/video_define.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/color_bar.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_config.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/timescale.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_defines.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_bit_ctrl.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_byte_ctrl.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_top.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/lut_hdmi_out.v}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/reset_power_on.v}
 }
-read_vhdl -vhdl2008 -library xil_defaultlib {
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/video_mux.vhd}
-  {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/top.vhd}
-}
-read_ip -quiet {{/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
-set_property used_in_implementation false [get_files -all {{/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
-set_property used_in_implementation false [get_files -all {{/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}]
-set_property used_in_implementation false [get_files -all {{/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}]
+read_vhdl -vhdl2008 -library xil_defaultlib {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/top.vhd}}
+read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -125,14 +125,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc}}
-set_property used_in_implementation false [get_files {{/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc}}]
+read_xdc {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc}}]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental {/home/john/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/utils_1/imports/synth_1/hdmi_tx_top.dcp}
+read_checkpoint -auto_incremental -incremental {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/utils_1/imports/synth_1/hdmi_tx_top.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

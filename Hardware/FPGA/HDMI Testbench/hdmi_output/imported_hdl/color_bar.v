@@ -37,10 +37,7 @@ module color_bar(
 	output                hs,            //horizontal synchronization
 	output                vs,            //vertical synchronization
 	output                de,            //video valid
-	output[23:0]		  video_data
-	//output[7:0]           rgb_r,         //video red data
-	//output[7:0]           rgb_g,         //video green data
-	//output[7:0]           rgb_b          //video blue data
+	output[23:0]		  video_data	 //video data
 );
 
 //video timing parameter definition
@@ -68,7 +65,43 @@ parameter V_SYNC  = 16'd10;
 parameter V_BP	= 16'd72;
 parameter HS_POL = 1'b1;
 parameter VS_POL = 1'b1;
+//720p60
+`elsif VIDEO_1280_720
+parameter H_ACTIVE = 16'd1280;
+parameter H_FP = 16'd110;
+parameter H_SYNC = 16'd40;
+parameter H_BP = 16'd220; 
+parameter V_ACTIVE = 16'd720;
+parameter V_FP 	= 16'd5;
+parameter V_SYNC  = 16'd5;
+parameter V_BP	= 16'd20;
+parameter HS_POL = 1'b1;
+parameter VS_POL = 1'b1;
+//480p60
+`elsif VIDEO_640_480
+parameter H_ACTIVE = 16'd640;
+parameter H_FP = 16'd16;
+parameter H_SYNC = 16'd96;
+parameter H_BP = 16'd48; 
+parameter V_ACTIVE = 16'd480;
+parameter V_FP 	= 16'd10;
+parameter V_SYNC  = 16'd2;
+parameter V_BP	= 16'd33;
+parameter HS_POL = 1'b1;
+parameter VS_POL = 1'b1;
+// Default to 640x480
 `else
+parameter H_ACTIVE = 16'd640;
+parameter H_FP = 16'd16;
+parameter H_SYNC = 16'd96;
+parameter H_BP = 16'd48; 
+parameter V_ACTIVE = 16'd480;
+parameter V_FP 	= 16'd10;
+parameter V_SYNC  = 16'd2;
+parameter V_BP	= 16'd33;
+parameter HS_POL = 1'b1;
+parameter VS_POL = 1'b1;
+/*
 parameter H_ACTIVE = 16'd0;
 parameter H_FP = 16'd0;
 parameter H_SYNC = 16'd0;
@@ -79,6 +112,7 @@ parameter V_SYNC  = 16'd0;
 parameter V_BP  = 16'd0;
 parameter HS_POL = 1'b0;
 parameter VS_POL = 1'b0;
+*/
 `endif
 
 
@@ -128,10 +162,8 @@ assign hs = hs_reg_d0;
 assign vs = vs_reg_d0;
 assign video_active = h_active & v_active;
 assign de = video_active_d0;
-assign video_data = {rgb_b_reg, rgb_g_reg, rgb_r_reg};
-//assign rgb_r = rgb_r_reg;
-//assign rgb_g = rgb_g_reg;
-//assign rgb_b = rgb_b_reg;
+assign video_data = {rgb_r_reg, rgb_g_reg, rgb_b_reg};
+
 always@(posedge clk or posedge rst)
 begin
 	if(rst == 1'b1)

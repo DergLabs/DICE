@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Wed Oct 30 15:58:48 2024
-| Host         : john-linux-desktop running 64-bit Ubuntu 22.04.5 LTS
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Tue Nov 19 23:25:01 2024
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command      : report_utilization -file hdmi_tx_top_utilization_synth.rpt -pb hdmi_tx_top_utilization_synth.pb
 | Design       : hdmi_tx_top
 | Device       : xcku3p-ffva676-2-i
@@ -32,14 +32,14 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*               |  242 |     0 |          0 |    162720 |  0.15 |
-|   LUT as Logic          |  242 |     0 |          0 |    162720 |  0.15 |
+| CLB LUTs*               |  230 |     0 |          0 |    162720 |  0.14 |
+|   LUT as Logic          |  230 |     0 |          0 |    162720 |  0.14 |
 |   LUT as Memory         |    0 |     0 |          0 |     99840 |  0.00 |
-| CLB Registers           |  207 |     0 |          0 |    325440 |  0.06 |
-|   Register as Flip Flop |  207 |     0 |          0 |    325440 |  0.06 |
+| CLB Registers           |  190 |     0 |          0 |    325440 |  0.06 |
+|   Register as Flip Flop |  190 |     0 |          0 |    325440 |  0.06 |
 |   Register as Latch     |    0 |     0 |          0 |    325440 |  0.00 |
 | CARRY8                  |    5 |     0 |          0 |     27120 |  0.02 |
-| F7 Muxes                |    1 |     0 |          0 |    108480 | <0.01 |
+| F7 Muxes                |    0 |     0 |          0 |    108480 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |     54240 |  0.00 |
 | F9 Muxes                |    0 |     0 |          0 |     27120 |  0.00 |
 +-------------------------+------+-------+------------+-----------+-------+
@@ -60,9 +60,9 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 2     |          Yes |           - |          Set |
-| 86    |          Yes |           - |        Reset |
-| 8     |          Yes |         Set |            - |
-| 111   |          Yes |       Reset |            - |
+| 108   |          Yes |           - |        Reset |
+| 6     |          Yes |         Set |            - |
+| 74    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -96,7 +96,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| Bonded IOB |   32 |     0 |          0 |       256 | 12.50 |
+| Bonded IOB |   33 |     0 |          0 |       256 | 12.89 |
 +------------+------+-------+------------+-----------+-------+
 
 
@@ -155,22 +155,21 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  115 |                 CLB |
-| FDRE     |  111 |            Register |
-| FDCE     |   86 |            Register |
-| LUT4     |   49 |                 CLB |
-| LUT5     |   46 |                 CLB |
-| LUT3     |   42 |                 CLB |
-| LUT2     |   35 |                 CLB |
-| OBUF     |   29 |                 I/O |
-| LUT1     |   19 |                 CLB |
-| FDSE     |    8 |            Register |
+| LUT6     |  126 |                 CLB |
+| FDCE     |  108 |            Register |
+| FDRE     |   74 |            Register |
+| LUT4     |   45 |                 CLB |
+| LUT5     |   35 |                 CLB |
+| OBUF     |   30 |                 I/O |
+| LUT3     |   27 |                 CLB |
+| LUT2     |   26 |                 CLB |
+| LUT1     |   16 |                 CLB |
+| FDSE     |    6 |            Register |
 | CARRY8   |    5 |                 CLB |
 | INBUF    |    3 |                 I/O |
 | IBUFCTRL |    3 |              Others |
 | OBUFT    |    2 |                 I/O |
 | FDPE     |    2 |            Register |
-| MUXF7    |    1 |                 CLB |
 +----------+------+---------------------+
 
 

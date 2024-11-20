@@ -29,7 +29,7 @@
 module top(
 	input                           sys_clk_p,      // Differentia system clock 200Mhz input on board
 	input                           sys_clk_n,
-	output                          fan,
+	//output                          fan,
 	//hdmi output  9136       
 	inout                           hdmi1_scl,         // i2c port hdmi input1 and hdmi output1
 	inout                           hdmi1_sda,
@@ -49,9 +49,9 @@ module top(
 	//output[35:0]                    vout2_data  	
 );
 wire                            video_clk;
-wire[7:0]                       video_r;
-wire[7:0]                       video_g;
-wire[7:0]                       video_b;
+//wire[7:0]                       video_r;
+//wire[7:0]                       video_g;
+//wire[7:0]                       video_b;
 wire                            hs;
 wire                            vs;
 wire                            de;
@@ -72,7 +72,7 @@ assign vout1_clk = video_clk;
 assign vout1_hs = hs;
 assign vout1_vs = vs;
 assign vout1_de = de;
-assign vout1_data = {video_r,video_g,video_b};
+//assign vout1_data = {video_r,video_g,video_b};
 
 //assign vout2_clk = video_clk;
 //assign vout2_hs = hs;
@@ -83,25 +83,41 @@ assign vout1_data = {video_r,video_g,video_b};
 assign hdmi_out_nreset = hdmi_nreset;
 
 //1920x1080 148.5Mhz
-`ifdef  VIDEO_1920_1080
-assign video_clk = clk_148_5;
-`elsif VIDEO_3840_2160
+//`ifdef  VIDEO_1920_1080
+//assign video_clk = clk_148_5;
+//`elsif VIDEO_3840_2160
 assign video_clk = clk_297; 
-`endif
+//`endif
 
-//video_pll video_pll_m0
-// (
-//	// Clock in ports
-//	.clk_in1_p         (sys_clk_p          ),
-//	.clk_in1_n         (sys_clk_n          ),
-//	// Clock out ports
-//	.clk_out1          (clk_27m            ),
-//	.clk_out2          (clk_148_5          ),
-//	.clk_out3          (clk_297            ),
-//	// Status and control signals
-//	.reset             (1'b0               ),
-//	.locked            (locked             )
-// );
+
+
+  clk_wiz_0 video_pll
+   (
+    // Clock out ports
+    .clk_27m(clk_27m),     // output clk_27m
+    .clk_148_5m(clk_148_5),     // output clk_148_5m
+    .clk_297m(clk_297),     // output clk_297m
+    // Status and control signals
+    .reset(1'b0), // input reset
+    .locked(locked),       // output locked
+   // Clock in ports
+    .clk_in1_p(sys_clk_p),    // input clk_in1_p
+    .clk_in1_n(sys_clk_n)    // input clk_in1_n
+);
+
+/*video_pll clk_wiz_0
+ (
+	// Clock in ports
+	.clk_in1_p         (sys_clk_p          ),
+	.clk_in1_n         (sys_clk_n          ),
+	// Clock out ports
+	.clk_out1          (clk_27m            ),
+	.clk_out2          (clk_148_5          ),
+	.clk_out3          (clk_297            ),
+	// Status and control signals
+	.reset             (1'b0               ),
+	.locked            (locked             )
+ );*/
 
 // Power on reset for HDMI Transmitter 
 reset_power_on #
@@ -159,8 +175,9 @@ color_bar hdmi_color_bar(
 	.hs                (hs                 ),
 	.vs                (vs                 ),
 	.de                (de                 ),
-	.rgb_r             (video_r            ),
-	.rgb_g             (video_g            ),
-	.rgb_b             (video_b            )
+	.video_data        (vout1_data         )
+	//.rgb_r             (video_r            ),
+	//.rgb_g             (video_g            ),
+	//.rgb_b             (video_b            )
 );
 endmodule

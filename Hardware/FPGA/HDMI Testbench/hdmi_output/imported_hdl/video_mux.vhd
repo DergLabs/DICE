@@ -45,7 +45,7 @@ begin
 
     process(clk, reset)
     begin
-        if (reset = '0') then
+        if (reset = '1') then
             s_vid_src_sel <= '0';
         elsif rising_edge(clk) then
             s_vid_src_sel <= video_source_sel;
@@ -60,22 +60,22 @@ begin
     with (s_vid_src_sel) select
         video_clk_out <= ext_video_clk_in when '1',
                         int_video_clk_in when '0',
-                        int_video_data_in when others;   
+                        int_video_clk_in when others;   
 
     with (s_vid_src_sel) select
         video_hsync_out <= ext_video_hsync_in when '1',
                         int_video_hsync_in when '0',
-                        int_video_data_in when others;    
+                        int_video_hsync_in when others;    
 
     with (s_vid_src_sel) select
         video_vsync_out <= ext_video_vsync_in when '1',
                           int_video_vsync_in when '0',
-                          int_video_data_in when others;
+                          int_video_vsync_in when others;
 
     with (s_vid_src_sel) select
         video_de_out <= ext_video_de_in when '1',
                           int_video_de_in when '0',
-                          int_video_data_in when others;              
+                          int_video_de_in when others;              
 
 
 end Behavioral;
