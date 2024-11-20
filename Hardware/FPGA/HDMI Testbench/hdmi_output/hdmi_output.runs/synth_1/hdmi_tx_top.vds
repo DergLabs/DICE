@@ -1,0 +1,370 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Nov 19 23:23:42 2024
+# Process ID: 4968
+# Current directory: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1
+# Command line: vivado.exe -log hdmi_tx_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source hdmi_tx_top.tcl
+# Log file: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1/hdmi_tx_top.vds
+# Journal file: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1\vivado.jou
+# Running On: DESKTOP-U9NB2CD, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 24, Host memory: 68638 MB
+#-----------------------------------------------------------
+source hdmi_tx_top.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/utils_1/imports/synth_1/hdmi_tx_top.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/utils_1/imports/synth_1/hdmi_tx_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top hdmi_tx_top -part xcku3p-ffva676-2-i
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 21840
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 1989.852 ; gain = 419.500
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'hdmi_tx_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/top.vhd:42]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1/.Xil/Vivado-4968-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'video_clk_gen' of component 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/top.vhd:106]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1/.Xil/Vivado-4968-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:21]
+INFO: [Synth 8-6157] synthesizing module 'reset_power_on' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/reset_power_on.v:29]
+	Parameter FREQ bound to: 27 - type: integer 
+	Parameter MAX_TIME bound to: 200 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'reset_power_on' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/reset_power_on.v:29]
+INFO: [Synth 8-6157] synthesizing module 'i2c_config' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_config.v:30]
+INFO: [Synth 8-6157] synthesizing module 'i2c_master_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_top.v:30]
+INFO: [Synth 8-226] default block is never used [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_top.v:96]
+INFO: [Synth 8-6157] synthesizing module 'i2c_master_byte_ctrl' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_byte_ctrl.v:75]
+INFO: [Synth 8-6157] synthesizing module 'i2c_master_bit_ctrl' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_bit_ctrl.v:143]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_master_bit_ctrl' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_bit_ctrl.v:143]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_master_byte_ctrl' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_byte_ctrl.v:75]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_master_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_master_top.v:30]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_config' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_config.v:30]
+INFO: [Synth 8-6157] synthesizing module 'lut_hdmi_out' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/lut_hdmi_out.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'lut_hdmi_out' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/lut_hdmi_out.v:42]
+INFO: [Synth 8-6157] synthesizing module 'color_bar' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/color_bar.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'color_bar' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/color_bar.v:34]
+INFO: [Synth 8-256] done synthesizing module 'hdmi_tx_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/top.vhd:42]
+WARNING: [Synth 8-7137] Register i2c_write_req_reg in module i2c_config has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_config.v:101]
+WARNING: [Synth 8-3848] Net i2c_read_req in module/entity i2c_config does not have driver. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/imported_hdl/i2c_master/i2c_config.v:57]
+WARNING: [Synth 8-7129] Port i2c_slave_dev_addr[0] in module i2c_master_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2108.477 ; gain = 538.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2108.477 ; gain = 538.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2108.477 ; gain = 538.125
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2108.477 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'video_clk_gen'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'video_clk_gen'
+Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc]
+CRITICAL WARNING: [Netlist 29-154] Cannot set property 'BITSTREAM.CONFIG.CONFIGRATE' because incorrect value '50' specified. Expecting type 'enum' with possible values of '2.7,5.3,8.0,10.6,21.3,31.9,36.4,51.0,56.7,63.8,72.9,85.0,102.0,127.5'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc:251]
+Resolution: Please check the value of the property and set to a correct value.
+Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_tx_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_tx_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2212.266 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2212.266 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2212.266 ; gain = 641.914
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku3p-ffva676-2-i
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2212.266 ; gain = 641.914
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk_n. (constraint file  {c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 7).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_n. (constraint file  {c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 8).
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk_p. (constraint file  {c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 9).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_p. (constraint file  {c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 10).
+Applied set_property KEEP_HIERARCHY = SOFT for video_clk_gen. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2212.266 ; gain = 641.914
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'c_state_reg' in module 'i2c_master_bit_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'c_state_reg' in module 'i2c_master_byte_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_master_top'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_config'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |               000000000000000001 |               000000000000000000
+                 start_a |               000000000000000010 |               000000000000000001
+                 start_b |               000000000000000100 |               000000000000000010
+                 start_c |               000000000000001000 |               000000000000000100
+                 start_d |               000000000000010000 |               000000000000001000
+                 start_e |               000000000000100000 |               000000000000010000
+                  stop_a |               000000000001000000 |               000000000000100000
+                  stop_b |               000000000010000000 |               000000000001000000
+                  stop_c |               000000000100000000 |               000000000010000000
+                  stop_d |               000000001000000000 |               000000000100000000
+                    wr_a |               000000010000000000 |               000010000000000000
+                    wr_b |               000000100000000000 |               000100000000000000
+                    wr_c |               000001000000000000 |               001000000000000000
+                    wr_d |               000010000000000000 |               010000000000000000
+                    rd_a |               000100000000000000 |               000000001000000000
+                    rd_b |               001000000000000000 |               000000010000000000
+                    rd_c |               010000000000000000 |               000000100000000000
+                    rd_d |               100000000000000000 |               000001000000000000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'c_state_reg' using encoding 'one-hot' in module 'i2c_master_bit_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 ST_IDLE |                              000 |                            00000
+                ST_START |                              001 |                            00001
+                 ST_READ |                              010 |                            00010
+                ST_WRITE |                              011 |                            00100
+                  ST_ACK |                              100 |                            01000
+                 ST_STOP |                              101 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'c_state_reg' using encoding 'sequential' in module 'i2c_master_byte_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                             0110 |                             0000
+           S_WR_DEV_ADDR |                             1001 |                             0001
+           S_WR_REG_ADDR |                             0100 |                             0010
+          S_WR_REG_ADDR1 |                             0101 |                             1101
+               S_WR_DATA |                             0000 |                             0011
+          S_RD_DEV_ADDR0 |                             1011 |                             0110
+           S_WR_ERR_NACK |                             1010 |                             0101
+               S_WR_STOP |                             0001 |                             1011
+                S_WR_ACK |                             0010 |                             0100
+           S_RD_REG_ADDR |                             1101 |                             0111
+          S_RD_REG_ADDR1 |                             1110 |                             1110
+          S_RD_DEV_ADDR1 |                             1111 |                             1000
+               S_RD_DATA |                             1100 |                             1001
+               S_RD_STOP |                             0111 |                             1010
+                S_RD_ACK |                             1000 |                             1111
+                  S_WAIT |                             0011 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'i2c_master_top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                               00 |                              000
+          S_WR_I2C_CHECK |                               01 |                              001
+                S_WR_I2C |                               10 |                              010
+           S_WR_I2C_DONE |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'i2c_config'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2212.266 ; gain = 641.914
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'reset_power_on_i2c' (reset_power_on) to 'reset_power_on_hdmi'
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   23 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 4     
+	   2 Input   14 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 4     
+	               14 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 6     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 38    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	  24 Input   18 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 3     
+	   2 Input   14 Bit        Muxes := 2     
+	   4 Input   10 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 3     
+	   6 Input    8 Bit        Muxes := 2     
+	   9 Input    8 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 23    
+	   6 Input    4 Bit        Muxes := 1     
+	  15 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 5     
+	  15 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 3     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 32    
+	  18 Input    1 Bit        Muxes := 5     
+	   6 Input    1 Bit        Muxes := 6     
+	   3 Input    1 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 6     
+	  10 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 2212.266 ; gain = 641.914
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2562.027 ; gain = 991.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2594.066 ; gain = 1023.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------------+------+
+|      |Cell           |Count |
++------+---------------+------+
+|1     |clk_wiz_0_bbox |     1|
+|2     |CARRY8         |     5|
+|3     |LUT1           |    16|
+|4     |LUT2           |    26|
+|5     |LUT3           |    27|
+|6     |LUT4           |    45|
+|7     |LUT5           |    35|
+|8     |LUT6           |   126|
+|9     |FDCE           |   108|
+|10    |FDPE           |     2|
+|11    |FDRE           |    74|
+|12    |FDSE           |     6|
+|13    |IBUF           |     1|
+|14    |IOBUF          |     2|
+|15    |OBUF           |    30|
++------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:34 . Memory (MB): peak = 2596.023 ; gain = 921.883
+Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2596.023 ; gain = 1025.672
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2605.324 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2628.031 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3 instances were transformed.
+  IBUF => IBUF (IBUFCTRL, INBUF): 1 instance 
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 2 instances
+
+Synth Design complete | Checksum: c3e9cbcb
+INFO: [Common 17-83] Releasing license: Synthesis
+50 Infos, 4 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.statsThreshold
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2628.031 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.runs/synth_1/hdmi_tx_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file hdmi_tx_top_utilization_synth.rpt -pb hdmi_tx_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 19 23:25:01 2024...
