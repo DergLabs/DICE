@@ -16,15 +16,15 @@ char buffer[BUFFER_SIZE];
 static const int CLK_SPEED = 250;
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 400MHz
-static const int I2C_SPEED = 400;
+static const int I2C_SPEED = 1200;
 
 // IO Module Pins
-static const int USBPD_FLT_IN = 26;
-static const int USBPD_SINK_EN = 24;
-static const int USBPD_DBG_ACC = 27;
-static const int USBPD_CAP_MIS = 28;
-static const int USBPD_PLG_FLIP = 0;
-static const int USBPD_PLG_EVNT = 1;
+static const int USBPD_FLT_IN = 12;
+static const int USBPD_SINK_EN = 9;
+static const int USBPD_DBG_ACC = 14;
+static const int USBPD_CAP_MIS = 10;
+static const int USBPD_PLG_FLIP = 13;
+static const int USBPD_PLG_EVNT = 11;
 
 static const int CAM_PWR_EN = 2;
 static const int CAM_LED_EN = 3;
@@ -44,21 +44,18 @@ static const float voltage_resolution = 3.125 * mili;
 static const float power_resolution = 96 * micro;
 
 static const int MBUS[] = {
-    16, // MBUS_D0
-    15, // MBUS_D1
-    14, // MBUS_D2
-    13, // MBUS_D3
-    12, // MBUS_D4
-    9,  // MBUS_D5
-    10, // MBUS_D6
-    11, // MBUS_D7
-    18, // MBUS_D8
-    19, // MBUS_D9
-    20, // MBUS_D10
-    21, // MBUS_D11
-    22, // MBUS_D12
-    23, // MBUS_D13
-    17, // MBUS_D14
+    17, // MBUS_D0
+    18, // MBUS_D1
+    19, // MBUS_D2
+    20, // MBUS_D3
+    21, // MBUS_D4
+    22,  // MBUS_D5
+    23, // MBUS_D6
+    24, // MBUS_D7
+    26, // MBUS_D8
+    27, // MBUS_D9
+    28, // MBUS_D10
+    29, // MBUS_D11
 };
 
 // I2C Device Addresses
@@ -149,8 +146,8 @@ int main() {
     gpio_set_dir(USBPD_CAP_MIS, GPIO_IN);
     gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
     gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
+    gpio_set_dir(USBPD_FLT_IN, GPIO_IN);
 
-    gpio_set_dir(USBPD_FLT_IN, GPIO_OUT);
     gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
     gpio_set_dir(CAM_LED_EN, GPIO_OUT);
     gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
@@ -162,20 +159,20 @@ int main() {
     // Pull Up/Down resistors
 
     // Up
-    gpio_pull_up(USBPD_FLT_IN);
-    gpio_pull_up(USBPD_SINK_EN);
-    gpio_pull_up(USBPD_DBG_ACC);
-    gpio_pull_up(USBPD_CAP_MIS);
+    //gpio_pull_up(USBPD_FLT_IN);
+    //gpio_pull_up(USBPD_SINK_EN);
+   //gpio_pull_up(USBPD_DBG_ACC);
+    //gpio_pull_up(USBPD_CAP_MIS);
     //gpio_pull_up(USBPD_PLG_FLIP);
     //gpio_pull_up(USBPD_PLG_EVNT);
 
     // Set Pin States
 
     // LOW
-    gpio_put(USBPD_FLT_IN, 0);
-    gpio_put(CAM_PWR_EN, 0);
-    gpio_put(CAM_LED_EN, 0);
-    gpio_put(HDMI_BUFF_EN, 0);
+   //gpio_put(USBPD_FLT_IN, 0);
+    //gpio_put(CAM_PWR_EN, 0);
+    //gpio_put(CAM_LED_EN, 0);
+    //gpio_put(HDMI_BUFF_EN, 0);
     gpio_put(MCU_HUB_LED, 0);
     for(int i = 0; i < MBUS_SIZE; i++)
         gpio_put(MBUS[i], 0);

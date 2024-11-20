@@ -14377,6 +14377,10 @@
 		(uuid "0684b4ae-e4a2-4838-8faa-661a351c327b")
 	)
 	(no_connect
+		(at 529.59 322.58)
+		(uuid "094e67a1-9a07-49d8-b127-8e734e8635f3")
+	)
+	(no_connect
 		(at 438.15 109.22)
 		(uuid "0b049ada-0fe8-47e8-8292-5ce03134508e")
 	)
@@ -14459,10 +14463,6 @@
 	(no_connect
 		(at 438.15 99.06)
 		(uuid "39943552-95b7-494f-be2f-fb26a4aa84f5")
-	)
-	(no_connect
-		(at 529.59 325.12)
-		(uuid "3999020d-43d7-436a-ab6c-c1b8115cb4e5")
 	)
 	(no_connect
 		(at 438.15 154.94)
@@ -16918,16 +16918,6 @@
 	)
 	(wire
 		(pts
-			(xy 516.89 322.58) (xy 516.89 326.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3707fba7-5339-4725-8a0e-e2edf6f2f41a")
-	)
-	(wire
-		(pts
 			(xy 242.57 83.82) (xy 242.57 86.36)
 		)
 		(stroke
@@ -17068,7 +17058,7 @@
 	)
 	(wire
 		(pts
-			(xy 516.89 334.01) (xy 516.89 335.28)
+			(xy 516.89 336.55) (xy 516.89 337.82)
 		)
 		(stroke
 			(width 0)
@@ -17635,6 +17625,16 @@
 			(type default)
 		)
 		(uuid "5f41db6e-ff52-4a55-af26-594864aa913a")
+	)
+	(wire
+		(pts
+			(xy 516.89 325.12) (xy 516.89 328.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f5a35b4-23e1-4ce9-8123-ba9c0f1eb98d")
 	)
 	(wire
 		(pts
@@ -20116,6 +20116,16 @@
 		)
 		(uuid "c29ddb6a-b745-4082-9829-63a1a3d0ddbf")
 	)
+	(wire
+		(pts
+			(xy 516.89 325.12) (xy 529.59 325.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2e5b7da-5e22-4737-b136-41403671bb44")
+	)
 	(bus
 		(pts
 			(xy 284.48 242.57) (xy 284.48 240.03)
@@ -20845,16 +20855,6 @@
 			(type default)
 		)
 		(uuid "e093b166-db29-43c0-824d-63ad53348e13")
-	)
-	(wire
-		(pts
-			(xy 529.59 322.58) (xy 516.89 322.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e0a1b38c-a396-49f5-9e04-55acab0b1010")
 	)
 	(wire
 		(pts
@@ -26643,7 +26643,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 516.89 335.28 0)
+		(at 516.89 337.82 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26651,7 +26651,7 @@
 		(dnp no)
 		(uuid "15a4d93b-6738-4ef4-be4d-34407185b1e9")
 		(property "Reference" "#PWR030"
-			(at 516.89 341.63 0)
+			(at 516.89 344.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26660,7 +26660,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 516.89 339.725 0)
+			(at 516.89 342.265 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26668,7 +26668,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 516.89 335.28 0)
+			(at 516.89 337.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26677,7 +26677,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 516.89 335.28 0)
+			(at 516.89 337.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26686,7 +26686,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 516.89 335.28 0)
+			(at 516.89 337.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -43326,24 +43326,15 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 516.89 330.2 180)
+		(at 516.89 332.74 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "e5828490-0018-4afa-8573-2628ec4c7706")
 		(property "Reference" "R15"
-			(at 519.43 328.9299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "240R"
 			(at 519.43 331.4699 0)
 			(effects
 				(font
@@ -43352,8 +43343,17 @@
 				(justify right)
 			)
 		)
+		(property "Value" "240R"
+			(at 519.43 334.0099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
-			(at 515.874 329.946 90)
+			(at 515.874 332.486 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -43362,7 +43362,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 516.89 330.2 0)
+			(at 516.89 332.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -43371,7 +43371,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 516.89 330.2 0)
+			(at 516.89 332.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
