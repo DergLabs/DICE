@@ -70,13 +70,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.statsThreshold 360
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 5
 set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
+set_param synth.incrementalSynthesisCache C:/Users/micha/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-28016-M_Laptop/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -104,7 +103,7 @@ read_verilog -library xil_defaultlib {
   {C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_pre_fet.v}
   {C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v}
 }
-read_ip -quiet {{c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci}}
+read_ip -quiet {{C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }

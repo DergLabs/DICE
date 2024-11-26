@@ -11,9 +11,9 @@ module mst_fifo_top (
   //GPIO Control Signals
   input wire HRST_N,
   input wire SRST_N,
-  input wire MLTCN, // 1: Multi Channel Mode, 0: 245 Mode 
-  input wire STREN, // 1: Streaming Test,     0: Loopback Test
-  input wire ERDIS, // 1: Disable received data sequence check  
+  //input wire MLTCN, // 1: Multi Channel Mode, 0: 245 Mode 
+  //input wire STREN, // 1: Streaming Test,     0: Loopback Test
+  //input wire ERDIS, // 1: Disable received data sequence check  
   input wire R_OOB,
   input wire W_OOB,  
   //input wire WAKEUP_N, 
@@ -28,14 +28,23 @@ module mst_fifo_top (
   output wire RD_N,
   output wire OE_N,
   // Miscellaneous Interface 
-  output wire [3:0] STRER
+  output wire [3:0] STRER,
+  output wire LED_TEST
 );
+
+  //hard coding for test
+  assign STREN = 1;
+  assign MLTCN = 1;
+  assign ERDIS = 0;
+  assign LED_TEST = 1;
 
   wire [31:0] temp_data;
   wire [3:0]  temp_BE;
 
   assign temp_data[15:0] = DATA;
   assign temp_BE[1:0] = BE;
+
+  
 
   wire [31:0] tp_data;
   wire [3:0]  tp_be;

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sat Nov  2 19:38:41 2024
+| Date             : Tue Nov 19 19:06:37 2024
 | Host             : M_Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file mst_fifo_top_power_routed.rpt -pb mst_fifo_top_power_summary_routed.pb -rpx mst_fifo_top_power_routed.rpx
 | Design           : mst_fifo_top
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.467        |
+| Total On-Chip Power (W)  | 0.456        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.016        |
-| Device Static (W)        | 0.451        |
+| Dynamic (W)              | 0.006        |
+| Device Static (W)        | 0.450        |
 | Effective TJA (C/W)      | 1.7          |
 | Max Ambient (C)          | 99.2         |
 | Junction Temperature (C) | 25.8         |
@@ -52,18 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.003 |        3 |       --- |             --- |
-| CLB Logic      |     0.001 |     1944 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      743 |    162720 |            0.46 |
-|   Register     |    <0.001 |      973 |    325440 |            0.30 |
-|   CARRY8       |    <0.001 |       24 |     27120 |            0.09 |
-|   Others       |     0.000 |       35 |       --- |             --- |
-|   F7/F8 Muxes  |     0.000 |        1 |    216960 |           <0.01 |
-| Signals        |     0.002 |     1749 |       --- |             --- |
-| Block RAM      |     0.006 |       12 |       360 |            3.33 |
-| I/O            |     0.005 |       35 |       256 |           13.67 |
-| Static Power   |     0.451 |          |           |                 |
-| Total          |     0.467 |          |           |                 |
+| Clocks         |     0.001 |        3 |       --- |             --- |
+| CLB Logic      |    <0.001 |     1097 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      405 |    162720 |            0.25 |
+|   Register     |    <0.001 |      579 |    325440 |            0.18 |
+|   Others       |     0.000 |        6 |       --- |             --- |
+|   F7/F8 Muxes  |     0.000 |        2 |    216960 |           <0.01 |
+| Signals        |    <0.001 |      928 |       --- |             --- |
+| I/O            |     0.004 |       33 |       256 |           12.89 |
+| Static Power   |     0.450 |          |           |                 |
+| Total          |     0.456 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,14 +71,14 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.151 |       0.014 |      0.137 |       NA    | Unspecified | NA         |
-| Vccint_io  |       0.850 |     0.036 |       0.000 |      0.035 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.140 |       0.003 |      0.137 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.035 |       0.000 |      0.035 |       NA    | Unspecified | NA         |
 | Vccbram    |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.129 |       0.000 |      0.129 |       NA    | Unspecified | NA         |
 | Vccaux_io  |       1.800 |     0.033 |       0.002 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18     |       1.800 |     0.001 |       0.001 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -142,15 +140,10 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------------+-----------+
-| Name                   | Power (W) |
-+------------------------+-----------+
-| mst_fifo_top           |     0.016 |
-|   i1_fsm               |     0.002 |
-|   i2_pref              |     0.002 |
-|   i6_ram               |     0.006 |
-|     U0                 |     0.006 |
-|       inst_blk_mem_gen |     0.006 |
-+------------------------+-----------+
++--------------+-----------+
+| Name         | Power (W) |
++--------------+-----------+
+| mst_fifo_top |     0.006 |
++--------------+-----------+
 
 

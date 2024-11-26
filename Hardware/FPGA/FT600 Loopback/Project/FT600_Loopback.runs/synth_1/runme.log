@@ -14,6 +14,7 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source mst_fifo_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 486.430 ; gain = 182.789
 Command: read_checkpoint -auto_incremental -incremental {C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/utils_1/imports/synth_1/mst_fifo_top.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/utils_1/imports/synth_1/mst_fifo_top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -22,18 +23,19 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
 INFO: [Device 21-403] Loading part xcku3p-ffva676-2-e
-INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 27748
+INFO: [Synth 8-7075] Helper process launched with PID 11452
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1982.203 ; gain = 420.059
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1980.207 ; gain = 418.199
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:389]
 WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:391]
 WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:392]
 WARNING: [Synth 8-9400] empty statement in sequential block [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_fsm.v:393]
+INFO: [Synth 8-11241] undeclared symbol 'STREN', assumed default net type 'wire' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:36]
+INFO: [Synth 8-11241] undeclared symbol 'MLTCN', assumed default net type 'wire' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:37]
+INFO: [Synth 8-11241] undeclared symbol 'ERDIS', assumed default net type 'wire' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:38]
 INFO: [Synth 8-6157] synthesizing module 'mst_fifo_top' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:10]
 INFO: [Synth 8-6157] synthesizing module 'mst_fifo_io' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_io.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_io' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_io.v:9]
@@ -48,22 +50,23 @@ INFO: [Synth 8-6157] synthesizing module 'mst_data_gen' [C:/Users/micha/OneDrive
 INFO: [Synth 8-6155] done synthesizing module 'mst_data_gen' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_data_gen.v:10]
 INFO: [Synth 8-6157] synthesizing module 'mst_fifo_ctl' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_ctl.v:11]
 INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_ctl' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_ctl.v:11]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_1' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.runs/synth_1/.Xil/Vivado-29984-M_Laptop/realtime/blk_mem_gen_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_1' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.runs/synth_1/.Xil/Vivado-29984-M_Laptop/realtime/blk_mem_gen_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_1' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.runs/synth_1/.Xil/Vivado-5980-M_Laptop/realtime/blk_mem_gen_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_1' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.runs/synth_1/.Xil/Vivado-5980-M_Laptop/realtime/blk_mem_gen_1_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'mst_fifo_top' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/src/mst_fifo_top.v:10]
+WARNING: [Synth 8-3917] design mst_fifo_top has port LED_TEST driven by constant 1
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 2104.438 ; gain = 542.293
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2103.199 ; gain = 541.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 2104.438 ; gain = 542.293
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2103.199 ; gain = 541.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 2104.438 ; gain = 542.293
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2103.199 ; gain = 541.191
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 2104.438 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 2103.199 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -71,22 +74,27 @@ Initializing timing engine
 Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'i6_ram'
 Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'i6_ram'
 Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc]
+WARNING: [Vivado 12-584] No ports matched 'ERDIS'. [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc:43]
+WARNING: [Vivado 12-584] No ports matched 'MLTCN'. [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc:56]
+WARNING: [Vivado 12-584] No ports matched 'STREN'. [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc:62]
+WARNING: [Vivado 12-584] No ports matched 'ERDIS'. [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc:90]
+WARNING: [Vivado 12-584] No ports matched 'MLTCN'. [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc:92]
+WARNING: [Vivado 12-584] No ports matched 'STREN'. [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc:98]
 Finished Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/mst_fifo_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mst_fifo_top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/mst_fifo_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2211.297 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2174.680 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2211.297 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 2174.680 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'i6_ram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
-INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
-INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:20 . Memory (MB): peak = 2211.297 ; gain = 649.152
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:26 . Memory (MB): peak = 2176.668 ; gain = 614.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -94,14 +102,24 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:20 . Memory (MB): peak = 2211.297 ; gain = 649.152
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:26 . Memory (MB): peak = 2176.668 ; gain = 614.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for i6_ram. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:20 . Memory (MB): peak = 2211.297 ; gain = 649.152
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:26 . Memory (MB): peak = 2176.668 ; gain = 614.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6895] The reference checkpoint C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/utils_1/imports/synth_1/mst_fifo_top.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 2176.668 ; gain = 614.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 2176.668 ; gain = 614.660
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'nxt_state_reg' in module 'mst_fifo_fsm'
 ---------------------------------------------------------------------------------------------------
@@ -115,8 +133,18 @@ INFO: [Synth 8-802] inferred FSM for state register 'nxt_state_reg' in module 'm
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3898] No Re-encoding of one hot register 'nxt_state_reg' in module 'mst_fifo_fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:21 . Memory (MB): peak = 2211.297 ; gain = 649.152
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:27 . Memory (MB): peak = 2176.668 ; gain = 614.660
 ---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : 
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -179,8 +207,9 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design mst_fifo_top has port LED_TEST driven by constant 1
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:34 . Memory (MB): peak = 2211.297 ; gain = 649.152
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:43 . Memory (MB): peak = 2176.668 ; gain = 614.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
@@ -190,19 +219,19 @@ Clock  not yet defined at line 48 of file {C:/Users/micha/OneDrive/Desktop/DICE/
 Clock  not yet defined at line 49 of file {C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc}
 Clock  not yet defined at line 50 of file {C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.srcs/constrs_1/new/constraints.xdc}
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:48 . Memory (MB): peak = 2547.895 ; gain = 985.750
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:58 . Memory (MB): peak = 2543.594 ; gain = 981.586
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:51 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 2574.309 ; gain = 1012.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:52 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 2579.789 ; gain = 1017.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -220,37 +249,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:01:05 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -269,47 +298,46 @@ Report Cell Usage:
 +------+------------+------+
 |1     |blk_mem_gen |     1|
 |2     |BUFG        |     1|
-|3     |CARRY8      |    24|
-|4     |LUT1        |    32|
-|5     |LUT2        |   162|
-|6     |LUT3        |    97|
-|7     |LUT4        |    96|
-|8     |LUT5        |   111|
-|9     |LUT6        |   469|
-|10    |MUXF7       |     1|
-|11    |FDCE        |  1037|
-|12    |FDPE        |   128|
-|13    |IBUF        |    10|
-|14    |IOBUF       |    18|
-|15    |OBUF        |     7|
+|3     |LUT1        |    18|
+|4     |LUT2        |    75|
+|5     |LUT3        |    33|
+|6     |LUT4        |    73|
+|7     |LUT5        |    82|
+|8     |LUT6        |   400|
+|9     |MUXF7       |     2|
+|10    |FDCE        |   826|
+|11    |FDPE        |   123|
+|12    |IBUF        |     7|
+|13    |IOBUF       |    18|
+|14    |OBUF        |     8|
 +------+------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:51 . Memory (MB): peak = 2643.652 ; gain = 974.648
-Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:57 . Memory (MB): peak = 2643.652 ; gain = 1081.508
+Synthesis finished with 0 errors, 1 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:58 . Memory (MB): peak = 2593.586 ; gain = 958.109
+Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2593.586 ; gain = 1031.578
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 2643.805 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 54 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 2605.664 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 28 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2660.566 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2624.414 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 29 instances were transformed.
+  A total of 26 instances were transformed.
   BUFG => BUFGCE: 1 instance 
-  IBUF => IBUF (IBUFCTRL, INBUF): 10 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 7 instances
   IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 18 instances
 
 The system cannot find the path specified.
-Synth Design complete | Checksum: 90bc7ca6
+Synth Design complete | Checksum: 4e0f36ea
 INFO: [Common 17-83] Releasing license: Synthesis
-41 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
+41 Infos, 15 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-INFO: [Common 17-600] The following parameters have non-default value.
-tcl.statsThreshold
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2660.566 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:49 ; elapsed = 00:01:18 . Memory (MB): peak = 2624.414 ; gain = 2067.867
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2624.414 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600 Loopback/Project/FT600_Loopback.runs/synth_1/mst_fifo_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file mst_fifo_top_utilization_synth.rpt -pb mst_fifo_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Nov  2 19:33:58 2024...
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 19 18:59:58 2024...
