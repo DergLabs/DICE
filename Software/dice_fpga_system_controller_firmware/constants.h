@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#define AVG_TEMP_LEN 8
+
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 250MHz
 static const uint8_t CLK_SPEED = 250;
