@@ -55,7 +55,8 @@ target_include_directories(dice_fpga_system_controller_firmware PRIVATE
 )
 
 # Add any user requested libraries
-target_link_libraries(dice_fpga_system_controller_firmware 
+target_link_libraries(dice_fpga_system_controller_firmware
+        pico_multicore
         hardware_spi
         hardware_i2c
         hardware_timer

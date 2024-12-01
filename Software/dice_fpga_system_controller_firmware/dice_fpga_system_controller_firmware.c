@@ -2,6 +2,7 @@
 #include <pico/error.h>
 #include <pico/types.h>
 #include <stdio.h>
+#include <string.h>
 #include "pico/stdio.h"
 #include "hardware/spi.h"
 #include "hardware/i2c.h"
@@ -10,9 +11,17 @@
 #include "hardware/pwm.h"
 #include <boards/pico.h>
 #include <pico/time.h>
+#include "pico/multicore.h"
 
 #include "constants.h"
 #include "functions.h"
+
+void blink_core1() {
+	gpio_put(MCU_HUB_LED, 1);
+	sleep_ms(500);
+	gpio_put(MCU_HUB_LED, 0);
+	sleep_ms(500);
+}
 
 int main() {
     // Set clock speed
@@ -159,16 +168,17 @@ int main() {
         printf("INA236_0V85_SENSE address not acknowledged, or no device "
                "present\n");
 
-    float avg_temps[AVG_TEMP_LEN] = {0.f, 0.f, 0.f, 0.f, 0.f};
+    float avg_temps[AVG_TEMP_LEN] = {};
+	memset(avg_temps, 0, AVG_TEMP_LEN);
     int avg_temps_ctr = 0;
 
+	// Launch process to blink led in second core
+	multicore_launch_core1(blink_core1);
     while(true) {
         tight_loop_contents(); // PWM
 
-        gpio_put(MCU_HUB_LED, 1);
-        sleep_ms(500);
-        gpio_put(MCU_HUB_LED, 0);
-        sleep_ms(500);
+		// Sample measurements `AVG_TEMP_LEN` times a second
+		sleep_ms(1000/AVG_TEMP_LEN);
 
         printf("Watchdog\n");
 
