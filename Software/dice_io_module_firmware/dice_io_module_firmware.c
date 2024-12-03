@@ -2,11 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 #include "pico/stdlib.h"
 #include "hardware/clocks.h"
 #include "hardware/i2c.h"
 #include "constants.h"
+
 #include "functions.h"
+#include "dice_imx477.h"
 
 char buffer[BUFFER_SIZE];
 
@@ -69,8 +72,8 @@ int main() {
     // Set up I2C
 
     // Initialize I2C port at 400 kHz
-    i2c_init(I2C_PORT0, I2C_SPEED * 1000);
-    i2c_init(I2C_PORT1, I2C_SPEED * 1000);
+    i2c_init(i2c0, I2C_SPEED * 1000);
+    i2c_init(i2c1, I2C_SPEED * 1000);
 
     gpio_init(I2C0_SDA);
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
@@ -91,6 +94,8 @@ int main() {
     bool usbpd_plg_flip = gpio_get(USBPD_PLG_FLIP);
     bool usbpd_plg_evnt = gpio_get(USBPD_PLG_EVNT);
 
+	bool mbus0_prev = 0;
+
     // Wait 4 seconds to allow terminal to set up
     sleep_ms(4000);
 
@@ -108,6 +113,12 @@ int main() {
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
+
+		// Check if FPGA toggled MBUS[0] high
+		if (mbus0_prev == 0 && gpio_get(MBUS[0]) == 1) {
+			imx477_init();
+			printf("Initialized Camera\n");
+		}
 
         // INA700 Readings
         int16_t ina700_temp;

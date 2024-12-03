@@ -35,7 +35,11 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(dice_io_module_firmware dice_io_module_firmware.c )
+add_executable(dice_io_module_firmware
+	dice_io_module_firmware.c
+	functions.c
+	dice_imx477.c
+)
 
 pico_set_program_name(dice_io_module_firmware "dice_io_module_firmware")
 pico_set_program_version(dice_io_module_firmware "0.1")
@@ -56,10 +60,10 @@ target_include_directories(dice_io_module_firmware PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(dice_io_module_firmware 
-        hardware_i2c
-        hardware_timer
-        hardware_clocks
-        )
+	hardware_i2c
+	hardware_timer
+	hardware_clocks
+)
 
 pico_add_extra_outputs(dice_io_module_firmware)
 

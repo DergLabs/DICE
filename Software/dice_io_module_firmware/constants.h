@@ -59,8 +59,5 @@ static const uint16_t INA700_DIETEMP = 0x06;
 static const uint16_t INA700_CURRENT = 0x07;
 static const uint16_t INA700_VBUS = 0x05;
 static const uint32_t INA700_POWER = 0x08;
-//
-// I2c Ports
-i2c_inst_t *I2C_PORT0 = i2c0;
-i2c_inst_t *I2C_PORT1 = i2c1;
+
 #endif // !CONSTANTS_H
