@@ -7,7 +7,7 @@
 
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 250MHz
-static const int CLK_SPEED = 250;
+static const int CLK_SPEED = 200;
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 1MHz
 static const int I2C_SPEED = 1000;

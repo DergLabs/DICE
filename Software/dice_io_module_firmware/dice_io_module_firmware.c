@@ -1,3 +1,5 @@
+#include <hardware/gpio.h>
+#include <pico/time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,11 +48,11 @@ int main() {
 
     gpio_init(USBPD_PLG_FLIP);
     gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
-	gpio_pull_up(USBPD_PLG_FLIP);
+    gpio_pull_up(USBPD_PLG_FLIP);
 
     gpio_init(USBPD_PLG_EVNT);
     gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
-	gpio_pull_up(USBPD_PLG_EVNT);
+    gpio_pull_up(USBPD_PLG_EVNT);
 
     gpio_init(CAM_PWR_EN);
     gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
@@ -65,6 +67,7 @@ int main() {
     for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
         gpio_set_dir(MBUS[i], GPIO_OUT);
+        gpio_put(MBUS[i], false);
     }
 
     // i2c ex
@@ -87,14 +90,28 @@ int main() {
     gpio_init(I2C1_SCL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
 
+    // Set up Camera
+    gpio_put(CAM_PWR_EN, true);
+    sleep_ms(5);
+    gpio_put(CAM_LED_EN, true);
+    sleep_ms(50);
+    imx477_init();
+    sleep_ms(10);
+
+    // Disable I2C1
+    i2c_deinit(i2c1);
+    gpio_set_function(I2C1_SDA, GPIO_FUNC_NULL);
+    gpio_set_function(I2C1_SCL, GPIO_FUNC_NULL);
+
+    gpio_put(MBUS[0], true);
+    sleep_ms(10);
+
     // USBPD IO Values
     bool usbpd_sink_en = gpio_get(USBPD_SINK_EN);
     bool usbpd_dbg_acc = gpio_get(USBPD_DBG_ACC);
     bool usbpd_cap_mis = gpio_get(USBPD_CAP_MIS);
     bool usbpd_plg_flip = gpio_get(USBPD_PLG_FLIP);
     bool usbpd_plg_evnt = gpio_get(USBPD_PLG_EVNT);
-
-	bool mbus0_prev = 0;
 
     // Wait 4 seconds to allow terminal to set up
     sleep_ms(4000);
@@ -113,12 +130,6 @@ int main() {
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
-
-		// Check if FPGA toggled MBUS[0] high
-		if (mbus0_prev == 0 && gpio_get(MBUS[0]) == 1) {
-			imx477_init();
-			printf("Initialized Camera\n");
-		}
 
         // INA700 Readings
         int16_t ina700_temp;
@@ -196,4 +207,3 @@ int main() {
         // }
     }
 }
-
