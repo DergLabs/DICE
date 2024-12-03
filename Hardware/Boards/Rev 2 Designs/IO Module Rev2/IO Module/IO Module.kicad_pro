@@ -1,0 +1,2160 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "apply_defaults_to_fp_fields": false,
+        "apply_defaults_to_fp_shapes": false,
+        "apply_defaults_to_fp_text": false,
+        "board_outline_line_width": 0.05,
+        "copper_line_width": 0.2,
+        "copper_text_italic": false,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "copper_text_upright": false,
+        "courtyard_line_width": 0.05,
+        "dimension_precision": 4,
+        "dimension_units": 3,
+        "dimensions": {
+          "arrow_length": 1270000,
+          "extension_offset": 500000,
+          "keep_text_aligned": true,
+          "suppress_zeroes": false,
+          "text_position": 0,
+          "units_format": 1
+        },
+        "fab_line_width": 0.1,
+        "fab_text_italic": false,
+        "fab_text_size_h": 1.0,
+        "fab_text_size_v": 1.0,
+        "fab_text_thickness": 0.15,
+        "fab_text_upright": false,
+        "other_line_width": 0.1,
+        "other_text_italic": false,
+        "other_text_size_h": 1.0,
+        "other_text_size_v": 1.0,
+        "other_text_thickness": 0.15,
+        "other_text_upright": false,
+        "pads": {
+          "drill": 0.0,
+          "height": 3.2,
+          "width": 3.2
+        },
+        "silk_line_width": 0.1,
+        "silk_text_italic": false,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.1,
+        "silk_text_upright": false,
+        "zones": {
+          "min_clearance": 0.0
+        }
+      },
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        },
+        {
+          "gap": 0.11,
+          "via_gap": 0.2,
+          "width": 0.1
+        },
+        {
+          "gap": 0.15,
+          "via_gap": 0.2,
+          "width": 0.1
+        },
+        {
+          "gap": 0.1,
+          "via_gap": 0.2,
+          "width": 0.11
+        }
+      ],
+      "drc_exclusions": [],
+      "meta": {
+        "version": 2
+      },
+      "rule_severities": {
+        "annular_width": "error",
+        "clearance": "error",
+        "connection_width": "warning",
+        "copper_edge_clearance": "error",
+        "copper_sliver": "warning",
+        "courtyards_overlap": "ignore",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_uncoupled_length_too_long": "error",
+        "drill_out_of_range": "error",
+        "duplicate_footprints": "warning",
+        "extra_footprint": "warning",
+        "footprint": "error",
+        "footprint_symbol_mismatch": "warning",
+        "footprint_type_mismatch": "ignore",
+        "hole_clearance": "error",
+        "hole_near_hole": "error",
+        "holes_co_located": "warning",
+        "invalid_outline": "error",
+        "isolated_copper": "warning",
+        "item_on_disabled_layer": "error",
+        "items_not_allowed": "error",
+        "length_out_of_range": "error",
+        "lib_footprint_issues": "warning",
+        "lib_footprint_mismatch": "warning",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "missing_courtyard": "ignore",
+        "missing_footprint": "warning",
+        "net_conflict": "warning",
+        "npth_inside_courtyard": "ignore",
+        "padstack": "warning",
+        "pth_inside_courtyard": "ignore",
+        "shorting_items": "error",
+        "silk_edge_clearance": "warning",
+        "silk_over_copper": "warning",
+        "silk_overlap": "warning",
+        "skew_out_of_range": "error",
+        "solder_mask_bridge": "warning",
+        "starved_thermal": "error",
+        "text_height": "warning",
+        "text_thickness": "warning",
+        "through_hole_pad_without_hole": "error",
+        "too_many_vias": "error",
+        "track_dangling": "warning",
+        "track_width": "error",
+        "tracks_crossing": "error",
+        "unconnected_items": "error",
+        "unresolved_variable": "error",
+        "via_dangling": "warning",
+        "zones_intersect": "error"
+      },
+      "rules": {
+        "max_error": 0.005,
+        "min_clearance": 0.09,
+        "min_connection": 0.09,
+        "min_copper_edge_clearance": 0.19,
+        "min_hole_clearance": 0.2,
+        "min_hole_to_hole": 0.15,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_resolved_spokes": 1,
+        "min_silk_clearance": 0.0,
+        "min_text_height": 0.8,
+        "min_text_thickness": 0.08,
+        "min_through_hole_diameter": 0.15,
+        "min_track_width": 0.09,
+        "min_via_annular_width": 0.05,
+        "min_via_diameter": 0.25,
+        "solder_mask_to_copper_clearance": 0.005,
+        "use_height_for_length_calcs": true
+      },
+      "teardrop_options": [
+        {
+          "td_onpadsmd": true,
+          "td_onroundshapesonly": false,
+          "td_ontrackend": false,
+          "td_onviapad": true
+        }
+      ],
+      "teardrop_parameters": [
+        {
+          "td_allow_use_two_tracks": true,
+          "td_curve_segcount": 0,
+          "td_height_ratio": 1.0,
+          "td_length_ratio": 0.5,
+          "td_maxheight": 2.0,
+          "td_maxlen": 1.0,
+          "td_on_pad_in_zone": false,
+          "td_target_name": "td_round_shape",
+          "td_width_to_size_filter_ratio": 0.9
+        },
+        {
+          "td_allow_use_two_tracks": true,
+          "td_curve_segcount": 0,
+          "td_height_ratio": 1.0,
+          "td_length_ratio": 0.5,
+          "td_maxheight": 2.0,
+          "td_maxlen": 1.0,
+          "td_on_pad_in_zone": false,
+          "td_target_name": "td_rect_shape",
+          "td_width_to_size_filter_ratio": 0.9
+        },
+        {
+          "td_allow_use_two_tracks": true,
+          "td_curve_segcount": 0,
+          "td_height_ratio": 1.0,
+          "td_length_ratio": 0.5,
+          "td_maxheight": 2.0,
+          "td_maxlen": 1.0,
+          "td_on_pad_in_zone": false,
+          "td_target_name": "td_track_end",
+          "td_width_to_size_filter_ratio": 0.9
+        }
+      ],
+      "track_widths": [
+        0.0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "tuning_pattern_settings": {
+        "diff_pair_defaults": {
+          "corner_radius_percentage": 80,
+          "corner_style": 1,
+          "max_amplitude": 1.0,
+          "min_amplitude": 0.1,
+          "single_sided": false,
+          "spacing": 0.6
+        },
+        "diff_pair_skew_defaults": {
+          "corner_radius_percentage": 80,
+          "corner_style": 1,
+          "max_amplitude": 1.0,
+          "min_amplitude": 0.1,
+          "single_sided": false,
+          "spacing": 0.2
+        },
+        "single_track_defaults": {
+          "corner_radius_percentage": 80,
+          "corner_style": 1,
+          "max_amplitude": 1.0,
+          "min_amplitude": 0.2,
+          "single_sided": false,
+          "spacing": 0.4
+        }
+      },
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        },
+        {
+          "diameter": 0.25,
+          "drill": 0.15
+        },
+        {
+          "diameter": 0.4,
+          "drill": 0.3
+        }
+      ],
+      "zones_allow_external_fillets": false
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    },
+    "pin_map": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    ],
+    "rule_severities": {
+      "bus_definition_conflict": "error",
+      "bus_entry_needed": "error",
+      "bus_to_bus_conflict": "error",
+      "bus_to_net_conflict": "error",
+      "conflicting_netclasses": "error",
+      "different_unit_footprint": "error",
+      "different_unit_net": "error",
+      "duplicate_reference": "error",
+      "duplicate_sheet_names": "error",
+      "endpoint_off_grid": "warning",
+      "extra_units": "error",
+      "global_label_dangling": "warning",
+      "hier_label_mismatch": "error",
+      "label_dangling": "error",
+      "lib_symbol_issues": "warning",
+      "missing_bidi_pin": "warning",
+      "missing_input_pin": "warning",
+      "missing_power_pin": "error",
+      "missing_unit": "warning",
+      "multiple_net_names": "warning",
+      "net_not_bus_member": "warning",
+      "no_connect_connected": "warning",
+      "no_connect_dangling": "warning",
+      "pin_not_connected": "error",
+      "pin_not_driven": "error",
+      "pin_to_pin": "error",
+      "power_pin_not_driven": "error",
+      "similar_labels": "warning",
+      "simulation_model_issue": "ignore",
+      "unannotated": "error",
+      "unit_value_mismatch": "error",
+      "unresolved_variable": "error",
+      "wire_dangling": "error"
+    }
+  },
+  "libraries": {
+    "pinned_footprint_libs": [
+      "IO_Module"
+    ],
+    "pinned_symbol_libs": [
+      "IO_Module"
+    ]
+  },
+  "meta": {
+    "filename": "IO Module.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "FIFO_BUS",
+        "pcb_color": "rgb(0, 255, 248)",
+        "schematic_color": "rgb(0, 255, 248)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "FPGA_I2C",
+        "pcb_color": "rgb(255, 154, 0)",
+        "schematic_color": "rgb(255, 154, 0)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "FT2232_IO",
+        "pcb_color": "rgb(105, 200, 255)",
+        "schematic_color": "rgb(105, 200, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "FT600_IO",
+        "pcb_color": "rgb(199, 255, 0)",
+        "schematic_color": "rgb(199, 255, 0)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "GND",
+        "pcb_color": "rgb(88, 91, 105)",
+        "schematic_color": "rgb(88, 91, 105)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "HDMI_CON",
+        "pcb_color": "rgb(255, 231, 98)",
+        "schematic_color": "rgb(255, 231, 98)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "HDMI_CTRL",
+        "pcb_color": "rgb(255, 99, 187)",
+        "schematic_color": "rgb(255, 99, 187)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "HDMI_DB",
+        "pcb_color": "rgb(0, 91, 255)",
+        "schematic_color": "rgb(0, 91, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "HDMI_DG",
+        "pcb_color": "rgb(157, 255, 0)",
+        "schematic_color": "rgb(157, 255, 0)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "HDMI_DR",
+        "pcb_color": "rgb(255, 24, 3)",
+        "schematic_color": "rgb(255, 24, 3)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "I2C0",
+        "pcb_color": "rgb(255, 108, 93)",
+        "schematic_color": "rgb(255, 108, 93)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "I2C1",
+        "pcb_color": "rgb(209, 255, 183)",
+        "schematic_color": "rgb(209, 255, 183)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "JTAG",
+        "pcb_color": "rgb(247, 0, 255)",
+        "schematic_color": "rgb(247, 0, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MCU_BUS",
+        "pcb_color": "rgb(199, 234, 255)",
+        "schematic_color": "rgb(199, 234, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MCU_IO",
+        "pcb_color": "rgb(113, 9, 255)",
+        "schematic_color": "rgb(113, 9, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MCU_VCORE",
+        "pcb_color": "rgb(114, 255, 80)",
+        "schematic_color": "rgb(114, 255, 80)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MIPI_CTRL",
+        "pcb_color": "rgb(86, 201, 255)",
+        "schematic_color": "rgb(86, 201, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MIPI_DATA",
+        "pcb_color": "rgb(255, 56, 137)",
+        "schematic_color": "rgb(255, 56, 137)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MIPI_VCORE",
+        "pcb_color": "rgb(155, 255, 9)",
+        "schematic_color": "rgb(155, 255, 9)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PP_1V1",
+        "pcb_color": "rgb(255, 132, 223)",
+        "schematic_color": "rgb(255, 132, 223)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PP_1V2",
+        "pcb_color": "rgb(68, 255, 213)",
+        "schematic_color": "rgb(68, 255, 213)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PP_1V8",
+        "pcb_color": "rgb(255, 145, 98)",
+        "schematic_color": "rgb(255, 145, 98)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PP_3V3",
+        "pcb_color": "rgb(255, 200, 77)",
+        "schematic_color": "rgb(255, 200, 77)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PP_VUSB",
+        "pcb_color": "rgb(255, 242, 95)",
+        "schematic_color": "rgb(255, 242, 95)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PP_VUSB_R",
+        "pcb_color": "rgb(222, 255, 101)",
+        "schematic_color": "rgb(222, 255, 101)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "UART",
+        "pcb_color": "rgb(255, 189, 221)",
+        "schematic_color": "rgb(255, 189, 221)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB",
+        "pcb_color": "rgb(159, 255, 110)",
+        "schematic_color": "rgb(159, 255, 110)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB2",
+        "pcb_color": "rgb(111, 255, 127)",
+        "schematic_color": "rgb(111, 255, 127)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB2_FIFO",
+        "pcb_color": "rgb(255, 36, 38)",
+        "schematic_color": "rgb(255, 36, 38)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB2_JTAG",
+        "pcb_color": "rgb(255, 237, 0)",
+        "schematic_color": "rgb(255, 237, 0)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB2_MCU",
+        "pcb_color": "rgb(255, 143, 15)",
+        "schematic_color": "rgb(255, 143, 15)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB2_SYSMON",
+        "pcb_color": "rgb(184, 255, 0)",
+        "schematic_color": "rgb(184, 255, 0)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB3",
+        "pcb_color": "rgb(133, 255, 202)",
+        "schematic_color": "rgb(133, 255, 202)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB3_FIFO",
+        "pcb_color": "rgb(255, 77, 151)",
+        "schematic_color": "rgb(255, 77, 151)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB3_HUB",
+        "pcb_color": "rgb(0, 255, 178)",
+        "schematic_color": "rgb(0, 255, 178)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB3_RX",
+        "pcb_color": "rgb(255, 23, 159)",
+        "schematic_color": "rgb(255, 23, 159)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB3_TX",
+        "pcb_color": "rgb(0, 255, 244)",
+        "schematic_color": "rgb(0, 255, 244)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USBPD",
+        "pcb_color": "rgb(115, 247, 255)",
+        "schematic_color": "rgb(115, 247, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USBPD_I2C",
+        "pcb_color": "rgb(101, 207, 255)",
+        "schematic_color": "rgb(101, 207, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USBPD_LDO",
+        "pcb_color": "rgb(218, 124, 255)",
+        "schematic_color": "rgb(218, 124, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB_HUB_IO",
+        "pcb_color": "rgb(106, 163, 255)",
+        "schematic_color": "rgb(106, 163, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB_MUX_IO",
+        "pcb_color": "rgb(255, 0, 9)",
+        "schematic_color": "rgb(255, 0, 9)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "VUSB_ISNS",
+        "pcb_color": "rgb(95, 173, 255)",
+        "schematic_color": "rgb(95, 173, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "VUSB_ISNS_I2C",
+        "pcb_color": "rgb(113, 126, 255)",
+        "schematic_color": "rgb(113, 126, 255)",
+        "track_width": 0.1,
+        "via_diameter": 0.25,
+        "via_drill": 0.15,
+        "wire_width": 6
+      }
+    ],
+    "meta": {
+      "version": 3
+    },
+    "net_colors": null,
+    "netclass_assignments": null,
+    "netclass_patterns": [
+      {
+        "netclass": "GND",
+        "pattern": "GND"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "/Top/Power/USB_*"
+      },
+      {
+        "netclass": "USB2",
+        "pattern": "/Top/Power/USB2_*"
+      },
+      {
+        "netclass": "USB3",
+        "pattern": "/Top/Power/USB3*"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/Power/USBPD*"
+      },
+      {
+        "netclass": "USBPD_I2C",
+        "pattern": "/Top/Power/USBPD_I2C*"
+      },
+      {
+        "netclass": "I2C0",
+        "pattern": "/Top/Power/I2C0*"
+      },
+      {
+        "netclass": "PP_VUSB_R",
+        "pattern": "/Top/Power/PP_VUSB_R"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/Power/PP_VUSB"
+      },
+      {
+        "netclass": "VUSB_ISNS_I2C",
+        "pattern": "/Top/Power/VUSB_ISNS_SCL"
+      },
+      {
+        "netclass": "VUSB_ISNS_I2C",
+        "pattern": "/Top/Power/VUSB_ISNS_SDA"
+      },
+      {
+        "netclass": "VUSB_ISNS",
+        "pattern": "/Top/Power/VUSB_ISNS_ALRT"
+      },
+      {
+        "netclass": "USBPD_I2C",
+        "pattern": "/Top/Power/USBPD_I2C_SCL"
+      },
+      {
+        "netclass": "USBPD_LDO",
+        "pattern": "/Top/Power/VIN_3V3"
+      },
+      {
+        "netclass": "USBPD_LDO",
+        "pattern": "/Top/Power/LDO_*"
+      },
+      {
+        "netclass": "PP_3V3",
+        "pattern": "+3V3"
+      },
+      {
+        "netclass": "PP_1V8",
+        "pattern": "+1V8"
+      },
+      {
+        "netclass": "PP_3V3",
+        "pattern": "/Top/Power/PP3V3_FB"
+      },
+      {
+        "netclass": "PP_1V8",
+        "pattern": "/Top/Power/PP1V8_FB"
+      },
+      {
+        "netclass": "USBPD_I2C",
+        "pattern": "/Top/Power/USBPD_I2CT_SCL"
+      },
+      {
+        "netclass": "USBPD_I2C",
+        "pattern": "/Top/Power/USBPD_I2CT_SDA"
+      },
+      {
+        "netclass": "USBPD_I2C",
+        "pattern": "/Top/Power/I2CT*"
+      },
+      {
+        "netclass": "PP_1V1",
+        "pattern": "/Top/USB Hub/PP_1V1"
+      },
+      {
+        "netclass": "PP_1V1",
+        "pattern": "/Top/USB Hub/PP1V1_FB"
+      },
+      {
+        "netclass": "PP_1V1",
+        "pattern": "+1V1"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "/Top/Power/VBUS_IN"
+      },
+      {
+        "netclass": "USB2",
+        "pattern": "/Top/USB Hub/USB2_*"
+      },
+      {
+        "netclass": "USB3",
+        "pattern": "/Top/USB Hub/USB3_RX1*"
+      },
+      {
+        "netclass": "USB3",
+        "pattern": "/Top/USB Hub/USB3_RX2*"
+      },
+      {
+        "netclass": "USB3",
+        "pattern": "/Top/USB Hub/USB3_TX1*"
+      },
+      {
+        "netclass": "USB3",
+        "pattern": "/Top/USB Hub/USB3_TX2*"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/USB Hub/USBPD_PLG_FLIP"
+      },
+      {
+        "netclass": "USB3",
+        "pattern": "/Top/USB Hub/TXC_*"
+      },
+      {
+        "netclass": "USB3_HUB",
+        "pattern": "/Top/USB Hub/*XA*"
+      },
+      {
+        "netclass": "USB3_FIFO",
+        "pattern": "/Top/USB Hub/USB1D*"
+      },
+      {
+        "netclass": "USB2_JTAG",
+        "pattern": "/Top/USB Hub/USB_JTAG_*"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/USB Hub/USB_MCU_D_*"
+      },
+      {
+        "netclass": "USB2_SYSMON",
+        "pattern": "/Top/USB Hub/USB_SYSMON_D_*"
+      },
+      {
+        "netclass": "USB2_JTAG",
+        "pattern": "/Top/USB-JTAG/USB_JTAG_D*"
+      },
+      {
+        "netclass": "FT2232_IO",
+        "pattern": "/Top/USB-JTAG/FT2232_*"
+      },
+      {
+        "netclass": "FT2232_IO",
+        "pattern": "/Top/USB-JTAG/FT_*"
+      },
+      {
+        "netclass": "JTAG",
+        "pattern": "/Top/USB-JTAG/JTAG_*"
+      },
+      {
+        "netclass": "UART",
+        "pattern": "/Top/USB-JTAG/UART*"
+      },
+      {
+        "netclass": "FT600_IO",
+        "pattern": "/Top/USB-FIFO/FT600_*"
+      },
+      {
+        "netclass": "FIFO_BUS",
+        "pattern": "/Top/USB-FIFO/FIFO_*"
+      },
+      {
+        "netclass": "USB2_FIFO",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_D*"
+      },
+      {
+        "netclass": "USB3_TX",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_T*"
+      },
+      {
+        "netclass": "USB3_RX",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_RX_*"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/USB-FIFO/PP_VUSB"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/MCU/USB_MCU_D_*"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/MCU/QSPI_*"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/MCU/MCU_*"
+      },
+      {
+        "netclass": "I2C0",
+        "pattern": "/Top/MCU/I2C0_*"
+      },
+      {
+        "netclass": "I2C1",
+        "pattern": "/Top/MCU/I2C1_*"
+      },
+      {
+        "netclass": "MCU_BUS",
+        "pattern": "/Top/MCU/MBUS*"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/MCU/CAM_PWR_EN"
+      },
+      {
+        "netclass": "MCU_IO",
+        "pattern": "/Top/MCU/CAM_LED_EN"
+      },
+      {
+        "netclass": "MIPI_DATA",
+        "pattern": "/Top/Camera FPC/MIPI_D*"
+      },
+      {
+        "netclass": "MIPI_DATA",
+        "pattern": "/Top/Camera FPC/MIPI_CLK_*"
+      },
+      {
+        "netclass": "MIPI_DATA",
+        "pattern": "/Top/Camera FPC/CAM_D*"
+      },
+      {
+        "netclass": "MIPI_DATA",
+        "pattern": "/Top/Camera FPC/CAM_CLK*"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/CAM_PWR_EN"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/CAM_LED_EN"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/CAM_S*"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/EQ"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/ERC"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/RST"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/CFG0"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/CFG1"
+      },
+      {
+        "netclass": "FPGA_I2C",
+        "pattern": "/Top/Camera FPC/FPGA_I2C_*"
+      },
+      {
+        "netclass": "I2C1",
+        "pattern": "/Top/Camera FPC/I2C1_*"
+      },
+      {
+        "netclass": "MIPI_VCORE",
+        "pattern": "/Top/Camera FPC/MIPI_VCORE"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/PP_VUSB"
+      },
+      {
+        "netclass": "JTAG",
+        "pattern": "/Top/B2B/JTAG_*"
+      },
+      {
+        "netclass": "UART",
+        "pattern": "/Top/B2B/UART_*"
+      },
+      {
+        "netclass": "FPGA_I2C",
+        "pattern": "/Top/B2B/FPGA_I2C_*"
+      },
+      {
+        "netclass": "USB2_SYSMON",
+        "pattern": "/Top/B2B/USB_SYSMON_*"
+      },
+      {
+        "netclass": "FT600_IO",
+        "pattern": "/Top/B2B/FT600_*"
+      },
+      {
+        "netclass": "FIFO_BUS",
+        "pattern": "/Top/B2B/FIFO_*"
+      },
+      {
+        "netclass": "MCU_BUS",
+        "pattern": "/Top/B2B/MBUS_*"
+      },
+      {
+        "netclass": "MIPI_DATA",
+        "pattern": "/Top/B2B/MIPI_D*"
+      },
+      {
+        "netclass": "MIPI_DATA",
+        "pattern": "/Top/B2B/MIPI_CLK_*"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/B2B/CAM_*"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/B2B/PP_VUSB"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/USB Hub/USBPD_PLG_EVNT"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/MCU/USBPD_PLG_FLIP"
+      },
+      {
+        "netclass": "VUSB_ISNS",
+        "pattern": "/Top/MCU/VUSB_ISNS_ALRT"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/MCU/USBPD_PLG_EVNT"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/MCU/USBPD_CAP_MIS"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/MCU/USBPD_FLT_IN"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/MCU/USBPD_SINK_EN"
+      },
+      {
+        "netclass": "USBPD",
+        "pattern": "/Top/MCU/USBPD_DBG_ACC"
+      },
+      {
+        "netclass": "MCU_VCORE",
+        "pattern": "/Top/MCU/MCU_1V1"
+      },
+      {
+        "netclass": "MCU_VCORE",
+        "pattern": "/Top/MCU/VMCU_1V1"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/USB Hub/PP_VUSB"
+      },
+      {
+        "netclass": "USB_HUB_IO",
+        "pattern": "/Top/USB Hub/USB_VBUS_DET"
+      },
+      {
+        "netclass": "USB_HUB_IO",
+        "pattern": "/Top/USB Hub/USB_HUB_RST"
+      },
+      {
+        "netclass": "USB_HUB_IO",
+        "pattern": "/Top/USB Hub/HUB_X*"
+      },
+      {
+        "netclass": "USB_HUB_IO",
+        "pattern": "/Top/USB Hub/USB_HUB_REF"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/USSEQ*"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/EQCFG"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/CEQ*"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/SLP_S0"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/AEQENZ"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/AEQCFG"
+      },
+      {
+        "netclass": "USB_MUX_IO",
+        "pattern": "/Top/USB Hub/UMUX_*"
+      },
+      {
+        "netclass": "GND",
+        "pattern": "/Top/B2B/GND"
+      },
+      {
+        "netclass": "USB2_SYSMON",
+        "pattern": "/Top/USB Hub/USB2D_*"
+      },
+      {
+        "netclass": "USB2_JTAG",
+        "pattern": "/Top/USB Hub/USB3D_*"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/USB Hub/USB4D_P"
+      },
+      {
+        "netclass": "USB2_MCU",
+        "pattern": "/Top/USB Hub/USB4D_N"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "/Top/B2B/Boobies"
+      },
+      {
+        "netclass": "PP_VUSB",
+        "pattern": "/Top/HDMI/PP_VUSB"
+      },
+      {
+        "netclass": "PP_VUSB_R",
+        "pattern": "/Top/HDMI/PP_VUSB_R"
+      },
+      {
+        "netclass": "I2C0",
+        "pattern": "/Top/USB Hub/I2C0_*"
+      },
+      {
+        "netclass": "USB3_RX",
+        "pattern": "/Top/USB Hub/USB_FIFO_RX*"
+      },
+      {
+        "netclass": "USB2_FIFO",
+        "pattern": "/Top/USB Hub/USB_FIFO_D*"
+      },
+      {
+        "netclass": "USB3_TX",
+        "pattern": "/Top/USB Hub/USB_FIFO_TX*"
+      },
+      {
+        "netclass": "USB3_RX",
+        "pattern": "/Top/USB-FIFO/USB_FIFO_RX*"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/MIPI_RST"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/EQ{slash}SCL"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/ERC{slash}SDA"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/MCU/MIPI_RST_R"
+      },
+      {
+        "netclass": "MIPI_CTRL",
+        "pattern": "/Top/Camera FPC/MIPI_RST_R"
+      },
+      {
+        "netclass": "FPGA_I2C",
+        "pattern": "/Top/FPGA_I2C*"
+      },
+      {
+        "netclass": "I2C1",
+        "pattern": "/Top/I2C1_*"
+      },
+      {
+        "netclass": "I2C0",
+        "pattern": "/Top/I2C0_*"
+      },
+      {
+        "netclass": "HDMI_DB",
+        "pattern": "/Top/HDMI Transmitter/HDMI_DB*"
+      },
+      {
+        "netclass": "HDMI_DG",
+        "pattern": "/Top/HDMI Transmitter/HDMI_DG*"
+      },
+      {
+        "netclass": "HDMI_DR",
+        "pattern": "/Top/HDMI Transmitter/HDMI_DR*"
+      },
+      {
+        "netclass": "HDMI_CON",
+        "pattern": "/Top/HDMI Transmitter/HDMI_CON*"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_RST"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_IDCLK"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_DE"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_HSYNC"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_VSYNC"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_MCLK"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_SCK"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_WS_DR0"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_SD0_DL0"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_SD1_DR1"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_SD2_DL1"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_SD3_DR2"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_SPDIF"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_INT"
+      },
+      {
+        "netclass": "FPGA_I2C",
+        "pattern": "/Top/HDMI Transmitter/FPGA_I2C_*"
+      },
+      {
+        "netclass": "I2C1",
+        "pattern": "/Top/HDMI Transmitter/I2C1_*"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/HDMI Transmitter/HDMI_CS*"
+      },
+      {
+        "netclass": "PP_VUSB_R",
+        "pattern": "/Top/HDMI Transmitter/PP_VUSB_R"
+      },
+      {
+        "netclass": "PP_1V2",
+        "pattern": "/Top/HDMI Transmitter/PP_1V2_HDMI"
+      },
+      {
+        "netclass": "PP_1V2",
+        "pattern": "/Top/HDMI Transmitter/PP1V2H_FB"
+      },
+      {
+        "netclass": "PP_1V2",
+        "pattern": "/Top/HDMI Transmitter/AVCC_1V2"
+      },
+      {
+        "netclass": "PP_1V2",
+        "pattern": "/Top/HDMI Transmitter/CVCC_1V2"
+      },
+      {
+        "netclass": "PP_3V3",
+        "pattern": "/Top/HDMI Transmitter/IOVCC_3V3"
+      },
+      {
+        "netclass": "HDMI_DG",
+        "pattern": "/Top/B2B/HDMI_DG*"
+      },
+      {
+        "netclass": "HDMI_DR",
+        "pattern": "/Top/B2B/HDMI_DR*"
+      },
+      {
+        "netclass": "HDMI_DB",
+        "pattern": "/Top/B2B/HDMI_DB*"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_MCLK"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_SCK"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_WS_DR0"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_SD0_DL0"
+      },
+      {
+        "netclass": "USB3_RX",
+        "pattern": "/Top/USB Hub/USB3_RX_N"
+      },
+      {
+        "netclass": "USB3_RX",
+        "pattern": "/Top/USB Hub/USB3_RX_P"
+      },
+      {
+        "netclass": "USB3_TX",
+        "pattern": "/Top/USB Hub/USB3_TX_N"
+      },
+      {
+        "netclass": "USB3_TX",
+        "pattern": "/Top/USB Hub/USB3_TX_P"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_SD1_DR1"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_SD2_DL1"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_SD3_DR2"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_SPDIF"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_INT"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_RST"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_IDCLK"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_DE"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_HSYNC"
+      },
+      {
+        "netclass": "HDMI_CTRL",
+        "pattern": "/Top/B2B/HDMI_VSYNC"
+      }
+    ]
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "",
+      "plot": "../../../../../../../iomodule/",
+      "pos_files": "",
+      "specctra_dsn": "",
+      "step": "../../../../../../IO Module v2 copper.step",
+      "svg": "",
+      "vrml": "../../../../../../IO WRL/IO Module.wrl"
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "bom_export_filename": "../../../../../../IO Module Power.csv",
+    "bom_fmt_presets": [],
+    "bom_fmt_settings": {
+      "field_delimiter": ",",
+      "keep_line_breaks": false,
+      "keep_tabs": false,
+      "name": "CSV",
+      "ref_delimiter": ",",
+      "ref_range_delimiter": "",
+      "string_delimiter": "\""
+    },
+    "bom_presets": [],
+    "bom_settings": {
+      "exclude_dnp": false,
+      "fields_ordered": [
+        {
+          "group_by": false,
+          "label": "Reference",
+          "name": "Reference",
+          "show": true
+        },
+        {
+          "group_by": true,
+          "label": "Value",
+          "name": "Value",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Datasheet",
+          "name": "Datasheet",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Footprint",
+          "name": "Footprint",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Qty",
+          "name": "${QUANTITY}",
+          "show": true
+        },
+        {
+          "group_by": true,
+          "label": "DNP",
+          "name": "${DNP}",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MANUFACTURER",
+          "name": "MANUFACTURER",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MPN",
+          "name": "MPN",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "PARTREV",
+          "name": "PARTREV",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "STANDARD",
+          "name": "STANDARD",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        }
+      ],
+      "filter_string": "",
+      "group_symbols": true,
+      "name": "",
+      "sort_asc": true,
+      "sort_field": "Reference"
+    },
+    "connection_grid_size": 50.0,
+    "drawing": {
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
+      "default_line_thickness": 6.0,
+      "default_text_size": 50.0,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": true,
+      "intersheets_ref_suffix": "",
+      "junction_size_choice": 3,
+      "label_size_ratio": 0.375,
+      "operating_point_overlay_i_precision": 3,
+      "operating_point_overlay_i_range": "~A",
+      "operating_point_overlay_v_precision": 3,
+      "operating_point_overlay_v_range": "~V",
+      "overbar_offset_ratio": 1.23,
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.15
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 1
+    },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "../../../../../../",
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_dissipations": false,
+    "spice_save_all_voltages": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [
+    [
+      "884396b6-238b-495e-b731-e47ad2523f76",
+      "Root"
+    ],
+    [
+      "dcc99803-8acd-4632-9c0b-7f677477cf65",
+      "Top"
+    ],
+    [
+      "a96b3d99-fa0d-4da4-b74d-b32729e184ee",
+      "Power"
+    ],
+    [
+      "b58db5be-569b-493e-8f16-bcb1976e39fb",
+      "USB-JTAG"
+    ],
+    [
+      "0caf3050-48d7-4c2b-bd75-8084d37ef6b3",
+      "USB-FIFO"
+    ],
+    [
+      "b9e332ae-d2e8-46a2-a399-2be4b4bc2973",
+      "MCU"
+    ],
+    [
+      "39895476-b4b2-426d-888f-6f904291e742",
+      "B2B"
+    ],
+    [
+      "7fc8cead-139b-409c-a5e7-289301bfab42",
+      "USB Hub"
+    ],
+    [
+      "96d20dfa-bd12-4b84-9997-2e005925dee0",
+      "Camera FPC"
+    ],
+    [
+      "594451ef-7e88-4078-9e57-cb0c86be4d0d",
+      "HDMI Transmitter"
+    ]
+  ],
+  "text_variables": {}
+}
