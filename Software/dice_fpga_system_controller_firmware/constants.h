@@ -4,7 +4,7 @@
 
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 250MHz
-static const uint8_t CLK_SPEED = 250;
+static const uint8_t CLK_SPEED = 150;
 
 // Will be made into 50MHz
 static const uint8_t SPI_SPEED = 50;
