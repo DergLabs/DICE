@@ -3,6 +3,18 @@
 #include <stdbool.h>
 #include "hardware/i2c.h"
 
+float avg_float_arr(float *arr, int len) {
+    float sum = 0.f;
+    float avg = 0.f;
+
+    for(int i = 0; i < len; i++) {
+        sum += arr[i];
+    }
+
+    avg = sum / len;
+    return avg;
+}
+
 bool device_i2c_read_u16(i2c_inst_t *i2c_port, uint8_t addr, const uint8_t *src,
                          size_t src_len, uint16_t *dest, size_t dest_len) {
     unsigned char buf[2];

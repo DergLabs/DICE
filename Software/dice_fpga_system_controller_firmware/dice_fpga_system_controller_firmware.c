@@ -2,6 +2,7 @@
 #include <pico/error.h>
 #include <pico/types.h>
 #include <stdio.h>
+#include <string.h>
 #include "pico/stdio.h"
 #include "hardware/spi.h"
 #include "hardware/i2c.h"
@@ -10,9 +11,17 @@
 #include "hardware/pwm.h"
 #include <boards/pico.h>
 #include <pico/time.h>
+#include "pico/multicore.h"
 
 #include "constants.h"
 #include "functions.h"
+
+void blink_core1() {
+	gpio_put(MCU_HUB_LED, 1);
+	sleep_ms(500);
+	gpio_put(MCU_HUB_LED, 0);
+	sleep_ms(500);
+}
 
 int main() {
     // Set clock speed
@@ -121,10 +130,12 @@ int main() {
     gpio_put(_5V0_EN, 1);
 
     // Set FPGA Mode Pins
+    // SPI Mode:  (M[2:0]) 001
+    // JTAG Mode: (M[2:0]) 101
     sleep_ms(5);
-    gpio_put(FPGA_MCU_M0, 1);
-    gpio_put(FPGA_MCU_M1, 0);
     gpio_put(FPGA_MCU_M2, 0);
+    gpio_put(FPGA_MCU_M1, 0);
+    gpio_put(FPGA_MCU_M0, 1);
 
     uint8_t INA236_CONFIG_BUF[3];
     // Configuration Register
@@ -157,13 +168,17 @@ int main() {
         printf("INA236_0V85_SENSE address not acknowledged, or no device "
                "present\n");
 
+    float avg_temps[AVG_TEMP_LEN] = {};
+	memset(avg_temps, 0, AVG_TEMP_LEN);
+    int avg_temps_ctr = 0;
+
+	// Launch process to blink led in second core
+	multicore_launch_core1(blink_core1);
     while(true) {
         tight_loop_contents(); // PWM
 
-        gpio_put(MCU_HUB_LED, 1);
-        sleep_ms(500);
-        gpio_put(MCU_HUB_LED, 0);
-        sleep_ms(500);
+		// Sample measurements `AVG_TEMP_LEN` times a second
+		sleep_ms(1000/AVG_TEMP_LEN);
 
         printf("Watchdog\n");
 
@@ -278,42 +293,70 @@ int main() {
         float ina236_0V85_calculated_current =
             current_reading_0V85 * INA236_CURRENT_LSB_MIN;
 
+        float avg_temp =
+            (ina700_1V2_calculated_temp + ina700_1V8_calculated_temp +
+             ina700_3V3_calculated_temp) /
+            3;
+        avg_temps[avg_temps_ctr] = avg_temp;
+        avg_temps_ctr = (avg_temps_ctr + 1) % AVG_TEMP_LEN;
+
         absolute_time_t abs_time = get_absolute_time();
 
         printf("BEGIN TRANSMISSION\n");
         printf("Absolute Time: %llu\n", abs_time);
 
+        float avg_of_avg_temps = avg_float_arr(avg_temps, AVG_TEMP_LEN);
+        if(avg_temp >= 90.f || avg_of_avg_temps >= 85.f) {
+            gpio_put(_1V8_EN, 0);
+            gpio_put(_1V2_EN, 0);
+            sleep_ms(1);
+            gpio_put(_3V3_EN, 0);
+
+            printf("Temperatures have reached too high: Average Current Temp: "
+                   "%0.2f, Average Temp over Last Second: %0.2f, turning off "
+                   "_1V8, _1V2, "
+                   "_3V3 power supplies\n",
+                   avg_temp, avg_of_avg_temps);
+        }
+
         printf("INA700 Readings\n");
 
-        printf("\n3V3\n");
-        printf("Temperature: %.2fC(%02X)\n", ina700_3V3_calculated_temp,
-               temp_reading_3V3);
-        printf("Current: %dmA(%02X)\n", ina700_3V3_calculated_current,
-               current_reading_3V3);
-        printf("Voltage: %.2fV(%02X)\n", ina700_3V3_calculated_voltage,
-               voltage_reading_3V3);
-        printf("Power: %.2fW(%02X)\n", ina700_3V3_calculated_power,
-               power_reading_3V3);
+        if(gpio_get(_1V8_EN) && gpio_get(_1V2_EN) && gpio_get(_3V3_EN)) {
+            printf("\n3V3\n");
+            printf("Temperature: %.2fC(%02X)\n", ina700_3V3_calculated_temp,
+                   temp_reading_3V3);
+            printf("Current: %dmA(%02X)\n", ina700_3V3_calculated_current,
+                   current_reading_3V3);
+            printf("Voltage: %.2fV(%02X)\n", ina700_3V3_calculated_voltage,
+                   voltage_reading_3V3);
+            printf("Power: %.2fW(%02X)\n", ina700_3V3_calculated_power,
+                   power_reading_3V3);
 
-        printf("\n1V8\n");
-        printf("Temperature: %.2fC(%02X)\n", ina700_1V8_calculated_temp,
-               temp_reading_1V8);
-        printf("Current: %dmA(%02X)\n", ina700_1V8_calculated_current,
-               current_reading_1V8);
-        printf("Voltage: %.2fV(%02X)\n", ina700_1V8_calculated_voltage,
-               voltage_reading_1V8);
-        printf("Power: %.2fW(%02X)\n", ina700_1V8_calculated_power,
-               power_reading_1V8);
+            printf("\n1V8\n");
+            printf("Temperature: %.2fC(%02X)\n", ina700_1V8_calculated_temp,
+                   temp_reading_1V8);
+            printf("Current: %dmA(%02X)\n", ina700_1V8_calculated_current,
+                   current_reading_1V8);
+            printf("Voltage: %.2fV(%02X)\n", ina700_1V8_calculated_voltage,
+                   voltage_reading_1V8);
+            printf("Power: %.2fW(%02X)\n", ina700_1V8_calculated_power,
+                   power_reading_1V8);
 
-        printf("\n1V2\n");
-        printf("Temperature: %.2fC(%02X)\n", ina700_1V2_calculated_temp,
-               temp_reading_1V2);
-        printf("Current: %dmA(%02X)\n", ina700_1V2_calculated_current,
-               current_reading_1V2);
-        printf("Voltage: %.2fV(%02X)\n", ina700_1V2_calculated_voltage,
-               voltage_reading_1V2);
-        printf("Power: %.2fW(%02X)\n", ina700_1V2_calculated_power,
-               power_reading_1V2);
+            printf("\n1V2\n");
+            printf("Temperature: %.2fC(%02X)\n", ina700_1V2_calculated_temp,
+                   temp_reading_1V2);
+            printf("Current: %dmA(%02X)\n", ina700_1V2_calculated_current,
+                   current_reading_1V2);
+            printf("Voltage: %.2fV(%02X)\n", ina700_1V2_calculated_voltage,
+                   voltage_reading_1V2);
+            printf("Power: %.2fW(%02X)\n", ina700_1V2_calculated_power,
+                   power_reading_1V2);
+
+        } else {
+            printf(
+                "Temperatures had reached >= 90 C, power supplies _1V8, _1V2, "
+                "_3V3 are turned off\n");
+        }
 
         printf("\nINA236 Readings\n");
         printf("\n0V85\n");
