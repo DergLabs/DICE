@@ -17,10 +17,12 @@
 #include "functions.h"
 
 void blink_core1() {
-	gpio_put(MCU_HUB_LED, 1);
-	sleep_ms(500);
-	gpio_put(MCU_HUB_LED, 0);
-	sleep_ms(500);
+	while(true) {
+		gpio_put(MCU_HUB_LED, 1);
+		sleep_ms(500);
+		gpio_put(MCU_HUB_LED, 0);
+		sleep_ms(500);
+	}
 }
 
 int main() {
