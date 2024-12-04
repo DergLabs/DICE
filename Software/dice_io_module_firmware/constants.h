@@ -10,7 +10,8 @@
 static const int CLK_SPEED = 200;
 // Will Be multiplied by 1000 when used, in a call that takes in kHz
 // making the result 1MHz
-static const int I2C_SPEED = 1000;
+static const int I2C0_SPEED = 1000;
+static const int I2C1_SPEED = 400;
 
 // IO Module Pins
 static const int VBUS_ISNS_ALRT = 1;

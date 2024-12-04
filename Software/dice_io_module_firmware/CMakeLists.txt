@@ -52,6 +52,11 @@ pico_enable_stdio_uart(dice_io_module_firmware 0)
 target_link_libraries(dice_io_module_firmware
         pico_stdlib)
 
+# set SPI clock slower than CPU clock so that it works
+pico_define_boot_stage2(slower_boot2 ${PICO_DEFAULT_BOOT_STAGE2_FILE})
+target_compile_definitions(slower_boot2 PRIVATE PICO_FLASH_SPI_CLKDIV=4)
+pico_set_boot_stage2(${PROJECT_NAME} slower_boot2)
+
 # Add the standard include files to the build
 target_include_directories(dice_io_module_firmware PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}

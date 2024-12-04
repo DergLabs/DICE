@@ -176,6 +176,8 @@
 #define REG_DOL_CSI_DT_FMT_L_3ND 0x00FF
 #define REG_DOL_CONST 0xE013
 
+
+// DO NOT USE THESE!!!!!
 #define SENSOR_ADDR_WR                                                         \
     0x34 /* Slave address used to write sensor registers.                      \
           */
@@ -184,6 +186,8 @@
 #define I2C_SLAVEADDR_MASK                                                     \
     0xFE /* Mask to get actual I2C slave address value without direction bit.  \
           */
+
+#define SENSOR_ADDR 0x1A
 
 #define _countof(array) (sizeof(array) / sizeof(array[0]))
 

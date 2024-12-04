@@ -32,18 +32,34 @@ bool imx477_write(uint16_t reg, uint8_t data) {
     uint8_t i2c_src[3] = {(reg >> 8) & 0xFF, // Register Address [15:8]
                           reg & 0xFF,        // Register Address [7:0]
                           data};
-    if(i2c_write_blocking(i2c1, (uint8_t)IMX477_SENSOR_ID, i2c_src, 3, false) !=
+    if(i2c_write_blocking(i2c1, SENSOR_ADDR, i2c_src, 3, false) !=
        3)
         return false;
 }
 
 bool imx477_read(uint16_t reg, uint8_t *buf, size_t buflen) {
-    uint8_t i2c_src[3] = {(reg >> 8) & 0xFF, // Register Address [15:8]
-                          reg & 0xFF,        // Register Address [7:0]
-                          (uint8_t)IMX477_SENSOR_ID};
-    if(i2c_read_blocking(i2c1, (uint8_t)IMX477_SENSOR_ID, i2c_src, buflen,
-                         true) != buflen)
+    //Split 16b register addr into two 8b values
+    uint8_t i2c_src[2] = {(reg >> 8) & 0xFF, // Register Address [15:8]
+                          reg & 0xFF        // Register Address [7:0]
+                          };
+
+    //printf("I2C Registers to be accessed: %x | %x\n", i2c_src[0], i2c_src[1]);
+    //uint8_t masked_addr = 0x1A;
+    //printf("Device Masked Write Address: %x\n", masked_addr);
+    uint8_t buffer[1];
+
+    i2c_write_blocking(i2c1, SENSOR_ADDR, i2c_src, 2, true); // Write addreses we want to read from
+
+    //printf("Device Read Address: %x\n", masked_addr);
+    //printf("i2C read function return value: %d\n", i2c_read_blocking(i2c1, SENSOR_ADDR_RD, buffer, buflen, true));
+    if(i2c_read_blocking(i2c1, SENSOR_ADDR, buffer, buflen, false) != buflen) {
+        //printf("Buffer if read fails: %x\n", buffer[0]);
+        //*buf = buffer[0];
         return false;
+    }
+
+    *buf = buffer[0];
+    //printf("Buffer if read passes: %x\n", *buf);
 }
 
 void readInput(char *buffer) {
