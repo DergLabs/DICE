@@ -28,28 +28,24 @@ set(PICO_BOARD pico CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(dice_io_module_firmware C CXX ASM)
+project(dice_fpga_system_controller_firmware C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(dice_io_module_firmware
-	dice_io_module_firmware.c
-	functions.c
-	dice_imx477.c
-)
+add_executable(dice_fpga_system_controller_firmware dice_fpga_system_controller_firmware.c )
 
-pico_set_program_name(dice_io_module_firmware "dice_io_module_firmware")
-pico_set_program_version(dice_io_module_firmware "0.1")
+pico_set_program_name(dice_fpga_system_controller_firmware "dice_fpga_system_controller_firmware")
+pico_set_program_version(dice_fpga_system_controller_firmware "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_usb(dice_io_module_firmware 1)
-pico_enable_stdio_uart(dice_io_module_firmware 0)
+pico_enable_stdio_uart(dice_fpga_system_controller_firmware 0)
+pico_enable_stdio_usb(dice_fpga_system_controller_firmware 1)
 
 # Add the standard library to the build
-target_link_libraries(dice_io_module_firmware
+target_link_libraries(dice_fpga_system_controller_firmware
         pico_stdlib)
 
 # set SPI clock slower than CPU clock so that it works
@@ -58,17 +54,20 @@ target_compile_definitions(slower_boot2 PRIVATE PICO_FLASH_SPI_CLKDIV=4)
 pico_set_boot_stage2(${PROJECT_NAME} slower_boot2)
 
 # Add the standard include files to the build
-target_include_directories(dice_io_module_firmware PRIVATE
+target_include_directories(dice_fpga_system_controller_firmware PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
 )
 
 # Add any user requested libraries
-target_link_libraries(dice_io_module_firmware 
-	hardware_i2c
-	hardware_timer
-	hardware_clocks
-)
+target_link_libraries(dice_fpga_system_controller_firmware
+        pico_multicore
+        hardware_spi
+        hardware_i2c
+        hardware_timer
+        hardware_clocks
+        hardware_pwm
+        )
 
-pico_add_extra_outputs(dice_io_module_firmware)
+pico_add_extra_outputs(dice_fpga_system_controller_firmware)
 

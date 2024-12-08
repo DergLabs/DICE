@@ -1,116 +1,19 @@
+#include <hardware/gpio.h>
+#include <pico/time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 #include "pico/stdlib.h"
-#include "hardware/i2c.h"
-#include "hardware/timer.h"
 #include "hardware/clocks.h"
-#include "hardware/uart.h"
+#include "hardware/i2c.h"
+#include "constants.h"
 
-#define BUFFER_SIZE 32  // Buffer size including space for null terminator
+#include "functions.h"
+#include "dice_imx477.h"
+
 char buffer[BUFFER_SIZE];
-
-// Will Be multiplied by 1000 when used, in a call that takes in kHz
-// making the result 250MHz
-static const int CLK_SPEED = 250;
-// Will Be multiplied by 1000 when used, in a call that takes in kHz
-// making the result 400MHz
-static const int I2C_SPEED = 1200;
-
-// IO Module Pins
-static const int USBPD_FLT_IN = 12;
-static const int USBPD_SINK_EN = 9;
-static const int USBPD_DBG_ACC = 14;
-static const int USBPD_CAP_MIS = 10;
-static const int USBPD_PLG_FLIP = 13;
-static const int USBPD_PLG_EVNT = 11;
-
-static const int CAM_PWR_EN = 2;
-static const int CAM_LED_EN = 3;
-static const int I2C0_SDA = 4;
-static const int I2C0_SCL = 5;
-static const int I2C1_SDA = 6;
-static const int I2C1_SCL = 7;
-static const int HDMI_BUFF_EN = 8;
-static const int MCU_HUB_LED = 25;
-
-static const float mili = 0.001;
-static const float micro = 0.000001;
-
-static const float temp_resolution = 125 * mili;
-static const float current_resolution = 480 * mili;
-static const float voltage_resolution = 3.125 * mili;
-static const float power_resolution = 96 * micro;
-
-static const int MBUS[] = {
-    17, // MBUS_D0
-    18, // MBUS_D1
-    19, // MBUS_D2
-    20, // MBUS_D3
-    21, // MBUS_D4
-    22,  // MBUS_D5
-    23, // MBUS_D6
-    24, // MBUS_D7
-    26, // MBUS_D8
-    27, // MBUS_D9
-    28, // MBUS_D10
-    29, // MBUS_D11
-};
-
-// I2C Device Addresses
-static const uint8_t INA700_ADDR = 0x44;
-
-// INA700 Registers
-static const uint16_t INA700_DIETEMP = 0x06;
-static const uint16_t INA700_CURRENT = 0x07;
-static const uint16_t INA700_VBUS = 0x05;
-static const uint32_t INA700_POWER = 0x08;
-
-// I2c Ports
-i2c_inst_t *I2C_PORT0 = i2c0;
-i2c_inst_t *I2C_PORT1 = i2c1;
-
-bool ina700_read_32_reg(uint8_t reg, uint32_t *data) {
-    uint8_t buf[4];
-    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 2, false) != 2) {
-        return false;
-    }
-    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 4, true) != 4) {
-        return false;
-    }
-    //printf("Raw Bytes: %x | %x | %x\n", buf[0], buf[1], buf[2]);
-    *data = (buf[0] << 16 | buf[1] << 8 | buf[2]);
-    return true;
-}
-
-bool ina700_read_16_reg(uint8_t reg, int16_t *data) {
-    uint8_t buf[2];
-    if(i2c_write_blocking(I2C_PORT0, INA700_ADDR, &reg, 2, false) != 2) {
-        return false;
-    }
-    if(i2c_read_blocking(I2C_PORT0, INA700_ADDR, buf, 2, true) != 2) {
-        return false;
-    }
-    //printf("Raw Bytes: %x | %x |\n", buf[0], buf[1]);
-    *data = (buf[0] << 8) | buf[1];
-    return true;
-}
-
-void readInput(char *buffer) {
-    int i = 0;
-    int ch;
-
-    // Read characters until we fill the buffer, reach EOF, or encounter a newline
-    while (i < BUFFER_SIZE - 1 && (ch = getchar()) != EOF && ch != '\n') {
-        buffer[i++] = tolower((char) ch); // convert all characters to lowercase
-    }
-
-    // Null-terminate the string
-    buffer[i] = '\0';
-    printf("Buffer: %s\n", buffer); //debug only
-}
-
 
 int main() {
     const size_t MBUS_SIZE = sizeof(MBUS) / sizeof(MBUS[0]);
@@ -120,76 +23,93 @@ int main() {
     set_sys_clock_khz(CLK_SPEED * 1000, true);
 
     // Init all pins we'll be using
+    gpio_init(VBUS_ISNS_ALRT);
+    gpio_set_dir(VBUS_ISNS_ALRT, GPIO_IN);
+    gpio_pull_up(VBUS_ISNS_ALRT);
+
+    gpio_init(MIPI_RST_R);
+    gpio_set_dir(MIPI_RST_R, GPIO_OUT);
+
     gpio_init(USBPD_FLT_IN);
+    gpio_set_dir(USBPD_FLT_IN, GPIO_IN);
+    gpio_pull_up(USBPD_FLT_IN);
+
     gpio_init(USBPD_SINK_EN);
+    gpio_set_dir(USBPD_SINK_EN, GPIO_IN);
+    gpio_pull_up(USBPD_SINK_EN);
+
     gpio_init(USBPD_DBG_ACC);
+    gpio_set_dir(USBPD_DBG_ACC, GPIO_IN);
+    gpio_pull_up(USBPD_DBG_ACC);
+
     gpio_init(USBPD_CAP_MIS);
+    gpio_set_dir(USBPD_CAP_MIS, GPIO_IN);
+    gpio_pull_up(USBPD_CAP_MIS);
+
     gpio_init(USBPD_PLG_FLIP);
+    gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
+    gpio_pull_up(USBPD_PLG_FLIP);
+
     gpio_init(USBPD_PLG_EVNT);
+    gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
+    gpio_pull_up(USBPD_PLG_EVNT);
 
     gpio_init(CAM_PWR_EN);
+    gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
+
     gpio_init(CAM_LED_EN);
-    gpio_init(I2C0_SDA);
-    gpio_init(I2C0_SCL);
-    gpio_init(I2C1_SDA);
-    gpio_init(I2C1_SCL);
-    gpio_init(HDMI_BUFF_EN);
+    gpio_set_dir(CAM_LED_EN, GPIO_OUT);
+
     gpio_init(MCU_HUB_LED);
+    gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
+    gpio_put(MCU_HUB_LED, 0);
 
     for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
-    }
-
-    // Set directions of pins
-    gpio_set_dir(USBPD_SINK_EN, GPIO_IN);
-    gpio_set_dir(USBPD_DBG_ACC, GPIO_IN);
-    gpio_set_dir(USBPD_CAP_MIS, GPIO_IN);
-    gpio_set_dir(USBPD_PLG_FLIP, GPIO_IN);
-    gpio_set_dir(USBPD_PLG_EVNT, GPIO_IN);
-    gpio_set_dir(USBPD_FLT_IN, GPIO_IN);
-
-    gpio_set_dir(CAM_PWR_EN, GPIO_OUT);
-    gpio_set_dir(CAM_LED_EN, GPIO_OUT);
-    gpio_set_dir(HDMI_BUFF_EN, GPIO_OUT);
-    gpio_set_dir(MCU_HUB_LED, GPIO_OUT);
-
-    for(int i = 0; i < MBUS_SIZE; i++)
         gpio_set_dir(MBUS[i], GPIO_OUT);
-
-    // Pull Up/Down resistors
-
-    // Up
-    //gpio_pull_up(USBPD_FLT_IN);
-    //gpio_pull_up(USBPD_SINK_EN);
-   //gpio_pull_up(USBPD_DBG_ACC);
-    //gpio_pull_up(USBPD_CAP_MIS);
-    //gpio_pull_up(USBPD_PLG_FLIP);
-    //gpio_pull_up(USBPD_PLG_EVNT);
-
-    // Set Pin States
-
-    // LOW
-   //gpio_put(USBPD_FLT_IN, 0);
-    //gpio_put(CAM_PWR_EN, 0);
-    //gpio_put(CAM_LED_EN, 0);
-    //gpio_put(HDMI_BUFF_EN, 0);
-    gpio_put(MCU_HUB_LED, 0);
-    for(int i = 0; i < MBUS_SIZE; i++)
-        gpio_put(MBUS[i], 0);
+        gpio_put(MBUS[i], false);
+    }
 
     // i2c ex
     // https://www.digikey.com/en/maker/projects/raspberry-pi-pico-rp2040-i2c-example-with-micropython-and-cc/47d0c922b79342779cdbd4b37b7eb7e2
     // Set up I2C
 
     // Initialize I2C port at 400 kHz
-    i2c_init(I2C_PORT0, I2C_SPEED * 1000);
-    i2c_init(I2C_PORT1, I2C_SPEED * 1000);
+    i2c_init(i2c0, I2C0_SPEED * 1000);
+    i2c_init(i2c1, I2C1_SPEED * 1000);
 
-    // Initialize I2C pins
+    gpio_init(I2C0_SDA);
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
+
+    gpio_init(I2C0_SCL);
     gpio_set_function(I2C0_SCL, GPIO_FUNC_I2C);
+
+    gpio_init(I2C1_SDA);
     gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
+
+    gpio_init(I2C1_SCL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
+
+    sleep_ms(2000);
+    printf("I2C Initialized, waiting 20 seconds before setting up camera\n");
+    sleep_ms(20000);
+    printf("Setting up Camera\n");
+    sleep_ms(1000);
+    // Set up Camera
+    gpio_put(CAM_PWR_EN, true);
+    sleep_ms(50);
+    gpio_put(CAM_LED_EN, true);
+    sleep_ms(50);
+    imx477_init();
+    sleep_ms(10);
+
+    // Disable I2C1
+    i2c_deinit(i2c1);
+    gpio_set_function(I2C1_SDA, GPIO_FUNC_NULL);
+    gpio_set_function(I2C1_SCL, GPIO_FUNC_NULL);
+
+    gpio_put(MBUS[0], true);
+    sleep_ms(10);
 
     // USBPD IO Values
     bool usbpd_sink_en = gpio_get(USBPD_SINK_EN);
@@ -210,10 +130,12 @@ int main() {
     printf("-----------------------------\n");
 
     while(true) {
+        printf("Watchdog\n");
         gpio_put(MCU_HUB_LED, false);
         sleep_ms(500);
         gpio_put(MCU_HUB_LED, true);
         sleep_ms(500);
+
         // INA700 Readings
         int16_t ina700_temp;
         int16_t ina700_current;
@@ -242,18 +164,6 @@ int main() {
         float ina700_calculated_voltage = ina700_voltage * voltage_resolution;
         float ina700_calculated_power = ina700_power * power_resolution;
 
-        printf("INA700 Readings\n");
-        printf("Temperature: %.2fC(%02X)\n", ina700_calculated_temp,
-               ina700_temp);
-        printf("Current: %dmA(%02X)\n", ina700_calculated_current,
-               ina700_current);
-        printf("Voltage: %.2fV(%02X)\n", ina700_calculated_voltage,
-               ina700_voltage);
-
-        printf("Power: %.2fW(%02X)\n", ina700_calculated_power, ina700_power);
-        printf("-----------------------------\n");
-        printf("\n");
-
         // USBPD IO Values
         bool usbpd_sink_en = gpio_get(USBPD_SINK_EN);
         bool usbpd_dbg_acc = gpio_get(USBPD_DBG_ACC);
@@ -261,37 +171,44 @@ int main() {
         bool usbpd_plg_flip = gpio_get(USBPD_PLG_FLIP);
         bool usbpd_plg_evnt = gpio_get(USBPD_PLG_EVNT);
 
+        absolute_time_t abs_time = get_absolute_time();
+
         // Display USBPD IO Values
+        printf("BEGIN TRANSMISSION\n\n");
+        printf("Absolute Time: %llu\n", abs_time);
         printf("USBPD Sink Enable: %d\n", usbpd_sink_en);
         printf("USBPD Debug Access: %d\n", usbpd_dbg_acc);
         printf("USBPD Capacity Mismatch: %d\n", usbpd_cap_mis);
         printf("USBPD Plug Flip: %d\n", usbpd_plg_flip);
         printf("USBPD Plug Event: %d\n", usbpd_plg_evnt);
-        printf("-----------------------------\n");
+        printf("\n");
+        printf("INA700 Readings\n");
+        printf("Temperature: %.2fC(%02X)\n", ina700_calculated_temp,
+               ina700_temp);
+        printf("Current: %dmA(%02X)\n", ina700_calculated_current,
+               ina700_current);
+        printf("Voltage: %.2fV(%02X)\n", ina700_calculated_voltage,
+               ina700_voltage);
+        printf("Power: %.2fW(%02X)\n", ina700_calculated_power, ina700_power);
+        printf("END TRANSMISSION\n\n");
 
-        /*fflush(stdout);
-        readInput(buffer);
-        printf("Buffer: %s\n", buffer);
-
-        if (strcmp(buffer, "tl") == 0) {
-            gpio_put(MCU_HUB_LED, 0);
-            printf("Setting RST to LOW\n");
-            gpio_put(MBUS[1], 0);
-            sleep_ms(1);
-            gpio_put(MCU_HUB_LED, 1);
-        } else if (strcmp(buffer, "th") == 0){ 
-            gpio_put(MCU_HUB_LED, 0);
-            printf("Setting RST to HIGH\n");
-            gpio_put(MBUS[1], 1);
-            sleep_ms(1);
-            gpio_put(MCU_HUB_LED, 1);
-        } else if (strcmp(buffer, "ph") == 0){
-            gpio_put(MCU_HUB_LED, 0);
-            printf("Pulsing RST High for 1ms\n");
-            gpio_put(MBUS[1], 1);
-            sleep_ms(1);
-            gpio_put(MBUS[1], 0);
-            gpio_put(MCU_HUB_LED, 1);
-        }*/
+        // fflush(stdout);
+        // readInput(buffer);
+        // printf("Buffer: %s\n", buffer);
+        //
+        // if (strcmp(buffer, "tl") == 0) {
+        //     printf("Setting RST to LOW\n");
+        //     gpio_put(MBUS[1], 0);
+        //     sleep_ms(1);
+        // } else if (strcmp(buffer, "th") == 0){
+        //     printf("Setting RST to HIGH\n");
+        //     gpio_put(MBUS[1], 1);
+        //     sleep_ms(1);
+        // } else if (strcmp(buffer, "ph") == 0){
+        //     printf("Pulsing RST High for 1ms\n");
+        //     gpio_put(MBUS[1], 1);
+        //     sleep_ms(1);
+        //     gpio_put(MBUS[1], 0);
+        // }
     }
 }
