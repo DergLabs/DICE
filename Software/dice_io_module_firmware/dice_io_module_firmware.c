@@ -76,23 +76,29 @@ int main() {
 
     // Initialize I2C port at 400 kHz
     i2c_init(i2c0, I2C0_SPEED * 1000);
-    i2c_init(i2c1, I2C1_SPEED * 1000);
-
+    
     gpio_init(I2C0_SDA);
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
 
     gpio_init(I2C0_SCL);
     gpio_set_function(I2C0_SCL, GPIO_FUNC_I2C);
 
+    
+    while (gpio_get(MBUS[0] == 0)) {
+        sleep_ms(500);
+        printf("Waiting for FPGA signal on MBUS_0\n");
+    }
+    printf("FPGA Signal Received\n");
+    sleep_ms(2000);
+    printf("Initializing I2C1\n");
+    i2c_init(i2c1, I2C1_SPEED * 1000);
     gpio_init(I2C1_SDA);
     gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
 
     gpio_init(I2C1_SCL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
-
-    sleep_ms(2000);
-    printf("I2C Initialized, waiting 20 seconds before setting up camera\n");
-    sleep_ms(20000);
+    printf("I2C1 Initialized\n");
+    sleep_ms(1000);
     printf("Setting up Camera\n");
     sleep_ms(1000);
     // Set up Camera

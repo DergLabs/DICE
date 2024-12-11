@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Dec  5 03:20:54 2024
+| Date         : Wed Dec 11 16:30:55 2024
 | Host         : JOHNHOFMEYRA870 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file mipi_to_hdmi_top_methodology_drc_routed.rpt -pb mipi_to_hdmi_top_methodology_drc_routed.pb -rpx mipi_to_hdmi_top_methodology_drc_routed.rpx
 | Design       : mipi_to_hdmi_top
@@ -23,18 +23,18 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 51
+             Violations found: 49
 +-----------+------------------+------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                      | Violations |
 +-----------+------------------+------------------------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 9          |
 | TIMING-7  | Critical Warning | No common node between related clocks                            | 7          |
 | TIMING-51 | Critical Warning | No common phase between related clocks from parallel CMBs        | 2          |
-| LUTAR-1   | Warning          | LUT drives async reset alert                                     | 2          |
+| LUTAR-1   | Warning          | LUT drives async reset alert                                     | 1          |
 | SYNTH-9   | Warning          | Small multiplier                                                 | 12         |
 | TIMING-15 | Warning          | Large hold violation                                             | 1          |
 | TIMING-16 | Warning          | Large setup violation                                            | 1          |
-| TIMING-18 | Warning          | Missing input or output delay                                    | 6          |
+| TIMING-18 | Warning          | Missing input or output delay                                    | 5          |
 | TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 1          |
 | XDCB-4    | Warning          | create_clock constraint set on both sides of diff pair port      | 1          |
 | XDCH-2    | Warning          | Same min and max delay values on IO port                         | 8          |
@@ -50,42 +50,42 @@ Related violations: <none>
 
 TIMING-6#2 Critical Warning
 No common primary clock between related clocks  
-The clocks link_n_0 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0] -to [get_clocks clk_148_5m_clk_wiz_0]
+The clocks link_n_1 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1] -to [get_clocks clk_148_5m_clk_wiz_0]
 Related violations: <none>
 
 TIMING-6#3 Critical Warning
 No common primary clock between related clocks  
-The clocks link_n_0 and link_n_0_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0] -to [get_clocks link_n_0_1]
+The clocks link_n_1 and link_n_1_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1] -to [get_clocks link_n_1_1]
 Related violations: <none>
 
 TIMING-6#4 Critical Warning
 No common primary clock between related clocks  
-The clocks link_n_0 and sys_clk_p are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0] -to [get_clocks sys_clk_p]
+The clocks link_n_1 and sys_clk_p are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1] -to [get_clocks sys_clk_p]
 Related violations: <none>
 
 TIMING-6#5 Critical Warning
 No common primary clock between related clocks  
-The clocks link_n_0_1 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0_1] -to [get_clocks clk_148_5m_clk_wiz_0]
+The clocks link_n_1_1 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1_1] -to [get_clocks clk_148_5m_clk_wiz_0]
 Related violations: <none>
 
 TIMING-6#6 Critical Warning
 No common primary clock between related clocks  
-The clocks link_n_0_1 and link_n_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0_1] -to [get_clocks link_n_0]
+The clocks link_n_1_1 and link_n_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1_1] -to [get_clocks link_n_1]
 Related violations: <none>
 
 TIMING-6#7 Critical Warning
 No common primary clock between related clocks  
-The clocks link_n_0_1 and sys_clk_p are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0_1] -to [get_clocks sys_clk_p]
+The clocks link_n_1_1 and sys_clk_p are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1_1] -to [get_clocks sys_clk_p]
 Related violations: <none>
 
 TIMING-6#8 Critical Warning
 No common primary clock between related clocks  
-The clocks sys_clk_p and link_n_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_0]
+The clocks sys_clk_p and link_n_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_1]
 Related violations: <none>
 
 TIMING-6#9 Critical Warning
 No common primary clock between related clocks  
-The clocks sys_clk_p and link_n_0_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_0_1]
+The clocks sys_clk_p and link_n_1_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_1_1]
 Related violations: <none>
 
 TIMING-7#1 Critical Warning
@@ -95,67 +95,48 @@ Related violations: <none>
 
 TIMING-7#2 Critical Warning
 No common node between related clocks  
-The clocks link_n_0 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0] -to [get_clocks clk_148_5m_clk_wiz_0]
+The clocks link_n_1 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1] -to [get_clocks clk_148_5m_clk_wiz_0]
 Related violations: <none>
 
 TIMING-7#3 Critical Warning
 No common node between related clocks  
-The clocks link_n_0 and sys_clk_p are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0] -to [get_clocks sys_clk_p]
+The clocks link_n_1 and sys_clk_p are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1] -to [get_clocks sys_clk_p]
 Related violations: <none>
 
 TIMING-7#4 Critical Warning
 No common node between related clocks  
-The clocks link_n_0_1 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0_1] -to [get_clocks clk_148_5m_clk_wiz_0]
+The clocks link_n_1_1 and clk_148_5m_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1_1] -to [get_clocks clk_148_5m_clk_wiz_0]
 Related violations: <none>
 
 TIMING-7#5 Critical Warning
 No common node between related clocks  
-The clocks link_n_0_1 and sys_clk_p are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_0_1] -to [get_clocks sys_clk_p]
+The clocks link_n_1_1 and sys_clk_p are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks link_n_1_1] -to [get_clocks sys_clk_p]
 Related violations: <none>
 
 TIMING-7#6 Critical Warning
 No common node between related clocks  
-The clocks sys_clk_p and link_n_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_0]
+The clocks sys_clk_p and link_n_1 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_1]
 Related violations: <none>
 
 TIMING-7#7 Critical Warning
 No common node between related clocks  
-The clocks sys_clk_p and link_n_0_1 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_0_1]
+The clocks sys_clk_p and link_n_1_1 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_p] -to [get_clocks link_n_1_1]
 Related violations: <none>
 
 TIMING-51#1 Critical Warning
 No common phase between related clocks from parallel CMBs  
-The clocks link_n_0 and clk_148_5m_clk_wiz_0 are timed together but have no phase relationship. The design could fail in hardware. The clocks originate from two parallel Clock Modifying Blocks and at least one of the MMCM or PLLs clock dividers is not set to 1. To be safely timed, all MMCMs or PLLs involved in parallel clocking must have the clock divider set to 1.
+The clocks link_n_1 and clk_148_5m_clk_wiz_0 are timed together but have no phase relationship. The design could fail in hardware. The clocks originate from two parallel Clock Modifying Blocks and at least one of the MMCM or PLLs clock dividers is not set to 1. To be safely timed, all MMCMs or PLLs involved in parallel clocking must have the clock divider set to 1.
 Related violations: <none>
 
 TIMING-51#2 Critical Warning
 No common phase between related clocks from parallel CMBs  
-The clocks link_n_0_1 and clk_148_5m_clk_wiz_0 are timed together but have no phase relationship. The design could fail in hardware. The clocks originate from two parallel Clock Modifying Blocks and at least one of the MMCM or PLLs clock dividers is not set to 1. To be safely timed, all MMCMs or PLLs involved in parallel clocking must have the clock divider set to 1.
+The clocks link_n_1_1 and clk_148_5m_clk_wiz_0 are timed together but have no phase relationship. The design could fail in hardware. The clocks originate from two parallel Clock Modifying Blocks and at least one of the MMCM or PLLs clock dividers is not set to 1. To be safely timed, all MMCMs or PLLs involved in parallel clocking must have the clock divider set to 1.
 Related violations: <none>
 
 LUTAR-1#1 Warning
 LUT drives async reset alert  
 LUT cell mipi/link/clkdet/count_value[1]_i_3, with 2 or more inputs, drives asynchronous preset/clear pin(s) mipi/link/clkdet/count_value_reg[0]/CLR
 mipi/link/clkdet/count_value_reg[1]/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
-Related violations: <none>
-
-LUTAR-1#2 Warning
-LUT drives async reset alert  
-LUT cell pixel_combine/clk_div_gen.BUFGCE_DIV_inst_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) mipi/link/gen_idctl.idctrl/delayctrl_REPLICATED_0/RST,
-mipi/link/gen_idctl.idctrl/delayctrl_REPLICATED_0_1/RST,
-pixel_combine/video_odd_data_x_reg[20]/CLR,
-pixel_combine/video_odd_data_x_reg[21]/CLR,
-pixel_combine/video_odd_data_x_reg[22]/CLR,
-pixel_combine/video_odd_data_x_reg[23]/CLR,
-pixel_combine/video_odd_data_x_reg[2]/CLR,
-pixel_combine/video_odd_data_x_reg[3]/CLR,
-pixel_combine/video_odd_data_x_reg[4]/CLR,
-pixel_combine/video_odd_data_x_reg[5]/CLR,
-pixel_combine/video_odd_data_x_reg[6]/CLR,
-pixel_combine/video_odd_data_x_reg[7]/CLR,
-pixel_combine/video_odd_data_x_reg[8]/CLR,
-pixel_combine/video_odd_data_x_reg[9]/CLR,
-video_clk/inst/mmcme4_adv_inst/RST (the first 15 of 124 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
 Related violations: <none>
 
 SYNTH-9#1 Warning
@@ -220,12 +201,12 @@ Related violations: <none>
 
 TIMING-15#1 Warning
 Large hold violation  
-There is a large clock skew of -3.210 ns between mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst/O (clocked by link_n_0_1) and mipi/link/clkdet/ext_clk_lat_reg/D (clocked by sys_clk_p) that results in large hold timing violation(s) of -1.097 ns. Fixing large hold violations during routing might impact setup slack and result in more difficult timing closure
+There is a large clock skew of -3.001 ns between mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst/O (clocked by link_n_1_1) and mipi/link/clkdet/ext_clk_lat_reg/D (clocked by sys_clk_p) that results in large hold timing violation(s) of -1.315 ns. Fixing large hold violations during routing might impact setup slack and result in more difficult timing closure
 Related violations: <none>
 
 TIMING-16#1 Warning
 Large setup violation  
-There is a large setup violation of -2.092 ns between mipi/vout/csi_frame_started_reg/C (clocked by link_n_0) and mipi/vout/video_fsync_pre_reg/D (clocked by clk_148_5m_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -2.339 ns between mipi/vout/csi_frame_started_reg/C (clocked by link_n_1) and mipi/vout/video_fsync_pre_reg/D (clocked by clk_148_5m_clk_wiz_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning
@@ -250,17 +231,12 @@ Related violations: <none>
 
 TIMING-18#5 Warning
 Missing input or output delay  
-An input delay is missing on rdy_i relative to the rising and/or falling clock edge(s) of csi, csi2, sys_clk_p.
-Related violations: <none>
-
-TIMING-18#6 Warning
-Missing input or output delay  
 An input delay is missing on reset_i relative to the rising and/or falling clock edge(s) of csi, csi2, sys_clk_p.
 Related violations: <none>
 
 TIMING-56#1 Warning
 Missing logically or physically excluded clock groups constraint  
-Multiple clocks are user generated or auto-derived on the source pin mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst/O but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: link_n_0, link_n_0_1
+Multiple clocks are user generated or auto-derived on the source pin mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst/O but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: link_n_1, link_n_1_1
 Related violations: <none>
 
 XDCB-4#1 Warning

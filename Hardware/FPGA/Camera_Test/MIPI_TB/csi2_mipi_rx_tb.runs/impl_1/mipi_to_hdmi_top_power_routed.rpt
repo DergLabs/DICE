@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Thu Dec  5 03:21:41 2024
+| Date             : Wed Dec 11 16:31:39 2024
 | Host             : JOHNHOFMEYRA870 running 64-bit major release  (build 9200)
 | Command          : report_power -file mipi_to_hdmi_top_power_routed.rpt -pb mipi_to_hdmi_top_power_summary_routed.pb -rpx mipi_to_hdmi_top_power_routed.rpx
 | Design           : mipi_to_hdmi_top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.733        |
+| Total On-Chip Power (W)  | 0.869        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.258        |
-| Device Static (W)        | 0.475        |
+| Dynamic (W)              | 0.393        |
+| Device Static (W)        | 0.476        |
 | Effective TJA (C/W)      | 1.7          |
-| Max Ambient (C)          | 98.7         |
-| Junction Temperature (C) | 26.3         |
+| Max Ambient (C)          | 98.5         |
+| Junction Temperature (C) | 26.5         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.013 |       10 |       --- |             --- |
-| CLB Logic               |     0.002 |     1896 |       --- |             --- |
-|   LUT as Logic          |     0.002 |      741 |    162720 |            0.46 |
+| CLB Logic               |     0.004 |     1899 |       --- |             --- |
+|   LUT as Logic          |     0.003 |      744 |    162720 |            0.46 |
 |   Register              |    <0.001 |      929 |    325440 |            0.29 |
 |   CARRY8                |    <0.001 |       24 |     27120 |            0.09 |
 |   LUT as Shift Register |    <0.001 |        3 |     99840 |           <0.01 |
-|   Others                |     0.000 |       58 |       --- |             --- |
-| Signals                 |     0.004 |     1470 |       --- |             --- |
-| Block RAM               |     0.004 |        3 |       360 |            0.83 |
+|   Others                |     0.000 |       61 |       --- |             --- |
+| Signals                 |     0.007 |     1469 |       --- |             --- |
+| Block RAM               |     0.005 |        3 |       360 |            0.83 |
 | MMCM                    |     0.113 |        0 |       --- |             --- |
-| I/O                     |     0.122 |       47 |       256 |           18.36 |
-| Static Power            |     0.475 |          |           |                 |
-| Total                   |     0.733 |          |           |                 |
+| I/O                     |     0.253 |       46 |       256 |           17.97 |
+| Static Power            |     0.476 |          |           |                 |
+| Total                   |     0.869 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,17 +74,17 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.167 |       0.028 |      0.140 |       NA    | Unspecified | NA         |
-| Vccint_io  |       0.850 |     0.044 |       0.008 |      0.035 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.175 |       0.034 |      0.141 |       NA    | Unspecified | NA         |
+| Vccint_io  |       0.850 |     0.042 |       0.007 |      0.035 |       NA    | Unspecified | NA         |
 | Vccbram    |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.191 |       0.062 |      0.128 |       NA    | Unspecified | NA         |
-| Vccaux_io  |       1.800 |     0.050 |       0.019 |      0.031 |       NA    | Unspecified | NA         |
-| Vcco33     |       3.300 |     0.031 |       0.024 |      0.007 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.061 |       0.029 |      0.031 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.064 |       0.058 |      0.007 |       NA    | Unspecified | NA         |
 | Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18     |       1.800 |     0.001 |       0.001 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco12     |       1.200 |     0.002 |       0.002 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc     |       1.800 |     0.008 |       0.000 |      0.008 |       NA    | Unspecified | NA         |
 | MGTYAVcc   |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -138,8 +138,8 @@ Table of Contents
 | clk_297m_clk_wiz_0   | video_clk/inst/clk_297m_clk_wiz_0              |             3.4 |
 | csi                  | dphy_clk_i[1]                                  |             2.5 |
 | csi2                 | dphy_clk_i[0]                                  |             2.5 |
-| link_n_0             | mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst_0 |            10.0 |
-| link_n_0_1           | mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst_0 |            10.0 |
+| link_n_1             | mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst_0 |            10.0 |
+| link_n_1_1           | mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst_0 |            10.0 |
 | sys_clk_p            | sys_clk_p_i                                    |             5.0 |
 +----------------------+------------------------------------------------+-----------------+
 
@@ -153,11 +153,11 @@ Table of Contents
 +------------------------+-----------+
 | Name                   | Power (W) |
 +------------------------+-----------+
-| mipi_to_hdmi_top       |     0.258 |
+| mipi_to_hdmi_top       |     0.393 |
 |   IBUFDS_inst          |     0.002 |
-|   mipi                 |     0.037 |
+|   mipi                 |     0.038 |
 |     debayer            |     0.003 |
-|     link               |     0.026 |
+|     link               |     0.025 |
 |       clkdet           |     0.002 |
 |       clkphy           |     0.004 |
 |       d0phy            |     0.004 |
@@ -165,11 +165,11 @@ Table of Contents
 |       d2phy            |     0.004 |
 |       d3phy            |     0.004 |
 |       gen_idctl.idctrl |     0.004 |
-|     vout               |     0.007 |
-|       even_linebuf     |     0.003 |
-|       odd_linebuf      |     0.002 |
+|     vout               |     0.008 |
+|       even_linebuf     |     0.004 |
+|       odd_linebuf      |     0.003 |
 |     white_balance      |     0.001 |
-|   pixel_combine        |     0.007 |
+|   pixel_combine        |     0.009 |
 |   video_clk            |     0.113 |
 |     inst               |     0.113 |
 +------------------------+-----------+

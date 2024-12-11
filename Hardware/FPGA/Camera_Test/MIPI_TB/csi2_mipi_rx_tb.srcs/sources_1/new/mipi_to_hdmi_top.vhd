@@ -64,8 +64,8 @@ entity mipi_to_hdmi_top is
     sys_clk_n_i : in std_logic;
 
     reset_i : in std_logic; --synchronous active low reset input
-    rdy_i   : in std_logic; -- active high, microcontroller ready
-    gpio_probe_o : out std_logic;
+    rdy_o   : out std_logic; -- active high, microcontroller ready
+    --gpio_probe_o : out std_logic;
     locked_led_o : out std_logic;
 
     --DSI signals, signal 1 is P and signal 0 is N
@@ -129,9 +129,8 @@ architecture Behavioral of mipi_to_hdmi_top is
 
 
 begin
-
-    reset_c <= not (reset_i and rdy_i);
-    gpio_probe_o <= rdy_i;
+    
+    reset_c <= not (reset_i);
     locked_led_o <= clk_lock_x;
 
    -- IBUFDS: Differential Input Buffer
@@ -216,6 +215,7 @@ begin
         pixel_clock_in => clk_148_5m_x, --Output pixel clock from PLL
         byte_clock_out => byte_clk_x,   --DSI byte clock output
     
+        phy_rdy_o => rdy_o,
         enable => clk_lock_x, --system enable input
         reset  => reset_c, --synchronous active high reset input
     

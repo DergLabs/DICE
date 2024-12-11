@@ -72,6 +72,7 @@ entity csi_rx_4lane is
     pixel_clock_in : in std_logic; --Output pixel clock from PLL
     byte_clock_out : out std_logic; --DSI byte clock output
 
+    phy_rdy_o : out std_logic; -- Output signal indicating the PHY is initialized and ready
     enable : in std_logic; --system enable input
     reset : in std_logic; --synchronous active high reset input
 
@@ -140,6 +141,7 @@ begin
    );
    
    enable_phy <= dci_locked and enable;
+   phy_rdy_o <= enable_phy;
 
   link : entity work.csi_rx_4_lane_link
     generic map(
