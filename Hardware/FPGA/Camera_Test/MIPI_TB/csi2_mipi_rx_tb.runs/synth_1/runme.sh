@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1'
+HD_PWD='C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

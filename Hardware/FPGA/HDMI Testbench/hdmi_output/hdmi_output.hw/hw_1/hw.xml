@@ -21,9 +21,9 @@
   </ObjectList>
   <ObjectList object_type="hw_device" gui_info="">
     <Object name="xcku3p_0" gui_info="">
-      <Properties Property="FULL_PROBES.FILE" value=""/>
-      <Properties Property="PROBES.FILE" value=""/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="C:/Xilinx/Vivado/2023.2/data/xicom/cfgmem/bitfile/spi_xcku3p_pullnone.bit"/>
+      <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/hdmi_tx_top.ltx"/>
+      <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/hdmi_tx_top.ltx"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/hdmi_tx_top.bit"/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="mt25qu256-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -43,12 +43,18 @@
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
     <Object name="i2c_lut_index[9:0]" gui_info="Trigger Setup=0"/>
+    <Object name="video_data_OBUF[23:16]" gui_info="dashboard_2/hw_vio_1=2"/>
+    <Object name="video_data_OBUF_1[7:0]" gui_info="dashboard_2/hw_vio_1=0"/>
+    <Object name="video_data_OBUF_2[15:8]" gui_info="dashboard_2/hw_vio_1=1"/>
     <Object name="video_de_OBUF" gui_info=""/>
     <Object name="video_pixel_clk_OBUF" gui_info=""/>
     <Object name="video_vs_OBUF" gui_info=""/>
   </ObjectList>
   <ObjectList object_type="hw_sysmon" gui_info="">
     <Object name="SysMon" gui_info="dashboard_1=[TEMPERATURE=-65281;SCAN_RATE=1000;TRACK_TIME=1;]"/>
+  </ObjectList>
+  <ObjectList object_type="hw_vio" gui_info="">
+    <Object name="hw_vio_1" gui_info="dashboard_2/hw_vio_1/TablePreference=5	887	Name	0	2147483647	15	315	315	Value	1	2147483647	15	283	283	Activity	2	2147483647	15	82	82	Direction	3	2147483647	15	98	98	VIO	4	2147483647	15	109	109			1	6	1	Name	Value	Activity	Direction	VIO"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
@@ -343,6 +349,72 @@
       </probeOptions>
       <nets>
         <net name="video_vs_OBUF"/>
+      </nets>
+    </probe>
+    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="color_input"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="OUTPUT_VALUE" value="00"/>
+        <Option Id="OUTPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="video_data_OBUF[23]"/>
+        <net name="video_data_OBUF[22]"/>
+        <net name="video_data_OBUF[21]"/>
+        <net name="video_data_OBUF[20]"/>
+        <net name="video_data_OBUF[19]"/>
+        <net name="video_data_OBUF[18]"/>
+        <net name="video_data_OBUF[17]"/>
+        <net name="video_data_OBUF[16]"/>
+      </nets>
+    </probe>
+    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="color_input"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="OUTPUT_VALUE" value="00"/>
+        <Option Id="OUTPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="video_data_OBUF_1[7]"/>
+        <net name="video_data_OBUF_1[6]"/>
+        <net name="video_data_OBUF_1[5]"/>
+        <net name="video_data_OBUF_1[4]"/>
+        <net name="video_data_OBUF_1[3]"/>
+        <net name="video_data_OBUF_1[2]"/>
+        <net name="video_data_OBUF_1[1]"/>
+        <net name="video_data_OBUF_1[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="color_input"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="OUTPUT_VALUE" value="00"/>
+        <Option Id="OUTPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="video_data_OBUF_2[15]"/>
+        <net name="video_data_OBUF_2[14]"/>
+        <net name="video_data_OBUF_2[13]"/>
+        <net name="video_data_OBUF_2[12]"/>
+        <net name="video_data_OBUF_2[11]"/>
+        <net name="video_data_OBUF_2[10]"/>
+        <net name="video_data_OBUF_2[9]"/>
+        <net name="video_data_OBUF_2[8]"/>
       </nets>
     </probe>
   </probeset>

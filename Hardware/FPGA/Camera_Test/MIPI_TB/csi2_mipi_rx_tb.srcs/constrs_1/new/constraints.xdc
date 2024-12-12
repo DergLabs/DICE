@@ -1,4 +1,3 @@
-create_clock -period 5.000 -name sys_clk_p -waveform {0.000 2.500} -add [get_ports sys_clk_p_i]
 
 set_property PACKAGE_PIN AF15 [get_ports hdmi_i2c_scl_io]
 set_property IOSTANDARD LVCMOS33 [get_ports hdmi_i2c_scl_io]
@@ -10,8 +9,8 @@ set_property IOSTANDARD LVTTL [get_ports hdmi_out_nrst_o]
 set_property PACKAGE_PIN E22 [get_ports reset_i]
 set_property IOSTANDARD LVCMOS18 [get_ports reset_i]
 
-set_property PACKAGE_PIN G12 [get_ports rdy_i]
-set_property IOSTANDARD LVCMOS18 [get_ports rdy_i]
+#set_property PACKAGE_PIN G12 [get_ports rdy_i]
+#set_property IOSTANDARD LVCMOS18 [get_ports rdy_i]
 
 set_property PACKAGE_PIN F8 [get_ports gpio_probe_o]
 set_property IOSTANDARD LVCMOS18 [get_ports gpio_probe_o]
@@ -20,6 +19,8 @@ set_property IOSTANDARD LVDS [get_ports sys_clk_p_i]
 set_property PACKAGE_PIN D19 [get_ports sys_clk_p_i]
 set_property PACKAGE_PIN C19 [get_ports sys_clk_n_i]
 set_property IOSTANDARD LVDS [get_ports sys_clk_n_i]
+
+create_clock -period 5.000 -name sys_clk_p -waveform {0.000 2.500} -add [get_ports sys_clk_p_i]
 
 set_property PACKAGE_PIN AA15 [get_ports video_de_o]
 set_property IOSTANDARD LVTTL [get_ports video_de_o]
@@ -36,8 +37,6 @@ set_property IOSTANDARD LVTTL [get_ports video_vs_o]
 set_property PACKAGE_PIN AA19 [get_ports {dphy_clk_i[1]}]
 set_property IOSTANDARD MIPI_DPHY_DCI [get_ports {dphy_clk_i[1]}]
 set_property IOSTANDARD MIPI_DPHY_DCI [get_ports {dphy_clk_i[0]}]
-#set_property ODT RTT_NONE [get_ports {dphy_clk_i[1]}]
-#set_property ODT RTT_NONE [get_ports {dphy_clk_i[0]}]
 
 set_property PACKAGE_PIN W20 [get_ports {dphy_d0_i[1]}]
 set_property IOSTANDARD MIPI_DPHY_DCI [get_ports {dphy_d0_i[1]}]
@@ -171,22 +170,10 @@ set_property SLEW FAST [get_ports video_pixel_clk_o]
 set_property DRIVE 16 [get_ports video_vs_o]
 set_property SLEW FAST [get_ports video_vs_o]
 
+#set_property OFFCHIP_TERM NONE [get_ports gpio_probe_o]
 
-
-
-
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_clk_i[1]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_clk_i[0]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d0_i[1]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d0_i[0]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d1_i[1]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d1_i[0]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d2_i[1]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d2_i[0]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d3_i[1]}]
-set_property DIFF_TERM_ADV TERM_NONE [get_ports {dphy_d3_i[0]}]
-
-set_property OFFCHIP_TERM NONE [get_ports gpio_probe_o]
+set_property PACKAGE_PIN F14 [get_ports rdy_o]
+set_property IOSTANDARD LVCMOS18 [get_ports rdy_o]
 
 set_property OFFCHIP_TERM NONE [get_ports hdmi_i2c_scl_io]
 set_property OFFCHIP_TERM NONE [get_ports hdmi_i2c_sda_io]
@@ -221,5 +208,3 @@ set_property OFFCHIP_TERM NONE [get_ports video_data_o[3]]
 set_property OFFCHIP_TERM NONE [get_ports video_data_o[2]]
 set_property OFFCHIP_TERM NONE [get_ports video_data_o[1]]
 set_property OFFCHIP_TERM NONE [get_ports video_data_o[0]]
-set_property PACKAGE_PIN G12 [get_ports rdy_o]
-set_property IOSTANDARD LVCMOS18 [get_ports rdy_o]

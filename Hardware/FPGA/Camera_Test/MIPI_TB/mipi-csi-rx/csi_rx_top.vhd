@@ -71,8 +71,10 @@ entity csi_rx_4lane is
     ref_clock_i    : in std_logic;
     pixel_clock_in : in std_logic; --Output pixel clock from PLL
     byte_clock_out : out std_logic; --DSI byte clock output
+    ila_clk : in std_logic;
 
     phy_rdy_o : out std_logic; -- Output signal indicating the PHY is initialized and ready
+    dci_lock : out std_logic; -- Output signal indicating the DCM is locked
     enable : in std_logic; --system enable input
     reset : in std_logic; --synchronous active high reset input
 
@@ -129,10 +131,84 @@ architecture Behavioral of csi_rx_4lane is
   signal debayer_data_even : std_logic_vector(29 downto 0);
   signal debayer_data_odd  : std_logic_vector(29 downto 0);
   
-   signal dci_locked : std_logic;
+  signal dci_locked : std_logic;
   signal enable_phy : std_logic;
 
+  COMPONENT ila_0
+
+  PORT (
+    clk : IN STD_LOGIC;
+
+
+
+    probe0 : IN std_logic; 
+    probe1 : IN std_logic; 
+    probe2 : IN std_logic; 
+    probe3 : IN std_logic; 
+    probe4 : IN std_logic; 
+    probe5 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+    probe6 : IN std_logic; 
+    probe7 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+    probe8 : IN std_logic; 
+    probe9 : IN std_logic; 
+    probe10 : IN std_logic; 
+    probe11 : IN std_logic; 
+    probe12 : IN STD_LOGIC_VECTOR(39 DOWNTO 0); 
+    probe13 : IN std_logic; 
+    probe14 : IN std_logic; 
+    probe15 : IN std_logic; 
+    probe16 : IN std_logic; 
+    probe17 : IN std_logic; 
+    probe18 : IN std_logic; 
+    probe19 : IN STD_LOGIC_VECTOR(19 DOWNTO 0); 
+    probe20 : IN STD_LOGIC_VECTOR(19 DOWNTO 0); 
+    probe21 : std_logic; 
+    probe22 : std_logic; 
+    probe23 : std_logic; 
+    probe24 : std_logic; 
+    probe25 : IN STD_LOGIC_VECTOR(29 DOWNTO 0); 
+    probe26 : IN STD_LOGIC_VECTOR(29 DOWNTO 0); 
+    probe27 : std_logic;
+    probe28 : std_logic
+  );
+  END COMPONENT  ;
+
 begin
+
+
+  mipi_dphy_ila : ila_0
+  PORT MAP (
+    clk => ila_clk,
+    probe0 => csi_byte_clock, 
+    probe1 => link_reset_out, 
+    probe2 => wait_for_sync, 
+    probe3 => packet_done, 
+    probe4 => word_clock, 
+    probe5 => word_data, 
+    probe6 => word_valid, 
+    probe7 => packet_payload, 
+    probe8 => packet_payload_valid, 
+    probe9 => csi_vsync, 
+    probe10 => csi_in_frame, 
+    probe11 => csi_in_line, 
+    probe12 => unpack_data, 
+    probe13 => unpack_data_valid, 
+    probe14 => video_hsync_x, 
+    probe15 => video_vsync_x, 
+    probe16 => video_den_x, 
+    probe17 => video_line_start_x, 
+    probe18 => video_odd_line_x, 
+    probe19 => video_data_x, 
+    probe20 => video_prev_line_x, 
+    probe21 => debayer_hsync_x, 
+    probe22 => debayer_vsync_x, 
+    probe23 => debayer_den_x, 
+    probe24 => debayer_line_start_x, 
+    probe25 => debayer_data_even, 
+    probe26 => debayer_data_odd, 
+    probe27 => dci_locked,
+    probe28 => enable_phy
+  );
 
    DCIRESET_inst : DCIRESET
    port map (
@@ -141,6 +217,7 @@ begin
    );
    
    enable_phy <= dci_locked and enable;
+   dci_lock <= dci_locked;
    phy_rdy_o <= enable_phy;
 
   link : entity work.csi_rx_4_lane_link

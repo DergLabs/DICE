@@ -40,16 +40,16 @@ begin
         end if;
     end process;
 
-    process(clk_297m, reset)
+    /*process(clk_297m, reset)
     begin
         if (reset = '1') then
             vid_src_sel_x <= '0';
         elsif rising_edge(clk_297m) then
             vid_src_sel_x <= NOT vid_src_sel_x;
         end if;
-    end process;
+    end process;*/
 
-    with vid_src_sel_x select
+    with clk_297m select
         video_data_out_x <= video_even_data_x when '0',
                         video_odd_data_x when others;
 

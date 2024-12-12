@@ -125,17 +125,16 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param tcl.collectionResultDisplayLimit 0
   set_param tcl.statsThreshold 360
   set_param checkpoint.writeSynthRtdsInDcp 1
-  set_param chipscope.maxJobs 6
+  set_param chipscope.maxJobs 4
   set_param power.BramSDPPropagationFix 1
   set_param power.enableUnconnectedCarry8PinPower 1
   set_param power.enableCarry8RouteBelPower 1
   set_param power.enableLutRouteBelPower 1
-  set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13076-DESKTOP-U9NB2CD/incrSyn
+  set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13932-DESKTOP-U9NB2CD/incrSyn
   set_param xicom.use_bs_reader 1
-  set_param runs.launchOptions { -jobs 24  }
+  set_param runs.launchOptions { -jobs 16  }
   open_checkpoint hdmi_tx_top_routed.dcp
   set_property webtalk.parent_dir {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.cache/wt} [current_project]
 set_property TOP hdmi_tx_top [current_fileset]

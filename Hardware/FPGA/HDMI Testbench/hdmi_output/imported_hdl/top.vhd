@@ -83,6 +83,15 @@ architecture Behavioral of hdmi_tx_top is
         );
     end component;
     
+    COMPONENT vio_0
+      PORT (
+        clk : IN STD_LOGIC;
+        probe_out0 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+        probe_out1 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+        probe_out2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) 
+      );
+    END COMPONENT;
+    
     /*COMPONENT ila_0
         PORT (
             clk : IN STD_LOGIC;
@@ -118,6 +127,14 @@ begin
         clk_in1_p => sysclk_p,
         clk_in1_n => sysclk_n
     );
+    
+    color_input : vio_0
+      PORT MAP (
+        clk => s_video_clk,
+        probe_out0 => s_video_data(7 downto 0),
+        probe_out1 => s_video_data(15 downto 8),
+        probe_out2 => s_video_data(23 downto 16)
+      );
     
     with VIDEO_RESOLUTION select
     s_video_clk <= clk_148_5m when "1080P",
@@ -201,7 +218,7 @@ begin
         hs => s_video_hs,
         vs => s_video_vs,
         de => s_video_de,
-        video_data => s_video_data
+        video_data => open
         --rgb_r => s_video_data(7 downto 0),
         --rgb_g =>   s_video_data(15 downto 8),
         --rgb_b => s_video_data(23 downto 16)

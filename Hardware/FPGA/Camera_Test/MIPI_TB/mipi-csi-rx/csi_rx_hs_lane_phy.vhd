@@ -56,70 +56,29 @@ begin
   end if;
   end process;
 
---  inbuf : IBUFDS
---    generic map(
---        DIFF_TERM => term_en,
---        IBUF_LOW_PWR => FALSE,
---        IOSTANDARD => "DEFAULT")
---    port map(
---        O => in_se,
---        I => dphy_hs(1),
---        IB => dphy_hs(0));
-        
-        
-    IBUFDS_DPHY_inst : IBUFDS_DPHY
-        generic map (
-          DIFF_TERM => term_en,               -- Differential termination
-          IOSTANDARD => "DEFAULT",         -- I/O standard
-          SIM_DEVICE => series  -- Set the device version (ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1,
-                                           -- ULTRASCALE_PLUS_ES2)
-        )
-        port map (
-          HSRX_O => in_se,             -- 1-bit output: HS RX output
-          LPRX_O_N => open,         -- 1-bit output: LP RX output (Slave)
-          LPRX_O_P => open,         -- 1-bit output: LP RX output (Master)
-          HSRX_DISABLE => '0', -- 1-bit input: Disable control for HS mode
-          I => dphy_hs(1),                       -- 1-bit input: Data input0 PAD
-          IB => dphy_hs(0),                     -- 1-bit input: Data input1 PAD
-          LPRX_DISABLE => '1'  -- 1-bit input: Disable control for LP mode
-        );
 
   --ultrascale+ specific blocks
-  gen_upp : if series = "ULTRASCALE_PLUS" generate
+  --gen_upp : if series = "ULTRASCALE_PLUS" generate
 
+    IBUFDS_DPHY_inst : IBUFDS_DPHY
+    generic map (
+      DIFF_TERM => term_en,               -- Differential termination
+      IOSTANDARD => "MIPI_DPHY_DCI",         -- I/O standard
+      SIM_DEVICE => series  -- Set the device version (ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1,
+                                        -- ULTRASCALE_PLUS_ES2)
+    )
+    port map (
+      HSRX_O => in_se,             -- 1-bit output: HS RX output
+      LPRX_O_N => open,         -- 1-bit output: LP RX output (Slave)
+      LPRX_O_P => open,         -- 1-bit output: LP RX output (Master)
+      HSRX_DISABLE => '0', -- 1-bit input: Disable control for HS mode
+      I => dphy_hs(1),                       -- 1-bit input: Data input0 PAD
+      IB => dphy_hs(0),                     -- 1-bit input: Data input1 PAD
+      LPRX_DISABLE => '1'  -- 1-bit input: Disable control for LP mode
+    );
 
-   -- BUFGCE: General Clock Buffer with Clock Enable
-   --         Kintex UltraScale+
-   -- Xilinx HDL Language Template, version 2023.2
-
---   BUFGCE_inst_1 : BUFGCE
---   generic map (
---      CE_TYPE => "SYNC",               -- ASYNC, HARDSYNC, SYNC
---      IS_CE_INVERTED => '0',           -- Programmable inversion on CE
---      IS_I_INVERTED => '0',            -- Programmable inversion on I
---      SIM_DEVICE => series             -- ULTRASCALE, ULTRASCALE_PLUS
---   )
---   port map (
---      O => ddr_bit_clock_buf,   -- 1-bit output: Buffer
---      CE => enable, -- 1-bit input: Buffer enable
---      I => ddr_bit_clock    -- 1-bit input: Buffer
---   );
---
---   BUFGCE_inst_2 : BUFGCE
---   generic map (
---      CE_TYPE => "SYNC",               -- ASYNC, HARDSYNC, SYNC
---      IS_CE_INVERTED => '0',           -- Programmable inversion on CE
---      IS_I_INVERTED => '0',            -- Programmable inversion on I
---      SIM_DEVICE => series             -- ULTRASCALE, ULTRASCALE_PLUS
---   )
---   port map (
---      O => ddr_bit_clock_b_buf,   -- 1-bit output: Buffer
---      CE => enable, -- 1-bit input: Buffer enable
---      I => ddr_bit_clock_b    -- 1-bit input: Buffer
---   );
-
-   IDELAYE3_inst : IDELAYE3
-   generic map (
+    IDELAYE3_inst : IDELAYE3
+    generic map (
       CASCADE => "NONE",               -- Cascade setting (MASTER, NONE, SLAVE_END, SLAVE_MIDDLE)
       DELAY_FORMAT => "TIME",          -- Units of the DELAY_VALUE (COUNT, TIME)
       DELAY_SRC => "IDATAIN",          -- Delay input (DATAIN, IDATAIN)
@@ -129,11 +88,11 @@ begin
       IS_RST_INVERTED => '0',          -- Optional inversion for RST
       REFCLK_FREQUENCY => 200.0,       -- IDELAYCTRL clock input frequency in MHz (200.0-800.0)
       SIM_DEVICE => "ULTRASCALE_PLUS", -- Set the device version for simulation functionality (ULTRASCALE,
-                                       -- ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1, ULTRASCALE_PLUS_ES2)
+                                        -- ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1, ULTRASCALE_PLUS_ES2)
       UPDATE_MODE => "ASYNC"           -- Determines when updates to the delay will take effect (ASYNC, MANUAL,
-                                       -- SYNC)
-   )
-   port map (
+                                        -- SYNC)
+    )
+    port map (
       CASC_OUT => open,       -- 1-bit output: Cascade delay output to ODELAY input cascade
       CNTVALUEOUT => open, -- 9-bit output: Counter value output
       DATAOUT => delayed_data,         -- 1-bit output: Delayed data output
@@ -148,13 +107,13 @@ begin
       INC => '0',                 -- 1-bit input: Increment / Decrement tap delay input
       LOAD => '0',               -- 1-bit input: Load DELAY_VALUE input
       RST => reset_lat                  -- 1-bit input: Asynchronous Reset to the DELAY_VALUE
-   );
+    );
 
 
-   -- ISERDESE3: Input SERial/DESerializer
-   --            Kintex UltraScale+
-   ISERDESE3_inst : ISERDESE3
-   generic map (
+    -- ISERDESE3: Input SERial/DESerializer
+    --            Kintex UltraScale+
+    ISERDESE3_inst : ISERDESE3
+    generic map (
       DATA_WIDTH => 8,                 -- Parallel data width (4,8)
       FIFO_ENABLE => "TRUE",          -- Enables the use of the FIFO
       FIFO_SYNC_MODE => "FALSE",       -- Always set to FALSE. TRUE is reserved for later use.
@@ -162,9 +121,9 @@ begin
       IS_CLK_INVERTED => '0',          -- Optional inversion for CLK
       IS_RST_INVERTED => '0',          -- Optional inversion for RST
       SIM_DEVICE => series             -- Set the device version for simulation functionality (ULTRASCALE,
-                                       -- ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1, ULTRASCALE_PLUS_ES2)
-   )
-   port map (
+                                        -- ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1, ULTRASCALE_PLUS_ES2)
+    )
+    port map (
       FIFO_EMPTY => open,                 -- 1-bit output: FIFO empty flag
       INTERNAL_DIVCLK => open,            -- 1-bit output: Internally divided down clock used when FIFO is
                                           -- disabled (do not connect)
@@ -177,8 +136,9 @@ begin
       FIFO_RD_CLK => byte_clock,                 -- 1-bit input: FIFO read clock
       FIFO_RD_EN => '1',                  -- 1-bit input: Enables reading the FIFO when asserted
       RST => reset_lat                    -- 1-bit input: Asynchronous Reset
-   );
-end generate;
+    );
+
+--end generate;
 
 
   --Inversion of output based on generic

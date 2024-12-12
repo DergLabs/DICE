@@ -70,15 +70,14 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
 set_param tcl.statsThreshold 360
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 6
+set_param chipscope.maxJobs 4
 set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13076-DESKTOP-U9NB2CD/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13932-DESKTOP-U9NB2CD/incrSyn
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
@@ -115,6 +114,10 @@ read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_o
 set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
 set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}]
 set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}]
+
+read_ip -quiet {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.srcs/sources_1/ip/vio_0/vio_0.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/vio_0/vio_0.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/HDMI Testbench/hdmi_output/hdmi_output.gen/sources_1/ip/vio_0/vio_0_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

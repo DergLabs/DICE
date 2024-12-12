@@ -1,7 +1,7 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Wed Dec 11 16:25:36 2024
-| Host         : JOHNHOFMEYRA870
+| Date         : Thu Dec 12 00:20:23 2024
+| Host         : DESKTOP-U9NB2CD
 | Design       : design_1
 | Device       : xcku3p-ffva676-2-I-
 -------------------------------------
@@ -11,8 +11,8 @@ For more information on clockInfo.txt clock routing debug file see https://suppo
 ***********************
 Running Pre-CRP Checker
 ***********************
-Number of global clocks: 6
-	Number of BUFGCE: 5
+Number of global clocks: 7
+	Number of BUFGCE: 6
 	Number of BUFGCE_HDIO: 0
 	Number of BUFG_CTRL: 0
 	Number of BUFGCE_DIV: 1
@@ -26,35 +26,40 @@ Pre-CRP Checker took 0 secs
 ********************************
 Clock Net Route Info (CRP Input)
 ********************************
-Clock 1: mipi/link/clkphy/clk_div_gen.BUFGCE_DIV_inst_0
-	Clock source type: BUFG_DIV
-	Clock source region: X0Y1
-	Clock regions with locked loads: (0, 1) 
-	initial rect ((0, 1), (0, 1))
-
-Clock 2: video_clk/inst/clk_148_5m
-	Clock source type: BUFGCE
-	Clock source region: X0Y3
-	initial rect ((0, 1), (0, 3))
-
-Clock 3: video_clk/inst/clk_27m
-	Clock source type: BUFGCE
-	Clock source region: X0Y3
-	initial rect ((0, 0), (1, 3))
-
-Clock 4: video_clk/inst/clk_297m
+Clock 1: video_clk/inst/clk_297m
 	Clock source type: BUFGCE
 	Clock source region: X0Y3
 	Clock regions with locked loads: (1, 0) 
 	initial rect ((0, 0), (1, 3))
 
-Clock 5: ref_clock
+Clock 2: mipi/link/clkphy/byte_clock
+	Clock source type: BUFG_DIV
+	Clock source region: X0Y1
+	Clock regions with locked loads: (0, 1) 
+	initial rect ((0, 1), (0, 1))
+
+Clock 3: dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i
+	Clock source type: BUFGCE
+	Clock source region: X0Y0
+	initial rect ((0, 0), (3, 1))
+
+Clock 4: video_clk/inst/clk_148_5m
+	Clock source type: BUFGCE
+	Clock source region: X0Y3
+	initial rect ((0, 0), (1, 3))
+
+Clock 5: video_clk/inst/clk_27m
+	Clock source type: BUFGCE
+	Clock source region: X0Y3
+	initial rect ((0, 0), (1, 3))
+
+Clock 6: ref_clock
 	Clock source type: BUFGCE
 	Clock source region: X0Y3
 	Clock regions with locked loads: (0, 1) (0, 3) 
 	initial rect ((0, 1), (0, 3))
 
-Clock 6: mipi/link/clkphy/ddr_bit_clock
+Clock 7: mipi/link/clkphy/ddr_bit_clock
 	Clock source type: BUFGCE
 	Clock source region: X0Y1
 	Clock regions with locked loads: (0, 1) 

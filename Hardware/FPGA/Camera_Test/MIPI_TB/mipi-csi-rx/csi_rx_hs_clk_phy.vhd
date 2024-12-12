@@ -55,7 +55,7 @@ begin
     IBUFDS_DPHY_inst : IBUFDS_DPHY
         generic map (
           DIFF_TERM => term_en,               -- Differential termination
-          IOSTANDARD => "DEFAULT",         -- I/O standard
+          IOSTANDARD => "MIPI_DPHY_DCI",         -- I/O standard
           SIM_DEVICE => series  -- Set the device version (ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1,
                                            -- ULTRASCALE_PLUS_ES2)
         )
@@ -90,7 +90,7 @@ begin
 		);*/
 		
 
-  bit_clock_b_int <= NOT bit_clock_int;
+  --bit_clock_b_int <= NOT bit_clock_int;
 
   clk_div_gen : if series = "7SERIES" generate
   clkdiv : BUFR
@@ -130,7 +130,7 @@ begin
    
 
   ddr_bit_clock <= bit_clock_int;
-  ddr_bit_clock_b <= bit_clock_b_int;
+  --ddr_bit_clock_b <= bit_clock_b_int;
   byte_clock <= byte_clock_int;
   
 end Behavioral;

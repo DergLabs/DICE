@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/impl_1'
+HD_PWD='C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -42,7 +42,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .write_bitstream.begin.rst
+/bin/touch .init_design.begin.rst
 EAStep vivado -log mipi_to_hdmi_top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source mipi_to_hdmi_top.tcl -notrace
 
 

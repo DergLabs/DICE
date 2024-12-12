@@ -189,6 +189,54 @@
 
 #define SENSOR_ADDR 0x1A
 
+
+#define LANES 4
+
+#if LANES == 2
+#define SENSOR_MODE0_WIDTH							(unsigned int)640
+#define SENSOR_MODE0_HEIGHT							(unsigned int)480
+#define SENSOR_MODE0_FPS							(unsigned int)200
+
+#define SENSOR_MODE1_WIDTH							(unsigned int)1332
+#define SENSOR_MODE1_HEIGHT							(unsigned int)990
+#define SENSOR_MODE1_FPS							(unsigned int)100
+
+#define SENSOR_MODE2_WIDTH							(unsigned int)2028
+#define SENSOR_MODE2_HEIGHT							(unsigned int)1080
+#define SENSOR_MODE2_FPS							(unsigned int)50
+
+#define SENSOR_MODE3_WIDTH							(unsigned int)2028
+#define SENSOR_MODE3_HEIGHT							(unsigned int)1520
+#define SENSOR_MODE3_FPS							(unsigned int)35
+
+#define SENSOR_MODE4_WIDTH							(unsigned int)4056
+#define SENSOR_MODE4_HEIGHT							(unsigned int)3040
+#define SENSOR_MODE4_FPS_MIN						(unsigned int)5
+#define SENSOR_MODE4_FPS							(unsigned int)10
+#else
+
+#define SENSOR_MODE0_WIDTH							(unsigned int)640
+#define SENSOR_MODE0_HEIGHT							(unsigned int)78
+#define SENSOR_MODE0_FPS							(unsigned int)1000
+
+#define SENSOR_MODE1_WIDTH							(unsigned int)1332
+#define SENSOR_MODE1_HEIGHT							(unsigned int)990
+#define SENSOR_MODE1_FPS							(unsigned int)200
+
+#define SENSOR_MODE2_WIDTH							(unsigned int)2028
+#define SENSOR_MODE2_HEIGHT							(unsigned int)1080
+#define SENSOR_MODE2_FPS							(unsigned int)100
+
+#define SENSOR_MODE3_WIDTH							(unsigned int)2028
+#define SENSOR_MODE3_HEIGHT							(unsigned int)1520
+#define SENSOR_MODE3_FPS							(unsigned int)70
+
+#define SENSOR_MODE4_WIDTH							(unsigned int)4056
+#define SENSOR_MODE4_HEIGHT							(unsigned int)3040
+#define SENSOR_MODE4_FPS_MIN						(unsigned int)10
+#define SENSOR_MODE4_FPS							(unsigned int)20
+#endif
+
 #define _countof(array) (sizeof(array) / sizeof(array[0]))
 
 typedef struct imx477_reg_s {
@@ -219,6 +267,15 @@ typedef struct imgsensor_mode_struct_s {
     imx477_reg_list_t reg_list;
 } imgsensor_mode_t;
 
+typedef enum{
+	IMGSENSOR_MODE_INIT,
+	IMGSENSOR_MODE_PREVIEW,
+	IMGSENSOR_MODE_CAPTURE,
+	IMGSENSOR_MODE_VIDEO,
+	IMGSENSOR_MODE_HIGH_SPEED_VIDEO,
+	IMGSENSOR_MODE_SLIM_VIDEO,
+} IMGSENSOR_MODE;
+
 enum { IMAGE_NORMAL = 0, IMAGE_H_MIRROR, IMAGE_V_MIRROR, IMAGE_HV_MIRROR };
 
 static bool camera_stream_on(uint8_t on);
@@ -226,5 +283,9 @@ static void set_mirror_flip(uint8_t image_mirror);
 void sensor_configure_mode(imgsensor_mode_t *mode);
 bool imx477_bus_test(void);
 bool imx477_init(void);
+
+void sensor_handle_uvc_control(uint8_t frame_index, uint32_t interval);
+void SensorSetBrightness (uint16_t input);
+void sensor_set_exposure (uint16_t input);
 
 #endif // !DICE_IMX477

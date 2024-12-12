@@ -38,18 +38,18 @@ entity mipi_to_hdmi_top is
     d3_skew : natural := 10;
 
     --Output port pixel timings (for included OV13850 config at 23.98fps with MCLK 24.399MHz and output clock 145Mz)
-    video_hlength : natural := 4041; --total visible and blanking pixels per line
-    video_vlength : natural := 2992; --total visible and blanking lines per frame
+    video_hlength : natural := 800; --total visible and blanking pixels per line
+    video_vlength : natural := 600; --total visible and blanking lines per frame
 
     video_hsync_pol : boolean := true; --hsync polarity: true for positive sync, false for negative sync
-    video_hsync_len : natural := 48; --horizontal sync length in pixels
-    video_hbp_len : natural := 122; --horizontal back porch length (excluding sync)
-    video_h_visible : natural := 3840; --number of visible pixels per line
+    video_hsync_len : natural := 96; --horizontal sync length in pixels
+    video_hbp_len : natural := 16; --horizontal back porch length (excluding sync)
+    video_h_visible : natural := 640; --number of visible pixels per line
 
     video_vsync_pol : boolean := true; --vsync polarity: true for positive sync, false for negative sync
-    video_vsync_len : natural := 3; --vertical sync length in lines
-    video_vbp_len : natural := 23; --vertical back porch length (excluding sync)
-    video_v_visible : natural := 2160; --number of visible lines per frame
+    video_vsync_len : natural := 2; --vertical sync length in lines
+    video_vbp_len : natural := 33; --vertical back porch length (excluding sync)
+    video_v_visible : natural := 480; --number of visible lines per frame
 
     pixels_per_clock : natural := 2;  --Number of pixels per clock to output; 1, 2 or 4
 
@@ -113,6 +113,9 @@ architecture Behavioral of mipi_to_hdmi_top is
     signal clk_297m_x    : std_logic;
     signal s_video_clk_x : std_logic;
 
+    signal phy_ready_x : std_logic;
+    signal dci_lock_x : std_logic;
+
     component clk_wiz_0
     port
      (-- Clock in ports
@@ -127,15 +130,36 @@ architecture Behavioral of mipi_to_hdmi_top is
      );
     end component;
 
+    COMPONENT vio_0
+    PORT (
+      clk : IN std_logic;
+      probe_in0 : IN std_logic;
+      probe_in1 : IN std_logic;
+      probe_in2 : IN std_logic;
+      probe_in3 : IN std_logic 
+    );
+  END COMPONENT;
+
 
 begin
     
     reset_c <= not (reset_i);
-    locked_led_o <= clk_lock_x;
+    locked_led_o <= phy_ready_x;
 
    -- IBUFDS: Differential Input Buffer
    --         Kintex UltraScale+
    -- Xilinx HDL Language Template, version 2023.2
+
+    singal_viewer : vio_0
+    PORT MAP (
+      clk => clk_297m_x,
+      probe_in0 => dci_lock_x,
+      probe_in1 => reset_c,
+      probe_in2 => clk_lock_x,
+      probe_in3 => phy_ready_x
+    );
+
+    rdy_o <= phy_ready_x;
 
    IBUFDS_inst : IBUFDS
    port map (
@@ -214,8 +238,10 @@ begin
         ref_clock_i    => ref_clock,
         pixel_clock_in => clk_148_5m_x, --Output pixel clock from PLL
         byte_clock_out => byte_clk_x,   --DSI byte clock output
+        ila_clk => clk_297m_x,
     
-        phy_rdy_o => rdy_o,
+        phy_rdy_o => phy_ready_x,
+        dci_lock => dci_lock_x,
         enable => clk_lock_x, --system enable input
         reset  => reset_c, --synchronous active high reset input
     
@@ -258,12 +284,12 @@ begin
       )
       port map(
         -- Clocks & Reset
-        clk_297m    => clk_297m_x,
+        clk_297m    => clk_297m_x, -- Was 297M
         clk_27m     => clk_27m_x,
         reset       => reset_c,
     
         -- External Video signals
-        ext_video_data => video_data_combined_x,
+        ext_video_data => video_data_combined_x, -- Was combined data
         ext_video_hsync_in => hsync_x,
         ext_video_vsync_in => vsync_x,
         ext_video_de_in => den_x,

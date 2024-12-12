@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Nov 19 23:25:01 2024
+| Date         : Wed Dec 11 19:14:05 2024
 | Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command      : report_utilization -file hdmi_tx_top_utilization_synth.rpt -pb hdmi_tx_top_utilization_synth.pb
 | Design       : hdmi_tx_top
@@ -32,13 +32,13 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*               |  230 |     0 |          0 |    162720 |  0.14 |
-|   LUT as Logic          |  230 |     0 |          0 |    162720 |  0.14 |
+| CLB LUTs*               |  206 |     0 |          0 |    162720 |  0.13 |
+|   LUT as Logic          |  206 |     0 |          0 |    162720 |  0.13 |
 |   LUT as Memory         |    0 |     0 |          0 |     99840 |  0.00 |
-| CLB Registers           |  190 |     0 |          0 |    325440 |  0.06 |
-|   Register as Flip Flop |  190 |     0 |          0 |    325440 |  0.06 |
+| CLB Registers           |  171 |     0 |          0 |    325440 |  0.05 |
+|   Register as Flip Flop |  171 |     0 |          0 |    325440 |  0.05 |
 |   Register as Latch     |    0 |     0 |          0 |    325440 |  0.00 |
-| CARRY8                  |    5 |     0 |          0 |     27120 |  0.02 |
+| CARRY8                  |    3 |     0 |          0 |     27120 |  0.01 |
 | F7 Muxes                |    0 |     0 |          0 |    108480 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |     54240 |  0.00 |
 | F9 Muxes                |    0 |     0 |          0 |     27120 |  0.00 |
@@ -60,7 +60,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 2     |          Yes |           - |          Set |
-| 108   |          Yes |           - |        Reset |
+| 89    |          Yes |           - |        Reset |
 | 6     |          Yes |         Set |            - |
 | 74    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -155,19 +155,19 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  126 |                 CLB |
-| FDCE     |  108 |            Register |
+| LUT6     |  119 |                 CLB |
+| FDCE     |   89 |            Register |
 | FDRE     |   74 |            Register |
 | LUT4     |   45 |                 CLB |
-| LUT5     |   35 |                 CLB |
+| LUT5     |   34 |                 CLB |
 | OBUF     |   30 |                 I/O |
-| LUT3     |   27 |                 CLB |
-| LUT2     |   26 |                 CLB |
-| LUT1     |   16 |                 CLB |
+| LUT2     |   23 |                 CLB |
+| LUT3     |   21 |                 CLB |
+| LUT1     |    6 |                 CLB |
 | FDSE     |    6 |            Register |
-| CARRY8   |    5 |                 CLB |
 | INBUF    |    3 |                 I/O |
 | IBUFCTRL |    3 |              Others |
+| CARRY8   |    3 |                 CLB |
 | OBUFT    |    2 |                 I/O |
 | FDPE     |    2 |            Register |
 +----------+------+---------------------+
@@ -179,6 +179,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------+------+
 |  Ref Name | Used |
 +-----------+------+
+| vio_0     |    1 |
 | clk_wiz_0 |    1 |
 +-----------+------+
 

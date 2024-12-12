@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Tue Nov 19 23:28:10 2024
+| Date             : Wed Dec 11 19:18:29 2024
 | Host             : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command          : report_power -file hdmi_tx_top_power_routed.rpt -pb hdmi_tx_top_power_summary_routed.pb -rpx hdmi_tx_top_power_routed.rpx
 | Design           : hdmi_tx_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.631        |
+| Total On-Chip Power (W)  | 0.657        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.157        |
+| Dynamic (W)              | 0.182        |
 | Device Static (W)        | 0.474        |
 | Effective TJA (C/W)      | 1.7          |
 | Max Ambient (C)          | 98.9         |
@@ -49,21 +49,22 @@ Table of Contents
 1.1 On-Chip Components
 ----------------------
 
-+----------------+-----------+----------+-----------+-----------------+
-| On-Chip        | Power (W) | Used     | Available | Utilization (%) |
-+----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.005 |        5 |       --- |             --- |
-| CLB Logic      |    <0.001 |      507 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      225 |    162720 |            0.14 |
-|   Register     |    <0.001 |      212 |    325440 |            0.07 |
-|   CARRY8       |    <0.001 |        5 |     27120 |            0.02 |
-|   Others       |     0.000 |       18 |       --- |             --- |
-| Signals        |    <0.001 |      363 |       --- |             --- |
-| MMCM           |     0.112 |        0 |       --- |             --- |
-| I/O            |     0.038 |       35 |       256 |           13.67 |
-| Static Power   |     0.474 |          |           |                 |
-| Total          |     0.631 |          |           |                 |
-+----------------+-----------+----------+-----------+-----------------+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     0.013 |        6 |       --- |             --- |
+| CLB Logic                |     0.002 |     2267 |       --- |             --- |
+|   LUT as Logic           |     0.001 |      723 |    162720 |            0.44 |
+|   LUT as Distributed RAM |    <0.001 |       20 |     99840 |            0.02 |
+|   Register               |    <0.001 |     1202 |    325440 |            0.37 |
+|   CARRY8                 |    <0.001 |       10 |     27120 |            0.04 |
+|   Others                 |     0.000 |      124 |       --- |             --- |
+| Signals                  |     0.002 |     1616 |       --- |             --- |
+| MMCM                     |     0.112 |        0 |       --- |             --- |
+| I/O                      |     0.054 |       35 |       256 |           13.67 |
+| Static Power             |     0.474 |          |           |                 |
+| Total                    |     0.657 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -72,12 +73,12 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.147 |       0.008 |      0.139 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.159 |       0.020 |      0.139 |       NA    | Unspecified | NA         |
 | Vccint_io  |       0.850 |     0.036 |       0.001 |      0.035 |       NA    | Unspecified | NA         |
 | Vccbram    |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.190 |       0.062 |      0.128 |       NA    | Unspecified | NA         |
-| Vccaux_io  |       1.800 |     0.036 |       0.004 |      0.031 |       NA    | Unspecified | NA         |
-| Vcco33     |       3.300 |     0.016 |       0.009 |      0.007 |       NA    | Unspecified | NA         |
+| Vccaux_io  |       1.800 |     0.037 |       0.006 |      0.031 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.020 |       0.013 |      0.007 |       NA    | Unspecified | NA         |
 | Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -128,13 +129,14 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+--------------------+---------------------------------------+-----------------+
-| Clock              | Domain                                | Constraint (ns) |
-+--------------------+---------------------------------------+-----------------+
-| clk_27m_clk_wiz_0  | video_clk_gen/inst/clk_27m_clk_wiz_0  |            37.0 |
-| clk_297m_clk_wiz_0 | video_clk_gen/inst/clk_297m_clk_wiz_0 |             3.4 |
-| sysclk_p           | sysclk_p                              |             5.0 |
-+--------------------+---------------------------------------+-----------------+
++-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------+
+| Clock                                                                                               | Domain                                                             | Constraint (ns) |
++-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------+
+| clk_27m_clk_wiz_0                                                                                   | video_clk_gen/inst/clk_27m_clk_wiz_0                               |            37.0 |
+| clk_297m_clk_wiz_0                                                                                  | video_clk_gen/inst/clk_297m_clk_wiz_0                              |             3.4 |
+| dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/DRCK |            50.0 |
+| sysclk_p                                                                                            | sysclk_p                                                           |             5.0 |
++-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -143,14 +145,21 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+---------------------+-----------+
-| Name                | Power (W) |
-+---------------------+-----------+
-| hdmi_tx_top         |     0.157 |
-|   color_bar_gen     |     0.006 |
-|   video_clk_gen     |     0.114 |
-|     inst            |     0.114 |
-|       clkin1_ibufds |     0.002 |
-+---------------------+-----------+
++--------------------------+-----------+
+| Name                     | Power (W) |
++--------------------------+-----------+
+| hdmi_tx_top              |     0.182 |
+|   color_bar_gen          |     0.001 |
+|   color_input            |     0.007 |
+|     inst                 |     0.007 |
+|       PROBE_OUT_ALL_INST |     0.001 |
+|       U_XSDB_SLAVE       |     0.004 |
+|   dbg_hub                |     0.008 |
+|     inst                 |     0.008 |
+|       BSCANID.u_xsdbm_id |     0.008 |
+|   video_clk_gen          |     0.114 |
+|     inst                 |     0.114 |
+|       clkin1_ibufds      |     0.002 |
++--------------------------+-----------+
 
 

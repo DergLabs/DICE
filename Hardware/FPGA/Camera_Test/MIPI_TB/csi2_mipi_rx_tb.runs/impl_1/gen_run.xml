@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1733951871">
+<GenRun Id="impl_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1733980629">
   <File Type="ROUTE-PWR" Name="mipi_to_hdmi_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="mipi_to_hdmi_top.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="mipi_to_hdmi_top_power_summary_routed.pb"/>
@@ -255,12 +255,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/pixel_combiner.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/video-misc/simple_debayer.vhd">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../CSI2Rx/video-misc/simple_debayer.vhd"/>
@@ -270,6 +264,12 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/mipi-csi-rx/csi_rx_top.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pixel_combiner.vhd">
       <FileInfo SFType="VHDL2008">
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -414,4 +414,6 @@
     <Step Id="write_bitstream"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
 </GenRun>

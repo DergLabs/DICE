@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/mipi_to_hdmi_top.tcl"
+  variable script "C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/mipi_to_hdmi_top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,13 +70,14 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param tcl.collectionResultDisplayLimit 0
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 2
+set_param chipscope.maxJobs 4
 set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/john/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-10372-JOHNHOFMEYRA870/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-21588-DESKTOP-U9NB2CD/incrSyn
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
@@ -87,53 +88,63 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.cache/wt [current_project]
-set_property parent.project_path C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.xpr [current_project]
-set_property XPM_LIBRARIES XPM_CDC [current_project]
+set_property webtalk.parent_dir C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.cache/wt [current_project]
+set_property parent.project_path C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.xpr [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo c:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.cache/ip [current_project]
+set_property ip_output_repo c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_config.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/timescale.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_defines.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_bit_ctrl.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_byte_ctrl.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_top.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/video_define.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/lut_hdmi_out.v
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/reset_power_on.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_config.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/timescale.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_defines.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_bit_ctrl.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_byte_ctrl.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/i2c_master/i2c_master_top.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/video_define.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/lut_hdmi_out.v
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/reset_power_on.v
 }
 read_vhdl -library xil_defaultlib {
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_10bit_unpack.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_clock_det.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_hs_lane_phy.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_byte_align.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_word_align.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_idelayctrl_gen.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_4_lane_link.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_hdr_ecc.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_line_buffer.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_packet_handler.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/video-misc/video_timing_ctrl.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_video_output.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/video-misc/image_gain_wb.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/pixel_combiner.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/video-misc/simple_debayer.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_10bit_unpack.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_clock_det.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_hs_lane_phy.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_byte_align.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_word_align.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_idelayctrl_gen.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_4_lane_link.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_hdr_ecc.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_line_buffer.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_packet_handler.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/video-misc/video_timing_ctrl.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_video_output.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/video-misc/image_gain_wb.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/video-misc/simple_debayer.vhd
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_hs_clk_phy.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_top.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/top.vhd
-  C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_hs_clk_phy.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_top.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/pixel_combiner.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/imports/imported_hdl/top.vhd
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd
 }
-read_ip -quiet C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all c:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+
+read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/ip/vio_0/vio_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/vio_0/vio_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/vio_0/vio_0_ooc.xdc]
+
+read_ip -quiet c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/ip/ila_0/ila_0.xci
+set_property used_in_synthesis false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.gen/sources_1/ip/ila_0/ila_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -144,12 +155,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/constrs_1/new/constraints.xdc
-set_property used_in_implementation false [get_files C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/constrs_1/new/constraints.xdc]
+read_xdc C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/constrs_1/new/constraints.xdc
+set_property used_in_implementation false [get_files C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/constrs_1/new/constraints.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Mac/Home/Desktop/Projects/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/utils_1/imports/synth_1/csi_rx_4lane.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/utils_1/imports/synth_1/csi_rx_4lane.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
