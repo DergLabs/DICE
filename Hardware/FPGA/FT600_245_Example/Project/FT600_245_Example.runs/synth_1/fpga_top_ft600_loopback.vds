@@ -1,0 +1,441 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Dec  3 20:13:27 2024
+# Process ID: 11216
+# Current directory: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1
+# Command line: vivado.exe -log fpga_top_ft600_loopback.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fpga_top_ft600_loopback.tcl
+# Log file: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/fpga_top_ft600_loopback.vds
+# Journal file: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1\vivado.jou
+# Running On: M_Laptop, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33946 MB
+#-----------------------------------------------------------
+source fpga_top_ft600_loopback.tcl -notrace
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 483.930 ; gain = 181.137
+Command: read_checkpoint -auto_incremental -incremental C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.srcs/utils_1/imports/synth_1/fpga_top_ft600_rx_crc.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.srcs/utils_1/imports/synth_1/fpga_top_ft600_rx_crc.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top fpga_top_ft600_loopback -part xcku3p-ffva676-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-e
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 25052
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 2010.016 ; gain = 419.902
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'fpga_top_ft600_loopback' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:12]
+INFO: [Synth 8-6157] synthesizing module 'vio_0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/.Xil/Vivado-11216-M_Laptop/realtime/vio_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'vio_0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/.Xil/Vivado-11216-M_Laptop/realtime/vio_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:66]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0_clk_wiz' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v:66]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:73646]
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:73646]
+INFO: [Synth 8-6157] synthesizing module 'MMCME4_ADV' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:82567]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 18.625000 - type: double 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKIN1_PERIOD bound to: 5.000000 - type: double 
+	Parameter CLKOUT0_DIVIDE_F bound to: 18.625000 - type: double 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT1_DIVIDE bound to: 7 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter COMPENSATION bound to: AUTO - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 4 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'MMCME4_ADV' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:82567]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:1951]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:1951]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0_clk_wiz' (0#1) [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:66]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:85]
+INFO: [Synth 8-6157] synthesizing module 'ila_0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/.Xil/Vivado-11216-M_Laptop/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/.Xil/Vivado-11216-M_Laptop/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'ftdi_245fifo_top' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/ftdi_245fifo_top.v:11]
+	Parameter TX_EW bound to: 1 - type: integer 
+	Parameter TX_EA bound to: 10 - type: integer 
+	Parameter RX_EW bound to: 1 - type: integer 
+	Parameter RX_EA bound to: 10 - type: integer 
+	Parameter CHIP_TYPE bound to: FT600 - type: string 
+INFO: [Synth 8-6157] synthesizing module 'resetn_sync' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/resetn_sync.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'resetn_sync' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/resetn_sync.v:10]
+INFO: [Synth 8-6157] synthesizing module 'fifo2' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo2.v:10]
+	Parameter DW bound to: 19 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo2' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo2.v:10]
+INFO: [Synth 8-6157] synthesizing module 'axi_stream_packing' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_packing.v:10]
+	Parameter EW bound to: 1 - type: integer 
+	Parameter SUBMIT_IMMEDIATE bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'axi_stream_packing' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_packing.v:10]
+INFO: [Synth 8-6157] synthesizing module 'axi_stream_resizing' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_resizing.v:10]
+	Parameter IEW bound to: 1 - type: integer 
+	Parameter OEW bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'axi_stream_resizing' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_resizing.v:10]
+INFO: [Synth 8-6157] synthesizing module 'fifo_async' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo_async.v:9]
+	Parameter DW bound to: 18 - type: integer 
+	Parameter EA bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo_async' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo_async.v:9]
+INFO: [Synth 8-6157] synthesizing module 'fifo2__parameterized0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo2.v:10]
+	Parameter DW bound to: 18 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo2__parameterized0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo2.v:10]
+INFO: [Synth 8-6157] synthesizing module 'fifo_delay_submit' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo_delay_submit.v:9]
+	Parameter DW bound to: 18 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo_delay_submit' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo_delay_submit.v:9]
+INFO: [Synth 8-6157] synthesizing module 'ftdi_245fifo_fsm' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/ftdi_245fifo_fsm.v:9]
+	Parameter CHIP_EW bound to: 1 - type: integer 
+	Parameter CHIP_DRIVE_AT_NEGEDGE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ftdi_245fifo_fsm' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/ftdi_245fifo_fsm.v:9]
+INFO: [Synth 8-6157] synthesizing module 'fifo4' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo4.v:11]
+	Parameter DW bound to: 19 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo4' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo4.v:11]
+INFO: [Synth 8-6157] synthesizing module 'axi_stream_packing__parameterized0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_packing.v:10]
+	Parameter EW bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'axi_stream_packing__parameterized0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_packing.v:10]
+INFO: [Synth 8-6157] synthesizing module 'fifo_async__parameterized0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo_async.v:9]
+	Parameter DW bound to: 19 - type: integer 
+	Parameter EA bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo_async__parameterized0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/fifo_async.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'ftdi_245fifo_top' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/ftdi_245fifo_top.v:11]
+INFO: [Synth 8-6157] synthesizing module 'clock_beat' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/clock_beat.v:9]
+	Parameter CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter BEAT_FREQ bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clock_beat' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/clock_beat.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'fpga_top_ft600_loopback' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:12]
+WARNING: [Synth 8-6014] Unused sequential element r_tlast_reg was removed.  [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/ftdi_245fifo/axi_stream_packing.v:91]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_ftdi_245fifo_top'. This will prevent further optimization [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:112]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ftdi_ila'. This will prevent further optimization [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:85]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ftdi_data_be_vio'. This will prevent further optimization [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:62]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'u_ftdi_clk_beat'. This will prevent further optimization [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/fpga_top_ft600_loopback.v:159]
+WARNING: [Synth 8-3917] design fpga_top_ft600_loopback has port ftdi_wakeupn driven by constant 0
+WARNING: [Synth 8-7129] Port rstn in module axi_stream_resizing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module axi_stream_resizing is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 2128.941 ; gain = 538.828
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 2128.941 ; gain = 538.828
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 2128.941 ; gain = 538.828
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2128.941 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'ftdi_data_be_vio'
+Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'ftdi_data_be_vio'
+Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ftdi_ila'
+Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ftdi_ila'
+Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'clk_wiz_sysclk/inst'
+Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'clk_wiz_sysclk/inst'
+Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'clk_wiz_sysclk/inst'
+Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'clk_wiz_sysclk/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fpga_top_ft600_loopback_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/fpga_top_ft600_loopback_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/constraint_ft600.xdc]
+Finished Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/constraint_ft600.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/constraint_ft600.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fpga_top_ft600_loopback_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/fpga_top_ft600_loopback_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fpga_top_ft600_loopback_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/fpga_top_ft600_loopback_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2209.344 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2209.344 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'ftdi_ila' at clock pin 'clk' is different from the actual clock period '7.517', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 2209.344 ; gain = 619.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku3p-ffva676-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 2209.344 ; gain = 619.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for clk_wiz_sysclk/inst. (constraint file  C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/dont_touch.xdc, line 13).
+Applied set_property KEEP_HIERARCHY = SOFT for clk_wiz_sysclk. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ftdi_data_be_vio. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ftdi_ila. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 2209.344 ; gain = 619.230
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ftdi_245fifo_fsm'
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 18 for RAM "fifo_async:/buffer_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 18 for RAM "fifo_delay_submit:/buffer_reg"
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               S_RX_IDLE |                              000 |                           000011
+                 S_RX_OE |                              001 |                           000010
+                 S_RX_EN |                              010 |                           000000
+               S_RX_WAIT |                              011 |                           000111
+                S_RX_END |                              100 |                           001011
+                  iSTATE |                              101 |                           010011
+*
+                 S_TX_EN |                              110 |                           100011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'ftdi_245fifo_fsm'
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 19 for RAM "fifo_async__parameterized0:/buffer_reg"
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:20 . Memory (MB): peak = 2209.344 ; gain = 619.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   11 Bit       Adders := 10    
+	   3 Input   11 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 4     
++---XORs : 
+	   2 Input     11 Bit         XORs := 6     
++---Registers : 
+	               19 Bit    Registers := 9     
+	               18 Bit    Registers := 6     
+	               16 Bit    Registers := 4     
+	               11 Bit    Registers := 21    
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 21    
++---RAMs : 
+	              19K Bit	(1024 X 19 bit)          RAMs := 1     
+	              18K Bit	(1024 X 18 bit)          RAMs := 2     
++---Muxes : 
+	   2 Input   19 Bit        Muxes := 8     
+	   2 Input   18 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 15    
+	   2 Input   11 Bit        Muxes := 2     
+	   7 Input    6 Bit        Muxes := 1     
+	   7 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 13    
+	   2 Input    1 Bit        Muxes := 43    
+	   3 Input    1 Bit        Muxes := 1     
+	   7 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design fpga_top_ft600_loopback has port ftdi_wakeupn driven by constant 0
+RAM ("u_ftdi_245fifo_top/u_tx_fifo_async/buffer_reg") is too shallow (depth = 1024) to use URAM. Choosing BRAM instead of URAM 
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 18 for RAM "u_ftdi_245fifo_top/u_tx_fifo_async/buffer_reg"
+RAM ("u_ftdi_245fifo_top/u_tx_fifo_delay_submit/buffer_reg") is too shallow (depth = 1024) to use URAM. Choosing BRAM instead of URAM 
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 18 for RAM "u_ftdi_245fifo_top/u_tx_fifo_delay_submit/buffer_reg"
+RAM ("u_ftdi_245fifo_top/u_rx_fifo_async/buffer_reg") is too shallow (depth = 1024) to use URAM. Choosing BRAM instead of URAM 
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 19 for RAM "u_ftdi_245fifo_top/u_rx_fifo_async/buffer_reg"
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:25 . Memory (MB): peak = 2209.344 ; gain = 619.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++-------------------+-----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name        | RTL Object                        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-------------------+-----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|u_ftdi_245fifo_top | u_tx_fifo_async/buffer_reg        | 1 K x 18(NO_CHANGE)    | W |   | 1 K x 18(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 1               | 
+|u_ftdi_245fifo_top | u_tx_fifo_delay_submit/buffer_reg | 1 K x 18(READ_FIRST)   | W |   | 1 K x 18(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 1               | 
+|u_ftdi_245fifo_top | u_rx_fifo_async/buffer_reg        | 1 K x 19(NO_CHANGE)    | W |   | 1 K x 19(WRITE_FIRST)  |   | R | Port A and B     | 0      | 1      | 1               | 
++-------------------+-----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:37 . Memory (MB): peak = 2565.785 ; gain = 975.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:37 . Memory (MB): peak = 2568.574 ; gain = 978.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++-------------------+-----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name        | RTL Object                        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-------------------+-----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|u_ftdi_245fifo_top | u_tx_fifo_async/buffer_reg        | 1 K x 18(NO_CHANGE)    | W |   | 1 K x 18(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 1               | 
+|u_ftdi_245fifo_top | u_tx_fifo_delay_submit/buffer_reg | 1 K x 18(READ_FIRST)   | W |   | 1 K x 18(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 1               | 
+|u_ftdi_245fifo_top | u_rx_fifo_async/buffer_reg        | 1 K x 19(NO_CHANGE)    | W |   | 1 K x 19(WRITE_FIRST)  |   | R | Port A and B     | 0      | 1      | 1               | 
++-------------------+-----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance u_ftdi_245fifo_top/u_tx_fifo_async/buffer_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance u_ftdi_245fifo_top/u_tx_fifo_delay_submit/buffer_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance u_ftdi_245fifo_top/u_rx_fifo_async/buffer_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:38 . Memory (MB): peak = 2588.219 ; gain = 998.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/src/fpga_ft600_example/clock_beat.v:28]
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:42 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:42 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:42 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:42 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:42 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:42 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |vio_0         |         1|
+|2     |ila_0         |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |ila        |     1|
+|2     |vio        |     1|
+|3     |BUFG       |     3|
+|4     |CARRY8     |     5|
+|5     |LUT1       |     8|
+|6     |LUT2       |    88|
+|7     |LUT3       |   120|
+|8     |LUT4       |    83|
+|9     |LUT5       |    74|
+|10    |LUT6       |   160|
+|11    |MMCME4_ADV |     1|
+|12    |RAMB18E2   |     2|
+|14    |RAMB36E2   |     1|
+|15    |FDCE       |   554|
+|16    |FDPE       |     4|
+|17    |FDRE       |    28|
+|18    |IBUF       |     4|
+|19    |IBUFDS     |     1|
+|20    |OBUF       |    27|
++------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:43 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:37 . Memory (MB): peak = 2602.984 ; gain = 932.469
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:43 . Memory (MB): peak = 2602.984 ; gain = 1012.871
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2611.020 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 14 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-326] The CLKFBOUT to CLKFBIN net for instance clk_wiz_sysclk/inst/mmcme4_adv_inst with COMPENSATION=INTERNAL is optimized away to aid design routability
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2639.355 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  BUFG => BUFGCE: 3 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 4 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
+
+Synth Design complete | Checksum: 50179137
+INFO: [Common 17-83] Releasing license: Synthesis
+85 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:53 . Memory (MB): peak = 2639.355 ; gain = 2082.949
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2639.355 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_245_Example/Project/FT600_245_Example.runs/synth_1/fpga_top_ft600_loopback.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file fpga_top_ft600_loopback_utilization_synth.rpt -pb fpga_top_ft600_loopback_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Dec  3 20:14:34 2024...

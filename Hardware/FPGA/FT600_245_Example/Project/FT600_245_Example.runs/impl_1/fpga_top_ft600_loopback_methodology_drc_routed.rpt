@@ -1,0 +1,502 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Tue Dec  3 20:53:40 2024
+| Host         : M_Laptop running 64-bit major release  (build 9200)
+| Command      : report_methodology -file fpga_top_ft600_loopback_methodology_drc_routed.rpt -pb fpga_top_ft600_loopback_methodology_drc_routed.pb -rpx fpga_top_ft600_loopback_methodology_drc_routed.rpx
+| Design       : fpga_top_ft600_loopback
+| Device       : xcku3p-ffva676-2-e
+| Speed File   : -2
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: checkpoint_fpga_top_ft600_loopback
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 88
++-----------+------------------+------------------------------------------------+------------+
+| Rule      | Severity         | Description                                    | Violations |
++-----------+------------------+------------------------------------------------+------------+
+| TIMING-6  | Critical Warning | No common primary clock between related clocks | 3          |
+| TIMING-7  | Critical Warning | No common node between related clocks          | 3          |
+| TIMING-8  | Critical Warning | No common period between related clocks        | 3          |
+| HPDR-1    | Warning          | Port pin direction inconsistency               | 18         |
+| HPDR-2    | Warning          | Port pin INOUT inconsistency                   | 18         |
+| LUTAR-1   | Warning          | LUT drives async reset alert                   | 5          |
+| TIMING-9  | Warning          | Unknown CDC Logic                              | 1          |
+| TIMING-15 | Warning          | Large hold violation                           | 1          |
+| TIMING-16 | Warning          | Large setup violation                          | 22         |
+| TIMING-18 | Warning          | Missing input or output delay                  | 10         |
+| TIMING-24 | Warning          | Overridden Max delay datapath only             | 4          |
++-----------+------------------+------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-6#1 Critical Warning
+No common primary clock between related clocks  
+The clocks clk_out1_clk_wiz_0 and ftdi_clk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_clk_wiz_0] -to [get_clocks ftdi_clk]
+Related violations: <none>
+
+TIMING-6#2 Critical Warning
+No common primary clock between related clocks  
+The clocks ftdi_clk and clk_out1_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks ftdi_clk] -to [get_clocks clk_out1_clk_wiz_0]
+Related violations: <none>
+
+TIMING-6#3 Critical Warning
+No common primary clock between related clocks  
+The clocks ftdi_clk and clk_out2_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks ftdi_clk] -to [get_clocks clk_out2_clk_wiz_0]
+Related violations: <none>
+
+TIMING-7#1 Critical Warning
+No common node between related clocks  
+The clocks clk_out1_clk_wiz_0 and ftdi_clk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_clk_wiz_0] -to [get_clocks ftdi_clk]
+Related violations: <none>
+
+TIMING-7#2 Critical Warning
+No common node between related clocks  
+The clocks ftdi_clk and clk_out1_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks ftdi_clk] -to [get_clocks clk_out1_clk_wiz_0]
+Related violations: <none>
+
+TIMING-7#3 Critical Warning
+No common node between related clocks  
+The clocks ftdi_clk and clk_out2_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks ftdi_clk] -to [get_clocks clk_out2_clk_wiz_0]
+Related violations: <none>
+
+TIMING-8#1 Critical Warning
+No common period between related clocks  
+The clocks clk_out1_clk_wiz_0 and ftdi_clk are found related (timed together) but have no common (expandable) period
+Related violations: <none>
+
+TIMING-8#2 Critical Warning
+No common period between related clocks  
+The clocks ftdi_clk and clk_out1_clk_wiz_0 are found related (timed together) but have no common (expandable) period
+Related violations: <none>
+
+TIMING-8#3 Critical Warning
+No common period between related clocks  
+The clocks ftdi_clk and clk_out2_clk_wiz_0 are found related (timed together) but have no common (expandable) period
+Related violations: <none>
+
+HPDR-1#1 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_be[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_be[0]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#2 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_be[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_be[1]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#3 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[0]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#4 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[10] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[10]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#5 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[11] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[11]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#6 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[12] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[12]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#7 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[13] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[13]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#8 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[14] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[14]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#9 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[15] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[15]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#10 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[1]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#11 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[2] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[2]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#12 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[3] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[3]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#13 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[4] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[4]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#14 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[5] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[5]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#15 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[6] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[6]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#16 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[7] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[7]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#17 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[8] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[8]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#18 Warning
+Port pin direction inconsistency  
+Hierarchical port(pin) ftdi_data[9] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ftdi_data[9]) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-2#1 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_be[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_be[0]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#2 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_be[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_be[1]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#3 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[0]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#4 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[10] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[10]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#5 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[11] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[11]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#6 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[12] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[12]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#7 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[13] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[13]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#8 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[14] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[14]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#9 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[15] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[15]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#10 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[1]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#11 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[2] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[2]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#12 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[3] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[3]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#13 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[4] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[4]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#14 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[5] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[5]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#15 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[6] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[6]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#16 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[7] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[7]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#17 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[8] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[8]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#18 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) u_ftdi_245fifo_top/ftdi_data[9] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (internal_ftdi_data[9]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].rrst_inst/ngwrdrst.grst.g7serrst.rd_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].wrst_inst/ngwrdrst.grst.g7serrst.wr_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#3 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].rrst_inst/ngwrdrst.grst.g7serrst.rd_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#4 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].wrst_inst/ngwrdrst.grst.g7serrst.wr_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#5 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_sel[0]_INST_0, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[10]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[11]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[12]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[13]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[14]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[15]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[6]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[7]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[8]/CLR
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[9]/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-9#1 Warning
+Unknown CDC Logic  
+One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
+Related violations: <none>
+
+TIMING-15#1 Warning
+Large hold violation  
+There is a large clock skew of 3.746 ns between ftdi_clk (clocked by ftdi_clk) and ftdi_ila/inst/PROBE_PIPE.shift_probes_reg[0][18]/D (clocked by clk_out2_clk_wiz_0) that results in large hold timing violation(s) of -1.023 ns. Fixing large hold violations during routing might impact setup slack and result in more difficult timing closure
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.207 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[7]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[7]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.209 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[1]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[1]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.210 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[8]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[8]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.210 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[9]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[9]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -1.212 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[0]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[0]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -1.213 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[2]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[2]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -1.213 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[4]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[4]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -1.216 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[10]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[10]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -1.217 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[4]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[4]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -1.217 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[3]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[3]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -1.226 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[6]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[6]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -1.230 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[7]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[7]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -1.231 ns between u_ftdi_245fifo_top/u_tx_fifo_async/wq_wptr_grey_reg[5]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_tx_fifo_async/rq1_wptr_grey_reg[5]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -1.232 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[9]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[9]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -1.235 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[10]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[10]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -1.236 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[5]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[5]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -1.238 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[6]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[6]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -1.240 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[8]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[8]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -1.247 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[1]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[1]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -1.247 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[2]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[2]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -1.249 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[0]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[0]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -1.259 ns between u_ftdi_245fifo_top/u_rx_fifo_async/rq_rptr_grey_reg[3]/C (clocked by clk_out1_clk_wiz_0) and u_ftdi_245fifo_top/u_rx_fifo_async/wq1_rptr_grey_reg[3]/D (clocked by ftdi_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_rxf_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_txe_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on rst_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An output delay is missing on LED[0] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An output delay is missing on LED[1] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An output delay is missing on LED[2] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An output delay is missing on LED[3] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An output delay is missing on ftdi_oe_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An output delay is missing on ftdi_rd_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An output delay is missing on ftdi_wr_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-24#1 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 82 in the Timing Constraints window in Vivado IDE) between clocks clk_out1_clk_wiz_0 and dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK overrides a set_max_delay -datapath_only (position 87). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#2 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 82 in the Timing Constraints window in Vivado IDE) between clocks clk_out1_clk_wiz_0 and dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK overrides a set_max_delay -datapath_only (position 90). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#3 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 82 in the Timing Constraints window in Vivado IDE) between clocks dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK and clk_out1_clk_wiz_0 overrides a set_max_delay -datapath_only (position 85). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#4 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 82 in the Timing Constraints window in Vivado IDE) between clocks dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK and clk_out1_clk_wiz_0 overrides a set_max_delay -datapath_only (position 92). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+
