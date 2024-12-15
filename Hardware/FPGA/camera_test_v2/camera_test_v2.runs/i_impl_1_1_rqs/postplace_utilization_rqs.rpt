@@ -1,0 +1,73 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Sat Dec 14 01:00:41 2024
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_qor_suggestions -pb rqs_stats.pb -file postplace_utilization_rqs.rpt
+| Design       : mipi_csi_top_v2
+| Device       : xcku3p
+| Design State : Fully Placed
+| ML Models    : v2020.1.0
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report QoR Suggestions
+
+Table of Contents
+-----------------
+1. QoR Suggestions Report Summary
+2. ML Strategies
+3. QoR Suggestions - Clocking
+4. QoR Suggestions - XDC
+
+1. QoR Suggestions Report Summary
+---------------------------------
+
++-----------------+---------------+-----------+--------------+----------------+-----------+-------------+----------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+|       Name      |       Id      |   Status  | Generated At | Applicable For | Automatic |    Scope    | Incremental Friendly |                                        Description                                       |                                         Source                                         |
++-----------------+---------------+-----------+--------------+----------------+-----------+-------------+----------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+| RQS_CLOCK-5_1-1 | RQS_CLOCK-5_1 | Generated | place_design | place_design   | No        | GLOBALSCOPE | No                   | Critical paths with high clock skew due to unbalanced clock networks. Ensure source and  | Current Run                                                                            |
+|                 |               |           |              |                |           |             |                      | destination use the same primitives and number of primitives to optimize skew.           |                                                                                        |
+| RQS_XDC-1-1     | RQS_XDC-1     | Generated | place_design | synth_design   | No        | GLOBALSCOPE | No                   | Paths above Max Net/LUT budgeting. Review paths and either reduce logic delays, add      | Current Run                                                                            |
+|                 |               |           |              |                |           |             |                      | pipelining or increase path requirements.                                                |                                                                                        |
+| RQS_XDC-3-1     | RQS_XDC-3     | Generated | place_design | synth_design   | No        | GLOBALSCOPE | No                   | Tight constraints for given unsafe paths. Fix unsafe paths by amending the design or     | Current Run                                                                            |
+|                 |               |           |              |                |           |             |                      | adding false path, datapath only, or clock group constraints.                            |                                                                                        |
+| RQS_CLOCK-1-1   | RQS_CLOCK-1   | Applied   | opt_design   | place_design   | Yes       | GLOBALSCOPE | No                   | Critical paths with high clock skew due to sub-optimal clock roots. Apply                | C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/i_impl_1_1_rqs/util_loop.rqs |
+|                 |               |           |              |                |           |             |                      | CLOCK_DELAY_GROUP property to each global clock net to match clock roots and clock       |                                                                                        |
+|                 |               |           |              |                |           |             |                      | network delays.                                                                          |                                                                                        |
++-----------------+---------------+-----------+--------------+----------------+-----------+-------------+----------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+* By default the number of failing paths is limited to 100. Use the -max_paths options to override.
+** The design checks report may change until design is completely implemented/routed
+
+
+2. ML Strategies
+----------------
+
++---+----+---------+---------+
+| # | Id | Command | Options |
++---+----+---------+---------+
+* ML Strategies are available only in default/explore at successfully routed design.
+
+
+3. QoR Suggestions - Clocking
+-----------------------------
+
++-----------------+-----------+-------+--------+-------+----------------+-------+--------+--------------+-------------------+--------------------------------+--------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------+
+|       Name      | Path Type |  Skew |  Slack |  Req. | Datapath Delay | Cell% | Route% | Source Clock | Destination Clock |      Source Clock Topology     |            Destination Clock Topology            |                                       Startpoint                                       |                    Endpoint                   |
++-----------------+-----------+-------+--------+-------+----------------+-------+--------+--------------+-------------------+--------------------------------+--------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------+
+| RQS_CLOCK-5_1-1 | HOLD      | 2.617 | -2.437 | 0.000 | 0.461          | 19.70 | 80.30  | sys_clk_p    | clk_27m_clk_wiz_0 | DIFFINBUF IBUFCTRL BUFGCE FDRE | DIFFINBUF IBUFCTRL BUFGCE MMCME4_ADV BUFGCE FDCE | signal_debug/inst/PROBE_OUT_ALL_INST/G_PROBE_OUT[0].PROBE_OUT0_INST/Probe_out_reg[0]/C | hdmi_controller/video_mux/s_vid_src_sel_reg/D |
++-----------------+-----------+-------+--------+-------+----------------+-------+--------+--------------+-------------------+--------------------------------+--------------------------------------------------+----------------------------------------------------------------------------------------+-----------------------------------------------+
+
+
+4. QoR Suggestions - XDC
+------------------------
+
++-------------+-------------+--------------+--------+--------+-------+--------+----------------+-------+--------+--------------------+--------------------+--------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+---------------------------+-----------------+-----------------+
+|     Name    | No of Paths | Logic Levels | Routes |  Slack |  Req. |  Skew  | Datapath Delay | Cell% | Route% |    Source Clock    |  Destination Clock |                    Startpoint                    |                                                                                                       Endpoint                                                                                                      | Path budget for Net check | Path budget for Lut check | Net check slack | LUT check slack |
++-------------+-------------+--------------+--------+--------+-------+--------+----------------+-------+--------+--------------------+--------------------+--------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+---------------------------+-----------------+-----------------+
+| RQS_XDC-1-1 | 27          | 5            | 5      | -4.968 | 3.367 | -2.378 | 4.897          | 62.20 | 37.80  | clk_297m_clk_wiz_0 | clk_297m_clk_wiz_0 | pixel_processor/video_timing_ctrl/v_pos_reg[4]/C | hdmi_de_o                                                                                                                                                                                                           | -10                       | 3                         | -4.155          | -1.571          |
+| RQS_XDC-3-1 | 59          | 2            | 2      | -8.145 | 1.250 | 1.069  | 10.109         | 84.00 | 16.00  | csi                | dphy_byte_clk      | dphy_clk_i[1]                                    | pixel_processor/output_reformatter/odd_line/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/prim_noinit.ram/DEVICE_8SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram/RSTRAMARSTRAM | -29                       | 7                         | -7.151          | 1.064           |
+|             | 27          | 1            | 1      | -7.128 | 1.250 | 1.013  | 9.290          | 90.80 | 9.200  | csi                | dphy_byte_clk      | dphy_clk_i[1]                                    | pixel_processor/output_reformatter/input_pixel_count_clk_i_reg[10]/CLR                                                                                                                                              | -29                       | 7                         | -6.692          | 1.562           |
+|             | 30          | 2            | 2      | -5.911 | 0.004 | 3.925  | 9.417          | 86.50 | 13.50  | csi                | mutli_pixel_clk_x  | dphy_clk_i[1]                                    | pixel_processor/output_reformatter/odd_line/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/prim_noinit.ram/DEVICE_8SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram/RSTRAMB       | -21                       | 12                        | -5.265          | 2.606           |
++-------------+-------------+--------------+--------+--------+-------+--------+----------------+-------+--------+--------------------+--------------------+--------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+---------------------------+-----------------+-----------------+
+
+

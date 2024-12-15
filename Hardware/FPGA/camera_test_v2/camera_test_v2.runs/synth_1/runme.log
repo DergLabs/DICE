@@ -1,0 +1,719 @@
+
+*** Running vivado
+    with args -log mipi_csi_top_v2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mipi_csi_top_v2.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source mipi_csi_top_v2.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 492.453 ; gain = 180.641
+Command: read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/utils_1/imports/synth_1/mipi_csi_top_v2.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/utils_1/imports/synth_1/mipi_csi_top_v2.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top mipi_csi_top_v2 -part xcku3p-ffva676-2-i
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12512
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1997.219 ; gain = 420.602
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'mipi_csi_top_v2' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:42]
+INFO: [Synth 8-3491] module 'vio_0' declared at 'C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/.Xil/Vivado-7964-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:6' bound to instance 'signal_debug' of component 'vio_0' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'vio_0' [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/.Xil/Vivado-7964-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:21]
+INFO: [Synth 8-113] binding component instance 'IBUFDS_inst' to cell 'IBUFDS' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:161]
+INFO: [Synth 8-113] binding component instance 'BUFG_inst' to cell 'BUFG' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:169]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/.Xil/Vivado-7964-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'sys_clk_gen' of component 'clk_wiz_0' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:175]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/.Xil/Vivado-7964-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:18]
+INFO: [Synth 8-638] synthesizing module 'mipi_csi_rx_controller' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_rx_controller.vhd:38]
+INFO: [Synth 8-638] synthesizing module 'csi_rx_dphy' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:64]
+	Parameter fpga_series bound to: ULTRASCALE_PLUS - type: string 
+	Parameter dphy_term_en bound to: 0 - type: bool 
+	Parameter d0_invert bound to: 0 - type: bool 
+	Parameter d1_invert bound to: 0 - type: bool 
+	Parameter d2_invert bound to: 0 - type: bool 
+	Parameter d3_invert bound to: 0 - type: bool 
+	Parameter d0_skew bound to: 10 - type: integer 
+	Parameter d1_skew bound to: 10 - type: integer 
+	Parameter d2_skew bound to: 10 - type: integer 
+	Parameter d3_skew bound to: 10 - type: integer 
+	Parameter generate_idelayctrl bound to: 1 - type: bool 
+	Parameter mipi_lanes bound to: 4 - type: integer 
+	Parameter mipi_data_width bound to: 8 - type: integer 
+	Parameter SIM_DEVICE bound to: ULTRASCALE - type: string 
+INFO: [Synth 8-113] binding component instance 'delayctrl' to cell 'IDELAYCTRL' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:99]
+INFO: [Synth 8-113] binding component instance 'DCIRESET_inst' to cell 'DCIRESET' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:110]
+	Parameter DIFF_TERM bound to: 0 - type: bool 
+	Parameter IOSTANDARD bound to: MIPI_DPHY_DCI - type: string 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_DPHY_inst' to cell 'IBUFDS_DPHY' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:121]
+	Parameter CE_TYPE bound to: SYNC - type: string 
+	Parameter IS_CE_INVERTED bound to: 1'b0 
+	Parameter IS_I_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'bit_clk_buf' to cell 'BUFGCE' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:139]
+	Parameter BUFGCE_DIVIDE bound to: 4 - type: integer 
+	Parameter IS_CE_INVERTED bound to: 1'b0 
+	Parameter IS_CLR_INVERTED bound to: 1'b0 
+	Parameter IS_I_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'BUFGCE_DIV_inst' to cell 'BUFGCE_DIV' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:155]
+	Parameter DIFF_TERM bound to: 0 - type: bool 
+	Parameter IOSTANDARD bound to: MIPI_DPHY_DCI - type: string 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_DPHY0_inst' to cell 'IBUFDS_DPHY' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:184]
+	Parameter CASCADE bound to: NONE - type: string 
+	Parameter DELAY_FORMAT bound to: TIME - type: string 
+	Parameter DELAY_SRC bound to: IDATAIN - type: string 
+	Parameter DELAY_TYPE bound to: FIXED - type: string 
+	Parameter DELAY_VALUE bound to: 10 - type: integer 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+	Parameter UPDATE_MODE bound to: ASYNC - type: string 
+INFO: [Synth 8-113] binding component instance 'IDELAYE3_inst0' to cell 'IDELAYE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:202]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter FIFO_ENABLE bound to: TRUE - type: string 
+	Parameter FIFO_SYNC_MODE bound to: FALSE - type: string 
+	Parameter IS_CLK_B_INVERTED bound to: 1'b1 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'ISERDESE3_inst0' to cell 'ISERDESE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:235]
+	Parameter DIFF_TERM bound to: 0 - type: bool 
+	Parameter IOSTANDARD bound to: MIPI_DPHY_DCI - type: string 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_DPHY1_inst' to cell 'IBUFDS_DPHY' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:262]
+	Parameter CASCADE bound to: NONE - type: string 
+	Parameter DELAY_FORMAT bound to: TIME - type: string 
+	Parameter DELAY_SRC bound to: IDATAIN - type: string 
+	Parameter DELAY_TYPE bound to: FIXED - type: string 
+	Parameter DELAY_VALUE bound to: 10 - type: integer 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+	Parameter UPDATE_MODE bound to: ASYNC - type: string 
+INFO: [Synth 8-113] binding component instance 'IDELAYE3_inst1' to cell 'IDELAYE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:280]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter FIFO_ENABLE bound to: TRUE - type: string 
+	Parameter FIFO_SYNC_MODE bound to: FALSE - type: string 
+	Parameter IS_CLK_B_INVERTED bound to: 1'b1 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'ISERDESE3_inst1' to cell 'ISERDESE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:313]
+	Parameter DIFF_TERM bound to: 0 - type: bool 
+	Parameter IOSTANDARD bound to: MIPI_DPHY_DCI - type: string 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_DPHY2_inst' to cell 'IBUFDS_DPHY' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:340]
+	Parameter CASCADE bound to: NONE - type: string 
+	Parameter DELAY_FORMAT bound to: TIME - type: string 
+	Parameter DELAY_SRC bound to: IDATAIN - type: string 
+	Parameter DELAY_TYPE bound to: FIXED - type: string 
+	Parameter DELAY_VALUE bound to: 10 - type: integer 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+	Parameter UPDATE_MODE bound to: ASYNC - type: string 
+INFO: [Synth 8-113] binding component instance 'IDELAYE3_inst2' to cell 'IDELAYE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:358]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter FIFO_ENABLE bound to: TRUE - type: string 
+	Parameter FIFO_SYNC_MODE bound to: FALSE - type: string 
+	Parameter IS_CLK_B_INVERTED bound to: 1'b1 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'ISERDESE3_inst2' to cell 'ISERDESE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:391]
+	Parameter DIFF_TERM bound to: 0 - type: bool 
+	Parameter IOSTANDARD bound to: MIPI_DPHY_DCI - type: string 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'IBUFDS_DPHY3_inst' to cell 'IBUFDS_DPHY' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:418]
+	Parameter CASCADE bound to: NONE - type: string 
+	Parameter DELAY_FORMAT bound to: TIME - type: string 
+	Parameter DELAY_SRC bound to: IDATAIN - type: string 
+	Parameter DELAY_TYPE bound to: FIXED - type: string 
+	Parameter DELAY_VALUE bound to: 10 - type: integer 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+	Parameter UPDATE_MODE bound to: ASYNC - type: string 
+INFO: [Synth 8-113] binding component instance 'IDELAYE3_inst3' to cell 'IDELAYE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:436]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter FIFO_ENABLE bound to: TRUE - type: string 
+	Parameter FIFO_SYNC_MODE bound to: FALSE - type: string 
+	Parameter IS_CLK_B_INVERTED bound to: 1'b1 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'ISERDESE3_inst3' to cell 'ISERDESE3' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:469]
+INFO: [Synth 8-256] done synthesizing module 'csi_rx_dphy' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:64]
+INFO: [Synth 8-6157] synthesizing module 'line_reset_generator' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/lsync_reset_generator.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'line_reset_generator' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/lsync_reset_generator.v:4]
+INFO: [Synth 8-6157] synthesizing module 'mipi_csi_rx_byte_aligner' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_byte_aligner.v:23]
+	Parameter MIPI_GEAR bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mipi_csi_rx_byte_aligner' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_byte_aligner.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mipi_csi_rx_lane_aligner' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_lane_aligner.v:21]
+	Parameter MIPI_GEAR bound to: 8 - type: integer 
+	Parameter MIPI_LANES bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mipi_csi_rx_lane_aligner' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_lane_aligner.v:21]
+INFO: [Synth 8-6157] synthesizing module 'mipi_csi_rx_packet_decoder_8b4lane' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_packet_decoder_8b4lane.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mipi_csi_rx_packet_decoder_8b4lane' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_packet_decoder_8b4lane.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mipi_csi_rx_raw_depacker_8b4lane' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:19]
+	Parameter PIXEL_WIDTH bound to: 10 - type: integer 
+WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:120]
+WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:121]
+WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:122]
+WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:123]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:126]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:126]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:127]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:127]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:128]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:128]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:129]
+WARNING: [Synth 8-4447] negative replication count -2 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:129]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:132]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:132]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:133]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:133]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:134]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:134]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:135]
+WARNING: [Synth 8-4447] negative replication count -4 - replication ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:135]
+INFO: [Synth 8-6155] done synthesizing module 'mipi_csi_rx_raw_depacker_8b4lane' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/mipi_csi_rx_raw_depacker_8b4lane.v:19]
+INFO: [Synth 8-256] done synthesizing module 'mipi_csi_rx_controller' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_rx_controller.vhd:38]
+INFO: [Synth 8-638] synthesizing module 'register_stage' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:68]
+	Parameter BUS1_WIDTH bound to: 40 - type: integer 
+	Parameter BUS2_WIDTH bound to: 0 - type: integer 
+	Parameter BUS3_WIDTH bound to: 0 - type: integer 
+	Parameter BUS4_WIDTH bound to: 0 - type: integer 
+WARNING: [Synth 8-506] null port 'bus1_i' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:21]
+WARNING: [Synth 8-506] null port 'bus2_i' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:22]
+WARNING: [Synth 8-506] null port 'bus3_i' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:23]
+WARNING: [Synth 8-506] null port 'bus1_o' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:26]
+WARNING: [Synth 8-506] null port 'bus2_o' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:27]
+WARNING: [Synth 8-506] null port 'bus3_o' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'register_stage' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:68]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:228]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:229]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:230]
+INFO: [Synth 8-638] synthesizing module 'pixel_processor' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/pixel_processor.vhd:36]
+	Parameter BUFGCE_DIVIDE bound to: 4 - type: integer 
+	Parameter IS_CE_INVERTED bound to: 1'b0 
+	Parameter IS_CLR_INVERTED bound to: 1'b0 
+	Parameter IS_I_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+INFO: [Synth 8-113] binding component instance 'BUFGCE_DIV_PIXEL_CLK' to cell 'BUFGCE_DIV' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/pixel_processor.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'video_timing_ctrl' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/video controller/video_timing_ctrl.vhd:52]
+	Parameter video_hlength bound to: 4056 - type: integer 
+	Parameter video_vlength bound to: 3040 - type: integer 
+	Parameter video_hsync_pol bound to: 1 - type: bool 
+	Parameter video_hsync_len bound to: 22 - type: integer 
+	Parameter video_hbp_len bound to: 30 - type: integer 
+	Parameter video_h_visible bound to: 960 - type: integer 
+	Parameter video_vsync_pol bound to: 1 - type: bool 
+	Parameter video_vsync_len bound to: 3 - type: integer 
+	Parameter video_vbp_len bound to: 23 - type: integer 
+	Parameter video_v_visible bound to: 2160 - type: integer 
+	Parameter sync_v_pos bound to: 25 - type: integer 
+	Parameter sync_h_pos bound to: 4051 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'video_timing_ctrl' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/video controller/video_timing_ctrl.vhd:52]
+INFO: [Synth 8-6157] synthesizing module 'debayer_filter' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/debayer_filter_xilinx.v:20]
+	Parameter PIXEL_WIDTH bound to: 10 - type: integer 
+	Parameter PIXEL_PER_CLK bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/.Xil/Vivado-7964-DESKTOP-U9NB2CD/realtime/blk_mem_gen_0_stub.vhdl:28]
+INFO: [Synth 8-6155] done synthesizing module 'debayer_filter' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/debayer_filter_xilinx.v:20]
+INFO: [Synth 8-6157] synthesizing module 'output_reformatter' [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/output_reformatter_rgb24.v:20]
+	Parameter PIXEL_WIDTH bound to: 10 - type: integer 
+	Parameter PIXEL_PER_CLK bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_1' [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/.Xil/Vivado-7964-DESKTOP-U9NB2CD/realtime/blk_mem_gen_1_stub.vhdl:28]
+INFO: [Synth 8-6155] done synthesizing module 'output_reformatter' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/output_reformatter_rgb24.v:20]
+INFO: [Synth 8-256] done synthesizing module 'pixel_processor' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/pixel_processor.vhd:36]
+INFO: [Synth 8-638] synthesizing module 'register_stage__parameterized0' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:68]
+	Parameter BUS1_WIDTH bound to: 24 - type: integer 
+	Parameter BUS2_WIDTH bound to: 0 - type: integer 
+	Parameter BUS3_WIDTH bound to: 0 - type: integer 
+	Parameter BUS4_WIDTH bound to: 0 - type: integer 
+WARNING: [Synth 8-506] null port 'bus1_i' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:21]
+WARNING: [Synth 8-506] null port 'bus2_i' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:22]
+WARNING: [Synth 8-506] null port 'bus3_i' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:23]
+WARNING: [Synth 8-506] null port 'bus1_o' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:26]
+WARNING: [Synth 8-506] null port 'bus2_o' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:27]
+WARNING: [Synth 8-506] null port 'bus3_o' ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'register_stage__parameterized0' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/register_stage.vhd:68]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:296]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:297]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:298]
+INFO: [Synth 8-638] synthesizing module 'hdmi_tx_top' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/hdmi_ctrl_top.vhd:38]
+	Parameter VIDEO_RESOLUTION bound to: 3840P_30 - type: string 
+INFO: [Synth 8-6157] synthesizing module 'reset_power_on' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/reset_power_on.v:29]
+	Parameter FREQ bound to: 27 - type: integer 
+	Parameter MAX_TIME bound to: 200 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'reset_power_on' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/reset_power_on.v:29]
+INFO: [Synth 8-6157] synthesizing module 'i2c_config' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_config.v:30]
+INFO: [Synth 8-6157] synthesizing module 'i2c_master_top' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_top.v:30]
+INFO: [Synth 8-226] default block is never used [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_top.v:96]
+INFO: [Synth 8-6157] synthesizing module 'i2c_master_byte_ctrl' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_byte_ctrl.v:75]
+INFO: [Synth 8-6157] synthesizing module 'i2c_master_bit_ctrl' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_bit_ctrl.v:143]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_master_bit_ctrl' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_bit_ctrl.v:143]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_master_byte_ctrl' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_byte_ctrl.v:75]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_master_top' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_master_top.v:30]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_config' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_config.v:30]
+INFO: [Synth 8-6157] synthesizing module 'lut_hdmi_out' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/lut_hdmi_out.v:40]
+INFO: [Synth 8-6155] done synthesizing module 'lut_hdmi_out' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/lut_hdmi_out.v:40]
+INFO: [Synth 8-6157] synthesizing module 'color_bar' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/video controller/color_bar.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'color_bar' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/video controller/color_bar.v:34]
+INFO: [Synth 8-638] synthesizing module 'video_mux' [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/video controller/video_mux.vhd:39]
+	Parameter video_in_width bound to: 24 - type: integer 
+	Parameter video_out_width bound to: 24 - type: integer 
+	Parameter pixels_per_clk bound to: 1 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'video_mux' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/video controller/video_mux.vhd:39]
+INFO: [Synth 8-6157] synthesizing module 'OBUF' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:93059]
+INFO: [Synth 8-6155] done synthesizing module 'OBUF' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:93059]
+INFO: [Synth 8-256] done synthesizing module 'hdmi_tx_top' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/hdmi_ctrl_top.vhd:38]
+INFO: [Synth 8-256] done synthesizing module 'mipi_csi_top_v2' (0#1) [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:42]
+WARNING: [Synth 8-6014] Unused sequential element data_phy1_rst_x_reg was removed.  [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:177]
+WARNING: [Synth 8-6014] Unused sequential element data_phy2_rst_x_reg was removed.  [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:178]
+WARNING: [Synth 8-6014] Unused sequential element data_phy3_rst_x_reg was removed.  [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_dphy.vhd:179]
+WARNING: [Synth 8-6014] Unused sequential element not_used2b_reg was removed.  [C:/Users/johnh/Desktop/camera_test_v2/imports/verilog/src/debayer_filter_xilinx.v:448]
+WARNING: [Synth 8-7137] Register i2c_write_req_reg in module i2c_config has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_config.v:101]
+WARNING: [Synth 8-3848] Net i2c_read_req in module/entity i2c_config does not have driver. [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/hdmi controller/i2c_master/i2c_config.v:57]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'hdmi_controller'. This will prevent further optimization [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:327]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'reister_stage1'. This will prevent further optimization [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:283]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'pixel_processor'. This will prevent further optimization [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:260]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'reister_stage0'. This will prevent further optimization [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:215]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'mipi_subsystem'. This will prevent further optimization [C:/Users/johnh/Desktop/camera_test_v2/imports/vhdl/src/mipi controller/mipi_csi_top_v2.vhd:189]
+WARNING: [Synth 8-7129] Port i2c_slave_dev_addr[0] in module i2c_master_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cam_video_pixel_clk_in in module hdmi_tx_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2134.965 ; gain = 558.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2134.965 ; gain = 558.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2134.965 ; gain = 558.348
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.068 . Memory (MB): peak = 2134.965 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 11 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'sys_clk_gen'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'sys_clk_gen'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram0'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram0'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram1'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram1'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram2'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram2'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram3'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'pixel_processor/debayer_filter/pixel_ram3'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'pixel_processor/output_reformatter/odd_line'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'pixel_processor/output_reformatter/odd_line'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'pixel_processor/output_reformatter/even_line'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'pixel_processor/output_reformatter/even_line'
+Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'signal_debug'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'signal_debug'
+Parsing XDC File [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/constrs_2/new/mipi_csi_top_v2.xdc]
+INFO: [Constraints 18-632] set_input_delay: No clock object specified, the clocks will be automatically identified [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/constrs_2/new/mipi_csi_top_v2.xdc:182]
+INFO: [Constraints 18-632] set_output_delay: No clock object specified, the clocks will be automatically identified [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/constrs_2/new/mipi_csi_top_v2.xdc:183]
+Finished Parsing XDC File [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/constrs_2/new/mipi_csi_top_v2.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.srcs/constrs_2/new/mipi_csi_top_v2.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mipi_csi_top_v2_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/mipi_csi_top_v2_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+WARNING: [Timing 38-3] User defined clock exists on pin mipi_subsystem/mipi_dphy/BUFGCE_DIV_inst/O and will prevent any subsequent automatic derivation of generated clocks on that pin. If the user defined clock specifies '-add', any existing auto-derived clocks on that pin are retained.
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2233.754 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 7 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
+  IBUFDS_DPHY => IBUFDS_DPHY (DPHY_DIFFINBUF, IBUFCTRL): 5 instances
+
+The system cannot find the path specified.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2233.754 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'signal_debug' at clock pin 'clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'pixel_processor/debayer_filter/pixel_ram0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'pixel_processor/debayer_filter/pixel_ram1' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'pixel_processor/debayer_filter/pixel_ram2' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'pixel_processor/debayer_filter/pixel_ram3' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'pixel_processor/output_reformatter/even_line' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'pixel_processor/output_reformatter/odd_line' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2233.754 ; gain = 657.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku3p-ffva676-2-i
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2233.754 ; gain = 657.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for sys_clk_gen. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pixel_processor/debayer_filter/pixel_ram0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pixel_processor/debayer_filter/pixel_ram1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pixel_processor/debayer_filter/pixel_ram2. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pixel_processor/debayer_filter/pixel_ram3. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pixel_processor/output_reformatter/even_line. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pixel_processor/output_reformatter/odd_line. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for signal_debug. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2233.754 ; gain = 657.137
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'c_state_reg' in module 'i2c_master_bit_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'c_state_reg' in module 'i2c_master_byte_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_master_top'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_config'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |               000000000000000001 |               000000000000000000
+                 start_a |               000000000000000010 |               000000000000000001
+                 start_b |               000000000000000100 |               000000000000000010
+                 start_c |               000000000000001000 |               000000000000000100
+                 start_d |               000000000000010000 |               000000000000001000
+                 start_e |               000000000000100000 |               000000000000010000
+                  stop_a |               000000000001000000 |               000000000000100000
+                  stop_b |               000000000010000000 |               000000000001000000
+                  stop_c |               000000000100000000 |               000000000010000000
+                  stop_d |               000000001000000000 |               000000000100000000
+                    wr_a |               000000010000000000 |               000010000000000000
+                    wr_b |               000000100000000000 |               000100000000000000
+                    wr_c |               000001000000000000 |               001000000000000000
+                    wr_d |               000010000000000000 |               010000000000000000
+                    rd_a |               000100000000000000 |               000000001000000000
+                    rd_b |               001000000000000000 |               000000010000000000
+                    rd_c |               010000000000000000 |               000000100000000000
+                    rd_d |               100000000000000000 |               000001000000000000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'c_state_reg' using encoding 'one-hot' in module 'i2c_master_bit_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 ST_IDLE |                              000 |                            00000
+                ST_START |                              001 |                            00001
+                 ST_READ |                              010 |                            00010
+                ST_WRITE |                              011 |                            00100
+                  ST_ACK |                              100 |                            01000
+                 ST_STOP |                              101 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'c_state_reg' using encoding 'sequential' in module 'i2c_master_byte_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                             0110 |                             0000
+           S_WR_DEV_ADDR |                             1001 |                             0001
+           S_WR_REG_ADDR |                             0100 |                             0010
+          S_WR_REG_ADDR1 |                             0101 |                             1101
+               S_WR_DATA |                             0000 |                             0011
+          S_RD_DEV_ADDR0 |                             1011 |                             0110
+           S_WR_ERR_NACK |                             1010 |                             0101
+               S_WR_STOP |                             0001 |                             1011
+                S_WR_ACK |                             0010 |                             0100
+           S_RD_REG_ADDR |                             1101 |                             0111
+          S_RD_REG_ADDR1 |                             1110 |                             1110
+          S_RD_DEV_ADDR1 |                             1111 |                             1000
+               S_RD_DATA |                             1100 |                             1001
+               S_RD_STOP |                             0111 |                             1010
+                S_RD_ACK |                             1000 |                             1111
+                  S_WAIT |                             0011 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'i2c_master_top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                               00 |                              000
+          S_WR_I2C_CHECK |                               01 |                              001
+                S_WR_I2C |                               10 |                              010
+           S_WR_I2C_DONE |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'i2c_config'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2233.754 ; gain = 657.137
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'hdmi_controller/reset_power_on_i2c' (reset_power_on) to 'hdmi_controller/reset_power_on_hdmi'
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   23 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 5     
+	   2 Input   14 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 4     
+	   4 Input   12 Bit       Adders := 12    
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 3     
+	   2 Input    8 Bit       Adders := 8     
+	   2 Input    3 Bit       Adders := 3     
+	   3 Input    3 Bit       Adders := 8     
+	   2 Input    2 Bit       Adders := 10    
++---Registers : 
+	              120 Bit    Registers := 2     
+	               40 Bit    Registers := 14    
+	               32 Bit    Registers := 17    
+	               24 Bit    Registers := 4     
+	               16 Bit    Registers := 10    
+	               14 Bit    Registers := 1     
+	               12 Bit    Registers := 4     
+	               11 Bit    Registers := 6     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 18    
+	                7 Bit    Registers := 29    
+	                4 Bit    Registers := 7     
+	                3 Bit    Registers := 16    
+	                2 Bit    Registers := 12    
+	                1 Bit    Registers := 108   
++---Muxes : 
+	   2 Input  120 Bit        Muxes := 1     
+	   4 Input   90 Bit        Muxes := 4     
+	   4 Input   80 Bit        Muxes := 6     
+	   4 Input   70 Bit        Muxes := 6     
+	   4 Input   60 Bit        Muxes := 6     
+	   4 Input   50 Bit        Muxes := 6     
+	   3 Input   40 Bit        Muxes := 1     
+	   4 Input   40 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 1     
+	   4 Input   30 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 1     
+	  24 Input   18 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 6     
+	   2 Input   14 Bit        Muxes := 2     
+	   2 Input   12 Bit        Muxes := 5     
+	   2 Input   10 Bit        Muxes := 33    
+	   4 Input   10 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 3     
+	   6 Input    8 Bit        Muxes := 2     
+	   9 Input    8 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 1     
+	   4 Input    7 Bit        Muxes := 15    
+	   2 Input    4 Bit        Muxes := 31    
+	   6 Input    4 Bit        Muxes := 1     
+	  15 Input    4 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 4     
+	   8 Input    3 Bit        Muxes := 4     
+	   2 Input    3 Bit        Muxes := 7     
+	  15 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 6     
+	   4 Input    2 Bit        Muxes := 1     
+	   9 Input    1 Bit        Muxes := 4     
+	   2 Input    1 Bit        Muxes := 39    
+	  18 Input    1 Bit        Muxes := 5     
+	   6 Input    1 Bit        Muxes := 6     
+	   3 Input    1 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 6     
+	  10 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port cam_video_pixel_clk_in in module hdmi_tx_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2233.754 ; gain = 657.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2579.035 ; gain = 1002.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2586.438 ; gain = 1009.820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2655.719 ; gain = 1079.102
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++-----------------------+---------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name            | RTL Name                                          | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++-----------------------+---------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|mipi_csi_rx_controller | packet_unpack_8b4lane_4ppc/last_data_i_reg[0][15] | 3      | 8     | NO           | NO                 | YES               | 8      | 0       | 
+|mipi_csi_rx_controller | packet_unpack_8b4lane_4ppc/last_data_i_reg[1][31] | 5      | 8     | NO           | NO                 | YES               | 8      | 0       | 
+|mipi_csi_rx_controller | packet_unpack_8b4lane_4ppc/last_data_i_reg[1][23] | 4      | 8     | NO           | NO                 | YES               | 8      | 0       | 
+|mipi_csi_rx_controller | line_reset/shift_reg_reg[10]                      | 11     | 1     | NO           | YES                | YES               | 1      | 0       | 
+|pixel_processor        | output_reformatter/line_even_nodd_out_clk_reg     | 5      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++-----------------------+---------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |blk_mem_gen_0 |         4|
+|2     |blk_mem_gen_1 |         2|
+|3     |vio_0         |         1|
+|4     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-------------------+------+
+|      |Cell               |Count |
++------+-------------------+------+
+|1     |blk_mem_gen_0_bbox |     4|
+|5     |blk_mem_gen_1_bbox |     2|
+|7     |clk_wiz_0_bbox     |     1|
+|8     |vio_0_bbox         |     1|
+|9     |BUFG               |     1|
+|10    |BUFGCE             |     1|
+|11    |BUFGCE_DIV         |     2|
+|12    |CARRY8             |    32|
+|13    |DCIRESET           |     1|
+|14    |IDELAYCTRL         |     1|
+|15    |IDELAYE3           |     4|
+|16    |ISERDESE3          |     4|
+|17    |LUT1               |    38|
+|18    |LUT2               |    97|
+|19    |LUT3               |   440|
+|20    |LUT4               |   163|
+|21    |LUT5               |   365|
+|22    |LUT6               |   972|
+|23    |MUXF7              |    80|
+|24    |MUXF8              |    16|
+|25    |SRL16E             |    26|
+|26    |FDCE               |   186|
+|27    |FDPE               |     2|
+|28    |FDRE               |  1528|
+|29    |FDSE               |    52|
+|30    |IBUF               |     2|
+|31    |IBUFDS             |     1|
+|32    |IBUFDS_DPHY        |     5|
+|33    |IOBUF              |     2|
+|34    |OBUF               |    31|
++------+-------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 2670.527 ; gain = 995.121
+Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2670.527 ; gain = 1093.910
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 2678.531 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 143 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2697.355 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 11 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
+  IBUFDS_DPHY => IBUFDS_DPHY (DPHY_DIFFINBUF, IBUFCTRL): 5 instances
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 2 instances
+
+The system cannot find the path specified.
+Synth Design complete | Checksum: d903862
+INFO: [Common 17-83] Releasing license: Synthesis
+116 Infos, 56 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:01:07 . Memory (MB): peak = 2697.355 ; gain = 2133.621
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 2697.355 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/synth_1/mipi_csi_top_v2.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file mipi_csi_top_v2_utilization_synth.rpt -pb mipi_csi_top_v2_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Dec 14 05:32:58 2024...
