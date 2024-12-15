@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Dec 12 00:17:13 2024
-# Process ID: 2856
+# Start of session at: Sat Dec 14 19:21:37 2024
+# Process ID: 28816
 # Current directory: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1
 # Command line: vivado.exe -log mipi_to_hdmi_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mipi_to_hdmi_top.tcl
 # Log file: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/mipi_to_hdmi_top.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-U9NB2CD, OS: Windows, CPU Frequency: 3800 MHz, CPU Physical cores: 16, Host memory: 68639 MB
 #-----------------------------------------------------------
 source mipi_to_hdmi_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 490.578 ; gain = 178.785
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 490.926 ; gain = 179.125
 Command: read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/utils_1/imports/synth_1/csi_rx_4lane.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/utils_1/imports/synth_1/csi_rx_4lane.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,17 +25,17 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 23516
+INFO: [Synth 8-7075] Helper process launched with PID 31680
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2015.738 ; gain = 418.293
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2016.898 ; gain = 420.457
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'mipi_to_hdmi_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:92]
-INFO: [Synth 8-3491] module 'vio_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-2856-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:6' bound to instance 'singal_viewer' of component 'vio_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:153]
-INFO: [Synth 8-638] synthesizing module 'vio_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-2856-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'vio_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-28816-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:6' bound to instance 'singal_viewer' of component 'vio_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'vio_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-28816-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:17]
 INFO: [Synth 8-113] binding component instance 'IBUFDS_inst' to cell 'IBUFDS' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:164]
 INFO: [Synth 8-113] binding component instance 'BUFG_inst' to cell 'BUFG' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:176]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-2856-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'video_clk' of component 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:182]
-INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-2856-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-28816-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'video_clk' of component 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.srcs/sources_1/new/mipi_to_hdmi_top.vhd:182]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-28816-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:18]
 INFO: [Synth 8-638] synthesizing module 'csi_rx_4lane' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_top.vhd:100]
 	Parameter fpga_series bound to: ULTRASCALE_PLUS - type: string 
 	Parameter dphy_term_en bound to: 0 - type: bool 
@@ -59,8 +59,8 @@ INFO: [Synth 8-638] synthesizing module 'csi_rx_4lane' [C:/Users/johnh/Desktop/D
 	Parameter video_v_visible bound to: 480 - type: integer 
 	Parameter pixels_per_clock bound to: 2 - type: integer 
 	Parameter generate_idelayctrl bound to: 1 - type: bool 
-INFO: [Synth 8-3491] module 'ila_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-2856-DESKTOP-U9NB2CD/realtime/ila_0_stub.vhdl:6' bound to instance 'mipi_dphy_ila' of component 'ila_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_top.vhd:179]
-INFO: [Synth 8-638] synthesizing module 'ila_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-2856-DESKTOP-U9NB2CD/realtime/ila_0_stub.vhdl:42]
+INFO: [Synth 8-3491] module 'ila_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-28816-DESKTOP-U9NB2CD/realtime/ila_0_stub.vhdl:6' bound to instance 'mipi_dphy_ila' of component 'ila_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_top.vhd:179]
+INFO: [Synth 8-638] synthesizing module 'ila_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/.Xil/Vivado-28816-DESKTOP-U9NB2CD/realtime/ila_0_stub.vhdl:42]
 INFO: [Synth 8-6157] synthesizing module 'DCIRESET' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:31755]
 INFO: [Synth 8-6155] done synthesizing module 'DCIRESET' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:31755]
 INFO: [Synth 8-638] synthesizing module 'csi_rx_4_lane_link' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_4_lane_link.vhd:51]
@@ -222,18 +222,18 @@ WARNING: [Synth 8-7129] Port csi_vsync in module csi_rx_video_output is either u
 WARNING: [Synth 8-7129] Port ddr_bit_clock_b in module csi_rx_hs_lane_phy is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ddr_bit_clock_b in module csi_rx_hs_clk_phy is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2147.391 ; gain = 549.945
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2146.398 ; gain = 549.957
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2147.391 ; gain = 549.945
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2146.398 ; gain = 549.957
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2147.391 ; gain = 549.945
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2146.398 ; gain = 549.957
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2147.391 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 2146.398 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 11 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -256,20 +256,20 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/mipi_to_hdmi
 INFO: [Timing 38-2] Deriving generated clocks
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2205.457 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2208.797 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 7 instances were transformed.
   BUFG => BUFGCE: 1 instance 
   IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
   IBUFDS_DPHY => IBUFDS_DPHY (DPHY_DIFFINBUF, IBUFCTRL): 5 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 2205.457 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2208.797 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'singal_viewer' at clock pin 'clk' is different from the actual clock period '3.367', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'mipi/mipi_dphy_ila' at clock pin 'clk' is different from the actual clock period '3.367', this can lead to different synthesis results.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2205.457 ; gain = 608.012
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2208.797 ; gain = 612.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -277,7 +277,7 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2205.457 ; gain = 608.012
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2208.797 ; gain = 612.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -286,7 +286,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for video_clk. (constraint file  auto
 Applied set_property KEEP_HIERARCHY = SOFT for singal_viewer. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for mipi/mipi_dphy_ila. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2205.457 ; gain = 608.012
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2208.797 ; gain = 612.355
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'csi_rx_packet_handler'
 INFO: [Synth 8-802] inferred FSM for state register 'byte_count_int_reg' in module 'csi_rx_10bit_unpack'
@@ -380,7 +380,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'i2c_config'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2205.457 ; gain = 608.012
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2208.797 ; gain = 612.355
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'hdmi/reset_power_on_i2c' (reset_power_on) to 'hdmi/reset_power_on_hdmi'
 ---------------------------------------------------------------------------------
@@ -475,7 +475,7 @@ WARNING: [Synth 8-7129] Port csi_vsync in module csi_rx_video_output is either u
 INFO: [Synth 8-6904] The RAM "mipi/vout/even_linebuf/linebuf_reg" of size (depth=160 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
 INFO: [Synth 8-6904] The RAM "mipi/vout/odd_linebuf/linebuf_reg" of size (depth=160 x width=40) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2205.457 ; gain = 608.012
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2208.797 ; gain = 612.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -497,13 +497,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2581.160 ; gain = 983.715
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2577.738 ; gain = 981.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 2616.508 ; gain = 1019.062
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 2612.148 ; gain = 1015.707
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -524,7 +524,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -644,37 +644,37 @@ WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/mipi-csi-rx/csi_rx_10bit_unpack.vhd:55]
 INFO: [Common 17-14] Message 'Synth 8-5396' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -722,18 +722,18 @@ Report Cell Usage:
 |27    |OBUF           |    31|
 +------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 243 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:29 . Memory (MB): peak = 2617.062 ; gain = 961.551
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 2617.062 ; gain = 1019.617
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 2612.691 ; gain = 953.852
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2612.691 ; gain = 1016.250
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.026 . Memory (MB): peak = 2623.324 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 2618.430 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 72 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2654.602 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2651.082 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 46 instances were transformed.
   BUFG => BUFGCE: 1 instance 
@@ -747,8 +747,8 @@ Synth Design complete | Checksum: 2e1d7895
 INFO: [Common 17-83] Releasing license: Synthesis
 122 Infos, 120 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 2654.602 ; gain = 2090.391
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2654.602 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:01:00 . Memory (MB): peak = 2651.082 ; gain = 2086.980
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2651.082 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Camera_Test/MIPI_TB/csi2_mipi_rx_tb.runs/synth_1/mipi_to_hdmi_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file mipi_to_hdmi_top_utilization_synth.rpt -pb mipi_to_hdmi_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Dec 12 00:18:22 2024...
+INFO: [Common 17-206] Exiting Vivado at Sat Dec 14 19:22:49 2024...
