@@ -11,5 +11,4 @@ bool ina700_read_16_reg(uint8_t reg, int16_t *data);
 bool imx477_write(uint16_t reg, uint8_t data);
 bool imx477_read(uint16_t reg, uint8_t *buf, size_t buflen);
 void readInput(char *buffer);
-
 #endif //! FUNCTIONS_H
