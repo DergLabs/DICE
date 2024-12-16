@@ -11,7 +11,14 @@
 #include "constants.h"
 
 #include "functions.h"
-#include "dice_imx477.h"
+
+#ifdef CAM_TARGET
+#if CAM_TARGET == 219
+#include "dice_imx219.h"
+#else
+#include "dice_imx219.h"
+#endif
+#endif
 
 char buffer[BUFFER_SIZE];
 
@@ -100,7 +107,8 @@ int main() {
     sleep_ms(50);
     gpio_put(CAM_LED_EN, true);
     sleep_ms(50);
-    imx477_init();
+    // imx477_init();
+	imx_init();
     sleep_ms(10);
 
     // Disable I2C1

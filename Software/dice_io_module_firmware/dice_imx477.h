@@ -178,16 +178,17 @@
 
 
 // DO NOT USE THESE!!!!!
-#define SENSOR_ADDR_WR                                                         \
-    0x34 /* Slave address used to write sensor registers.                      \
-          */
-#define SENSOR_ADDR_RD                                                         \
-    0x35 /* Slave address used to read from sensor registers. */
-#define I2C_SLAVEADDR_MASK                                                     \
-    0xFE /* Mask to get actual I2C slave address value without direction bit.  \
-          */
+// #define SENSOR_ADDR_WR                                                         \
+//     0x34 /* Slave address used to write sensor registers.                      \
+//           */
+// #define SENSOR_ADDR_RD                                                         \
+//     0x35 /* Slave address used to read from sensor registers. */
+// #define I2C_SLAVEADDR_MASK                                                     \
+//     0xFE /* Mask to get actual I2C slave address value without direction bit.  \
+//           */
 
-#define SENSOR_ADDR 0x1A
+
+#define SENSOR_ADDR 0x1A // (SENSOR_ADDR_WR >> 1) SENSOR_ADDR_WR = 0x34
 
 #define _countof(array) (sizeof(array) / sizeof(array[0]))
 
@@ -226,5 +227,5 @@ static void set_mirror_flip(uint8_t image_mirror);
 void sensor_configure_mode(imgsensor_mode_t *mode);
 bool imx477_bus_test(void);
 bool imx477_init(void);
-
+bool imx_init(void);
 #endif // !DICE_IMX477

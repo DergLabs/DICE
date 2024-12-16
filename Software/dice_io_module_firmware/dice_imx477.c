@@ -220,6 +220,7 @@ bool imx477_bus_test(void) {
     return false;
 }
 
+bool imx_init(void) { return imx477_init(); }
 bool imx477_init(void) {
     if(!imx477_bus_test()) /* Verify that the sensor is connected. */
     {
