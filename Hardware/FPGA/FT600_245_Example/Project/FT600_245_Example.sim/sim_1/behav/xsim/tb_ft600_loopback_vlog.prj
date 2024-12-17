@@ -1,0 +1,25 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../src/fpga_ft600_example" \
+"../../../../../src/ftdi_245fifo/axi_stream_assert.v" \
+"../../../../../src/ftdi_245fifo/axi_stream_downsizing.v" \
+"../../../../../src/ftdi_245fifo/axi_stream_packing.v" \
+"../../../../../src/ftdi_245fifo/axi_stream_resizing.v" \
+"../../../../../src/ftdi_245fifo/axi_stream_upsizing.v" \
+"../../../../../src/fpga_ft600_example/clock_beat.v" \
+"../../../../../src/ftdi_245fifo/fifo2.v" \
+"../../../../../src/ftdi_245fifo/fifo4.v" \
+"../../../../../src/ftdi_245fifo/fifo_async.v" \
+"../../../../../src/ftdi_245fifo/fifo_delay_submit.v" \
+"../../../../../src/fpga_ft600_example/fpga_top_ft600_loopback.v" \
+"../../../../../src/ftdi_245fifo/ftdi_245fifo_fsm.v" \
+"../../../../../src/ftdi_245fifo/ftdi_245fifo_top.v" \
+"../../../../../src/ftdi_245fifo/resetn_sync.v" \
+
+sv xil_defaultlib  --include "../../../../../src/fpga_ft600_example" \
+"../../../../../src/fpga_ft600_example/tb_ft600_loopback.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

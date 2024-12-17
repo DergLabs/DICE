@@ -10,10 +10,10 @@
 //--------------------------------------------------------------------------------------------------------
 
 module fpga_top_ft600_loopback (
-    input  wire         sysclk_p,            // main clock, connect to on-board crystal oscillator
-    input  wire         sysclk_n,
+    //input  wire         sysclk_p,            // main clock, connect to on-board crystal oscillator
+    //input  wire         sysclk_n,
     input  wire         rst_n,
-    
+    input wire clk,
     output wire  [ 3:0] LED,
     
     // USB3.0 (FT600 chip) ------------------------------------------------------------
@@ -53,51 +53,20 @@ wire [(8<<AXIS_EW)-1:0] tdata;
 wire [(1<<AXIS_EW)-1:0] tkeep;
 wire                    tlast;
 
-wire clk;
-wire ila_clk;
-wire [15:0] internal_ftdi_data;
-wire [1:0] internal_ftdi_be;
+//wire clk;
+//
+//clk_wiz_0 clk_wiz_sysclk
+//   (
+//    // Clock out ports
+//    .clk_out1(clk),     // output clk_out1
+//    // Status and control signals
+//    .reset(~rst_n), // input reset
+//   // Clock in ports
+//    .clk_in1_p(sysclk_p),    // input clk_in1_p
+//    .clk_in1_n(sysclk_n)    // input clk_in1_n
+//);
 
 
-vio_0 ftdi_data_be_vio (
-  .clk(clk),                // input wire clk
-  .probe_in0(internal_ftdi_data),    // input wire [15 : 0] probe_in0
-  .probe_in1(internal_ftdi_be),    // input wire [1 : 0] probe_in1
-  .probe_out0(ftdi_data),  // output wire [15 : 0] probe_out0
-  .probe_out1(ftdi_be)  // output wire [1 : 0] probe_out1
-);
-
-
-clk_wiz_0 clk_wiz_sysclk
-(
-    // Clock out ports
-    .clk_out1(clk),     // output clk_out1
-    .clk_out2(ila_clk),     // output clk_out2
-    // Status and control signals
-    .reset(~rst_n), // input reset
-   // Clock in ports
-    .clk_in1_p(sysclk_p),    // input clk_in1_p
-    .clk_in1_n(sysclk_n)    // input clk_in1_n
-);
-
-
-
-ila_0 ftdi_ila (
-	.clk(ila_clk), // input wire clk
-
-
-	.probe0(internal_ftdi_data), // input wire [15:0]  probe0  
-	.probe1(internal_ftdi_be), // input wire [1:0]  probe1 
-	.probe2(ftdi_clk), // input wire [0:0]  probe2 
-	.probe3(ftdi_oe_n), // input wire [0:0]  probe3 
-	.probe4(ftdi_rd_n), // input wire [0:0]  probe4 
-	.probe5(ftdi_resetn), // input wire [0:0]  probe5 
-	.probe6(ftdi_rxf_n), // input wire [0:0]  probe6 
-	.probe7(ftdi_txe_n), // input wire [0:0]  probe7 
-	.probe8(ftdi_wr_n), // input wire [0:0]  probe8 
-	.probe9(rst_n), // input wire [0:0]  probe9 
-	.probe10(clk) // input wire [0:0]  probe10
-);
 
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -129,8 +98,8 @@ ftdi_245fifo_top #(
     .ftdi_oe_n             ( ftdi_oe_n          ),
     .ftdi_rd_n             ( ftdi_rd_n          ),
     .ftdi_wr_n             ( ftdi_wr_n          ),
-    .ftdi_data             ( internal_ftdi_data ),
-    .ftdi_be               ( internal_ftdi_be   )
+    .ftdi_data             ( ftdi_data          ),
+    .ftdi_be               ( ftdi_be            )
 );
 
 
