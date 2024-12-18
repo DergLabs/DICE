@@ -1,9 +1,20 @@
 Vivado Simulator v2023.2
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_stream_top_behav xil_defaultlib.tb_stream_top xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_stream_recieve_top_behav xil_defaultlib.tb_stream_recieve_top xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/stream_recieve_top.sv" Line 2. Module ft600_stream_recieve_top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/clock_beat.v" Line 9. Module clock_beat(CLK_FREQ=100000000) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/stream_recieve_top.sv" Line 2. Module ft600_stream_recieve_top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/clock_beat.v" Line 9. Module clock_beat(CLK_FREQ=100000000) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clock_beat(CLK_FREQ=100000000)
+Compiling module xil_defaultlib.ft600_stream_recieve_top
+Compiling module xil_defaultlib.tb_stream_recieve_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_stream_recieve_top_behav

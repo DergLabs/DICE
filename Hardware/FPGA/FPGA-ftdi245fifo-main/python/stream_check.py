@@ -24,6 +24,8 @@ if __name__ == '__main__':
     
     
     #txlen = usb.send(b'0123456789abcdef')
+
+    txlen = usb.send(b'DEADBEEF')
     
     #print("%d B sent" % txlen)
     
@@ -38,8 +40,8 @@ if __name__ == '__main__':
     #    print(elapsedtime)
     
     
-    data = usb.recv(16)
+    #data = usb.recv(16)
 
-    print("recv %d B : %s" % (len(data), str(data)) )
+    #print("recv %d B : %s" % (len(data), str(data)) )
 
     usb.close()

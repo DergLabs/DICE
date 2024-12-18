@@ -1,0 +1,990 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Tue Dec 17 18:45:22 2024
+| Host         : M_Laptop running 64-bit major release  (build 9200)
+| Command      : report_methodology -file ft600_stream_recieve_top_methodology_drc_routed.rpt -pb ft600_stream_recieve_top_methodology_drc_routed.pb -rpx ft600_stream_recieve_top_methodology_drc_routed.rpx
+| Design       : ft600_stream_recieve_top
+| Device       : xcku3p-ffva676-2-i
+| Speed File   : -2
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 186
++-----------+------------------+----------------------------------------------------+------------+
+| Rule      | Severity         | Description                                        | Violations |
++-----------+------------------+----------------------------------------------------+------------+
+| TIMING-2  | Critical Warning | Invalid primary clock source pin                   | 1          |
+| TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree | 1          |
+| TIMING-6  | Critical Warning | No common primary clock between related clocks     | 1          |
+| TIMING-7  | Critical Warning | No common node between related clocks              | 1          |
+| TIMING-8  | Critical Warning | No common period between related clocks            | 1          |
+| LUTAR-1   | Warning          | LUT drives async reset alert                       | 5          |
+| TIMING-16 | Warning          | Large setup violation                              | 146        |
+| TIMING-18 | Warning          | Missing input or output delay                      | 26         |
+| TIMING-24 | Warning          | Overridden Max delay datapath only                 | 4          |
++-----------+------------------+----------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-2#1 Critical Warning
+Invalid primary clock source pin  
+A primary clock ila_clk is created on an inappropriate pin clk_wiz_0/inst/clkout1_buf/O. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
+Related violations: <none>
+
+TIMING-4#1 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock ila_clk is defined downstream of clock clk_out1_clk_wiz_0 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-6#1 Critical Warning
+No common primary clock between related clocks  
+The clocks ftdi_clk and ila_clk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks ftdi_clk] -to [get_clocks ila_clk]
+Related violations: <none>
+
+TIMING-7#1 Critical Warning
+No common node between related clocks  
+The clocks ftdi_clk and ila_clk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks ftdi_clk] -to [get_clocks ila_clk]
+Related violations: <none>
+
+TIMING-8#1 Critical Warning
+No common period between related clocks  
+The clocks ftdi_clk and ila_clk are found related (timed together) but have no common (expandable) period
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].rrst_inst/ngwrdrst.grst.g7serrst.rd_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].wrst_inst/ngwrdrst.grst.g7serrst.wr_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#3 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].rrst_inst/ngwrdrst.grst.g7serrst.rd_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#4 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].wrst_inst/ngwrdrst.grst.g7serrst.wr_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[0]/PRE,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[1]/PRE
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#5 Warning
+LUT drives async reset alert  
+LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_sel[0]_INST_0, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[10]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[11]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[12]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[13]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[14]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[15]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[6]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[7]/CLR,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[8]/CLR
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.U_ICON/U_CMD/iTARGET_reg[9]/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.299 ns between read_9_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][99]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.305 ns between read_0_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][22]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.306 ns between read_2_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][38]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.306 ns between read_5_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][66]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -1.313 ns between read_11_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][114]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -1.314 ns between read_11_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][115]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -1.314 ns between read_5_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][67]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -1.315 ns between read_14_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][135]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -1.317 ns between read_3_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][50]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -1.318 ns between read_3_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][52]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -1.318 ns between read_8_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][86]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -1.319 ns between read_7_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][80]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -1.319 ns between reg_ftdi_data_i_reg[14]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][18]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -1.320 ns between read_12_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][119]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -1.320 ns between read_13_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][128]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -1.321 ns between read_9_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][98]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -1.322 ns between read_11_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][113]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -1.322 ns between read_1_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][34]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between read_11_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][117]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between read_3_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][53]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -1.323 ns between read_7_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][82]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -1.324 ns between read_7_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][81]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#23 Warning
+Large setup violation  
+There is a large setup violation of -1.325 ns between read_4_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][55]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#24 Warning
+Large setup violation  
+There is a large setup violation of -1.325 ns between read_6_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][71]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#25 Warning
+Large setup violation  
+There is a large setup violation of -1.325 ns between read_8_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][87]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#26 Warning
+Large setup violation  
+There is a large setup violation of -1.327 ns between read_11_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][112]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#27 Warning
+Large setup violation  
+There is a large setup violation of -1.329 ns between reg_ftdi_oe_n_reg/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[4].U_M/allx_typeA_match_detection.ltlib_v1_0_1_allx_typeA_inst/probeDelay1_reg[0]/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#28 Warning
+Large setup violation  
+There is a large setup violation of -1.330 ns between read_1_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][35]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#29 Warning
+Large setup violation  
+There is a large setup violation of -1.330 ns between reg_ftdi_oe_n_reg/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[5].U_M/allx_typeA_match_detection.ltlib_v1_0_1_allx_typeA_inst/probeDelay1_reg[0]/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#30 Warning
+Large setup violation  
+There is a large setup violation of -1.332 ns between read_13_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][129]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#31 Warning
+Large setup violation  
+There is a large setup violation of -1.334 ns between read_10_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][102]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#32 Warning
+Large setup violation  
+There is a large setup violation of -1.334 ns between read_14_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][134]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#33 Warning
+Large setup violation  
+There is a large setup violation of -1.335 ns between read_5_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][64]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#34 Warning
+Large setup violation  
+There is a large setup violation of -1.335 ns between read_5_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][69]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#35 Warning
+Large setup violation  
+There is a large setup violation of -1.336 ns between read_0_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][23]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#36 Warning
+Large setup violation  
+There is a large setup violation of -1.336 ns between read_5_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][68]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#37 Warning
+Large setup violation  
+There is a large setup violation of -1.336 ns between reg_ftdi_data_i_reg[13]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][17]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#38 Warning
+Large setup violation  
+There is a large setup violation of -1.337 ns between read_1_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][33]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#39 Warning
+Large setup violation  
+There is a large setup violation of -1.337 ns between reg_ftdi_data_i_reg[12]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][16]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#40 Warning
+Large setup violation  
+There is a large setup violation of -1.337 ns between reg_ftdi_rd_n_reg/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][3]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#41 Warning
+Large setup violation  
+There is a large setup violation of -1.338 ns between reg_ftdi_be_i_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][21]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#42 Warning
+Large setup violation  
+There is a large setup violation of -1.341 ns between read_6_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][70]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#43 Warning
+Large setup violation  
+There is a large setup violation of -1.341 ns between read_7_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][83]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#44 Warning
+Large setup violation  
+There is a large setup violation of -1.342 ns between read_12_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][118]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#45 Warning
+Large setup violation  
+There is a large setup violation of -1.342 ns between reg_ftdi_be_i_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][20]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#46 Warning
+Large setup violation  
+There is a large setup violation of -1.343 ns between read_4_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][54]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#47 Warning
+Large setup violation  
+There is a large setup violation of -1.344 ns between read_3_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][49]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#48 Warning
+Large setup violation  
+There is a large setup violation of -1.345 ns between read_13_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][131]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#49 Warning
+Large setup violation  
+There is a large setup violation of -1.347 ns between read_3_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][48]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#50 Warning
+Large setup violation  
+There is a large setup violation of -1.348 ns between read_13_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][130]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#51 Warning
+Large setup violation  
+There is a large setup violation of -1.348 ns between read_13_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][133]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#52 Warning
+Large setup violation  
+There is a large setup violation of -1.352 ns between read_1_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][37]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#53 Warning
+Large setup violation  
+There is a large setup violation of -1.353 ns between read_9_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][95]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#54 Warning
+Large setup violation  
+There is a large setup violation of -1.354 ns between read_5_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][65]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#55 Warning
+Large setup violation  
+There is a large setup violation of -1.355 ns between reg_ftdi_data_i_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][6]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#56 Warning
+Large setup violation  
+There is a large setup violation of -1.357 ns between read_9_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][96]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#57 Warning
+Large setup violation  
+There is a large setup violation of -1.358 ns between read_9_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][97]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#58 Warning
+Large setup violation  
+There is a large setup violation of -1.359 ns between read_3_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][51]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#59 Warning
+Large setup violation  
+There is a large setup violation of -1.361 ns between read_11_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][116]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#60 Warning
+Large setup violation  
+There is a large setup violation of -1.361 ns between read_13_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][132]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#61 Warning
+Large setup violation  
+There is a large setup violation of -1.362 ns between reg_ftdi_data_i_reg[15]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][19]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#62 Warning
+Large setup violation  
+There is a large setup violation of -1.362 ns between reg_ftdi_rd_n_reg/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[7].U_M/allx_typeA_match_detection.ltlib_v1_0_1_allx_typeA_inst/probeDelay1_reg[0]/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#63 Warning
+Large setup violation  
+There is a large setup violation of -1.363 ns between read_1_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][31]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#64 Warning
+Large setup violation  
+There is a large setup violation of -1.364 ns between reg_ftdi_oe_n_reg/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][2]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#65 Warning
+Large setup violation  
+There is a large setup violation of -1.364 ns between reg_ftdi_rd_n_reg/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[6].U_M/allx_typeA_match_detection.ltlib_v1_0_1_allx_typeA_inst/probeDelay1_reg[0]/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#66 Warning
+Large setup violation  
+There is a large setup violation of -1.366 ns between read_7_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][84]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#67 Warning
+Large setup violation  
+There is a large setup violation of -1.367 ns between read_2_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][39]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#68 Warning
+Large setup violation  
+There is a large setup violation of -1.367 ns between read_9_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][100]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#69 Warning
+Large setup violation  
+There is a large setup violation of -1.369 ns between read_3_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][47]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#70 Warning
+Large setup violation  
+There is a large setup violation of -1.369 ns between read_7_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][85]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#71 Warning
+Large setup violation  
+There is a large setup violation of -1.371 ns between read_1_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][32]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#72 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between read_2_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][42]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#73 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between reg_ftdi_data_i_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][5]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#74 Warning
+Large setup violation  
+There is a large setup violation of -1.373 ns between reg_ftdi_data_i_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][7]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#75 Warning
+Large setup violation  
+There is a large setup violation of -1.375 ns between read_10_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][103]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#76 Warning
+Large setup violation  
+There is a large setup violation of -1.377 ns between read_4_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][57]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#77 Warning
+Large setup violation  
+There is a large setup violation of -1.381 ns between read_9_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][101]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#78 Warning
+Large setup violation  
+There is a large setup violation of -1.382 ns between read_10_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][104]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#79 Warning
+Large setup violation  
+There is a large setup violation of -1.382 ns between read_8_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][89]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#80 Warning
+Large setup violation  
+There is a large setup violation of -1.385 ns between read_1_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][36]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#81 Warning
+Large setup violation  
+There is a large setup violation of -1.387 ns between read_8_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][92]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#82 Warning
+Large setup violation  
+There is a large setup violation of -1.388 ns between read_12_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][123]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#83 Warning
+Large setup violation  
+There is a large setup violation of -1.389 ns between read_7_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][79]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#84 Warning
+Large setup violation  
+There is a large setup violation of -1.389 ns between read_9_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][94]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#85 Warning
+Large setup violation  
+There is a large setup violation of -1.390 ns between reg_ftdi_data_i_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][4]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#86 Warning
+Large setup violation  
+There is a large setup violation of -1.393 ns between read_8_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][91]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#87 Warning
+Large setup violation  
+There is a large setup violation of -1.395 ns between read_1_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][30]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#88 Warning
+Large setup violation  
+There is a large setup violation of -1.396 ns between read_0_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][28]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#89 Warning
+Large setup violation  
+There is a large setup violation of -1.397 ns between read_8_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][88]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#90 Warning
+Large setup violation  
+There is a large setup violation of -1.400 ns between read_10_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][108]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#91 Warning
+Large setup violation  
+There is a large setup violation of -1.400 ns between read_2_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][45]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#92 Warning
+Large setup violation  
+There is a large setup violation of -1.401 ns between read_5_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][63]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#93 Warning
+Large setup violation  
+There is a large setup violation of -1.402 ns between read_6_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][76]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#94 Warning
+Large setup violation  
+There is a large setup violation of -1.403 ns between ftdi_clk (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[0].U_M/allx_typeA_match_detection.ltlib_v1_0_1_allx_typeA_inst/probeDelay1_reg[0]/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#95 Warning
+Large setup violation  
+There is a large setup violation of -1.403 ns between read_14_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][136]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#96 Warning
+Large setup violation  
+There is a large setup violation of -1.403 ns between read_8_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][90]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#97 Warning
+Large setup violation  
+There is a large setup violation of -1.405 ns between read_10_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][105]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#98 Warning
+Large setup violation  
+There is a large setup violation of -1.405 ns between read_12_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][120]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#99 Warning
+Large setup violation  
+There is a large setup violation of -1.406 ns between read_0_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][26]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#100 Warning
+Large setup violation  
+There is a large setup violation of -1.407 ns between read_10_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][109]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#101 Warning
+Large setup violation  
+There is a large setup violation of -1.407 ns between read_6_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][75]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#102 Warning
+Large setup violation  
+There is a large setup violation of -1.408 ns between read_2_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][41]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#103 Warning
+Large setup violation  
+There is a large setup violation of -1.410 ns between read_0_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][25]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#104 Warning
+Large setup violation  
+There is a large setup violation of -1.410 ns between read_2_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][40]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#105 Warning
+Large setup violation  
+There is a large setup violation of -1.410 ns between read_8_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][93]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#106 Warning
+Large setup violation  
+There is a large setup violation of -1.412 ns between read_13_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][126]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#107 Warning
+Large setup violation  
+There is a large setup violation of -1.412 ns between reg_ftdi_data_i_reg[10]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][14]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#108 Warning
+Large setup violation  
+There is a large setup violation of -1.415 ns between read_10_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][107]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#109 Warning
+Large setup violation  
+There is a large setup violation of -1.416 ns between ftdi_clk (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[1].U_M/allx_typeA_match_detection.ltlib_v1_0_1_allx_typeA_inst/probeDelay1_reg[0]/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#110 Warning
+Large setup violation  
+There is a large setup violation of -1.416 ns between read_11_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][111]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#111 Warning
+Large setup violation  
+There is a large setup violation of -1.416 ns between read_14_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][137]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#112 Warning
+Large setup violation  
+There is a large setup violation of -1.419 ns between reg_ftdi_data_i_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][11]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#113 Warning
+Large setup violation  
+There is a large setup violation of -1.420 ns between read_3_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][46]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#114 Warning
+Large setup violation  
+There is a large setup violation of -1.422 ns between read_10_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][106]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#115 Warning
+Large setup violation  
+There is a large setup violation of -1.422 ns between read_14_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][140]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#116 Warning
+Large setup violation  
+There is a large setup violation of -1.422 ns between read_7_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][78]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#117 Warning
+Large setup violation  
+There is a large setup violation of -1.425 ns between read_0_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][29]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#118 Warning
+Large setup violation  
+There is a large setup violation of -1.426 ns between read_13_reg[1]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][127]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#119 Warning
+Large setup violation  
+There is a large setup violation of -1.426 ns between read_4_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][61]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#120 Warning
+Large setup violation  
+There is a large setup violation of -1.427 ns between read_14_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][141]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#121 Warning
+Large setup violation  
+There is a large setup violation of -1.428 ns between read_4_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][59]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#122 Warning
+Large setup violation  
+There is a large setup violation of -1.429 ns between read_12_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][125]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#123 Warning
+Large setup violation  
+There is a large setup violation of -1.430 ns between read_0_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][27]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#124 Warning
+Large setup violation  
+There is a large setup violation of -1.431 ns between reg_ftdi_data_i_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][9]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#125 Warning
+Large setup violation  
+There is a large setup violation of -1.433 ns between read_2_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][44]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#126 Warning
+Large setup violation  
+There is a large setup violation of -1.434 ns between read_5_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][62]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#127 Warning
+Large setup violation  
+There is a large setup violation of -1.436 ns between read_14_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][139]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#128 Warning
+Large setup violation  
+There is a large setup violation of -1.437 ns between read_6_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][73]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#129 Warning
+Large setup violation  
+There is a large setup violation of -1.439 ns between read_12_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][122]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#130 Warning
+Large setup violation  
+There is a large setup violation of -1.440 ns between read_6_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][72]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#131 Warning
+Large setup violation  
+There is a large setup violation of -1.443 ns between read_11_reg[0]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][110]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#132 Warning
+Large setup violation  
+There is a large setup violation of -1.444 ns between read_4_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][56]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#133 Warning
+Large setup violation  
+There is a large setup violation of -1.446 ns between read_6_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][74]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#134 Warning
+Large setup violation  
+There is a large setup violation of -1.446 ns between reg_ftdi_data_i_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][10]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#135 Warning
+Large setup violation  
+There is a large setup violation of -1.447 ns between read_12_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][124]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#136 Warning
+Large setup violation  
+There is a large setup violation of -1.447 ns between read_4_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][58]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#137 Warning
+Large setup violation  
+There is a large setup violation of -1.448 ns between read_6_reg[7]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][77]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#138 Warning
+Large setup violation  
+There is a large setup violation of -1.453 ns between read_4_reg[6]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][60]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#139 Warning
+Large setup violation  
+There is a large setup violation of -1.456 ns between read_14_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][138]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#140 Warning
+Large setup violation  
+There is a large setup violation of -1.468 ns between reg_ftdi_data_i_reg[11]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][15]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#141 Warning
+Large setup violation  
+There is a large setup violation of -1.471 ns between read_0_reg[2]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][24]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#142 Warning
+Large setup violation  
+There is a large setup violation of -1.473 ns between reg_ftdi_data_i_reg[9]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][13]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#143 Warning
+Large setup violation  
+There is a large setup violation of -1.475 ns between read_2_reg[5]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][43]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#144 Warning
+Large setup violation  
+There is a large setup violation of -1.482 ns between reg_ftdi_data_i_reg[8]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][12]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#145 Warning
+Large setup violation  
+There is a large setup violation of -1.484 ns between read_12_reg[3]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][121]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#146 Warning
+Large setup violation  
+There is a large setup violation of -1.485 ns between reg_ftdi_data_i_reg[4]/C (clocked by ftdi_clk) and ila_0/inst/ila_core_inst/shifted_data_in_reg[7][8]_srl8/D (clocked by ila_clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_be[0] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_be[1] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[0] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[10] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[11] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[12] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[13] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[14] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[15] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[1] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[2] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[3] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[4] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[5] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#15 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[6] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#16 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[7] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#17 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[8] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#18 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_data[9] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#19 Warning
+Missing input or output delay  
+An input delay is missing on ftdi_rxf_n relative to the rising and/or falling clock edge(s) of ftdi_clk, ila_clk.
+Related violations: <none>
+
+TIMING-18#20 Warning
+Missing input or output delay  
+An input delay is missing on rst_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#21 Warning
+Missing input or output delay  
+An output delay is missing on LED[0] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#22 Warning
+Missing input or output delay  
+An output delay is missing on LED[1] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#23 Warning
+Missing input or output delay  
+An output delay is missing on LED[2] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#24 Warning
+Missing input or output delay  
+An output delay is missing on LED[3] relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#25 Warning
+Missing input or output delay  
+An output delay is missing on ftdi_oe_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-18#26 Warning
+Missing input or output delay  
+An output delay is missing on ftdi_rd_n relative to the rising and/or falling clock edge(s) of ftdi_clk.
+Related violations: <none>
+
+TIMING-24#1 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 59 in the Timing Constraints window in Vivado IDE) between clocks dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK and ila_clk overrides a set_max_delay -datapath_only (position 62). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#2 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 59 in the Timing Constraints window in Vivado IDE) between clocks dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK and ila_clk overrides a set_max_delay -datapath_only (position 69). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#3 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 59 in the Timing Constraints window in Vivado IDE) between clocks ila_clk and dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK overrides a set_max_delay -datapath_only (position 64). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#4 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 59 in the Timing Constraints window in Vivado IDE) between clocks ila_clk and dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK overrides a set_max_delay -datapath_only (position 67). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+

@@ -24,7 +24,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log ft600_stream_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ft600_stream_top.tcl" );
+         "-log ft600_stream_recieve_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ft600_stream_recieve_top.tcl" );
 
 
 

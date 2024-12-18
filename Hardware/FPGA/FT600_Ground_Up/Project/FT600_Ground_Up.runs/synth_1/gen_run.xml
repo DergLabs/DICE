@@ -1,34 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1734413265" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/ft600_stream_top.dcp">
-  <File Type="PA-TCL" Name="ft600_stream_top.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="ft600_stream_top_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="ft600_stream_top_reports.tcl"/>
-  <File Type="RDS-RDS" Name="ft600_stream_top.vds"/>
-  <File Type="RDS-UTIL" Name="ft600_stream_top_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="ft600_stream_top_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="ft600_stream_top.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ft600_stream_top_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="ft600_stream_top_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1734478744" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/ft600_stream_top.dcp">
+  <File Type="PA-TCL" Name="ft600_stream_recieve_top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="ft600_stream_recieve_top_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="ft600_stream_recieve_top_reports.tcl"/>
+  <File Type="RDS-RDS" Name="ft600_stream_recieve_top.vds"/>
+  <File Type="RDS-UTIL" Name="ft600_stream_recieve_top_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="ft600_stream_recieve_top_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="ft600_stream_recieve_top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="ft600_stream_recieve_top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="ft600_stream_recieve_top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PPRDIR/../clock_beat.v">
+    <File Path="$PSRCDIR/sources_1/ip/ila_0/ila_0.xci">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../stream_top.sv">
+    <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/clock_beat.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/stream_recieve_top.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/stream_top.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/tb_parameters.vh">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="IsVisible" Val="1"/>
       </FileInfo>
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="ft600_stream_top"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="ft600_stream_recieve_top"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
