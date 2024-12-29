@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <ios>
+#include <iterator>
 #include <opencv2/core.hpp>
 #include <opencv2/core/hal/interface.h>
 #include <opencv2/core/mat.hpp>
@@ -134,6 +135,21 @@ cv::Mat recombineTiles(const std::vector<cv::Mat> tiles, int rows, int cols) {
 
     return result;
 }
+
+cv::Mat addRedHue(const cv::Mat &im) {
+    std::vector<cv::Mat> channels;
+    cv::Mat result;
+
+    cv::split(im, channels);
+
+    channels[2] = channels[2] * 3;
+
+    cv::threshold(channels[2], channels[2], 255, 255, cv::THRESH_TRUNC);
+
+    cv::merge(channels, result);
+    return result;
+}
+
 void lossless(cv::Mat &tile) {}
 void lossy(cv::Mat &tile) {}
 
@@ -151,21 +167,28 @@ int main(int argc, char *argv[]) {
 
     // Split Image
     std::vector<cv::Mat> tiles = splitImage(image, 16, 16);
+    std::vector<cv::Mat> resultTiles;
     // std::cout << "Tile\tMeanGrad\tMeanLaplace\n";
     for(int i = 0; i < tiles.size(); i++) {
         double avgStdDevGradient = calcMeanStdDevGradient(tiles[i]);
         double avgStdDevLaplacian = calcMeanStdDevLaplacian(tiles[i]);
 
-		std::stringstream precision;
+        std::stringstream precision;
 
-		precision << std::fixed << std::setprecision(2) << avgStdDevGradient;
+        precision << std::fixed << std::setprecision(2) << avgStdDevGradient;
         std::string gradStr = precision.str();
 
-		precision.str("");
-		precision.clear();
-		precision << std::fixed << std::setprecision(2) << avgStdDevLaplacian;
+        precision.str("");
+        precision.clear();
+        precision << std::fixed << std::setprecision(2) << avgStdDevLaplacian;
 
         std::string laplaceStr = precision.str();
+
+        bool lossy =
+            decisionLogic(tiles[i], avgStdDevGradient, avgStdDevLaplacian);
+		if(lossy) {
+			tiles[i] = addRedHue(tiles[i]);
+		}
 
         // cv::putText(tiles[i], "spaghetti", cv::Point(8, 32),
         //             cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 0), 4,
@@ -178,29 +201,14 @@ int main(int argc, char *argv[]) {
                     cv::LINE_AA);
         // std::cout << i << "\t" << avgStdDevGradient << "\t"
         //           << avgStdDevLaplacian << "\n";
-        // bool lossy =
-        //     decisionLogic(tiles[i], avgStdDevGradient, avgStdDevLaplacian);
     }
+    std::cout << "Time to recombine" << std::endl;
     cv::Mat recombined = recombineTiles(tiles, 16, 16);
     // std::cout << "Image depth " << image.depth() << "\n";
     // std::cout << "Tile depth " << tiles.at(52).depth() << "\n";
     cv::namedWindow("X", cv::WINDOW_NORMAL);
     cv::resizeWindow("X", 800, 600);
 
-    // /*HUE*/
-    // std::cout << "This image has " << image.channels()
-    //           << " channels and is of type " << image.type() << "\n";
-    // std::vector<cv::Mat> channels;
-    // /* Split into B G R Channels*/
-    // cv::split(image, channels);
-    // std::cout << "Split\n";
-    // channels[0] = cv::Mat::zeros(image.size(), image.type());
-    // channels[2] = cv::Mat::zeros(image.size(), image.type());
-    // cv::merge(channels, image);
-    // cv::Mat zeros = cv::Mat::zeros(image.size(), channels[0].type());
-    // cv::Mat blueChannel;
-    // std::vector<cv::Mat> merged = {channels[0], zeros, channels[2]};
-    // cv::merge(merged, blueChannel);
     drawGrid(recombined, 16, 16);
 
     cv::imshow("X", recombined);
