@@ -1,7 +1,7 @@
 #include <iomanip>
 #include <ios>
-#include <iterator>
 #include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 #include <opencv2/core/hal/interface.h>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/types.hpp>
@@ -23,21 +23,26 @@
 // }
 //
 
+struct Context {
+    cv::Mat img;
+    int width;
+    int height;
+    int xTiles;
+    int yTiles;
+    int gradThreshold;
+    int laplacianThreshold;
+};
+
+struct Context *ctx = new struct Context;
+
 std::vector<cv::Mat> splitImage(cv::Mat &im, int nXTiles, int nYTiles) {
     std::vector<cv::Mat> tiles;
 
     int tileWidth = im.cols / nXTiles;
     int tileHeight = im.rows / nYTiles;
 
-    // std::cout << "Image Width: " << im.rows << "\n"
-    //           << "Image Height: " << im.cols << "\n"
-    //           << "Tile Width: " << tileWidth << "\n"
-    //           << "Tile Height: " << tileHeight << "\n";
-
     for(int y = 0; y < nYTiles; y++) {
         for(int x = 0; x < nXTiles; x++) {
-            // std::cout << "Region of interest (" << x * tileWidth << ", "
-            //           << y * tileHeight << ")"<<std::endl;
             cv::Rect roi{x * tileWidth, y * tileHeight, tileWidth, tileHeight};
             cv::Mat tile = im(roi).clone();
             tiles.push_back(tile);
@@ -54,9 +59,6 @@ double calcMeanStdDevGradient(const cv::Mat &tile) {
 
     cv::Scalar rgbMean, rgbStdDev;
     cv::meanStdDev(out, rgbMean, rgbStdDev);
-    // std::cout << "Mean " << rgbMean << " σ " << rgbStdDev << "\n";
-    // cv::imshow("", out);
-    // cv::waitKey(0);
 
     auto mean = (rgbStdDev[0] + rgbStdDev[1] + rgbStdDev[2]) / 3.0;
     return mean;
@@ -68,16 +70,12 @@ auto calcMeanStdDevLaplacian(const cv::Mat tile) {
 
     cv::Laplacian(tile, laplacianTile, -1);
     cv::meanStdDev(tile, rgbMean, rgbStdDev);
-    // std::cout << "Laplacian: Mean " << rgbMean << " σ " << rgbStdDev << "\n";
-    // return std::max({rgbStdDev[0], rgbStdDev[1], rgbStdDev[2]});
     auto mean = (rgbStdDev[0] + rgbStdDev[1] + rgbStdDev[2]) / 3.0;
     return mean;
-    // cv::imshow("", laplacianTile);
-    // cv::waitKey(0);
 }
 
-bool decisionLogic(cv::Mat &tile, double gradient, double laplacian) {
-    return gradient > 60.0 && laplacian > 39.0;
+bool shouldCompress(cv::Mat &tile, double gradient, double laplacian) {
+    return gradient < ctx->gradThreshold && laplacian < ctx->laplacianThreshold;
 }
 
 void drawLine(cv::Mat im, int sx, int sy, int ex, int ey) {
@@ -142,6 +140,8 @@ cv::Mat addRedHue(const cv::Mat &im) {
 
     cv::split(im, channels);
 
+    channels[0] = channels[0] * 0.5;
+    channels[1] = channels[1] * 0.5;
     channels[2] = channels[2] * 3;
 
     cv::threshold(channels[2], channels[2], 255, 255, cv::THRESH_TRUNC);
@@ -153,22 +153,10 @@ cv::Mat addRedHue(const cv::Mat &im) {
 void lossless(cv::Mat &tile) {}
 void lossy(cv::Mat &tile) {}
 
-int main(int argc, char *argv[]) {
-
-    cv::Mat image = cv::imread(argv[1]); // Load an image
-    if(image.empty()) {
-        std::cerr << "Could not open or find the image!" << std::endl;
-        return -1;
-    }
-
-    // Make Even
-    int imWidth = image.cols;
-    int imHeight = image.rows;
-
+cv::Mat viewTileCategory(cv::Mat &im, int xTiles, int yTiles) {
     // Split Image
-    std::vector<cv::Mat> tiles = splitImage(image, 16, 16);
+    std::vector<cv::Mat> tiles = splitImage(im, xTiles, yTiles);
     std::vector<cv::Mat> resultTiles;
-    // std::cout << "Tile\tMeanGrad\tMeanLaplace\n";
     for(int i = 0; i < tiles.size(); i++) {
         double avgStdDevGradient = calcMeanStdDevGradient(tiles[i]);
         double avgStdDevLaplacian = calcMeanStdDevLaplacian(tiles[i]);
@@ -185,51 +173,70 @@ int main(int argc, char *argv[]) {
         std::string laplaceStr = precision.str();
 
         bool lossy =
-            decisionLogic(tiles[i], avgStdDevGradient, avgStdDevLaplacian);
-		if(lossy) {
-			tiles[i] = addRedHue(tiles[i]);
-		}
+            shouldCompress(tiles[i], avgStdDevGradient, avgStdDevLaplacian);
+        if(lossy) {
+            tiles[i] = addRedHue(tiles[i]);
+        }
 
-        // cv::putText(tiles[i], "spaghetti", cv::Point(8, 32),
-        //             cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 0), 4,
-        //             cv::LINE_AA);
         cv::putText(tiles[i], "Grad: " + gradStr, cv::Point(8, 32),
                     cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 0), 2,
                     cv::LINE_AA);
         cv::putText(tiles[i], "Lapl: " + laplaceStr, cv::Point(8, 64),
                     cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 0), 2,
                     cv::LINE_AA);
-        // std::cout << i << "\t" << avgStdDevGradient << "\t"
-        //           << avgStdDevLaplacian << "\n";
     }
-    std::cout << "Time to recombine" << std::endl;
-    cv::Mat recombined = recombineTiles(tiles, 16, 16);
-    // std::cout << "Image depth " << image.depth() << "\n";
-    // std::cout << "Tile depth " << tiles.at(52).depth() << "\n";
-    cv::namedWindow("X", cv::WINDOW_NORMAL);
+
+    cv::Mat recombined = recombineTiles(tiles, xTiles, yTiles);
+    return recombined;
+}
+
+void recalcButtonCB() {
+    auto res = viewTileCategory(ctx->img, ctx->xTiles, ctx->yTiles);
+    drawGrid(res, ctx->xTiles, ctx->yTiles);
+    cv::imshow("X", res);
+}
+
+void gThresh(int v, void *userData) {
+    ctx->gradThreshold = v;
+    recalcButtonCB();
+}
+
+void lThresh(int v, void *userData) {
+    ctx->laplacianThreshold = v;
+    recalcButtonCB();
+}
+
+int main(int argc, char *argv[]) {
+    cv::Mat image = cv::imread(argv[1]); // Load an image
+    if(image.empty()) {
+        std::cerr << "Could not open or find the image!" << std::endl;
+        return -1;
+    }
+
+    ctx->img = image;
+    ctx->width = image.cols;
+    ctx->height = image.rows;
+    ctx->xTiles = 16;
+    ctx->yTiles = 16;
+    ctx->gradThreshold = 60;
+    ctx->laplacianThreshold = 39;
+
+    cv::namedWindow("X", cv::WINDOW_NORMAL | cv::WINDOW_GUI_EXPANDED);
     cv::resizeWindow("X", 800, 600);
 
-    drawGrid(recombined, 16, 16);
+    cv::createTrackbar("Gradient Threshold", "X", nullptr, 100, gThresh);
+    cv::createTrackbar("Laplacian Threshold", "X", nullptr, 100, lThresh);
 
-    cv::imshow("X", recombined);
+    cv::setTrackbarPos("Gradient Threshold", "X", ctx->gradThreshold);
+    cv::setTrackbarPos("Laplacian Threshold", "X", ctx->laplacianThreshold);
+
+    auto res = viewTileCategory(image, ctx->xTiles, ctx->yTiles);
+    drawGrid(res, ctx->xTiles, ctx->yTiles);
+
+    cv::imshow("X", res);
     cv::waitKey(0);
     image.deallocate();
-
-    // const cv::Mat &tile = tiles.at(52);
-    // cv::Scalar avgStdDevGradient = calcStdDevGradient(tile);
-    // cv::Scalar avgStdDevLaplacian = calcMeanStdDevLaplacian(tile);
-    //
-    // if(decisionLogic(tiles.at(52), avgStdDevGradient, avgStdDevLaplacian)) {
-    //     lossless(tiles.at(52));
-    // } else {
-    //     lossy(tiles.at(52));
-    // }
-    // cv::imshow("Wtahever", tiles.at(52));
-    // cv::waitKey();
-    //    cv::imshow("Whatever", out);
-    //    cv::waitKey(0);
-    // cv::imshow("Display Window", image); // Show the image in a window
-    // cv::waitKey(0); // Wait for a key press
+	delete ctx;
 
     return 0;
 }
