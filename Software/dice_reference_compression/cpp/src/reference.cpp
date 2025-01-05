@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iomanip>
 #include <ios>
 #include <opencv2/core.hpp>
@@ -150,6 +151,38 @@ cv::Mat addRedHue(const cv::Mat &im) {
     return result;
 }
 
+cv::Mat addPurpleHue(const cv::Mat &im) {
+    std::vector<cv::Mat> channels;
+    cv::Mat result;
+
+    cv::split(im, channels);
+
+    channels[0] = channels[0] * 3;
+    channels[1] = channels[1] * 0.5;
+    channels[2] = channels[2] * 3;
+
+    cv::threshold(channels[2], channels[2], 255, 255, cv::THRESH_TRUNC);
+
+    cv::merge(channels, result);
+    return result;
+}
+
+cv::Mat addBlueHue(const cv::Mat &im) {
+    std::vector<cv::Mat> channels;
+    cv::Mat result;
+
+    cv::split(im, channels);
+
+    channels[0] = channels[0] * 3;
+    channels[1] = channels[1] * 0.5;
+    channels[2] = channels[2] * 0.5;
+
+    cv::threshold(channels[2], channels[2], 255, 255, cv::THRESH_TRUNC);
+
+    cv::merge(channels, result);
+    return result;
+}
+
 void lossless(cv::Mat &tile) {}
 void lossy(cv::Mat &tile) {}
 
@@ -175,7 +208,14 @@ cv::Mat viewTileCategory(cv::Mat &im, int xTiles, int yTiles) {
         bool lossy =
             shouldCompress(tiles[i], avgStdDevGradient, avgStdDevLaplacian);
         if(lossy) {
-            tiles[i] = addRedHue(tiles[i]);
+            if(avgStdDevLaplacian * 0.95 <= avgStdDevGradient &&
+               avgStdDevGradient <= avgStdDevLaplacian * 1.05) {
+                tiles[i] = addPurpleHue(tiles[i]);
+            } else if(avgStdDevLaplacian * 1.05 > avgStdDevGradient) {
+                tiles[i] = addRedHue(tiles[i]);
+            } else {
+                tiles[i] = addBlueHue(tiles[i]);
+            }
         }
 
         cv::putText(tiles[i], "Grad: " + gradStr, cv::Point(8, 32),
@@ -206,11 +246,26 @@ void lThresh(int v, void *userData) {
     recalcButtonCB();
 }
 
+std::vector<int> tileSizes = {8, 16, 32, 64, 128};
+
+void tileSizeChanged(int v, void *userData) {
+    auto ts = tileSizes.at(v);
+    ctx->xTiles = ts;
+    ctx->yTiles = ts;
+    recalcButtonCB();
+}
+
 int main(int argc, char *argv[]) {
     cv::Mat image = cv::imread(argv[1]); // Load an image
     if(image.empty()) {
         std::cerr << "Could not open or find the image!" << std::endl;
         return -1;
+    }
+
+    std::stringstream oss;
+    oss << "NxN Tile Size:\n";
+    for(int i = 0; i < tileSizes.size(); i++) {
+        oss << "" << i << ": " << tileSizes.at(i) << "\n";
     }
 
     ctx->img = image;
@@ -224,11 +279,14 @@ int main(int argc, char *argv[]) {
     cv::namedWindow("X", cv::WINDOW_NORMAL | cv::WINDOW_GUI_EXPANDED);
     cv::resizeWindow("X", 800, 600);
 
-    cv::createTrackbar("Gradient Threshold", "X", nullptr, 100, gThresh);
-    cv::createTrackbar("Laplacian Threshold", "X", nullptr, 100, lThresh);
+    cv::createTrackbar("Gradient Threshold", "X", nullptr, 150, gThresh);
+    cv::createTrackbar("Laplacian Threshold", "X", nullptr, 150, lThresh);
+    cv::createTrackbar(oss.str(), "X", nullptr, tileSizes.size() - 1,
+                       tileSizeChanged);
 
     cv::setTrackbarPos("Gradient Threshold", "X", ctx->gradThreshold);
     cv::setTrackbarPos("Laplacian Threshold", "X", ctx->laplacianThreshold);
+    cv::setTrackbarPos(oss.str(), "X", 2);
 
     auto res = viewTileCategory(image, ctx->xTiles, ctx->yTiles);
     drawGrid(res, ctx->xTiles, ctx->yTiles);
@@ -236,7 +294,7 @@ int main(int argc, char *argv[]) {
     cv::imshow("X", res);
     cv::waitKey(0);
     image.deallocate();
-	delete ctx;
+    delete ctx;
 
     return 0;
 }

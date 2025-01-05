@@ -1,5 +1,11 @@
 # Reference Compression
 
+
+## Dependencies
+### Linux
+- SDL2
+    - Fedora: `sudo dnf install SDL2-Devel`
+
 ## Build
 ```bash
 # make sure you are in `./build` directory
