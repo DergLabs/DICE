@@ -43,6 +43,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .write_bitstream.begin.rst
-EAStep vivado -log ft600_stream_recieve_top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ft600_stream_recieve_top.tcl -notrace
+EAStep vivado -log ft600_16B_loopback.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ft600_16B_loopback.tcl -notrace
 
 

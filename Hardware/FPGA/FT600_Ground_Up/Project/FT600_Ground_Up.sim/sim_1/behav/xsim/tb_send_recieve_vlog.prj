@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "../../../../FT600_Ground_Up.ip_user_files/ipstatic" --include "../../../../../src" \
+"../../../../../src/custom_sync_fifo.sv" \
+"../../../../../src/send_recieve_module.sv" \
+"../../../../../src/tb_send_recieve.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log ft600_stream_recieve_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ft600_stream_recieve_top.tcl
+EAStep vivado -log ft600_16B_loopback.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ft600_16B_loopback.tcl

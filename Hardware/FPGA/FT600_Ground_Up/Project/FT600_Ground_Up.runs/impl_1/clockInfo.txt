@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Tue Dec 17 18:41:27 2024
+| Date         : Sun Jan  5 18:19:44 2025
 | Host         : M_Laptop
 | Design       : design_1
 | Device       : xcku3p-ffva676-2-I-
@@ -11,32 +11,22 @@ For more information on clockInfo.txt clock routing debug file see https://suppo
 ***********************
 Running Pre-CRP Checker
 ***********************
-Number of global clocks: 3
-	Number of BUFGCE: 3
+Number of global clocks: 1
+	Number of BUFGCE: 1
 	Number of BUFGCE_HDIO: 0
 	Number of BUFG_CTRL: 0
 	Number of BUFGCE_DIV: 0
 	Number of BUFG_GT: 0
 	Number of BUFG_PS: 0
 	Number of BUFG_FABRIC: 0
-	Running suboptimal placement checker for 2 clocks (and their loads) which do not have the CLOCK_LOW_FANOUT property but have a fanout less than 2000...
+	Running suboptimal placement checker for 1 clocks (and their loads) which do not have the CLOCK_LOW_FANOUT property but have a fanout less than 2000...
 		No sub-optimality found
 Pre-CRP Checker took 0 secs
 
 ********************************
 Clock Net Route Info (CRP Input)
 ********************************
-Clock 1: clk_wiz_0/inst/clk_out1
-	Clock source type: BUFGCE
-	Clock source region: X0Y3
-	initial rect ((0, 2), (0, 3))
-
-Clock 2: dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i
-	Clock source type: BUFGCE
-	Clock source region: X0Y0
-	initial rect ((0, 0), (0, 2))
-
-Clock 3: ftdi_clk_IBUF_BUFG
+Clock 1: ftdi_clk_IBUF_BUFG
 	Clock source type: BUFGCE
 	Clock source region: X0Y2
 	initial rect ((0, 2), (0, 2))
