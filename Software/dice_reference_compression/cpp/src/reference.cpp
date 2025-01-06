@@ -65,14 +65,15 @@ double calcMeanStdDevGradient(const cv::Mat &tile) {
     return mean;
 }
 
-auto calcMeanStdDevLaplacian(const cv::Mat tile) {
+double calcVarianceLaplacian(const cv::Mat tile) {
     cv::Mat laplacianTile;
-    cv::Scalar rgbMean, rgbStdDev;
+    cv::Mat grey;
+    cv::Scalar mean, stdDev;
 
-    cv::Laplacian(tile, laplacianTile, -1);
-    cv::meanStdDev(tile, rgbMean, rgbStdDev);
-    auto mean = (rgbStdDev[0] + rgbStdDev[1] + rgbStdDev[2]) / 3.0;
-    return mean;
+    cv::cvtColor(tile, grey, cv::COLOR_BGR2GRAY);
+    cv::Laplacian(grey, laplacianTile, CV_64F);
+    cv::meanStdDev(grey, mean, stdDev);
+    return stdDev[0] * stdDev[0];
 }
 
 bool shouldCompress(cv::Mat &tile, double gradient, double laplacian) {
@@ -192,7 +193,7 @@ cv::Mat viewTileCategory(cv::Mat &im, int xTiles, int yTiles) {
     std::vector<cv::Mat> resultTiles;
     for(int i = 0; i < tiles.size(); i++) {
         double avgStdDevGradient = calcMeanStdDevGradient(tiles[i]);
-        double avgStdDevLaplacian = calcMeanStdDevLaplacian(tiles[i]);
+        double avgStdDevLaplacian = calcVarianceLaplacian(tiles[i]);
 
         std::stringstream precision;
 
