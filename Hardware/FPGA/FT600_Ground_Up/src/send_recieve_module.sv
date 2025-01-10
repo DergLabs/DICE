@@ -3,6 +3,7 @@ module send_recieve_module (
     //input  wire         sysclk_p,            // main clock, connect to on-board crystal oscillator
     //input  wire         sysclk_n,
     input  wire         rst_n,
+    output wire  [ 2:0] LED_data,
     
     // USB3.0 (FT600 chip) ------------------------------------------------------------
     output wire         ftdi_resetn,    // to FT600's pin10 (RESET_N)
@@ -42,6 +43,9 @@ module send_recieve_module (
     reg     reg_ftdi_wr_n = 1'b1;
     assign  ftdi_wr_n = reg_ftdi_wr_n;
 
+    reg  [2:0] reg_LED_data_out = 2'b00;
+    assign LED_data = reg_LED_data_out;
+
 
 
     // tri state buffers for data and byte enable
@@ -63,6 +67,8 @@ module send_recieve_module (
 
     reg write_rd_delay_flag = 1'b0;
     reg end_write_delay_flag = 1'b0;
+    reg ready_to_recieve_delay_flag = 1'b0;
+
     reg ready_to_recieve_o = 1'b0;
     assign ready_to_recieve = ready_to_recieve_o;
 
@@ -77,6 +83,14 @@ module send_recieve_module (
             reg_ftdi_wr_n <= 1'b1;
             ftdi_data_tx_en <= 1'b0;
             ftdi_be_tx_en <= 1'b0;
+            write_rd_delay_flag <= 1'b0;
+            end_write_delay_flag <= 1'b0;
+            ready_to_recieve_delay_flag <= 1'b0;
+            ready_to_recieve_o <= 1'b0;
+            ready_to_send_o <= 1'b0;
+            reg_LED_data_out <= 2'b00;
+            reg_ftdi_data_output <= 16'h0000;
+            reg_ftdi_be_output <= 2'b00;
         end else begin
             if(~ftdi_rxf_n) begin
                 // read control signals
@@ -85,8 +99,6 @@ module send_recieve_module (
                     write_rd_delay_flag <= 1'b1;
                 end else if(reg_ftdi_oe_n == 1'b0) begin
                     reg_ftdi_rd_n <= 1'b0;
-                    ftdi_data_tx_en <= 1'b0;
-                    ftdi_be_tx_en <= 1'b0;
                     ready_to_send_o <= 1'b1;
                 end else
                     write_rd_delay_flag <= 1'b0;
@@ -103,19 +115,28 @@ module send_recieve_module (
             
             if(~ftdi_txe_n) begin
                 // write control signals
-                reg_ftdi_wr_n <= 1'b0;
 
-                //write data
-                ftdi_data_tx_en <= 1'b1;
-                ftdi_be_tx_en <= 1'b1;
-                reg_ftdi_be_output <= be_to_ft600;
-                reg_ftdi_data_output <= data_to_ft600;
+                if(ready_to_recieve_delay_flag == 1'b0) begin
+                    ready_to_recieve_delay_flag <= 1'b1;
+                    ready_to_recieve_o <= 1'b1;
+                end else if(ready_to_recieve_delay_flag == 1'b1) begin
+                    reg_ftdi_wr_n <= 1'b0;
+
+                    //write data
+                    ftdi_data_tx_en <= 1'b1;
+                    ftdi_be_tx_en <= 1'b1;
+                    reg_ftdi_be_output <= be_to_ft600;
+                    reg_ftdi_data_output <= data_to_ft600;
+                    reg_LED_data_out <= data_to_ft600[2:0];
+                end
 
             end else begin
                 reg_ftdi_wr_n <= 1'b1;
                 reg_ftdi_be_output <= 2'b00;
                 ftdi_data_tx_en <= 1'b0;
                 ftdi_be_tx_en <= 1'b0;
+                ready_to_recieve_delay_flag <= 1'b0;
+                ready_to_recieve_o <= 1'b0;
             end
         end
     end
@@ -142,16 +163,6 @@ module send_recieve_module (
             end
         end
     end
-
-
-    always @ (negedge ftdi_txe_n) begin
-        if(~ftdi_txe_n) begin
-            ready_to_recieve_o <= 1'b1;
-        end else begin
-            ready_to_recieve_o <= 1'b0;
-        end
-    end
-
 
 
 endmodule

@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/constrs_1/new/total_constraints.xdc rfile:../../../FT600_Ground_Up.srcs/constrs_1/new/total_constraints.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/constrs_2/new/total_constraints.xdc rfile:../../../FT600_Ground_Up.srcs/constrs_2/new/total_constraints.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN E13 [get_ports ftdi_clk]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]

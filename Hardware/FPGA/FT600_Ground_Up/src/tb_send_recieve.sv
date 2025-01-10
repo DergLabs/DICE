@@ -145,9 +145,91 @@ module tb_send_recieve #(
         tb_data_tx_en = 1'b0;
         tb_be_tx_en = 1'b0;
         //rst_n = 1'b1;
-        #6
+        #8
         ftdi_txe_n = 1'b0;
 
+        @ (negedge ftdi_wr_n)
+
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+
+        ftdi_txe_n = 1'b1;
+
+        #8
+
+        tb_data_tx_en = 1'b1;
+        tb_be_tx_en = 1'b1;
+        #5
+        ftdi_rxf_n = 1'b0;
+
+        @ (negedge ftdi_oe_n)
+        @ (negedge ftdi_rd_n)
+
+        tb_ftdi_data_i = 16'h3130;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h3332;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h3534;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h3736;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h3938;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h6261;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h6463;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+        tb_ftdi_data_i = 16'h6665;
+        tb_ftdi_be_i = 2'b11;
+        #1
+        @ (negedge ftdi_clk)
+
+        //finish sending things
+        ftdi_rxf_n = 1'b1;
+        tb_ftdi_data_i = 16'h0000;
+        tb_ftdi_be_i = 2'b00;
+
+        //read data from module
+        #30
+        tb_data_tx_en = 1'b0;
+        tb_be_tx_en = 1'b0;
+        //rst_n = 1'b1;
+        #8
+        ftdi_txe_n = 1'b0;
+
+
+        @ (negedge ftdi_wr_n)
+
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+        @ (posedge ftdi_clk)
+
+        ftdi_txe_n = 1'b1;
 
     end
 endmodule

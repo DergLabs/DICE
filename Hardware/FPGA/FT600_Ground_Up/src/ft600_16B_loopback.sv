@@ -1,5 +1,7 @@
 
 module ft600_16B_loopback (
+    //input  wire         sysclk_p,
+    //input  wire         sysclk_n,
     input  wire         rst_n,
     //input wire clk,
     output wire  [ 3:0] LED,
@@ -33,12 +35,12 @@ module ft600_16B_loopback (
     wire full;
     wire empty;
     
-    reg  [2:0] reg_LED_data = 3'h0;
-    assign LED[2:0] = reg_LED_data;
 
+    wire ila_clk;
 
     send_recieve_module send_recieve_module (
         .rst_n(rst_n),
+        .LED_data(LED[3:1]),
         .ftdi_resetn(ftdi_resetn),    // to FT600's pin10 (RESET_N)
         .ftdi_wakeupn(ftdi_wakeupn),   // to FT600's pin11 (WAKEUP_N)
         .ftdi_clk(ftdi_clk),       // to FT600's pin43 (CLK)
@@ -74,7 +76,7 @@ module ft600_16B_loopback (
     ) u_ftdi_clk_beat (
         .clk                   ( ftdi_clk           ),
         .rst_n                 ( rst_n              ),
-        .beat                  ( LED[3]             )
+        .beat                  ( LED[0]             )
     );   
 
 

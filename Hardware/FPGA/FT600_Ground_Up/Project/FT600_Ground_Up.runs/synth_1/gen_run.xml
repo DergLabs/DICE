@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1736118998" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/ft600_stream_top.dcp">
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1736390949" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/ft600_stream_top.dcp">
   <File Type="PA-TCL" Name="ft600_16B_loopback.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="ft600_16B_loopback_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ft600_16B_loopback_reports.tcl"/>
@@ -84,16 +84,15 @@
       <Option Name="TopModule" Val="ft600_16B_loopback"/>
     </Config>
   </FileSet>
-  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
-    <Filter Type="Constrs"/>
-    <File Path="$PSRCDIR/constrs_1/new/total_constraints.xdc">
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_2" RelGenDir="$PGENDIR/constrs_2">
+    <File Path="$PSRCDIR/constrs_2/new/total_constraints.xdc">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
       </FileInfo>
     </File>
     <Config>
-      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/total_constraints.xdc"/>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_2/new/total_constraints.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>

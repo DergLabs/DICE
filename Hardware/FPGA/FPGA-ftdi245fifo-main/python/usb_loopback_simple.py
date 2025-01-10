@@ -26,7 +26,7 @@ if __name__ == '__main__':
     
     print("%d B sent" % txlen)
     
-    data = usb.recv(txlen*2)
+    data = usb.recv(txlen)
     
     print("recv %d B : %s" % (len(data), str(data)) )
 

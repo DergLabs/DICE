@@ -124,12 +124,9 @@ set_property SLEW SLOW [get_ports ftdi_wr_n]
 #set_property IOSTANDARD LVDS [get_ports sysclk_p]
 #set_property DIFF_TERM_ADV TERM_100 [get_ports sysclk_p]
 
-#create_clock -period 3.333 -waveform {0.000 1.667} [get_nets ila_clk]
 
-#set_clock_groups -asynchronous -group [get_clocks {ftdi_clk ila_clk}]
-# C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
-#set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
-#set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
-#connect_debug_port dbg_hub/clk [get_nets ila_clk]
 
 create_clock -period 10.000 -waveform {0.000 5.000} [get_ports ftdi_clk]
+
+set_input_delay -clock [get_clocks -regexp .*] 1.000 [get_ports -regexp -filter { NAME =~  ".*" && DIRECTION == "INOUT" }]
+set_output_delay -clock [get_clocks -regexp .*] 3.000 [get_ports -regexp -filter { NAME =~  ".*" && DIRECTION == "INOUT" }]
