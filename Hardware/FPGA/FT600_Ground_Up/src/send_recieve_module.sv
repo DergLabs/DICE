@@ -119,12 +119,12 @@ module send_recieve_module (
                 if(ready_to_recieve_delay_flag == 1'b0) begin
                     ready_to_recieve_delay_flag <= 1'b1;
                     ready_to_recieve_o <= 1'b1;
+                    ftdi_data_tx_en <= 1'b1;
+                    ftdi_be_tx_en <= 1'b1;
                 end else if(ready_to_recieve_delay_flag == 1'b1) begin
                     reg_ftdi_wr_n <= 1'b0;
 
                     //write data
-                    ftdi_data_tx_en <= 1'b1;
-                    ftdi_be_tx_en <= 1'b1;
                     reg_ftdi_be_output <= be_to_ft600;
                     reg_ftdi_data_output <= data_to_ft600;
                     reg_LED_data_out <= data_to_ft600[2:0];

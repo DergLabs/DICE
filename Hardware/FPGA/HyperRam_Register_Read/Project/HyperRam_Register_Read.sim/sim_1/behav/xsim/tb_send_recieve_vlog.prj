@@ -1,0 +1,14 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../src" --include "../../../../HyperRam_Register_Read.ip_user_files/ipstatic" \
+"../../../../HyperRam_Register_Read.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
+"../../../../HyperRam_Register_Read.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
+
+sv xil_defaultlib  --include "../../../../../src" --include "../../../../HyperRam_Register_Read.ip_user_files/ipstatic" \
+"../../../../../src/HyperRam_Register_Read.sv" \
+"../../../../../src/tb_HyperRam_Register.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
