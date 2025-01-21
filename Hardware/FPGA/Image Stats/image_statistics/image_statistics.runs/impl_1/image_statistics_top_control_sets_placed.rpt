@@ -1,0 +1,101 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Mon Jan 13 22:09:55 2025
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file image_statistics_top_control_sets_placed.rpt
+| Design       : image_statistics_top
+| Device       : xcku3p
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    23 |
+|    Minimum number of control sets                        |    23 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    27 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    23 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    15 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             321 |           82 |
+| No           | No                    | Yes                    |             487 |           93 |
+| No           | Yes                   | No                     |             454 |           55 |
+| Yes          | No                    | No                     |               2 |            2 |
+| Yes          | No                    | Yes                    |             335 |           62 |
+| Yes          | Yes                   | No                     |              18 |            6 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+-------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |                                          Enable Signal                                          |                                         Set/Reset Signal                                         | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+-------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_i_IBUF_BUFG | gradient_core/aresetn                                                                           |                                                                                                  |                2 |              2 |         1.00 |
+|  clk_i_IBUF_BUFG |                                                                                                 | statistics_core_laplacian/std_dev_sqrt/U0/i_synth/i_has_aresetn.i_reg_reset/opt_has_pipe.first_q |                1 |              4 |         4.00 |
+|  clk_i_IBUF_BUFG |                                                                                                 | statistics_core_gradient/std_dev_sqrt/U0/i_synth/i_has_aresetn.i_reg_reset/opt_has_pipe.first_q  |                1 |              4 |         4.00 |
+|  clk_i_IBUF_BUFG | rgb_to_gray/valid_x                                                                             | rst_i_IBUF_inst/O                                                                                |                1 |              8 |         8.00 |
+|  clk_i_IBUF_BUFG | statistics_core_gradient/std_dev_sqrt/U0/i_synth/i_synth/gen_sqrt.square_root/gen_rdy_int/E[0]  | statistics_core_gradient/std_dev_sqrt/U0/i_synth/i_has_aresetn.i_reg_reset/opt_has_pipe.first_q  |                3 |              9 |         3.00 |
+|  clk_i_IBUF_BUFG | statistics_core_laplacian/std_dev_sqrt/U0/i_synth/i_synth/gen_sqrt.square_root/gen_rdy_int/E[0] | statistics_core_laplacian/std_dev_sqrt/U0/i_synth/i_has_aresetn.i_reg_reset/opt_has_pipe.first_q |                3 |              9 |         3.00 |
+|  clk_i_IBUF_BUFG | gradient_core/valid_x                                                                           | rst_i_IBUF_inst/O                                                                                |                2 |             10 |         5.00 |
+|  clk_i_IBUF_BUFG | laplacian_core/valid_x                                                                          | rst_i_IBUF_inst/O                                                                                |                2 |             11 |         5.50 |
+|  clk_i_IBUF_BUFG | valid_i_IBUF_inst/O                                                                             | rst_i_IBUF_inst/O                                                                                |                4 |             16 |         4.00 |
+|  clk_i_IBUF_BUFG | gradient_core/valid_o_reg_0[0]                                                                  | rst_i_IBUF_inst/O                                                                                |                4 |             16 |         4.00 |
+|  clk_i_IBUF_BUFG | laplacian_core/valid_o_reg_0[0]                                                                 | rst_i_IBUF_inst/O                                                                                |                4 |             16 |         4.00 |
+|  clk_i_IBUF_BUFG | valid_x                                                                                         | rst_i_IBUF_inst/O                                                                                |                4 |             16 |         4.00 |
+|  clk_i_IBUF_BUFG | statistics_core_gradient/var_o[15]_i_1__0_n_1                                                   | rst_i_IBUF_inst/O                                                                                |                9 |             49 |         5.44 |
+|  clk_i_IBUF_BUFG | statistics_core_laplacian/var_o[15]_i_1_n_1                                                     | rst_i_IBUF_inst/O                                                                                |                9 |             49 |         5.44 |
+|  clk_i_IBUF_BUFG |                                                                                                 | gradient_core/AR[0]                                                                              |               13 |             63 |         4.85 |
+|  clk_i_IBUF_BUFG |                                                                                                 | laplacian_core/AR[0]                                                                             |               12 |             63 |         5.25 |
+|  clk_i_IBUF_BUFG | rgb_to_gray/valid_o_reg_0[0]                                                                    | rst_i_IBUF_inst/O                                                                                |               17 |             72 |         4.24 |
+|  clk_i_IBUF_BUFG | pixel_block_valid_x                                                                             | rst_i_IBUF_inst/O                                                                                |               23 |             72 |         3.13 |
+|  n_0_181_BUFG    |                                                                                                 |                                                                                                  |               21 |             72 |         3.43 |
+|  clk_i_IBUF_BUFG |                                                                                                 | statistics_core_gradient/SCLR                                                                    |                7 |             75 |        10.71 |
+|  clk_i_IBUF_BUFG |                                                                                                 | statistics_core_laplacian/SCLR                                                                   |                8 |             75 |         9.38 |
+|  clk_i_IBUF_BUFG |                                                                                                 |                                                                                                  |               62 |            320 |         5.16 |
+|  clk_i_IBUF_BUFG |                                                                                                 | rst_i_IBUF_inst/O                                                                                |              102 |            657 |         6.44 |
++------------------+-------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+
+
