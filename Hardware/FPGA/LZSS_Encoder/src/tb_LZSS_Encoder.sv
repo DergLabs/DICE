@@ -1,8 +1,8 @@
 
 module tb_LZSS_Encoder ();
 
-    localparam WORD_SIZE = 4;
-    localparam WINDOW_SIZE = 16;
+    localparam WORD_SIZE = 8;
+    localparam WINDOW_SIZE = 32;
     localparam LOOK_AHEAD_SIZE = 4;
 
     localparam MAIN_CLK_PERIOD = 10;
@@ -32,12 +32,20 @@ module tb_LZSS_Encoder ();
         #(MAIN_CLK_PERIOD/2);
     end
 
+    
+    int written_file = $fopen("C:\\Users\\micha\\OneDrive\\Desktop\\DICE\\Hardware\\FPGA\\LZSS_Encoder\\src\\LZSS_Output.txt", "w");
+
+    always @ (negedge clk) begin
+        if(o_ready) begin
+            $fwrite(written_file, "%x\n", data_o);
+        end
+    end
+
 
     initial begin
         //start in reset
         rst_n <= 1'b0;
         w_en <= 1'b0;
-
 
         #30
 
@@ -46,39 +54,279 @@ module tb_LZSS_Encoder ();
         //enable
         w_en <= 1'b1;
 
-        @(negedge clk)
-        data_i <= 4'h0;
-        @(negedge clk)
-        data_i <= 4'h1;
-        @(negedge clk)
-        data_i <= 4'h2;
-        @(negedge clk)
-        data_i <= 4'h3;
-        @(negedge clk)
-        data_i <= 4'h4;
-        @(negedge clk)
-        data_i <= 4'h5;
-        @(negedge clk)
-        data_i <= 4'h6;
-        @(negedge clk)
-        data_i <= 4'h7;
-        @(negedge clk)
-        data_i <= 4'h8;
-        @(negedge clk)
-        data_i <= 4'h9;
-        @(negedge clk)
-        data_i <= 4'hA;
-        @(negedge clk)
-        data_i <= 4'hB;
-        @(negedge clk)
-        data_i <= 4'hC;
-        @(negedge clk)
-        data_i <= 4'hD;
-        @(negedge clk)
-        data_i <= 4'hE;
-        @(negedge clk)
-        data_i <= 4'hF;
+        //row by row
+        //@(negedge clk)
+        //data_i <= 8'h3A;
+        //@(negedge clk)
+        //data_i <= 8'h35;
+        //@(negedge clk)
+        //data_i <= 8'hFE;
+        //@(negedge clk)
+        //data_i <= 8'hF1;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h11;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'hDC;
+        //@(negedge clk)
+        //data_i <= 8'hFC;
+        //@(negedge clk)
+        //data_i <= 8'h16;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h02;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFE;
+        //@(negedge clk)
+        //data_i <= 8'hF9;
+        //@(negedge clk)
+        //data_i <= 8'hFE;
+        //@(negedge clk)
+        //data_i <= 8'h06;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h09;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFC;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFD;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'hFC;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h01;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
+        //@(negedge clk)
+        //data_i <= 8'h00;
 
+        //@(negedge clk)
+        //data_i <= 8'hFF;
+
+        //zig-zag
+        @(negedge clk)
+        data_i <= 8'h3A;
+        @(negedge clk)
+        data_i <= 8'h35;
+        @(negedge clk)
+        data_i <= 8'hDC;
+        @(negedge clk)
+        data_i <= 8'hFE;
+        @(negedge clk)
+        data_i <= 8'hFC;
+        @(negedge clk)
+        data_i <= 8'hFE;
+        @(negedge clk)
+        data_i <= 8'hF1;
+        @(negedge clk)
+        data_i <= 8'h16;
+        @(negedge clk)
+        data_i <= 8'hF9;
+        @(negedge clk)
+        data_i <= 8'h09;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'hFE;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h02;
+        @(negedge clk)
+        data_i <= 8'h06;
+        @(negedge clk)
+        data_i <= 8'hFC;
+        @(negedge clk)
+        data_i <= 8'hFD;
+        @(negedge clk)
+        data_i <= 8'hFC;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h01;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+        @(negedge clk)
+        data_i <= 8'h00;
+
+        @(negedge clk)
+        data_i <= 8'hFF;
+        @(negedge clk)
+        @(negedge clk)
+        @(negedge clk)
+        @(negedge clk)
+        $fclose(written_file);
+        //$finish;
     end
+
+    
     
 endmodule
