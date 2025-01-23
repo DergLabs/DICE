@@ -70,16 +70,13 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-20344-DESKTOP-U9NB2CD/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xcku3p-ffva676-2-i
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.cache/wt} [current_project]
 set_property parent.project_path {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
@@ -99,6 +96,10 @@ read_vhdl -vhdl2008 -library xil_defaultlib {
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantizer.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/image_compressor.vhd}
 }
+read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/ip/vio_0/vio_0.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.gen/sources_1/ip/vio_0/vio_0.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.gen/sources_1/ip/vio_0/vio_0_ooc.xdc}}]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -108,6 +109,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/constrs_1/new/test_const.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/constrs_1/new/test_const.xdc}}]
+
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/utils_1/imports/synth_1/simd_4x12b_dsp.dcp}

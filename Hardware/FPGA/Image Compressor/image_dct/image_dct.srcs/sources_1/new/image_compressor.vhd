@@ -34,13 +34,13 @@ use UNISIM.VComponents.all;
 entity image_compressor is
     port ( 
         clk_i      : in std_logic;
-        rst_i      : in std_logic;
+        rst_i      : in std_logic
 
-        data_i     : in std_logic_vector(7 downto 0);
-        valid_i    : in std_logic;
+        --data_i     : in std_logic_vector(7 downto 0);
+        --valid_i    : in std_logic;
 
-        data_o     : out std_logic_vector(63 downto 0);
-        valid_o    : out std_logic
+        --data_o     : out std_logic_vector(63 downto 0);
+        --valid_o    : out std_logic
     );
 end image_compressor;
 
@@ -73,9 +73,33 @@ architecture Behavioral of image_compressor is
     signal row_dct_ce_x : std_logic := '0';
     signal quantizer_ce_x : std_logic := '0';
 
+    COMPONENT vio_0
+    PORT (
+        clk : IN STD_LOGIC;
+        probe_in0 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+        probe_in1 : IN std_logic;
+        probe_out0 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+        probe_out1 : OUT std_logic
+    );
+    END COMPONENT;
+
+    signal data_o_test : std_logic_vector(63 downto 0);
+    signal valid_o_test : std_logic;
+    signal data_i : std_logic_vector(7 downto 0);
+    signal valid_i : std_logic;
+
 begin
 
-    -- Register valid signa
+    test_io : vio_0
+    PORT MAP (
+        clk => clk_i,
+        probe_in0 => data_o_test,
+        probe_in1 => valid_o_test,
+        probe_out0 => data_i,
+        probe_out1 => valid_i
+    );
+
+    -- Register valid signal to align with data
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
@@ -100,6 +124,9 @@ begin
         valid_o => subsample_valid
     );*/
 
+    -- serial in parallel out register
+    -- Accepts one 8b pixel per clock, outputs eight 8b pixels every 8 cycles 
+    -- Pixels must be read in column wise
     input_sipo_reg : entity work.sipo_reg
     generic map (
         IN_WIDTH => 8,
@@ -116,6 +143,7 @@ begin
         valid_o => col_valid
     );
 
+    -- Resize pixel data from 8bit unsigned to 12bit unsigned for 1st DCT
     pixel_cols_wide <=  X"0" & pixel_cols(63 downto 56) &
                         X"0" & pixel_cols(55 downto 48) &
                         X"0" & pixel_cols(47 downto 40) &
@@ -125,6 +153,7 @@ begin
                         X"0" & pixel_cols(15 downto 8) &
                         X"0" & pixel_cols(7 downto 0);
 
+    -- Apply DCT column Wise
     col_dct : entity work.dct1d
     port map (
         clk_i => clk_i,
@@ -136,6 +165,7 @@ begin
         valid_o => dct1_valid_out
     );
 
+    -- Divide DCT output by 8 to prevent overflow in next DCT stage
     pixel_divider : entity work.pixel_divider
     port map(
         clk_i => clk_i,
@@ -143,7 +173,9 @@ begin
         pixel_o => divided_pixels
     );
 
-    -- Clock enable generator
+    -- Clock enable generator for transpose, DCT, and quantizer
+    -- Transpose requires 8 clock cycles to load in 8 columns before a row is output
+    -- All stages after transpose operate at clk/8
     process(clk_i, rst_i)
         variable clk_div : integer := 8;
         variable counter : integer := 0;
@@ -172,6 +204,8 @@ begin
     end process;
 
 
+    -- Transpose 8x8 pixel matrix
+    -- Transpose requires 8 clock cycles to load in 8 columns before a row is output
     pixel_transpose : entity work.transpose
     generic map (
         ELEMENT_WIDTH => 12,
@@ -190,6 +224,7 @@ begin
     );
 
     -- Register clock enable signal
+    -- Aigns with transpose output for DCT stage
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
@@ -199,6 +234,7 @@ begin
         end if;
     end process;
 
+    -- Apply DCT row Wise
     row_dct : entity work.dct1d
     port map (
         clk_i => clk_i,
@@ -211,6 +247,7 @@ begin
     );
 
     -- Register clock enable signal
+    -- Aligns with DCT output for quantizer stage
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
@@ -220,6 +257,7 @@ begin
         end if;
     end process;
 
+    -- Quantize DCT output
     quantizer : entity work.quantizer
     port map (
         clk_i => clk_i,
@@ -227,9 +265,11 @@ begin
         rst_i => rst_i,
         data_i => dct2_pixel_out,
         valid_i => dct2_valid_out,
-        data_o => data_o,
-        valid_o => valid_o
+        data_o => data_o_test,
+        valid_o => valid_o_test
     );
 
+    --valid_o <= valid_o_test;
+    --data_o <= data_o_test;
 
 end Behavioral;

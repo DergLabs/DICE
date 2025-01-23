@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1737618172" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/simd_4x12b_dsp.dcp">
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1737656718" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/simd_4x12b_dsp.dcp">
   <File Type="PA-TCL" Name="image_compressor.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="image_compressor_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="image_compressor_reports.tcl"/>
@@ -88,7 +88,14 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/test_const.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/test_const.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -110,4 +117,5 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
 </GenRun>

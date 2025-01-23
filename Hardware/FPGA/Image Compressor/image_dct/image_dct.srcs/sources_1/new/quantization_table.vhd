@@ -9,7 +9,7 @@ entity quantization_table is
         clk_i                   : in std_logic;
         ce_i                    : in std_logic;
         rst_i                   : in std_logic;
-        --scale_factor_i          : in std_logic_vector(3 downto 0);
+        scale_factor_i          : in std_logic_vector(3 downto 0);
         addr_i                  : in std_logic_vector(4 downto 0);
         quantization_table_o    : out std_logic_vector(63 downto 0)
     );
@@ -20,7 +20,7 @@ architecture Behavioral of quantization_table is
     -- Create array of 2-bit vectors for RAM data
     type ram_data_array_2b_t is array (0 to 7) of std_logic_vector(1 downto 0);
     signal ram_data : ram_data_array_2b_t;
-    signal ram_data_x : ram_data_array_2b_t;
+    --signal ram_data_x : ram_data_array_2b_t;
 
     -- 8 bit vectors for resized data
     type ram_data_array_8b_t is array (0 to 7) of std_logic_vector(7 downto 0);
@@ -28,10 +28,12 @@ architecture Behavioral of quantization_table is
     signal ram_data_adjusted : ram_data_array_8b_t;
 
     signal addr_x : std_logic_vector(4 downto 0) := (others => '0');
-    signal scale_factor_i : std_logic_vector(3 downto 0) := (others => '0');
 
 
-    -- Lowest value quatnization table
+    -- Lowest value quatnization table is stored (equivelant to original table * 0.125)
+    -- Values are stored as the bit shift amounts
+    -- To increase the value of the quantization table, add the scale factor to the value
+    -- Scale Factor of 0 = 0.125, 1 = 0.25, 2 = 0.5, 3 = 1, 4 = 2, 5 = 4, 6 = 8, 7 = 16 (equivalent to original table * scale factor)
     --A1 02_03_01_01_00_01_00_01
     --B1 02_03_01_01_00_00_00_00
     --C1 03_04_02_02_01_01_00_00
@@ -42,8 +44,6 @@ architecture Behavioral of quantization_table is
     --D3 02_03_02_02_01_02_01_02
 
 begin
-
-    scale_factor_i <= "0011"; -- hard code to 3
 
     -- register addr signal
     process(clk_i, rst_i)
@@ -59,6 +59,7 @@ begin
         end if;
     end process;
 
+    -- Store upper half of table
     ram_inst0 : RAM32M
     generic map (
         -- Initialize each RAM with one column of the initialization data
@@ -92,6 +93,7 @@ begin
         WE => '0'
     );
 
+    -- Store lower half of table
     ram_inst1 : RAM32M
     generic map (
         -- Initialize each RAM with one column of the initialization data
@@ -133,12 +135,20 @@ begin
                 ram_data_resized(i) <= (others => '0');
             end loop;
         elsif rising_edge(clk_i) then
-            for i in 0 to 7 loop
-                ram_data_resized(i) <= "000000" & ram_data(i);
-            end loop;
+            if (ce_i = '1') then
+                for i in 0 to 7 loop
+                    ram_data_resized(i) <= "000000" & ram_data(i);
+                end loop;
+            else
+                for i in 0 to 7 loop
+                    ram_data_resized(i) <= ram_data_resized(i);
+                end loop;
+            end if;
         end if;
     end process;
 
+    -- Adjust quantization values that overflow 2 bit outputs, 
+    -- could use 2 clock cycles to correctly access them, but this is easier and maintains sigle cycle operation
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -170,12 +180,13 @@ begin
                 ram_data_adjusted(7) <= std_logic_vector(unsigned(ram_data_resized(7)) + unsigned(scale_factor_i));
              else
                 for i in 0 to 7 loop
-                    ram_data_adjusted(i) <= (others => '0');
+                    ram_data_adjusted(i) <= ram_data_adjusted(i);
                 end loop;
             end if;
         end if;
     end process;
 
+    -- Register output
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -185,7 +196,7 @@ begin
             quantization_table_o <= ram_data_adjusted(0) & ram_data_adjusted(1) & ram_data_adjusted(2) & ram_data_adjusted(3) &
                                     ram_data_adjusted(4) & ram_data_adjusted(5) & ram_data_adjusted(6) & ram_data_adjusted(7);
             else 
-                quantization_table_o <= (others => '0');
+                quantization_table_o <= quantization_table_o;
             end if;
         end if;
     end process;

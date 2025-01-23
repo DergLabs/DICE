@@ -23,7 +23,15 @@ architecture sim of compressor_sim is
     signal data_i : std_logic_vector(7 downto 0) := (others => '0');
     signal valid_i : std_logic := '0';
 
-    signal data_o : std_logic_vector(95 downto 0) := (others => '0');
+    signal data_o : std_logic_vector(63 downto 0) := (others => '0');
+    signal pixel_0 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_1 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_2 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_3 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_4 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_5 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_6 : std_logic_vector(7 downto 0) := (others => '0');
+    signal pixel_7 : std_logic_vector(7 downto 0) := (others => '0');
     signal valid_o : std_logic := '0';
 
 
@@ -131,6 +139,14 @@ begin
 
     clk <= not clk after clk_period / 2;
 
+    pixel_0 <= data_o(7 downto 0);
+    pixel_1 <= data_o(15 downto 8);
+    pixel_2 <= data_o(23 downto 16);
+    pixel_3 <= data_o(31 downto 24);
+    pixel_4 <= data_o(39 downto 32);
+    pixel_5 <= data_o(47 downto 40);
+    pixel_6 <= data_o(55 downto 48);
+    pixel_7 <= data_o(63 downto 56);
 
     process(clk)
     begin

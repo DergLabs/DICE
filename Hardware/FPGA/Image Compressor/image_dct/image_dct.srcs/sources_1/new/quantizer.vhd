@@ -61,23 +61,7 @@ architecture Behavioral of quantizer is
                                                             
 begin
 
-    -- register data and valid signals 2x 
-    /*process(clk_i, rst_i)
-    begin
-        if rst_i = '1' then
-            valid_x <= '0';
-            data_x <= (others => '0');
-        elsif rising_edge(clk_i) then
-            if (ce_i = '1') then
-                valid_x <= valid_i;
-                data_x <= data_i;
-            else
-                valid_x <= valid_x;
-                data_x <= data_x;
-            end if;
-        end if;
-    end process;*/
-
+    -- Delay input data 4 cycles to allow for quantization table to be read
     data_reg : entity work.data_delay_reg
     generic map (
         SHIFT_DEPTH => 4,
@@ -90,7 +74,8 @@ begin
         data_i => data_i,
         data_o => data_x
     );
-
+    
+    -- Delay input valid 4 cycles to allow for quantization table to be read
     valid_reg : entity work.data_delay_reg
     generic map (
         SHIFT_DEPTH => 4,
@@ -106,7 +91,8 @@ begin
 
     valid_x <= valid_v_x(0);
 
-    -- counter for quantization table address
+    -- counter for quantization table address, every other item in the table is 0
+    -- Table increments by 4 each cycle
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
@@ -119,44 +105,44 @@ begin
                     ram_addr <= std_logic_vector(unsigned(ram_addr) + 4);
                 end if;
             else
-                ram_addr <= (others => '0');
+                ram_addr <= ram_addr;
             end if;
         end if;
     end process;
 
+    -- get quantization factor, provides 64b vector with eight 8b quantization factors
+    -- Factors are accessed column wise from LSB to MSB (Left to right in the table)
     quantization_table : entity work.quantization_table
     port map (
         clk_i => clk_i,
         ce_i => ce_i,
         rst_i => rst_i,
-        --scale_factor_i => scale_factor_i,
+        scale_factor_i => X"3", -- Hard coded to 3 for now (equivelant to original table values)
         addr_i => ram_addr,
         quantization_table_o => quantization_factor
     );
 
+    -- quantize data using right shift
+    quantized_data(95 downto 84) <= std_logic_vector(shift_right(signed(data_x(95 downto 84)), to_integer(unsigned(quantization_factor(7 downto 0)))));
+    quantized_data(83 downto 72) <= std_logic_vector(shift_right(signed(data_x(83 downto 72)), to_integer(unsigned(quantization_factor(15 downto 8)))));
+    quantized_data(71 downto 60) <= std_logic_vector(shift_right(signed(data_x(71 downto 60)), to_integer(unsigned(quantization_factor(23 downto 16)))));
+    quantized_data(59 downto 48) <= std_logic_vector(shift_right(signed(data_x(59 downto 48)), to_integer(unsigned(quantization_factor(31 downto 24)))));
+    quantized_data(47 downto 36) <= std_logic_vector(shift_right(signed(data_x(47 downto 36)), to_integer(unsigned(quantization_factor(39 downto 32)))));
+    quantized_data(35 downto 24) <= std_logic_vector(shift_right(signed(data_x(35 downto 24)), to_integer(unsigned(quantization_factor(47 downto 40)))));
+    quantized_data(23 downto 12) <= std_logic_vector(shift_right(signed(data_x(23 downto 12)), to_integer(unsigned(quantization_factor(55 downto 48)))));
+    quantized_data(11 downto 0)  <= std_logic_vector(shift_right(signed(data_x(11 downto 0)),  to_integer(unsigned(quantization_factor(63 downto 56)))));
 
+    -- resize to signed 8bit 
+    resized_data(7 downto 0)   <= std_logic_vector(resize(signed(quantized_data(11 downto 0)), 8));
+    resized_data(15 downto 8)  <= std_logic_vector(resize(signed(quantized_data(23 downto 12)), 8));
+    resized_data(23 downto 16) <= std_logic_vector(resize(signed(quantized_data(35 downto 24)), 8));
+    resized_data(31 downto 24) <= std_logic_vector(resize(signed(quantized_data(47 downto 36)), 8));
+    resized_data(39 downto 32) <= std_logic_vector(resize(signed(quantized_data(59 downto 48)), 8));
+    resized_data(47 downto 40) <= std_logic_vector(resize(signed(quantized_data(71 downto 60)), 8));
+    resized_data(55 downto 48) <= std_logic_vector(resize(signed(quantized_data(83 downto 72)), 8));
+    resized_data(63 downto 56) <= std_logic_vector(resize(signed(quantized_data(95 downto 84)), 8));
 
-    -- quantize data
-    quantized_data(95 downto 84) <= std_logic_vector(signed(shift_right(signed(data_x(95 downto 84)), to_integer(unsigned(quantization_factor(7 downto 0))))));
-    quantized_data(83 downto 72) <= std_logic_vector(signed(shift_right(signed(data_x(83 downto 72)), to_integer(unsigned(quantization_factor(15 downto 8))))));
-    quantized_data(71 downto 60) <= std_logic_vector(signed(shift_right(signed(data_x(71 downto 60)), to_integer(unsigned(quantization_factor(23 downto 16))))));
-    quantized_data(59 downto 48) <= std_logic_vector(signed(shift_right(signed(data_x(59 downto 48)), to_integer(unsigned(quantization_factor(31 downto 24))))));
-    quantized_data(47 downto 36) <= std_logic_vector(signed(shift_right(signed(data_x(47 downto 36)), to_integer(unsigned(quantization_factor(39 downto 32))))));
-    quantized_data(35 downto 24) <= std_logic_vector(signed(shift_right(signed(data_x(35 downto 24)), to_integer(unsigned(quantization_factor(47 downto 40))))));
-    quantized_data(23 downto 12) <= std_logic_vector(signed(shift_right(signed(data_x(23 downto 12)), to_integer(unsigned(quantization_factor(55 downto 48))))));
-    quantized_data(11 downto 0) <= std_logic_vector(signed(shift_right(signed(data_x(11 downto 0)), to_integer(unsigned(quantization_factor(63 downto 56))))));
-
-    -- resize to 8bit and reverse order
-    resized_data(7 downto 0) <= std_logic_vector(signed(resize(signed(quantized_data(95 downto 84)), 8)));
-    resized_data(15 downto 8) <= std_logic_vector(signed(resize(signed(quantized_data(83 downto 72)), 8)));
-    resized_data(23 downto 16) <= std_logic_vector(signed(resize(signed(quantized_data(71 downto 60)), 8)));
-    resized_data(31 downto 24) <= std_logic_vector(signed(resize(signed(quantized_data(59 downto 48)), 8)));
-    resized_data(39 downto 32) <= std_logic_vector(signed(resize(signed(quantized_data(47 downto 36)), 8)));
-    resized_data(47 downto 40) <= std_logic_vector(signed(resize(signed(quantized_data(35 downto 24)), 8)));
-    resized_data(55 downto 48) <= std_logic_vector(signed(resize(signed(quantized_data(23 downto 12)), 8)));
-    resized_data(63 downto 56) <= std_logic_vector(signed(resize(signed(quantized_data(11 downto 0)), 8)));
-
-    -- output quantized data
+    -- Register quantized data
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then

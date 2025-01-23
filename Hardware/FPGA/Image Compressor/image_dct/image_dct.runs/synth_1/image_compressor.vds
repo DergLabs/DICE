@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Jan 23 02:42:56 2025
-# Process ID: 22004
+# Start of session at: Thu Jan 23 13:25:21 2025
+# Process ID: 10908
 # Current directory: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.runs/synth_1
 # Command line: vivado.exe -log image_compressor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source image_compressor.tcl
 # Log file: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.runs/synth_1/image_compressor.vds
@@ -19,13 +19,18 @@ Command: synth_design -top image_compressor -part xcku3p-ffva676-2-i
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22324
+INFO: [Synth 8-7075] Helper process launched with PID 3340
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.867 ; gain = 439.449
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1994.488 ; gain = 420.285
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'image_compressor' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/image_compressor.vhd:47]
+INFO: [Synth 8-3491] module 'vio_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.runs/synth_1/.Xil/Vivado-10908-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:6' bound to instance 'test_io' of component 'vio_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/image_compressor.vhd:93]
+INFO: [Synth 8-638] synthesizing module 'vio_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.runs/synth_1/.Xil/Vivado-10908-DESKTOP-U9NB2CD/realtime/vio_0_stub.vhdl:17]
 INFO: [Synth 8-638] synthesizing module 'sipo_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/sipo_reg.vhd:53]
 	Parameter IN_WIDTH bound to: 8 - type: integer 
 	Parameter OUT_TAPS bound to: 8 - type: integer 
@@ -57,7 +62,7 @@ INFO: [Synth 8-638] synthesizing module 'transpose' [C:/Users/johnh/Desktop/DICE
 	Parameter DEPTH bound to: 8 - type: integer 
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/transpose.vhd:69]
+INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/transpose.vhd:72]
 INFO: [Synth 8-256] done synthesizing module 'transpose' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/transpose.vhd:53]
 INFO: [Synth 8-638] synthesizing module 'quantizer' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantizer.vhd:49]
 INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
@@ -74,22 +79,57 @@ INFO: [Synth 8-638] synthesizing module 'quantization_table' [C:/Users/johnh/Des
 	Parameter INIT_C bound to: 64'b0000001100000100000000100000001000000001000000010000000000000000 
 	Parameter INIT_D bound to: 64'b0000001000000011000000010000001000000001000000010000000000000000 
 	Parameter IS_WCLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'ram_inst0' to cell 'RAM32M' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantization_table.vhd:62]
+INFO: [Synth 8-113] binding component instance 'ram_inst0' to cell 'RAM32M' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantization_table.vhd:63]
 	Parameter INIT_A bound to: 64'b0000001100000100000000110000001100000010000000110000000100000010 
 	Parameter INIT_B bound to: 64'b0000001000000100000000110000001100000010000000110000001000000010 
 	Parameter INIT_C bound to: 64'b0000001100000100000001000000010000000011000000110000001100000011 
 	Parameter INIT_D bound to: 64'b0000001000000011000000100000001000000001000000100000000100000010 
 	Parameter IS_WCLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'ram_inst1' to cell 'RAM32M' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantization_table.vhd:95]
+INFO: [Synth 8-113] binding component instance 'ram_inst1' to cell 'RAM32M' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantization_table.vhd:97]
 INFO: [Synth 8-256] done synthesizing module 'quantization_table' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantization_table.vhd:18]
 INFO: [Synth 8-256] done synthesizing module 'quantizer' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/quantizer.vhd:49]
 INFO: [Synth 8-256] done synthesizing module 'image_compressor' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/image_compressor.vhd:47]
 WARNING: [Synth 8-6014] Unused sequential element vaid_counter_x_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/sipo_reg.vhd:98]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'quantizer'. This will prevent further optimization [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/image_compressor.vhd:261]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'input_sipo_reg'. This will prevent further optimization [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/image_compressor.vhd:130]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1059.766 ; gain = 558.348
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2114.027 ; gain = 539.824
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1059.766 ; gain = 558.348
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2114.027 ; gain = 539.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2114.027 ; gain = 539.824
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.065 . Memory (MB): peak = 2114.027 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'test_io'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'test_io'
+Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/constrs_1/new/test_const.xdc]
+Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/constrs_1/new/test_const.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/constrs_1/new/test_const.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/image_compressor_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/image_compressor_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2213.949 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2213.949 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'test_io' at clock pin 'clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2215.410 ; gain = 641.207
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -97,35 +137,20 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1059.766 ; gain = 558.348
----------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
----------------------------------------------------------------------------------
-Start Preparing Guide Design
----------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6895] The reference checkpoint C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/utils_1/imports/synth_1/simd_4x12b_dsp.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
----------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1059.766 ; gain = 558.348
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2215.410 ; gain = 641.207
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1059.766 ; gain = 558.348
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for test_io. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2215.410 ; gain = 641.207
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/sipo_reg.vhd:114]
 WARNING: [Synth 8-327] inferring latch for variable 'valid_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.srcs/sources_1/new/sipo_reg.vhd:118]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1059.766 ; gain = 558.348
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2215.410 ; gain = 641.207
 ---------------------------------------------------------------------------------
-
-
-Incremental Synthesis Report Summary:
-
-1. Incremental synthesis run: no
-
-   Reason for not running incremental synthesis : 
-
-
-INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -136,7 +161,7 @@ Detailed RTL Component Info :
 	   2 Input   12 Bit       Adders := 2     
 	   3 Input   12 Bit       Adders := 2     
 	   2 Input    8 Bit       Adders := 8     
-	   2 Input    5 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 2     
 +---Registers : 
 	              768 Bit    Registers := 2     
 	               96 Bit    Registers := 5     
@@ -152,11 +177,10 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input  768 Bit        Muxes := 1     
 	   2 Input   96 Bit        Muxes := 1     
-	   2 Input   64 Bit        Muxes := 1     
 	   2 Input   32 Bit        Muxes := 3     
 	   2 Input   16 Bit        Muxes := 2     
-	   2 Input    8 Bit        Muxes := 16    
-	   2 Input    5 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 8     
+	   3 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -169,7 +193,6 @@ BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
@@ -375,7 +398,7 @@ DSP Report: register simd_add.out3_reg is absorbed into DSP simd_add.out3_reg.
 DSP Report: register simd_add.out3_reg is absorbed into DSP simd_add.out3_reg.
 DSP Report: operator out30 is absorbed into DSP simd_add.out3_reg.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2215.410 ; gain = 641.207
 ---------------------------------------------------------------------------------
  Sort Area is  simd_sub.out0_reg_16 : 0 0 : 150 150 : Used 1 time 100
  Sort Area is  simd_sub.out0_reg_5 : 0 0 : 150 150 : Used 1 time 100
@@ -460,11 +483,39 @@ Note: The table above is a preliminary report that shows the DSPs inferred at th
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__4.
+WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__4.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
 WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
 WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
-WARNING: [Synth 8-3332] Sequential element (i_4) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
 WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
 WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__5.
 WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__5.
@@ -538,48 +589,25 @@ WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed f
 WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__3.
 WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__3.
 WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__3.
-WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__3.
-Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
-WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp.
-WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-No constraint files found.
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2589.711 ; gain = 1015.508
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2646.016 ; gain = 1071.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -597,37 +625,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -637,10 +665,10 @@ Static Shift Register Report:
 +-----------------+--------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 |Module Name      | RTL Name                                   | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
 +-----------------+--------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|quantizer        | data_reg/shift_reg_reg[0][3]               | 4      | 96    | YES          | NO                 | YES               | 96     | 0       | 
+|quantizer        | valid_o_reg                                | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
 |image_compressor | col_dct/layer_3_delay/shift_reg_reg[27][1] | 4      | 36    | YES          | NO                 | YES               | 36     | 0       | 
 |image_compressor | row_dct/layer_3_delay/shift_reg_reg[24][1] | 4      | 48    | YES          | NO                 | YES               | 48     | 0       | 
-|image_compressor | quantizer/data_reg/shift_reg_reg[84][3]    | 4      | 96    | YES          | NO                 | YES               | 96     | 0       | 
-|image_compressor | quantizer/valid_o_reg                      | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
 +-----------------+--------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
@@ -666,90 +694,69 @@ DSP Final Report (the ' indicates corresponding REG is set)
 
 
 Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |vio_0         |         1|
++------+--------------+----------+
 
 Report Cell Usage: 
-+------+--------+------+
-|      |Cell    |Count |
-+------+--------+------+
-|1     |BUFG    |     2|
-|2     |CARRY8  |    16|
-|3     |DSP48E2 |     8|
-|4     |LUT1    |     4|
-|5     |LUT2    |   318|
-|6     |LUT3    |   101|
-|7     |LUT4    |    44|
-|8     |LUT5    |    62|
-|9     |LUT6    |   507|
-|10    |MUXF7   |    72|
-|11    |RAM32M  |     2|
-|12    |SRL16E  |   181|
-|13    |SRLC32E |     3|
-|14    |FDCE    |  1944|
-|15    |FDRE    |   255|
-|16    |LD      |    65|
-|17    |IBUF    |    11|
-|18    |OBUF    |    65|
-+------+--------+------+
-
-Report Instance Areas: 
-+------+-----------------------+---------------------------------+------+
-|      |Instance               |Module                           |Cells |
-+------+-----------------------+---------------------------------+------+
-|1     |top                    |                                 |  3660|
-|2     |  col_dct              |dct1d                            |   328|
-|3     |    dsp1_add           |simd_4x12b_dsp_4                 |    27|
-|4     |    dsp2_sub           |simd_4x12b_dsp__parameterized0_5 |    47|
-|5     |    dsp3_add           |simd_4x12b_dsp_6                 |    27|
-|6     |    dsp4_add           |simd_4x12b_dsp_7                 |     1|
-|7     |    layer_2_delay      |data_delay_reg_8                 |    38|
-|8     |    layer_3_delay      |data_delay_reg_9                 |   109|
-|9     |  input_sipo_reg       |sipo_reg                         |   171|
-|10    |  pixel_divider        |pixel_divider                    |    72|
-|11    |  pixel_transpose      |transpose                        |  1819|
-|12    |  quantizer            |quantizer                        |   698|
-|13    |    data_reg           |data_delay_reg__parameterized0   |   384|
-|14    |    quantization_table |quantization_table               |   117|
-|15    |    valid_reg          |data_delay_reg__parameterized1   |     7|
-|16    |  row_dct              |dct1d_0                          |   405|
-|17    |    dsp1_add           |simd_4x12b_dsp                   |    27|
-|18    |    dsp2_sub           |simd_4x12b_dsp__parameterized0   |    51|
-|19    |    dsp3_add           |simd_4x12b_dsp_1                 |    27|
-|20    |    dsp4_add           |simd_4x12b_dsp_2                 |     1|
-|21    |    layer_2_delay      |data_delay_reg                   |    50|
-|22    |    layer_3_delay      |data_delay_reg_3                 |   145|
-+------+-----------------------+---------------------------------+------+
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |vio_0_bbox      |     1|
+|2     |BUFG            |     2|
+|3     |CARRY8          |    16|
+|4     |DSP_ALU         |     8|
+|5     |DSP_A_B_DATA    |     8|
+|6     |DSP_C_DATA      |     8|
+|7     |DSP_MULTIPLIER  |     8|
+|8     |DSP_M_DATA      |     8|
+|9     |DSP_OUTPUT      |     8|
+|10    |DSP_PREADD      |     8|
+|11    |DSP_PREADD_DATA |     8|
+|12    |LUT1            |     7|
+|13    |LUT2            |   309|
+|14    |LUT3            |   104|
+|15    |LUT4            |    45|
+|16    |LUT5            |   107|
+|17    |LUT6            |   596|
+|18    |MUXF7           |    96|
+|19    |RAM32M          |     2|
+|20    |SRL16E          |   181|
+|21    |SRLC32E         |     3|
+|22    |FDCE            |  2378|
+|23    |FDRE            |   279|
+|24    |LD              |    65|
+|25    |IBUF            |     2|
++------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 1 critical warnings and 112 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
-Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1931.492 ; gain = 1430.074
+Synthesis finished with 0 errors, 0 critical warnings and 139 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:30 . Memory (MB): peak = 2655.047 ; gain = 979.461
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2655.047 ; gain = 1080.844
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1934.461 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 176 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 2662.938 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 191 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2002.781 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2681.703 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 88 instances were transformed.
+  A total of 79 instances were transformed.
   BUFG => BUFGCE: 2 instances
   DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 8 instances
-  IBUF => IBUF (IBUFCTRL, INBUF): 11 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
   LD => LDCE: 65 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
 
-Synth Design complete | Checksum: 4410eab6
+Synth Design complete | Checksum: d0c954d7
 INFO: [Common 17-83] Releasing license: Synthesis
-45 Infos, 112 Warnings, 1 Critical Warnings and 0 Errors encountered.
+57 Infos, 113 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:41 . Memory (MB): peak = 2002.781 ; gain = 1508.801
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2002.781 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:58 . Memory (MB): peak = 2681.703 ; gain = 2114.672
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2681.703 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Compressor/image_dct/image_dct.runs/synth_1/image_compressor.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file image_compressor_utilization_synth.rpt -pb image_compressor_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 02:43:47 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 13:26:28 2025...

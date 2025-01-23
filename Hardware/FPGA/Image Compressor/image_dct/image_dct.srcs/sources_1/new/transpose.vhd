@@ -65,22 +65,26 @@ architecture Behavioral of transpose is
     signal bank_sel : std_logic := '0';
 begin
 
-        -- Delay reg for valid
-        SRLC32E_inst : SRLC32E
-        generic map (
-            INIT => X"00000000",    -- Initial contents of shift register
-            IS_CLK_INVERTED => '0'  -- Optional inversion for CLK
-        )
-        port map (
-            Q => valid_2_x,     -- 1-bit output: SRL Data
-            Q31 => open, -- 1-bit output: SRL Cascade Data
-            A => std_logic_vector(to_unsigned(6, 5)),     -- 5-bit input: Selects SRL depth
-            CE => ce_i,   -- 1-bit input: Clock enable
-            CLK => clk_i, -- 1-bit input: Clock
-            D => valid_x      -- 1-bit input: SRL Data
-        );
+    -- Delay reg for valid
+    -- Used to only update output data once it is ready and valid
+    -- Delayed by 6 cycles, final valid is delayed by 1 more cycle to align with data
+    -- On Cycle 6 data and valid are sent to ourtput registers and will be valid on the next cycle
+    SRLC32E_inst : SRLC32E
+    generic map (
+        INIT => X"00000000",    -- Initial contents of shift register
+        IS_CLK_INVERTED => '0'  -- Optional inversion for CLK
+    )
+    port map (
+        Q => valid_2_x,     -- 1-bit output: SRL Data
+        Q31 => open, -- 1-bit output: SRL Cascade Data
+        A => std_logic_vector(to_unsigned(6, 5)),     -- 5-bit input: Selects SRL depth
+        CE => ce_i,   -- 1-bit input: Clock enable
+        CLK => clk_i, -- 1-bit input: Clock
+        D => valid_x      -- 1-bit input: SRL Data
+    );
 
     --register incoming pixel data
+    -- Aligns data and valid signal
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -97,6 +101,7 @@ begin
     end process;
 
     -- increment counter each time new data is loaded
+    -- Counter used to select which row of data to output
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
@@ -116,7 +121,8 @@ begin
         end if;
     end process;
 
-    -- shift register to hold incoming pixel data
+    -- shift register to hold incoming pixel data, two banks are used and written to alternately
+    -- Data is shifted in from left to right, so the first pixel in will be the last element
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -150,7 +156,7 @@ begin
         pixel_output <= pixel_bank_0 when '1',
                         pixel_bank_1 when others;
 
-    -- 2nd Delay register valid_o
+    -- 2nd Delay register valid_o, needed to align data with row number
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -162,6 +168,7 @@ begin
         end if;
     end process;
 
+    -- Output current row number associated with output data for debug
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -175,7 +182,7 @@ begin
         end if;
     end process;
 
-    -- Output data selection process
+    -- Output data selection mux
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
