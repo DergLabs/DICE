@@ -14,6 +14,7 @@ entity lpc_top is
     port(
         clk_i : in std_logic;
         rst_i : in std_logic;
+        ce_i : in std_logic;
         
         pixel_i : in std_logic_vector(23 downto 0);
         valid_i : in std_logic;
@@ -36,6 +37,7 @@ begin
     rgb2gray : entity work.rgb_to_gray
         port map (
             clk_i => clk_i,
+            ce_i => ce_i,
             rst_i => rst_i,
             
             pixel_i => pixel_i,
@@ -49,6 +51,7 @@ begin
     laplacian : entity work.laplacian_core
         port map (
             clk_i => clk_i,
+            ce_i => ce_i,
             rst_i => rst_i,
             pixel_i => gray_pixel_x,
             valid_i => gray_pixel_valid_x,
@@ -64,6 +67,7 @@ begin
         )
         port map (
             clk_i => clk_i,
+            ce_i => ce_i,
             rst_i => rst_i,
             data_i => signed(laplacian_val_x),
             valid_i => laplacian_valid_x,

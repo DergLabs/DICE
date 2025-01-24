@@ -54,6 +54,7 @@
 COMPONENT dsp_mac
   PORT (
     CLK : IN STD_LOGIC;
+    CE : IN STD_LOGIC;
     SCLR : IN STD_LOGIC;
     A : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
     P : OUT STD_LOGIC_VECTOR(47 DOWNTO 0) 
@@ -68,6 +69,7 @@ END COMPONENT;
 your_instance_name : dsp_mac
   PORT MAP (
     CLK => CLK,
+    CE => CE,
     SCLR => SCLR,
     A => A,
     P => P

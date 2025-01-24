@@ -26,90 +26,85 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 28420
+INFO: [Synth 8-7075] Helper process launched with PID 18784
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1992.062 ; gain = 418.828
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1992.754 ; gain = 420.262
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'image_statistics_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:54]
-INFO: [Synth 8-638] synthesizing module 'rgb_to_gray' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:27]
+INFO: [Synth 8-638] synthesizing module 'image_statistics_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'rgb_to_gray' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:28]
 	Parameter INIT bound to: 16'b0000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'SRL16E_inst' to cell 'SRL16E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:79]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_pre_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:142]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:18]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_final_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:157]
-INFO: [Synth 8-256] done synthesizing module 'rgb_to_gray' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:27]
-INFO: [Synth 8-638] synthesizing module 'laplacian_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:31]
+INFO: [Synth 8-113] binding component instance 'SRL16E_inst' to cell 'SRL16E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:81]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_pre_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:158]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_final_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:174]
+INFO: [Synth 8-256] done synthesizing module 'rgb_to_gray' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:28]
+INFO: [Synth 8-638] synthesizing module 'sipo_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:53]
+	Parameter IN_WIDTH bound to: 8 - type: integer 
+	Parameter OUT_TAPS bound to: 9 - type: integer 
+	Parameter TAP_END bound to: 0 - type: integer 
+	Parameter DEPTH bound to: 9 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'sipo_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:53]
+INFO: [Synth 8-638] synthesizing module 'laplacian_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:32]
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:61]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:47]
+INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:63]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:47]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:136]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:146]
-INFO: [Synth 8-256] done synthesizing module 'laplacian_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:31]
-INFO: [Synth 8-638] synthesizing module 'gradient_calc' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:149]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:160]
+INFO: [Synth 8-256] done synthesizing module 'laplacian_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:32]
+INFO: [Synth 8-638] synthesizing module 'gradient_calc' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:51]
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:109]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:182]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:193]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:204]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:215]
-INFO: [Synth 8-256] done synthesizing module 'gradient_calc' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:50]
-INFO: [Synth 8-638] synthesizing module 'statistics_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:36]
+INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:110]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:200]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:211]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:222]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:233]
+INFO: [Synth 8-256] done synthesizing module 'gradient_calc' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'statistics_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:37]
 	Parameter variance_depth bound to: 16 - type: integer 
 	Parameter data_width bound to: 11 - type: integer 
-INFO: [Synth 8-3491] module 'dsp_mac' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:6' bound to instance 'dsp_vsum_mac' of component 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:117]
-INFO: [Synth 8-638] synthesizing module 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:16]
-INFO: [Synth 8-3491] module 'dsp_acum' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:6' bound to instance 'dsp_hsum_acum' of component 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:126]
-INFO: [Synth 8-638] synthesizing module 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:16]
-INFO: [Synth 8-3491] module 'dsp_msub' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:6' bound to instance 'dsp_var_msub' of component 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:168]
-INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:17]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:47]
+INFO: [Synth 8-3491] module 'dsp_mac' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:6' bound to instance 'dsp_vsum_mac' of component 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:122]
+INFO: [Synth 8-638] synthesizing module 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'dsp_acum' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:6' bound to instance 'dsp_hsum_acum' of component 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:132]
+INFO: [Synth 8-638] synthesizing module 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'dsp_msub' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:6' bound to instance 'dsp_var_msub' of component 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:185]
+INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:18]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 9 - type: integer 
 	Parameter DATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized0' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:47]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized0' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 5 - type: integer 
 	Parameter DATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized1' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:47]
-INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:201]
-INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24844-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:18]
-INFO: [Synth 8-256] done synthesizing module 'statistics_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:36]
-INFO: [Synth 8-256] done synthesizing module 'image_statistics_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized1' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:221]
+INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
+INFO: [Synth 8-256] done synthesizing module 'statistics_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'image_statistics_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:55]
+WARNING: [Synth 8-6014] Unused sequential element vaid_counter_x_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:98]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.191 ; gain = 533.957
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2112.805 ; gain = 540.312
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.191 ; gain = 533.957
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2112.805 ; gain = 540.312
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.191 ; gain = 533.957
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2112.805 ; gain = 540.312
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 2107.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 2112.805 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_laplacian/dsp_var_msub'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_laplacian/dsp_var_msub'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_gradient/dsp_var_msub'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_gradient/dsp_var_msub'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_laplacian/dsp_hsum_acum'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_laplacian/dsp_hsum_acum'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_gradient/dsp_hsum_acum'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_gradient/dsp_hsum_acum'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_laplacian/dsp_vsum_mac'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_laplacian/dsp_vsum_mac'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_gradient/dsp_vsum_mac'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_gradient/dsp_vsum_mac'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b/dsp_macro_add_22b_in_context.xdc] for cell 'gradient_core/sobel_x_dsp1'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b/dsp_macro_add_22b_in_context.xdc] for cell 'gradient_core/sobel_x_dsp1'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b/dsp_macro_add_22b_in_context.xdc] for cell 'gradient_core/sobel_x_dsp2'
@@ -118,6 +113,18 @@ Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_st
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b/dsp_macro_add_22b_in_context.xdc] for cell 'gradient_core/sobel_y_dsp1'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b/dsp_macro_add_22b_in_context.xdc] for cell 'gradient_core/sobel_y_dsp2'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b/dsp_macro_add_22b_in_context.xdc] for cell 'gradient_core/sobel_y_dsp2'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_laplacian/std_dev_sqrt'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_laplacian/std_dev_sqrt'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_gradient/std_dev_sqrt'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_gradient/std_dev_sqrt'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_laplacian/dsp_hsum_acum'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_laplacian/dsp_hsum_acum'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_gradient/dsp_hsum_acum'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum/dsp_acum_in_context.xdc] for cell 'statistics_core_gradient/dsp_hsum_acum'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_laplacian/dsp_vsum_mac'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_laplacian/dsp_vsum_mac'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_gradient/dsp_vsum_mac'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac/dsp_mac_in_context.xdc] for cell 'statistics_core_gradient/dsp_vsum_mac'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd/dsp_macro_simd_in_context.xdc] for cell 'rgb_to_gray/dsp_pre_add'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd/dsp_macro_simd_in_context.xdc] for cell 'rgb_to_gray/dsp_pre_add'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd/dsp_macro_simd_in_context.xdc] for cell 'rgb_to_gray/dsp_final_add'
@@ -126,10 +133,10 @@ Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_st
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd/dsp_macro_simd_in_context.xdc] for cell 'laplacian_core/dsp_add1_11b'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd/dsp_macro_simd_in_context.xdc] for cell 'laplacian_core/dsp_add2_11b'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd/dsp_macro_simd_in_context.xdc] for cell 'laplacian_core/dsp_add2_11b'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_laplacian/std_dev_sqrt'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_laplacian/std_dev_sqrt'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_gradient/std_dev_sqrt'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'statistics_core_gradient/std_dev_sqrt'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_laplacian/dsp_var_msub'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_laplacian/dsp_var_msub'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_gradient/dsp_var_msub'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_gradient/dsp_var_msub'
 Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc]
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/image_statistics_top_propImpl.xdc].
@@ -138,12 +145,12 @@ Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_st
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2207.762 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2218.609 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Access is denied.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2207.762 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2218.609 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gradient_core/sobel_x_dsp1' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gradient_core/sobel_x_dsp2' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gradient_core/sobel_y_dsp1' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
@@ -163,7 +170,7 @@ WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2207.852 ; gain = 634.617
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -171,61 +178,62 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2207.852 ; gain = 634.617
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_var_msub. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_var_msub. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_hsum_acum. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_hsum_acum. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_vsum_mac. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_vsum_mac. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for gradient_core/sobel_x_dsp1. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for gradient_core/sobel_x_dsp2. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for gradient_core/sobel_y_dsp1. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for gradient_core/sobel_y_dsp2. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/std_dev_sqrt. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/std_dev_sqrt. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_hsum_acum. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_hsum_acum. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_vsum_mac. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_vsum_mac. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for laplacian_core/dsp_add1_11b. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for laplacian_core/dsp_add2_11b. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for rgb_to_gray/dsp_final_add. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for rgb_to_gray/dsp_pre_add. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/std_dev_sqrt. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/std_dev_sqrt. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_var_msub. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_var_msub. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2207.852 ; gain = 634.617
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-327] inferring latch for variable 'pixel_hold_reg_x_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:173]
+WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:114]
+WARNING: [Synth 8-327] inferring latch for variable 'valid_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:118]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2207.852 ; gain = 634.617
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   16 Bit       Adders := 2     
+	   2 Input   16 Bit       Adders := 3     
 	   2 Input   14 Bit       Adders := 3     
-	   2 Input    4 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 2     
 +---Registers : 
 	               72 Bit    Registers := 3     
 	               48 Bit    Registers := 2     
 	               24 Bit    Registers := 2     
 	               18 Bit    Registers := 2     
-	               16 Bit    Registers := 8     
+	               16 Bit    Registers := 9     
 	               14 Bit    Registers := 7     
 	               12 Bit    Registers := 10    
 	               11 Bit    Registers := 5     
 	                9 Bit    Registers := 32    
 	                8 Bit    Registers := 10    
 	                5 Bit    Registers := 32    
-	                4 Bit    Registers := 19    
+	                4 Bit    Registers := 18    
 	                1 Bit    Registers := 9     
 +---Muxes : 
-	   2 Input   16 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 6     
 	   2 Input   11 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 3     
-	   2 Input    1 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 3     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -243,25 +251,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2207.852 ; gain = 634.617
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2218.609 ; gain = 646.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 2553.949 ; gain = 980.715
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2558.617 ; gain = 986.125
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2579.617 ; gain = 1007.125
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2579.617 ; gain = 1007.125
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -279,51 +287,49 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Static Shift Register Report:
-+---------------------+--------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name          | RTL Name                                                     | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+---------------------+--------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|image_statistics_top | statistics_core_laplacian/var_shift_reg/shift_reg_reg[0][4]  | 5      | 16    | YES          | NO                 | YES               | 16     | 0       | 
-|image_statistics_top | statistics_core_laplacian/mean_shift_reg/shift_reg_reg[0][8] | 9      | 14    | YES          | NO                 | YES               | 14     | 0       | 
-|image_statistics_top | statistics_core_gradient/var_shift_reg/shift_reg_reg[0][4]   | 5      | 16    | YES          | NO                 | YES               | 16     | 0       | 
-|image_statistics_top | statistics_core_gradient/mean_shift_reg/shift_reg_reg[0][8]  | 9      | 14    | YES          | NO                 | YES               | 14     | 0       | 
-+---------------------+--------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
++---------------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name          | RTL Name                                             | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++---------------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|image_statistics_top | laplacian_core/pixel_7_shift_reg/shift_reg_reg[0][3] | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|image_statistics_top | laplacian_core/pixel_5_shift_reg/shift_reg_reg[0][3] | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
++---------------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -360,47 +366,47 @@ Report Cell Usage:
 |16    |sqrt_cordic_bbox_14    |     1|
 |17    |BUFG                   |     2|
 |18    |CARRY8                 |     6|
-|19    |LUT1                   |     3|
-|20    |LUT2                   |   146|
-|21    |LUT3                   |    25|
-|22    |LUT4                   |    31|
-|23    |LUT5                   |    14|
-|24    |LUT6                   |    27|
-|25    |SRL16E                 |    61|
+|19    |LUT1                   |     1|
+|20    |LUT2                   |    98|
+|21    |LUT3                   |    26|
+|22    |LUT4                   |    13|
+|23    |LUT5                   |    10|
+|24    |LUT6                   |    20|
+|25    |SRL16E                 |    17|
 |26    |SRLC32E                |     2|
-|27    |FDCE                   |   818|
-|28    |FDRE                   |    63|
-|29    |LD                     |    72|
-|30    |IBUF                   |    19|
+|27    |FDCE                   |   513|
+|28    |FDRE                   |    17|
+|29    |LD                     |    73|
+|30    |IBUF                   |    20|
 |31    |OBUF                   |    98|
 +------+-----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:24 . Memory (MB): peak = 2586.238 ; gain = 912.344
-Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2586.238 ; gain = 1013.004
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:23 . Memory (MB): peak = 2587.828 ; gain = 909.531
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2592.250 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 99 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2595.902 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 101 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2621.121 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2625.504 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 93 instances were transformed.
+  A total of 95 instances were transformed.
   BUFG => BUFGCE: 2 instances
-  IBUF => IBUF (IBUFCTRL, INBUF): 19 instances
-  LD => LDCE: 72 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 20 instances
+  LD => LDCE: 73 instances
 
 Access is denied.
-Synth Design complete | Checksum: 2af11467
+Synth Design complete | Checksum: fc22ad1d
 INFO: [Common 17-83] Releasing license: Synthesis
-59 Infos, 18 Warnings, 0 Critical Warnings and 0 Errors encountered.
+61 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
 INFO: [Common 17-600] The following parameters have non-default value.
 tcl.statsThreshold
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2621.121 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2625.504 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/image_statistics_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file image_statistics_top_utilization_synth.rpt -pb image_statistics_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jan 13 22:07:27 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 16:13:58 2025...

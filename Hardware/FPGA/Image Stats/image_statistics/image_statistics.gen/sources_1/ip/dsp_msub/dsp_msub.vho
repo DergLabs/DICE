@@ -54,6 +54,7 @@
 COMPONENT dsp_msub
   PORT (
     CLK : IN STD_LOGIC;
+    CE : IN STD_LOGIC;
     SCLR : IN STD_LOGIC;
     A : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
     C : IN STD_LOGIC_VECTOR(47 DOWNTO 0);
@@ -69,6 +70,7 @@ END COMPONENT;
 your_instance_name : dsp_msub
   PORT MAP (
     CLK => CLK,
+    CE => CE,
     SCLR => SCLR,
     A => A,
     C => C,

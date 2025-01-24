@@ -54,6 +54,7 @@
 COMPONENT sqrt_cordic
   PORT (
     aclk : IN STD_LOGIC;
+    aclken : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
     s_axis_cartesian_tvalid : IN STD_LOGIC;
     s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -70,6 +71,7 @@ END COMPONENT;
 your_instance_name : sqrt_cordic
   PORT MAP (
     aclk => aclk,
+    aclken => aclken,
     aresetn => aresetn,
     s_axis_cartesian_tvalid => s_axis_cartesian_tvalid,
     s_axis_cartesian_tdata => s_axis_cartesian_tdata,

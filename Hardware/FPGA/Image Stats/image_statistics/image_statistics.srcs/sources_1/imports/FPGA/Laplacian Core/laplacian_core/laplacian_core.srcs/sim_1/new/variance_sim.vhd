@@ -41,6 +41,7 @@ begin
         )
         port map (
             clk_i => clk,
+            ce_i => '1',
             rst_i => rst,
             data_i => data_i,
             valid_i => valid_i,

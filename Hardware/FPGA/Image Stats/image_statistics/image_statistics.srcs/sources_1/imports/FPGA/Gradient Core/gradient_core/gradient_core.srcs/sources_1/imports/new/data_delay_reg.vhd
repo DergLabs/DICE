@@ -38,6 +38,7 @@ entity data_delay_reg is
     );
     port ( 
         clk_i          : in std_logic;
+        ce_i           : in std_logic;
         rst_i          : in std_logic;
         data_i         : in std_logic_vector((DATA_WIDTH - 1) downto 0);
         data_o         : out std_logic_vector((DATA_WIDTH - 1) downto 0)
@@ -58,9 +59,11 @@ begin
             shift_reg(i) <= (others => '0');
         end loop;
     elsif rising_edge(clk_i) then
-        for i in 0 to DATA_WIDTH-1 loop
-            shift_reg(i) <= shift_reg(i)(SHIFT_DEPTH-2 downto 0) & data_i(i);
-        end loop;
+        if (ce_i = '1') then
+            for i in 0 to DATA_WIDTH-1 loop
+                shift_reg(i) <= shift_reg(i)(SHIFT_DEPTH-2 downto 0) & data_i(i);
+            end loop;
+        end if;
     end if;
     end process;
 

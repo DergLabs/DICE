@@ -56,6 +56,7 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 dsp_acum your_instance_name (
   .CLK(CLK),    // input wire CLK
+  .CE(CE),      // input wire CE
   .SCLR(SCLR),  // input wire SCLR
   .C(C),        // input wire [10 : 0] C
   .P(P)        // output wire [47 : 0] P

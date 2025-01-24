@@ -56,6 +56,7 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 sqrt_cordic your_instance_name (
   .aclk(aclk),                                        // input wire aclk
+  .aclken(aclken),                                    // input wire aclken
   .aresetn(aresetn),                                  // input wire aresetn
   .s_axis_cartesian_tvalid(s_axis_cartesian_tvalid),  // input wire s_axis_cartesian_tvalid
   .s_axis_cartesian_tdata(s_axis_cartesian_tdata),    // input wire [15 : 0] s_axis_cartesian_tdata

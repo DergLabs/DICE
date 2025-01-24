@@ -56,6 +56,7 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 dsp_macro_simd your_instance_name (
   .CLK(CLK),    // input wire CLK
+  .CE(CE),      // input wire CE
   .SCLR(SCLR),  // input wire SCLR
   .A(A),        // input wire [26 : 0] A
   .C(C),        // input wire [26 : 0] C

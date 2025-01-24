@@ -1,56 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1736823982" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/laplacian_core.dcp">
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1737666774" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/laplacian_core.dcp">
   <File Type="PA-TCL" Name="image_statistics_top.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="image_statistics_top_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="image_statistics_top_reports.tcl"/>
   <File Type="RDS-RDS" Name="image_statistics_top.vds"/>
   <File Type="RDS-UTIL" Name="image_statistics_top_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="image_statistics_top_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="image_statistics_top.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="image_statistics_top_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="image_statistics_top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/ip/dsp_msub/dsp_msub.xci">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/ip/dsp_msub/dsp_msub.xci"/>
-        <Attr Name="ImportTime" Val="1736560526"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/ip/dsp_acum/dsp_acum.xci">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/ip/dsp_acum/dsp_acum.xci"/>
-        <Attr Name="ImportTime" Val="1736557357"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/ip/dsp_mac/dsp_mac.xci">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/ip/dsp_mac/dsp_mac.xci"/>
-        <Attr Name="ImportTime" Val="1736557745"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../Gradient Core/gradient_core/gradient_core.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci"/>
         <Attr Name="ImportTime" Val="1736806114"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci"/>
-        <Attr Name="ImportTime" Val="1736541363"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -92,6 +53,14 @@
       <FileInfo SFType="VHDL2008">
         <Attr Name="ImportPath" Val="$PPRDIR/../../Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd"/>
         <Attr Name="ImportTime" Val="1736808671"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/sipo_reg.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Image Compressor/image_dct/image_dct.srcs/sources_1/new/sipo_reg.vhd"/>
+        <Attr Name="ImportTime" Val="1737524167"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -219,15 +188,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_top.vhd">
-      <FileInfo SFType="VHDL2008">
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_top.vhd"/>
-        <Attr Name="ImportTime" Val="1736728113"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="image_statistics_top"/>
@@ -265,4 +225,8 @@
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="sqrt_cordic"/>
+  <BlockFileSet Type="BlockSrcs" Name="dsp_acum"/>
+  <BlockFileSet Type="BlockSrcs" Name="dsp_mac"/>
+  <BlockFileSet Type="BlockSrcs" Name="dsp_msub"/>
+  <BlockFileSet Type="BlockSrcs" Name="dsp_macro_simd"/>
 </GenRun>

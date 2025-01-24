@@ -72,11 +72,11 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param tcl.statsThreshold 360
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 4
 set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-16052-DESKTOP-U9NB2CD/incrSyn
 set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
@@ -101,11 +101,15 @@ read_vhdl -vhdl2008 -library xil_defaultlib {
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/data_delay_reg.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd}
 }
-read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_msub/dsp_msub.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub_ooc.xdc}}]
+read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b_ooc.xdc}}]
+
+read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_ooc.xdc}}]
 
 read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_acum/dsp_acum.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_acum/dsp_acum_ooc.xdc}}]
@@ -113,14 +117,11 @@ set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Deskt
 read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_mac/dsp_mac.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_mac/dsp_mac_ooc.xdc}}]
 
-read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b_ooc.xdc}}]
-
 read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd_ooc.xdc}}]
 
-read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_ooc.xdc}}]
+read_ip -quiet {{C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/ip/dsp_msub/dsp_msub.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

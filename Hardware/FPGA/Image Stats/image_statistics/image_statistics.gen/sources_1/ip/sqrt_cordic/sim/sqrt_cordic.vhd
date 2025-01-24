@@ -59,6 +59,7 @@ USE cordic_v6_0_20.cordic_v6_0_20;
 ENTITY sqrt_cordic IS
   PORT (
     aclk : IN STD_LOGIC;
+    aclken : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
     s_axis_cartesian_tvalid : IN STD_LOGIC;
     s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -128,6 +129,8 @@ ARCHITECTURE sqrt_cordic_arch OF sqrt_cordic IS
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF M_AXIS_DOUT:S_AXIS_PHASE:S_AXIS_CARTESIAN, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 1000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF aclken: SIGNAL IS "XIL_INTERFACENAME aclken_intf, POLARITY ACTIVE_HIGH";
+  ATTRIBUTE X_INTERFACE_INFO OF aclken: SIGNAL IS "xilinx.com:signal:clockenable:1.0 aclken_intf CE";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TDATA";
@@ -144,7 +147,7 @@ BEGIN
       C_COARSE_ROTATE => 0,
       C_DATA_FORMAT => 2,
       C_XDEVICEFAMILY => "kintexuplus",
-      C_HAS_ACLKEN => 0,
+      C_HAS_ACLKEN => 1,
       C_HAS_ACLK => 1,
       C_HAS_S_AXIS_CARTESIAN => 1,
       C_HAS_S_AXIS_PHASE => 0,
@@ -172,7 +175,7 @@ BEGIN
     )
     PORT MAP (
       aclk => aclk,
-      aclken => '1',
+      aclken => aclken,
       aresetn => aresetn,
       s_axis_phase_tvalid => '0',
       s_axis_phase_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),

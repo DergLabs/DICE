@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="sqrt_cordic_synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1736809832">
+<GenRun Id="sqrt_cordic_synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1737665400">
   <File Type="PA-TCL" Name="sqrt_cordic.tcl"/>
   <File Type="REPORTS-TCL" Name="sqrt_cordic_reports.tcl"/>
   <File Type="RDS-RDS" Name="sqrt_cordic.vds"/>
@@ -38,6 +38,14 @@
   </FileSet>
   <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
     <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/laplacian_core.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>

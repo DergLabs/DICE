@@ -14,6 +14,7 @@ use UNISIM.VComponents.all;
 entity rgb_to_gray is 
     port(
         clk_i   :   in std_logic;
+        ce_i    :   in std_logic;
         rst_i   :   in std_logic;
 
         pixel_i :   in std_logic_vector(23 downto 0);
@@ -64,6 +65,7 @@ architecture Behavioral of rgb_to_gray is
     COMPONENT dsp_macro_simd
     PORT (
         CLK : IN STD_LOGIC;
+        CE : IN STD_LOGIC;
         SCLR : IN STD_LOGIC;
         A : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
         C : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
@@ -83,7 +85,7 @@ begin
     )
     port map (
        Q => valid_x,     -- 1-bit output: SRL Data
-       CE => '1',   -- 1-bit input: Clock enable
+       CE => ce_i,   -- 1-bit input: Clock enable
        CLK => clk_i, -- 1-bit input: Clock
        D => valid_i,     -- 1-bit input: SRL Data
        -- Depth Selection inputs: A0-A3 select SRL depth
@@ -98,12 +100,12 @@ begin
     begin
         if (rst_i = '1') then
             pixel_in_reg_x <= (others => '0');
-        elsif rising_edge(clk_i) and (valid_i = '1') then
-            --if (valid_i = '1') then
+        elsif rising_edge(clk_i) then
+            if (valid_i = '1' and ce_i = '1') then
                 pixel_in_reg_x <= pixel_i;
         else 
                 pixel_in_reg_x <= pixel_in_reg_x;
-           --end if;
+           end if;
         end if;
     end process;
 
@@ -124,17 +126,31 @@ begin
             --blue_ch_shift3_x <= (others => '0');
 
         elsif rising_edge(clk_i) then
-            red_ch_shift1_x <= unsigned(pixel_in_reg_x(23 downto 16) srl 3);
-            --red_ch_shift2_x <= unsigned(pixel_in_reg_x(23 downto 16) srl 3);
-            red_ch_shift3_x <= unsigned(pixel_in_reg_x(23 downto 16) srl 4);
+            if (ce_i = '1') then
+                red_ch_shift1_x <= unsigned(pixel_in_reg_x(23 downto 16) srl 3);
+                --red_ch_shift2_x <= unsigned(pixel_in_reg_x(23 downto 16) srl 3);
+                red_ch_shift3_x <= unsigned(pixel_in_reg_x(23 downto 16) srl 4);
 
-            green_ch_shift1_x <= unsigned(pixel_in_reg_x(15 downto 8) srl 1);
-            green_ch_shift2_x <= unsigned(pixel_in_reg_x(15 downto 8) srl 4);
-            green_ch_shift3_x <= unsigned(pixel_in_reg_x(15 downto 8) srl 5);
+                green_ch_shift1_x <= unsigned(pixel_in_reg_x(15 downto 8) srl 1);
+                green_ch_shift2_x <= unsigned(pixel_in_reg_x(15 downto 8) srl 4);
+                green_ch_shift3_x <= unsigned(pixel_in_reg_x(15 downto 8) srl 5);
 
-            blue_ch_shift1_x <= unsigned(pixel_in_reg_x(7 downto 0) srl 4);
-            blue_ch_shift2_x <= unsigned(pixel_in_reg_x(7 downto 0) srl 5);
-            --blue_ch_shift3_x <= unsigned(pixel_in_reg_x(7 downto 0) srl 5);
+                blue_ch_shift1_x <= unsigned(pixel_in_reg_x(7 downto 0) srl 4);
+                blue_ch_shift2_x <= unsigned(pixel_in_reg_x(7 downto 0) srl 5);
+                --blue_ch_shift3_x <= unsigned(pixel_in_reg_x(7 downto 0) srl 5);
+            else
+                red_ch_shift1_x <= red_ch_shift1_x;
+                --red_ch_shift2_x <= red_ch_shift2_x;
+                red_ch_shift3_x <= red_ch_shift3_x;
+
+                green_ch_shift1_x <= green_ch_shift1_x;
+                green_ch_shift2_x <= green_ch_shift2_x;
+                green_ch_shift3_x <= green_ch_shift3_x;
+
+                blue_ch_shift1_x <= blue_ch_shift1_x;
+                blue_ch_shift2_x <= blue_ch_shift2_x;
+                --blue_ch_shift3_x <= blue_ch_shift3_x;
+            end if;
         end if;
     end process;
 
@@ -142,6 +158,7 @@ begin
     dsp_pre_add : dsp_macro_simd
     PORT MAP (
         CLK => clk_i,
+        CE => ce_i,
         SCLR => rst_i,
         A => ("0" & std_logic_vector(red_ch_shift1_x) & "0" & std_logic_vector(green_ch_shift1_x) & "0" & std_logic_vector(blue_ch_shift1_x)),
         C => ("0" & std_logic_vector(red_ch_shift1_x) & "0" & std_logic_vector(green_ch_shift2_x) & "0" & std_logic_vector(blue_ch_shift2_x)),
@@ -157,6 +174,7 @@ begin
     dsp_final_add : dsp_macro_simd
     PORT MAP (
         CLK => clk_i,
+        CE => ce_i,
         SCLR => rst_i,
         A => (19b"0000000000000000000" & std_logic_vector(red_ch_adder_out_x)),
         C => (19b"0000000000000000000" & std_logic_vector(green_ch_adder_out_x)),
@@ -171,11 +189,11 @@ begin
             pixel_o <= (others => '0');
             valid_o <= '0';
         elsif rising_edge(clk_i) then
-            if (valid_x = '1') then
+            if (valid_x = '1' and ce_i = '1') then
                 valid_o <= valid_x;
                 pixel_o <= std_logic_vector(dsp_final_temp(7 downto 0));
             else
-                valid_o <= '0';
+                valid_o <= valid_o;
                 pixel_o <= pixel_o;
             end if;
         end if;

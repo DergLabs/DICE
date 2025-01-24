@@ -73,6 +73,7 @@ architecture Behavioral of image_compressor is
     signal row_dct_ce_x : std_logic := '0';
     signal quantizer_ce_x : std_logic := '0';
 
+    -- Testing Only
     COMPONENT vio_0
     PORT (
         clk : IN STD_LOGIC;
@@ -82,7 +83,7 @@ architecture Behavioral of image_compressor is
         probe_out1 : OUT std_logic
     );
     END COMPONENT;
-
+    -- Testing Only
     signal data_o_test : std_logic_vector(63 downto 0);
     signal valid_o_test : std_logic;
     signal data_i : std_logic_vector(7 downto 0);
@@ -90,6 +91,7 @@ architecture Behavioral of image_compressor is
 
 begin
 
+    -- Testing Only
     test_io : vio_0
     PORT MAP (
         clk => clk_i,

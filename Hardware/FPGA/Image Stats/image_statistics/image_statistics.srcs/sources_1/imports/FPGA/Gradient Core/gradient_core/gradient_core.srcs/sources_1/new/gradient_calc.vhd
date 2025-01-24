@@ -34,6 +34,7 @@ use UNISIM.VComponents.all;
 entity gradient_calc is
     port ( 
         clk_i       : in std_logic;
+        ce_i        : in std_logic;
         rst_i       : in std_logic;
 
         -- input data
@@ -115,7 +116,7 @@ begin
         Q => valid_x,     -- 1-bit output: SRL Data
         Q31 => open, -- 1-bit output: SRL Cascade Data
         A => 5b"00111",     -- 5-bit input: Selects SRL depth
-        CE => '1',   -- 1-bit input: Clock enable
+        CE => ce_i,   -- 1-bit input: Clock enable
         CLK => clk_i, -- 1-bit input: Clock
         D => valid_i      -- 1-bit input: SRL Data
     );
@@ -126,7 +127,7 @@ begin
         if (rst_i = '1') then
             pixel_reg_x <= (others => '0');
         elsif rising_edge(clk_i) then
-            if (valid_i = '1') then
+            if (valid_i = '1' and ce_i = '1') then
                 pixel_reg_x <= pixel_i;
             else
                 pixel_reg_x <= pixel_reg_x;
@@ -146,13 +147,22 @@ begin
             sobel_x_px6 <= (others => '0');
             sobel_x_px8 <= (others => '0');
         elsif rising_edge(clk_i) then
-            sobel_x_px2 <=  unsigned(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
-            sobel_x_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
-            sobel_x_px5 <=  unsigned(resize(unsigned(pixel_reg_x(47 downto 40)), 12)) sll 1;
+            if (ce_i = '1') then
+                sobel_x_px2 <=  unsigned(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
+                sobel_x_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
+                sobel_x_px5 <=  unsigned(resize(unsigned(pixel_reg_x(47 downto 40)), 12)) sll 1;
 
-            sobel_x_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
-            sobel_x_px6 <= -signed(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
-            sobel_x_px3 <= -signed(resize(unsigned(pixel_reg_x(31 downto 24)), 12)) sll 1;
+                sobel_x_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
+                sobel_x_px6 <= -signed(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
+                sobel_x_px3 <= -signed(resize(unsigned(pixel_reg_x(31 downto 24)), 12)) sll 1;
+            else
+                sobel_x_px2 <= sobel_x_px2;
+                sobel_x_px8 <= sobel_x_px8;
+                sobel_x_px5 <= sobel_x_px5;
+                sobel_x_px0 <= sobel_x_px0;
+                sobel_x_px6 <= sobel_x_px6;
+                sobel_x_px3 <= sobel_x_px3;
+            end if;
         end if;
     end process;
 
@@ -167,14 +177,22 @@ begin
             sobel_y_px7 <= (others => '0');
             sobel_y_px8 <= (others => '0');
         elsif rising_edge(clk_i) then
-            sobel_y_px6 <=  unsigned(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
-            sobel_y_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
-            sobel_y_px7 <=  unsigned(resize(unsigned(pixel_reg_x(63 downto 56)), 12)) sll 1;
+            if (ce_i = '1') then
+                sobel_y_px6 <=  unsigned(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
+                sobel_y_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
+                sobel_y_px7 <=  unsigned(resize(unsigned(pixel_reg_x(63 downto 56)), 12)) sll 1;
 
-            sobel_y_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
-            sobel_y_px2 <= -signed(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
-            sobel_y_px1 <= -signed(resize(unsigned(pixel_reg_x(15 downto 8)), 12)) sll 1;
-
+                sobel_y_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
+                sobel_y_px2 <= -signed(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
+                sobel_y_px1 <= -signed(resize(unsigned(pixel_reg_x(15 downto 8)), 12)) sll 1;
+            else
+                sobel_y_px6 <= sobel_y_px6;
+                sobel_y_px8 <= sobel_y_px8;
+                sobel_y_px7 <= sobel_y_px7;
+                sobel_y_px0 <= sobel_y_px0;
+                sobel_y_px2 <= sobel_y_px2;
+                sobel_y_px1 <= sobel_y_px1;
+            end if;
         end if;
     end process;
 
@@ -182,7 +200,7 @@ begin
     sobel_x_dsp1 : dsp_macro_add_22b
     PORT MAP (
         CLK => clk_i,
-        CE => '1',
+        CE => ce_i,
         SCLR => new_pixel_i,
         A => std_logic_vector(sobel_x_px2),
         C => std_logic_vector(sobel_x_px5),
@@ -193,7 +211,7 @@ begin
     sobel_x_dsp2 : dsp_macro_add_22b
     PORT MAP (
         CLK => clk_i,
-        CE => '1',
+        CE => ce_i,
         SCLR => new_pixel_i,
         A => std_logic_vector(sobel_x_px0),
         C => std_logic_vector(sobel_x_px3),
@@ -204,7 +222,7 @@ begin
     sobel_y_dsp1 : dsp_macro_add_22b
     PORT MAP (
         CLK => clk_i,
-        CE => '1',
+        CE => ce_i,
         SCLR => new_pixel_i,
         A => std_logic_vector(sobel_y_px6),
         C => std_logic_vector(sobel_y_px7),
@@ -215,7 +233,7 @@ begin
     sobel_y_dsp2 : dsp_macro_add_22b
     PORT MAP (
         CLK => clk_i,
-        CE => '1',
+        CE => ce_i,
         SCLR => new_pixel_i,
         A => std_logic_vector(sobel_y_px0),
         C => std_logic_vector(sobel_y_px1),
@@ -266,10 +284,17 @@ begin
             dsp3_tmp <= (others => '0');
             dsp4_tmp <= (others => '0');
         elsif rising_edge(clk_i) then
-            dsp1_tmp <= signed(sobel_x_dsp_result_1);
-            dsp2_tmp <= signed(sobel_x_dsp_result_2);
-            dsp3_tmp <= signed(sobel_y_dsp_result_1);
-            dsp4_tmp <= signed(sobel_y_dsp_result_2);
+            if (ce_i = '1') then
+                dsp1_tmp <= signed(sobel_x_dsp_result_1);
+                dsp2_tmp <= signed(sobel_x_dsp_result_2);
+                dsp3_tmp <= signed(sobel_y_dsp_result_1);
+                dsp4_tmp <= signed(sobel_y_dsp_result_2);
+            else
+                dsp1_tmp <= dsp1_tmp;
+                dsp2_tmp <= dsp2_tmp;
+                dsp3_tmp <= dsp3_tmp;
+                dsp4_tmp <= dsp4_tmp;
+            end if;
         end if;
     end process;
 
@@ -279,8 +304,13 @@ begin
             sum_1_tmp <= (others => '0');
             sum_2_tmp <= (others => '0');
         elsif rising_edge(clk_i) then
-            sum_1_tmp <= dsp1_tmp + dsp2_tmp;
-            sum_2_tmp <= dsp3_tmp + dsp4_tmp;
+            if (ce_i = '1') then
+                sum_1_tmp <= dsp1_tmp + dsp2_tmp;
+                sum_2_tmp <= dsp3_tmp + dsp4_tmp;
+            else
+                sum_1_tmp <= sum_1_tmp;
+                sum_2_tmp <= sum_2_tmp;
+            end if;
         end if;
     end process;
 
@@ -290,7 +320,11 @@ begin
         if (rst_i = '1') then
             sum_x <= (others => '0');
         elsif rising_edge(clk_i) then
-            sum_x <= sum_1_tmp + sum_2_tmp;
+            if (ce_i = '1') then
+                sum_x <= sum_1_tmp + sum_2_tmp;
+            else
+                sum_x <= sum_x;
+            end if;
         end if;
     end process;
 
@@ -300,11 +334,11 @@ begin
         if (rst_i = '1') then
             gradient_o <= (others => '0');
         elsif rising_edge(clk_i) then
-            if (valid_x = '1') then
+            if (valid_x = '1' and ce_i = '1') then
                 valid_o <= '1';
                 gradient_o <= std_logic_vector(resize(signed(sum_x), 11) sra 1);
             else
-                valid_o <= '0';
+                valid_o <= valid_o;
                 gradient_o <= gradient_o;
             end if;
         end if;
