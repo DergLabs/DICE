@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log image_compressor.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source image_compressor.tcl
+EAStep vivado -log multi_core_test.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source multi_core_test.tcl

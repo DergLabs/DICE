@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../usb_compressor_test.srcs/sources_1/imports/src" --include "../../../../usb_compressor_test.ip_user_files/ipstatic" \
+"../../../../usb_compressor_test.gen/sources_1/ip/fifo_generator_1/sim/fifo_generator_1.v" \
+
+sv xil_defaultlib  --include "../../../../usb_compressor_test.srcs/sources_1/imports/src" --include "../../../../usb_compressor_test.ip_user_files/ipstatic" \
+"../../../../usb_compressor_test.srcs/sources_1/imports/src/send_recieve_module.sv" \
+"../../../../usb_compressor_test.srcs/sources_1/imports/src/tb_send_recieve.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1737656718" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/simd_4x12b_dsp.dcp">
-  <File Type="PA-TCL" Name="image_compressor.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="image_compressor_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="image_compressor_reports.tcl"/>
-  <File Type="RDS-RDS" Name="image_compressor.vds"/>
-  <File Type="RDS-UTIL" Name="image_compressor_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="image_compressor_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="image_compressor.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="image_compressor_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="image_compressor_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1737706806" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/simd_4x12b_dsp.dcp">
+  <File Type="PA-TCL" Name="multi_core_test.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="multi_core_test_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="multi_core_test_reports.tcl"/>
+  <File Type="RDS-RDS" Name="multi_core_test.vds"/>
+  <File Type="RDS-UTIL" Name="multi_core_test_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="multi_core_test_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="multi_core_test.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="multi_core_test_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="multi_core_test_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/new/data_delay_reg.vhd">
@@ -67,6 +67,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/multi_core_test.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/pixel_ram.vhd">
       <FileInfo SFType="VHDL2008">
         <Attr Name="AutoDisabled" Val="1"/>
@@ -83,7 +89,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="image_compressor"/>
+      <Option Name="TopModule" Val="multi_core_test"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -117,5 +123,4 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
 </GenRun>

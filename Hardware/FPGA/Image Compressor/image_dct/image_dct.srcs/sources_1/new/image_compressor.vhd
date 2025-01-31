@@ -34,13 +34,13 @@ use UNISIM.VComponents.all;
 entity image_compressor is
     port ( 
         clk_i      : in std_logic;
-        rst_i      : in std_logic
+        rst_i      : in std_logic;
 
-        --data_i     : in std_logic_vector(7 downto 0);
-        --valid_i    : in std_logic;
+        data_i     : in std_logic_vector(7 downto 0);
+        valid_i    : in std_logic;
 
-        --data_o     : out std_logic_vector(63 downto 0);
-        --valid_o    : out std_logic
+        data_o     : out std_logic_vector(63 downto 0);
+        valid_o    : out std_logic
     );
 end image_compressor;
 
@@ -59,8 +59,18 @@ architecture Behavioral of image_compressor is
 
     signal shifted_pixels : std_logic_vector(95 downto 0);
     signal divided_pixels : std_logic_vector(95 downto 0);
+    signal pixel_0        : std_logic_vector(8 downto 0);
+    signal pixel_1        : std_logic_vector(8 downto 0);
+    signal pixel_2        : std_logic_vector(8 downto 0);
+    signal pixel_3        : std_logic_vector(8 downto 0);
+    signal pixel_4        : std_logic_vector(8 downto 0);
+    signal pixel_5        : std_logic_vector(8 downto 0);
+    signal pixel_6        : std_logic_vector(8 downto 0);
+    signal pixel_7        : std_logic_vector(8 downto 0);
+    signal resized_pixels : std_logic_vector(71 downto 0);
 
-    signal pixel_rows : std_logic_vector(95 downto 0);
+    signal pixel_rows_resized : std_logic_vector(95 downto 0);
+    signal pixel_rows : std_logic_vector(71 downto 0);
     signal row_valid : std_logic;
     signal row_num : std_logic_vector(3 downto 0);
 
@@ -74,7 +84,7 @@ architecture Behavioral of image_compressor is
     signal quantizer_ce_x : std_logic := '0';
 
     -- Testing Only
-    COMPONENT vio_0
+    /*COMPONENT vio_0
     PORT (
         clk : IN STD_LOGIC;
         probe_in0 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -87,19 +97,19 @@ architecture Behavioral of image_compressor is
     signal data_o_test : std_logic_vector(63 downto 0);
     signal valid_o_test : std_logic;
     signal data_i : std_logic_vector(7 downto 0);
-    signal valid_i : std_logic;
+    signal valid_i : std_logic;*/
 
 begin
 
     -- Testing Only
-    test_io : vio_0
+    /*test_io : vio_0
     PORT MAP (
         clk => clk_i,
         probe_in0 => data_o_test,
         probe_in1 => valid_o_test,
         probe_out0 => data_i,
         probe_out1 => valid_i
-    );
+    );*/
 
     -- Register valid signal to align with data
     process(clk_i, rst_i)
@@ -205,12 +215,23 @@ begin
         end if;
     end process;
 
+    pixel_0 <= std_logic_vector(resize(signed(divided_pixels(11 downto 0)), 9));
+    pixel_1 <= std_logic_vector(resize(signed(divided_pixels(23 downto 12)), 9));
+    pixel_2 <= std_logic_vector(resize(signed(divided_pixels(35 downto 24)), 9));
+    pixel_3 <= std_logic_vector(resize(signed(divided_pixels(47 downto 36)), 9));
+    pixel_4 <= std_logic_vector(resize(signed(divided_pixels(59 downto 48)), 9));
+    pixel_5 <= std_logic_vector(resize(signed(divided_pixels(71 downto 60)), 9));
+    pixel_6 <= std_logic_vector(resize(signed(divided_pixels(83 downto 72)), 9));
+    pixel_7 <= std_logic_vector(resize(signed(divided_pixels(95 downto 84)), 9));
+
+    resized_pixels <= pixel_7 & pixel_6 & pixel_5 & pixel_4 & pixel_3 & pixel_2 & pixel_1 & pixel_0;
+
 
     -- Transpose 8x8 pixel matrix
     -- Transpose requires 8 clock cycles to load in 8 columns before a row is output
     pixel_transpose : entity work.transpose
     generic map (
-        ELEMENT_WIDTH => 12,
+        ELEMENT_WIDTH => 9,
         NUM_ELEMENTS => 8,
         DEPTH => 8
     )
@@ -218,12 +239,23 @@ begin
         clk_i => clk_i,
         ce_i => transpose_ce_x,
         rst_i => rst_i,
-        data_i => divided_pixels,
+        data_i => resized_pixels,
         valid_i => dct1_valid_out,
         data_o => pixel_rows,
         valid_o => row_valid,
         row_num_o => row_num
     );
+
+    pixel_rows_wide <= std_logic_vector(resize(signed(pixel_rows(71 downto 63)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(62 downto 54)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(53 downto 45)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(44 downto 36)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(35 downto 27)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(26 downto 18)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(17 downto 9)), 12)) &
+                        std_logic_vector(resize(signed(pixel_rows(8 downto 0)), 12));
+                      
+
 
     -- Register clock enable signal
     -- Aigns with transpose output for DCT stage
@@ -242,7 +274,7 @@ begin
         clk_i => clk_i,
         ce_i => row_dct_ce_x,
         rst_i => rst_i,
-        data_i => pixel_rows,
+        data_i => pixel_rows_wide,
         valid_i => row_valid,
         data_o => dct2_pixel_out,
         valid_o => dct2_valid_out
@@ -267,8 +299,8 @@ begin
         rst_i => rst_i,
         data_i => dct2_pixel_out,
         valid_i => dct2_valid_out,
-        data_o => data_o_test,
-        valid_o => valid_o_test
+        data_o => data_o,
+        valid_o => valid_o
     );
 
     --valid_o <= valid_o_test;

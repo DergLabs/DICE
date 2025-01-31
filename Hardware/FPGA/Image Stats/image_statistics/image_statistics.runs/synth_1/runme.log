@@ -14,6 +14,7 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source image_statistics_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 488.797 ; gain = 176.473
 Command: read_checkpoint -auto_incremental -incremental {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/utils_1/imports/synth_1/laplacian_core.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/utils_1/imports/synth_1/laplacian_core.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,18 +27,18 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18784
+INFO: [Synth 8-7075] Helper process launched with PID 25232
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1992.754 ; gain = 420.262
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1992.484 ; gain = 420.215
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'image_statistics_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'image_statistics_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:58]
 INFO: [Synth 8-638] synthesizing module 'rgb_to_gray' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:28]
 	Parameter INIT bound to: 16'b0000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'SRL16E_inst' to cell 'SRL16E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:81]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_pre_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:158]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_final_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:174]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_pre_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:158]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_final_add' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:174]
 INFO: [Synth 8-256] done synthesizing module 'rgb_to_gray' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd:28]
 INFO: [Synth 8-638] synthesizing module 'sipo_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:53]
 	Parameter IN_WIDTH bound to: 8 - type: integer 
@@ -53,54 +54,57 @@ INFO: [Synth 8-638] synthesizing module 'data_delay_reg' [C:/Users/johnh/Desktop
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_delay_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:149]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:160]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:149]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:160]
 INFO: [Synth 8-256] done synthesizing module 'laplacian_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Laplacian Core/laplacian_core/laplacian_core.srcs/sources_1/new/laplacian_core.vhd:32]
 INFO: [Synth 8-638] synthesizing module 'gradient_calc' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:51]
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:110]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:200]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:211]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:222]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:233]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:200]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:211]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:222]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:233]
 INFO: [Synth 8-256] done synthesizing module 'gradient_calc' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/gradient_calc.vhd:51]
 INFO: [Synth 8-638] synthesizing module 'statistics_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:37]
-	Parameter variance_depth bound to: 16 - type: integer 
+	Parameter variance_depth bound to: 8 - type: integer 
 	Parameter data_width bound to: 11 - type: integer 
-INFO: [Synth 8-3491] module 'dsp_mac' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:6' bound to instance 'dsp_vsum_mac' of component 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:122]
-INFO: [Synth 8-638] synthesizing module 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'dsp_acum' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:6' bound to instance 'dsp_hsum_acum' of component 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:132]
-INFO: [Synth 8-638] synthesizing module 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'dsp_msub' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:6' bound to instance 'dsp_var_msub' of component 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:185]
-INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:18]
+WARNING: [Synth 8-614] signal 'valid_x' is read in the process but is not in the sensitivity list [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:143]
+INFO: [Synth 8-3491] module 'dsp_mac' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:6' bound to instance 'dsp_vsum_mac' of component 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:195]
+INFO: [Synth 8-638] synthesizing module 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'dsp_acum' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:6' bound to instance 'dsp_hsum_acum' of component 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:205]
+INFO: [Synth 8-638] synthesizing module 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:17]
+WARNING: [Synth 8-614] signal 'valid_x' is read in the process but is not in the sensitivity list [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:215]
+INFO: [Synth 8-3491] module 'dsp_msub' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:6' bound to instance 'dsp_var_msub' of component 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:232]
+INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:18]
 INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 9 - type: integer 
+	Parameter SHIFT_DEPTH bound to: 7 - type: integer 
 	Parameter DATA_WIDTH bound to: 16 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized0' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 5 - type: integer 
+	Parameter SHIFT_DEPTH bound to: 3 - type: integer 
 	Parameter DATA_WIDTH bound to: 16 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized1' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd:48]
-INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:221]
-INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-24128-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:268]
+INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/.Xil/Vivado-23764-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
 INFO: [Synth 8-256] done synthesizing module 'statistics_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:37]
-INFO: [Synth 8-256] done synthesizing module 'image_statistics_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:55]
+INFO: [Synth 8-256] done synthesizing module 'image_statistics_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/new/image_statistics_top.vhd:58]
 WARNING: [Synth 8-6014] Unused sequential element vaid_counter_x_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:98]
+WARNING: [Synth 8-6014] Unused sequential element valid_counter_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/FPGA/Gradient Core/gradient_core/gradient_core.srcs/sources_1/new/statistics_core.vhd:284]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2112.805 ; gain = 540.312
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2108.793 ; gain = 536.523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2112.805 ; gain = 540.312
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2126.719 ; gain = 554.449
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2112.805 ; gain = 540.312
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2126.719 ; gain = 554.449
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 2112.805 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 2138.715 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -138,19 +142,118 @@ Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_gradient/dsp_var_msub'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.gen/sources_1/ip/dsp_msub/dsp_msub/dsp_msub_in_context.xdc] for cell 'statistics_core_gradient/dsp_var_msub'
 Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[15]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:101]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[14]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:102]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[13]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:103]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[12]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:104]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[11]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:105]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[10]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:106]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[9]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:107]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[8]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:108]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[7]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:109]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[6]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:110]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[5]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:111]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[4]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:112]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[3]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:113]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[2]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:114]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[1]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:115]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[0]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:116]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[15]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:117]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[14]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:118]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[13]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:119]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[12]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:120]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[11]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:121]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[10]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:122]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[9]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:123]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[8]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:124]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[7]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:125]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[6]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:126]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[5]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:127]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[4]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:128]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[3]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:129]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[2]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:130]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[1]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:131]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[0]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:132]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[15]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:133]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[14]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:134]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[13]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:135]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[12]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:136]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[11]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:137]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[10]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:138]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[9]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:139]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[8]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:140]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[7]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:141]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[6]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:142]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[5]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:143]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[4]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:144]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[3]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:145]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[2]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:146]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[1]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:147]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[0]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:148]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[15]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:173]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[14]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:174]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[13]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:175]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[12]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:176]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[11]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:177]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[10]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:178]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[9]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:179]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[8]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:180]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[7]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:181]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[6]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:182]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[5]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:183]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[4]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:184]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[3]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:185]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[2]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:186]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[1]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:187]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_mean_o[0]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:188]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[15]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:189]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[14]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:190]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[13]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:191]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[12]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:192]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[11]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:193]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[10]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:194]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[9]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:195]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[8]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:196]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[7]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:197]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[6]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:198]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[5]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:199]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[4]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:200]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[3]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:201]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[2]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:202]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[1]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:203]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_std_dev_o[0]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:204]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[15]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:205]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[14]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:206]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[13]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:207]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[12]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:208]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[11]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:209]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[10]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:210]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[9]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:211]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[8]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:212]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[7]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:213]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[6]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:214]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[5]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:215]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[4]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:216]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[3]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:217]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[2]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:218]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[1]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:219]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_var_o[0]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:220]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_valid_o'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:222]
+WARNING: [Vivado 12-584] No ports matched 'lapplacian_valid_o'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc:225]
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/image_statistics_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/image_statistics_top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/image_statistics_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2218.609 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2248.891 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Access is denied.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2218.609 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2248.891 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gradient_core/sobel_x_dsp1' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gradient_core/sobel_x_dsp2' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gradient_core/sobel_y_dsp1' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
@@ -170,7 +273,7 @@ WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2248.891 ; gain = 676.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -178,7 +281,7 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2248.891 ; gain = 676.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -200,40 +303,43 @@ Applied set_property KEEP_HIERARCHY = SOFT for rgb_to_gray/dsp_pre_add. (constra
 Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_laplacian/dsp_var_msub. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for statistics_core_gradient/dsp_var_msub. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2248.891 ; gain = 676.621
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-327] inferring latch for variable 'data_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:114]
 WARNING: [Synth 8-327] inferring latch for variable 'valid_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.srcs/sources_1/imports/new/sipo_reg.vhd:118]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2218.609 ; gain = 646.117
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2248.891 ; gain = 676.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   16 Bit       Adders := 3     
+	   2 Input   32 Bit       Adders := 3     
+	   2 Input   16 Bit       Adders := 1     
 	   2 Input   14 Bit       Adders := 3     
-	   2 Input    4 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 2     
 +---Registers : 
 	               72 Bit    Registers := 3     
 	               48 Bit    Registers := 2     
+	               32 Bit    Registers := 3     
 	               24 Bit    Registers := 2     
 	               18 Bit    Registers := 2     
-	               16 Bit    Registers := 9     
+	               16 Bit    Registers := 7     
 	               14 Bit    Registers := 7     
 	               12 Bit    Registers := 10    
 	               11 Bit    Registers := 5     
-	                9 Bit    Registers := 32    
-	                8 Bit    Registers := 10    
-	                5 Bit    Registers := 32    
-	                4 Bit    Registers := 18    
-	                1 Bit    Registers := 9     
+	                8 Bit    Registers := 12    
+	                7 Bit    Registers := 32    
+	                4 Bit    Registers := 16    
+	                3 Bit    Registers := 32    
+	                1 Bit    Registers := 19    
 +---Muxes : 
-	   2 Input   16 Bit        Muxes := 6     
+	   2 Input   32 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 2     
 	   2 Input   11 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -251,25 +357,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2218.609 ; gain = 646.117
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2248.891 ; gain = 676.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2558.617 ; gain = 986.125
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2553.129 ; gain = 980.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2579.617 ; gain = 1007.125
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2575.273 ; gain = 1003.004
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2579.617 ; gain = 1007.125
+Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2575.273 ; gain = 1003.004
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -287,49 +393,51 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Static Shift Register Report:
-+---------------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name          | RTL Name                                             | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+---------------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|image_statistics_top | laplacian_core/pixel_7_shift_reg/shift_reg_reg[0][3] | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
-|image_statistics_top | laplacian_core/pixel_5_shift_reg/shift_reg_reg[0][3] | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
-+---------------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
++---------------------+--------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name          | RTL Name                                                     | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++---------------------+--------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|image_statistics_top | laplacian_core/pixel_7_shift_reg/shift_reg_reg[0][3]         | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|image_statistics_top | laplacian_core/pixel_5_shift_reg/shift_reg_reg[0][3]         | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|image_statistics_top | statistics_core_laplacian/mean_shift_reg/shift_reg_reg[0][6] | 7      | 15    | YES          | NO                 | YES               | 15     | 0       | 
+|image_statistics_top | statistics_core_gradient/mean_shift_reg/shift_reg_reg[0][6]  | 7      | 15    | YES          | NO                 | YES               | 15     | 0       | 
++---------------------+--------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -365,34 +473,35 @@ Report Cell Usage:
 |15    |sqrt_cordic_bbox       |     1|
 |16    |sqrt_cordic_bbox_14    |     1|
 |17    |BUFG                   |     2|
-|18    |CARRY8                 |     6|
-|19    |LUT1                   |     1|
-|20    |LUT2                   |    98|
-|21    |LUT3                   |    26|
-|22    |LUT4                   |    13|
-|23    |LUT5                   |    10|
-|24    |LUT6                   |    20|
-|25    |SRL16E                 |    17|
+|18    |CARRY8                 |    18|
+|19    |LUT1                   |     3|
+|20    |LUT2                   |   112|
+|21    |LUT3                   |    52|
+|22    |LUT4                   |    30|
+|23    |LUT5                   |    97|
+|24    |LUT6                   |    62|
+|25    |SRL16E                 |    47|
 |26    |SRLC32E                |     2|
-|27    |FDCE                   |   513|
-|28    |FDRE                   |    17|
-|29    |LD                     |    73|
-|30    |IBUF                   |    20|
-|31    |OBUF                   |    98|
+|27    |FDCE                   |   981|
+|28    |FDPE                   |     2|
+|29    |FDRE                   |    47|
+|30    |LD                     |    73|
+|31    |IBUF                   |    20|
+|32    |OBUF                   |    98|
 +------+-----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:23 . Memory (MB): peak = 2587.828 ; gain = 909.531
-Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2587.828 ; gain = 1015.336
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:25 . Memory (MB): peak = 2585.113 ; gain = 890.672
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2585.113 ; gain = 1012.844
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2595.902 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 101 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2593.152 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 113 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2625.504 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2626.059 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 95 instances were transformed.
   BUFG => BUFGCE: 2 instances
@@ -400,13 +509,12 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   LD => LDCE: 73 instances
 
 Access is denied.
-Synth Design complete | Checksum: fc22ad1d
+Synth Design complete | Checksum: 320aacce
 INFO: [Common 17-83] Releasing license: Synthesis
-61 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+61 Infos, 122 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-INFO: [Common 17-600] The following parameters have non-default value.
-tcl.statsThreshold
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2625.504 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:53 . Memory (MB): peak = 2626.059 ; gain = 2063.418
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2626.059 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/Image Stats/image_statistics/image_statistics.runs/synth_1/image_statistics_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file image_statistics_top_utilization_synth.rpt -pb image_statistics_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 16:13:58 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 23 23:57:22 2025...

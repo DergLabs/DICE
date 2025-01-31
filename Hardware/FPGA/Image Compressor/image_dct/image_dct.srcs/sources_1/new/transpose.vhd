@@ -193,7 +193,7 @@ begin
                 valid_o <= valid_delay_x;
                 case counter_x is
                     when 0 => 
-                        data_o <= 
+                        /*data_o <= 
                             pixel_output(683 downto 672) &  -- Depth 7
                             pixel_output(587 downto 576) &  -- Depth 6
                             pixel_output(491 downto 480) &  -- Depth 5
@@ -271,7 +271,86 @@ begin
                             pixel_output(383 downto 372) &  
                             pixel_output(287 downto 276) &  
                             pixel_output(191 downto 180) &  
-                            pixel_output(95 downto 84); 
+                            pixel_output(95 downto 84); */
+                            data_o <= 
+                            pixel_output(512 downto 504) &  -- Depth 7
+                            pixel_output(440 downto 432) &  -- Depth 6
+                            pixel_output(368 downto 360) &  -- Depth 5
+                            pixel_output(296 downto 288) &  -- Depth 4
+                            pixel_output(224 downto 216) &  -- Depth 3
+                            pixel_output(152 downto 144) &  -- Depth 2
+                            pixel_output(80 downto 72) &    -- Depth 1
+                            pixel_output(8 downto 0);       -- Depth 0
+                        when 1 => 
+                            data_o <= 
+                            pixel_output(521 downto 513) &
+                            pixel_output(449 downto 441) &
+                            pixel_output(377 downto 369) &
+                            pixel_output(305 downto 297) &
+                            pixel_output(233 downto 225) &
+                            pixel_output(161 downto 153) &
+                            pixel_output(89 downto 81) &
+                            pixel_output(17 downto 9);
+                        when 2 => 
+                            data_o <= 
+                            pixel_output(530 downto 522) &
+                            pixel_output(458 downto 450) &
+                            pixel_output(386 downto 378) &
+                            pixel_output(314 downto 306) &
+                            pixel_output(242 downto 234) &
+                            pixel_output(170 downto 162) &
+                            pixel_output(98 downto 90) &
+                            pixel_output(26 downto 18);
+                        when 3 => 
+                            data_o <= 
+                            pixel_output(539 downto 531) &
+                            pixel_output(467 downto 459) &
+                            pixel_output(395 downto 387) &
+                            pixel_output(323 downto 315) &
+                            pixel_output(251 downto 243) &
+                            pixel_output(179 downto 171) &
+                            pixel_output(107 downto 99) &
+                            pixel_output(35 downto 27);
+                        when 4 => 
+                            data_o <= 
+                            pixel_output(548 downto 540) &
+                            pixel_output(476 downto 468) &
+                            pixel_output(404 downto 396) &
+                            pixel_output(332 downto 324) &
+                            pixel_output(260 downto 252) &
+                            pixel_output(188 downto 180) &
+                            pixel_output(116 downto 108) &
+                            pixel_output(44 downto 36);
+                        when 5 => 
+                            data_o <= 
+                            pixel_output(557 downto 549) &
+                            pixel_output(485 downto 477) &
+                            pixel_output(413 downto 405) &
+                            pixel_output(341 downto 333) &
+                            pixel_output(269 downto 261) &
+                            pixel_output(197 downto 189) &
+                            pixel_output(125 downto 117) &
+                            pixel_output(53 downto 45);
+                        when 6 => 
+                            data_o <= 
+                            pixel_output(566 downto 558) &
+                            pixel_output(494 downto 486) &
+                            pixel_output(422 downto 414) &
+                            pixel_output(350 downto 342) &
+                            pixel_output(278 downto 270) &
+                            pixel_output(206 downto 198) &
+                            pixel_output(134 downto 126) &
+                            pixel_output(62 downto 54);
+                        when 7 => 
+                            data_o <= 
+                            pixel_output(575 downto 567) &
+                            pixel_output(503 downto 495) &
+                            pixel_output(431 downto 423) &
+                            pixel_output(359 downto 351) &
+                            pixel_output(287 downto 279) &
+                            pixel_output(215 downto 207) &
+                            pixel_output(143 downto 135) &
+                            pixel_output(71 downto 63);
                    when others =>
                         data_o <= (others => '0');
                 end case;
