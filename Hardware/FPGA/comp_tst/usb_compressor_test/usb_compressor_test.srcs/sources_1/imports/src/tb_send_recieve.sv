@@ -112,6 +112,7 @@ module tb_send_recieve #(
         #5
         ftdi_rxf_n = 1'b0;
 
+        // Receive
         @ (negedge ftdi_oe_n)
         @ (negedge ftdi_rd_n)
 
@@ -131,13 +132,14 @@ module tb_send_recieve #(
         tb_ftdi_be_i = 2'b00;
 
         //read data from module
-        #2000
+        #500
         tb_data_tx_en = 1'b0;
         tb_be_tx_en = 1'b0;
         //rst_n = 1'b1;
         #8
         ftdi_txe_n = 1'b0;
 
+        //Send
         @ (negedge ftdi_wr_n)
 
         for (int i = 0; i < 64+9; i = i + 1) begin
@@ -146,11 +148,10 @@ module tb_send_recieve #(
 
         ftdi_txe_n = 1'b1;
 
-        #200
-        rst_n = 1'b0;
+        //rst_n = 1'b0;
         #50
 
-        rst_n = 1'b1;
+        //rst_n = 1'b1;
         ftdi_txe_n = 1'b1;
         ftdi_rxf_n = 1'b1;
         tb_data_tx_en = 1'b0;
@@ -158,6 +159,7 @@ module tb_send_recieve #(
         tb_be_tx_en = 1'b1;
         #200
         ftdi_rxf_n = 1'b0;
+
 
         @ (negedge ftdi_oe_n)
         @ (negedge ftdi_rd_n)

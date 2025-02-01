@@ -132,7 +132,7 @@ begin
 
     -- Counter to hold valid_x 171 cycles + number of output pixels
     -- Quantizer should output 8 pixels
-    process(clk_i, rst_i)
+    /*process(clk_i, rst_i)
     variable num_pixels : integer := 54 + 40;
     variable core_latency : integer := 77; 
     begin
@@ -156,7 +156,7 @@ begin
                 end if;
             end if;
         end if;
-    end process;
+    end process;*/
 
     -- Pixel subsampler
     /*pixel_subsampler_inst : entity work.pixel_subsampler
@@ -225,7 +225,7 @@ begin
     -- Clock enable generator for transpose, DCT, and quantizer
     -- Transpose requires 8 clock cycles to load in 8 columns before a row is output
     -- All stages after transpose operate at clk/8
-    process(clk_i, rst_i)
+    /*process(clk_i, rst_i)
     variable clk_div : integer := 8;
     variable counter : integer := 0;
     begin
@@ -250,7 +250,7 @@ begin
                 counter := 0;
             end if;
         end if;
-    end process;
+    end process;*/
 
     pixel_0 <= std_logic_vector(resize(signed(divided_pixels(11 downto 0)), 9));
     pixel_1 <= std_logic_vector(resize(signed(divided_pixels(23 downto 12)), 9));
@@ -263,7 +263,7 @@ begin
 
     resized_pixels <= pixel_7 & pixel_6 & pixel_5 & pixel_4 & pixel_3 & pixel_2 & pixel_1 & pixel_0;
 
-    transpose_ce_delay : entity work.data_delay_reg
+    /*transpose_ce_delay : entity work.data_delay_reg
     generic map (
         SHIFT_DEPTH => 1,
         DATA_WIDTH => 1
@@ -274,7 +274,7 @@ begin
         rst_i => rst_i,
         data_i(0) => transpose_ce_x,
         data_o(0) => transpose_ce_x_delay
-    );
+    );*/
 
     transpose_valid_delay : entity work.data_delay_reg
     generic map (
@@ -299,7 +299,7 @@ begin
     )
     port map (
         clk_i => clk_i,
-        ce_i => transpose_ce_x_delay,
+        ce_i => '1',
         rst_i => rst_i,
         data_i => resized_pixels,
         valid_i => dct1_valid_out_delay,
@@ -321,20 +321,20 @@ begin
 
     -- Register clock enable signal
     -- Aigns with transpose output for DCT stage
-    process(clk_i, rst_i)
+    /*process(clk_i, rst_i)
     begin
         if rst_i = '1' then
             row_dct_ce_x <= '0';
         elsif rising_edge(clk_i) then
             row_dct_ce_x <= transpose_ce_x;
         end if;
-    end process;
+    end process;*/
 
     -- Apply DCT row Wise
     row_dct : entity work.dct1d
     port map (
         clk_i => clk_i,
-        ce_i => row_dct_ce_x,
+        ce_i => '1',
         rst_i => rst_i,
         data_i => pixel_rows_wide,
         valid_i => row_valid,
@@ -344,20 +344,20 @@ begin
 
     -- Register clock enable signal
     -- Aligns with DCT output for quantizer stage
-    process(clk_i, rst_i)
+    /*process(clk_i, rst_i)
     begin
         if rst_i = '1' then
             quantizer_ce_x <= '0';
         elsif rising_edge(clk_i) then
             quantizer_ce_x <= row_dct_ce_x;
         end if;
-    end process;
+    end process;*/
 
     -- Quantize DCT output
     quantizer : entity work.quantizer
     port map (
         clk_i => clk_i,
-        ce_i => quantizer_ce_x,
+        ce_i => '1',
         rst_i => rst_i,
         data_i => dct2_pixel_out,
         valid_i => dct2_valid_out,
@@ -371,7 +371,7 @@ begin
         if rst_i = '1' then
             ce_o <= '0';
         elsif rising_edge(clk_i) then
-            ce_o <= quantizer_ce_x;
+            ce_o <= '1';
         end if;
     end process;
 

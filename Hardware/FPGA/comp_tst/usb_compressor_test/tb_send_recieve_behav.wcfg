@@ -11,20 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="11,075.001 ns"></ZoomEndTime>
-      <Cursor1Time time="6,472.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,878.682 ns"></ZoomStartTime>
+      <ZoomEndTime time="3,685.064 ns"></ZoomEndTime>
+      <Cursor1Time time="3,113.773 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="484"></NameColumnWidth>
-      <ValueColumnWidth column_width="408"></ValueColumnWidth>
+      <NameColumnWidth column_width="493"></NameColumnWidth>
+      <ValueColumnWidth column_width="540"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="27" />
+   <WVObjectSize size="32" />
    <wave_markers>
+      <marker time="4004000" label="" />
       <marker time="1060000" label="" />
-      <marker time="284000" label="" />
-      <marker time="1668000" label="" />
-      <marker time="2164000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_send_recieve/ftdi_clk" type="logic">
       <obj_property name="ElementShortName">ftdi_clk</obj_property>
@@ -58,13 +56,18 @@
       <obj_property name="ElementShortName">ready_to_recieve</obj_property>
       <obj_property name="ObjectShortName">ready_to_recieve</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/data_from_ft600" type="array">
+      <obj_property name="ElementShortName">data_from_ft600[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_from_ft600[15:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="group707" type="group">
       <obj_property name="label">Input CDC FIFO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_send_recieve/top_proc/input_cdc_fifo/rst" type="logic">
          <obj_property name="ElementShortName">rst</obj_property>
          <obj_property name="ObjectShortName">rst</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_send_recieve/top_proc/input_cdc_fifo/wr_clk" type="logic">
          <obj_property name="ElementShortName">wr_clk</obj_property>
@@ -114,6 +117,12 @@
          <obj_property name="CustomSignalColor">#FF0080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_cdc_fifo/valid" type="logic">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_send_recieve/top_proc/input_cdc_fifo/dout" type="array">
       <obj_property name="ElementShortName">dout[15:0]</obj_property>
@@ -136,7 +145,6 @@
    <wvobject fp_name="group91" type="group">
       <obj_property name="label">Processor</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/clk_i" type="logic">
          <obj_property name="ElementShortName">clk_i</obj_property>
          <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -229,7 +237,6 @@
       <wvobject fp_name="group69" type="group">
          <obj_property name="label">Input SIPO Reg</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/input_sipo_reg/clk_i" type="logic">
             <obj_property name="ElementShortName">clk_i</obj_property>
             <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -463,6 +470,12 @@
          <obj_property name="CustomSignalColor">#FFFF00</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/transpose_ce_x" type="logic">
+         <obj_property name="ElementShortName">transpose_ce_x</obj_property>
+         <obj_property name="ObjectShortName">transpose_ce_x</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
       <wvobject fp_name="group660" type="group">
          <obj_property name="label">Core CE Counter</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -483,10 +496,6 @@
             <obj_property name="ElementShortName">done_o</obj_property>
             <obj_property name="ObjectShortName">done_o</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/transpose_ce_x" type="logic">
-            <obj_property name="ElementShortName">transpose_ce_x</obj_property>
-            <obj_property name="ObjectShortName">transpose_ce_x</obj_property>
-         </wvobject>
       </wvobject>
       <wvobject type="divider" fp_name="divider693">
          <obj_property name="label">Pixel Transpose</obj_property>
@@ -495,133 +504,120 @@
       <wvobject fp_name="group110" type="group">
          <obj_property name="label">pixel transpose</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/clk_i" type="logic">
             <obj_property name="ElementShortName">clk_i</obj_property>
             <obj_property name="ObjectShortName">clk_i</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/ce_i" type="logic">
             <obj_property name="ElementShortName">ce_i</obj_property>
             <obj_property name="ObjectShortName">ce_i</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/rst_i" type="logic">
             <obj_property name="ElementShortName">rst_i</obj_property>
             <obj_property name="ObjectShortName">rst_i</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/data_i" type="array">
             <obj_property name="ElementShortName">data_i[71:0]</obj_property>
             <obj_property name="ObjectShortName">data_i[71:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_i" type="logic">
             <obj_property name="ElementShortName">valid_i</obj_property>
             <obj_property name="ObjectShortName">valid_i</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/input_pixel_r" type="array">
+            <obj_property name="ElementShortName">input_pixel_r[71:0]</obj_property>
+            <obj_property name="ObjectShortName">input_pixel_r[71:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_r" type="logic">
+            <obj_property name="ElementShortName">valid_r</obj_property>
+            <obj_property name="ObjectShortName">valid_r</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/data_o" type="array">
             <obj_property name="ElementShortName">data_o[71:0]</obj_property>
             <obj_property name="ObjectShortName">data_o[71:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_o" type="logic">
             <obj_property name="ElementShortName">valid_o</obj_property>
             <obj_property name="ObjectShortName">valid_o</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/row_num_o" type="array">
             <obj_property name="ElementShortName">row_num_o[3:0]</obj_property>
             <obj_property name="ObjectShortName">row_num_o[3:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/input_pixel_x" type="array">
-            <obj_property name="ElementShortName">input_pixel_x[71:0]</obj_property>
-            <obj_property name="ObjectShortName">input_pixel_x[71:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/wr_state_r" type="other">
+            <obj_property name="ElementShortName">wr_state_r</obj_property>
+            <obj_property name="ObjectShortName">wr_state_r</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_x" type="logic">
-            <obj_property name="ElementShortName">valid_x</obj_property>
-            <obj_property name="ObjectShortName">valid_x</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/rd_state_r" type="other">
+            <obj_property name="ElementShortName">rd_state_r</obj_property>
+            <obj_property name="ObjectShortName">rd_state_r</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_2_x" type="logic">
-            <obj_property name="ElementShortName">valid_2_x</obj_property>
-            <obj_property name="ObjectShortName">valid_2_x</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_delay_x" type="logic">
-            <obj_property name="ElementShortName">valid_delay_x</obj_property>
-            <obj_property name="ObjectShortName">valid_delay_x</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/valid_delay2_x" type="logic">
-            <obj_property name="ElementShortName">valid_delay2_x</obj_property>
-            <obj_property name="ObjectShortName">valid_delay2_x</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/wr_counter_r" type="other">
+            <obj_property name="ElementShortName">wr_counter_r</obj_property>
+            <obj_property name="ObjectShortName">wr_counter_r</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/pixel_bank_0" type="array">
             <obj_property name="ElementShortName">pixel_bank_0[575:0]</obj_property>
             <obj_property name="ObjectShortName">pixel_bank_0[575:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/pixel_bank_1" type="array">
             <obj_property name="ElementShortName">pixel_bank_1[575:0]</obj_property>
             <obj_property name="ObjectShortName">pixel_bank_1[575:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/rd_counter_r" type="other">
+            <obj_property name="ElementShortName">rd_counter_r</obj_property>
+            <obj_property name="ObjectShortName">rd_counter_r</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/pixel_output" type="array">
             <obj_property name="ElementShortName">pixel_output[575:0]</obj_property>
             <obj_property name="ObjectShortName">pixel_output[575:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/ce_delay_x" type="logic">
-            <obj_property name="ElementShortName">ce_delay_x</obj_property>
-            <obj_property name="ObjectShortName">ce_delay_x</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/counter_x" type="other">
-            <obj_property name="ElementShortName">counter_x</obj_property>
-            <obj_property name="ObjectShortName">counter_x</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/bank_sel" type="logic">
-            <obj_property name="ElementShortName">bank_sel</obj_property>
-            <obj_property name="ObjectShortName">bank_sel</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/ELEMENT_WIDTH" type="other">
             <obj_property name="ElementShortName">ELEMENT_WIDTH</obj_property>
             <obj_property name="ObjectShortName">ELEMENT_WIDTH</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/NUM_ELEMENTS" type="other">
             <obj_property name="ElementShortName">NUM_ELEMENTS</obj_property>
             <obj_property name="ObjectShortName">NUM_ELEMENTS</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/pixel_transpose/DEPTH" type="other">
             <obj_property name="ElementShortName">DEPTH</obj_property>
             <obj_property name="ObjectShortName">DEPTH</obj_property>
-            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
       </wvobject>
@@ -884,16 +880,16 @@
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/quantizer/valid_o" type="logic">
-         <obj_property name="ElementShortName">valid_o</obj_property>
-         <obj_property name="ObjectShortName">valid_o</obj_property>
-         <obj_property name="CustomSignalColor">#0000FF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/data_o" type="array">
       <obj_property name="ElementShortName">data_o[63:0]</obj_property>
       <obj_property name="ObjectShortName">data_o[63:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/compression_core/\gen_channels(1)\/channel_inst/quantizer/valid_o" type="logic">
+      <obj_property name="ElementShortName">valid_o</obj_property>
+      <obj_property name="ObjectShortName">valid_o</obj_property>
       <obj_property name="CustomSignalColor">#0000FF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
@@ -1007,14 +1003,6 @@
       <obj_property name="ElementShortName">uram_addr1[2:0]</obj_property>
       <obj_property name="ObjectShortName">uram_addr1[2:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_send_recieve/top_proc/uram_addr2" type="array">
-      <obj_property name="ElementShortName">uram_addr2[2:0]</obj_property>
-      <obj_property name="ObjectShortName">uram_addr2[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_send_recieve/top_proc/core_done" type="array">
-      <obj_property name="ElementShortName">core_done[1:0]</obj_property>
-      <obj_property name="ObjectShortName">core_done[1:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_send_recieve/top_proc/ultra_ram_pixel_output_buffer/dout" type="array">
       <obj_property name="ElementShortName">dout[127:0]</obj_property>
       <obj_property name="ObjectShortName">dout[127:0]</obj_property>
@@ -1024,21 +1012,42 @@
       <obj_property name="ObjectShortName">output_word_select[7:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/word_select_en" type="logic">
+      <obj_property name="ElementShortName">word_select_en</obj_property>
+      <obj_property name="ObjectShortName">word_select_en</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_send_recieve/top_proc/data_to_ft600" type="array">
       <obj_property name="ElementShortName">data_to_ft600[15:0]</obj_property>
       <obj_property name="ObjectShortName">data_to_ft600[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/begin_read_counter" type="logic">
+      <obj_property name="ElementShortName">begin_read_counter</obj_property>
+      <obj_property name="ObjectShortName">begin_read_counter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/begin_word_select" type="logic">
+      <obj_property name="ElementShortName">begin_word_select</obj_property>
+      <obj_property name="ObjectShortName">begin_word_select</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_send_recieve/top_proc/word_select_en" type="logic">
       <obj_property name="ElementShortName">word_select_en</obj_property>
       <obj_property name="ObjectShortName">word_select_en</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_send_recieve/top_proc/data_out_valid_delay" type="logic">
-      <obj_property name="ElementShortName">data_out_valid_delay</obj_property>
-      <obj_property name="ObjectShortName">data_out_valid_delay</obj_property>
+   <wvobject fp_name="/tb_send_recieve/top_proc/rd_state_r" type="other">
+      <obj_property name="ElementShortName">rd_state_r</obj_property>
+      <obj_property name="ObjectShortName">rd_state_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/uram_read_cnt" type="other">
+      <obj_property name="ElementShortName">uram_read_cnt</obj_property>
+      <obj_property name="ObjectShortName">uram_read_cnt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/cycle_counter" type="other">
+      <obj_property name="ElementShortName">cycle_counter</obj_property>
+      <obj_property name="ObjectShortName">cycle_counter</obj_property>
    </wvobject>
    <wvobject fp_name="group194" type="group">
       <obj_property name="label">output cdc fifo</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_send_recieve/top_proc/output_cdc_fifo/wr_clk" type="logic">
          <obj_property name="ElementShortName">wr_clk</obj_property>
          <obj_property name="ObjectShortName">wr_clk</obj_property>

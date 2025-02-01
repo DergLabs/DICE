@@ -37,9 +37,9 @@ entity top is
     );
     port ( 
         -- Inputs
-        --clk_100m            : in std_logic;
-        sysclk_n            : in std_logic;
-        sysclk_p            : in std_logic;
+        clk_100m            : in std_logic;
+        --sysclk_n            : in std_logic;
+        --sysclk_p            : in std_logic;
         rst_i               : in std_logic;
 
         ftdi_clk_i          : in std_logic;
@@ -73,7 +73,7 @@ architecture Behavioral of top is
     signal be_from_ft600 : std_logic_vector(1 downto 0);
 
     signal data_in_valid : std_logic;  -- Data from FT600 is valid
-    signal data_out_valid : std_logic; -- Data to FT600 is valid
+    signal ft600_ready_for_data : std_logic; -- Data to FT600 is valid
 
     signal fifo_data_o : std_logic_vector(31 downto 0);
     signal fifo_byte_selector : std_logic := '0';
@@ -109,7 +109,7 @@ architecture Behavioral of top is
     signal data_x : std_logic_vector(31 downto 0);
     signal valid_x : std_logic := '0';
     signal core_data_valid : std_logic;
-    signal data_out_valid_delay : std_logic;    
+    signal ft600_ready_for_data_delay : std_logic;    
 
     signal rst_x : std_logic;
     signal data_out_to_fifo : std_logic_vector(15 downto 0);
@@ -118,8 +118,21 @@ architecture Behavioral of top is
     signal fifo_empty_x : std_logic;
     signal fifo_wr_rst_busy : std_logic;
     signal fifo_rd_rst_busy : std_logic;
-    
-    component clk_wiz_0
+
+    signal fifo_out_valid : std_logic;
+    signal fifo_out_valid2 : std_logic;
+
+    signal data_in_valid_delay : std_logic;
+
+    signal begin_read_counter : std_logic;
+
+    type rd_state_t is (RST, WAIT_FLAG_H, READ_URAM, WAIT_FLAG_L);
+    signal rd_state_r : rd_state_t := RST;
+    signal uram_read_addr : std_logic_vector(2 downto 0);
+    signal uram_read_cnt : integer := 0;
+    signal cycle_counter : integer := 0;
+
+    /*component clk_wiz_0
     port
     (-- Clock in ports
     -- Clock out ports
@@ -134,7 +147,7 @@ architecture Behavioral of top is
 
     signal clk_200m : std_logic;
     signal clk_100m : std_logic;
-    signal locked : std_logic;
+    signal locked : std_logic;*/
 
     /*COMPONENT ila_0
     PORT (
@@ -168,7 +181,8 @@ architecture Behavioral of top is
         rd_en : IN STD_LOGIC;
         dout : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
         full : OUT STD_LOGIC;
-        empty : OUT STD_LOGIC 
+        empty : OUT STD_LOGIC;
+        valid : OUT STD_LOGIC 
     );
     END COMPONENT;
 
@@ -196,7 +210,7 @@ begin
         probe12 => uram_addr2
     );*/
 
-    IBUFDS_inst : IBUFDS
+    /*IBUFDS_inst : IBUFDS
     port map (
         O => sys_clk_ibuf_x,   -- 1-bit output: Buffer output
         I => sysclk_p,   -- 1-bit input: Diff_p buffer input (connect directly to top-level port)
@@ -214,7 +228,7 @@ begin
         locked => locked,
         -- Clock in ports
         clk_in1 => sys_clk_ibuf_x
-    );
+    );*/
 
     -- FT600 runs on FTDI CLK
     ft600_send_recv : entity work.send_recieve_module
@@ -239,59 +253,13 @@ begin
         data_from_ft600 => data_from_ft600, 
         be_from_ft600 => be_from_ft600,
 
-        ready_to_recieve => data_out_valid, -- Data from BRAM is valid and ready to send to FT600
+        ready_to_recieve => ft600_ready_for_data, -- Data from BRAM is valid and ready to send to FT600
         ready_to_send => data_in_valid -- Data from FT600 is valid and ready to send to BRAM
     );
 
-    -- Shift register to hold incoming pixel data
-    /*process(clk_100m, rst_x)
-    begin
-        if (rst_x = '1') then
-            data_x <= (others => '0');
-        elsif rising_edge(clk_100m) then
-            if (data_in_valid = '1') then
-                --valid_x <= '1';
-                -- shift data in right to left (LSB to MSB)
-                data_x <= data_x(15 downto 0) & data_from_ft600;
-                --shift data in left to right (MSB to LSB)
-                --data_x <= data_i & data_x((IN_WIDTH*DEPTH)-1 downto IN_WIDTH);
-            else
-                --valid_x <= '0';
-                data_x <= data_x;
-            end if;
-        end if;
-    end process;
 
-    process(clk_100m, rst_x)
-    begin
-        if (rst_x = '1') then
-            valid_x <= '0';
-        elsif rising_edge(clk_100m) then
-            if (data_in_valid = '1') then
-                valid_x <= '1';
-            else
-                valid_x <= '0';
-            end if;
-        end if;
 
-    -- MUX to select correct bytes from shift reg output
-    process(clk_100m, rst_x)
-    begin
-        if (rst_x = '1') then
-            fifo_byte_selector <= '0';
-        elsif rising_edge(clk_100m) then
-            if (valid_x = '1') then
-                fifo_byte_selector <= not fifo_byte_selector;
-            else
-                fifo_byte_selector <= fifo_byte_selector;
-            end if;
-        end if;
-    end process;
-
-    with fifo_byte_selector select
-        pixel_data <= data_x(31 downto 16) when '1',
-                    data_x(15 downto 0) when others;
-    */
+    data_in_valid_delay <= data_in_valid when rising_edge(clk_100m);
 
     input_cdc_fifo : fifo_generator_1
     PORT MAP (
@@ -299,12 +267,14 @@ begin
         wr_clk => ftdi_clk_i,
         rd_clk => clk_100m,
         din => data_from_ft600,
-        wr_en => data_in_valid,
+        wr_en => data_in_valid_delay,
         rd_en => '1',
         dout => pixel_data,
         full => fifo_full,
-        empty => fifo_empty
+        empty => fifo_empty,
+        valid => fifo_out_valid
     );
+
 
     core_en_delay : entity work.data_delay_reg
     generic map (
@@ -319,31 +289,6 @@ begin
         data_o(0) => valid_x
     );
 
-    /*process(clk_100m, rst_x)
-    begin
-        if (rst_x = '1') then
-            valid_x <= '0';
-        elsif rising_edge(clk_100m) then
-            if (data_in_valid = '1') then
-                valid_x <= '1';
-            else
-                valid_x <= '0';
-            end if;
-        end if;
-    end process;
-
-    process(clk_100m, rst_x)
-    begin
-        if (rst_x = '1') then
-            pixel_data <= (others => '0');
-        elsif rising_edge(clk_100m) then
-            if (valid_x = '1') then
-                pixel_data <= data_from_ft600;
-            else
-                pixel_data <= pixel_data;
-            end if;
-        end if;
-    end process;*/
 
     process(clk_100m, rst_x)
         constant NUM_PIXELS : integer := 66;
@@ -403,7 +348,7 @@ begin
     );
 
     --delay core done signal to output word select
-    out_sel_en_delay : entity work.data_delay_reg
+    /*out_sel_en_delay : entity work.data_delay_reg
     generic map (
         SHIFT_DEPTH => 6,
         DATA_WIDTH => 1
@@ -414,7 +359,7 @@ begin
         rst_i => rst_x,
         data_i(0) => core_done(0),
         data_o(0) => begin_word_select
-    );
+    );*/
 
     -- Counter to increment output memory address for loading in data, runs at 1/8th clk
     process(clk_100m, rst_x)
@@ -424,11 +369,14 @@ begin
         if rst_x = '1' then
             counter := 0;
             uram_addr1 <= (others => '0');
+            begin_word_select <= '0';
         elsif rising_edge(clk_100m) then
-            if (processor_ce(0) = '1' and processor_valid(0) = '1') then
+            if (processor_valid(0) = '1') then
+                begin_word_select <= '0';
                 if counter = clk_div - 1 then
                     counter := 0;
                     uram_addr1 <= (others => '0');
+                    begin_word_select <= '1';
                 else
                     counter := counter + 1;
                     uram_addr1 <= std_logic_vector(unsigned(uram_addr1) + 1);
@@ -440,19 +388,9 @@ begin
         end if;
     end process;
 
-    -- delay data_out_valid signal by one cycle 
-    process(clk_100m, rst_x)
-    begin
-        if (rst_x = '1') then
-            data_out_valid_delay <= '0';
-        elsif rising_edge(clk_100m) then
-            data_out_valid_delay <= data_out_valid;
-        end if;
-    end process;
-    
 
     -- Counter to increment output memory address for loading in data, runs at 1/12th clk
-    process(clk_100m, rst_x)
+    /*process(clk_100m, rst_x)
         variable clk_div : integer := 8;
         variable counter2 : integer := 0;
     begin
@@ -460,7 +398,7 @@ begin
             counter2 := 0;
             uram_addr2 <= (others => '0');
         elsif rising_edge(clk_100m) then
-            if (begin_word_select = '1' and processor_valid(0) = '1' and data_out_valid = '1') then
+            if () then
                 if counter2 = clk_div - 1 then
                     counter2 := 0;
                     if uram_addr2 = "111" then
@@ -475,12 +413,69 @@ begin
                 counter2 := 0;
             end if;
         end if;
+    end process;*/
+
+    process(clk_100m, rst_x)
+    begin
+        if (rst_x = '1') then
+            rd_state_r <= RST;
+        elsif rising_edge(clk_100m) then
+            case rd_state_r is
+                when RST =>
+                    if begin_word_select = '1' and ft600_ready_for_data = '1' then
+                        rd_state_r <= READ_URAM;
+                    else
+                        rd_state_r <= WAIT_FLAG_H;
+                    end if;
+                when WAIT_FLAG_H =>
+                    if begin_word_select = '1' and ft600_ready_for_data = '1' then
+                        rd_state_r <= READ_URAM;
+                    end if;
+                when READ_URAM =>
+                    if uram_read_cnt = 7 then
+                        rd_state_r <= WAIT_FLAG_L;
+                    end if;
+                when WAIT_FLAG_L =>
+                if begin_word_select = '0' then
+                    rd_state_r <= WAIT_FLAG_H;
+                end if;
+            end case;
+        end if;
+    end process;
+
+    process(clk_100m, rst_x)
+    begin
+        if (rst_x = '1') then
+            cycle_counter <= 0;
+            uram_read_addr <= (others => '0');
+            uram_read_cnt <= 0;
+            word_select_en <= '0';
+        elsif rising_edge(clk_100m) then
+            if (rd_state_r = READ_URAM) then
+                if (cycle_counter = 7) then
+                    cycle_counter <= 0;
+                    if uram_read_addr = "111" then
+                        uram_read_addr <= (others => '0');
+                        uram_read_cnt <= 0;
+                    else
+                        uram_read_cnt <= uram_read_cnt + 1;
+                        uram_read_addr <= std_logic_vector(unsigned(uram_read_addr) + 1);
+                    end if;
+                else
+                    cycle_counter <= cycle_counter + 1;
+                end if;
+
+                if (cycle_counter = 2) then
+                    word_select_en <= '1';
+                end if;
+            end if;
+        end if;
     end process;
 
     -- Switch to slower read clock once core is done
     with begin_word_select select
         uram_out_addr <=  uram_addr1 when '0',
-                        uram_addr2 when others;
+                    uram_read_addr when others;
 
     ultra_ram_pixel_output_buffer : entity work.ultra_ram_buffer
     generic map (
@@ -490,26 +485,13 @@ begin
     )
     port map (
         clk => clk_100m,
-        we => processor_ce(0),
+        we => processor_valid(0),
         mem_en => '1',
         din => processor_output,
         addr => uram_out_addr(2 downto 0),
         dout => uram_output_data_o
     );
 
-    --delay core done signal to align word select with ram output
-    word_sel_delay : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH => 2,
-        DATA_WIDTH => 1
-    )
-    port map (
-        clk_i => clk_100m,
-        ce_i => data_out_valid_delay,
-        rst_i => rst_x,
-        data_i(0) => begin_word_select,
-        data_o(0) => word_select_en
-    );
 
     -- Output word select counter
     process(clk_100m, rst_x)
@@ -518,7 +500,7 @@ begin
         if rst_x = '1' then
             output_word_select <= (others => '0');
         elsif rising_edge(clk_100m) then
-            if (word_select_en = '1' and processor_valid(0) = '1') then
+            if (word_select_en = '1') then
                 if output_word_select = clk_div - 1 then
                     output_word_select <= (others => '0');
                 else
@@ -554,18 +536,6 @@ begin
                     uram_output_data_o(111 downto 96) when X"06",
                     uram_output_data_o(127 downto 112) when others;
     
-    dout_valid_delay : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH => 4,
-        DATA_WIDTH => 1
-    )
-    port map (
-        clk_i => clk_100m,
-        ce_i => '1',
-        rst_i => rst_x,
-        data_i(0) => data_out_valid,
-        data_o(0) => rd_en_x
-    );
 
                         
     output_cdc_fifo : fifo_generator_1
@@ -575,10 +545,11 @@ begin
         rd_clk => ftdi_clk_i,
         din => data_out_to_fifo,
         wr_en => word_select_en,
-        rd_en => rd_en_x,
+        rd_en => ft600_ready_for_data,
         dout => data_to_ft600,
         full => fifo_full_x,
-        empty => fifo_empty_x
+        empty => fifo_empty_x,
+        valid => fifo_out_valid2
     );
 
 end Behavioral;

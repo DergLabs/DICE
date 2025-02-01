@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri Jan 31 06:36:14 2025
+// Date        : Fri Jan 31 11:19:51 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_stub.v
@@ -16,8 +16,8 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "fifo_generator_v13_2_9,Vivado 2023.2" *)
 module fifo_generator_1(rst, wr_clk, rd_clk, din, wr_en, rd_en, dout, full, 
-  empty)
-/* synthesis syn_black_box black_box_pad_pin="rst,din[15:0],wr_en,rd_en,dout[15:0],full,empty" */
+  empty, valid)
+/* synthesis syn_black_box black_box_pad_pin="rst,din[15:0],wr_en,rd_en,dout[15:0],full,empty,valid" */
 /* synthesis syn_force_seq_prim="wr_clk" */
 /* synthesis syn_force_seq_prim="rd_clk" */;
   input rst;
@@ -29,4 +29,5 @@ module fifo_generator_1(rst, wr_clk, rd_clk, din, wr_en, rd_en, dout, full,
   output [15:0]dout;
   output full;
   output empty;
+  output valid;
 endmodule

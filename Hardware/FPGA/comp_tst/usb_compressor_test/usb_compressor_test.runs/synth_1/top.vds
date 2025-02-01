@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Jan 31 09:00:35 2025
-# Process ID: 16376
+# Start of session at: Sat Feb  1 09:10:51 2025
+# Process ID: 26576
 # Current directory: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/top.vds
@@ -12,6 +12,7 @@
 # Running On: DESKTOP-U9NB2CD, OS: Windows, CPU Frequency: 3800 MHz, CPU Physical cores: 16, Host memory: 68639 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 492.309 ; gain = 179.617
 Command: read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/utils_1/imports/synth_1/top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -24,18 +25,18 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22648
+INFO: [Synth 8-7075] Helper process launched with PID 26328
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1991.527 ; gain = 420.289
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1990.996 ; gain = 419.777
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:64]
-INFO: [Synth 8-113] binding component instance 'IBUFDS_inst' to cell 'IBUFDS' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:199]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-16376-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'sys_clk' of component 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:207]
-INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-16376-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:17]
+INFO: [Synth 8-113] binding component instance 'IBUFDS_inst' to cell 'IBUFDS' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:213]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-26576-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'sys_clk' of component 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:221]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-26576-DESKTOP-U9NB2CD/realtime/clk_wiz_0_stub.vhdl:17]
 INFO: [Synth 8-6157] synthesizing module 'send_recieve_module' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/src/send_recieve_module.sv:2]
 INFO: [Synth 8-6155] done synthesizing module 'send_recieve_module' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/src/send_recieve_module.sv:2]
-INFO: [Synth 8-3491] module 'fifo_generator_1' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-16376-DESKTOP-U9NB2CD/realtime/fifo_generator_1_stub.vhdl:6' bound to instance 'input_cdc_fifo' of component 'fifo_generator_1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:296]
-INFO: [Synth 8-638] synthesizing module 'fifo_generator_1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-16376-DESKTOP-U9NB2CD/realtime/fifo_generator_1_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'fifo_generator_1' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-26576-DESKTOP-U9NB2CD/realtime/fifo_generator_1_stub.vhdl:6' bound to instance 'input_cdc_fifo' of component 'fifo_generator_1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:264]
+INFO: [Synth 8-638] synthesizing module 'fifo_generator_1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-26576-DESKTOP-U9NB2CD/realtime/fifo_generator_1_stub.vhdl:22]
 INFO: [Synth 8-638] synthesizing module 'data_delay_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 8 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
@@ -78,20 +79,16 @@ INFO: [Synth 8-638] synthesizing module 'transpose' [C:/Users/johnh/Desktop/DICE
 	Parameter ELEMENT_WIDTH bound to: 9 - type: integer 
 	Parameter NUM_ELEMENTS bound to: 8 - type: integer 
 	Parameter DEPTH bound to: 8 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized3' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 7 - type: integer 
-	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized3' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'transpose' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/transpose.vhd:53]
 INFO: [Synth 8-638] synthesizing module 'quantizer' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/quantizer.vhd:49]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized4' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized3' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 96 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized4' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized5' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized3' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized4' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized5' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized4' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'quantization_table' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/quantization_table.vhd:18]
 	Parameter INIT_A bound to: 64'b0000001000000011000000010000000100000000000000010000000000000001 
 	Parameter INIT_B bound to: 64'b0000001000000011000000010000000100000000000000000000000000000000 
@@ -105,12 +102,12 @@ INFO: [Synth 8-113] binding component instance 'ram_inst0' to cell 'RAM32M' [C:/
 	Parameter INIT_D bound to: 64'b0000001000000011000000100000001000000001000000100000000100000010 
 	Parameter IS_WCLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'ram_inst1' to cell 'RAM32M' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/quantization_table.vhd:100]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized6' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 17 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized5' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
 	Parameter DATA_WIDTH bound to: 5 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized6' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized5' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'quantization_table' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/quantization_table.vhd:18]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized7' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized6' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 1 - type: integer 
 	Parameter DATA_WIDTH bound to: 64 - type: integer 
 WARNING: [Synth 8-11358] null range expression ignored [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:64]
@@ -177,7 +174,7 @@ WARNING: [Synth 8-11358] null range expression ignored [C:/Users/johnh/Desktop/D
 WARNING: [Synth 8-11358] null range expression ignored [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:64]
 WARNING: [Synth 8-11358] null range expression ignored [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:64]
 WARNING: [Synth 8-11358] null range expression ignored [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:64]
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized7' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized6' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'quantizer' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/quantizer.vhd:49]
 INFO: [Synth 8-256] done synthesizing module 'image_compressor' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/image_compressor.vhd:49]
 INFO: [Synth 8-256] done synthesizing module 'multi_core_test' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/multi_core_test.vhd:21]
@@ -186,17 +183,12 @@ INFO: [Synth 8-638] synthesizing module 'ultra_ram_buffer' [C:/Users/johnh/Deskt
 	Parameter DWIDTH bound to: 128 - type: integer 
 	Parameter NBPIPE bound to: 1 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'ultra_ram_buffer' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/ultra_ram_buffer.vhd:30]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized8' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
-	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized8' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized9' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
-	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized9' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/imports/new/data_delay_reg.vhd:48]
-INFO: [Synth 8-3491] module 'fifo_generator_1' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-16376-DESKTOP-U9NB2CD/realtime/fifo_generator_1_stub.vhdl:6' bound to instance 'output_cdc_fifo' of component 'fifo_generator_1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:571]
+INFO: [Synth 8-3491] module 'fifo_generator_1' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/.Xil/Vivado-26576-DESKTOP-U9NB2CD/realtime/fifo_generator_1_stub.vhdl:6' bound to instance 'output_cdc_fifo' of component 'fifo_generator_1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:541]
 INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd:64]
 WARNING: [Synth 8-6014] Unused sequential element vaid_counter_x_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/sipo_reg.vhd:98]
+WARNING: [Synth 8-3848] Net row_num_o in module/entity transpose does not have driver. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/transpose.vhd:49]
+WARNING: [Synth 8-6014] Unused sequential element valid_x_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/image_compressor.vhd:127]
+WARNING: [Synth 8-3848] Net done_o in module/entity image_compressor does not have driver. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/imports/sources_1/new/image_compressor.vhd:43]
 WARNING: [Synth 8-7129] Port scale_factor_i[7] in module quantization_table is either unconnected or has no load
 WARNING: [Synth 8-7129] Port scale_factor_i[6] in module quantization_table is either unconnected or has no load
 WARNING: [Synth 8-7129] Port scale_factor_i[5] in module quantization_table is either unconnected or has no load
@@ -205,21 +197,27 @@ WARNING: [Synth 8-7129] Port scale_factor_i[3] in module quantization_table is e
 WARNING: [Synth 8-7129] Port scale_factor_i[2] in module quantization_table is either unconnected or has no load
 WARNING: [Synth 8-7129] Port scale_factor_i[1] in module quantization_table is either unconnected or has no load
 WARNING: [Synth 8-7129] Port scale_factor_i[0] in module quantization_table is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[3] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[2] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[1] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[0] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ce_i in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port done_o in module image_compressor is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 2120.684 ; gain = 549.445
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2120.777 ; gain = 549.559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2120.684 ; gain = 549.445
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2120.777 ; gain = 549.559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2120.684 ; gain = 549.445
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2120.777 ; gain = 549.559
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.138 . Memory (MB): peak = 2120.684 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.155 . Memory (MB): peak = 2120.777 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -240,17 +238,17 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2225.551 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2219.324 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 5 instances were transformed.
   IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 4 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2225.551 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 2219.324 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2225.551 ; gain = 654.312
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2219.324 ; gain = 648.105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -258,7 +256,7 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2225.551 ; gain = 654.312
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2219.324 ; gain = 648.105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -267,5 +265,625 @@ Applied set_property KEEP_HIERARCHY = SOFT for sys_clk. (constraint file  auto g
 Applied set_property KEEP_HIERARCHY = SOFT for input_cdc_fifo. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for output_cdc_fifo. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2225.551 ; gain = 654.312
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2219.324 ; gain = 648.105
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'wr_state_r_reg' in module 'transpose'
+INFO: [Synth 8-802] inferred FSM for state register 'rd_state_r_reg' in module 'transpose'
+INFO: [Synth 8-802] inferred FSM for state register 'rd_state_r_reg' in module 'top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                     rst |                              001 |                               00
+             write_bank0 |                              010 |                               01
+             write_bank1 |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'wr_state_r_reg' using encoding 'one-hot' in module 'transpose'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                     rst |                               00 |                               00
+              read_bank0 |                               01 |                               01
+              read_bank1 |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rd_state_r_reg' using encoding 'sequential' in module 'transpose'
+INFO: [Synth 8-5780] Default cascade height of 1 will be used for URAM '"ultra_ram_buffer:/mem_reg"'.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                     rst |                               00 |                               00
+             wait_flag_h |                               01 |                               01
+               read_uram |                               10 |                               10
+             wait_flag_l |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rd_state_r_reg' using encoding 'sequential' in module 'top'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2219.324 ; gain = 648.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 8     
+	   2 Input   16 Bit       Adders := 2     
+	   2 Input   12 Bit       Adders := 4     
+	   3 Input   12 Bit       Adders := 4     
+	   2 Input    8 Bit       Adders := 17    
+	   2 Input    5 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 2     
++---Registers : 
+	              576 Bit    Registers := 4     
+	              128 Bit    Registers := 3     
+	               96 Bit    Registers := 6     
+	               72 Bit    Registers := 4     
+	               64 Bit    Registers := 8     
+	               32 Bit    Registers := 8     
+	               16 Bit    Registers := 4     
+	               12 Bit    Registers := 192   
+	                8 Bit    Registers := 34    
+	                6 Bit    Registers := 4     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 195   
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 397   
+	                1 Bit    Registers := 159   
++---RAMs : 
+	             1024 Bit	(8 X 128 bit)          RAMs := 1     
++---Muxes : 
+	   3 Input  576 Bit        Muxes := 6     
+	   2 Input   72 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 12    
+	   3 Input   32 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 6     
+	   3 Input   16 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 11    
+	   4 Input    8 Bit        Muxes := 8     
+	   3 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 3     
+	   3 Input    2 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 18    
+	   4 Input    1 Bit        Muxes := 2     
+	   3 Input    1 Bit        Muxes := 10    
+	   8 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C-A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C-A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C-A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C-A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C-A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C-A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C-A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C-A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C-A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C-A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C-A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C-A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C-A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C-A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C-A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C-A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+DSP Report: Generating DSP out00, operation Mode is: C+A:B.
+DSP Report: operator out00 is absorbed into DSP out00.
+DSP Report: Generating DSP out10, operation Mode is: C+A:B.
+DSP Report: operator out10 is absorbed into DSP out10.
+DSP Report: Generating DSP out20, operation Mode is: C+A:B.
+DSP Report: operator out20 is absorbed into DSP out20.
+DSP Report: Generating DSP out30, operation Mode is: C+A:B.
+DSP Report: operator out30 is absorbed into DSP out30.
+WARNING: [Synth 8-3917] design top has port ftdi_wakeup_o driven by constant 0
+WARNING: [Synth 8-7129] Port row_num_o[3] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[2] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[1] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port row_num_o[0] in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ce_i in module transpose is either unconnected or has no load
+WARNING: [Synth 8-7129] Port done_o in module image_compressor is either unconnected or has no load
+WARNING: [Synth 8-5790] Small sized RAM "top/ultra_ram_pixel_output_buffer/mem_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
+INFO: [Synth 8-5780] Default cascade height of 1 will be used for URAM '"top/ultra_ram_pixel_output_buffer/mem_reg"'.
+WARNING: [Synth 8-5790] Small sized RAM "top/ultra_ram_pixel_output_buffer/mem_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
+INFO: [Synth 8-5780] Default cascade height of 1 will be used for URAM '"top/ultra_ram_pixel_output_buffer/mem_reg"'.
+INFO: [Synth 8-6776] UltraRAM "top/ultra_ram_pixel_output_buffer/mem_reg": Pipeline stages found = 2; Recommended pipeline stages =0, Maximum pipeline stages = 2
+INFO: [Synth 8-5814] Pipeline result for URAM ("top/ultra_ram_pixel_output_buffer/mem_reg"): Matrix size= (1 cols x 1 rows) | Pipeline stages => ( available = 2, absorbed = 2 )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2219.324 ; gain = 648.105
+---------------------------------------------------------------------------------
+ Sort Area is  out00_16 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out00_26 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out00_36 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out00_5 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out10_17 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out10_27 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out10_37 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out10_7 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out20_18 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out20_28 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out20_38 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out20_8 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out30_19 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out30_29 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out30_39 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out30_9 : 0 0 : 78 78 : Used 1 time 100
+ Sort Area is  out00_0 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_12 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_1a : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_1e : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_22 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_2a : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_2e : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_32 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_3a : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_3e : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_a : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out00_e : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_13 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_1b : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_1f : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_2 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_23 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_2b : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_2f : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_33 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_3b : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_3f : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_b : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out10_f : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_10 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_14 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_1c : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_20 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_24 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_2c : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_3 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_30 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_34 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_3c : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_40 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out20_c : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_11 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_15 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_1d : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_21 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_25 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_2d : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_31 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_35 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_3d : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_4 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_41 : 0 0 : 35 35 : Used 1 time 100
+ Sort Area is  out30_d : 0 0 : 35 35 : Used 1 time 100
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Ultra RAM: Preliminary Mapping Report (see note below)
++------------+---------------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|Module Name | RTL Object                            | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
++------------+---------------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|top         | ultra_ram_pixel_output_buffer/mem_reg | 8 x 128                | W | R |                        |   |   | Port A           | 2       | 1x1          | 2                        | 2           | 
++------------+---------------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Ultra RAMs at the current stage of the synthesis flow. Some Ultra RAMs may be reimplemented as non Ultra RAM primitives later in the synthesis flow. Multiple instantiated Ultra RAMs are reported only once. Fields "FF provided for Pipeline" and "FF absorbed" respectively indicate number of registers available for pipelining and number of registers absorbed in the URAM matrix for pipelining. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
+-------NONE-------
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C-A:B       | 30     | 18     | 12     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|simd_4x12b_dsp | C+A:B       | 30     | 18     | 48     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__parameterized0__3.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__parameterized0__3.
+WARNING: [Synth 8-3332] Sequential element (i_4) is unused and will be removed from module simd_4x12b_dsp__parameterized0__3.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__parameterized0__3.
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_4) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__parameterized0__1.
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2594.789 ; gain = 1023.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2623.945 ; gain = 1052.727
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Ultra RAM: Final Mapping Report (see note below)
++------------+---------------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|Module Name | RTL Object                            | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
++------------+---------------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|top         | ultra_ram_pixel_output_buffer/mem_reg | 8 x 128                | W | R |                        |   |   | Port A           | 2       | 1x1          | 2                        | 2           | 
++------------+---------------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+
+
+Distributed RAM: Final Mapping Report
+-------NONE-------
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 2673.566 ; gain = 1102.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                                                                 | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|top         | compression_core/gen_channels[0].channel_inst/col_dct/valid_delay/shift_reg_reg[0][5]    | 7      | 4     | YES          | NO                 | YES               | 4      | 0       | 
+|top         | compression_core/gen_channels[0].channel_inst/col_dct/layer_3_delay/shift_reg_reg[27][1] | 4      | 360   | YES          | NO                 | YES               | 360    | 0       | 
+|top         | compression_core/gen_channels[0].channel_inst/quantizer/valid_o_reg                      | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|top         | core_en_delay/shift_reg_reg[0][7]                                                        | 8      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++------------+------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++----------------------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name                       | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++----------------------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|simd_4x12b_dsp_30                 | (C+A:B)'    | 26     | 18     | 44     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp__parameterized0_31 | (C-(A:B))'  | 26     | 18     | 44     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_32                 | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_33                 | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_19                 | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp__parameterized0_20 | (C-(A:B))'  | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_21                 | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_22                 | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_5                  | (C+A:B)'    | 26     | 18     | 44     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp__parameterized0_6  | (C-(A:B))'  | 26     | 18     | 44     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_7                  | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_8                  | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp                    | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp__parameterized0    | (C-(A:B))'  | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_2                  | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp_3                  | (C+A:B)'    | 30     | 18     | 48     | -      | 48     | 0    | 0    | 0    | -    | -     | 0    | 1    | 
++----------------------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++------+-----------------+----------+
+|      |BlackBox name    |Instances |
++------+-----------------+----------+
+|1     |clk_wiz_0        |         1|
+|2     |fifo_generator_1 |         2|
++------+-----------------+----------+
+
+Report Cell Usage: 
++------+----------------------+------+
+|      |Cell                  |Count |
++------+----------------------+------+
+|1     |clk_wiz_0_bbox        |     1|
+|2     |fifo_generator_1_bbox |     2|
+|4     |BUFG                  |     1|
+|5     |CARRY8                |    48|
+|6     |DSP_ALU               |    16|
+|7     |DSP_A_B_DATA          |    16|
+|8     |DSP_C_DATA            |    16|
+|9     |DSP_MULTIPLIER        |    16|
+|10    |DSP_M_DATA            |    16|
+|11    |DSP_OUTPUT            |    16|
+|12    |DSP_PREADD            |    16|
+|13    |DSP_PREADD_DATA       |    16|
+|14    |LUT1                  |    25|
+|15    |LUT2                  |  3357|
+|16    |LUT3                  |   395|
+|17    |LUT4                  |   415|
+|18    |LUT5                  |   285|
+|19    |LUT6                  |   959|
+|20    |MUXF7                 |    96|
+|21    |RAM32M                |     4|
+|22    |SRL16E                |   366|
+|23    |URAM288               |     2|
+|24    |FDCE                  |  5100|
+|25    |FDPE                  |     6|
+|26    |FDRE                  |   517|
+|27    |IBUF                  |     4|
+|28    |IBUFDS                |     1|
+|29    |IOBUF                 |    18|
+|30    |OBUF                  |     9|
++------+----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:41 . Memory (MB): peak = 2685.758 ; gain = 1015.992
+Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 2685.758 ; gain = 1114.539
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.158 . Memory (MB): peak = 2694.836 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 188 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2721.121 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 44 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 16 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 4 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 18 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 4 instances
+
+Synth Design complete | Checksum: 25a2c388
+INFO: [Common 17-83] Releasing license: Synthesis
+85 Infos, 101 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:01:12 . Memory (MB): peak = 2721.121 ; gain = 2157.051
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 2721.121 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/synth_1/top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Feb  1 09:12:15 2025...

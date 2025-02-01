@@ -153,7 +153,7 @@ begin
     --delay addr value by 3 cycles
     addr_delay : entity work.data_delay_reg
     generic map (
-        SHIFT_DEPTH => 17,
+        SHIFT_DEPTH => 2,
         DATA_WIDTH => 5
     )
     port map (

@@ -56,6 +56,9 @@
 #set rd_clk_period     [get_property PERIOD $rd_clock]
 #set skew_value [expr {(($wr_clk_period < $rd_clk_period) ? $wr_clk_period : $rd_clk_period)} ]
 
+# Ignore paths from the write clock to the read data registers for Asynchronous Distributed RAM based FIFO
+set_false_path -from [filter [all_fanout -from [get_ports wr_clk] -flat -endpoints_only] {IS_LEAF}] -to [get_cells -hierarchical -filter {NAME =~ *gdm.dm_gen.dm*/gpr1.dout_i_reg*}]
+
 
 # Set max delay on cross clock domain path for Block/Distributed RAM based FIFO
 

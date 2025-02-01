@@ -129,7 +129,7 @@ begin
                 valid_o <= valid_x;
             else
                 data_o <= data_o;
-                valid_o <= valid_o;
+                valid_o <= '0';
             end if;
         end if;
 
