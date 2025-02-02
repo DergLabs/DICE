@@ -18,14 +18,14 @@ module tb_send_recieve #(
     wire [15:0] ftdi_data;
     wire [1:0] ftdi_be;
 
-    reg [15:0] tb_ftdi_data_i;
+    reg [15:0] tb_ftdi_data_i = '0;
     wire [15:0] tb_ftdi_data_o;
     reg tb_data_tx_en = 1'b0;
 
     assign ftdi_data = tb_data_tx_en ? tb_ftdi_data_i : 16'hZZZZ;
     assign tb_ftdi_data_o = ftdi_data;
 
-    reg [1:0] tb_ftdi_be_i;
+    reg [1:0] tb_ftdi_be_i = '0;
     wire [1:0] tb_ftdi_be_o;
     reg tb_be_tx_en = 1'b0;
 
@@ -44,12 +44,13 @@ module tb_send_recieve #(
     wire full;
     wire empty;
 
+    reg data_in_valid;
     
     
     always #FT600_CLK_PERIOD    ftdi_clk = ~ftdi_clk;
 
 
-    send_recieve_module send_recieve_module (
+    v1_5_send_recieve_module v1_5_send_recieve_module (
         .rst_n(rst_n),
         .ftdi_resetn(ftdi_resetn),    // to FT600's pin10 (RESET_N)
         .ftdi_wakeupn(ftdi_wakeupn),   // to FT600's pin11 (WAKEUP_N)
@@ -63,13 +64,14 @@ module tb_send_recieve #(
         .ftdi_be(ftdi_be),        // to FT600's pin3 (BE_1) and pin2 (BE_0)
         .data_to_ft600(data_to_ft600),
         .be_to_ft600(be_to_ft600),
+        //.data_in_valid(1'b1),
         .data_from_ft600(data_from_ft600),
         .be_from_ft600(be_from_ft600),
         .ready_to_recieve(ready_to_recieve),
         .ready_to_send(ready_to_send)
     );
 
-    custom_sync_fifo custom_sync_fifo (
+    custom_sync_fifo #(.DEPTH(128), .DATA_WIDTH(18)) custom_sync_fifo (
         .clk(ftdi_clk),
         .rst_n(rst_n),
         .w_en(ready_to_send),
@@ -87,6 +89,7 @@ module tb_send_recieve #(
         rst_n = 1'b0;
         ftdi_txe_n = 1'b1;
         ftdi_rxf_n = 1'b1;
+        data_in_valid = 1'b0;
 
         tb_data_tx_en = 1'b0;
 
@@ -144,12 +147,22 @@ module tb_send_recieve #(
         #30
         tb_data_tx_en = 1'b0;
         tb_be_tx_en = 1'b0;
+        #5
         //rst_n = 1'b1;
-        #8
+        @ (negedge ftdi_clk)
         ftdi_txe_n = 1'b0;
+
+        //@ (negedge ftdi_clk)
+        //@ (negedge ftdi_clk)
+        //@ (negedge ftdi_clk)
+        //@ (posedge ftdi_clk)
+        //data_in_valid = 1'b1;
+
 
         @ (negedge ftdi_wr_n)
 
+
+
         @ (posedge ftdi_clk)
         @ (posedge ftdi_clk)
         @ (posedge ftdi_clk)
@@ -159,6 +172,7 @@ module tb_send_recieve #(
         @ (posedge ftdi_clk)
         @ (posedge ftdi_clk)
 
+        @ (negedge ftdi_clk)
         ftdi_txe_n = 1'b1;
 
         #8
@@ -213,8 +227,9 @@ module tb_send_recieve #(
         #30
         tb_data_tx_en = 1'b0;
         tb_be_tx_en = 1'b0;
+        #5
         //rst_n = 1'b1;
-        #8
+        @ (negedge ftdi_clk)
         ftdi_txe_n = 1'b0;
 
 
@@ -229,6 +244,7 @@ module tb_send_recieve #(
         @ (posedge ftdi_clk)
         @ (posedge ftdi_clk)
 
+        @ (negedge ftdi_clk)
         ftdi_txe_n = 1'b1;
 
     end

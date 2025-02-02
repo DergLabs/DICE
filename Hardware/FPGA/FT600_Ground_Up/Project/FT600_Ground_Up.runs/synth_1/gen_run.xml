@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1736390949" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/ft600_stream_top.dcp">
-  <File Type="PA-TCL" Name="ft600_16B_loopback.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="ft600_16B_loopback_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="ft600_16B_loopback_reports.tcl"/>
-  <File Type="RDS-RDS" Name="ft600_16B_loopback.vds"/>
-  <File Type="RDS-UTIL" Name="ft600_16B_loopback_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="ft600_16B_loopback_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="ft600_16B_loopback.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ft600_16B_loopback_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="ft600_16B_loopback_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1738301941" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/ft600_stream_top.dcp">
+  <File Type="PA-TCL" Name="v2_ft600_256B_loopback.tcl"/>
+  <File Type="REPORTS-TCL" Name="v2_ft600_256B_loopback_reports.tcl"/>
+  <File Type="RDS-RDS" Name="v2_ft600_256B_loopback.vds"/>
+  <File Type="RDS-UTIL" Name="v2_ft600_256B_loopback_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="v2_ft600_256B_loopback_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="v2_ft600_256B_loopback.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/ip/ila_0/ila_0.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../src/clock_beat.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -25,13 +36,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../src/send_recieve_module.sv">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../src/ft600_16B_loopback.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -39,17 +43,8 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/ip/ila_0/ila_0.xci">
+    <File Path="$PPRDIR/../src/send_recieve_module.sv">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -57,7 +52,6 @@
     </File>
     <File Path="$PPRDIR/../src/stream_recieve_top.sv">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -65,7 +59,20 @@
     </File>
     <File Path="$PPRDIR/../src/stream_top.sv">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/v2_custom_sync_fifo.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/v2_send_recieve_module.sv">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -73,15 +80,21 @@
     </File>
     <File Path="$PPRDIR/../src/tb_parameters.vh">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
         <Attr Name="IsVisible" Val="1"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../src/v2_ft600_256B_loopback.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="ft600_16B_loopback"/>
+      <Option Name="TopModule" Val="v2_ft600_256B_loopback"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_2" RelGenDir="$PGENDIR/constrs_2">

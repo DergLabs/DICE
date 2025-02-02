@@ -1,5 +1,5 @@
 
-module LZSS_Encoder #(parameter WORD_SIZE = 8, WINDOW_SIZE = 32, LOOK_AHEAD_SIZE = 4)
+module LZSS_Encoder #(parameter WORD_SIZE = 8, WINDOW_SIZE = 32)
 (
     input clk,
     input rst_n,

@@ -1,0 +1,414 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Jan 31 00:39:07 2025
+# Process ID: 39652
+# Current directory: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1
+# Command line: vivado.exe -log v2_ft600_256B_loopback.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source v2_ft600_256B_loopback.tcl
+# Log file: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1/v2_ft600_256B_loopback.vds
+# Journal file: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1\vivado.jou
+# Running On: M_Laptop, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33946 MB
+#-----------------------------------------------------------
+source v2_ft600_256B_loopback.tcl -notrace
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 486.320 ; gain = 180.445
+Command: read_checkpoint -auto_incremental -incremental C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/utils_1/imports/synth_1/ft600_stream_top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/utils_1/imports/synth_1/ft600_stream_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top v2_ft600_256B_loopback -part xcku3p-ffva676-2-i
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 39100
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2005.273 ; gain = 420.539
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:69]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:71]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:109]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:111]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:150]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:152]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:192]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:194]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:235]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:237]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:279]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:281]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:324]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:326]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:370]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:372]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:417]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:419]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:465]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:467]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:514]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:516]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:564]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:566]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:615]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:617]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:69]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:71]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:109]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:111]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:150]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:152]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:192]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:194]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:235]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:237]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:279]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:281]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:324]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:326]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:370]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:372]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:417]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:419]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:465]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:467]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:514]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:516]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:564]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:566]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:615]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core.vh:617]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:65]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:67]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:100]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:102]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:135]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:137]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:170]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:172]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:205]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:207]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:240]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:242]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:275]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:277]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:310]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:312]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:345]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:347]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:380]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:382]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:415]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:417]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:450]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:452]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:485]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:487]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:65]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:67]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:100]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:102]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:135]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:137]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:170]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:172]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:205]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:207]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:240]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:242]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:275]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:277]
+INFO: [Common 17-14] Message 'Synth 8-11241' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-6157] synthesizing module 'v2_ft600_256B_loopback' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/v2_ft600_256B_loopback.sv:2]
+INFO: [Synth 8-6157] synthesizing module 'v2_send_recieve_module' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/v2_send_recieve_module.sv:2]
+INFO: [Synth 8-6155] done synthesizing module 'v2_send_recieve_module' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/v2_send_recieve_module.sv:2]
+INFO: [Synth 8-6157] synthesizing module 'v2_custom_sync_fifo' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/v2_custom_sync_fifo.sv:1]
+	Parameter DEPTH bound to: 128 - type: integer 
+	Parameter DATA_WIDTH bound to: 18 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'v2_custom_sync_fifo' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/v2_custom_sync_fifo.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'clock_beat' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/clock_beat.v:9]
+	Parameter CLK_FREQ bound to: 100000000 - type: integer 
+	Parameter BEAT_FREQ bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clock_beat' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/clock_beat.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'v2_ft600_256B_loopback' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/src/v2_ft600_256B_loopback.sv:2]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2379.055 ; gain = 794.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 2379.055 ; gain = 794.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 2379.055 ; gain = 794.320
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2379.055 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'ila_0'. The XDC file c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'clk_wiz_0'. The XDC file c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'clk_wiz_0'. The XDC file c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc will not be read for any cell of this module.
+Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/constrs_2/new/total_constraints.xdc]
+Finished Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/constrs_2/new/total_constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.srcs/constrs_2/new/total_constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/v2_ft600_256B_loopback_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/v2_ft600_256B_loopback_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/v2_ft600_256B_loopback_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/v2_ft600_256B_loopback_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2470.531 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 2470.531 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 2470.531 ; gain = 885.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku3p-ffva676-2-i
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 2470.531 ; gain = 885.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 2470.531 ; gain = 885.797
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'ready_to_recieve_delay_flag_reg' in module 'v2_send_recieve_module'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                              001 |                               00
+                 iSTATE0 |                              010 |                               01
+*
+                  iSTATE |                              100 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'ready_to_recieve_delay_flag_reg' using encoding 'one-hot' in module 'v2_send_recieve_module'
+INFO: [Synth 8-6904] The RAM "v2_custom_sync_fifo:/fifo_reg" of size (depth=128 x width=18) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 2470.531 ; gain = 885.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    7 Bit       Adders := 4     
++---Registers : 
+	               18 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
+	                7 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 10    
++---RAMs : 
+	               2K Bit	(128 X 18 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   16 Bit        Muxes := 2     
+	   3 Input   16 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 11    
+	   3 Input    1 Bit        Muxes := 3     
+	   4 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-6904] The RAM "v2_ft600_256B_loopback/v2_custom_sync_fifo/fifo_reg" of size (depth=128 x width=18) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+WARNING: [Synth 8-3917] design v2_ft600_256B_loopback has port ftdi_wakeupn driven by constant 0
+INFO: [Synth 8-6904] The RAM "v2_ft600_256B_loopback/v2_custom_sync_fifo/fifo_reg" of size (depth=128 x width=18) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:35 . Memory (MB): peak = 2470.531 ; gain = 885.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-----------------------+------------------------------+-----------+----------------------+--------------+
+|Module Name            | RTL Object                   | Inference | Size (Depth x Width) | Primitives   | 
++-----------------------+------------------------------+-----------+----------------------+--------------+
+|v2_ft600_256B_loopback | v2_custom_sync_fifo/fifo_reg | Implied   | 128 x 18             | RAM64M8 x 6  | 
++-----------------------+------------------------------+-----------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:00:46 . Memory (MB): peak = 2593.160 ; gain = 1008.426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++-----------------------+------------------------------+-----------+----------------------+--------------+
+|Module Name            | RTL Object                   | Inference | Size (Depth x Width) | Primitives   | 
++-----------------------+------------------------------+-----------+----------------------+--------------+
+|v2_ft600_256B_loopback | v2_custom_sync_fifo/fifo_reg | Implied   | 128 x 18             | RAM64M8 x 6  | 
++-----------------------+------------------------------+-----------+----------------------+--------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY8  |     3|
+|3     |LUT1    |     7|
+|4     |LUT2    |    18|
+|5     |LUT3    |    30|
+|6     |LUT4    |     7|
+|7     |LUT5    |     5|
+|8     |LUT6    |    13|
+|9     |RAM64M8 |     6|
+|10    |FDCE    |    41|
+|11    |FDPE    |     5|
+|12    |FDRE    |    77|
+|13    |IBUF    |     4|
+|14    |IOBUF   |    18|
+|15    |OBUF    |     9|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 2623.383 ; gain = 947.172
+Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 2623.383 ; gain = 1038.648
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2633.742 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 32 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2657.496 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 29 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  IBUF => IBUF (IBUFCTRL, INBUF): 4 instances
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 18 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 6 instances
+
+Synth Design complete | Checksum: 421771d6
+INFO: [Common 17-83] Releasing license: Synthesis
+137 Infos, 2 Warnings, 3 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:54 ; elapsed = 00:01:02 . Memory (MB): peak = 2657.496 ; gain = 2083.000
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 2657.496 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/FT600_Ground_Up/Project/FT600_Ground_Up.runs/synth_1/v2_ft600_256B_loopback.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file v2_ft600_256B_loopback_utilization_synth.rpt -pb v2_ft600_256B_loopback_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 31 00:40:26 2025...

@@ -1,8 +1,22 @@
 # compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../FT600_Ground_Up.ip_user_files/ipstatic" --include "../../../../../src" \
+"../../../../FT600_Ground_Up.gen/sources_1/ip/ila_0/sim/ila_0.v" \
+"../../../../FT600_Ground_Up.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
+"../../../../FT600_Ground_Up.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
+"../../../../../src/clock_beat.v" \
+
 sv xil_defaultlib  --include "../../../../FT600_Ground_Up.ip_user_files/ipstatic" --include "../../../../../src" \
 "../../../../../src/custom_sync_fifo.sv" \
+"../../../../../src/ft600_16B_loopback.sv" \
 "../../../../../src/send_recieve_module.sv" \
+"../../../../../src/stream_recieve_top.sv" \
+"../../../../../src/stream_top.sv" \
+"../../../../../src/v2_custom_sync_fifo.sv" \
+"../../../../../src/v2_send_recieve_module.sv" \
+"../../../../../src/v2_ft600_256B_loopback.sv" \
+"../../../../../src/v1.5_send_recieve_module.sv" \
 "../../../../../src/tb_send_recieve.sv" \
+"../../../../../src/tb_stream_recieve_top.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

@@ -125,8 +125,4 @@ set_property SLEW SLOW [get_ports ftdi_wr_n]
 #set_property DIFF_TERM_ADV TERM_100 [get_ports sysclk_p]
 
 
-
 create_clock -period 10.000 -waveform {0.000 5.000} [get_ports ftdi_clk]
-
-set_input_delay -clock [get_clocks -regexp .*] 1.000 [list [get_ports -regexp -filter { NAME =~  ".*" && DIRECTION == "INOUT" }] [get_ports {ftdi_rxf_n ftdi_txe_n}]]
-

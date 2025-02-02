@@ -1,4 +1,4 @@
-module custom_sync_fifo #(parameter DEPTH=16, DATA_WIDTH=18) (
+module custom_sync_fifo #(parameter DEPTH=128, DATA_WIDTH=18) (
   input clk, rst_n,
   input w_en, r_en,
   input [DATA_WIDTH-1:0] data_in,

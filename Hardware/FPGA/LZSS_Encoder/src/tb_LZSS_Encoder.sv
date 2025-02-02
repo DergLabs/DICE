@@ -3,7 +3,6 @@ module tb_LZSS_Encoder ();
 
     localparam WORD_SIZE = 8;
     localparam WINDOW_SIZE = 32;
-    localparam LOOK_AHEAD_SIZE = 4;
 
     localparam MAIN_CLK_PERIOD = 10;
 
@@ -16,7 +15,7 @@ module tb_LZSS_Encoder ();
     wire [WORD_SIZE:0] data_o; // 1 bit added to each word for reference identification
     wire o_ready;
 
-    LZSS_Encoder #(.WORD_SIZE(WORD_SIZE), .WINDOW_SIZE(WINDOW_SIZE), .LOOK_AHEAD_SIZE(LOOK_AHEAD_SIZE)) LZSS_encoder_0 (
+    LZSS_Encoder #(.WORD_SIZE(WORD_SIZE), .WINDOW_SIZE(WINDOW_SIZE)) LZSS_encoder_0 (
         .clk(clk),
         .rst_n(rst_n),
         .w_en(w_en),
