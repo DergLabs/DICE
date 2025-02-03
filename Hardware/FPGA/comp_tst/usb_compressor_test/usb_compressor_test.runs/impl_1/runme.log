@@ -14,53 +14,50 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 492.613 ; gain = 180.391
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 492.832 ; gain = 181.445
 Command: link_design -top top -part xcku3p-ffva676-2-i
 Design is defaulting to srcset: sources_1
 Design is defaulting to constrset: constrs_1
 INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.dcp' for cell 'input_cdc_fifo'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.dcp' for cell 'sys_clk'
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.119 . Memory (MB): peak = 1593.668 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 194 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.dcp' for cell 'clocking_gen.sys_clk'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.dcp' for cell 'gen_modified_core_input.output_memory/output_memory'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.dcp' for cell 'input_memory_fifo/input_cdc_fifo'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.211 . Memory (MB): peak = 1623.297 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 298 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-479] Netlist was created with Vivado 2023.2
 INFO: [Project 1-570] Preparing netlist for logic optimization
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'sys_clk/inst'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'sys_clk/inst'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'sys_clk/inst'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'sys_clk/inst'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc] for cell 'input_cdc_fifo/U0'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc] for cell 'input_cdc_fifo/U0'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc] for cell 'output_cdc_fifo/U0'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc] for cell 'output_cdc_fifo/U0'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc] for cell 'input_memory_fifo/input_cdc_fifo/U0'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc] for cell 'input_memory_fifo/input_cdc_fifo/U0'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'clocking_gen.sys_clk/inst'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'clocking_gen.sys_clk/inst'
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'clocking_gen.sys_clk/inst'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'clocking_gen.sys_clk/inst'
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'ila_0'. The XDC file c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc will not be read for any cell of this module.
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'ila_0'. The XDC file c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc will not be read for any cell of this module.
 Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc]
 WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
-WARNING: [Constraints 18-633] Creating clock sysclk_bufg with 18 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:12]
+WARNING: [Vivado 12-507] No nets matched 'clk_100m'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:13]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_nets clk_100m]'. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:13]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc]
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc] for cell 'input_cdc_fifo/U0'
-INFO: [Timing 38-35] Done setting XDC timing constraints. [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc:60]
-INFO: [Timing 38-2] Deriving generated clocks [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc:60]
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc] for cell 'input_cdc_fifo/U0'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc] for cell 'output_cdc_fifo/U0'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc] for cell 'output_cdc_fifo/U0'
-INFO: [Project 1-1714] 12 XPM XDC files have been applied to the design.
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc] for cell 'input_memory_fifo/input_cdc_fifo/U0'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc] for cell 'input_memory_fifo/input_cdc_fifo/U0'
+INFO: [Project 1-1714] 7 XPM XDC files have been applied to the design.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2054.355 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2096.863 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 49 instances were transformed.
-  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 16 instances
+  A total of 53 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 24 instances
   IBUF => IBUF (IBUFCTRL, INBUF): 4 instances
   IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
   IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 18 instances
-  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 4 instances
-  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 2 instances
-  RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 6 instances
 
 The system cannot find the path specified.
-12 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+11 Infos, 2 Warnings, 3 Critical Warnings and 0 Errors encountered.
 link_design completed successfully
-link_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:34 . Memory (MB): peak = 2054.355 ; gain = 1488.828
+link_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:35 . Memory (MB): peak = 2096.863 ; gain = 1532.441
 Command: opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku3p'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xcku3p'
@@ -71,119 +68,117 @@ INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Project 1-461] DRC finished with 0 Errors
 INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2054.355 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2096.863 ; gain = 0.000
 
 Starting Cache Timing Information Task
 WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
-WARNING: [Constraints 18-633] Creating clock sysclk_bufg with 18 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:12]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Ending Cache Timing Information Task | Checksum: f41e6fac
+Ending Cache Timing Information Task | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2054.355 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 2096.863 ; gain = 0.000
 
 Starting Logic Optimization Task
 
 Phase 1 Initialization
 
 Phase 1.1 Core Generation And Design Setup
-Phase 1.1 Core Generation And Design Setup | Checksum: f41e6fac
+Phase 1.1 Core Generation And Design Setup | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2431.527 ; gain = 0.000
 
 Phase 1.2 Setup Constraints And Sort Netlist
-Phase 1.2 Setup Constraints And Sort Netlist | Checksum: f41e6fac
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Phase 1 Initialization | Checksum: f41e6fac
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Phase 1 Initialization | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 2431.527 ; gain = 0.000
 
 Phase 2 Timer Update And Timing Data Collection
 
 Phase 2.1 Timer Update
-Phase 2.1 Timer Update | Checksum: f41e6fac
+Phase 2.1 Timer Update | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.233 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.340 . Memory (MB): peak = 2431.527 ; gain = 0.000
 
 Phase 2.2 Timing Data Collection
-Phase 2.2 Timing Data Collection | Checksum: f41e6fac
+Phase 2.2 Timing Data Collection | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.254 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Phase 2 Timer Update And Timing Data Collection | Checksum: f41e6fac
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.361 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Phase 2 Timer Update And Timing Data Collection | Checksum: 15463e0f0
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.255 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.362 . Memory (MB): peak = 2431.527 ; gain = 0.000
 
 Phase 3 Retarget
-INFO: [Opt 31-1566] Pulled 3 inverters resulting in an inversion of 41 pins
-INFO: [Opt 31-138] Pushed 2 inverter(s) to 5124 load pin(s).
+INFO: [Opt 31-1566] Pulled 4 inverters resulting in an inversion of 11 pins
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 7798 load pin(s).
 INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 3 Retarget | Checksum: 278505e5a
+Phase 3 Retarget | Checksum: 206b6211e
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.819 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Retarget | Checksum: 278505e5a
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Retarget | Checksum: 206b6211e
 INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 9 cells
-INFO: [Opt 31-1021] In phase Retarget, 16 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+INFO: [Opt 31-1021] In phase Retarget, 6 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 4 Constant propagation
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Phase 4 Constant propagation | Checksum: 278505e5a
+Phase 4 Constant propagation | Checksum: 206b6211e
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.878 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Constant propagation | Checksum: 278505e5a
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Constant propagation | Checksum: 206b6211e
 INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
-INFO: [Opt 31-1021] In phase Constant propagation, 16 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+INFO: [Opt 31-1021] In phase Constant propagation, 6 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 5 Sweep
-Phase 5 Sweep | Checksum: 248bd6f2a
+Phase 5 Sweep | Checksum: 1bedbab08
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.998 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Sweep | Checksum: 248bd6f2a
-INFO: [Opt 31-389] Phase Sweep created 4 cells and removed 1 cells
-INFO: [Opt 31-1021] In phase Sweep, 60 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Sweep | Checksum: 1bedbab08
+INFO: [Opt 31-389] Phase Sweep created 4 cells and removed 17 cells
+INFO: [Opt 31-1021] In phase Sweep, 30 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 6 BUFG optimization
 INFO: [Opt 31-1077] Phase BUFG optimization inserted 0 global clock buffer(s) for CLOCK_LOW_FANOUT.
-Phase 6 BUFG optimization | Checksum: 248bd6f2a
+Phase 6 BUFG optimization | Checksum: 1bedbab08
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
-BUFG optimization | Checksum: 248bd6f2a
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+BUFG optimization | Checksum: 1bedbab08
 INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
-INFO: [Opt 31-1021] In phase BUFG optimization, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 7 Shift Register Optimization
 INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
-Phase 7 Shift Register Optimization | Checksum: 248bd6f2a
+Phase 7 Shift Register Optimization | Checksum: 1bedbab08
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Shift Register Optimization | Checksum: 248bd6f2a
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Shift Register Optimization | Checksum: 1bedbab08
 INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
 
 Phase 8 Post Processing Netlist
-Phase 8 Post Processing Netlist | Checksum: 248bd6f2a
+Phase 8 Post Processing Netlist | Checksum: 1bedbab08
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Post Processing Netlist | Checksum: 248bd6f2a
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Post Processing Netlist | Checksum: 1bedbab08
 INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
-INFO: [Opt 31-1021] In phase Post Processing Netlist, 22 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 10 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 9 Finalization
 
 Phase 9.1 Finalizing Design Cores and Updating Shapes
-Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 24be02513
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 1b409bfec
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
 
 Phase 9.2 Verifying Netlist Connectivity
 
 Starting Connectivity Check Task
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Phase 9.2 Verifying Netlist Connectivity | Checksum: 24be02513
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 1b409bfec
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Phase 9 Finalization | Checksum: 24be02513
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
+Phase 9 Finalization | Checksum: 1b409bfec
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
 Opt_design Change Summary
 =========================
 
@@ -191,41 +186,57 @@ Opt_design Change Summary
 -------------------------------------------------------------------------------------------------------------------------
 |  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
 -------------------------------------------------------------------------------------------------------------------------
-|  Retarget                     |               0  |               9  |                                             16  |
-|  Constant propagation         |               0  |               0  |                                             16  |
-|  Sweep                        |               4  |               1  |                                             60  |
-|  BUFG optimization            |               0  |               0  |                                              1  |
+|  Retarget                     |               0  |               9  |                                              6  |
+|  Constant propagation         |               0  |               0  |                                              6  |
+|  Sweep                        |               4  |              17  |                                             30  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
 |  Shift Register Optimization  |               0  |               0  |                                              0  |
-|  Post Processing Netlist      |               0  |               0  |                                             22  |
+|  Post Processing Netlist      |               0  |               0  |                                             10  |
 -------------------------------------------------------------------------------------------------------------------------
 
 
-Ending Logic Optimization Task | Checksum: 24be02513
+Ending Logic Optimization Task | Checksum: 1b409bfec
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2431.527 ; gain = 0.000
 INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
-Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2431.527 ; gain = 0.000
 
 Starting Power Optimization Task
 INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
-Ending Power Optimization Task | Checksum: 24be02513
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 1 BRAM(s) out of a total of 5 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 4 WE to EN ports
+Number of BRAM Ports augmented: 1 newly gated: 4 Total Ports: 10
+Ending PowerOpt Patch Enables Task | Checksum: 2874d331f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Ending Power Optimization Task | Checksum: 2874d331f
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2990.113 ; gain = 558.586
 
 Starting Final Cleanup Task
-Ending Final Cleanup Task | Checksum: 24be02513
+Ending Final Cleanup Task | Checksum: 2874d331f
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2990.113 ; gain = 0.000
 
 Starting Netlist Obfuscation Task
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2389.266 ; gain = 0.000
-Ending Netlist Obfuscation Task | Checksum: 24be02513
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 1f9e8c60b
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2389.266 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2990.113 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
-37 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+40 Infos, 4 Warnings, 3 Critical Warnings and 0 Errors encountered.
 opt_design completed successfully
-opt_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 2389.266 ; gain = 334.910
+opt_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:19 . Memory (MB): peak = 2990.113 ; gain = 893.250
 INFO: [runtcl-4] Executing : report_drc -file top_drc_opted.rpt -pb top_drc_opted.pb -rpx top_drc_opted.rpx
 Command: report_drc -file top_drc_opted.rpt -pb top_drc_opted.pb -rpx top_drc_opted.rpx
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
@@ -233,16 +244,16 @@ INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/impl_1/top_drc_opted.rpt.
 report_drc completed successfully
 INFO: [Timing 38-480] Writing timing data to binary archive.
-Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2443.527 ; gain = 0.000
-Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2443.527 ; gain = 0.000
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2990.113 ; gain = 0.000
 Writing XDEF routing.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 2443.527 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 2990.113 ; gain = 0.000
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 2443.527 ; gain = 0.000
-Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2443.527 ; gain = 0.000
-Wrote Device Cache: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.049 . Memory (MB): peak = 2443.527 ; gain = 0.000
-Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.147 . Memory (MB): peak = 2443.527 ; gain = 0.000
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.074 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.140 . Memory (MB): peak = 2990.113 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/impl_1/top_opt.dcp' has been generated.
 Command: place_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku3p'
@@ -262,32 +273,31 @@ Starting Placer Task
 Phase 1 Placer Initialization
 
 Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2451.016 ; gain = 0.000
-Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 14e2056fc
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 1c48bc763
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2451.016 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2451.016 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2990.113 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2990.113 ; gain = 0.000
 
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
 WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
-WARNING: [Constraints 18-633] Creating clock sysclk_bufg with 18 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:12]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 16d95b365
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1bfa5a9b2
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 1.3 Build Placer Netlist Model
-Phase 1.3 Build Placer Netlist Model | Checksum: 26b493ad8
+Phase 1.3 Build Placer Netlist Model | Checksum: 1e9d309ba
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:27 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:24 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 1.4 Constrain Clocks/Macros
-Phase 1.4 Constrain Clocks/Macros | Checksum: 26b493ad8
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1e9d309ba
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:27 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 1 Placer Initialization | Checksum: 26b493ad8
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:24 . Memory (MB): peak = 3867.312 ; gain = 877.199
+Phase 1 Placer Initialization | Checksum: 1e9d309ba
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:27 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:24 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2 Global Placement
 
@@ -296,62 +306,62 @@ Phase 2.1 Floorplanning
 Phase 2.1.1 Partition Driven Placement
 
 Phase 2.1.1.1 PBP: Partition Driven Placement
-Phase 2.1.1.1 PBP: Partition Driven Placement | Checksum: 1cb877a93
+Phase 2.1.1.1 PBP: Partition Driven Placement | Checksum: 1f6586f8c
 
-Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:26 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.1.1.2 PBP: Clock Region Placement
 INFO: [Place 30-3162] Check ILP status : ILP-based clock placer completed successfully.
-Phase 2.1.1.2 PBP: Clock Region Placement | Checksum: 1a2b60382
+Phase 2.1.1.2 PBP: Clock Region Placement | Checksum: 255fb1266
 
-Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:27 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.1.1.3 PBP: Compute Congestion
-Phase 2.1.1.3 PBP: Compute Congestion | Checksum: 1a2b60382
+Phase 2.1.1.3 PBP: Compute Congestion | Checksum: 255fb1266
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.1.1.4 PBP: UpdateTiming
-Phase 2.1.1.4 PBP: UpdateTiming | Checksum: 1d3b1768e
+Phase 2.1.1.4 PBP: UpdateTiming | Checksum: 1e43189d0
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.1.1.5 PBP: Add part constraints
-Phase 2.1.1.5 PBP: Add part constraints | Checksum: 1d3b1768e
+Phase 2.1.1.5 PBP: Add part constraints | Checksum: 1e43189d0
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 2.1.1 Partition Driven Placement | Checksum: 1d3b1768e
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
+Phase 2.1.1 Partition Driven Placement | Checksum: 1e43189d0
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 2.1 Floorplanning | Checksum: 1edc4bdd1
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
+Phase 2.1 Floorplanning | Checksum: 28264d30d
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.2 Update Timing before SLR Path Opt
-Phase 2.2 Update Timing before SLR Path Opt | Checksum: 1edc4bdd1
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 28264d30d
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.3 Post-Processing in Floorplanning
-Phase 2.3 Post-Processing in Floorplanning | Checksum: 1edc4bdd1
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 28264d30d
 
-Time (s): cpu = 00:00:39 ; elapsed = 00:00:34 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:32 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.4 Global Placement Core
 
 Phase 2.4.1 UpdateTiming Before Physical Synthesis
-Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: 1319fa744
+Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: 264952aec
 
-Time (s): cpu = 00:01:15 ; elapsed = 00:00:54 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:49 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 2.4.2 Physical Synthesis In Placer
-INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 44 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 61 LUT instances to create LUTNM shape
 INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
-INFO: [Physopt 32-1138] End 1 Pass. Optimized 21 nets or LUTs. Breaked 0 LUT, combined 21 existing LUTs and moved 0 existing LUT
-INFO: [Physopt 32-1030] Pass 1. Identified 6 candidate driver sets for equivalent driver rewiring.
-INFO: [Physopt 32-661] Optimized 6 nets.  Re-placed 34 instances.
-INFO: [Physopt 32-775] End 1 Pass. Optimized 6 nets or cells. Created 0 new cell, deleted 0 existing cell and moved 34 existing cells
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 3831.223 ; gain = 0.000
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 27 nets or LUTs. Breaked 0 LUT, combined 27 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-1030] Pass 1. Identified 9 candidate driver sets for equivalent driver rewiring.
+INFO: [Physopt 32-661] Optimized 9 nets.  Re-placed 57 instances.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 9 nets or cells. Created 0 new cell, deleted 0 existing cell and moved 57 existing cells
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 3867.312 ; gain = 0.000
 INFO: [Physopt 32-65] No nets found for high-fanout optimization.
 INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
@@ -362,7 +372,7 @@ INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was
 INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
 INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 3831.223 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 3867.312 ; gain = 0.000
 
 Summary of Physical Synthesis Optimizations
 ============================================
@@ -371,9 +381,9 @@ Summary of Physical Synthesis Optimizations
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 |  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-|  LUT Combining                                    |            0  |             21  |                    21  |           0  |           1  |  00:00:00  |
+|  LUT Combining                                    |            0  |             27  |                    27  |           0  |           1  |  00:00:00  |
 |  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Equivalent Driver Rewiring                       |            0  |              0  |                     6  |           0  |           1  |  00:00:00  |
+|  Equivalent Driver Rewiring                       |            0  |              0  |                     9  |           0  |           1  |  00:00:00  |
 |  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
@@ -381,74 +391,73 @@ Summary of Physical Synthesis Optimizations
 |  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Total                                            |            0  |             21  |                    27  |           0  |           5  |  00:00:00  |
+|  Total                                            |            0  |             27  |                    36  |           0  |           5  |  00:00:01  |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Phase 2.4.2 Physical Synthesis In Placer | Checksum: 1633f2036
+Phase 2.4.2 Physical Synthesis In Placer | Checksum: 165a71700
 
-Time (s): cpu = 00:01:16 ; elapsed = 00:00:55 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 2.4 Global Placement Core | Checksum: 24e5fc08b
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:50 . Memory (MB): peak = 3867.312 ; gain = 877.199
+Phase 2.4 Global Placement Core | Checksum: 17340bbb8
 
-Time (s): cpu = 00:01:26 ; elapsed = 00:01:00 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 2 Global Placement | Checksum: 24e5fc08b
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:56 . Memory (MB): peak = 3867.312 ; gain = 877.199
+Phase 2 Global Placement | Checksum: 17340bbb8
 
-Time (s): cpu = 00:01:26 ; elapsed = 00:01:00 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:56 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: 1f0a98586
+Phase 3.1 Commit Multi Column Macros | Checksum: 189238462
 
-Time (s): cpu = 00:01:36 ; elapsed = 00:01:05 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:01:32 ; elapsed = 00:01:01 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1c3f56387
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1031a72e0
 
-Time (s): cpu = 00:01:37 ; elapsed = 00:01:06 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:01:33 ; elapsed = 00:01:02 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 3.3 Small Shape DP
 
 Phase 3.3.1 Small Shape Clustering
-Phase 3.3.1 Small Shape Clustering | Checksum: 1d143d810
+Phase 3.3.1 Small Shape Clustering | Checksum: 164a16a75
 
-Time (s): cpu = 00:01:55 ; elapsed = 00:01:16 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:01:53 ; elapsed = 00:01:12 . Memory (MB): peak = 3867.312 ; gain = 877.199
 
 Phase 3.3.2 Slice Area Swap
 
 Phase 3.3.2.1 Slice Area Swap Initial
-Phase 3.3.2.1 Slice Area Swap Initial | Checksum: 1fe11f7c9
+Phase 3.3.2.1 Slice Area Swap Initial | Checksum: 16c07f1ec
 
-Time (s): cpu = 00:02:05 ; elapsed = 00:01:21 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 3.3.2 Slice Area Swap | Checksum: 1fe11f7c9
+Time (s): cpu = 00:02:04 ; elapsed = 00:01:19 . Memory (MB): peak = 3867.312 ; gain = 877.199
+Phase 3.3.2 Slice Area Swap | Checksum: 16c07f1ec
 
-Time (s): cpu = 00:02:05 ; elapsed = 00:01:21 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 3.3 Small Shape DP | Checksum: 248f1905d
+Time (s): cpu = 00:02:04 ; elapsed = 00:01:19 . Memory (MB): peak = 3867.441 ; gain = 877.328
+Phase 3.3 Small Shape DP | Checksum: 19a08967e
 
-Time (s): cpu = 00:02:25 ; elapsed = 00:01:32 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:02:26 ; elapsed = 00:01:31 . Memory (MB): peak = 3871.309 ; gain = 881.195
 
 Phase 3.4 Re-assign LUT pins
-Phase 3.4 Re-assign LUT pins | Checksum: 2574b7d86
+Phase 3.4 Re-assign LUT pins | Checksum: d44913c9
 
-Time (s): cpu = 00:02:25 ; elapsed = 00:01:32 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:02:26 ; elapsed = 00:01:31 . Memory (MB): peak = 3871.309 ; gain = 881.195
 
 Phase 3.5 Pipeline Register Optimization
-Phase 3.5 Pipeline Register Optimization | Checksum: 20e7a1958
+Phase 3.5 Pipeline Register Optimization | Checksum: 23c7ed313
 
-Time (s): cpu = 00:02:25 ; elapsed = 00:01:32 . Memory (MB): peak = 3831.223 ; gain = 1380.207
-Phase 3 Detail Placement | Checksum: 20e7a1958
+Time (s): cpu = 00:02:27 ; elapsed = 00:01:32 . Memory (MB): peak = 3871.309 ; gain = 881.195
+Phase 3 Detail Placement | Checksum: 23c7ed313
 
-Time (s): cpu = 00:02:26 ; elapsed = 00:01:32 . Memory (MB): peak = 3831.223 ; gain = 1380.207
+Time (s): cpu = 00:02:27 ; elapsed = 00:01:32 . Memory (MB): peak = 3871.309 ; gain = 881.195
 
 Phase 4 Post Placement Optimization and Clean-Up
 
 Phase 4.1 Post Commit Optimization
 WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
-WARNING: [Constraints 18-633] Creating clock sysclk_bufg with 18 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:12]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Phase 4.1.1 Post Placement Optimization
-Post Placement Optimization Initialization | Checksum: 19b2ea380
+Post Placement Optimization Initialization | Checksum: 1782e1e01
 
 Phase 4.1.1.1 BUFG Insertion
 
@@ -456,34 +465,34 @@ Starting Physical Synthesis Task
 
 Phase 1 Physical Synthesis Initialization
 INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
-INFO: [Physopt 32-619] Estimated Timing Summary | WNS=2.486 | TNS=0.000 |
-Phase 1 Physical Synthesis Initialization | Checksum: 177c015e8
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=2.210 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 113518d09
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.243 . Memory (MB): peak = 3839.562 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.366 . Memory (MB): peak = 3928.223 ; gain = 0.000
 INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
-Ending Physical Synthesis Task | Checksum: 177c015e8
+Ending Physical Synthesis Task | Checksum: 113518d09
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.340 . Memory (MB): peak = 3839.562 ; gain = 0.000
-Phase 4.1.1.1 BUFG Insertion | Checksum: 19b2ea380
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.501 . Memory (MB): peak = 3928.223 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: 1782e1e01
 
-Time (s): cpu = 00:02:41 ; elapsed = 00:01:43 . Memory (MB): peak = 3839.562 ; gain = 1388.547
+Time (s): cpu = 00:02:46 ; elapsed = 00:01:44 . Memory (MB): peak = 3928.223 ; gain = 938.109
 
 Phase 4.1.1.2 Post Placement Timing Optimization
-INFO: [Place 30-746] Post Placement Timing Summary WNS=2.486. For the most accurate timing information please run report_timing.
-Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 194599866
+INFO: [Place 30-746] Post Placement Timing Summary WNS=2.210. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 11d002f12
 
-Time (s): cpu = 00:02:41 ; elapsed = 00:01:43 . Memory (MB): peak = 3839.562 ; gain = 1388.547
+Time (s): cpu = 00:02:46 ; elapsed = 00:01:45 . Memory (MB): peak = 3928.223 ; gain = 938.109
 
-Time (s): cpu = 00:02:41 ; elapsed = 00:01:43 . Memory (MB): peak = 3839.562 ; gain = 1388.547
-Phase 4.1 Post Commit Optimization | Checksum: 194599866
+Time (s): cpu = 00:02:46 ; elapsed = 00:01:45 . Memory (MB): peak = 3928.223 ; gain = 938.109
+Phase 4.1 Post Commit Optimization | Checksum: 11d002f12
 
-Time (s): cpu = 00:02:41 ; elapsed = 00:01:43 . Memory (MB): peak = 3839.562 ; gain = 1388.547
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 3858.570 ; gain = 0.000
+Time (s): cpu = 00:02:46 ; elapsed = 00:01:45 . Memory (MB): peak = 3928.223 ; gain = 938.109
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 3957.184 ; gain = 0.000
 
 Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 1a7876f01
+Phase 4.2 Post Placement Cleanup | Checksum: 1aeeb4dde
 
-Time (s): cpu = 00:02:54 ; elapsed = 00:01:51 . Memory (MB): peak = 3858.570 ; gain = 1407.555
+Time (s): cpu = 00:03:00 ; elapsed = 00:01:54 . Memory (MB): peak = 3957.184 ; gain = 967.070
 
 Phase 4.3 Placer Reporting
 
@@ -495,49 +504,49 @@ INFO: [Place 30-612] Post-Placement Estimated Congestion
 |___________|___________________|___________________|___________________|
 |      North|                1x1|                1x1|                1x1|
 |___________|___________________|___________________|___________________|
-|      South|                1x1|                1x1|                1x1|
+|      South|                1x1|                1x1|                2x2|
 |___________|___________________|___________________|___________________|
-|       East|                1x1|                1x1|                1x1|
+|       East|                1x1|                1x1|                2x2|
 |___________|___________________|___________________|___________________|
 |       West|                1x1|                1x1|                1x1|
 |___________|___________________|___________________|___________________|
 
-Phase 4.3.1 Print Estimated Congestion | Checksum: 1a7876f01
+Phase 4.3.1 Print Estimated Congestion | Checksum: 1aeeb4dde
 
-Time (s): cpu = 00:02:54 ; elapsed = 00:01:51 . Memory (MB): peak = 3858.570 ; gain = 1407.555
-Phase 4.3 Placer Reporting | Checksum: 1a7876f01
+Time (s): cpu = 00:03:00 ; elapsed = 00:01:54 . Memory (MB): peak = 3957.184 ; gain = 967.070
+Phase 4.3 Placer Reporting | Checksum: 1aeeb4dde
 
-Time (s): cpu = 00:02:54 ; elapsed = 00:01:51 . Memory (MB): peak = 3858.570 ; gain = 1407.555
+Time (s): cpu = 00:03:00 ; elapsed = 00:01:54 . Memory (MB): peak = 3957.184 ; gain = 967.070
 
 Phase 4.4 Final Placement Cleanup
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 3858.570 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 3957.184 ; gain = 0.000
 
-Time (s): cpu = 00:02:54 ; elapsed = 00:01:51 . Memory (MB): peak = 3858.570 ; gain = 1407.555
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1b7f9ed41
+Time (s): cpu = 00:03:00 ; elapsed = 00:01:54 . Memory (MB): peak = 3957.184 ; gain = 967.070
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 27503a1df
 
-Time (s): cpu = 00:02:54 ; elapsed = 00:01:51 . Memory (MB): peak = 3858.570 ; gain = 1407.555
-Ending Placer Task | Checksum: 15e5456ed
+Time (s): cpu = 00:03:00 ; elapsed = 00:01:54 . Memory (MB): peak = 3957.184 ; gain = 967.070
+Ending Placer Task | Checksum: 24c66fb17
 
-Time (s): cpu = 00:02:54 ; elapsed = 00:01:52 . Memory (MB): peak = 3858.570 ; gain = 1407.555
-76 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+Time (s): cpu = 00:03:00 ; elapsed = 00:01:54 . Memory (MB): peak = 3957.184 ; gain = 967.070
+79 Infos, 6 Warnings, 3 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
-place_design: Time (s): cpu = 00:02:58 ; elapsed = 00:01:53 . Memory (MB): peak = 3858.570 ; gain = 1415.043
+place_design: Time (s): cpu = 00:03:04 ; elapsed = 00:01:56 . Memory (MB): peak = 3957.184 ; gain = 967.070
 INFO: [runtcl-4] Executing : report_io -file top_io_placed.rpt
-report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.086 . Memory (MB): peak = 3858.570 ; gain = 0.000
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 3957.184 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_placed.rpt -pb top_utilization_placed.pb
 INFO: [runtcl-4] Executing : report_control_sets -verbose -file top_control_sets_placed.rpt
-report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 3858.570 ; gain = 0.000
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 3957.184 ; gain = 0.000
 INFO: [Timing 38-480] Writing timing data to binary archive.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.051 . Memory (MB): peak = 3858.570 ; gain = 0.000
-Wrote PlaceDB: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.534 . Memory (MB): peak = 3858.570 ; gain = 0.000
-Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3858.570 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.083 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.768 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3957.184 ; gain = 0.000
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 3858.570 ; gain = 0.000
-Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 3858.570 ; gain = 0.000
-Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 3858.570 ; gain = 0.000
-Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.699 . Memory (MB): peak = 3858.570 ; gain = 0.000
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.080 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.060 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.976 . Memory (MB): peak = 3957.184 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/impl_1/top_placed.dcp' has been generated.
 Command: phys_opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku3p'
@@ -545,23 +554,23 @@ INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc
 
 Starting Initial Update Timing Task
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3858.570 ; gain = 0.000
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 3957.184 ; gain = 0.000
 INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
 INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
 INFO: [Common 17-83] Releasing license: Implementation
-85 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+88 Infos, 6 Warnings, 3 Critical Warnings and 0 Errors encountered.
 phys_opt_design completed successfully
 INFO: [Timing 38-480] Writing timing data to binary archive.
-Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.061 . Memory (MB): peak = 3868.516 ; gain = 8.949
-Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.565 . Memory (MB): peak = 3868.516 ; gain = 8.949
-Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3868.516 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.087 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.817 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3957.184 ; gain = 0.000
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.062 . Memory (MB): peak = 3868.516 ; gain = 0.000
-Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 3868.516 ; gain = 0.000
-Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 3868.516 ; gain = 0.000
-Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.721 . Memory (MB): peak = 3868.516 ; gain = 8.949
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 3957.184 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.988 . Memory (MB): peak = 3957.184 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/impl_1/top_physopt.dcp' has been generated.
 Command: route_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku3p'
@@ -576,49 +585,49 @@ Starting Routing Task
 INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
 
 Phase 1 Build RT Design
-Checksum: PlaceDB: 7b84629b ConstDB: 0 ShapeSum: cfa21db7 RouteDB: 132dd69b
-Nodegraph reading from file.  Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.803 . Memory (MB): peak = 3879.766 ; gain = 0.000
-Post Restoration Checksum: NetGraph: bb5df30c | NumContArr: da9dfe18 | Constraints: 902f6800 | Timing: c2a8fa9d
-Phase 1 Build RT Design | Checksum: 2e8d453c1
+Checksum: PlaceDB: d5a06e23 ConstDB: 0 ShapeSum: e4db6e28 RouteDB: 91eb1ecc
+Nodegraph reading from file.  Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.942 . Memory (MB): peak = 3964.172 ; gain = 0.000
+Post Restoration Checksum: NetGraph: 277217e1 | NumContArr: f1690c20 | Constraints: 11278f89 | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 1ecabae27
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 3879.766 ; gain = 0.000
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 3964.172 ; gain = 0.000
 
 Phase 2 Router Initialization
 
 Phase 2.1 Fix Topology Constraints
-Phase 2.1 Fix Topology Constraints | Checksum: 2e8d453c1
+Phase 2.1 Fix Topology Constraints | Checksum: 1ecabae27
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 3879.766 ; gain = 0.000
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 3964.172 ; gain = 0.000
 
 Phase 2.2 Pre Route Cleanup
-Phase 2.2 Pre Route Cleanup | Checksum: 2e8d453c1
+Phase 2.2 Pre Route Cleanup | Checksum: 1ecabae27
 
-Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 3879.766 ; gain = 0.000
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 3964.172 ; gain = 0.000
 
 Phase 2.3 Global Clock Net Routing
  Number of Nodes with overlaps = 0
-Phase 2.3 Global Clock Net Routing | Checksum: 27e8552d1
+Phase 2.3 Global Clock Net Routing | Checksum: 1bcc71211
 
-Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 3950.047 ; gain = 70.281
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 4036.410 ; gain = 72.238
 
 Phase 2.4 Update Timing
-Phase 2.4 Update Timing | Checksum: 1b049f38b
+Phase 2.4 Update Timing | Checksum: 2244c6566
 
-Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 3950.047 ; gain = 70.281
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.531  | TNS=0.000  | WHS=-1.292 | THS=-19.725|
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 4036.410 ; gain = 72.238
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.281  | TNS=0.000  | WHS=-0.403 | THS=-3.746 |
 
 
 Phase 2.5 Update Timing for Bus Skew
 
 Phase 2.5.1 Update Timing
-Phase 2.5.1 Update Timing | Checksum: 18f87deb9
+Phase 2.5.1 Update Timing | Checksum: 1dfe5c134
 
-Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 3950.047 ; gain = 70.281
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.531  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:12 . Memory (MB): peak = 4036.410 ; gain = 72.238
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.281  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 2.5 Update Timing for Bus Skew | Checksum: 216c075dc
+Phase 2.5 Update Timing for Bus Skew | Checksum: 283beab3b
 
-Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 3950.047 ; gain = 70.281
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:12 . Memory (MB): peak = 4036.410 ; gain = 72.238
 
 Router Utilization Summary
   Global Vertical Routing Utilization    = 0 %
@@ -626,126 +635,92 @@ Router Utilization Summary
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
-  Number of Failed Nets               = 8300
+  Number of Failed Nets               = 12242
     (Failed Nets is the sum of unrouted and partially routed nets)
-  Number of Unrouted Nets             = 7357
-  Number of Partially Routed Nets     = 943
+  Number of Unrouted Nets             = 11168
+  Number of Partially Routed Nets     = 1074
   Number of Node Overlaps             = 0
 
-Phase 2 Router Initialization | Checksum: 161224511
+Phase 2 Router Initialization | Checksum: 28578f1aa
 
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:10 . Memory (MB): peak = 3963.875 ; gain = 84.109
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 3 Initial Routing
 
 Phase 3.1 Global Routing
-Phase 3.1 Global Routing | Checksum: 161224511
+Phase 3.1 Global Routing | Checksum: 28578f1aa
 
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:10 . Memory (MB): peak = 3963.875 ; gain = 84.109
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:13 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 3.2 Initial Net Routing
-Phase 3.2 Initial Net Routing | Checksum: 1530149b9
+Phase 3.2 Initial Net Routing | Checksum: 2a18d7e40
 
-Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 3963.875 ; gain = 84.109
-Phase 3 Initial Routing | Checksum: 1b9c191a5
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:13 . Memory (MB): peak = 4047.824 ; gain = 83.652
+Phase 3 Initial Routing | Checksum: 2babf21d1
 
-Time (s): cpu = 00:00:20 ; elapsed = 00:00:12 . Memory (MB): peak = 3963.875 ; gain = 84.109
-INFO: [Route 35-580] Design has 19 pins with tight setup and hold constraints.
-
-The top 5 pins with tight setup and hold constraints:
-
-+====================+===================+===================================================================================================================+
-| Launch Setup Clock | Launch Hold Clock | Pin                                                                                                               |
-+====================+===================+===================================================================================================================+
-| sysclk_bufg        | sysclk_bufg       | output_word_select_reg[3]/D                                                                                       |
-| sysclk_bufg        | sysclk_bufg       | output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg_0_15_0_13/RAMA/I |
-| sysclk_bufg        | sysclk_bufg       | output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg_0_15_0_13/RAMD/I |
-| sysclk_bufg        | sysclk_bufg       | output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg_0_15_0_13/RAME/I |
-| sysclk_bufg        | sysclk_bufg       | output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm_gen.dm/RAM_reg_0_15_14_15/DP/I  |
-+--------------------+-------------------+-------------------------------------------------------------------------------------------------------------------+
-
-File with complete list of pins: tight_setup_hold_pins.txt
-
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:13 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 4 Rip-up And Reroute
 
 Phase 4.1 Global Iteration 0
- Number of Nodes with overlaps = 630
- Number of Nodes with overlaps = 10
+ Number of Nodes with overlaps = 1131
+ Number of Nodes with overlaps = 37
  Number of Nodes with overlaps = 2
- Number of Nodes with overlaps = 1
  Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.608  | TNS=0.000  | WHS=-0.168 | THS=-1.979 |
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.196  | TNS=0.000  | WHS=-0.204 | THS=-0.204 |
 
-Phase 4.1 Global Iteration 0 | Checksum: 240946780
+Phase 4.1 Global Iteration 0 | Checksum: 132221b3a
 
-Time (s): cpu = 00:01:59 ; elapsed = 00:00:41 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:18 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
-Phase 4.2 Additional Iteration for Hold
-Phase 4.2 Additional Iteration for Hold | Checksum: 24f75dc84
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.196  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Time (s): cpu = 00:01:59 ; elapsed = 00:00:41 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-Phase 4 Rip-up And Reroute | Checksum: 24f75dc84
+Phase 4.2 Global Iteration 1 | Checksum: 28f81b732
 
-Time (s): cpu = 00:01:59 ; elapsed = 00:00:41 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 4047.824 ; gain = 83.652
+Phase 4 Rip-up And Reroute | Checksum: 28f81b732
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 5 Delay and Skew Optimization
 
 Phase 5.1 Delay CleanUp
+Phase 5.1 Delay CleanUp | Checksum: 27af70f74
 
-Phase 5.1.1 Update Timing
-Phase 5.1.1 Update Timing | Checksum: 2117cb611
-
-Time (s): cpu = 00:02:01 ; elapsed = 00:00:42 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.381 | TNS=-0.669 | WHS=-0.100 | THS=-0.506 |
-
-
-Phase 5.1.2 Update Timing
-Phase 5.1.2 Update Timing | Checksum: 1acf94907
-
-Time (s): cpu = 00:02:02 ; elapsed = 00:00:42 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.381 | TNS=-0.669 | WHS=-0.100 | THS=-0.506 |
-
- Number of Nodes with overlaps = 0
-Phase 5.1 Delay CleanUp | Checksum: 23ac638af
-
-Time (s): cpu = 00:02:02 ; elapsed = 00:00:42 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 5.2 Clock Skew Optimization
-Phase 5.2 Clock Skew Optimization | Checksum: 23ac638af
+Phase 5.2 Clock Skew Optimization | Checksum: 27af70f74
 
-Time (s): cpu = 00:02:02 ; elapsed = 00:00:42 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-Phase 5 Delay and Skew Optimization | Checksum: 23ac638af
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 4047.824 ; gain = 83.652
+Phase 5 Delay and Skew Optimization | Checksum: 27af70f74
 
-Time (s): cpu = 00:02:02 ; elapsed = 00:00:42 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 6 Post Hold Fix
 
 Phase 6.1 Hold Fix Iter
 
 Phase 6.1.1 Update Timing
-Phase 6.1.1 Update Timing | Checksum: 1cc594874
+Phase 6.1.1 Update Timing | Checksum: 1b4d7d6d4
 
-Time (s): cpu = 00:02:03 ; elapsed = 00:00:43 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.115  | TNS=0.000  | WHS=-0.100 | THS=-0.506 |
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 4047.824 ; gain = 83.652
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.196  | TNS=0.000  | WHS=0.012  | THS=0.000  |
 
-Phase 6.1 Hold Fix Iter | Checksum: 2bf77f349
+Phase 6.1 Hold Fix Iter | Checksum: 1ea505e83
 
-Time (s): cpu = 00:02:03 ; elapsed = 00:00:43 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 4047.824 ; gain = 83.652
+Phase 6 Post Hold Fix | Checksum: 1ea505e83
 
-Phase 6.2 Non Free Resource Hold Fix Iter
-Phase 6.2 Non Free Resource Hold Fix Iter | Checksum: 2781ec989
-
-Time (s): cpu = 00:02:03 ; elapsed = 00:00:43 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-Phase 6 Post Hold Fix | Checksum: 2781ec989
-
-Time (s): cpu = 00:02:03 ; elapsed = 00:00:43 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 7 Route finalize
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 0.329695 %
-  Global Horizontal Routing Utilization  = 0.481542 %
+  Global Vertical Routing Utilization    = 0.482802 %
+  Global Horizontal Routing Utilization  = 0.59447 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
@@ -755,59 +730,49 @@ Router Utilization Summary
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
-Phase 7 Route finalize | Checksum: 2781ec989
+Phase 7 Route finalize | Checksum: 1ea505e83
 
-Time (s): cpu = 00:02:04 ; elapsed = 00:00:43 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 2781ec989
+Phase 8 Verifying routed nets | Checksum: 1ea505e83
 
-Time (s): cpu = 00:02:04 ; elapsed = 00:00:43 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 2781ec989
+Phase 9 Depositing Routes | Checksum: 1ea505e83
 
-Time (s): cpu = 00:02:04 ; elapsed = 00:00:44 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:21 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 10 Resolve XTalk
-Phase 10 Resolve XTalk | Checksum: 2781ec989
+Phase 10 Resolve XTalk | Checksum: 1ea505e83
 
-Time (s): cpu = 00:02:04 ; elapsed = 00:00:44 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-WARNING: [Route 35-426] Router was unable to fix hold violation on unroutable pins. The router cannot add routing detours to improve hold time because the pins are part of one or more of the following unroutable types: partition pins, fixed routes and intra-site connections.
-Resolution: Run report_timing_summary to analyze the hold violations.
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:21 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Phase 11 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=2.196  | TNS=0.000  | WHS=0.012  | THS=0.000  |
 
-Phase 11.1 Update Timing
-Phase 11.1 Update Timing | Checksum: 2bd38d581
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 11 Post Router Timing | Checksum: 1ea505e83
 
-Time (s): cpu = 00:02:05 ; elapsed = 00:00:44 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-INFO: [Route 35-57] Estimated Timing Summary | WNS=0.115  | TNS=0.000  | WHS=-0.100 | THS=-0.506 |
-
-WARNING: [Route 35-328] Router estimated timing not met.
-Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
-Phase 11 Post Router Timing | Checksum: 2bd38d581
-
-Time (s): cpu = 00:02:05 ; elapsed = 00:00:44 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-Time taken to check if laguna hold fix is required (in secs): 0
-Skip PhysOpt in Router because non-negative WNS value: 1.43481e-10 .
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:21 . Memory (MB): peak = 4047.824 ; gain = 83.652
 INFO: [Route 35-16] Router Completed Successfully
 
 Phase 12 Post-Route Event Processing
-Phase 12 Post-Route Event Processing | Checksum: 1fc1149a0
+Phase 12 Post-Route Event Processing | Checksum: 1b5a64a44
 
-Time (s): cpu = 00:02:09 ; elapsed = 00:00:47 . Memory (MB): peak = 5502.020 ; gain = 1622.254
-Ending Routing Task | Checksum: 1fc1149a0
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:21 . Memory (MB): peak = 4047.824 ; gain = 83.652
+Ending Routing Task | Checksum: 1b5a64a44
 
-Time (s): cpu = 00:02:09 ; elapsed = 00:00:47 . Memory (MB): peak = 5502.020 ; gain = 1622.254
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:22 . Memory (MB): peak = 4047.824 ; gain = 83.652
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
-102 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+104 Infos, 6 Warnings, 3 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:02:13 ; elapsed = 00:00:49 . Memory (MB): peak = 5502.020 ; gain = 1633.504
+route_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:24 . Memory (MB): peak = 4047.824 ; gain = 90.641
 INFO: [runtcl-4] Executing : report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 Command: report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
@@ -817,26 +782,25 @@ report_drc completed successfully
 INFO: [runtcl-4] Executing : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 Command: report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
-WARNING: [Constraints 18-633] Creating clock sysclk_bufg with 18 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:12]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [DRC 23-133] Running Methodology with 2 threads
 INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/impl_1/top_methodology_drc_routed.rpt.
 report_methodology completed successfully
+report_methodology: Time (s): cpu = 00:00:11 ; elapsed = 00:00:06 . Memory (MB): peak = 4047.824 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 Command: report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 WARNING: [Constraints 18-633] Creating clock sysclk with 2 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:11]
-WARNING: [Constraints 18-633] Creating clock sysclk_bufg with 18 sources. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc:12]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 Running Vector-less Activity Propagation...
 
 Finished Running Vector-less Activity Propagation
-112 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+114 Infos, 8 Warnings, 3 Critical Warnings and 0 Errors encountered.
 report_power completed successfully
+report_power: Time (s): cpu = 00:00:12 ; elapsed = 00:00:09 . Memory (MB): peak = 4047.824 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_route_status -file top_route_status.rpt -pb top_route_status.pb
 INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -report_unconstrained -file top_timing_summary_routed.rpt -pb top_timing_summary_routed.pb -rpx top_timing_summary_routed.rpx -warn_on_violation 
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Temperature grade: I, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
-CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
 WARNING: [Timing 38-436] There are set_bus_skew constraint(s) in this design. Please run report_bus_skew to ensure that bus skew requirements are met.
 INFO: [runtcl-4] Executing : report_incremental_reuse -file top_incremental_reuse_routed.rpt
 INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
@@ -845,16 +809,16 @@ INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file top_bus_sk
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Temperature grade: I, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
 INFO: [Timing 38-480] Writing timing data to binary archive.
-Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.054 . Memory (MB): peak = 5502.020 ; gain = 0.000
-Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.547 . Memory (MB): peak = 5502.020 ; gain = 0.000
-Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 5502.020 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 4047.824 ; gain = 0.000
+Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.824 . Memory (MB): peak = 4047.824 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4047.824 ; gain = 0.000
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.158 . Memory (MB): peak = 5502.020 ; gain = 0.000
-Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 5502.020 ; gain = 0.000
-Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 5502.020 ; gain = 0.000
-Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.800 . Memory (MB): peak = 5502.020 ; gain = 0.000
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.193 . Memory (MB): peak = 4047.824 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 4047.824 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 4047.824 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 4047.824 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/impl_1/top_routed.dcp' has been generated.
 Command: write_bitstream -force top.bit
 Attempting to get a license for feature 'Implementation' and/or device 'xcku3p'
@@ -862,56 +826,80 @@ INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc
 Running DRC as a precondition to command write_bitstream
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd input compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd input compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd input compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-2] Input pipelining: DSP compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd input compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC RTSTAT-10] No routable loads: 22 net(s) have no routable loads. The problem bus(es) and/or net(s) are input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_i, output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_i, output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i, input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i, input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i, output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i, output_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/user_valid, and input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/user_valid.
-INFO: [Vivado 12-3199] DRC finished with 0 Errors, 49 Warnings
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp1_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp1_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp1_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp1_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp2_sub/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp2_sub/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp2_sub/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp2_sub/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp3_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp3_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp3_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp3_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp4_add/out00_simd/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp4_add/out00_simd/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-2] Input pipelining: DSP gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp4_add/out00_simd input gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/dsp4_add/out00_simd/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC RTSTAT-10] No routable loads: 10 net(s) have no routable loads. The problem bus(es) and/or net(s) are input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_i, input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[2:0], input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2:0], input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i, and input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i.
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 73 Warnings
 INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
 INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
 Loading data files...
@@ -924,7 +912,7 @@ Writing bitstream ./top.bit...
 INFO: [Vivado 12-1842] Bitgen Completed Successfully.
 INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT device. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
 INFO: [Common 17-83] Releasing license: Implementation
-14 Infos, 49 Warnings, 0 Critical Warnings and 0 Errors encountered.
+14 Infos, 73 Warnings, 0 Critical Warnings and 0 Errors encountered.
 write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 5502.020 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sat Feb  1 09:16:43 2025...
+write_bitstream: Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 4101.129 ; gain = 53.305
+INFO: [Common 17-206] Exiting Vivado at Mon Feb  3 09:29:24 2025...

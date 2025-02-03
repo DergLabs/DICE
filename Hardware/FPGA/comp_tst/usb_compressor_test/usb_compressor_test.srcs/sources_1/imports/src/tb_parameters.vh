@@ -1,2 +1,2 @@
-parameter   FT600_CLK_PERIOD = 4,
-parameter   MAIN_CLK_PERIOD = 3
+parameter   FT600_CLK_PERIOD = 10,
+parameter   MAIN_CLK_PERIOD = 10

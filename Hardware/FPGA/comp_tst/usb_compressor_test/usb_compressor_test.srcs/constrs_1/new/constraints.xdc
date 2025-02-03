@@ -78,6 +78,9 @@ set_property IOSTANDARD LVCMOS18 [get_ports {ftdi_be_io[0]}]
 
 
 
+set_property PACKAGE_PIN G11 [get_ports {led_o[3]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {led_o[3]}]
+
 set_property OFFCHIP_TERM NONE [get_ports ftdi_oe_n_o]
 set_property OFFCHIP_TERM NONE [get_ports ftdi_rd_n_o]
 set_property OFFCHIP_TERM NONE [get_ports ftdi_rstn_o]
@@ -101,8 +104,7 @@ set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[3]]
 set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[2]]
 set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[1]]
 set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[0]]
+set_property OFFCHIP_TERM NONE [get_ports led_o[3]]
 set_property OFFCHIP_TERM NONE [get_ports led_o[2]]
 set_property OFFCHIP_TERM NONE [get_ports led_o[1]]
 set_property OFFCHIP_TERM NONE [get_ports led_o[0]]
-set_property PACKAGE_PIN G11 [get_ports {led_o[3]}]
-set_property IOSTANDARD LVCMOS18 [get_ports {led_o[3]}]

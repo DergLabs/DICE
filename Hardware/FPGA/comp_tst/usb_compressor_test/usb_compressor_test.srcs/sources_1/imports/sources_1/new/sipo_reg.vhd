@@ -1,14 +1,14 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
 -- Create Date: 01/21/2025 04:02:10 PM
 -- Design Name: 
 -- Module Name: sipo_reg - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
+-- Project Name: DICE
+-- Target Devices: XCKU3P-2FFVA676
+-- Tool Versions: 2023.2
+-- Description: Serial-In Parallel-Out Register
 -- 
 -- Dependencies: 
 -- 
@@ -34,10 +34,12 @@ use UNISIM.VComponents.all;
 
 entity sipo_reg is
     generic (
-        IN_WIDTH : integer := 8;
-        OUT_TAPS : integer := 8;
-        TAP_END : integer := 0;
-        DEPTH : integer := 8
+        -- NOTE: output bus width = (# output taps * input width) - (tap end + 1) downto 0
+        IN_WIDTH : integer := 8; -- Width of input bus 
+        OUT_TAPS : integer := 8; -- How many register to tap off for output bus 
+        TAP_END : integer := 0; -- What register to end tapping off of
+        DEPTH : integer := 8;    -- How many registers to hold incoming data
+        SHIFT_DIR : string := "LEFT2RIGHT" -- Shift data from left to right or right to left
     );
     port ( 
         clk_i       : in std_logic;
@@ -52,26 +54,43 @@ end sipo_reg;
 
 architecture Behavioral of sipo_reg is
     signal pixel_counter_x : unsigned(15 downto 0) := (others => '0');
-    signal vaid_counter_x : unsigned(15 downto 0) := (others => '0');
     signal data_x : std_logic_vector((IN_WIDTH*DEPTH)-1 downto 0) := (others => '0');
     signal valid_x : std_logic := '0';
 begin
 
-    -- shift register to hold incoming pixel data
-    process(clk_i, rst_i)
-    begin
-        if (rst_i = '1') then
-            data_x <= (others => '0');
-        elsif rising_edge(clk_i) then
-            if (valid_i = '1') then
-                valid_x <= '1';
-                data_x <= data_i & data_x((IN_WIDTH*DEPTH)-1 downto IN_WIDTH);
-            else
-                valid_x <= '0';
-                data_x <= data_x;
+    gen_shift_reg : if SHIFT_DIR = "LEFT2RIGHT" generate
+        -- shift register to hold incoming pixel data
+        process(clk_i, rst_i)
+        begin
+            if (rst_i = '1') then
+                data_x <= (others => '0');
+            elsif rising_edge(clk_i) then
+                if (valid_i = '1') then
+                    valid_x <= '1';
+                    data_x <= data_i & data_x((IN_WIDTH*DEPTH)-1 downto IN_WIDTH);
+                else
+                    valid_x <= '0';
+                    data_x <= data_x;
+                end if;
             end if;
-        end if;
-    end process;
+        end process;
+    elsif SHIFT_DIR = "RIGHT2LEFT" generate
+        -- shift register to hold incoming pixel data
+        process(clk_i, rst_i)
+        begin
+            if (rst_i = '1') then
+                data_x <= (others => '0');
+            elsif rising_edge(clk_i) then
+                if (valid_i = '1') then
+                    valid_x <= '1';
+                    data_x <= data_x((IN_WIDTH*(DEPTH-1))-1 downto 0) & data_i;
+                else
+                    valid_x <= '0';
+                    data_x <= data_x;
+                end if;
+            end if;
+        end process;
+    end generate;
 
     -- counter to toggle saving from pixel shift reg to pixel hold reg
     process(clk_i, rst_i)
@@ -91,33 +110,7 @@ begin
         end if;
     end process;
     
-    -- Counter to set valid signal high when 9th pixel is recieved, valid is set low when valid_i = 0, otherwise it stays high once set
-    process(clk_i, rst_i)
-    begin
-        if (rst_i = '1') then
-            vaid_counter_x <= (others => '0');
-        elsif rising_edge(clk_i) then
-            if (valid_x = '1') then
-                if (vaid_counter_x = DEPTH-1) then
-                    vaid_counter_x <= (others => '0');
-                else
-                    vaid_counter_x <= vaid_counter_x + 1;
-                end if; 
-            else
-                vaid_counter_x <= (others => '0');
-            end if;
-        end if;
-    end process;
-
-    -- Non-Clocked mux to load shift reg data into hold register on when 9th pixel is recieved
-    /*with pixel_counter_x select
-    data_o <= data_x((OUT_TAPS*IN_WIDTH)-1 downto TAP_END) when to_unsigned(DEPTH-1, pixel_counter_x'length),
-              data_o when others;
-              
-    with pixel_counter_x select
-        valid_o <= valid_x when to_unsigned(DEPTH-1, pixel_counter_x'length),
-        valid_o when others;*/ 
-
+    -- output data and valid signal
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then

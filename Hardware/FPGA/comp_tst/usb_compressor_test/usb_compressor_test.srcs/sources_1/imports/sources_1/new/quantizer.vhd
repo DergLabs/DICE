@@ -48,7 +48,6 @@ end quantizer;
 
 architecture Behavioral of quantizer is
     signal valid_x : std_logic;
-    signal valid_v_x : std_logic_vector(0 downto 0);
     signal data_x : std_logic_vector(95 downto 0);
 
     signal quantized_data : std_logic_vector(95 downto 0);
@@ -60,7 +59,10 @@ architecture Behavioral of quantizer is
     signal resized_data : std_logic_vector(63 downto 0);
 
     signal quantization_factor_delayed : std_logic_vector(63 downto 0);
-                                                            
+
+    signal corrected_data : signed(95 downto 0);
+    signal correction_factors : unsigned(95 downto 0);
+                     
 begin
 
     -- Delay input data 4 cycles to allow for quantization table to be read
@@ -87,11 +89,9 @@ begin
         clk_i => clk_i,
         ce_i => ce_i,
         rst_i => rst_i,
-        data_i => (0 => valid_i),
-        data_o => valid_v_x
+        data_i(0) => valid_i,
+        data_o(0) => valid_x
     );
-
-    valid_x <= valid_v_x(0);
 
     -- counter for quantization table address, every other item in the table is 0
     -- Table increments by 4 each cycle
@@ -101,7 +101,7 @@ begin
             ram_addr <= (others => '0');
         elsif rising_edge(clk_i) then
             if (ce_i = '1' and valid_i = '1') then
-                if (ram_addr = X"1F") then
+                if (ram_addr = "11111") then
                     ram_addr <= (others => '0');
                 else
                     ram_addr <= std_logic_vector(unsigned(ram_addr) + 4);
@@ -123,30 +123,37 @@ begin
         addr_i => ram_addr,
         quantization_table_o => quantization_factor
     );
+    
+    -- Create Quantization values and divide by 2 for correction factor
+    correction_factors(11 downto 0) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(7 downto 0))))(11 downto 1));
+    correction_factors(23 downto 12) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(15 downto 8))))(11 downto 1));
+    correction_factors(35 downto 24) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(23 downto 16))))(11 downto 1));
+    correction_factors(47 downto 36) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(31 downto 24))))(11 downto 1));
+    correction_factors(59 downto 48) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(39 downto 32))))(11 downto 1));
+    correction_factors(71 downto 60) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(47 downto 40))))(11 downto 1));
+    correction_factors(83 downto 72) <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(55 downto 48))))(11 downto 1));
+    correction_factors(95 downto 84)  <= "0" & (shift_left("000000000001", to_integer(unsigned(quantization_factor(63 downto 56))))(11 downto 1));
 
-    -- delay quant table by 1 cycle
-    quant_delay : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH => 1,
-        DATA_WIDTH => 64
-    )
-    port map (
-        clk_i => clk_i,
-        ce_i => ce_i,
-        rst_i => rst_i,
-        data_i => quantization_factor,
-        data_o => quantization_factor_delayed
-    );
+
+    -- Add (quantization factor/2) to data for correct rounding
+    corrected_data(95 downto 84) <= signed(data_x(95 downto 84)) + (to_integer(correction_factors(11 downto 0)));
+    corrected_data(83 downto 72) <= signed(data_x(83 downto 72)) + (to_integer(correction_factors(23 downto 12)));
+    corrected_data(71 downto 60) <= signed(data_x(71 downto 60)) + (to_integer(correction_factors(35 downto 24)));
+    corrected_data(59 downto 48) <= signed(data_x(59 downto 48)) + (to_integer(correction_factors(47 downto 36)));
+    corrected_data(47 downto 36) <= signed(data_x(47 downto 36)) + (to_integer(correction_factors(59 downto 48)));
+    corrected_data(35 downto 24) <= signed(data_x(35 downto 24)) + (to_integer(correction_factors(71 downto 60)));
+    corrected_data(23 downto 12) <= signed(data_x(23 downto 12)) + (to_integer(correction_factors(83 downto 72)));
+    corrected_data(11 downto 0)  <= signed(data_x(11 downto 0))  + (to_integer(correction_factors(95 downto 84)));
 
     -- quantize data using right shift
-    quantized_data(95 downto 84) <= std_logic_vector(shift_right(signed(data_x(95 downto 84)), to_integer(unsigned(quantization_factor_delayed(7 downto 0)))));
-    quantized_data(83 downto 72) <= std_logic_vector(shift_right(signed(data_x(83 downto 72)), to_integer(unsigned(quantization_factor_delayed(15 downto 8)))));
-    quantized_data(71 downto 60) <= std_logic_vector(shift_right(signed(data_x(71 downto 60)), to_integer(unsigned(quantization_factor_delayed(23 downto 16)))));
-    quantized_data(59 downto 48) <= std_logic_vector(shift_right(signed(data_x(59 downto 48)), to_integer(unsigned(quantization_factor_delayed(31 downto 24)))));
-    quantized_data(47 downto 36) <= std_logic_vector(shift_right(signed(data_x(47 downto 36)), to_integer(unsigned(quantization_factor_delayed(39 downto 32)))));
-    quantized_data(35 downto 24) <= std_logic_vector(shift_right(signed(data_x(35 downto 24)), to_integer(unsigned(quantization_factor_delayed(47 downto 40)))));
-    quantized_data(23 downto 12) <= std_logic_vector(shift_right(signed(data_x(23 downto 12)), to_integer(unsigned(quantization_factor_delayed(55 downto 48)))));
-    quantized_data(11 downto 0)  <= std_logic_vector(shift_right(signed(data_x(11 downto 0)),  to_integer(unsigned(quantization_factor_delayed(63 downto 56)))));
+    quantized_data(95 downto 84) <= std_logic_vector(shift_right(corrected_data(95 downto 84), to_integer(unsigned(quantization_factor(7 downto 0)))));
+    quantized_data(83 downto 72) <= std_logic_vector(shift_right(corrected_data(83 downto 72), to_integer(unsigned(quantization_factor(15 downto 8)))));
+    quantized_data(71 downto 60) <= std_logic_vector(shift_right(corrected_data(71 downto 60), to_integer(unsigned(quantization_factor(23 downto 16)))));
+    quantized_data(59 downto 48) <= std_logic_vector(shift_right(corrected_data(59 downto 48), to_integer(unsigned(quantization_factor(31 downto 24)))));
+    quantized_data(47 downto 36) <= std_logic_vector(shift_right(corrected_data(47 downto 36), to_integer(unsigned(quantization_factor(39 downto 32)))));
+    quantized_data(35 downto 24) <= std_logic_vector(shift_right(corrected_data(35 downto 24), to_integer(unsigned(quantization_factor(47 downto 40)))));
+    quantized_data(23 downto 12) <= std_logic_vector(shift_right(corrected_data(23 downto 12), to_integer(unsigned(quantization_factor(55 downto 48)))));
+    quantized_data(11 downto 0)  <= std_logic_vector(shift_right(corrected_data(11 downto 0),  to_integer(unsigned(quantization_factor(63 downto 56)))));
 
     -- resize to signed 8bit 
     resized_data(7 downto 0)   <= std_logic_vector(resize(signed(quantized_data(11 downto 0)), 8));
@@ -157,6 +164,7 @@ begin
     resized_data(47 downto 40) <= std_logic_vector(resize(signed(quantized_data(71 downto 60)), 8));
     resized_data(55 downto 48) <= std_logic_vector(resize(signed(quantized_data(83 downto 72)), 8));
     resized_data(63 downto 56) <= std_logic_vector(resize(signed(quantized_data(95 downto 84)), 8));
+
 
     -- Register quantized data
     process(clk_i, rst_i)
@@ -169,7 +177,7 @@ begin
                 valid_o <= valid_x;
                 data_o <= resized_data;
             else
-                valid_o <= valid_o;
+                valid_o <= '0';
                 data_o <= data_o;
             end if;
         end if;

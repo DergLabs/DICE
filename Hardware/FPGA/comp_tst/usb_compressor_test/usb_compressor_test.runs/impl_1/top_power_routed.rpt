@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sat Feb  1 09:16:18 2025
+| Date             : Mon Feb  3 09:28:57 2025
 | Host             : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.611        |
+| Total On-Chip Power (W)  | 0.630        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.159        |
+| Dynamic (W)              | 0.178        |
 | Device Static (W)        | 0.452        |
 | Effective TJA (C/W)      | 1.7          |
 | Max Ambient (C)          | 98.9         |
@@ -52,22 +52,22 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.018 |        7 |       --- |             --- |
-| CLB Logic                |     0.014 |    12112 |       --- |             --- |
-|   LUT as Logic           |     0.008 |     3494 |    162720 |            2.15 |
-|   LUT as Shift Register  |     0.005 |      366 |     99840 |            0.37 |
-|   Register               |     0.001 |     5855 |    325440 |            1.80 |
-|   LUT as Distributed RAM |    <0.001 |       36 |     99840 |            0.04 |
-|   CARRY8                 |    <0.001 |       48 |     27120 |            0.18 |
-|   Others                 |     0.000 |      150 |       --- |             --- |
-|   F7/F8 Muxes            |     0.000 |       96 |    216960 |            0.04 |
-| Signals                  |     0.010 |     8279 |       --- |             --- |
-| URAM                     |     0.006 |        2 |        48 |            4.17 |
+| Clocks                   |     0.021 |        6 |       --- |             --- |
+| CLB Logic                |     0.019 |    18144 |       --- |             --- |
+|   LUT as Logic           |     0.010 |     5086 |    162720 |            3.13 |
+|   LUT as Shift Register  |     0.006 |      562 |     99840 |            0.56 |
+|   Register               |     0.002 |     8945 |    325440 |            2.75 |
+|   CARRY8                 |    <0.001 |      100 |     27120 |            0.37 |
+|   LUT as Distributed RAM |    <0.001 |       24 |     99840 |            0.02 |
+|   Others                 |     0.000 |      196 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |      144 |    216960 |            0.07 |
+| Signals                  |     0.014 |    12238 |       --- |             --- |
+| Block RAM                |     0.010 |      4.5 |       360 |            1.25 |
 | MMCM                     |     0.097 |        0 |       --- |             --- |
-| DSPs                     |     0.004 |       16 |      1368 |            1.17 |
-| I/O                      |     0.011 |       33 |       256 |           12.89 |
+| DSPs                     |     0.005 |       24 |      1368 |            1.75 |
+| I/O                      |     0.012 |       33 |       256 |           12.89 |
 | Static Power             |     0.452 |          |           |                 |
-| Total                    |     0.611 |          |           |                 |
+| Total                    |     0.630 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -77,14 +77,14 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.200 |       0.061 |      0.139 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.219 |       0.080 |      0.139 |       NA    | Unspecified | NA         |
 | Vccint_io  |       0.850 |     0.036 |       0.001 |      0.035 |       NA    | Unspecified | NA         |
-| Vccbram    |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.004 |       0.002 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.182 |       0.054 |      0.128 |       NA    | Unspecified | NA         |
 | Vccaux_io  |       1.800 |     0.036 |       0.004 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18     |       1.800 |     0.001 |       0.001 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.002 |       0.002 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -133,33 +133,15 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+--------------------+---------------------------------------------------------+-----------------+
-| Clock              | Domain                                                  | Constraint (ns) |
-+--------------------+---------------------------------------------------------+-----------------+
-| clk100m            | sys_clk/inst/clk_out2                                   |            10.0 |
-| clk_out2_clk_wiz_0 | sys_clk/inst/clk_out2_clk_wiz_0                         |            10.0 |
-| ftdi_clk           | ftdi_clk_i                                              |            10.0 |
-| sysclk             | sysclk_n                                                |             5.0 |
-| sysclk             | sysclk_p                                                |             5.0 |
-| sysclk_bufg        | IBUFDS_inst/O                                           |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[0]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[10]                   |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[11]                   |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[12]                   |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[13]                   |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[14]                   |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[15]                   |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[1]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[2]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[3]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[4]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[5]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[6]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[7]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[8]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/din[9]                    |             5.0 |
-| sysclk_bufg        | ultra_ram_pixel_output_buffer/output_word_select_reg[6] |             5.0 |
-+--------------------+---------------------------------------------------------+-----------------+
++--------------------+----------------------------------------------+-----------------+
+| Clock              | Domain                                       | Constraint (ns) |
++--------------------+----------------------------------------------+-----------------+
+| clk_out2_clk_wiz_0 | clocking_gen.sys_clk/inst/clk_out2_clk_wiz_0 |            10.0 |
+| ftdi_clk           | ftdi_clk_i                                   |            10.0 |
+| sysclk             | sysclk_n                                     |             5.0 |
+| sysclk             | sysclk_p                                     |             5.0 |
+| sysclk_bufg        | clocking_gen.IBUFDS_inst/O                   |             5.0 |
++--------------------+----------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -168,31 +150,38 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------------------------------+-----------+
-| Name                             | Power (W) |
-+----------------------------------+-----------+
-| top                              |     0.159 |
-|   IBUFDS_inst                    |     0.002 |
-|   compression_core               |     0.040 |
-|     gen_channels[0].channel_inst |     0.019 |
-|       col_dct                    |     0.001 |
-|       pixel_transpose            |     0.005 |
-|       quantizer                  |     0.005 |
-|       row_dct                    |     0.007 |
-|     gen_channels[1].channel_inst |     0.020 |
-|       col_dct                    |     0.001 |
-|       pixel_transpose            |     0.005 |
-|       quantizer                  |     0.005 |
-|       row_dct                    |     0.007 |
-|   input_cdc_fifo                 |     0.001 |
-|     U0                           |     0.001 |
-|       inst_fifo_gen              |     0.001 |
-|   output_cdc_fifo                |     0.001 |
-|     U0                           |     0.001 |
-|       inst_fifo_gen              |     0.001 |
-|   sys_clk                        |     0.097 |
-|     inst                         |     0.097 |
-|   ultra_ram_pixel_output_buffer  |     0.007 |
-+----------------------------------+-----------+
++--------------------------------------------+-----------+
+| Name                                       | Power (W) |
++--------------------------------------------+-----------+
+| top                                        |     0.178 |
+|   clocking_gen.IBUFDS_inst                 |     0.002 |
+|   clocking_gen.sys_clk                     |     0.097 |
+|     inst                                   |     0.097 |
+|   gen_modified_core_input.compression_core |     0.055 |
+|     gen_channels[0].channel_inst           |     0.018 |
+|       col_dct                              |     0.002 |
+|       pixel_divider                        |     0.001 |
+|       pixel_transpose                      |     0.005 |
+|       quantizer                            |     0.005 |
+|       row_dct                              |     0.006 |
+|     gen_channels[1].channel_inst           |     0.018 |
+|       col_dct                              |     0.002 |
+|       pixel_divider                        |     0.001 |
+|       pixel_transpose                      |     0.005 |
+|       quantizer                            |     0.005 |
+|       row_dct                              |     0.006 |
+|     gen_channels[2].channel_inst           |     0.018 |
+|       col_dct                              |     0.002 |
+|       pixel_divider                        |     0.001 |
+|       pixel_transpose                      |     0.005 |
+|       quantizer                            |     0.005 |
+|       row_dct                              |     0.006 |
+|   gen_modified_core_input.output_memory    |     0.010 |
+|     output_memory                          |     0.010 |
+|       U0                                   |     0.010 |
+|   input_memory_fifo                        |     0.002 |
+|     input_cdc_fifo                         |     0.001 |
+|       U0                                   |     0.001 |
++--------------------------------------------+-----------+
 
 

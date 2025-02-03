@@ -1,9 +1,10 @@
 
+// V1.5
 module send_recieve_module (
     //input  wire         sysclk_p,            // main clock, connect to on-board crystal oscillator
     //input  wire         sysclk_n,
     input  wire         rst_n,
-    output wire  [ 3:0] LED_data,
+    output wire  [3:0] LED_data,
     
     // USB3.0 (FT600 chip) ------------------------------------------------------------
     output wire         ftdi_resetn,    // to FT600's pin10 (RESET_N)
@@ -43,7 +44,7 @@ module send_recieve_module (
     reg     reg_ftdi_wr_n = 1'b1;
     assign  ftdi_wr_n = reg_ftdi_wr_n;
 
-    reg  [3:0] reg_LED_data_out = 2'b00;
+    reg  [3:0] reg_LED_data_out = 4'b0000;
     assign LED_data = reg_LED_data_out;
 
 
@@ -72,8 +73,9 @@ module send_recieve_module (
     reg ready_to_recieve_o = 1'b0;
     assign ready_to_recieve = ready_to_recieve_o;
 
-    reg ready_to_send_o = 1'b0;
-    assign ready_to_send = ready_to_send_o;
+    reg ready_to_send_posedge_o = 1'b0;
+    //reg ready_to_send_negedge_o = 1'b0;
+    assign ready_to_send = ready_to_send_posedge_o;
 
     // control signals on negative edge
     always @ (negedge ftdi_clk or negedge rst_n) begin
@@ -87,8 +89,8 @@ module send_recieve_module (
             end_write_delay_flag <= 1'b0;
             ready_to_recieve_delay_flag <= 1'b0;
             ready_to_recieve_o <= 1'b0;
-            ready_to_send_o <= 1'b0;
-            reg_LED_data_out <= 2'b00;
+            //ready_to_send_negedge_o <= 1'b0;
+            reg_LED_data_out <= 4'b0000;
             reg_ftdi_data_output <= 16'h0000;
             reg_ftdi_be_output <= 2'b00;
         end else begin
@@ -99,7 +101,7 @@ module send_recieve_module (
                     write_rd_delay_flag <= 1'b1;
                 end else if(reg_ftdi_oe_n == 1'b0) begin
                     reg_ftdi_rd_n <= 1'b0;
-                    ready_to_send_o <= 1'b1;
+                    //ready_to_send_negedge_o <= 1'b1;
                 end else
                     write_rd_delay_flag <= 1'b0;
             end else begin
@@ -108,7 +110,7 @@ module send_recieve_module (
                     reg_ftdi_rd_n <= 1'b1;
                     end_write_delay_flag <= 1'b1;
                 end else if(end_write_delay_flag == 1'b1) begin
-                    ready_to_send_o <= 1'b0;
+                    //ready_to_send_negedge_o <= 1'b0;
                     end_write_delay_flag <= 1'b0;
                 end
             end
@@ -150,7 +152,14 @@ module send_recieve_module (
 
     // read data on postive edge of clock
     always @ (posedge ftdi_clk) begin
-        if(ftdi_rd_n == 1'b0) begin
+
+        if(ftdi_rxf_n == 1'b1) begin
+            ready_to_send_posedge_o <= 1'b0;
+        end else if(reg_ftdi_rd_n == 1'b0) begin
+            ready_to_send_posedge_o <= 1'b1;
+        end
+
+        if(reg_ftdi_rd_n == 1'b0) begin
             if(ft600_be_input == 2'b11) begin
                 reg_ftdi_data_i <= ft600_data_input;
                 reg_ftdi_be_i <= 2'b11;
