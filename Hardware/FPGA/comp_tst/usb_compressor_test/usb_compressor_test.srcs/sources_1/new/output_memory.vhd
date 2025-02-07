@@ -65,17 +65,17 @@ entity output_memory is
 end output_memory;
 
 architecture Behavioral of output_memory is
-    -- Input is wide bus, output is narrow bus. Fewer words are written to memory than read    
-    constant ram_wr_addr_bits : integer := integer(ceil(log2(real(NUM_WRITE_WORDS))));
-    constant ram_rd_addr_bits : integer := integer(ceil(log2(real(NUM_READ_WORDS))));
 
     -- Output Ram Signals
-    signal output_ram_wr_addr           : std_logic_vector((ram_wr_addr_bits - 1) downto 0);
-    signal output_ram_rd_addr           : std_logic_vector((ram_rd_addr_bits - 1) downto 0);
+    signal output_ram_wr_addr           : std_logic_vector(6 downto 0);
+    signal output_ram_rd_addr           : std_logic_vector(10 downto 0);
 
     -- Counters
     signal write_counter : integer := 0;
     signal read_counter : integer := 0;
+
+    -- reciever ready flag on write clock
+    signal reciever_ready_wr_clk : std_logic := '0';
 
     -- Output memory
     COMPONENT blk_mem_gen_1
@@ -83,17 +83,22 @@ architecture Behavioral of output_memory is
         clka        : IN STD_LOGIC;
         ena         : IN STD_LOGIC;
         wea         : IN STD_LOGIC;
-        addra       : IN STD_LOGIC_VECTOR((ram_wr_addr_bits - 1) DOWNTO 0);
+        addra       : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
         dina        : IN STD_LOGIC_VECTOR((DIN_WIDTH - 1) DOWNTO 0);
 
         clkb        : IN STD_LOGIC;
+        rstb        : IN STD_LOGIC;
         enb         : IN STD_LOGIC;
-        addrb       : IN STD_LOGIC_VECTOR((ram_rd_addr_bits - 1) DOWNTO 0);
-        doutb       : OUT STD_LOGIC_VECTOR((DOUT_WIDTH - 1) DOWNTO 0) 
+        addrb       : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+        doutb       : OUT STD_LOGIC_VECTOR((DOUT_WIDTH - 1) DOWNTO 0);
+        rsta_busy   : OUT STD_LOGIC;
+        rstb_busy   : OUT STD_LOGIC 
     );
     END COMPONENT;
 
 begin
+
+    reciever_ready_wr_clk <= reciever_ready_i when rising_edge(write_clk_i);
 
     -- output write address counter
     process(write_clk_i, rst_i)
@@ -104,24 +109,14 @@ begin
             output_ram_wr_addr <= (others => '0');
         elsif rising_edge(write_clk_i) then
             if (data_in_valid = '1') then
-                if (write_counter = NUM_WRITE_WORDS - 1) then
-                    write_counter <= 0;
-                    output_ram_wr_addr <= (others => '0');
-                else
-                    write_counter <= write_counter + 1;
-                    output_ram_wr_addr <= std_logic_vector(unsigned(output_ram_wr_addr) + 1);
-                end if;
-
-                -- Clear input fifo memory flag
-                if (write_counter = 1) then
-                    memory_clear_o <= '1';
-                else
-                    memory_clear_o <= '0';
-                end if;
-
+                write_counter <= write_counter + 1;
+                output_ram_wr_addr <= std_logic_vector(unsigned(output_ram_wr_addr) + 1);
+            elsif (reciever_ready_wr_clk = '1') then
+                write_counter <= 0;
+                output_ram_wr_addr <= (others => '0');
             else
                 output_ram_wr_addr <= output_ram_wr_addr;
-                write_counter <= 0;
+                write_counter <= write_counter;
             end if;
         end if;
     end process;
@@ -131,10 +126,15 @@ begin
     begin
         if rst_i = '1' then
             read_counter <= 0;
-        elsif falling_edge(read_clk_i) then
+        elsif rising_edge(read_clk_i) then
             if reciever_ready_i = '1' then
-                read_counter <= read_counter + 1;
-                output_ram_rd_addr <= std_logic_vector(unsigned(output_ram_rd_addr) + 1);
+                if (read_counter = NUM_READ_WORDS - 1) then
+                    read_counter <= 0;
+                    output_ram_rd_addr <= (others => '0');
+                else
+                    read_counter <= read_counter + 1;
+                    output_ram_rd_addr <= std_logic_vector(unsigned(output_ram_rd_addr) + 1);
+                end if;
             else 
                 read_counter <= 0;
                 output_ram_rd_addr <= (others => '0');
@@ -152,9 +152,12 @@ begin
         dina => data_i,
 
         clkb => read_clk_i,
+        rstb => rst_i,
         enb => reciever_ready_i,
         addrb => output_ram_rd_addr,
-        doutb => data_o
+        doutb => data_o,
+        rsta_busy => open,
+        rstb_busy => open
     );
     
     data_out_valid <= reciever_ready_i when rising_edge(read_clk_i);

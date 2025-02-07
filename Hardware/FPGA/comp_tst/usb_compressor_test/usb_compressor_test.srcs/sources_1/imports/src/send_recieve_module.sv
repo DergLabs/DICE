@@ -44,7 +44,12 @@ module send_recieve_module (
     reg     reg_ftdi_wr_n = 1'b1;
     assign  ftdi_wr_n = reg_ftdi_wr_n;
 
+    //reg  [3:0] reg_LED_data_out = 4'b0000;
+    //assign LED_data = reg_LED_data_out;
+
+    reg [15:0] led_update_counter = 16'd0;  // 7 bits to count to 100
     reg  [3:0] reg_LED_data_out = 4'b0000;
+    reg  [3:0] temp_LED_data = 4'b0000;         // Temporary register to store LED value
     assign LED_data = reg_LED_data_out;
 
 
@@ -91,9 +96,12 @@ module send_recieve_module (
             ready_to_recieve_o <= 1'b0;
             //ready_to_send_negedge_o <= 1'b0;
             reg_LED_data_out <= 4'b0000;
+            temp_LED_data <= 4'b0000;
+            led_update_counter <= 16'd0;
             reg_ftdi_data_output <= 16'h0000;
             reg_ftdi_be_output <= 2'b00;
         end else begin
+
             if(~ftdi_rxf_n) begin
                 // read control signals
                 if(write_rd_delay_flag == 1'b0) begin
@@ -124,12 +132,21 @@ module send_recieve_module (
                     ftdi_data_tx_en <= 1'b1;
                     ftdi_be_tx_en <= 1'b1;
                 end else if(ready_to_recieve_delay_flag == 1'b1) begin
+
+                    if(led_update_counter == 16'd25000) begin
+                        led_update_counter <= 16'd0;
+                        reg_LED_data_out <= temp_LED_data;  // Update LED output
+                    end else begin
+                        led_update_counter <= led_update_counter + 1'b1;
+                    end
+                    
                     reg_ftdi_wr_n <= 1'b0;
 
                     //write data
                     reg_ftdi_be_output <= be_to_ft600;
                     reg_ftdi_data_output <= data_to_ft600;
-                    reg_LED_data_out <= data_to_ft600[3:0];
+                    temp_LED_data <= data_to_ft600[3:0]; 
+                    //reg_LED_data_out <= data_to_ft600[3:0];
                 end
 
             end else begin

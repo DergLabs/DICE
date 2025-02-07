@@ -66,20 +66,22 @@ begin
     simd_add : if OP = "ADD" generate
         process(clk_i, rst_i)
         begin
-        if(rst_i = '1') then
-            a0_r <= (others => '0');
-            b0_r <= (others => '0');
-            a1_r <= (others => '0');
-            b1_r <= (others => '0');
-            a2_r <= (others => '0');
-            b2_r <= (others => '0');
-            a3_r <= (others => '0');
-            b3_r <= (others => '0');
-            out0 <= (others => '0');
-            out1 <= (others => '0');
-            out2 <= (others => '0');
-            out3 <= (others => '0');
-        elsif(rising_edge(clk_i)) then
+        if(rising_edge(clk_i)) then
+            if(rst_i = '1') then
+                a0_r <= (others => '0');
+                b0_r <= (others => '0');
+                a1_r <= (others => '0');
+                b1_r <= (others => '0');
+                a2_r <= (others => '0');
+                b2_r <= (others => '0');
+                a3_r <= (others => '0');
+                b3_r <= (others => '0');
+                out0 <= (others => '0');
+                out1 <= (others => '0');
+                out2 <= (others => '0');
+                out3 <= (others => '0');
+            end if;
+
             if (ce_i = '1') then
                 a0_r <= a0;
                 b0_r <= b0;
@@ -101,20 +103,22 @@ begin
     simd_sub : if OP = "SUB" generate
         process(clk_i, rst_i)
         begin
-        if(rst_i = '1') then
-            a0_r <= (others => '0');
-            b0_r <= (others => '0');
-            a1_r <= (others => '0');
-            b1_r <= (others => '0');
-            a2_r <= (others => '0');
-            b2_r <= (others => '0');
-            a3_r <= (others => '0');
-            b3_r <= (others => '0');
-            out0 <= (others => '0');
-            out1 <= (others => '0');
-            out2 <= (others => '0');
-            out3 <= (others => '0');
-        elsif(rising_edge(clk_i)) then
+        if(rising_edge(clk_i)) then
+            if(rst_i = '1') then
+                a0_r <= (others => '0');
+                b0_r <= (others => '0');
+                a1_r <= (others => '0');
+                b1_r <= (others => '0');
+                a2_r <= (others => '0');
+                b2_r <= (others => '0');
+                a3_r <= (others => '0');
+                b3_r <= (others => '0');
+                out0 <= (others => '0');
+                out1 <= (others => '0');
+                out2 <= (others => '0');
+                out3 <= (others => '0');
+            end if;
+
             if (ce_i = '1') then
                 a0_r <= a0;
                 b0_r <= b0;

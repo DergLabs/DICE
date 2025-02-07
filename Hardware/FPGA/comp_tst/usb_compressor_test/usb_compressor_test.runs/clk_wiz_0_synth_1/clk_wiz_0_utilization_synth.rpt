@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Jan 30 16:45:41 2025
+| Date         : Mon Feb  3 13:39:04 2025
 | Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command      : report_utilization -file clk_wiz_0_utilization_synth.rpt -pb clk_wiz_0_utilization_synth.pb
 | Design       : clk_wiz_0
@@ -96,7 +96,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| Bonded IOB |    0 |     0 |          0 |       256 |  0.00 |
+| Bonded IOB |    2 |     0 |          0 |       256 |  0.78 |
 +------------+------+-------+------------+-----------+-------+
 
 
@@ -106,8 +106,8 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------------------+------+-------+------------+-----------+-------+
 |       Site Type      | Used | Fixed | Prohibited | Available | Util% |
 +----------------------+------+-------+------------+-----------+-------+
-| GLOBAL CLOCK BUFFERs |    3 |     0 |          0 |       256 |  1.17 |
-|   BUFGCE             |    3 |     0 |          0 |       112 |  2.68 |
+| GLOBAL CLOCK BUFFERs |    1 |     0 |          0 |       256 |  0.39 |
+|   BUFGCE             |    1 |     0 |          0 |       112 |  0.89 |
 |   BUFGCE_DIV         |    0 |     0 |          0 |        16 |  0.00 |
 |   BUFG_GT            |    0 |     0 |          0 |        96 |  0.00 |
 |   BUFGCTRL*          |    0 |     0 |          0 |        32 |  0.00 |
@@ -155,8 +155,10 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+---------------------+
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
-| BUFGCE     |    3 |               Clock |
 | MMCME4_ADV |    1 |               Clock |
+| IBUFCTRL   |    1 |              Others |
+| DIFFINBUF  |    1 |                 I/O |
+| BUFGCE     |    1 |               Clock |
 +------------+------+---------------------+
 
 

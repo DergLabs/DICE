@@ -30,13 +30,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
 library UNISIM;
 use UNISIM.VComponents.all;
 
@@ -47,9 +41,7 @@ entity input_memory is
         DEPTH       : integer := 64
     );
     port ( 
-        --clk_i           : in std_logic;
         rst_i           : in std_logic;
-
         data_i          : in std_logic_vector(DIN_WIDTH-1 downto 0);
         data_in_valid   : in std_logic;    
         write_clk_i     : in std_logic;
@@ -59,7 +51,6 @@ entity input_memory is
         data_out_valid  : out std_logic;
         
         read_clk_i      : in std_logic;
-        --read_en_i       : in std_logic;
 
         empty_o         : out std_logic;
         full_o          : out std_logic
@@ -75,6 +66,7 @@ architecture Behavioral of input_memory is
     signal wr_rst_busy              : std_logic;
     signal rd_rst_busy              : std_logic;
     signal fifo_data_o              : std_logic_vector(DOUT_WIDTH-1 downto 0);
+
 
     COMPONENT fifo_generator_1
     PORT (
@@ -129,13 +121,47 @@ begin
       rd_rst_busy => rd_rst_busy
     );
     
+    -- Process for monitoring data_in_valid transitions and counting invalid cycles
+    /*invalid_data_monitor : process(write_clk_i, rst_i)
+    begin
+        if rst_i = '1' then
+            invalid_counter <= (others => '0');
+            prev_data_valid <= '1';
+            internal_invalid_flag <= '0';
+        elsif rising_edge(write_clk_i) then
+            prev_data_valid <= data_in_valid;
+            
+            -- Detect high to low transition
+            if prev_data_valid = '1' and data_in_valid = '0' then
+                invalid_counter <= (others => '0');  -- Reset counter
+                internal_invalid_flag <= '0';  -- Reset flag
+            -- Count when data_valid is low
+            elsif data_in_valid = '0' then
+                if invalid_counter < 50 then
+                    invalid_counter <= invalid_counter + 1;
+                end if;
+                -- Set flag when we hit 50 (only triggers once)
+                if invalid_counter = 49 then
+                    internal_invalid_flag <= '1';
+                end if;
+            -- Reset everything when data_valid goes high
+            elsif data_in_valid = '1' then
+                invalid_counter <= (others => '0');
+                internal_invalid_flag <= '0';
+            end if;
+        end if;
+    end process;*/
+
+    -- Assign internal flag to output
+    --invalid_data_flag <= internal_invalid_flag;
+    
     process(read_clk_i, rst_i)
     begin
         if rst_i = '1' then
             data_o <= (others => '0');
             data_out_valid <= '0';
         elsif rising_edge(read_clk_i) then
-            if (input_fifo_rd_en_delayed = '1' and fifo_valid = '1') then
+            if (fifo_valid = '1' and input_fifo_rd_en_delayed  = '1') then
                 data_o <= fifo_data_o;
                 data_out_valid <= '1';
             else

@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/johnh/Desktop/DICE/Hardware/FPGA/USB Compressor Test/usb_compressor_test/usb_compressor_test.runs/clk_wiz_0_synth_1'
+HD_PWD='C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.runs/clk_wiz_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

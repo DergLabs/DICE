@@ -270,7 +270,7 @@ begin
         ce_i => '1',
         rst_i => rst_i,
         data_i => resized_pixels,
-        valid_i => dct1_valid_out_delay,
+        valid_i => divided_pixels_valid,
         data_o => pixel_rows,
         valid_o => row_valid,
         row_num_o => row_num

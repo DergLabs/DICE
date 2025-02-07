@@ -37,9 +37,9 @@ use xpm.vcomponents.all;
 entity top is
     generic (
         NUM_CHANNELS : integer := 3;
-        BLOCK_SIZE : integer := 64;
+        BLOCK_SIZE : integer := 1024;
         USE_SIM_MODEL : boolean := false;
-        ENABLE_ILA : boolean := false
+        ENABLE_ILA : boolean := False
     );
     port ( 
         -- Inputs
@@ -84,13 +84,10 @@ architecture Behavioral of top is
     signal data_in_valid                : std_logic;  -- Data from FT600 is valid, driven by FT600
     signal be_from_ft600                : std_logic_vector(1 downto 0);
     
+    signal data_from_ft600_r            : std_logic_vector(15 downto 0);
+    signal data_in_valid_r              : std_logic;  -- Data from FT600 is valid, driven by FT600
 
-    -- Data from Sipo register to input memory
-    signal data_from_sipo               : std_logic_vector(((NUM_CHANNELS * 16) - 17 ) downto 0);
-    signal data_from_sipo_valid         : std_logic;
-
-
-    -- CDC Input FIFO
+    -- CDC Input memory
     signal fifo_data_to_core            : std_logic_vector(((NUM_CHANNELS * 16) - 17 ) downto 0);
     signal input_fifo_valid             : std_logic;
     --Fifo clear signal from output memory controller
@@ -115,13 +112,12 @@ architecture Behavioral of top is
     port
     (
     -- Clock out ports
-    clk_out1        : out    std_logic;
-    clk_out2        : out    std_logic;
+    clk_out1          : out    std_logic;
     -- Status and control signals
-    reset           : in     std_logic;
-    locked          : out    std_logic;
-    -- Clock in ports
-    clk_in1         : in     std_logic
+    reset             : in     std_logic;
+    locked            : out    std_logic;
+    clk_in1_p         : in     std_logic;
+    clk_in1_n         : in     std_logic
     );
     end component;
 
@@ -155,43 +151,43 @@ begin
     ila_gen : if ENABLE_ILA generate
         ila : ila_0
         PORT MAP (
-            clk => clk_200m,
-            probe0 => '0', 
-            probe1 => (others => '0'), 
-            probe2 => (others => '0'), 
+            clk => clk_x,
+            probe0 => ft600_ready_for_data, 
+            probe1 => fifo_data_to_core, 
+            probe2 => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
             probe3 => data_to_ft600, 
             probe4 => (others => '0'),
-            probe5 => '0',
+            probe5 => ftdi_rxf_n_i,
             probe6 => data_in_valid,
             probe7 => data_from_ft600,
             probe8 => clk_x,
-            probe9 => '0',
-            probe10 => '0',
-            probe11 => '0',
+            probe9 => input_fifo_valid,
+            probe10 => ftdi_txe_n_i,
+            probe11 => ftdi_wr_n_o,
             probe12 => (others => '0')
         );
     end generate;
 
     -- Clocking
     clocking_gen: if not USE_SIM_MODEL generate
-        IBUFDS_inst : IBUFDS
+        /*IBUFDS_inst : IBUFDS
         port map (
             O => sys_clk_ibuf_x,   -- 1-bit output: Buffer output
             I => sysclk_p,   -- 1-bit input: Diff_p buffer input (connect directly to top-level port)
             IB => sysclk_n  -- 1-bit input: Diff_n buffer input (connect directly to top-level port)
-        );
+        );*/
 
         -- MMCM instantiation
         sys_clk : clk_wiz_0
         port map ( 
             -- Clock out ports  
-            clk_out1 => clk_200m, 
-            clk_out2 => clk_x,
+            clk_out1 => clk_x, 
             -- Status and control signals                
-            reset => rst_x,
+            reset => '0',
             locked => locked,
             -- Clock in ports
-            clk_in1 => sys_clk_ibuf_x
+            clk_in1_p => sysclk_p,
+            clk_in1_n => sysclk_n
         );
     end generate;
 
@@ -228,37 +224,20 @@ begin
         ready_to_send => data_in_valid -- Data from FT600 is valid and ready to send to BRAM
     );
 
-    -- Input SIPO Register, converts 16b stream from FT600 to 32b stream for input memory
-    -- First 3 bytes are valid data, last byte is unused. Byte order goes | Unused | Ch 2 - Y | Ch 1 - Cr | Ch 0 - Cb |
-    input_sipo : entity work.sipo_reg
-    generic map (
-        IN_WIDTH => 16,
-        OUT_TAPS => 2,
-        TAP_END => 0,
-        DEPTH => 2,
-        SHIFT_DIR => "RIGHT2LEFT"
-    )
-    port map (
-        clk_i => ftdi_clk_i,
-        rst_i => rst_x,
-        data_i => data_from_ft600,
-        valid_i => data_in_valid,
-
-        data_o => data_from_sipo,
-        valid_o => data_from_sipo_valid
-    );
+    data_from_ft600_r <= data_from_ft600 when rising_edge(ftdi_clk_i);
+    data_in_valid_r <= data_in_valid when rising_edge(ftdi_clk_i);
 
     input_memory_fifo : entity work.input_memory
     generic map (
-        DIN_WIDTH => data_from_sipo'length,
+        DIN_WIDTH => data_from_ft600'length,
         DOUT_WIDTH => fifo_data_to_core'length,
         DEPTH => BLOCK_SIZE -- Should be equal to number of pixels we will read in
     )
     port map (
         rst_i => rst_x,
         
-        data_i => data_from_sipo,
-        data_in_valid => data_from_sipo_valid,
+        data_i => data_from_ft600_r,
+        data_in_valid => data_in_valid_r,
         write_clk_i => ftdi_clk_i,
         write_en_i => data_in_valid,
 
@@ -280,7 +259,8 @@ begin
         port map (
             clk_i => clk_x,
             rst_i => rst_x,
-            data_i => fifo_data_to_core(31 downto 16) & fifo_data_to_core(7 downto 0),
+            -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
+            data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
             valid_i => input_fifo_valid,
             ce_o => open,
             done_o => open,
@@ -288,15 +268,24 @@ begin
             valid_o => core_dout_valid
         );
 
-        core_dout_256b <= X"0000000000000000" & core_dout;
+        --core_dout_256b <= X"0000000000000000" & core_dout;
+        
+        core_dout_256b <= core_dout(63 downto 56) & X"00" & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                        core_dout(55 downto 48) & X"00" & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                        core_dout(47 downto 40) & X"00" & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                        core_dout(39 downto 32) & X"00" & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                        core_dout(31 downto 24) & X"00" & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                        core_dout(23 downto 16) & X"00" & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                        core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);
 
         output_memory : entity work.output_memory
         generic map (
             DIN_WIDTH => 256,
             DOUT_WIDTH => data_to_ft600'length,
-            NUM_WRITE_WORDS => 8,
-            NUM_READ_WORDS => 128,
-            DEPTH => BLOCK_SIZE
+            NUM_WRITE_WORDS => 128,
+            NUM_READ_WORDS => 2048,
+            DEPTH => 2048
         )
         port map (
             rst_i => rst_x,
@@ -322,7 +311,7 @@ begin
         port map (
             clk_i => clk_x,
             rst_i => rst_x,
-            data_i => fifo_data_to_core,
+            data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
             valid_i => input_fifo_valid,
             ce_o => open,
             done_o => open,
@@ -334,8 +323,8 @@ begin
         generic map (
             DIN_WIDTH => 256,
             DOUT_WIDTH => data_to_ft600'length,
-            NUM_WRITE_WORDS => 8,
-            NUM_READ_WORDS => 128,
+            NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
+            NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16),
             DEPTH => BLOCK_SIZE
         )
         port map (
@@ -346,7 +335,7 @@ begin
             data_in_valid => core_dout_valid(0),
             write_clk_i => clk_x,
     
-            reciever_ready_i => ft600_ready_for_data,
+            reciever_ready_i => not ftdi_txe_n_i,
             data_o => data_to_ft600,
             data_out_valid => open,
             read_clk_i => ftdi_clk_i,

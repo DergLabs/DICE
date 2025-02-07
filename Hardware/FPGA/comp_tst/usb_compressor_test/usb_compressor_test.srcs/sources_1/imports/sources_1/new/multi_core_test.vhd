@@ -27,7 +27,7 @@ architecture Behavioral of multi_core_test is
     signal channel_outputs : output_array;
     
     type en_subsample is array (0 to NUM_CHANNELS-1) of boolean;
-    signal en_ch_subsample : en_subsample := (false, true, true);
+    signal en_ch_subsample : en_subsample := (true, false, true);
     
 begin
     

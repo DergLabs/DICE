@@ -70,17 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 4
-set_param power.BramSDPPropagationFix 1
-set_param power.enableUnconnectedCarry8PinPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-31472-DESKTOP-U9NB2CD/incrSyn
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xcku3p-ffva676-2-i
 
@@ -114,11 +105,6 @@ read_vhdl -vhdl2008 -library xil_defaultlib {
   C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/output_memory.vhd
   C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/new/top.vhd
 }
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/ip/fifo_generator_1/fifo_generator_1.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_ooc.xdc]
-
 read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
@@ -133,6 +119,11 @@ set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop
 read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc]
 
+read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/sources_1/ip/fifo_generator_1/fifo_generator_1.xci
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_clocks.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_ooc.xdc]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -145,8 +136,6 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc
 set_property used_in_implementation false [get_files C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/constrs_1/new/constraints.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.srcs/utils_1/imports/synth_1/top.dcp

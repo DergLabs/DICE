@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon Feb  3 10:59:46 2025
+// Date        : Fri Feb  7 06:30:07 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/comp_tst/usb_compressor_test/usb_compressor_test.gen/sources_1/ip/fifo_generator_1/fifo_generator_1_stub.v
@@ -17,13 +17,13 @@
 (* x_core_info = "fifo_generator_v13_2_9,Vivado 2023.2" *)
 module fifo_generator_1(rst, wr_clk, rd_clk, din, wr_en, rd_en, dout, full, 
   empty, valid, wr_rst_busy, rd_rst_busy)
-/* synthesis syn_black_box black_box_pad_pin="rst,din[31:0],wr_en,rd_en,dout[31:0],full,empty,valid,wr_rst_busy,rd_rst_busy" */
+/* synthesis syn_black_box black_box_pad_pin="rst,din[15:0],wr_en,rd_en,dout[31:0],full,empty,valid,wr_rst_busy,rd_rst_busy" */
 /* synthesis syn_force_seq_prim="wr_clk" */
 /* synthesis syn_force_seq_prim="rd_clk" */;
   input rst;
   input wr_clk /* synthesis syn_isclock = 1 */;
   input rd_clk /* synthesis syn_isclock = 1 */;
-  input [31:0]din;
+  input [15:0]din;
   input wr_en;
   input rd_en;
   output [31:0]dout;
