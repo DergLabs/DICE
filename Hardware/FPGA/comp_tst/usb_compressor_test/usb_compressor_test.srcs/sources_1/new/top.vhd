@@ -39,7 +39,7 @@ entity top is
         NUM_CHANNELS : integer := 3;
         BLOCK_SIZE : integer := 1024;
         USE_SIM_MODEL : boolean := false;
-        ENABLE_ILA : boolean := False
+        ENABLE_ILA : boolean := false
     );
     port ( 
         -- Inputs
@@ -93,6 +93,10 @@ architecture Behavioral of top is
     --Fifo clear signal from output memory controller
     signal fifo_clear                   : std_logic;
 
+
+    -- Data from RGB to YCrCb
+    signal ycrcb_x                      : std_logic_vector(23 downto 0);
+    signal ycrcb_valid_x                : std_logic;
 
     -- Processor Core 
     signal core_dout                    : std_logic_vector((NUM_CHANNELS*64)-1 downto 0);
@@ -230,8 +234,8 @@ begin
     input_memory_fifo : entity work.input_memory
     generic map (
         DIN_WIDTH => data_from_ft600'length,
-        DOUT_WIDTH => fifo_data_to_core'length,
-        DEPTH => BLOCK_SIZE -- Should be equal to number of pixels we will read in
+        DOUT_WIDTH => fifo_data_to_core'length
+        --DEPTH => BLOCK_SIZE -- Should be equal to number of pixels we will read in
     )
     port map (
         rst_i => rst_x,
@@ -249,6 +253,17 @@ begin
         full_o => open
     );
 
+    -- RGB to YCrCb converter
+    rgb_to_ycrcb : entity work.rgb_to_ycrcb
+    port map(
+        clk_i => clk_x,
+        -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
+        rgb_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
+        rgb_valid_i => input_fifo_valid,
+        ycrcb_o => ycrcb_x,
+        ycrcb_valid_o => ycrcb_valid_x
+    );
+
     gen_modified_core_input : 
     if NUM_CHANNELS = 3 generate
         -- Image compression core
@@ -260,8 +275,10 @@ begin
             clk_i => clk_x,
             rst_i => rst_x,
             -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
-            data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
-            valid_i => input_fifo_valid,
+            --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
+            --valid_i => input_fifo_valid,
+            data_i => ycrcb_x,
+            valid_i => ycrcb_valid_x,
             ce_o => open,
             done_o => open,
             data_o => core_dout,
@@ -283,9 +300,9 @@ begin
         generic map (
             DIN_WIDTH => 256,
             DOUT_WIDTH => data_to_ft600'length,
-            NUM_WRITE_WORDS => 128,
-            NUM_READ_WORDS => 2048,
-            DEPTH => 2048
+            NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
+            NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
+            --DEPTH => 2048
         )
         port map (
             rst_i => rst_x,
@@ -311,8 +328,10 @@ begin
         port map (
             clk_i => clk_x,
             rst_i => rst_x,
-            data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
-            valid_i => input_fifo_valid,
+            --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
+            --valid_i => input_fifo_valid,
+            data_i => ycrcb_x,
+            valid_i => ycrcb_valid_x,
             ce_o => open,
             done_o => open,
             data_o => core_dout,
@@ -324,8 +343,8 @@ begin
             DIN_WIDTH => 256,
             DOUT_WIDTH => data_to_ft600'length,
             NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
-            NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16),
-            DEPTH => BLOCK_SIZE
+            NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
+            --DEPTH => BLOCK_SIZE
         )
         port map (
             rst_i => rst_x,

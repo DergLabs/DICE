@@ -37,8 +37,8 @@ use UNISIM.VComponents.all;
 entity input_memory is
     generic (
         DIN_WIDTH   : integer := 8;
-        DOUT_WIDTH  : integer := 8;
-        DEPTH       : integer := 64
+        DOUT_WIDTH  : integer := 8
+        --DEPTH       : integer := 64
     );
     port ( 
         rst_i           : in std_logic;

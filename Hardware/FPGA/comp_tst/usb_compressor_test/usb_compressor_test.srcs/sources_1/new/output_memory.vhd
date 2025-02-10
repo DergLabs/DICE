@@ -43,8 +43,8 @@ entity output_memory is
         DIN_WIDTH : integer := 128;
         DOUT_WIDTH : integer := 16;
         NUM_WRITE_WORDS : integer := 8;
-        NUM_READ_WORDS : integer := 64;
-        DEPTH : integer := 64
+        NUM_READ_WORDS : integer := 64
+        --DEPTH : integer := 64
     );
     port ( 
         rst_i               : in std_logic;
@@ -109,8 +109,13 @@ begin
             output_ram_wr_addr <= (others => '0');
         elsif rising_edge(write_clk_i) then
             if (data_in_valid = '1') then
-                write_counter <= write_counter + 1;
-                output_ram_wr_addr <= std_logic_vector(unsigned(output_ram_wr_addr) + 1);
+                if (write_counter = NUM_WRITE_WORDS - 1) then
+                    write_counter <= 0;
+                    output_ram_wr_addr <= (others => '0');
+                else
+                    write_counter <= write_counter + 1;
+                    output_ram_wr_addr <= std_logic_vector(unsigned(output_ram_wr_addr) + 1);
+                end if;
             elsif (reciever_ready_wr_clk = '1') then
                 write_counter <= 0;
                 output_ram_wr_addr <= (others => '0');
