@@ -71,9 +71,12 @@ module rgb_to_ycrcb (
 
     end
 
-    assign y = y_temp[19:12] + y_temp[11];
+    /*assign y = y_temp[19:12] + y_temp[11];
     assign cr = cr_temp[19:12] + cr_temp[11]; // Take the upper 8 bits for Cr
-    assign cb = cb_temp[19:12] + cb_temp[11]; // Take the upper 8 bits for Cb
+    assign cb = cb_temp[19:12] + cb_temp[11]; // Take the upper 8 bits for Cb*/
+    assign y = y_temp >> 12;
+    assign cr = cr_temp >> 12;
+    assign cb = cb_temp >> 12;
     assign ycrcb_o = {cb, y, cr};
     assign ycrcb_valid_o = valid_r2;
 

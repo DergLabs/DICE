@@ -1,0 +1,32 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../dice.gen/sources_1/ip/ila_0/sim/ila_0.vhd" \
+"../../../../dice.gen/sources_1/ip/sqrt_cordic/sim/sqrt_cordic.vhd" \
+"../../../../dice.gen/sources_1/ip/dsp_msub/sim/dsp_msub.vhd" \
+"../../../../dice.gen/sources_1/ip/dsp_acum/sim/dsp_acum.vhd" \
+"../../../../dice.gen/sources_1/ip/dsp_mac/sim/dsp_mac.vhd" \
+"../../../../dice.gen/sources_1/ip/dsp_macro_add_22b/sim/dsp_macro_add_22b.vhd" \
+"../../../../dice.gen/sources_1/ip/dsp_macro_simd/sim/dsp_macro_simd.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../dice.srcs/sources_1/new/Top/data_delay_reg.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/simd_4x12b_dsp.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/dct1d.vhd" \
+"../../../../dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/pixel_subsampler.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/sipo_reg.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd" \
+"../../../../dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd" \
+"../../../../dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd" \
+"../../../../dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd" \
+"../../../../dice.srcs/sources_1/new/Top/input_memory.vhd" \
+"../../../../dice.srcs/sources_1/new/Lossy Compressor/multi_core_test.vhd" \
+"../../../../dice.srcs/sources_1/new/Top/output_memory.vhd" \
+"../../../../dice.srcs/sources_1/new/Top/top.vhd" \
+
+# Do not sort compile order
+nosort

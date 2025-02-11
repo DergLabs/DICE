@@ -1,0 +1,298 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date              : Tue Feb 11 03:40:21 2025
+| Host              : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command           : report_bus_skew -warn_on_violation -file top_bus_skew_routed.rpt -pb top_bus_skew_routed.pb -rpx top_bus_skew_routed.rpx
+| Design            : top
+| Device            : xcku3p-ffva676
+| Speed File        : -2  PRODUCTION 1.29 05-01-2022
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   11        [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[9]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[10]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[8]}]]
+                                              [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][9]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][10]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]}]]
+                                                                              Slow             10.000       0.503      9.497
+2   13        [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[0]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[8]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[9]}]]
+                                              [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][8]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][9]}]]
+                                                                              Slow             10.000       0.579      9.421
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[9]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[10]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[8]}]] -to [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][9]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][10]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]}]] 10.000
+Requirement: 10.000ns
+Endpoints: 10
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+ftdi_clk              clk_out1_sys_clk_mmcm
+                                            input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]/D
+                                                                            input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]/D
+                                                                                                            Slow         0.503      9.497
+
+
+Slack (MET) :             9.497ns  (requirement - actual skew)
+  Endpoint Source:        input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by ftdi_clk)
+  Endpoint Destination:   input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_sys_clk_mmcm)
+  Reference Source:       input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[8]/C
+                            (rising edge-triggered cell FDRE clocked by ftdi_clk)
+  Reference Destination:  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_sys_clk_mmcm)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:   -0.899ns
+  Reference Relative Delay:  -1.360ns
+  Relative CRPR:             -0.042ns
+  Actual Bus Skew:            0.503ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ftdi_clk rise edge)
+                                                      0.000     0.000 r  
+    E13                                               0.000     0.000 r  ftdi_clk_i (IN)
+                         net (fo=0)                   0.000     0.000    ftdi_clk_i_IBUF_inst/I
+    E13                  INBUF (Prop_INBUF_HPIOB_M_PAD_O)
+                                                      0.552     0.552 r  ftdi_clk_i_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.552    ftdi_clk_i_IBUF_inst/OUT
+    E13                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.552 r  ftdi_clk_i_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.336     0.888    ftdi_clk_i_IBUF
+    BUFGCE_X0Y48         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     0.916 r  ftdi_clk_i_IBUF_BUFG_inst/O
+    X0Y2 (CLOCK_ROOT)    net (fo=225, routed)         1.179     2.095    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_clk
+    SLICE_X3Y124         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y124         FDRE (Prop_GFF_SLICEL_C_Q)
+                                                      0.079     2.174 r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[4]/Q
+                         net (fo=1, routed)           0.388     2.562    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/async_path[4]
+    SLICE_X3Y121         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_sys_clk_mmcm rise edge)
+                                                      0.000     0.000 r  
+    D19                                               0.000     0.000 r  sysclk_p (IN)
+                         net (fo=0)                   0.079     0.079    clocking_gen.sys_clk/inst/clkin1_ibufds/I
+    HPIOBDIFFINBUF_X0Y84 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.528     0.607 r  clocking_gen.sys_clk/inst/clkin1_ibufds/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.647    clocking_gen.sys_clk/inst/clkin1_ibufds/OUT
+    D19                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.647 r  clocking_gen.sys_clk/inst/clkin1_ibufds/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.333     0.980    clocking_gen.sys_clk/inst/clk_in1_sys_clk_mmcm
+    MMCM_X0Y3            MMCME4_ADV (Prop_MMCM_CLKIN1_CLKOUT0)
+                                                      0.630     1.610 r  clocking_gen.sys_clk/inst/mmcme4_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.215     1.825    clocking_gen.sys_clk/inst/clk_out1_sys_clk_mmcm
+    BUFGCE_X0Y76         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.849 r  clocking_gen.sys_clk/inst/clkout1_buf/O
+    X0Y1 (CLOCK_ROOT)    net (fo=10265, routed)       1.588     3.436    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_clk
+    SLICE_X3Y121         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]/C
+                         clock pessimism              0.000     3.436    
+    SLICE_X3Y121         FDRE (Setup_BFF2_SLICEL_C_D)
+                                                      0.025     3.461    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]
+  -------------------------------------------------------------------
+                         data arrival                           2.562    
+                         clock arrival                          3.461    
+  -------------------------------------------------------------------
+                         relative delay                        -0.899    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ftdi_clk rise edge)
+                                                      0.000     0.000 r  
+    E13                                               0.000     0.000 r  ftdi_clk_i (IN)
+                         net (fo=0)                   0.000     0.000    ftdi_clk_i_IBUF_inst/I
+    E13                  INBUF (Prop_INBUF_HPIOB_M_PAD_O)
+                                                      0.302     0.302 r  ftdi_clk_i_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.302    ftdi_clk_i_IBUF_inst/OUT
+    E13                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.302 r  ftdi_clk_i_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.297     0.599    ftdi_clk_i_IBUF
+    BUFGCE_X0Y48         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     0.623 r  ftdi_clk_i_IBUF_BUFG_inst/O
+    X0Y2 (CLOCK_ROOT)    net (fo=225, routed)         1.018     1.641    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_clk
+    SLICE_X2Y123         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[8]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y123         FDRE (Prop_HFF_SLICEL_C_Q)
+                                                      0.058     1.699 r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/src_gray_ff_reg[8]/Q
+                         net (fo=1, routed)           0.124     1.823    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/async_path[8]
+    SLICE_X2Y123         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_sys_clk_mmcm rise edge)
+                                                      0.000     0.000 r  
+    D19                                               0.000     0.000 r  sysclk_p (IN)
+                         net (fo=0)                   0.100     0.100    clocking_gen.sys_clk/inst/clkin1_ibufds/I
+    HPIOBDIFFINBUF_X0Y84 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.638     0.738 r  clocking_gen.sys_clk/inst/clkin1_ibufds/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.788    clocking_gen.sys_clk/inst/clkin1_ibufds/OUT
+    D19                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.788 r  clocking_gen.sys_clk/inst/clkin1_ibufds/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.384     1.172    clocking_gen.sys_clk/inst/clk_in1_sys_clk_mmcm
+    MMCM_X0Y3            MMCME4_ADV (Prop_MMCM_CLKIN1_CLKOUT0)
+                                                     -0.127     1.045 r  clocking_gen.sys_clk/inst/mmcme4_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.245     1.290    clocking_gen.sys_clk/inst/clk_out1_sys_clk_mmcm
+    BUFGCE_X0Y76         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     1.318 r  clocking_gen.sys_clk/inst/clkout1_buf/O
+    X0Y1 (CLOCK_ROOT)    net (fo=10265, routed)       1.803     3.121    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_clk
+    SLICE_X2Y123         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]/C
+                         clock pessimism              0.000     3.121    
+    SLICE_X2Y123         FDRE (Hold_DFF2_SLICEL_C_D)
+                                                      0.062     3.183    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]
+  -------------------------------------------------------------------
+                         data arrival                           1.823    
+                         clock arrival                          3.183    
+  -------------------------------------------------------------------
+                         relative delay                        -1.360    
+
+
+
+Id: 2
+set_bus_skew -from [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[0]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[8]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[9]}]] -to [get_cells [list {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][8]} {input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][9]}]] 10.000
+Requirement: 10.000ns
+Endpoints: 10
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_out1_sys_clk_mmcm
+                      ftdi_clk              input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/D
+                                                                            input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]/D
+                                                                                                            Slow         0.579      9.421
+
+
+Slack (MET) :             9.421ns  (requirement - actual skew)
+  Endpoint Source:        input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_sys_clk_mmcm)
+  Endpoint Destination:   input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/D
+                            (rising edge-triggered cell FDRE clocked by ftdi_clk)
+  Reference Source:       input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_sys_clk_mmcm)
+  Reference Destination:  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]/D
+                            (rising edge-triggered cell FDRE clocked by ftdi_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    1.940ns
+  Reference Relative Delay:   1.403ns
+  Relative CRPR:             -0.042ns
+  Actual Bus Skew:            0.579ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_sys_clk_mmcm rise edge)
+                                                      0.000     0.000 r  
+    D19                                               0.000     0.000 r  sysclk_p (IN)
+                         net (fo=0)                   0.100     0.100    clocking_gen.sys_clk/inst/clkin1_ibufds/I
+    HPIOBDIFFINBUF_X0Y84 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.638     0.738 r  clocking_gen.sys_clk/inst/clkin1_ibufds/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.050     0.788    clocking_gen.sys_clk/inst/clkin1_ibufds/OUT
+    D19                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.788 r  clocking_gen.sys_clk/inst/clkin1_ibufds/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.384     1.172    clocking_gen.sys_clk/inst/clk_in1_sys_clk_mmcm
+    MMCM_X0Y3            MMCME4_ADV (Prop_MMCM_CLKIN1_CLKOUT0)
+                                                     -0.127     1.045 r  clocking_gen.sys_clk/inst/mmcme4_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.245     1.290    clocking_gen.sys_clk/inst/clk_out1_sys_clk_mmcm
+    BUFGCE_X0Y76         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     1.318 r  clocking_gen.sys_clk/inst/clkout1_buf/O
+    X0Y1 (CLOCK_ROOT)    net (fo=10265, routed)       1.796     3.114    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_clk
+    SLICE_X3Y121         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y121         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.079     3.193 r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[2]/Q
+                         net (fo=1, routed)           0.428     3.621    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/async_path[2]
+    SLICE_X3Y121         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ftdi_clk rise edge)
+                                                      0.000     0.000 r  
+    E13                                               0.000     0.000 r  ftdi_clk_i (IN)
+                         net (fo=0)                   0.000     0.000    ftdi_clk_i_IBUF_inst/I
+    E13                  INBUF (Prop_INBUF_HPIOB_M_PAD_O)
+                                                      0.302     0.302 r  ftdi_clk_i_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.302    ftdi_clk_i_IBUF_inst/OUT
+    E13                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.302 r  ftdi_clk_i_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.297     0.599    ftdi_clk_i_IBUF
+    BUFGCE_X0Y48         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     0.623 r  ftdi_clk_i_IBUF_BUFG_inst/O
+    X0Y2 (CLOCK_ROOT)    net (fo=225, routed)         1.033     1.656    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_clk
+    SLICE_X3Y121         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/C
+                         clock pessimism              0.000     1.656    
+    SLICE_X3Y121         FDRE (Setup_EFF2_SLICEL_C_D)
+                                                      0.025     1.681    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]
+  -------------------------------------------------------------------
+                         data arrival                           3.621    
+                         clock arrival                          1.681    
+  -------------------------------------------------------------------
+                         relative delay                         1.940    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_sys_clk_mmcm rise edge)
+                                                      0.000     0.000 r  
+    D19                                               0.000     0.000 r  sysclk_p (IN)
+                         net (fo=0)                   0.079     0.079    clocking_gen.sys_clk/inst/clkin1_ibufds/I
+    HPIOBDIFFINBUF_X0Y84 DIFFINBUF (Prop_DIFFINBUF_HPIOBDIFFINBUF_DIFF_IN_P_O)
+                                                      0.528     0.607 r  clocking_gen.sys_clk/inst/clkin1_ibufds/DIFFINBUF_INST/O
+                         net (fo=1, routed)           0.040     0.647    clocking_gen.sys_clk/inst/clkin1_ibufds/OUT
+    D19                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.647 r  clocking_gen.sys_clk/inst/clkin1_ibufds/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.333     0.980    clocking_gen.sys_clk/inst/clk_in1_sys_clk_mmcm
+    MMCM_X0Y3            MMCME4_ADV (Prop_MMCM_CLKIN1_CLKOUT0)
+                                                      0.630     1.610 r  clocking_gen.sys_clk/inst/mmcme4_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.215     1.825    clocking_gen.sys_clk/inst/clk_out1_sys_clk_mmcm
+    BUFGCE_X0Y76         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.024     1.849 r  clocking_gen.sys_clk/inst/clkout1_buf/O
+    X0Y1 (CLOCK_ROOT)    net (fo=10265, routed)       1.594     3.442    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_clk
+    SLICE_X2Y124         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y124         FDRE (Prop_CFF_SLICEL_C_Q)
+                                                      0.058     3.500 r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/src_gray_ff_reg[6]/Q
+                         net (fo=1, routed)           0.072     3.572    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/async_path[6]
+    SLICE_X2Y124         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ftdi_clk rise edge)
+                                                      0.000     0.000 r  
+    E13                                               0.000     0.000 r  ftdi_clk_i (IN)
+                         net (fo=0)                   0.000     0.000    ftdi_clk_i_IBUF_inst/I
+    E13                  INBUF (Prop_INBUF_HPIOB_M_PAD_O)
+                                                      0.552     0.552 r  ftdi_clk_i_IBUF_inst/INBUF_INST/O
+                         net (fo=1, routed)           0.000     0.552    ftdi_clk_i_IBUF_inst/OUT
+    E13                  IBUFCTRL (Prop_IBUFCTRL_HPIOB_M_I_O)
+                                                      0.000     0.552 r  ftdi_clk_i_IBUF_inst/IBUFCTRL_INST/O
+                         net (fo=1, routed)           0.336     0.888    ftdi_clk_i_IBUF
+    BUFGCE_X0Y48         BUFGCE (Prop_BUFCE_BUFGCE_I_O)
+                                                      0.028     0.916 r  ftdi_clk_i_IBUF_BUFG_inst/O
+    X0Y2 (CLOCK_ROOT)    net (fo=225, routed)         1.191     2.107    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_clk
+    SLICE_X2Y124         FDRE                                         r  input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]/C
+                         clock pessimism              0.000     2.107    
+    SLICE_X2Y124         FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.062     2.169    input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]
+  -------------------------------------------------------------------
+                         data arrival                           3.572    
+                         clock arrival                          2.169    
+  -------------------------------------------------------------------
+                         relative delay                         1.403    
+
+
+

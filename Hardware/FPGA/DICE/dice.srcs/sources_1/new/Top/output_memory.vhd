@@ -131,7 +131,7 @@ begin
     begin
         if rst_i = '1' then
             read_counter <= 0;
-        elsif rising_edge(read_clk_i) then
+        elsif falling_edge(read_clk_i) then
             if reciever_ready_i = '1' then
                 if (read_counter = NUM_READ_WORDS - 1) then
                     read_counter <= 0;

@@ -39,7 +39,8 @@ entity top is
         NUM_CHANNELS : integer := 3;
         BLOCK_SIZE : integer := 1024;
         USE_SIM_MODEL : boolean := false;
-        ENABLE_ILA : boolean := false
+        ENABLE_ILA : boolean := false;
+        ENABLE_STATS : boolean := true
     );
     port ( 
         -- Inputs
@@ -97,6 +98,8 @@ architecture Behavioral of top is
     -- Data from RGB to YCrCb
     signal ycrcb_x                      : std_logic_vector(23 downto 0);
     signal ycrcb_valid_x                : std_logic;
+    signal ycrcb_delayed_x              : std_logic_vector(23 downto 0);
+    signal ycrcb_valid_delayed_x        : std_logic;
 
     -- Processor Core 
     signal core_dout                    : std_logic_vector((NUM_CHANNELS*64)-1 downto 0);
@@ -109,6 +112,19 @@ architecture Behavioral of top is
     signal data_to_ft600                : std_logic_vector(15 downto 0);
     signal ft600_ready_for_data         : std_logic; -- Data to FT600 is valid, driven by FT600
     signal be_to_ft600                  : std_logic_vector(1 downto 0);
+
+    -- Statistics Module Outputs
+    signal laplacian_var                : std_logic_vector(15 downto 0);
+    signal laplacian_mean               : std_logic_vector(15 downto 0);
+    signal laplacian_std_dev            : std_logic_vector(15 downto 0);
+    signal laplacian_valid              : std_logic;
+
+    signal gradient_var                 : std_logic_vector(15 downto 0);
+    signal gradient_mean                : std_logic_vector(15 downto 0);
+    signal gradient_std_dev             : std_logic_vector(15 downto 0);
+    signal gradient_valid               : std_logic;
+
+    signal pixel_select                 : std_logic;
 
 
     -- Core clock gen
@@ -134,7 +150,15 @@ architecture Behavioral of top is
         probe2      : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
         probe3      : IN STD_LOGIC;
         probe4      : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-        probe5      : IN STD_LOGIC
+        probe5      : IN STD_LOGIC; 
+        probe6      : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
+        probe7      : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
+        probe8      : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
+        probe9      : IN STD_LOGIC; 
+        probe10     : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
+        probe11     : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
+        probe12     : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        probe13     : IN STD_LOGIC
     );
     END COMPONENT;
 
@@ -155,7 +179,18 @@ begin
             probe2 => fifo_data_to_core,
             probe3 => input_fifo_valid, 
             probe4 => data_to_ft600,
-            probe5 => ft600_ready_for_data
+            probe5 => ft600_ready_for_data,
+
+            probe6 => laplacian_var,
+            probe7 => laplacian_mean,
+            probe8 => laplacian_std_dev,
+            probe9 => laplacian_valid,
+
+            probe10 => gradient_var,
+            probe11 => gradient_mean,
+            probe12 => gradient_std_dev,
+            probe13 => gradient_valid
+            
         );
     end generate;
 
@@ -241,7 +276,7 @@ begin
     );
 
     -- RGB to YCrCb converter
-    rgb_to_ycrcb : entity work.rgb_to_ycrcb
+    /*rgb_to_ycrcb : entity work.rgb_to_ycrcb
     port map(
         clk_i => clk_x,
         -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
@@ -249,10 +284,40 @@ begin
         rgb_valid_i => input_fifo_valid,
         ycrcb_o => ycrcb_x,
         ycrcb_valid_o => ycrcb_valid_x
-    );
+    );*/
 
     gen_modified_core_input : 
     if NUM_CHANNELS = 3 generate
+
+        -- data delay to give statistics core time to process
+        data_delay : entity work.data_delay_reg
+        generic map (
+            SHIFT_DEPTH => 265,
+            DATA_WIDTH => 24
+        )
+        port map (
+            clk_i => clk_x,
+            ce_i => '1',
+            rst_i => rst_x,
+            --data_i => ycrcb_x,
+            data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
+            data_o => ycrcb_delayed_x
+        );
+
+        data_delay_valid : entity work.data_delay_reg
+        generic map (
+            SHIFT_DEPTH => 265,
+            DATA_WIDTH => 1
+        )
+        port map (
+            clk_i => clk_x,
+            ce_i => '1',
+            rst_i => rst_x,
+            --data_i(0) => ycrcb_valid_x,
+            data_i(0) => input_fifo_valid,
+            data_o(0) => ycrcb_valid_delayed_x
+        );
+
         -- Image compression core
         compression_core : entity work.multi_core_test
         generic map (
@@ -264,24 +329,42 @@ begin
             -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
             --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
             --valid_i => input_fifo_valid,
-            data_i => ycrcb_x,
-            valid_i => ycrcb_valid_x,
+            data_i => ycrcb_delayed_x,
+            valid_i => ycrcb_valid_delayed_x,
             ce_o => open,
             done_o => open,
             data_o => core_dout,
             valid_o => core_dout_valid
         );
 
-        --core_dout_256b <= X"0000000000000000" & core_dout;
-        
-        core_dout_256b <= core_dout(63 downto 56) & X"00" & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                        core_dout(55 downto 48) & X"00" & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                        core_dout(47 downto 40) & X"00" & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                        core_dout(39 downto 32) & X"00" & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                        core_dout(31 downto 24) & X"00" & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                        core_dout(23 downto 16) & X"00" & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                        core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);
+        /*with pixel_select select
+            core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                            core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                            core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                            core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                            core_dout(31 downto 24) & X"00" & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                            core_dout(23 downto 16) & X"00" & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                            core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                            core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64) when '0',
+
+                            core_dout(63 downto 56) & X"FF" & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                            core_dout(55 downto 48) & X"FF" & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                            core_dout(47 downto 40) & X"FF" & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                            core_dout(39 downto 32) & X"FF" & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                            core_dout(31 downto 24) & X"FF" & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                            core_dout(23 downto 16) & X"FF" & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                            core_dout(15 downto 8) & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                            core_dout(7 downto 0) & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64) when others;*/
+
+        core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                            core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                            core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                            core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                            core_dout(31 downto 24) & gradient_var(15 downto 8) & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                            core_dout(23 downto 16) & gradient_var(7 downto 0) & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                            core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                            core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);
+            
 
         output_memory : entity work.output_memory
         generic map (
@@ -341,7 +424,7 @@ begin
             data_in_valid => core_dout_valid(0),
             write_clk_i => clk_x,
     
-            reciever_ready_i => not ftdi_txe_n_i,
+            reciever_ready_i => ft600_ready_for_data,
             data_o => data_to_ft600,
             data_out_valid => open,
             read_clk_i => ftdi_clk_i,
@@ -349,5 +432,50 @@ begin
             memory_clear_o => fifo_clear
         );
     end generate;
+
+
+    gen_image_statistics :
+    if ENABLE_STATS generate
+        -- Image statistics core
+        image_statistics_core : entity work.image_statistics_top
+        generic map (
+            NUM_SAMPLES => 28
+        )
+        port map (
+            clk_i => clk_x, 
+            ce_i => '1',
+            rst_i => rst_x,
+
+            --pixel_i => ycrcb_x(15 downto 8), -- pass Y channel to statistics core
+            pixel_i => fifo_data_to_core(31 downto 24),
+            --valid_i => ycrcb_valid_x,
+            valid_i => input_fifo_valid,
+
+            laplacian_var_o => laplacian_var,
+            laplacian_mean_o => laplacian_mean,
+            laplacian_std_dev_o => laplacian_std_dev,
+            laplacian_valid_o => laplacian_valid,
+
+            gradient_var_o => gradient_var,
+            gradient_mean_o => gradient_mean,
+            gradient_std_dev_o => gradient_std_dev,
+            gradient_valid_o => gradient_valid
+        );
+    end generate;
+
+    -- Simple decision Logic for image stats
+    process(clk_x, rst_x)
+    begin
+        if rst_x = '1' then
+            pixel_select <= '0';
+        elsif rising_edge(clk_x) then
+            if laplacian_var > X"0200" then 
+                pixel_select <= '1';
+            else
+                pixel_select <= '0';
+            end if;
+        end if;
+    end process;
+
 
 end Behavioral;
