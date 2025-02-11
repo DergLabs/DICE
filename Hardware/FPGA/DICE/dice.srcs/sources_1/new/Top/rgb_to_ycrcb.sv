@@ -16,17 +16,22 @@ module rgb_to_ycrcb (
     wire [7:0] cb; // Blue_difference chroma component
 
     // Fixed-point coefficients for YCrCb conversion
-    localparam [15:0] COEFF_Y_R  = 1052;
-    localparam [15:0] COEFF_Y_G  = 2065;
-    localparam [15:0] COEFF_Y_B  = 401;
-    localparam [15:0] COEFF_CR_R = 1799;
+    localparam [15:0] COEFF_Y_R  = 19595;
+    localparam [15:0] COEFF_Y_G  = 38469;
+    localparam [15:0] COEFF_Y_B  = 7471;
+
+    localparam [15:0] COEFF_CR = 46727;
+    localparam [15:0] COEFF_CB = 36926;
+
+    /*localparam [15:0] COEFF_CR_R = 1799;
     localparam [15:0] COEFF_CR_G = 1507;
     localparam [15:0] COEFF_CR_B = 292;
     localparam [15:0] COEFF_CB_R = 607;
     localparam [15:0] COEFF_CB_G = 1192;
-    localparam [15:0] COEFF_CB_B = 1799;
+    localparam [15:0] COEFF_CB_B = 1799;*/
 
     //Intermediate signals for multiplication
+    reg [23:0] y;
     reg [23:0] y_r;
     reg [23:0] y_g;
     reg [23:0] y_b;
@@ -44,29 +49,40 @@ module rgb_to_ycrcb (
     reg [23:0] cb_temp;
     reg valid_r2;
 
+    reg [23:0] ry_temp;
+    reg [23:0] by_temp;
+
     assign r = rgb_i[23:16];
     assign g = rgb_i[15:8];
     assign b = rgb_i[7:0];
 
     always @(posedge clk_i) begin
         // Calculate intermediate values
-        y_r <= (COEFF_Y_R * r);
-        y_g <= (COEFF_Y_G * g);
-        y_b <= (COEFF_Y_B * b);
+        /*y_r <= (COEFF_Y_R * r) >> 16;
+        y_g <= (COEFF_Y_G * g) >> 16;
+        y_b <= (COEFF_Y_B * b) >> 16;*/
 
-        cr_r <= (COEFF_CR_R * r);
+        y_temp <= ((COEFF_Y_R * r) >> 16) + ((COEFF_Y_G * g) >> 16) + ((COEFF_Y_B * b) >> 16);
+
+        ry_temp <= (r - y_temp);
+        by_temp <= (b - y_temp);
+
+        cr_temp <= ((ry_temp * COEFF_CR) >> 16) + 128;
+        cb_temp <= ((by_temp * COEFF_CB) >> 16) + 128;
+
+        /*cr_r <= (COEFF_CR_R * r);
         cr_g <= (COEFF_CR_G * g);
         cr_b <= (COEFF_CR_B * b);
 
         cb_r <= (COEFF_CB_R * r);
         cb_g <= (COEFF_CB_G * g);
-        cb_b <= (COEFF_CB_B * b);
+        cb_b <= (COEFF_CB_B * b);*/
 
         valid_r1 <= rgb_valid_i;
 
-        y_temp <= y_r + y_g + y_b + 65536;
+        /*y_temp <= y_r + y_g + y_b + 65536;
         cr_temp <= cr_r - cr_g - cr_b + 524288;
-        cb_temp <= cb_b - cb_r - cb_g + 524288;
+        cb_temp <= cb_b - cb_r - cb_g + 524288;*/
         valid_r2 <= valid_r1;
 
     end
@@ -74,9 +90,12 @@ module rgb_to_ycrcb (
     /*assign y = y_temp[19:12] + y_temp[11];
     assign cr = cr_temp[19:12] + cr_temp[11]; // Take the upper 8 bits for Cr
     assign cb = cb_temp[19:12] + cb_temp[11]; // Take the upper 8 bits for Cb*/
-    assign y = y_temp >> 12;
+    /*assign y = y_temp >> 12;
     assign cr = cr_temp >> 12;
-    assign cb = cb_temp >> 12;
+    assign cb = cb_temp >> 12;*/
+    assign y = y_temp[7 : 0];
+    assign cr = cr_temp[7 : 0];
+    assign cb = cb_temp[7 : 0];
     assign ycrcb_o = {cb, y, cr};
     assign ycrcb_valid_o = valid_r2;
 

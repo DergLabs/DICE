@@ -223,7 +223,7 @@ begin
     end generate;
 
 
-    -- FT600 runs on FTDI CLK
+    -- FT600 interface, runs on FTDI CLK
     ft600_send_recv : entity work.send_recieve_module
     port map (
         rst_n => rst_i,
@@ -253,6 +253,7 @@ begin
     data_from_ft600_r <= data_from_ft600 when rising_edge(ftdi_clk_i);
     data_in_valid_r <= data_in_valid when rising_edge(ftdi_clk_i);
 
+    -- Input fifo, bridges ftdi_clk and core_clk
     input_memory_fifo : entity work.input_memory
     generic map (
         DIN_WIDTH => data_from_ft600'length,
@@ -276,7 +277,7 @@ begin
     );
 
     -- RGB to YCrCb converter
-    /*rgb_to_ycrcb : entity work.rgb_to_ycrcb
+    rgb_to_ycrcb : entity work.rgb_to_ycrcb
     port map(
         clk_i => clk_x,
         -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
@@ -284,162 +285,118 @@ begin
         rgb_valid_i => input_fifo_valid,
         ycrcb_o => ycrcb_x,
         ycrcb_valid_o => ycrcb_valid_x
-    );*/
+    );
 
-    gen_modified_core_input : 
-    if NUM_CHANNELS = 3 generate
 
-        -- data delay to give statistics core time to process
-        data_delay : entity work.data_delay_reg
-        generic map (
-            SHIFT_DEPTH => 265,
-            DATA_WIDTH => 24
-        )
-        port map (
-            clk_i => clk_x,
-            ce_i => '1',
-            rst_i => rst_x,
-            --data_i => ycrcb_x,
-            data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
-            data_o => ycrcb_delayed_x
-        );
+    -- data delay to give statistics core time to process
+    data_delay : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 265,
+        DATA_WIDTH => 24
+    )
+    port map (
+        clk_i => clk_x,
+        ce_i => '1',
+        rst_i => rst_x,
+        data_i => ycrcb_x,
+        --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
+        data_o => ycrcb_delayed_x
+    );
 
-        data_delay_valid : entity work.data_delay_reg
-        generic map (
-            SHIFT_DEPTH => 265,
-            DATA_WIDTH => 1
-        )
-        port map (
-            clk_i => clk_x,
-            ce_i => '1',
-            rst_i => rst_x,
-            --data_i(0) => ycrcb_valid_x,
-            data_i(0) => input_fifo_valid,
-            data_o(0) => ycrcb_valid_delayed_x
-        );
+    -- delay valid to align with data
+    data_delay_valid : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 265,
+        DATA_WIDTH => 1
+    )
+    port map (
+        clk_i => clk_x,
+        ce_i => '1',
+        rst_i => rst_x,
+        data_i(0) => ycrcb_valid_x,
+        --data_i(0) => input_fifo_valid,
+        data_o(0) => ycrcb_valid_delayed_x
+    );
 
-        -- Image compression core
-        compression_core : entity work.multi_core_test
-        generic map (
-            NUM_CHANNELS => NUM_CHANNELS
-        )
-        port map (
-            clk_i => clk_x,
-            rst_i => rst_x,
-            -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
-            --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
-            --valid_i => input_fifo_valid,
-            data_i => ycrcb_delayed_x,
-            valid_i => ycrcb_valid_delayed_x,
-            ce_o => open,
-            done_o => open,
-            data_o => core_dout,
-            valid_o => core_dout_valid
-        );
+    -- Image compression core
+    compression_core : entity work.multi_core_test
+    generic map (
+        NUM_CHANNELS => NUM_CHANNELS
+    )
+    port map (
+        clk_i => clk_x,
+        rst_i => rst_x,
+        -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
+        --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
+        --valid_i => input_fifo_valid,
+        data_i => ycrcb_delayed_x,
+        valid_i => ycrcb_valid_delayed_x,
+        ce_o => open,
+        done_o => open,
+        data_o => core_dout,
+        valid_o => core_dout_valid
+    );
 
-        /*with pixel_select select
-            core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                            core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                            core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                            core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                            core_dout(31 downto 24) & X"00" & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                            core_dout(23 downto 16) & X"00" & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                            core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                            core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64) when '0',
-
-                            core_dout(63 downto 56) & X"FF" & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                            core_dout(55 downto 48) & X"FF" & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                            core_dout(47 downto 40) & X"FF" & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                            core_dout(39 downto 32) & X"FF" & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                            core_dout(31 downto 24) & X"FF" & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                            core_dout(23 downto 16) & X"FF" & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                            core_dout(15 downto 8) & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                            core_dout(7 downto 0) & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64) when others;*/
-
+    /*with pixel_select select
         core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                            core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                            core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                            core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                            core_dout(31 downto 24) & gradient_var(15 downto 8) & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                            core_dout(23 downto 16) & gradient_var(7 downto 0) & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                            core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                            core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);
-            
+                        core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                        core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                        core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                        core_dout(31 downto 24) & X"00" & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                        core_dout(23 downto 16) & X"00" & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                        core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64) when '0',
 
-        output_memory : entity work.output_memory
-        generic map (
-            DIN_WIDTH => 256,
-            DOUT_WIDTH => data_to_ft600'length,
-            NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
-            NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
-            --DEPTH => 2048
-        )
-        port map (
-            rst_i => rst_x,
-            
-            -- Converting to 256b bus for output memory, may fix later but this keeps things simple
-            data_i => core_dout_256b,
-            data_in_valid => core_dout_valid(0),
-            write_clk_i => clk_x,
-    
-            reciever_ready_i => ft600_ready_for_data,
-            data_o => data_to_ft600,
-            data_out_valid => open,
-            read_clk_i => ftdi_clk_i,
-    
-            memory_clear_o => fifo_clear
-        );
-    else generate
-        -- Image compression core
-        compression_core : entity work.multi_core_test
-        generic map (
-            NUM_CHANNELS => NUM_CHANNELS
-        )
-        port map (
-            clk_i => clk_x,
-            rst_i => rst_x,
-            --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
-            --valid_i => input_fifo_valid,
-            data_i => ycrcb_x,
-            valid_i => ycrcb_valid_x,
-            ce_o => open,
-            done_o => open,
-            data_o => core_dout,
-            valid_o => core_dout_valid
-        );
+                        core_dout(63 downto 56) & X"FF" & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                        core_dout(55 downto 48) & X"FF" & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                        core_dout(47 downto 40) & X"FF" & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                        core_dout(39 downto 32) & X"FF" & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                        core_dout(31 downto 24) & X"FF" & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                        core_dout(23 downto 16) & X"FF" & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                        core_dout(15 downto 8) & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                        core_dout(7 downto 0) & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64) when others;*/
 
-        output_memory : entity work.output_memory
-        generic map (
-            DIN_WIDTH => 256,
-            DOUT_WIDTH => data_to_ft600'length,
-            NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
-            NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
-            --DEPTH => BLOCK_SIZE
-        )
-        port map (
-            rst_i => rst_x,
-            
-            -- Converting to 256b bus for output memory, may fix later but this keeps things simple
-            data_i => core_dout,
-            data_in_valid => core_dout_valid(0),
-            write_clk_i => clk_x,
-    
-            reciever_ready_i => ft600_ready_for_data,
-            data_o => data_to_ft600,
-            data_out_valid => open,
-            read_clk_i => ftdi_clk_i,
-    
-            memory_clear_o => fifo_clear
-        );
-    end generate;
+    core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                        core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                        core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                        core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                        core_dout(31 downto 24) & gradient_var(15 downto 8) & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                        core_dout(23 downto 16) & gradient_var(7 downto 0) & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                        core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);
+        
 
+    output_memory : entity work.output_memory
+    generic map (
+        DIN_WIDTH => 256,
+        DOUT_WIDTH => data_to_ft600'length,
+        NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
+        NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
+        --DEPTH => 2048
+    )
+    port map (
+        rst_i => rst_x,
+        
+        -- Converting to 256b bus for output memory, may fix later but this keeps things simple
+        data_i => core_dout_256b,
+        data_in_valid => core_dout_valid(0),
+        write_clk_i => clk_x,
 
+        reciever_ready_i => ft600_ready_for_data,
+        data_o => data_to_ft600,
+        data_out_valid => open,
+        read_clk_i => ftdi_clk_i,
+
+        memory_clear_o => fifo_clear
+    );
+
+    -- Image statistics core
     gen_image_statistics :
     if ENABLE_STATS generate
         -- Image statistics core
         image_statistics_core : entity work.image_statistics_top
         generic map (
-            NUM_SAMPLES => 28
+            NUM_SAMPLES => 28 -- # of 9 pixel samples to process, 256/9 = 28.77 so we round down to 28
         )
         port map (
             clk_i => clk_x, 
