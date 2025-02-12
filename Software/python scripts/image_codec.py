@@ -23,10 +23,12 @@ Qd = np.array([
     [16, 32, 32, 32, 32, 32, 32, 32]
 ], dtype=np.int16)
 
+#Qd = Qd * 0.125
+
 
 def idct_vectorized(dct_blocks):
     # Dequantization - broadcasting handles multiple blocks
-    Mdequantized = dct_blocks * Qd
+    Mdequantized = dct_blocks * (Qd * 1)
 
     # Reshape to handle all blocks at once
     blocks_shape = Mdequantized.shape

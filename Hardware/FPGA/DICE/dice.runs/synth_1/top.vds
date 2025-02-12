@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Tue Feb 11 13:32:20 2025
-# Process ID: 16332
+# Start of session at: Wed Feb 12 00:22:30 2025
+# Process ID: 1216
 # Current directory: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/top.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-U9NB2CD, OS: Windows, CPU Frequency: 4100 MHz, CPU Physical cores: 16, Host memory: 68639 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 483.367 ; gain = 178.984
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 484.488 ; gain = 180.074
 Command: read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/utils_1/imports/synth_1/top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,17 +25,14 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 26272
+INFO: [Synth 8-7075] Helper process launched with PID 13456
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2011.688 ; gain = 418.957
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2011.953 ; gain = 419.441
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-9339] data object 'y' is already declared [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:34]
-INFO: [Synth 8-6826] previous declaration of 'y' is from here [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:14]
-CRITICAL WARNING: [Synth 8-11152] second declaration of 'y' is ignored [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:34]
 WARNING: [Synth 8-9111] actual expression for generic 'en_subsample' cannot reference a signal [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_core_test.vhd:43]
 INFO: [Synth 8-638] synthesizing module 'top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:72]
-INFO: [Synth 8-3491] module 'sys_clk_mmcm' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:6' bound to instance 'sys_clk' of component 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:207]
-INFO: [Synth 8-638] synthesizing module 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'sys_clk_mmcm' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:6' bound to instance 'sys_clk' of component 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:207]
+INFO: [Synth 8-638] synthesizing module 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:17]
 INFO: [Synth 8-6157] synthesizing module 'send_recieve_module' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv:3]
 INFO: [Synth 8-6155] done synthesizing module 'send_recieve_module' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv:3]
 INFO: [Synth 8-638] synthesizing module 'input_memory' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:60]
@@ -45,19 +42,27 @@ INFO: [Synth 8-638] synthesizing module 'data_delay_reg' [C:/Users/johnh/Desktop
 	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_delay_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
-INFO: [Synth 8-3491] module 'input_data_fifo' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:6' bound to instance 'input_cdc_fifo' of component 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:104]
-INFO: [Synth 8-638] synthesizing module 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'input_data_fifo' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:6' bound to instance 'input_cdc_fifo' of component 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:104]
+INFO: [Synth 8-638] synthesizing module 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:24]
 INFO: [Synth 8-256] done synthesizing module 'input_memory' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:60]
 INFO: [Synth 8-6157] synthesizing module 'rgb_to_ycrcb' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:3]
-INFO: [Synth 8-6155] done synthesizing module 'rgb_to_ycrcb' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:3]
 INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
-	Parameter SHIFT_DEPTH bound to: 265 - type: integer 
-	Parameter DATA_WIDTH bound to: 24 - type: integer 
+	Parameter SHIFT_DEPTH bound to: 6 - type: integer 
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized0' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized1' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized1' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-6155] done synthesizing module 'rgb_to_ycrcb' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:3]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized2' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+	Parameter SHIFT_DEPTH bound to: 265 - type: integer 
+	Parameter DATA_WIDTH bound to: 24 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized2' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized3' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 265 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized1' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized3' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'multi_core_test' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_core_test.vhd:21]
 	Parameter NUM_CHANNELS bound to: 3 - type: integer 
 INFO: [Synth 8-638] synthesizing module 'image_compressor' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:52]
@@ -73,10 +78,10 @@ INFO: [Synth 8-638] synthesizing module 'sipo_reg' [C:/Users/johnh/Desktop/DICE/
 	Parameter SHIFT_DIR bound to: LEFT2RIGHT - type: string 
 INFO: [Synth 8-256] done synthesizing module 'sipo_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/sipo_reg.vhd:55]
 INFO: [Synth 8-638] synthesizing module 'dct1d' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/dct1d.vhd:47]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized2' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized4' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 6 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized2' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized4' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'simd_4x12b_dsp' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/simd_4x12b_dsp.vhd:54]
 	Parameter W bound to: 12 - type: integer 
 	Parameter OP bound to: ADD - type: string 
@@ -85,32 +90,32 @@ INFO: [Synth 8-638] synthesizing module 'simd_4x12b_dsp__parameterized0' [C:/Use
 	Parameter W bound to: 12 - type: integer 
 	Parameter OP bound to: SUB - type: string 
 INFO: [Synth 8-256] done synthesizing module 'simd_4x12b_dsp__parameterized0' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/simd_4x12b_dsp.vhd:54]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized3' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized5' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
 	Parameter DATA_WIDTH bound to: 48 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized3' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized5' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'dct1d' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/dct1d.vhd:47]
 INFO: [Synth 8-638] synthesizing module 'pixel_divider' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd:45]
 INFO: [Synth 8-256] done synthesizing module 'pixel_divider' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd:45]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized4' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized6' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 1 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
 WARNING: [Synth 8-11358] null range expression ignored [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:64]
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized4' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized6' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'transpose' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd:53]
 	Parameter ELEMENT_WIDTH bound to: 9 - type: integer 
 	Parameter NUM_ELEMENTS bound to: 8 - type: integer 
 	Parameter DEPTH bound to: 8 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'transpose' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd:53]
 INFO: [Synth 8-638] synthesizing module 'quantizer' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd:49]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized5' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized7' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 96 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized5' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized6' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized7' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized8' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized6' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized8' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'quantization_table' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd:18]
 	Parameter INIT_A bound to: 64'b0000001000000011000000010000000100000000000000010000000000000001 
 	Parameter INIT_B bound to: 64'b0000001000000011000000010000000100000000000000000000000000000000 
@@ -124,19 +129,19 @@ INFO: [Synth 8-113] binding component instance 'ram_inst0' to cell 'RAM32M' [C:/
 	Parameter INIT_D bound to: 64'b0000001000000011000000100000001000000001000000100000000100000010 
 	Parameter IS_WCLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'ram_inst1' to cell 'RAM32M' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd:100]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized7' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized9' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
 	Parameter DATA_WIDTH bound to: 5 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized7' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized9' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'quantization_table' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd:18]
 INFO: [Synth 8-256] done synthesizing module 'quantizer' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd:49]
 INFO: [Synth 8-256] done synthesizing module 'image_compressor' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:52]
 INFO: [Synth 8-638] synthesizing module 'image_compressor__parameterized0' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:52]
 	Parameter EN_SUBSAMPLE bound to: 0 - type: bool 
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized8' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized10' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized8' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized10' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'image_compressor__parameterized0' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:52]
 INFO: [Synth 8-256] done synthesizing module 'multi_core_test' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_core_test.vhd:21]
 INFO: [Synth 8-638] synthesizing module 'output_memory' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:67]
@@ -144,8 +149,8 @@ INFO: [Synth 8-638] synthesizing module 'output_memory' [C:/Users/johnh/Desktop/
 	Parameter DOUT_WIDTH bound to: 16 - type: integer 
 	Parameter NUM_WRITE_WORDS bound to: 128 - type: integer 
 	Parameter NUM_READ_WORDS bound to: 2048 - type: integer 
-INFO: [Synth 8-3491] module 'output_buffer_ram' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:6' bound to instance 'output_memory' of component 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:151]
-INFO: [Synth 8-638] synthesizing module 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'output_buffer_ram' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:6' bound to instance 'output_memory' of component 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:151]
+INFO: [Synth 8-638] synthesizing module 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:24]
 INFO: [Synth 8-256] done synthesizing module 'output_memory' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:67]
 INFO: [Synth 8-638] synthesizing module 'image_statistics_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd:58]
 	Parameter NUM_SAMPLES bound to: 28 - type: integer 
@@ -159,62 +164,52 @@ INFO: [Synth 8-638] synthesizing module 'laplacian_core' [C:/Users/johnh/Desktop
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:63]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized9' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized11' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 4 - type: integer 
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized9' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:149]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:160]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized11' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:149]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:160]
 INFO: [Synth 8-256] done synthesizing module 'laplacian_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:32]
 INFO: [Synth 8-638] synthesizing module 'gradient_calc' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:51]
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:110]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:200]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:211]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:222]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:233]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:200]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:211]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:222]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:233]
 INFO: [Synth 8-256] done synthesizing module 'gradient_calc' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:51]
 INFO: [Synth 8-638] synthesizing module 'statistics_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:37]
 	Parameter variance_depth bound to: 28 - type: integer 
 	Parameter data_width bound to: 11 - type: integer 
-INFO: [Synth 8-3491] module 'dsp_mac' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:6' bound to instance 'dsp_vsum_mac' of component 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:151]
-INFO: [Synth 8-638] synthesizing module 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'dsp_acum' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:6' bound to instance 'dsp_hsum_acum' of component 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:161]
-INFO: [Synth 8-638] synthesizing module 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'dsp_msub' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:6' bound to instance 'dsp_var_msub' of component 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:188]
-INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:18]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized10' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-3491] module 'dsp_mac' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:6' bound to instance 'dsp_vsum_mac' of component 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:151]
+INFO: [Synth 8-638] synthesizing module 'dsp_mac' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_mac_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'dsp_acum' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:6' bound to instance 'dsp_hsum_acum' of component 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:161]
+INFO: [Synth 8-638] synthesizing module 'dsp_acum' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_acum_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'dsp_msub' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:6' bound to instance 'dsp_var_msub' of component 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:188]
+INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/dsp_msub_stub.vhdl:18]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized12' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 7 - type: integer 
 	Parameter DATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized10' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
-INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized11' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized12' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'data_delay_reg__parameterized13' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
 	Parameter SHIFT_DEPTH bound to: 3 - type: integer 
 	Parameter DATA_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized11' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
-INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:224]
-INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-16332-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
+INFO: [Synth 8-256] done synthesizing module 'data_delay_reg__parameterized13' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:48]
+INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:224]
+INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-1216-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
 INFO: [Synth 8-256] done synthesizing module 'statistics_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:37]
 INFO: [Synth 8-256] done synthesizing module 'image_statistics_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd:58]
 INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:72]
-WARNING: [Synth 8-3936] Found unconnected internal register 'cb_temp_reg' and it is trimmed from '24' to '8' bits. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:71]
-WARNING: [Synth 8-3936] Found unconnected internal register 'cr_temp_reg' and it is trimmed from '24' to '8' bits. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv:70]
 WARNING: [Synth 8-3848] Net row_num_o in module/entity transpose does not have driver. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd:49]
 WARNING: [Synth 8-3848] Net done_o in module/entity image_compressor does not have driver. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:46]
 WARNING: [Synth 8-6014] Unused sequential element valid_x_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:109]
 WARNING: [Synth 8-3848] Net done_o in module/entity image_compressor__parameterized0 does not have driver. [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd:46]
-WARNING: [Synth 8-6014] Unused sequential element pixel_select_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:427]
+WARNING: [Synth 8-6014] Unused sequential element pixel_select_reg was removed.  [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:439]
 WARNING: [Synth 8-7129] Port ce_i in module statistics_core is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[7] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[6] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[5] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[4] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[3] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[2] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[1] in module quantization_table is either unconnected or has no load
-WARNING: [Synth 8-7129] Port scale_factor_i[0] in module quantization_table is either unconnected or has no load
 WARNING: [Synth 8-7129] Port row_num_o[3] in module transpose is either unconnected or has no load
 WARNING: [Synth 8-7129] Port row_num_o[2] in module transpose is either unconnected or has no load
 WARNING: [Synth 8-7129] Port row_num_o[1] in module transpose is either unconnected or has no load
@@ -224,18 +219,18 @@ WARNING: [Synth 8-7129] Port done_o in module image_compressor is either unconne
 WARNING: [Synth 8-7129] Port done_o in module image_compressor__parameterized0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sim_clk in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2148.566 ; gain = 555.836
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2150.742 ; gain = 558.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2166.488 ; gain = 573.758
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2150.742 ; gain = 558.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2166.488 ; gain = 573.758
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2150.742 ; gain = 558.230
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.310 . Memory (MB): peak = 2178.496 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.314 . Memory (MB): peak = 2150.742 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -284,19 +279,19 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2290.660 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2260.469 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 6 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 6 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.083 . Memory (MB): peak = 2290.660 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 2260.469 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/statistics_core_gradient/std_dev_sqrt' at clock pin 'aclk' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/statistics_core_laplacian/std_dev_sqrt' at clock pin 'aclk' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'output_memory/output_memory' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2290.660 ; gain = 697.930
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2268.141 ; gain = 675.629
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -304,7 +299,7 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2290.660 ; gain = 697.930
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2268.141 ; gain = 675.629
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -331,7 +326,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_stati
 Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_statistics_core /laplacian_core/dsp_add1_11b. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_statistics_core /laplacian_core/dsp_add2_11b. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2290.660 ; gain = 697.930
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2268.141 ; gain = 675.629
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'wr_state_r_reg' in module 'transpose'
 INFO: [Synth 8-802] inferred FSM for state register 'rd_state_r_reg' in module 'transpose'
@@ -353,7 +348,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'wr_state_r_reg' using enco
 INFO: [Synth 8-3354] encoded FSM with state register 'rd_state_r_reg' using encoding 'sequential' in module 'transpose'
 WARNING: [Synth 8-327] inferring latch for variable 'memory_clear_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:108]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 2290.660 ; gain = 697.930
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2268.141 ; gain = 675.629
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -361,13 +356,14 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input   32 Bit       Adders := 8     
-	   3 Input   24 Bit       Adders := 3     
+	   3 Input   24 Bit       Adders := 2     
+	   2 Input   24 Bit       Adders := 2     
 	   2 Input   16 Bit       Adders := 5     
 	   2 Input   14 Bit       Adders := 3     
 	   2 Input   12 Bit       Adders := 54    
 	   3 Input   12 Bit       Adders := 6     
 	   2 Input   11 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 28    
+	   2 Input    8 Bit       Adders := 29    
 	   2 Input    7 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 3     
 +---Registers : 
@@ -378,20 +374,20 @@ Detailed RTL Component Info :
 	               64 Bit    Registers := 12    
 	               48 Bit    Registers := 2     
 	               32 Bit    Registers := 9     
-	               24 Bit    Registers := 3     
+	               24 Bit    Registers := 10    
 	               18 Bit    Registers := 98    
 	               16 Bit    Registers := 14    
 	               14 Bit    Registers := 7     
 	               12 Bit    Registers := 10    
 	               11 Bit    Registers := 6     
-	                8 Bit    Registers := 57    
+	                8 Bit    Registers := 59    
 	                7 Bit    Registers := 33    
-	                6 Bit    Registers := 6     
+	                6 Bit    Registers := 7     
 	                5 Bit    Registers := 6     
-	                4 Bit    Registers := 309   
+	                4 Bit    Registers := 317   
 	                3 Bit    Registers := 32    
 	                2 Bit    Registers := 606   
-	                1 Bit    Registers := 66    
+	                1 Bit    Registers := 64    
 +---Muxes : 
 	   3 Input  576 Bit        Muxes := 9     
 	   2 Input   72 Bit        Muxes := 3     
@@ -1003,18 +999,18 @@ DSP Report: register simd_add.out3_reg is absorbed into DSP simd_add.out3_reg.
 DSP Report: register simd_add.out3_reg is absorbed into DSP simd_add.out3_reg.
 DSP Report: register simd_add.out3_reg is absorbed into DSP simd_add.out3_reg.
 DSP Report: operator out30 is absorbed into DSP simd_add.out3_reg.
-DSP Report: Generating DSP rgb_to_ycrcb/y_temp3, operation Mode is: (A:0x9645)*B.
-DSP Report: operator rgb_to_ycrcb/y_temp3 is absorbed into DSP rgb_to_ycrcb/y_temp3.
-DSP Report: Generating DSP rgb_to_ycrcb/y_temp2, operation Mode is: (A:0x1d2f)*B.
-DSP Report: operator rgb_to_ycrcb/y_temp2 is absorbed into DSP rgb_to_ycrcb/y_temp2.
-DSP Report: Generating DSP rgb_to_ycrcb/y_temp3, operation Mode is: (A:0x4c8b)*B.
-DSP Report: operator rgb_to_ycrcb/y_temp3 is absorbed into DSP rgb_to_ycrcb/y_temp3.
-DSP Report: Generating DSP rgb_to_ycrcb/cr_temp2, operation Mode is: A2*(B:0xb687).
-DSP Report: register rgb_to_ycrcb/ry_temp_reg is absorbed into DSP rgb_to_ycrcb/cr_temp2.
-DSP Report: operator rgb_to_ycrcb/cr_temp2 is absorbed into DSP rgb_to_ycrcb/cr_temp2.
-DSP Report: Generating DSP rgb_to_ycrcb/cb_temp2, operation Mode is: A2*(B:0x903e).
-DSP Report: register rgb_to_ycrcb/by_temp_reg is absorbed into DSP rgb_to_ycrcb/cb_temp2.
-DSP Report: operator rgb_to_ycrcb/cb_temp2 is absorbed into DSP rgb_to_ycrcb/cb_temp2.
+DSP Report: Generating DSP rgb_to_ycrcb/y_mult_temp1, operation Mode is: (A:0x1d2f)*B.
+DSP Report: operator rgb_to_ycrcb/y_mult_temp1 is absorbed into DSP rgb_to_ycrcb/y_mult_temp1.
+DSP Report: Generating DSP rgb_to_ycrcb/y_mult_temp0, operation Mode is: PCIN+(A:0x4c8b)*B.
+DSP Report: operator rgb_to_ycrcb/y_mult_temp0 is absorbed into DSP rgb_to_ycrcb/y_mult_temp0.
+DSP Report: operator rgb_to_ycrcb/y_mult_temp2 is absorbed into DSP rgb_to_ycrcb/y_mult_temp0.
+DSP Report: Generating DSP rgb_to_ycrcb/y_mult_temp0, operation Mode is: PCIN+(A:0x9645)*B.
+DSP Report: operator rgb_to_ycrcb/y_mult_temp0 is absorbed into DSP rgb_to_ycrcb/y_mult_temp0.
+DSP Report: operator rgb_to_ycrcb/y_mult_temp2 is absorbed into DSP rgb_to_ycrcb/y_mult_temp0.
+DSP Report: Generating DSP rgb_to_ycrcb/cr_mult_temp0, operation Mode is: A*(B:0xb687).
+DSP Report: operator rgb_to_ycrcb/cr_mult_temp0 is absorbed into DSP rgb_to_ycrcb/cr_mult_temp0.
+DSP Report: Generating DSP rgb_to_ycrcb/cb_mult_temp0, operation Mode is: A*(B:0x903e).
+DSP Report: operator rgb_to_ycrcb/cb_mult_temp0 is absorbed into DSP rgb_to_ycrcb/cb_mult_temp0.
 WARNING: [Synth 8-3917] design top has port ftdi_wakeup_o driven by constant 0
 WARNING: [Synth 8-7129] Port row_num_o[3] in module transpose is either unconnected or has no load
 WARNING: [Synth 8-7129] Port row_num_o[2] in module transpose is either unconnected or has no load
@@ -1026,7 +1022,7 @@ WARNING: [Synth 8-7129] Port done_o in module image_compressor__parameterized0 i
 WARNING: [Synth 8-7129] Port sim_clk in module top is either unconnected or has no load
 WARNING: [Synth 8-3332] Sequential element (output_memory/memory_clear_o_reg) is unused and will be removed from module top.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2290.660 ; gain = 697.930
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2268.141 ; gain = 675.629
 ---------------------------------------------------------------------------------
  Sort Area is  simd_sub.out0_reg_16 : 0 0 : 150 150 : Used 1 time 100
  Sort Area is  simd_sub.out0_reg_26 : 0 0 : 150 150 : Used 1 time 100
@@ -1124,11 +1120,11 @@ Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elaps
  Sort Area is  simd_add.out3_reg_5d : 0 0 : 143 143 : Used 1 time 100
  Sort Area is  simd_add.out3_reg_61 : 0 0 : 143 143 : Used 1 time 100
  Sort Area is  simd_add.out3_reg_d : 0 0 : 143 143 : Used 1 time 100
- Sort Area is  rgb_to_ycrcb/cb_temp2_6a : 0 0 : 1148 1148 : Used 1 time 0
- Sort Area is  rgb_to_ycrcb/cr_temp2_68 : 0 0 : 1148 1148 : Used 1 time 0
- Sort Area is  rgb_to_ycrcb/y_temp3_62 : 0 0 : 357 357 : Used 1 time 0
- Sort Area is  rgb_to_ycrcb/y_temp3_66 : 0 0 : 330 330 : Used 1 time 0
- Sort Area is  rgb_to_ycrcb/y_temp2_64 : 0 0 : 309 309 : Used 1 time 0
+ Sort Area is  rgb_to_ycrcb/y_mult_temp1_62 : 0 0 : 309 1138 : Used 1 time 0
+ Sort Area is  rgb_to_ycrcb/y_mult_temp1_62 : 0 1 : 428 1138 : Used 1 time 0
+ Sort Area is  rgb_to_ycrcb/y_mult_temp1_62 : 0 2 : 401 1138 : Used 1 time 0
+ Sort Area is  rgb_to_ycrcb/cb_mult_temp0_68 : 0 0 : 1124 1124 : Used 1 time 0
+ Sort Area is  rgb_to_ycrcb/cr_mult_temp0_66 : 0 0 : 1124 1124 : Used 1 time 0
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
@@ -1138,111 +1134,111 @@ Distributed RAM: Preliminary Mapping Report (see note below)
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 
 DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
-+---------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name    | DSP Mapping   | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+---------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'-A2:B2)'   | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|simd_4x12b_dsp | (C'+A2:B2)'   | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|rgb_to_ycrcb   | (A:0x9645)*B  | 8      | 16     | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb   | (A:0x1d2f)*B  | 8      | 13     | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb   | (A:0x4c8b)*B  | 8      | 15     | -      | -      | 23     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb   | A2*(B:0xb687) | 24     | 16     | -      | -      | 40     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb   | A2*(B:0x903e) | 24     | 16     | -      | -      | 40     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-+---------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++---------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping       | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'-A2:B2)'       | 30     | 18     | 12     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|simd_4x12b_dsp | (C'+A2:B2)'       | 30     | 18     | 48     | -      | 12     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
+|rgb_to_ycrcb   | (A:0x1d2f)*B      | 8      | 13     | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb   | PCIN+(A:0x4c8b)*B | 15     | 8      | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb   | PCIN+(A:0x9645)*B | 16     | 8      | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb   | A*(B:0xb687)      | 24     | 16     | -      | -      | 40     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb   | A*(B:0x903e)      | 24     | 16     | -      | -      | 40     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++---------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
@@ -1255,56 +1251,56 @@ WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed f
 WARNING: [Synth 8-3332] Sequential element (i_4) is unused and will be removed from module simd_4x12b_dsp__parameterized0__5.
 WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__parameterized0__5.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
-WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__12.
-WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__16.
+WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__16.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
-WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__11.
-WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__11.
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__15.
+WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__15.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
-WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__10.
-WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__10.
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__14.
+WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__14.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
 WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__parameterized0__4.
 WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__parameterized0__4.
@@ -1323,38 +1319,38 @@ WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed 
 WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__parameterized0__4.
 WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__parameterized0__4.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
-WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__9.
-WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__9.
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__13.
+WARNING: [Synth 8-3332] Sequential element (i_21) is unused and will be removed from module simd_4x12b_dsp__13.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
-WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__8.
-WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__8.
+WARNING: [Synth 8-3332] Sequential element (i_0) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_1) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_2) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_3) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_6) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_7) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_8) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_9) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_12) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_13) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_14) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_15) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_18) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_19) is unused and will be removed from module simd_4x12b_dsp__12.
+WARNING: [Synth 8-3332] Sequential element (i_20) is unused and will be removed from module simd_4x12b_dsp__12.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110011000).
 Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=1100, OPMODE=110011000).
@@ -1376,19 +1372,19 @@ Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 2630.902 ; gain = 1038.172
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2634.934 ; gain = 1042.422
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 2684.062 ; gain = 1091.332
+Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 2685.543 ; gain = 1093.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2720.469 ; gain = 1127.738
+Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:00:53 . Memory (MB): peak = 2722.156 ; gain = 1129.645
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1406,37 +1402,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished IO Insertion : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:56 ; elapsed = 00:00:58 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:56 ; elapsed = 00:00:58 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1447,14 +1443,17 @@ Static Shift Register Report:
 |Module Name | RTL Name                                                                                             | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
 +------------+------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 |top         | compression_core/gen_channels[1].channel_inst/gen_subsample.input_data_delay_reg/shift_reg_reg[0][1] | 267    | 8     | YES          | NO                 | YES               | 0      | 72      | 
-|top         | data_delay_valid/shift_reg_reg[0][264]                                                               | 265    | 1     | YES          | NO                 | YES               | 0      | 9       | 
-|top         | data_delay/shift_reg_reg[0][264]                                                                     | 265    | 16    | YES          | NO                 | YES               | 0      | 144     | 
+|top         | data_delay_valid/shift_reg_reg[0][264]                                                               | 264    | 1     | YES          | NO                 | YES               | 0      | 9       | 
+|top         | data_delay/shift_reg_reg[0][264]                                                                     | 267    | 14    | YES          | NO                 | YES               | 0      | 126     | 
+|top         | data_delay/shift_reg_reg[7][264]                                                                     | 266    | 2     | YES          | NO                 | YES               | 0      | 18      | 
 |top         | compression_core/gen_channels[0].channel_inst/col_dct/valid_delay/shift_reg_reg[0][5]                | 7      | 6     | YES          | NO                 | YES               | 6      | 0       | 
-|top         | compression_core/gen_channels[0].channel_inst/row_dct/layer_3_delay/shift_reg_reg[24][1]             | 4      | 552   | YES          | NO                 | YES               | 552    | 0       | 
+|top         | compression_core/gen_channels[0].channel_inst/col_dct/layer_3_delay/shift_reg_reg[26][1]             | 4      | 552   | YES          | NO                 | YES               | 552    | 0       | 
 |top         | compression_core/gen_channels[0].channel_inst/quantizer/valid_o_reg                                  | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|top         | rgb_to_ycrcb/valid_delay_reg/shift_reg_reg[0][5]                                                     | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|top         | rgb_to_ycrcb/y_delay_reg/shift_reg_reg[0][3]                                                         | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
 |top         | gen_image_statistics.image_statistics_core/laplacian_core/pixel_7_shift_reg/shift_reg_reg[0][3]      | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
 |top         | gen_image_statistics.image_statistics_core/laplacian_core/pixel_5_shift_reg/shift_reg_reg[0][3]      | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
-|top         | data_delay/shift_reg_reg_c_262                                                                       | 264    | 1     | YES          | NO                 | YES               | 0      | 9       | 
+|top         | data_delay/shift_reg_reg_c_261                                                                       | 263    | 1     | YES          | NO                 | YES               | 0      | 9       | 
 +------------+------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
@@ -1492,11 +1491,11 @@ DSP Final Report (the ' indicates corresponding REG is set)
 |simd_4x12b_dsp__parameterized0    | (C'-(A':B'))' | 30     | 18     | 48     | -      | 48     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
 |simd_4x12b_dsp_4                  | (C'+A':B')'   | 30     | 18     | 48     | -      | 48     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
 |simd_4x12b_dsp_5                  | (C'+A':B')'   | 30     | 18     | 48     | -      | 48     | 1    | 1    | 1    | -    | -     | 0    | 1    | 
-|rgb_to_ycrcb                      | A*B           | 8      | 16     | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb                      | A*B           | 8      | 13     | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb                      | A*B           | 8      | 15     | -      | -      | 23     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb                      | A'*B          | 24     | 16     | -      | -      | 40     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|rgb_to_ycrcb                      | A'*B          | 24     | 16     | -      | -      | 40     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb                      | A*B           | 8      | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb                      | PCIN+A*B      | 15     | 8      | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|rgb_to_ycrcb                      | (PCIN+A*B)'   | 16     | 8      | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|rgb_to_ycrcb                      | (A*B)'        | 24     | 16     | -      | -      | 40     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|rgb_to_ycrcb                      | (A*B)'        | 24     | 16     | -      | -      | 40     | 0    | 0    | -    | -    | -     | 0    | 1    | 
 +----------------------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
@@ -1533,45 +1532,45 @@ Report Cell Usage:
 |16    |sqrt_cordic_bbox_12    |     1|
 |17    |sys_clk_mmcm_bbox      |     1|
 |18    |BUFG                   |     1|
-|19    |CARRY8                 |   116|
+|19    |CARRY8                 |   114|
 |20    |DSP_ALU                |    29|
 |22    |DSP_A_B_DATA           |    29|
-|25    |DSP_C_DATA             |    29|
-|26    |DSP_MULTIPLIER         |    29|
-|28    |DSP_M_DATA             |    29|
-|29    |DSP_OUTPUT             |    29|
-|31    |DSP_PREADD             |    29|
-|32    |DSP_PREADD_DATA        |    29|
-|34    |LUT1                   |    43|
-|35    |LUT2                   |  4449|
-|36    |LUT3                   |   477|
-|37    |LUT4                   |   468|
-|38    |LUT5                   |   432|
-|39    |LUT6                   |  1511|
-|40    |MUXF7                  |   144|
-|41    |RAM32M                 |     6|
-|42    |SRL16E                 |   575|
-|43    |SRLC32E                |   236|
-|44    |FDCE                   |  7565|
-|45    |FDPE                   |     7|
-|46    |FDRE                   |  1095|
-|47    |IBUF                   |     4|
-|48    |IOBUF                  |    18|
-|49    |OBUF                   |     9|
+|24    |DSP_C_DATA             |    29|
+|25    |DSP_MULTIPLIER         |    29|
+|27    |DSP_M_DATA             |    29|
+|28    |DSP_OUTPUT             |    29|
+|30    |DSP_PREADD             |    29|
+|31    |DSP_PREADD_DATA        |    29|
+|33    |LUT1                   |    39|
+|34    |LUT2                   |  4486|
+|35    |LUT3                   |   473|
+|36    |LUT4                   |   463|
+|37    |LUT5                   |   431|
+|38    |LUT6                   |  1511|
+|39    |MUXF7                  |   144|
+|40    |RAM32M                 |     6|
+|41    |SRL16E                 |   584|
+|42    |SRLC32E                |   236|
+|43    |FDCE                   |  7639|
+|44    |FDPE                   |     9|
+|45    |FDRE                   |  1079|
+|46    |IBUF                   |     4|
+|47    |IOBUF                  |    18|
+|48    |OBUF                   |     9|
 +------+-----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 312 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:42 ; elapsed = 00:00:51 . Memory (MB): peak = 2730.902 ; gain = 1014.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 2730.902 ; gain = 1138.172
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:42 ; elapsed = 00:00:52 . Memory (MB): peak = 2732.543 ; gain = 1022.633
+Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2732.543 ; gain = 1140.031
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.249 . Memory (MB): peak = 2738.945 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 318 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.257 . Memory (MB): peak = 2740.617 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 316 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2768.402 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2769.992 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 58 instances were transformed.
   BUFG => BUFGCE: 1 instance 
@@ -1580,13 +1579,12 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 18 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 6 instances
 
-Synth Design complete | Checksum: 297ca0de
+Synth Design complete | Checksum: 35afdcbf
 INFO: [Common 17-83] Releasing license: Synthesis
-126 Infos, 142 Warnings, 2 Critical Warnings and 0 Errors encountered.
+129 Infos, 132 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:05 ; elapsed = 00:01:10 . Memory (MB): peak = 2768.402 ; gain = 2211.184
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2768.402 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:06 ; elapsed = 00:01:11 . Memory (MB): peak = 2769.992 ; gain = 2212.953
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2769.992 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Feb 11 13:33:45 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 12 00:23:54 2025...

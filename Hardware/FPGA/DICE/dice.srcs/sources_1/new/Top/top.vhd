@@ -280,12 +280,24 @@ begin
     rgb_to_ycrcb : entity work.rgb_to_ycrcb
     port map(
         clk_i => clk_x,
+        rst_i => rst_x,
         -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
         rgb_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
         rgb_valid_i => input_fifo_valid,
         ycrcb_o => ycrcb_x,
         ycrcb_valid_o => ycrcb_valid_x
     );
+
+    /*rgb_to_ycrcb : entity work.rgb2ycrcb
+    port map(
+        clk_i => clk_x,
+        rst_i => rst_x,
+        -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
+        pixel_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
+        valid_i => input_fifo_valid,
+        ycrcb_o => ycrcb_x,
+        valid_o => ycrcb_valid_x
+    );*/
 
 
     -- data delay to give statistics core time to process
@@ -403,10 +415,10 @@ begin
             ce_i => '1',
             rst_i => rst_x,
 
-            --pixel_i => ycrcb_x(15 downto 8), -- pass Y channel to statistics core
-            pixel_i => fifo_data_to_core(31 downto 24),
-            --valid_i => ycrcb_valid_x,
-            valid_i => input_fifo_valid,
+            pixel_i => ycrcb_x(15 downto 8), -- pass Y channel to statistics core
+            --pixel_i => fifo_data_to_core(31 downto 24),
+            valid_i => ycrcb_valid_x,
+            --valid_i => input_fifo_valid,
 
             laplacian_var_o => laplacian_var,
             laplacian_mean_o => laplacian_mean,

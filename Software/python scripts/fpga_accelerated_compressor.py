@@ -12,12 +12,12 @@ import image_codec
 
 DEBUG = False
 DISP_STATS = False
-IMG_SIZE = 2048 # Size of image
+IMG_SIZE = 1024 # Size of image
 TILE_SIZE = 16 # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8 # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE/BLOCK_SIZE)
 
-image_path = "img10.jpg"  # Replace with your image path
+image_path = "img9.jpg"  # Replace with your image path
 np.set_printoptions(threshold=np.inf)
 
 
@@ -124,9 +124,16 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     compressed_block_count = 0
     uncompressed_block_count = 0
 
-    MAX_BLUR_THRESHOLD = 15000
-    MAX_GRADIENT_THRESHOLD = 2000
-    MAX_GRADIENT_VAR_THRESHOLD = 9000
+    MAX_BLUR_THRESHOLD = 14500
+    MAX_GRADIENT_THRESHOLD = 1000
+    MAX_GRADIENT_VAR_THRESHOLD = 7000
+    MIN_BLUR_THRESHOLD = 4000
+    MIN_GRADIENT_THRESHOLD = 600
+    MIN_GRADIENT_VAR_THRESHOLD = 1300
+
+    avg_laplace = 0
+    avg_gradient = 0
+    avg_gradient_var = 0
 
     for row in range(R_tiles.shape[0]):
         for col in range(R_tiles.shape[1]):
@@ -148,8 +155,12 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
             gradient_std_dev = ((grad_dev_msb & 0xFF) << 8) | (grad_var_lsb & 0xFF)
             laplacian_variance = ((laplacian_var_msb & 0xFF) << 8) | (laplacian_var_lsb & 0xFF)
 
+            avg_laplace += laplacian_variance
+            avg_gradient += gradient_std_dev
+            avg_gradient_var += gradient_variance
+
             if DISP_STATS:
-                print(f"Laplacian Variance: {laplacian_variance} | "
+                print(f"Tile Row/Col: {row}/{col} | Laplacian Variance: {laplacian_variance} | "
                       f"Gradient Std Dev: {gradient_std_dev} | Gradient Variance: {gradient_variance}")
 
 
@@ -169,20 +180,38 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
                 uncompressed_blocks_size += block_size
                 tile_size_bytes[row][col] = block_size
                 uncompressed_block_count += 1
+            #elif(laplacian_variance > MIN_BLUR_THRESHOLD and (gradient_std_dev < MIN_BLUR_THRESHOLD and gradient_variance < MIN_GRADIENT_VAR_THRESHOLD)):
+                # Replace pixel tile with original input pixels
+                #Y_output[row][col] = Y_ref[row][col]
+                #Cr_output[row][col] = Cr_ref[row][col]
+                #Cb_output[row][col] = Cb_ref[row][col]
+
+                # Set all values for that tile ID to 1, used to indicate the tile is lossless
+                #tile_id[row][col].fill(1)
+
+                # For replaced blocks, size is number of pixels * 3 bytes
+                #block_size = TILE_SIZE_LOC * TILE_SIZE_LOC * 3
+                #uncompressed_blocks_size += block_size
+                #tile_size_bytes[row][col] = block_size
+                #uncompressed_block_count += 1
             else:
                 # For compressed blocks, calculate size using Huffman encoding
                 _, y_block_size = huffman_encoder.huffman_encode(Y_returned[row:row + 1, col:col + 1])
                 _, cr_block_size = huffman_encoder.huffman_encode(Cr_returned[row:row + 1, col:col + 1])
                 _, cb_block_size = huffman_encoder.huffman_encode(Cb_returned[row:row + 1, col:col + 1])
 
-                # Add the size for each channel
-                block_size = y_block_size + cr_block_size + cb_block_size
+                # Add the size for each channel, Cr and Cb are half size due to 4:2:2 chroma subsampling
+                block_size = y_block_size + (cr_block_size / 2) + (cb_block_size / 2)
                 compressed_blocks_size += block_size
                 tile_size_bytes[row][col] = block_size
                 compressed_block_count += 1
                 tile_id[row][col].fill(0)
 
             total_size += block_size
+
+    print(f"\nAverage Laplacian Variance: {avg_laplace / (R_tiles.shape[0] * R_tiles.shape[1])}")
+    print(f"\nAverage Gradient Std. Dev: {avg_gradient / (R_tiles.shape[0] * R_tiles.shape[1])}")
+    print(f"\nAverage Gradient Variance: {avg_gradient_var / (R_tiles.shape[0] * R_tiles.shape[1])}")
 
     end_time = time.time()
 
@@ -221,6 +250,9 @@ def process_color_image(image_path):
     G = img_array[:, :, 1]
     B = img_array[:, :, 2]
     img_array = cv2.merge((R, G, B))
+
+    block = R[1136:1144, 1128:1136]
+    print(f"Block: {block}")
 
     # Generate 2d arrays for each channel in Y Cr Cb, used for replacement when doing lossy/lossless check
     imgYCC = cv2.cvtColor(img_array, cv2.COLOR_RGB2YCrCb)

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Feb 11 13:36:30 2025
+| Date         : Wed Feb 12 00:25:04 2025
 | Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_drc_opted.rpt -pb top_drc_opted.pb -rpx top_drc_opted.rpx
 | Design       : top
@@ -20,17 +20,16 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: checkpoint_top
+          Floorplan: design_1
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 17
+             Violations found: 12
 +----------+----------+---------------------------------------------------------------------+------------+
 | Rule     | Severity | Description                                                         | Violations |
 +----------+----------+---------------------------------------------------------------------+------------+
-| DPIP-2   | Warning  | Input pipelining                                                    | 3          |
-| DPOP-3   | Warning  | PREG Output pipelining                                              | 5          |
-| DPOP-4   | Warning  | MREG Output pipelining                                              | 5          |
+| DPIP-2   | Warning  | Input pipelining                                                    | 5          |
+| DPOP-4   | Warning  | MREG Output pipelining                                              | 3          |
 | AVAL-155 | Advisory | enum_AMULTSEL_BMULTSEL_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND | 2          |
 | AVAL-156 | Advisory | enum_USE_MULT_NONE__enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND    | 2          |
 +----------+----------+---------------------------------------------------------------------+------------+
@@ -39,67 +38,42 @@ Table of Contents
 -----------------
 DPIP-2#1 Warning
 Input pipelining  
-DSP rgb_to_ycrcb/y_temp2 input rgb_to_ycrcb/y_temp2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP rgb_to_ycrcb/cb_mult_temp0 input rgb_to_ycrcb/cb_mult_temp0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#2 Warning
 Input pipelining  
-DSP rgb_to_ycrcb/y_temp3 input rgb_to_ycrcb/y_temp3/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP rgb_to_ycrcb/cr_mult_temp0 input rgb_to_ycrcb/cr_mult_temp0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#3 Warning
 Input pipelining  
-DSP rgb_to_ycrcb/y_temp3__0 input rgb_to_ycrcb/y_temp3__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP rgb_to_ycrcb/y_mult_temp0 input rgb_to_ycrcb/y_mult_temp0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
-DPOP-3#1 Warning
-PREG Output pipelining  
-DSP rgb_to_ycrcb/cb_temp2 output rgb_to_ycrcb/cb_temp2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DPIP-2#4 Warning
+Input pipelining  
+DSP rgb_to_ycrcb/y_mult_temp0__0 input rgb_to_ycrcb/y_mult_temp0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
-DPOP-3#2 Warning
-PREG Output pipelining  
-DSP rgb_to_ycrcb/cr_temp2 output rgb_to_ycrcb/cr_temp2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#3 Warning
-PREG Output pipelining  
-DSP rgb_to_ycrcb/y_temp2 output rgb_to_ycrcb/y_temp2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#4 Warning
-PREG Output pipelining  
-DSP rgb_to_ycrcb/y_temp3 output rgb_to_ycrcb/y_temp3/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#5 Warning
-PREG Output pipelining  
-DSP rgb_to_ycrcb/y_temp3__0 output rgb_to_ycrcb/y_temp3__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DPIP-2#5 Warning
+Input pipelining  
+DSP rgb_to_ycrcb/y_mult_temp1 input rgb_to_ycrcb/y_mult_temp1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPOP-4#1 Warning
 MREG Output pipelining  
-DSP rgb_to_ycrcb/cb_temp2 multiplier stage rgb_to_ycrcb/cb_temp2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP rgb_to_ycrcb/cb_mult_temp0 multiplier stage rgb_to_ycrcb/cb_mult_temp0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#2 Warning
 MREG Output pipelining  
-DSP rgb_to_ycrcb/cr_temp2 multiplier stage rgb_to_ycrcb/cr_temp2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP rgb_to_ycrcb/cr_mult_temp0 multiplier stage rgb_to_ycrcb/cr_mult_temp0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#3 Warning
 MREG Output pipelining  
-DSP rgb_to_ycrcb/y_temp2 multiplier stage rgb_to_ycrcb/y_temp2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#4 Warning
-MREG Output pipelining  
-DSP rgb_to_ycrcb/y_temp3 multiplier stage rgb_to_ycrcb/y_temp3/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#5 Warning
-MREG Output pipelining  
-DSP rgb_to_ycrcb/y_temp3__0 multiplier stage rgb_to_ycrcb/y_temp3__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP rgb_to_ycrcb/y_mult_temp0__0 multiplier stage rgb_to_ycrcb/y_mult_temp0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 AVAL-155#1 Advisory

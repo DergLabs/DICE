@@ -115,9 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -125,22 +122,44 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
-  set_param checkpoint.writeSynthRtdsInDcp 1
   set_param chipscope.maxJobs 4
-  set_param power.BramSDPPropagationFix 1
-  set_param power.enableUnconnectedCarry8PinPower 1
-  set_param power.enableCarry8RouteBelPower 1
-  set_param power.enableLutRouteBelPower 1
   set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 16  }
-  reset_param project.defaultXPMLibraries 
-  open_checkpoint C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/impl_1/top.dcp
+OPTRACE "create in-memory project" START { }
+  create_project -in_memory -part xcku3p-ffva676-2-i
+  set_property design_mode GateLvl [current_fileset]
+  set_param project.singleFileAddWarning.threshold 0
+OPTRACE "create in-memory project" END { }
+OPTRACE "set parameters" START { }
   set_property webtalk.parent_dir C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/wt [current_project]
   set_property parent.project_path C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.xpr [current_project]
   set_property ip_output_repo C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_COMP_DECL XPM_MEMORY} [current_project]
+OPTRACE "set parameters" END { }
+OPTRACE "add files" START { }
+  add_files -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/top.dcp
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/output_buffer_ram/output_buffer_ram.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/input_data_fifo/input_data_fifo.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/ila_0/ila_0.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_mac/dsp_mac.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_msub/dsp_msub.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_acum/dsp_acum.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci
+OPTRACE "read constraints: implementation" START { }
+  read_xdc C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc
+OPTRACE "read constraints: implementation" END { }
+OPTRACE "read constraints: implementation_pre" START { }
+OPTRACE "read constraints: implementation_pre" END { }
+OPTRACE "add files" END { }
+OPTRACE "link_design" START { }
+  link_design -top top -part xcku3p-ffva676-2-i 
+OPTRACE "link_design" END { }
+OPTRACE "gray box cells" START { }
+OPTRACE "gray box cells" END { }
 OPTRACE "init_design_reports" START { REPORT }
 OPTRACE "init_design_reports" END { }
 OPTRACE "init_design_write_hwdef" START { }
