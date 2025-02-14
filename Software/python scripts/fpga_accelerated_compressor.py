@@ -6,18 +6,20 @@ import cv2
 # Local Libraries
 from USB_FTX232H_FT60X import USB_FTX232H_FT60X_sync245mode
 import time
-import huffman_encoder
+import tile_compressor
+import huffman_encoderV1
 import quality_statistics
 import image_codec
 
 DEBUG = False
 DISP_STATS = False
-IMG_SIZE = 1024 # Size of image
+EN_TILE_REPLACEMENT = True
+IMG_SIZE = 2048 # Size of image
 TILE_SIZE = 16 # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8 # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE/BLOCK_SIZE)
 
-image_path = "img9.jpg"  # Replace with your image path
+image_path = "img10.jpg"  # Replace with your image path
 np.set_printoptions(threshold=np.inf)
 
 
@@ -78,7 +80,7 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
         current_time = time.time()
         elapsed_time = current_time - start_time
         data_rate = (total_bytes_sent / (1024)) / elapsed_time if elapsed_time > 0 else 0
-        print(f"\rProcessing Row {row}/{len(R_tiles)} | Data Rate: {data_rate:.2f}KB/s", end="", flush=True)
+        print(f"\rProcessing Row {row}/{len(R_tiles)} | Data Rate: {data_rate:.2f}KB/s | Bytes sent: {total_bytes_sent/1024}KB", end="", flush=True)
         for col in range(R_tiles.shape[1]):
             # send data
             txlen = usb.send(bytes(bytearray(img_byte_array[row][col])))
@@ -99,6 +101,11 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     Y_all = Y_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cr_all = Cr_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cb_all = Cb_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
+
+    # create 4d arrays for encoding
+    Y4d = Y_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC)
+    Cr4d = Cr_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC)
+    Cb4d = Cb_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC)
 
     # Initialize arrays to store size (in bytes) for each tile
     tile_size_bytes = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC))
@@ -127,91 +134,79 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     MAX_BLUR_THRESHOLD = 14500
     MAX_GRADIENT_THRESHOLD = 1000
     MAX_GRADIENT_VAR_THRESHOLD = 7000
-    MIN_BLUR_THRESHOLD = 4000
-    MIN_GRADIENT_THRESHOLD = 600
-    MIN_GRADIENT_VAR_THRESHOLD = 1300
 
     avg_laplace = 0
     avg_gradient = 0
     avg_gradient_var = 0
+    if EN_TILE_REPLACEMENT:
+        for row in range(R_tiles.shape[0]):
+            for col in range(R_tiles.shape[1]):
+                # Get current tile ID data
+                current_tile = tile_id[row][col]
 
-    for row in range(R_tiles.shape[0]):
-        for col in range(R_tiles.shape[1]):
-            # Get current tile ID data
-            current_tile = tile_id[row][col]
+                # Extract
+                grad_var_lsb = current_tile[1]
+                grad_var_msb = current_tile[2]
 
-            # Extract
-            grad_var_lsb = current_tile[1]
-            grad_var_msb = current_tile[2]
+                grad_dev_lsb = current_tile[3]
+                grad_dev_msb = current_tile[4]
 
-            grad_dev_lsb = current_tile[3]
-            grad_dev_msb = current_tile[4]
+                laplacian_var_lsb = current_tile[5]
+                laplacian_var_msb = current_tile[6]
 
-            laplacian_var_lsb = current_tile[5]
-            laplacian_var_msb = current_tile[6]
+                # Combine LSB's and MSB's to create full 16b stats values
+                gradient_variance = ((grad_var_msb & 0xFF) << 8) | (grad_var_lsb & 0xFF)
+                gradient_std_dev = ((grad_dev_msb & 0xFF) << 8) | (grad_var_lsb & 0xFF)
+                laplacian_variance = ((laplacian_var_msb & 0xFF) << 8) | (laplacian_var_lsb & 0xFF)
 
-            # Combine LSB's and MSB's to create full 16b stats values
-            gradient_variance = ((grad_var_msb & 0xFF) << 8) | (grad_var_lsb & 0xFF)
-            gradient_std_dev = ((grad_dev_msb & 0xFF) << 8) | (grad_var_lsb & 0xFF)
-            laplacian_variance = ((laplacian_var_msb & 0xFF) << 8) | (laplacian_var_lsb & 0xFF)
+                avg_laplace += laplacian_variance
+                avg_gradient += gradient_std_dev
+                avg_gradient_var += gradient_variance
 
-            avg_laplace += laplacian_variance
-            avg_gradient += gradient_std_dev
-            avg_gradient_var += gradient_variance
-
-            if DISP_STATS:
-                print(f"Tile Row/Col: {row}/{col} | Laplacian Variance: {laplacian_variance} | "
-                      f"Gradient Std Dev: {gradient_std_dev} | Gradient Variance: {gradient_variance}")
+                if DISP_STATS:
+                    print(f"Tile Row/Col: {row}/{col} | Laplacian Variance: {laplacian_variance} | "
+                          f"Gradient Std Dev: {gradient_std_dev} | Gradient Variance: {gradient_variance}")
 
 
-            if (laplacian_variance > MAX_BLUR_THRESHOLD or gradient_std_dev > MAX_GRADIENT_THRESHOLD or
-                    gradient_variance > MAX_GRADIENT_VAR_THRESHOLD):
+                if (laplacian_variance > MAX_BLUR_THRESHOLD or gradient_std_dev > MAX_GRADIENT_THRESHOLD or
+                        gradient_variance > MAX_GRADIENT_VAR_THRESHOLD):
 
-                # Replace pixel tile with original input pixels
-                Y_output[row][col] = Y_ref[row][col]
-                Cr_output[row][col] = Cr_ref[row][col]
-                Cb_output[row][col] = Cb_ref[row][col]
+                    # Replace pixel tile with original input pixels
+                    Y_output[row][col] = Y_ref[row][col]
+                    Cr_output[row][col] = Cr_ref[row][col]
+                    Cb_output[row][col] = Cb_ref[row][col]
 
-                # Set all values for that tile ID to 1, used to indicate the tile is lossless
-                tile_id[row][col].fill(1)
+                    Y4d[row][col] = Y_ref[row][col]
+                    Cr4d[row][col] = Cr_ref[row][col]
+                    Cb4d[row][col] = Cb_ref[row][col]
 
-                # For replaced blocks, size is number of pixels * 3 bytes
-                block_size = TILE_SIZE_LOC * TILE_SIZE_LOC * 3
-                uncompressed_blocks_size += block_size
-                tile_size_bytes[row][col] = block_size
-                uncompressed_block_count += 1
-            #elif(laplacian_variance > MIN_BLUR_THRESHOLD and (gradient_std_dev < MIN_BLUR_THRESHOLD and gradient_variance < MIN_GRADIENT_VAR_THRESHOLD)):
-                # Replace pixel tile with original input pixels
-                #Y_output[row][col] = Y_ref[row][col]
-                #Cr_output[row][col] = Cr_ref[row][col]
-                #Cb_output[row][col] = Cb_ref[row][col]
+                    # Set all values for that tile ID to 1, used to indicate the tile is lossless
+                    tile_id[row][col].fill(1)
 
-                # Set all values for that tile ID to 1, used to indicate the tile is lossless
-                #tile_id[row][col].fill(1)
+                    # For replaced blocks, size is number of pixels * 3 bytes
+                    #block_size = TILE_SIZE_LOC * TILE_SIZE_LOC * 3
+                    #uncompressed_blocks_size += block_size
+                    #tile_size_bytes[row][col] = block_size
+                    uncompressed_block_count += 1
+                '''else:
+                    # For compressed blocks, calculate size using Huffman encoding
+                    _, y_block_size = huffman_encoderV1.huffman_encode(Y_returned[row:row + 1, col:col + 1])
+                    _, cr_block_size = huffman_encoderV1.huffman_encode(Cr_returned[row:row + 1, col:col + 1])
+                    _, cb_block_size = huffman_encoderV1.huffman_encode(Cb_returned[row:row + 1, col:col + 1])
 
-                # For replaced blocks, size is number of pixels * 3 bytes
-                #block_size = TILE_SIZE_LOC * TILE_SIZE_LOC * 3
-                #uncompressed_blocks_size += block_size
-                #tile_size_bytes[row][col] = block_size
-                #uncompressed_block_count += 1
-            else:
-                # For compressed blocks, calculate size using Huffman encoding
-                _, y_block_size = huffman_encoder.huffman_encode(Y_returned[row:row + 1, col:col + 1])
-                _, cr_block_size = huffman_encoder.huffman_encode(Cr_returned[row:row + 1, col:col + 1])
-                _, cb_block_size = huffman_encoder.huffman_encode(Cb_returned[row:row + 1, col:col + 1])
+                    # Add the size for each channel, Cr and Cb are half size due to 4:2:2 chroma subsampling
+                    block_size = y_block_size + (cr_block_size / 2) + (cb_block_size / 2)
+                    compressed_blocks_size += block_size
+                    tile_size_bytes[row][col] = block_size
+                    compressed_block_count += 1
+                    tile_id[row][col].fill(0)'''
 
-                # Add the size for each channel, Cr and Cb are half size due to 4:2:2 chroma subsampling
-                block_size = y_block_size + (cr_block_size / 2) + (cb_block_size / 2)
-                compressed_blocks_size += block_size
-                tile_size_bytes[row][col] = block_size
-                compressed_block_count += 1
-                tile_id[row][col].fill(0)
+                #total_size += block_size
 
-            total_size += block_size
+        print(f"\nAverage Laplacian Variance: {avg_laplace / (R_tiles.shape[0] * R_tiles.shape[1])}")
+        print(f"\nAverage Gradient Std. Dev: {avg_gradient / (R_tiles.shape[0] * R_tiles.shape[1])}")
+        print(f"\nAverage Gradient Variance: {avg_gradient_var / (R_tiles.shape[0] * R_tiles.shape[1])}")
 
-    print(f"\nAverage Laplacian Variance: {avg_laplace / (R_tiles.shape[0] * R_tiles.shape[1])}")
-    print(f"\nAverage Gradient Std. Dev: {avg_gradient / (R_tiles.shape[0] * R_tiles.shape[1])}")
-    print(f"\nAverage Gradient Variance: {avg_gradient_var / (R_tiles.shape[0] * R_tiles.shape[1])}")
 
     end_time = time.time()
 
@@ -220,6 +215,14 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     Y_final = Y_output.transpose(0, 2, 1, 3).reshape(n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC)
     Cr_final = Cr_output.transpose(0, 2, 1, 3).reshape(n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC)
     Cb_final = Cb_output.transpose(0, 2, 1, 3).reshape(n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC)
+
+    Y_size = tile_compressor.process_array(Y4d)
+    Cr_size = tile_compressor.process_array(Cr4d)
+    Cb_size = tile_compressor.process_array(Cb4d)
+
+    compressed_blocks_size = Y_size + (Cr_size) + (Cb_size)
+    total_size += compressed_blocks_size
+    compressed_block_count = n_tiles_x * n_tiles_y
 
     print("\nDone...")
     print(f"\nTotal Time Taken: {end_time - start_time:.2f}s")
