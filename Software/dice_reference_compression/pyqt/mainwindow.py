@@ -14,10 +14,10 @@ from PyQt6.QtGui import QPixmap, QImage, QPalette, QMouseEvent
 import cv2
 import numpy as np
 from blockviewer import BlockViewer
-from fpga_accelerated_compressor import (
-    fpga_accelerated_compression,
-)
+from fpga_accelerated_compressor import resize_image
+import fpga_accelerated_compressor
 from processedwindow import ProcessedWindow
+import image_codec
 
 
 class BlockMetrics:
@@ -52,7 +52,7 @@ class MainWindow(QMainWindow):
         self.current_image = None
         self.current_image_path = ""
         self.block_metrics = []
-        self.lossless_blocks: list[IndexBlock] = []
+        self.lossy_blocks: list[IndexBlock] = []
         self.metrics_stats = MetricsStats()
         self.process_and_display_image()
 
@@ -251,7 +251,7 @@ class MainWindow(QMainWindow):
         laplacian_threshold = self.laplacian_threshold_slider.value()
 
         # Process blocks
-        self.lossless_blocks = []
+        self.lossy_blocks = []
         for i, metrics in enumerate(self.block_metrics):
             if (
                 metrics.gradient_mean < gradient_threshold
@@ -260,7 +260,7 @@ class MainWindow(QMainWindow):
                 iblock = IndexBlock()
                 iblock.index = i
                 iblock.metrics = metrics
-                self.lossless_blocks.append(iblock)
+                self.lossy_blocks.append(iblock)
 
                 # Calculate metric excess percentages
                 gradient_excess = (
@@ -325,21 +325,27 @@ class MainWindow(QMainWindow):
         return visualization
 
     def transfer_blocks(self):
-        original_image = cv2.cvtColor(self.original_image.copy(), cv2.COLOR_BGR2RGB)
-        target_image = cv2.cvtColor(self.original_image.copy(), cv2.COLOR_BGR2RGB)
+        # original_image = cv2.cvtColor(self.original_image.copy(), cv2.COLOR_BGR2RGB)
+        # target_image = cv2.cvtColor(self.original_image.copy(), cv2.COLOR_BGR2RGB)
 
-        for i, _ in enumerate(self.lossless_blocks):
-            current = self.lossless_blocks[i]
-            roi = None
-            region = None
-            if current.metrics == None:
-                return
-            roi = current.metrics.region
-            # region is (x, y, width, height) 
-            region = self.original_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]]
-            print(f"Transferring block {i}")
-            processed_block = fpga_accelerated_compression(region)
-            target_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]] = processed_block
+        original_image = self.original_image.copy()
+        target_image = self.original_image.copy()
+
+        res = fpga_accelerated_compressor.process_color_image(target_image)
+        target_image = res.img_RGB
+
+        # for i, _ in enumerate(self.lossless_blocks):
+        #     current = self.lossless_blocks[i]
+        #     roi = None
+        #     region = None
+        #     if current.metrics == None:
+        #         return
+        #     roi = current.metrics.region
+        #     # region is (x, y, width, height)
+        #     region = self.original_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]]
+        #     print(f"Transferring block {i}")
+        # processed_block = fpga_accelerated_compression(region)
+        # target_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]] = processed_block
 
         oheight, owidth, ochannels = original_image.shape
         obytes_per_line = ochannels * owidth
@@ -347,8 +353,20 @@ class MainWindow(QMainWindow):
         theight, twidth, tchannels = target_image.shape
         tbytes_per_line = tchannels * twidth
 
-        oimg = QImage(bytes(original_image.data), owidth, oheight, obytes_per_line, QImage.Format.Format_RGB888)
-        timg = QImage(bytes(target_image.data), twidth, theight, tbytes_per_line, QImage.Format.Format_RGB888)
+        oimg = QImage(
+            bytes(original_image.data),
+            owidth,
+            oheight,
+            obytes_per_line,
+            QImage.Format.Format_RGB888,
+        )
+        timg = QImage(
+            bytes(target_image.data),
+            twidth,
+            theight,
+            tbytes_per_line,
+            QImage.Format.Format_RGB888,
+        )
 
         pixmap1 = QPixmap(oimg)
         pixmap2 = QPixmap(timg)
@@ -385,6 +403,7 @@ class MainWindow(QMainWindow):
     def load_image_from_path(self, path):
         self.current_image_path = path
         self.original_image = cv2.imread(str(path))
+        self.original_image = resize_image(self.original_image)
         if self.original_image is None:
             self.original_image = np.full((480, 640, 3), 128, dtype=np.uint8)
         self.process_and_display_image()

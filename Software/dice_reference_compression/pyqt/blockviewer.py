@@ -3,7 +3,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QImage, QPixmap
 import cv2
 import os
-from fpga_accelerated_compressor import fpga_accelerated_compression 
+# from fpga_accelerated_compressor import fpga_accelerated_compression 
 
 
 class BlockViewer(QDialog):
