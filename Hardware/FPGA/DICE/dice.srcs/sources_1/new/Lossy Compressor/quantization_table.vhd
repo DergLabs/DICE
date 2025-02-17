@@ -217,7 +217,7 @@ begin
                     --ram_data_adjusted(6) <= X"04" + scale_factor_i;
                     ram_data_adjusted(6) <= ram_data_resized(6) + scale_factor_i;
                     ram_data_adjusted(7) <= ram_data_resized(7) + scale_factor_i;*/
-                if (addr_delayed = "10100") then -- At ADDR 20 adjust values that are 4 to account for overflow
+                if (addr_delayed = "10000") then -- At ADDR 20 adjust values that are 4 to account for overflow
                     ram_data_adjusted(0) <= ram_data_resized(0) + scale_factor_i;
                     ram_data_adjusted(1) <= ram_data_resized(1) + scale_factor_i;
                     ram_data_adjusted(2) <= ram_data_resized(2) + scale_factor_i;

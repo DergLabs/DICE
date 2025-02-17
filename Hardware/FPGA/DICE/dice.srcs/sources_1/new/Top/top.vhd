@@ -39,8 +39,8 @@ entity top is
         NUM_CHANNELS : integer := 3;
         BLOCK_SIZE : integer := 1024;
         USE_SIM_MODEL : boolean := false;
-        ENABLE_ILA : boolean := false;
-        ENABLE_STATS : boolean := true
+        ENABLE_ILA : boolean := True;
+        ENABLE_STATS : boolean := True
     );
     port ( 
         -- Inputs
@@ -106,7 +106,7 @@ architecture Behavioral of top is
     signal core_dout_valid              : std_logic_vector(NUM_CHANNELS-1 downto 0);
 
     -- Special case for 3 cores
-    signal core_dout_256b               : std_logic_vector(255 downto 0);
+    --signal core_dout_256b               : std_logic_vector(255 downto 0);
     signal core_dout_512b               : std_logic_vector(511 downto 0);
 
     -- Data to FT600
@@ -290,7 +290,7 @@ begin
     );
 
     -- data delay to give statistics core time to process
-    data_delay : entity work.data_delay_reg
+    /*data_delay : entity work.data_delay_reg
     generic map (
         SHIFT_DEPTH => 265,
         DATA_WIDTH => 24
@@ -315,7 +315,7 @@ begin
         rst_i => rst_x,
         data_i(0) => ycrcb_valid_x,
         data_o(0) => ycrcb_valid_delayed_x
-    );
+    );*/
 
     -- Image compression core
     lossy_comp_core : entity work.multi_ch_lossy_comp
@@ -327,51 +327,16 @@ begin
         clk_i => clk_x,
         rst_i => rst_x,
         -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
-        data_i => ycrcb_delayed_x,
-        valid_i => ycrcb_valid_delayed_x,
+        --data_i => ycrcb_delayed_x,
+        --valid_i => ycrcb_valid_delayed_x,
+        data_i => ycrcb_x,
+        valid_i => ycrcb_valid_x,
         --ce_o => open,
         --done_o => open,
         data_o => core_dout,
         valid_o => core_dout_valid
     );
 
-    /*with pixel_select select
-        core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                        core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                        core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                        core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                        core_dout(31 downto 24) & X"00" & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                        core_dout(23 downto 16) & X"00" & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                        core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64) when '0',
-
-                        core_dout(63 downto 56) & X"FF" & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                        core_dout(55 downto 48) & X"FF" & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                        core_dout(47 downto 40) & X"FF" & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                        core_dout(39 downto 32) & X"FF" & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                        core_dout(31 downto 24) & X"FF" & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                        core_dout(23 downto 16) & X"FF" & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                        core_dout(15 downto 8) & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                        core_dout(7 downto 0) & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64) when others;*/
-
-    /*core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                        core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                        core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                        core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                        core_dout(31 downto 24) & gradient_var(15 downto 8) & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                        core_dout(23 downto 16) & gradient_var(7 downto 0) & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                        core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);*/
-
-    -- Core data is now 128b wide per channel, total is 384b
-    /*core_dout_512b <= core_dout(127 downto 112) & laplacian_var & core_dout(383 downto 368) & core_dout(255 downto 240) &
-                        core_dout(111 downto 96) & laplacian_mean & core_dout(367 downto 352) & core_dout(239 downto 224) &
-                        core_dout(95 downto 80) & laplacian_std_dev & core_dout(351 downto 336) & core_dout(223 downto 208) &
-                        core_dout(79 downto 64) & gradient_var & core_dout(335 downto 320) & core_dout(207 downto 192) &
-                        core_dout(63 downto 48) & gradient_mean & core_dout(319 downto 304) & core_dout(191 downto 176) &
-                        core_dout(47 downto 32) & gradient_std_dev & core_dout(303 downto 288) & core_dout(175 downto 160) &
-                        core_dout(31 downto 16) & X"0000" & core_dout(287 downto 272) & core_dout(159 downto 144) &
-                        core_dout(15 downto 0) & X"0000" & core_dout(271 downto 256) & core_dout(143 downto 128);*/
 
     -- Order is Core 0 - Cb | Core 2 - Cr | Core 1 - Y
     -- Core 0 width is 80 bits (10b per pixel), Core 1 width is 96 bits (12b per pixel), Core 2 width is 80 bits (10b per pixel)
@@ -385,18 +350,6 @@ begin
                         core_dout(19 downto 10) & core_dout(195 downto 186) & core_dout(103 downto 92) &
                         core_dout(9 downto 0)   & core_dout(185 downto 176) & core_dout(91 downto 80);
 
-
-                        
-
-    /*core_dout_256b <=   core_dout((OUTPUT_WIDTH * 8) - 1 downto (OUTPUT_WIDTH * 7)) & X"FF" & core_dout(191 downto 184) & core_dout(127 downto 120) &
-                        core_dout((OUTPUT_WIDTH * 7) - 1 downto (OUTPUT_WIDTH * 6)) & X"FF" & core_dout(183 downto 176) & core_dout(119 downto 112) &
-                        core_dout((OUTPUT_WIDTH * 6) - 1 downto (OUTPUT_WIDTH * 5)) & X"FF" & core_dout(175 downto 168) & core_dout(111 downto 104) &
-                        core_dout((OUTPUT_WIDTH * 5) - 1 downto (OUTPUT_WIDTH * 4)) & X"FF" & core_dout(167 downto 160) & core_dout(103 downto 96) &
-                        core_dout((OUTPUT_WIDTH * 4) - 1 downto (OUTPUT_WIDTH * 3)) & X"FF" & core_dout(159 downto 152) & core_dout(95 downto 88) &
-                        core_dout((OUTPUT_WIDTH * 3) - 1 downto (OUTPUT_WIDTH * 2)) & X"FF" & core_dout(151 downto 144) & core_dout(87 downto 80) &
-                        core_dout((OUTPUT_WIDTH * 2) - 1 downto OUTPUT_WIDTH)       & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                        core_dout((OUTPUT_WIDTH - 1) downto 0)                      & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64);*/
-        
 
     output_memory : entity work.output_memory
     generic map (
@@ -448,21 +401,22 @@ begin
             gradient_std_dev_o => gradient_std_dev,
             gradient_valid_o => gradient_valid
         );
-    end generate;
 
-    -- Simple decision Logic for image stats
-    process(clk_x, rst_x)
-    begin
-        if rst_x = '1' then
-            pixel_select <= '0';
-        elsif rising_edge(clk_x) then
-            if laplacian_var > X"0200" then 
-                pixel_select <= '1';
-            else
+        -- Simple decision Logic for image stats
+        process(clk_x, rst_x)
+        begin
+            if rst_x = '1' then
                 pixel_select <= '0';
+            elsif rising_edge(clk_x) then
+                if laplacian_var > X"0200" then 
+                    pixel_select <= '1';
+                else
+                    pixel_select <= '0';
+                end if;
             end if;
-        end if;
-    end process;
+        end process;
+
+    end generate;
 
 
 end Behavioral;
