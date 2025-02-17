@@ -32,6 +32,9 @@ library UNISIM;
 use UNISIM.VComponents.all;
 
 entity quantizer is
+    generic (
+        OUTPUT_WIDTH : integer := 10 -- Bit width of each word
+    );
     port (
         clk_i           : in std_logic;
         ce_i            : in std_logic;
@@ -39,9 +42,9 @@ entity quantizer is
 
         data_i          : in std_logic_vector(95 downto 0);
         valid_i         : in std_logic;
-        --scale_factor_i  : in std_logic_vector(3 downto 0);
+        scale_factor_i  : in unsigned(7 downto 0);
 
-        data_o          : out std_logic_vector(63 downto 0);
+        data_o          : out std_logic_vector((OUTPUT_WIDTH * 8) - 1 downto 0);
         valid_o         : out std_logic
     );
 end quantizer;
@@ -56,7 +59,7 @@ architecture Behavioral of quantizer is
 
     signal quantization_factor : std_logic_vector(63 downto 0);
     
-    signal resized_data : std_logic_vector(63 downto 0);
+    signal resized_data : std_logic_vector((8 * OUTPUT_WIDTH) - 1 downto 0);
 
     signal quantization_factor_delayed : std_logic_vector(63 downto 0);
 
@@ -119,7 +122,7 @@ begin
         clk_i => clk_i,
         ce_i => ce_i,
         rst_i => rst_i,
-        scale_factor_i => X"03", -- Hard coded to 3 for now (equivelant to original table values)
+        scale_factor_i => scale_factor_i, -- Hard coded to 0 for now (Highest Qualtiy)
         addr_i => ram_addr,
         quantization_table_o => quantization_factor
     );
@@ -155,15 +158,15 @@ begin
     quantized_data(23 downto 12) <= std_logic_vector(shift_right(corrected_data(23 downto 12), to_integer(unsigned(quantization_factor(55 downto 48)))));
     quantized_data(11 downto 0)  <= std_logic_vector(shift_right(corrected_data(11 downto 0),  to_integer(unsigned(quantization_factor(63 downto 56)))));
 
-    -- resize to signed 8bit 
-    resized_data(7 downto 0)   <= std_logic_vector(resize(signed(quantized_data(11 downto 0)), 8));
-    resized_data(15 downto 8)  <= std_logic_vector(resize(signed(quantized_data(23 downto 12)), 8));
-    resized_data(23 downto 16) <= std_logic_vector(resize(signed(quantized_data(35 downto 24)), 8));
-    resized_data(31 downto 24) <= std_logic_vector(resize(signed(quantized_data(47 downto 36)), 8));
-    resized_data(39 downto 32) <= std_logic_vector(resize(signed(quantized_data(59 downto 48)), 8));
-    resized_data(47 downto 40) <= std_logic_vector(resize(signed(quantized_data(71 downto 60)), 8));
-    resized_data(55 downto 48) <= std_logic_vector(resize(signed(quantized_data(83 downto 72)), 8));
-    resized_data(63 downto 56) <= std_logic_vector(resize(signed(quantized_data(95 downto 84)), 8));
+    -- resize to signed  
+    resized_data((OUTPUT_WIDTH - 1) downto 0)                      <= std_logic_vector(resize(signed(quantized_data(11 downto 0)), OUTPUT_WIDTH));
+    resized_data((2 * OUTPUT_WIDTH) - 1 downto OUTPUT_WIDTH)       <= std_logic_vector(resize(signed(quantized_data(23 downto 12)), OUTPUT_WIDTH));
+    resized_data((3 * OUTPUT_WIDTH) - 1 downto (OUTPUT_WIDTH * 2)) <= std_logic_vector(resize(signed(quantized_data(35 downto 24)), OUTPUT_WIDTH));
+    resized_data((4 * OUTPUT_WIDTH) - 1 downto (OUTPUT_WIDTH * 3)) <= std_logic_vector(resize(signed(quantized_data(47 downto 36)), OUTPUT_WIDTH));
+    resized_data((5 * OUTPUT_WIDTH) - 1 downto (OUTPUT_WIDTH * 4)) <= std_logic_vector(resize(signed(quantized_data(59 downto 48)), OUTPUT_WIDTH));
+    resized_data((6 * OUTPUT_WIDTH) - 1 downto (OUTPUT_WIDTH * 5)) <= std_logic_vector(resize(signed(quantized_data(71 downto 60)), OUTPUT_WIDTH));
+    resized_data((7 * OUTPUT_WIDTH) - 1 downto (OUTPUT_WIDTH * 6)) <= std_logic_vector(resize(signed(quantized_data(83 downto 72)), OUTPUT_WIDTH));
+    resized_data((8 * OUTPUT_WIDTH) - 1 downto (OUTPUT_WIDTH * 7)) <= std_logic_vector(resize(signed(quantized_data(95 downto 84)), OUTPUT_WIDTH));
 
 
     -- Register quantized data

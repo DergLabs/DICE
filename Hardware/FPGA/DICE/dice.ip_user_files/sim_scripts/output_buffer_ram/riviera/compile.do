@@ -13,6 +13,7 @@ vmap blk_mem_gen_v8_4_7 riviera/blk_mem_gen_v8_4_7
 vmap xil_defaultlib riviera/xil_defaultlib
 
 vlog -work xpm  -incr -l xpm -l blk_mem_gen_v8_4_7 -l xil_defaultlib \
+"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
 "C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  -incr \
@@ -23,7 +24,6 @@ vlog -work blk_mem_gen_v8_4_7  -incr -v2k5 -l xpm -l blk_mem_gen_v8_4_7 -l xil_d
 
 vlog -work xil_defaultlib  -incr -v2k5 -l xpm -l blk_mem_gen_v8_4_7 -l xil_defaultlib \
 "../../../../dice.gen/sources_1/ip/output_buffer_ram/sim/output_buffer_ram.v" \
-
 
 vlog -work xil_defaultlib \
 "glbl.v"

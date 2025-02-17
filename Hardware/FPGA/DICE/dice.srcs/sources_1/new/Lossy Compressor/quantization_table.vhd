@@ -46,6 +46,16 @@ architecture Behavioral of quantization_table is
     --C2 03_04_04_04_03_03_03_03
     --D3 02_03_02_02_01_02_01_02
 
+    -- Higher Qualtiy Quantization Matrix
+    --A1 01_01_01_01_01_00_00_00
+    --B1 01_01_01_01_01_01_00_00
+    --C1 02_01_01_01_01_01_01_00
+    --D1 03_02_03_01_01_01_01_01
+    --A2 03_03_03_06_01_01_01_01
+    --B2 03_03_03_03_03_01_01_01
+    --C2 03_03_03_03_02_01_01_01
+    --D3 03_03_03_03_02_01_01_01
+
 begin
 
     -- register addr signal
@@ -66,10 +76,14 @@ begin
     ram_inst0 : RAM32M
     generic map (
         -- Initialize each RAM with one column of the initialization data
-        INIT_A => X"0203010100010001",
+        /*INIT_A => X"0203010100010001",
         INIT_B => X"0203010100000000",
         INIT_C => X"0304020201010000", 
-        INIT_D => X"0203010201010000",
+        INIT_D => X"0203010201010000",*/
+        INIT_A => X"01_01_01_01_01_00_00_00",
+        INIT_B => X"01_01_01_01_01_01_00_00",
+        INIT_C => X"02_01_01_01_01_01_01_00",
+        INIT_D => X"03_02_03_01_01_01_01_01",
         IS_WCLK_INVERTED => '0'
     )
     port map (
@@ -100,10 +114,14 @@ begin
     ram_inst1 : RAM32M
     generic map (
         -- Initialize each RAM with one column of the initialization data
-        INIT_A => X"0304030302030102",
+        /*INIT_A => X"0304030302030102",
         INIT_B => X"0204030302030202",
         INIT_C => X"0304040403030303",
-        INIT_D => X"0203020201020102",
+        INIT_D => X"0203020201020102",*/
+        INIT_A => X"03_03_03_06_01_01_01_01",
+        INIT_B => X"03_03_03_03_03_01_01_01",
+        INIT_C => X"03_03_03_03_02_01_01_01",
+        INIT_D => X"03_03_03_03_02_01_01_01",
         IS_WCLK_INVERTED => '0'
     )
     port map (
@@ -188,33 +206,40 @@ begin
             end loop;
         elsif rising_edge(clk_i) then
             --if (ce_delayed = '1') then
-                if (addr_delayed = "10000") then -- At ADDR 14 adjust values that are 4 to account for overflow
+                /*if (addr_delayed = "10000") then -- At ADDR 16 adjust values that are 4 to account for overflow
+                    ram_data_adjusted(0) <= ram_data_resized(0) + scale_factor_i;
+                    ram_data_adjusted(1) <= ram_data_resized(1) + scale_factor_i;
+                    --ram_data_adjusted(2) <= ram_data_resized(2) + scale_factor_i;
+                    ram_data_adjusted(2) <= X"06" + scale_factor_i;
+                    ram_data_adjusted(3) <= ram_data_resized(3) + scale_factor_i;
+                    ram_data_adjusted(4) <= ram_data_resized(4) + scale_factor_i;
+                    ram_data_adjusted(5) <= ram_data_resized(5) + scale_factor_i;
+                    --ram_data_adjusted(6) <= X"04" + scale_factor_i;
+                    ram_data_adjusted(6) <= ram_data_resized(6) + scale_factor_i;
+                    ram_data_adjusted(7) <= ram_data_resized(7) + scale_factor_i;*/
+                if (addr_delayed = "10100") then -- At ADDR 20 adjust values that are 4 to account for overflow
                     ram_data_adjusted(0) <= ram_data_resized(0) + scale_factor_i;
                     ram_data_adjusted(1) <= ram_data_resized(1) + scale_factor_i;
                     ram_data_adjusted(2) <= ram_data_resized(2) + scale_factor_i;
                     ram_data_adjusted(3) <= ram_data_resized(3) + scale_factor_i;
-                    ram_data_adjusted(4) <= ram_data_resized(4) + scale_factor_i;
+                    --ram_data_adjusted(4) <= ram_data_resized(4) + scale_factor_i;
+                    ram_data_adjusted(4) <= X"06" + scale_factor_i;
                     ram_data_adjusted(5) <= ram_data_resized(5) + scale_factor_i;
-                    ram_data_adjusted(6) <= X"04" + scale_factor_i;
+                    ram_data_adjusted(6) <= ram_data_resized(6) + scale_factor_i;
                     ram_data_adjusted(7) <= ram_data_resized(7) + scale_factor_i;
-                elsif (addr_delayed = "10100") then -- At ADDR 16 or 20 adjust values that are 4 to account for overflow
+                /*elsif (addr_delayed = "11000") then -- At ADDR 24 adjust values that are 4 to account for overflow
                     ram_data_adjusted(0) <= ram_data_resized(0) + scale_factor_i;
                     ram_data_adjusted(1) <= ram_data_resized(1) + scale_factor_i;
+                    --ram_data_adjusted(2) <= X"04" + scale_factor_i;
                     ram_data_adjusted(2) <= ram_data_resized(2) + scale_factor_i;
                     ram_data_adjusted(3) <= ram_data_resized(3) + scale_factor_i;
-                    ram_data_adjusted(4) <= ram_data_resized(4) + scale_factor_i;
+                    --ram_data_adjusted(4) <= X"04" + scale_factor_i;
+                    ram_data_adjusted(4) <= X"06" + scale_factor_i;
+                    --ram_data_adjusted(5) <= X"04" + scale_factor_i;
+                    --ram_data_adjusted(6) <= X"04" + scale_factor_i;
                     ram_data_adjusted(5) <= ram_data_resized(5) + scale_factor_i;
-                    ram_data_adjusted(6) <= X"04" + scale_factor_i;
-                    ram_data_adjusted(7) <= ram_data_resized(7) + scale_factor_i;
-                elsif (addr_delayed = "11000") then -- At ADDR 24 adjust values that are 4 to account for overflow
-                    ram_data_adjusted(0) <= ram_data_resized(0) + scale_factor_i;
-                    ram_data_adjusted(1) <= ram_data_resized(1) + scale_factor_i;
-                    ram_data_adjusted(2) <= X"04" + scale_factor_i;
-                    ram_data_adjusted(3) <= ram_data_resized(3) + scale_factor_i;
-                    ram_data_adjusted(4) <= X"04" + scale_factor_i;
-                    ram_data_adjusted(5) <= X"04" + scale_factor_i;
-                    ram_data_adjusted(6) <= X"04" + scale_factor_i;
-                    ram_data_adjusted(7) <= ram_data_resized(7) + scale_factor_i;
+                    ram_data_adjusted(6) <= ram_data_resized(6) + scale_factor_i;
+                    ram_data_adjusted(7) <= ram_data_resized(7) + scale_factor_i;*/
                 else   
                     ram_data_adjusted(0) <= ram_data_resized(0) + scale_factor_i;
                     ram_data_adjusted(1) <= ram_data_resized(1) + scale_factor_i;

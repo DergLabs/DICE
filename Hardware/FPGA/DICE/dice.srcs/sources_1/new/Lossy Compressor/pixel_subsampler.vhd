@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
-
+-- implements 4:2:2 subsampling
 entity pixel_subsampler is
     generic (
         WIDTH : integer := 8

@@ -34,9 +34,9 @@ use ieee.numeric_std.all;
 -- operation (A+B)+C, 3 cycle latency
 entity dsp_cascade_add is
     generic (
-        AWIDTH : natural := 24;  -- Width of A input
-        BWIDTH : natural := 24;  -- Width of B input
-        CWIDTH : natural := 24   -- Width of C input
+        AWIDTH : natural := 24;  -- Width of A input, max is 27b
+        BWIDTH : natural := 24;  -- Width of B input, max is 27b
+        CWIDTH : natural := 24   -- Width of C input, max is 48b
        );
     port (
         clk  : in  std_logic;     -- Clock

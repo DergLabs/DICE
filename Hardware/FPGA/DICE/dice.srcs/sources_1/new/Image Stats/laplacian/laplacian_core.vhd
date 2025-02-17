@@ -42,6 +42,7 @@ architecture Behavioral of laplacian_core is
 
     signal valid_x          : std_logic;
 
+    -- performs (A+D) + C
     COMPONENT dsp_macro_simd
     PORT (
         CLK : IN STD_LOGIC;

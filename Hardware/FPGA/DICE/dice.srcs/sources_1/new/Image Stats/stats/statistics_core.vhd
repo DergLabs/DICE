@@ -63,6 +63,7 @@ architecture Behavioral of statistics_core is
     signal std_dev_x        : std_logic_vector(15 downto 0) := (others => '0');
     signal hold_var_mean_x  : std_logic := '0';
 
+    -- Multiply accumulate block, P += A*P
     COMPONENT dsp_mac
     PORT (
         CLK : IN STD_LOGIC;
@@ -73,6 +74,7 @@ architecture Behavioral of statistics_core is
     );
     END COMPONENT;
 
+    -- Standard acumulator
     COMPONENT dsp_acum
     PORT (
         CLK : IN STD_LOGIC;
@@ -83,6 +85,7 @@ architecture Behavioral of statistics_core is
     );
     END COMPONENT;
 
+    -- Multiply subtract block, C-A*A
     COMPONENT dsp_msub
     PORT (
         CLK : IN STD_LOGIC;

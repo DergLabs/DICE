@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- any Xilinx leaf cells in this code.
 library UNISIM;
 use UNISIM.VComponents.all;
-
+-- Implements either A+B or A-B. Operation is applied to 4 12-bit signed inputs
 entity simd_4x12b_dsp is
     generic (
         W : integer := 12;

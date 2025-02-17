@@ -31,9 +31,10 @@ use IEEE.NUMERIC_STD.ALL;
 library UNISIM;
 use UNISIM.VComponents.all;
 
-entity image_compressor is
+entity lossy_compressor is
     generic (
-        EN_SUBSAMPLE : boolean := true
+        EN_SUBSAMPLE : boolean := true;
+        OUTPUT_WIDTH : integer := 8 -- Bit width of each word
     );
     port ( 
         clk_i      : in std_logic;
@@ -41,15 +42,16 @@ entity image_compressor is
 
         data_i     : in std_logic_vector(7 downto 0);
         valid_i    : in std_logic;
+        q_scale_i  : in unsigned(7 downto 0);
 
         ce_o       : out std_logic;
         done_o     : out std_logic;
-        data_o     : out std_logic_vector(63 downto 0);
+        data_o     : out std_logic_vector((OUTPUT_WIDTH * 8) - 1 downto 0);
         valid_o    : out std_logic
     );
-end image_compressor;
+end lossy_compressor;
 
-architecture Behavioral of image_compressor is
+architecture Behavioral of lossy_compressor is
     signal valid_x : std_logic;
 
     signal subsampled_pixel : std_logic_vector(7 downto 0);
@@ -112,7 +114,7 @@ begin
         end if;
     end process;
 
-    -- Pixel subsampler
+    -- Pixel subsampler, simply replaces every other pixel with previous pixel
     gen_subsample : if EN_SUBSAMPLE generate
         pixel_subsampler_inst : entity work.pixel_subsampler
         generic map (
@@ -198,7 +200,7 @@ begin
 
 
 
-    -- Resize pixel data from 8bit unsigned to 12bit unsigned for 1st DCT
+    -- Resize pixel data from 8bit unsigned to 12bit signed for 1st DCT
     pixel_cols_wide <=  X"0" & pixel_cols(63 downto 56) &
                         X"0" & pixel_cols(55 downto 48) &
                         X"0" & pixel_cols(47 downto 40) &
@@ -208,7 +210,7 @@ begin
                         X"0" & pixel_cols(15 downto 8) &
                         X"0" & pixel_cols(7 downto 0);
 
-    -- Apply DCT column Wise
+    -- Apply DCT column Wise, output 12-bit signed
     col_dct : entity work.dct1d
     port map (
         clk_i => clk_i,
@@ -220,7 +222,7 @@ begin
         valid_o => dct1_valid_out
     );
 
-    -- Divide DCT output by 8 to prevent overflow in next DCT stage
+    -- Divide DCT output by 8 to prevent overflow in next DCT stage, output 12-bit signed, can be resized to 9-bit signed
     pixel_divider : entity work.pixel_divider
     port map(
         clk_i => clk_i,
@@ -231,7 +233,7 @@ begin
         valid_o => divided_pixels_valid
     );
 
-    
+    -- Resize from 12bit signed to 9bit signed to save resources in transpose stage
     pixel_0 <= std_logic_vector(resize(signed(divided_pixels(11 downto 0)), 9));
     pixel_1 <= std_logic_vector(resize(signed(divided_pixels(23 downto 12)), 9));
     pixel_2 <= std_logic_vector(resize(signed(divided_pixels(35 downto 24)), 9));
@@ -276,6 +278,7 @@ begin
         row_num_o => row_num
     );
 
+    -- Resize from 9bit signed to 12bit signed for 2nd DCT stage
     pixel_rows_wide <= std_logic_vector(resize(signed(pixel_rows(71 downto 63)), 12)) &
                         std_logic_vector(resize(signed(pixel_rows(62 downto 54)), 12)) &
                         std_logic_vector(resize(signed(pixel_rows(53 downto 45)), 12)) &
@@ -286,19 +289,7 @@ begin
                         std_logic_vector(resize(signed(pixel_rows(8 downto 0)), 12));
                       
 
-
-    -- Register clock enable signal
-    -- Aigns with transpose output for DCT stage
-    /*process(clk_i, rst_i)
-    begin
-        if rst_i = '1' then
-            row_dct_ce_x <= '0';
-        elsif rising_edge(clk_i) then
-            row_dct_ce_x <= transpose_ce_x;
-        end if;
-    end process;*/
-
-    -- Apply DCT row Wise
+    -- Apply DCT row Wise, outputs 12-bit signed value
     row_dct : entity work.dct1d
     port map (
         clk_i => clk_i,
@@ -310,25 +301,18 @@ begin
         valid_o => dct2_valid_out
     );
 
-    -- Register clock enable signal
-    -- Aligns with DCT output for quantizer stage
-    /*process(clk_i, rst_i)
-    begin
-        if rst_i = '1' then
-            quantizer_ce_x <= '0';
-        elsif rising_edge(clk_i) then
-            quantizer_ce_x <= row_dct_ce_x;
-        end if;
-    end process;*/
-
     -- Quantize DCT output
     quantizer : entity work.quantizer
+    generic map (
+        OUTPUT_WIDTH => OUTPUT_WIDTH
+    )
     port map (
         clk_i => clk_i,
         ce_i => '1',
         rst_i => rst_i,
         data_i => dct2_pixel_out,
         valid_i => dct2_valid_out,
+        scale_factor_i => q_scale_i,
         data_o => data_o,
         valid_o => valid_o
     );

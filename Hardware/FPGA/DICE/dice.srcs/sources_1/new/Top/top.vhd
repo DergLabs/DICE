@@ -102,11 +102,12 @@ architecture Behavioral of top is
     signal ycrcb_valid_delayed_x        : std_logic;
 
     -- Processor Core 
-    signal core_dout                    : std_logic_vector((NUM_CHANNELS*64)-1 downto 0);
+    signal core_dout                    : std_logic_vector(255 downto 0);
     signal core_dout_valid              : std_logic_vector(NUM_CHANNELS-1 downto 0);
 
     -- Special case for 3 cores
     signal core_dout_256b               : std_logic_vector(255 downto 0);
+    signal core_dout_512b               : std_logic_vector(511 downto 0);
 
     -- Data to FT600
     signal data_to_ft600                : std_logic_vector(15 downto 0);
@@ -254,11 +255,11 @@ begin
     data_in_valid_r <= data_in_valid when rising_edge(ftdi_clk_i);
 
     -- Input fifo, bridges ftdi_clk and core_clk
+    -- Regen FIFO IP if DIN or DOUT width change
     input_memory_fifo : entity work.input_memory
     generic map (
         DIN_WIDTH => data_from_ft600'length,
         DOUT_WIDTH => fifo_data_to_core'length
-        --DEPTH => BLOCK_SIZE -- Should be equal to number of pixels we will read in
     )
     port map (
         rst_i => rst_x,
@@ -288,18 +289,6 @@ begin
         ycrcb_valid_o => ycrcb_valid_x
     );
 
-    /*rgb_to_ycrcb : entity work.rgb2ycrcb
-    port map(
-        clk_i => clk_x,
-        rst_i => rst_x,
-        -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
-        pixel_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
-        valid_i => input_fifo_valid,
-        ycrcb_o => ycrcb_x,
-        valid_o => ycrcb_valid_x
-    );*/
-
-
     -- data delay to give statistics core time to process
     data_delay : entity work.data_delay_reg
     generic map (
@@ -311,7 +300,6 @@ begin
         ce_i => '1',
         rst_i => rst_x,
         data_i => ycrcb_x,
-        --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
         data_o => ycrcb_delayed_x
     );
 
@@ -326,25 +314,23 @@ begin
         ce_i => '1',
         rst_i => rst_x,
         data_i(0) => ycrcb_valid_x,
-        --data_i(0) => input_fifo_valid,
         data_o(0) => ycrcb_valid_delayed_x
     );
 
     -- Image compression core
-    compression_core : entity work.multi_core_test
-    generic map (
-        NUM_CHANNELS => NUM_CHANNELS
-    )
+    lossy_comp_core : entity work.multi_ch_lossy_comp
+    /*generic map (
+        NUM_CHANNELS => NUM_CHANNELS,
+        OUTPUT_WIDTH => OUTPUT_WIDTH
+    )*/
     port map (
         clk_i => clk_x,
         rst_i => rst_x,
         -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
-        --data_i => fifo_data_to_core(7 downto 0) & fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16),
-        --valid_i => input_fifo_valid,
         data_i => ycrcb_delayed_x,
         valid_i => ycrcb_valid_delayed_x,
-        ce_o => open,
-        done_o => open,
+        --ce_o => open,
+        --done_o => open,
         data_o => core_dout,
         valid_o => core_dout_valid
     );
@@ -368,14 +354,48 @@ begin
                         core_dout(15 downto 8) & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
                         core_dout(7 downto 0) & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64) when others;*/
 
-    core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
+    /*core_dout_256b <= core_dout(63 downto 56) & laplacian_var(15 downto 8) & core_dout(191 downto 184) & core_dout(127 downto 120) &
                         core_dout(55 downto 48) & laplacian_var(7 downto 0) & core_dout(183 downto 176) & core_dout(119 downto 112) &
                         core_dout(47 downto 40) & gradient_std_dev(15 downto 8) & core_dout(175 downto 168) & core_dout(111 downto 104) &
                         core_dout(39 downto 32) & gradient_std_dev(7 downto 0) & core_dout(167 downto 160) & core_dout(103 downto 96) &
                         core_dout(31 downto 24) & gradient_var(15 downto 8) & core_dout(159 downto 152) & core_dout(95 downto 88) &
                         core_dout(23 downto 16) & gradient_var(7 downto 0) & core_dout(151 downto 144) & core_dout(87 downto 80) &
                         core_dout(15 downto 8) & X"00" & core_dout(143 downto 136) & core_dout(79 downto 72) &
-                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);
+                        core_dout(7 downto 0) & X"00" & core_dout(135 downto 128) & core_dout(71 downto 64);*/
+
+    -- Core data is now 128b wide per channel, total is 384b
+    /*core_dout_512b <= core_dout(127 downto 112) & laplacian_var & core_dout(383 downto 368) & core_dout(255 downto 240) &
+                        core_dout(111 downto 96) & laplacian_mean & core_dout(367 downto 352) & core_dout(239 downto 224) &
+                        core_dout(95 downto 80) & laplacian_std_dev & core_dout(351 downto 336) & core_dout(223 downto 208) &
+                        core_dout(79 downto 64) & gradient_var & core_dout(335 downto 320) & core_dout(207 downto 192) &
+                        core_dout(63 downto 48) & gradient_mean & core_dout(319 downto 304) & core_dout(191 downto 176) &
+                        core_dout(47 downto 32) & gradient_std_dev & core_dout(303 downto 288) & core_dout(175 downto 160) &
+                        core_dout(31 downto 16) & X"0000" & core_dout(287 downto 272) & core_dout(159 downto 144) &
+                        core_dout(15 downto 0) & X"0000" & core_dout(271 downto 256) & core_dout(143 downto 128);*/
+
+    -- Order is Core 0 - Cb | Core 2 - Cr | Core 1 - Y
+    -- Core 0 width is 80 bits (10b per pixel), Core 1 width is 96 bits (12b per pixel), Core 2 width is 80 bits (10b per pixel)
+    -- Structure is bits 79:0 Cb (core 0), 255:176 Cr (core 2), 175:80 Y (core 1)
+    core_dout_256b <=   core_dout(79 downto 70) & core_dout(255 downto 246) & core_dout(175 downto 164) &
+                        core_dout(69 downto 60) & core_dout(245 downto 236) & core_dout(163 downto 152) &
+                        core_dout(59 downto 50) & core_dout(235 downto 226) & core_dout(151 downto 140) &
+                        core_dout(49 downto 40) & core_dout(225 downto 216) & core_dout(139 downto 128) &
+                        core_dout(39 downto 30) & core_dout(215 downto 206) & core_dout(127 downto 116) &
+                        core_dout(29 downto 20) & core_dout(205 downto 196) & core_dout(115 downto 104) &
+                        core_dout(19 downto 10) & core_dout(195 downto 186) & core_dout(103 downto 92) &
+                        core_dout(9 downto 0)   & core_dout(185 downto 176) & core_dout(91 downto 80);
+
+
+                        
+
+    /*core_dout_256b <=   core_dout((OUTPUT_WIDTH * 8) - 1 downto (OUTPUT_WIDTH * 7)) & X"FF" & core_dout(191 downto 184) & core_dout(127 downto 120) &
+                        core_dout((OUTPUT_WIDTH * 7) - 1 downto (OUTPUT_WIDTH * 6)) & X"FF" & core_dout(183 downto 176) & core_dout(119 downto 112) &
+                        core_dout((OUTPUT_WIDTH * 6) - 1 downto (OUTPUT_WIDTH * 5)) & X"FF" & core_dout(175 downto 168) & core_dout(111 downto 104) &
+                        core_dout((OUTPUT_WIDTH * 5) - 1 downto (OUTPUT_WIDTH * 4)) & X"FF" & core_dout(167 downto 160) & core_dout(103 downto 96) &
+                        core_dout((OUTPUT_WIDTH * 4) - 1 downto (OUTPUT_WIDTH * 3)) & X"FF" & core_dout(159 downto 152) & core_dout(95 downto 88) &
+                        core_dout((OUTPUT_WIDTH * 3) - 1 downto (OUTPUT_WIDTH * 2)) & X"FF" & core_dout(151 downto 144) & core_dout(87 downto 80) &
+                        core_dout((OUTPUT_WIDTH * 2) - 1 downto OUTPUT_WIDTH)       & X"FF" & core_dout(143 downto 136) & core_dout(79 downto 72) &
+                        core_dout((OUTPUT_WIDTH - 1) downto 0)                      & X"FF" & core_dout(135 downto 128) & core_dout(71 downto 64);*/
         
 
     output_memory : entity work.output_memory
@@ -416,9 +436,7 @@ begin
             rst_i => rst_x,
 
             pixel_i => ycrcb_x(15 downto 8), -- pass Y channel to statistics core
-            --pixel_i => fifo_data_to_core(31 downto 24),
             valid_i => ycrcb_valid_x,
-            --valid_i => input_fifo_valid,
 
             laplacian_var_o => laplacian_var,
             laplacian_mean_o => laplacian_mean,

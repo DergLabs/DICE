@@ -93,6 +93,7 @@ architecture Behavioral of gradient_calc is
     signal sum_1_tmp : signed(13 downto 0);
     signal sum_2_tmp : signed(13 downto 0);
 
+    -- performs (A+D)+C
     COMPONENT dsp_macro_add_22b
     PORT (
         CLK : IN STD_LOGIC;

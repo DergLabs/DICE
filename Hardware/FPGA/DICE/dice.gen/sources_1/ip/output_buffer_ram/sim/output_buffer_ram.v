@@ -122,7 +122,7 @@ output wire rstb_busy;
     .C_HAS_REGCEA(0),
     .C_USE_BYTE_WEA(0),
     .C_WEA_WIDTH(1),
-    .C_WRITE_MODE_A("WRITE_FIRST"),
+    .C_WRITE_MODE_A("NO_CHANGE"),
     .C_WRITE_WIDTH_A(256),
     .C_READ_WIDTH_A(256),
     .C_WRITE_DEPTH_A(128),
@@ -168,7 +168,7 @@ output wire rstb_busy;
     .C_DISABLE_WARN_BHV_RANGE(0),
     .C_COUNT_36K_BRAM("4"),
     .C_COUNT_18K_BRAM("0"),
-    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     13.041969 mW")
+    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     12.498521 mW")
   ) inst (
     .clka(clka),
     .rsta(1'D0),

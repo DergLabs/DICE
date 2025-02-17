@@ -6,8 +6,8 @@ use ieee.numeric_std.all;
 
 entity dsp_mult is
   generic (
-           AWIDTH : natural := 12;  -- Width of A input
-           BWIDTH : natural := 16  -- Width of B input
+           AWIDTH : natural := 12;  -- Width of A input, max is 27b
+           BWIDTH : natural := 16  -- Width of B input, max is 18b
           );
   port (
         clk  : in  std_logic;     -- Clock

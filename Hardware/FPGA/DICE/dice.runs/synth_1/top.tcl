@@ -70,8 +70,15 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
+set_param power.BramSDPPropagationFix 1
+set_param power.enableUnconnectedCarry8PinPower 1
+set_param power.enableCarry8RouteBelPower 1
+set_param power.enableLutRouteBelPower 1
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-20532-DESKTOP-U9NB2CD/incrSyn
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xcku3p-ffva676-2-i
 
@@ -94,21 +101,21 @@ read_verilog -library xil_defaultlib -sv {
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {
   C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/simd_4x12b_dsp.vhd}
+  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/DSP/simd_4x12b_dsp.vhd
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/dct1d.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_subsampler.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/sipo_reg.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/image_compressor.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd}
   {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd}
   C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_core_test.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_subsampler.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/lossy_compressor.vhd}
+  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_ch_lossy_comp.vhd}
   C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd
   C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd
 }
