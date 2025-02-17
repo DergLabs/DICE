@@ -43,21 +43,27 @@ def build_huffman_codes(root):
 
 
 def huffman_encode(data):
-    # Count frequencies
+    # Count frequencies across all 16x16 blocks
     frequencies = defaultdict(int)
-    for value in data.flatten():
-        frequencies[value] += 1
+    for i in range(data.shape[0]):
+        for j in range(data.shape[1]):
+            block = data[i, j]  # This is a 16x16 block
+            for value in block.flatten():
+                frequencies[value] += 1
 
-    # Build Huffman tree and codes
+    # Build single Huffman tree and codes
     root = build_huffman_tree(frequencies)
     codes = build_huffman_codes(root)
 
-    # Encode data
+    # Encode each 16x16 block using the same Huffman codes
     encoded = ""
-    for value in data.flatten():
-        encoded += codes[value]
+    for i in range(data.shape[0]):
+        for j in range(data.shape[1]):
+            block = data[i, j]  # This is a 16x16 block
+            for value in block.flatten():
+                encoded += codes[value]
 
-    # Calculate size in bytes (including Huffman table)
+    # Calculate size in bytes (including single Huffman table)
     huffman_table_size = len(frequencies) * (4 + 1)  # 4 bytes for value, 1 byte for code length
     data_size = len(encoded) // 8 + (1 if len(encoded) % 8 else 0)
     total_size = huffman_table_size + data_size
