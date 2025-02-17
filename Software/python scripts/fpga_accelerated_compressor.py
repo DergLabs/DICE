@@ -13,13 +13,14 @@ import image_codec
 
 DEBUG = False
 DISP_STATS = False
-EN_TILE_REPLACEMENT = True
+EN_TILE_REPLACEMENT = False
+EN_COMPRESSOR = True
 IMG_SIZE = 2048 # Size of image
 TILE_SIZE = 16 # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8 # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE/BLOCK_SIZE)
 
-image_path = "img10.jpg"  # Replace with your image path
+image_path = "img1.jpg"  # Replace with your image path
 np.set_printoptions(threshold=np.inf)
 
 
@@ -45,13 +46,14 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     Cb_output = np.zeros_like(B_tiles, dtype=np.uint8)
 
     Y_returned = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC,
-                           TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int8)
+                           TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int16)
     Cr_returned = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC,
-                            TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int8)
+                            TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int16)
     Cb_returned = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC,
-                            TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int8)
+                            TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int16)
+
     tile_id = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC,
-                        TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int32)
+                        TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int16)
 
     print("Formatting...")
     R_formatted = image_codec.format_image_array(R_tiles, BLOCK_SIZE_LOC)
@@ -67,10 +69,15 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     img_byte_array = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC,
                                TILE_SIZE_LOC * TILE_SIZE_LOC * 4), dtype=np.uint8)
     # Encode tiles as byte arrays
+    # Insert G every 4th byte startnig at index 0 (ie 0, 3, 7, 11 ...)
     img_byte_array[:, :, 0::4] = G_formatted.reshape(IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC, -1)
+    # Insert R every 4th byte starting at index 1 (ie 1, 5, 9, 13 ...)
     img_byte_array[:, :, 1::4] = R_formatted.reshape(IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC, -1)
+    # Insert B every 4th byte starting at index 2 (ie 2, 6, 10, 14 ...)
     img_byte_array[:, :, 2::4] = B_formatted.reshape(IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC, -1)
-
+    # Every 4th byte starting at index 3 (ie 3, 7, 11, 15 ...) is 0
+    # Final Byte order: G, R, B, 0, G, R, B, 0
+    # Sent as 16b chunks: RG, 0B, RG, 0B...
 
     print("Sending...")
     start_time = time.time()
@@ -80,7 +87,10 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
         current_time = time.time()
         elapsed_time = current_time - start_time
         data_rate = (total_bytes_sent / (1024)) / elapsed_time if elapsed_time > 0 else 0
-        print(f"\rProcessing Row {row}/{len(R_tiles)} | Data Rate: {data_rate:.2f}KB/s | Bytes sent: {total_bytes_sent/1024}KB", end="", flush=True)
+        print(
+            f"\rProcessing Row {row}/{len(R_tiles)} | Data Rate: {data_rate:.2f}KB/s | Bytes sent: {total_bytes_sent / 1024}KB",
+            end="", flush=True)
+
         for col in range(R_tiles.shape[1]):
             # send data
             txlen = usb.send(bytes(bytearray(img_byte_array[row][col])))
@@ -88,13 +98,42 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
 
             # receive data
             received_data_array = np.frombuffer(usb.recv(txlen), dtype=np.uint8)
+            # Data recieved as 16bit chunks, bytes within the 16bit chunks are swapped
+            #print(f"Received Data: {received_data_array}")
 
-            # Extract bytes from received byte array
-            Y_returned[row][col] = received_data_array.astype(np.int8)[::4][:tile_size_sq]
-            Cr_returned[row][col] = received_data_array.astype(np.int8)[3::4][:tile_size_sq]
-            Cb_returned[row][col] = received_data_array.astype(np.int8)[1::4][:tile_size_sq]
-            tile_id[row][col] = received_data_array.astype(np.int8)[2::4][:tile_size_sq]
 
+            chunks_16bit = received_data_array.view(np.uint16)
+            #print(f"Chunks 16bit: {chunks_16bit}")
+
+            # Then combine into 32-bit values with correct ordering:
+            # - Swap each 16-bit chunk internally (byteswap)
+            # - Place second chunk first, first chunk second
+            combined_data = (chunks_16bit[1::2].astype(np.uint32) << 16) | \
+                            chunks_16bit[::2].astype(np.uint32)
+
+            #print(f"Combined Data: {combined_data}")
+
+            # Extract components and handle sign extension
+            Cb_values = ((combined_data >> 22) & 0x3FF).astype(np.int16)
+            # Sign extend Cb (10 bits)
+            Cb_values = np.where(Cb_values & 0x200, Cb_values | ~0x3FF, Cb_values)
+
+            Cr_values = ((combined_data >> 12) & 0x3FF).astype(np.int16)
+            # Sign extend Cr (10 bits)
+            Cr_values = np.where(Cr_values & 0x200, Cr_values | ~0x3FF, Cr_values)
+
+            Y_values = (combined_data & 0xFFF).astype(np.int16)
+            # Sign extend Y (12 bits)
+            Y_values = np.where(Y_values & 0x800, Y_values | ~0xFFF, Y_values)
+
+            #print(f"Cr Values: {Cr_values}")
+            #print(f"Y Values: {Y_values}")
+            #print(f"Cb Values: {Cb_values}")
+
+            # Assign the extracted values
+            Y_returned[row][col] = Y_values[:tile_size_sq]
+            Cr_returned[row][col] = Cr_values[:tile_size_sq]
+            Cb_returned[row][col] = Cb_values[:tile_size_sq]
 
     print("\nDecoding...")
     # Reshape flat byte arrays to 2d arrays
@@ -111,9 +150,9 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     tile_size_bytes = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC))
 
     # Decode returned image tiles
-    Y_output = np.array([image_codec.decode_image_array(tile, BLOCK_SIZE_LOC, N_BLOCKS_LOC, TILE_SIZE_LOC) for tile in Y_all])
-    Cr_output = np.array([image_codec.decode_image_array(tile, BLOCK_SIZE_LOC, N_BLOCKS_LOC, TILE_SIZE_LOC) for tile in Cr_all])
-    Cb_output = np.array([image_codec.decode_image_array(tile, BLOCK_SIZE_LOC, N_BLOCKS_LOC, TILE_SIZE_LOC) for tile in Cb_all])
+    Y_output = np.array([image_codec.decode_image_array(tile, BLOCK_SIZE_LOC, N_BLOCKS_LOC, TILE_SIZE_LOC, k=0.125) for tile in Y_all])
+    Cr_output = np.array([image_codec.decode_image_array(tile, BLOCK_SIZE_LOC, N_BLOCKS_LOC, TILE_SIZE_LOC, k=0.5) for tile in Cr_all])
+    Cb_output = np.array([image_codec.decode_image_array(tile, BLOCK_SIZE_LOC, N_BLOCKS_LOC, TILE_SIZE_LOC, k=0.5) for tile in Cb_all])
 
     # Reshape back to original 4d tile structure
     Y_output = Y_output.reshape(IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC, TILE_SIZE_LOC,
@@ -216,13 +255,18 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     Cr_final = Cr_output.transpose(0, 2, 1, 3).reshape(n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC)
     Cb_final = Cb_output.transpose(0, 2, 1, 3).reshape(n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC)
 
-    Y_size = tile_compressor.process_array(Y4d)
-    Cr_size = tile_compressor.process_array(Cr4d)
-    Cb_size = tile_compressor.process_array(Cb4d)
+    if EN_COMPRESSOR:
+        Y_size = tile_compressor.process_array(Y4d)
+        Cr_size = tile_compressor.process_array(Cr4d)
+        Cb_size = tile_compressor.process_array(Cb4d)
 
-    compressed_blocks_size = Y_size + (Cr_size) + (Cb_size)
-    total_size += compressed_blocks_size
-    compressed_block_count = n_tiles_x * n_tiles_y
+        compressed_blocks_size = Y_size + (Cr_size) + (Cb_size)
+        total_size += compressed_blocks_size
+        compressed_block_count = n_tiles_x * n_tiles_y
+    else:
+        compressed_blocks_size = 0
+        total_size = 0
+        compressed_block_count = 0
 
     print("\nDone...")
     print(f"\nTotal Time Taken: {end_time - start_time:.2f}s")
@@ -254,8 +298,26 @@ def process_color_image(image_path):
     B = img_array[:, :, 2]
     img_array = cv2.merge((R, G, B))
 
-    block = R[1136:1144, 1128:1136]
-    print(f"Block: {block}")
+    print("Individual channels in hex:")
+    for i in range(8):
+        hex_row_R = [f"0x{x:02X}" for x in R[i, :8]]
+        hex_row_G = [f"0x{x:02X}" for x in G[i, :8]]
+        hex_row_B = [f"0x{x:02X}" for x in B[i, :8]]
+        print(f"Row {i}:")
+        print(f"R: {hex_row_R}")
+        print(f"G: {hex_row_G}")
+        print(f"B: {hex_row_B}\n")
+
+    # Print combined 16-bit words
+    print("\nCombined 16-bit words (RRGG and 00BB):")
+    for i in range(8):
+        combined_row = []
+        for j in range(8):
+            rg_word = (int(R[i, j]) << 8) | int(G[i, j])  # Combine R and G
+            b_word = int(B[i, j])  # B with implied 0x00 prefix
+            combined_row.append(f"0x{rg_word:04X}")  # RRGG
+            combined_row.append(f"0x{b_word:04X}")  # 00BB
+        print(f"Row {i}: {combined_row}")
 
     # Generate 2d arrays for each channel in Y Cr Cb, used for replacement when doing lossy/lossless check
     imgYCC = cv2.cvtColor(img_array, cv2.COLOR_RGB2YCrCb)
