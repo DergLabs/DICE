@@ -46,7 +46,7 @@ def open_ft_usb_device(device_type, device_name):
                 usb.close()
                 return None, 'Old D3XX driver version. Please update driver!'
             
-            desc = usb.getDeviceInfo(device_id)['Description']
+            desc = usb.getDeviceInfo()['Description']
             if desc != b_device_name:
                 usb.close()
                 continue

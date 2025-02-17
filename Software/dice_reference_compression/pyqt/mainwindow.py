@@ -52,6 +52,7 @@ class MainWindow(QMainWindow):
         self.current_image = None
         self.current_image_path = ""
         self.block_metrics = []
+        self.lossless_blocks: list[IndexBlock] = []
         self.lossy_blocks: list[IndexBlock] = []
         self.metrics_stats = MetricsStats()
         self.process_and_display_image()
@@ -251,6 +252,7 @@ class MainWindow(QMainWindow):
         laplacian_threshold = self.laplacian_threshold_slider.value()
 
         # Process blocks
+        self.lossless_blocks = []
         self.lossy_blocks = []
         for i, metrics in enumerate(self.block_metrics):
             if (
@@ -290,6 +292,11 @@ class MainWindow(QMainWindow):
                 alpha = 0.3
                 cv2.addWeighted(color_overlay, alpha, overlay, 1.0 - alpha, 0, overlay)
                 visualization[y : y + h, x : x + w] = overlay
+            else:
+                iblock = IndexBlock()
+                iblock.index = i
+                iblock.metrics = metrics
+                self.lossless_blocks.append(iblock)
 
         # Draw grid
         blocks = self.get_block_count()
@@ -334,18 +341,18 @@ class MainWindow(QMainWindow):
         res = fpga_accelerated_compressor.process_color_image(target_image)
         target_image = res.img_RGB
 
-        # for i, _ in enumerate(self.lossless_blocks):
-        #     current = self.lossless_blocks[i]
-        #     roi = None
-        #     region = None
-        #     if current.metrics == None:
-        #         return
-        #     roi = current.metrics.region
-        #     # region is (x, y, width, height)
-        #     region = self.original_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]]
-        #     print(f"Transferring block {i}")
-        # processed_block = fpga_accelerated_compression(region)
-        # target_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]] = processed_block
+        original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
+        target_image = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)
+
+        for i, _ in enumerate(self.lossless_blocks):
+            current = self.lossless_blocks[i]
+            roi = None
+            if current.metrics == None:
+                return
+            roi = current.metrics.region
+            print(f"Region of Interest: {roi}")
+            processed_block = original_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]]
+            target_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]] = processed_block
 
         oheight, owidth, ochannels = original_image.shape
         obytes_per_line = ochannels * owidth
@@ -371,7 +378,11 @@ class MainWindow(QMainWindow):
         pixmap1 = QPixmap(oimg)
         pixmap2 = QPixmap(timg)
 
-        self.processed_window = ProcessedWindow(pixmap1, pixmap2, "helloooo")
+        self.processed_window = ProcessedWindow(
+            pixmap1,
+            pixmap2,
+            f"PSNR: {res.PSNR} MSSSIM: {res.MSSSIM} OG Size: {res.original_size}",
+        )
         self.processed_window.show()
 
     def update_visualization(self):
