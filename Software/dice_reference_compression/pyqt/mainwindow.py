@@ -382,13 +382,13 @@ class MainWindow(QMainWindow):
         pixmap1 = QPixmap(oimg)
         pixmap2 = QPixmap(timg)
 
-        processed_size = target_image.shape[0] * target_image[1] * target_image[2] * 8
+        processed_size = target_image.shape*8
         original_shape = f"{original_image.shape}"
         processed_shape = f"{target_image.shape}"
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
-            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024//1024} Processed Size: {res.original_size/processed_size} Original Shape: {original_shape} Processed Shape: {processed_shape}",
+            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024//1024} Original Shape: {original_shape} Processed Shape: {processed_shape}",
         )
         self.processed_window.show()
 
