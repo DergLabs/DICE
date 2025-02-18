@@ -13,9 +13,9 @@ import image_codec
 DEBUG = False
 DISP_STATS = False
 EN_TILE_REPLACEMENT = False
-EN_COMPRESSOR = False
+EN_COMPRESSOR = True
 IMG_SIZE = 1024 # Size of image
-TILE_SIZE = 32 # Size of the tiles that input 2048x2048 image will be split into
+TILE_SIZE = 16 # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8 # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE/BLOCK_SIZE)
 
@@ -32,7 +32,7 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     tile_size_sq = TILE_SIZE_LOC * TILE_SIZE_LOC
     n_tiles_y = IMG_SIZE_LOC // TILE_SIZE_LOC
     n_tiles_x = IMG_SIZE_LOC // TILE_SIZE_LOC
-
+    channel_data = []
 
     # Reference tiles for lossless replacement
     Y_ref = image_codec.generate_tiles(Y, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
@@ -232,9 +232,13 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
         print(f"Shape of Y4d: {Y4d.shape}")
         print(f"Shape of Cr4d: {Cr4d.shape}")
         print(f"Shape of Cb4d: {Cb4d.shape}")
-        Y_size, _, _ = tile_compressor.process_array(Y4d)
+        '''Y_size, _, _ = tile_compressor.process_array(Y4d)
         Cr_size, _, _ = tile_compressor.process_array(Cr4d)
-        Cb_size, _, _ = tile_compressor.process_array(Cb4d)
+        Cb_size, _, _ = tile_compressor.process_array(Cb4d)'''
+        Y_size, _ = tile_compressor.verify_compression(Y4d, channel_data)
+        Cr_size, _ = tile_compressor.verify_compression(Cr4d, channel_data)
+        Cb_size, _ = tile_compressor.verify_compression(Cb4d, channel_data)
+        compressed_size = tile_compressor.write_compressed_channels(channel_data, 'compressed_image.hex')        
 
         compressed_blocks_size = Y_size + Cr_size + Cb_size
         total_size = compressed_blocks_size
