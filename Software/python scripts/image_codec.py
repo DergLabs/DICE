@@ -36,10 +36,10 @@ def idct_vectorized(dct_blocks, k):
     temp = (T.T @ (Mdequantized.reshape(-1, original_shape[2], original_shape[3]).transpose(0, 2, 1)) @ T)
 
     # Clip values
-    return np.maximum(np.minimum(temp.transpose(0, 2, 1).reshape(original_shape), 255), 0)
+    return np.maximum(np.minimum(temp.transpose(0, 2, 1).reshape(original_shape), 255), 0).astype(np.uint8)
 
 
-def generate_tiles(image, TILE_SIZE):
+def generate_tiles(image, TILE_SIZE, H, W):
     return image.reshape(H, TILE_SIZE, W, TILE_SIZE).transpose(0, 2, 1, 3)
 
 
@@ -70,6 +70,5 @@ def format_image_array(image_blocks, BLOCK_SIZE):
     # Rearrange dimensions to get blocks in correct order and transpose each 8x8 block
     # The last two dimensions (3, 5) represent the rows and columns of each 8x8 block
     # By swapping them in the transpose operation, we transpose each 8x8 block
-    blocks = blocks.transpose(0, 1, 2, 4, 5, 3)
 
-    return blocks.reshape(n_blocks_x, n_blocks_y, 1, -1)
+    return blocks.transpose(0, 1, 2, 4, 5, 3).reshape(n_blocks_x, n_blocks_y, 1, -1)

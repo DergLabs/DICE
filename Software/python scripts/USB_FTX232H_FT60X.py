@@ -188,9 +188,9 @@ class USB_FTX232H_FT60X_sync245mode():
                                       if the device cannot accept so many data until timeout, actual_send_len < len(data)
         '''
 
-        txlen = self._usb.writePipe(0x02, data, len(data))
+        #txlen = self._usb.writePipe(0x02, data, len(data))
 
-        '''txlen = 0
+        txlen = 0
         
         for si in range(0, len(data), self._chunk):
             ei = si + self._chunk
@@ -207,7 +207,7 @@ class USB_FTX232H_FT60X_sync245mode():
             txlen += txlen_once
             
             if txlen_once < len(chunk):
-                break'''
+                break
             
         return txlen
     

@@ -7,20 +7,19 @@ import cv2
 from USB_FTX232H_FT60X import USB_FTX232H_FT60X_sync245mode
 import time
 import tile_compressor
-import huffman_encoderV1
 import quality_statistics
 import image_codec
 
 DEBUG = False
 DISP_STATS = False
 EN_TILE_REPLACEMENT = False
-EN_COMPRESSOR = True
-IMG_SIZE = 2048 # Size of image
-TILE_SIZE = 16 # Size of the tiles that input 2048x2048 image will be split into
+EN_COMPRESSOR = False
+IMG_SIZE = 1024 # Size of image
+TILE_SIZE = 32 # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8 # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE/BLOCK_SIZE)
 
-image_path = "img1.jpg"  # Replace with your image path
+image_path = "img5.jpg"  # Replace with your image path
 np.set_printoptions(threshold=np.inf)
 
 
@@ -36,9 +35,9 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
 
 
     # Reference tiles for lossless replacement
-    Y_ref = image_codec.generate_tiles(Y, TILE_SIZE_LOC)
-    Cr_ref = image_codec.generate_tiles(Cr, TILE_SIZE_LOC)
-    Cb_ref = image_codec.generate_tiles(Cb, TILE_SIZE_LOC)
+    Y_ref = image_codec.generate_tiles(Y, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
+    Cr_ref = image_codec.generate_tiles(Cr, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
+    Cb_ref = image_codec.generate_tiles(Cb, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
 
 
     Y_returned = np.zeros((IMG_SIZE_LOC // TILE_SIZE_LOC, IMG_SIZE_LOC // TILE_SIZE_LOC,
@@ -52,9 +51,9 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
                         TILE_SIZE_LOC * TILE_SIZE_LOC), dtype=np.int16)
 
     print("Formatting Image...")
-    R_formatted = image_codec.format_image_array(image_codec.generate_tiles(R, TILE_SIZE_LOC), BLOCK_SIZE_LOC)
-    G_formatted = image_codec.format_image_array(image_codec.generate_tiles(G, TILE_SIZE_LOC), BLOCK_SIZE_LOC)
-    B_formatted = image_codec.format_image_array(image_codec.generate_tiles(B, TILE_SIZE_LOC), BLOCK_SIZE_LOC)
+    R_formatted = image_codec.format_image_array(image_codec.generate_tiles(R, TILE_SIZE_LOC, n_tiles_x, n_tiles_y), BLOCK_SIZE_LOC)
+    G_formatted = image_codec.format_image_array(image_codec.generate_tiles(G, TILE_SIZE_LOC, n_tiles_x, n_tiles_y), BLOCK_SIZE_LOC)
+    B_formatted = image_codec.format_image_array(image_codec.generate_tiles(B, TILE_SIZE_LOC, n_tiles_x, n_tiles_y), BLOCK_SIZE_LOC)
 
 
     print("Encoding...")
@@ -71,35 +70,32 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     # Final Byte order: G, R, B, 0, G, R, B, 0
     # Sent as 16b chunks: RG, 0B, RG, 0B...
 
-    print("Sending...")
+    print(f"Sending {len(img_byte_array[0][1])} bytes...")
     start_time = time.time()
     total_bytes_sent = 0
 
-    for row in range(R_tiles.shape[0]):
+    for row in range(n_tiles_x):
         current_time = time.time()
         elapsed_time = current_time - start_time
         data_rate = (total_bytes_sent / (1024)) / elapsed_time if elapsed_time > 0 else 0
         print(
-            f"\rProcessing Row {row}/{len(R_tiles)} | Data Rate: {data_rate:.2f}KB/s | Bytes sent: {total_bytes_sent / 1024}KB",
+            f"\rProcessing Row {row}/{n_tiles_x} | Data Rate: {data_rate:.2f}KB/s | Bytes sent: {(total_bytes_sent) / 1024}KB",
             end="", flush=True)
 
-        for col in range(R_tiles.shape[1]):
+        for col in range(n_tiles_y):
             # send data
             txlen = usb.send(bytes(bytearray(img_byte_array[row][col])))
             total_bytes_sent += txlen
-
             # receive data
+            #print(f"\nReceiving {txlen} bytes...")
             received_data_array = np.frombuffer(usb.recv(txlen), dtype=np.uint8)
             # Data recieved as 16bit chunks, bytes within the 16bit chunks are swapped
-
-            chunks_16bit = received_data_array.view(np.uint16)
-            #print(f"Chunks 16bit: {chunks_16bit}")
 
             # combine into 32-bit values with correct ordering:
             # - Swap each 16-bit chunk internally (byteswap)
             # - Place second chunk first, first chunk second
-            combined_data = (chunks_16bit[1::2].astype(np.uint32) << 16) | \
-                            chunks_16bit[::2].astype(np.uint32)
+            combined_data = (received_data_array.view(np.uint16)[1::2].astype(np.uint32) << 16) | \
+                            received_data_array.view(np.uint16)[::2].astype(np.uint32)
 
             # Extract components and sign extend
             Cb_values = ((combined_data >> 22) & 0x3FF).astype(np.int16)
@@ -116,13 +112,14 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
             Cr_returned[row][col] = Cr_values[:tile_size_sq]
             Cb_returned[row][col] = Cb_values[:tile_size_sq]
 
+
     print("\nDecoding...")
     # Reshape flat byte arrays to 2d arrays
     Y_all = Y_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cr_all = Cr_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cb_all = Cb_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
 
-    # create 4d arrays for encoding
+    # create 4d arrays of quantization values for encoding
     Y4d = Y_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC)
     Cr4d = Cr_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC)
     Cb4d = Cb_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC)
@@ -157,8 +154,8 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
     avg_gradient = 0
     avg_gradient_var = 0
     if EN_TILE_REPLACEMENT:
-        for row in range(R_tiles.shape[0]):
-            for col in range(R_tiles.shape[1]):
+        for row in range(n_tiles_x):
+            for col in range(n_tiles_y):
                 # Get current tile ID data
                 current_tile = tile_id[row][col]
 
@@ -232,6 +229,9 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb):
 
     # Compress Tiles and calculate size
     if EN_COMPRESSOR:
+        print(f"Shape of Y4d: {Y4d.shape}")
+        print(f"Shape of Cr4d: {Cr4d.shape}")
+        print(f"Shape of Cb4d: {Cb4d.shape}")
         Y_size, _, _ = tile_compressor.process_array(Y4d)
         Cr_size, _, _ = tile_compressor.process_array(Cr4d)
         Cb_size, _, _ = tile_compressor.process_array(Cb4d)
@@ -291,6 +291,8 @@ def process_color_image(image_path):
                                          ('FT60X', 'FTDI SuperSpeed-FIFO Bridge'))
                                         # secondly try to open FT60X (FT600 or FT601) device named 'FTDI SuperSpeed-FIFO Bridge'. Note that 'FTDI SuperSpeed-FIFO Bridge' is the default name of FT600 or FT601 chip unless the user has modified it.
                                         )
+    
+    print('device opened: device_type=%s, device_name=%s' % (usb.device_type, usb.device_name) )
 
     # Process channels
     Y_processed, Cr_processed, Cb_processed, size_stats, tile_id = process_image_channels(usb, R, G, B, Y, Cr, Cb)
@@ -299,7 +301,7 @@ def process_color_image(image_path):
     usb.close()
 
     # Get input image size stats
-    original_size = img_array.nbytes # ignores file format data, just gets raw size of pixel array
+    original_size = img_array.nbytes/1024 # ignores file format data, just gets raw size of pixel array
     compressed_size = size_stats['total_size']  # Use total_size from stats
     compression_ratio = 100 * (1 - (compressed_size / original_size))
 
@@ -426,11 +428,11 @@ def create_interactive_display(image_path):
     metrics_text = ax_metrics.text(0.5, 0.5,
                                    f'PSNR: {psnr:.2f} dB\n'
                                    f'MS-SSIM: {msssim:.4f}\n'
-                                   f'Original Size: {orig_size / 1024:.2f} KB\n'
-                                   f'Total Compressed Size: {size_stats["total_size"] / 1024:.2f} KB\n'
+                                   f'Original Size: {orig_size:.2f} KB\n'
+                                   f'Total Compressed Size: {size_stats["total_size"]:.2f} KB\n'
                                    f'Compression Ratio: {comp_ratio:.2f}%\n'
-                                   f'Compressed Blocks: {size_stats["compressed_blocks"]} ({size_stats["compressed_size"] / 1024:.2f} KB)\n'
-                                   f'Uncompressed Blocks: {size_stats["uncompressed_blocks"]} ({size_stats["uncompressed_size"] / 1024:.2f} KB)',
+                                   f'Compressed Blocks: {size_stats["compressed_blocks"]} ({size_stats["compressed_size"]:.2f} KB)\n'
+                                   f'Uncompressed Blocks: {size_stats["uncompressed_blocks"]} ({size_stats["uncompressed_size"]:.2f} KB)',
                                    horizontalalignment='center',
                                    verticalalignment='center',
                                    fontsize=12)
