@@ -332,14 +332,11 @@ class MainWindow(QMainWindow):
         return visualization
 
     def transfer_blocks(self):
-        # original_image = cv2.cvtColor(self.original_image.copy(), cv2.COLOR_BGR2RGB)
-        # target_image = cv2.cvtColor(self.original_image.copy(), cv2.COLOR_BGR2RGB)
-
         original_image = self.original_image.copy()
         target_image = self.original_image.copy()
 
         res = fpga_accelerated_compressor.process_color_image(target_image)
-        target_image = res.img_RGB
+        target_image = res.imgRGB
 
         original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
         target_image = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)
