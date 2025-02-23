@@ -450,7 +450,7 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
 
     # Get input image size stats
     compressed_size = size_stats.compressed_image_size # Use total_size from stats
-    compression_ratio = 100 * (1 - (compressed_size / original_size/1024))
+    compression_ratio = 100 * (1 - (compressed_size / (original_size/1024)))
 
     # Combine processed channels and convert to RGB
     imgProcessed = cv2.merge([Y_processed, Cr_processed, Cb_processed])

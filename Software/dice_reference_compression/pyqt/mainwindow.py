@@ -434,7 +434,7 @@ class MainWindow(QMainWindow):
             pixmap1,
             pixmap2,
             pixmap3,
-            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024}KB Compressed Size: {res.size_stats.compressed_image_size} Compression Ratio: {res.compression_ratio}",
+            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024}KB Compressed Size: {res.size_stats.compressed_image_size}KB Compression Ratio: {res.compression_ratio}",
         )
         self.processed_window.show()
 
