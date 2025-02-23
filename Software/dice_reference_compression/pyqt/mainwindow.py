@@ -12,14 +12,11 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import QObject, Qt, QEvent
 from PyQt6.QtGui import QPixmap, QImage, QPalette, QMouseEvent
 import cv2
-from cv2.typing import MatLike
 import numpy as np
-from numpy._core.multiarray import ndarray
 from blockviewer import BlockViewer
 from fpga_accelerated_compressor import resize_image
 import fpga_accelerated_compressor
 from processedwindow import ProcessedWindow
-import image_codec
 
 
 class BlockMetrics:
@@ -333,39 +330,6 @@ class MainWindow(QMainWindow):
 
         return visualization
 
-
-    def draw_diff(self, img1: np.ndarray, img2: np.ndarray) -> np.ndarray:
-        """
-        Compares two images in 8x8 tiles and draws a blue box on differing tiles.
-        
-        Parameters:
-            img1 (np.ndarray): First image as a NumPy array.
-            img2 (np.ndarray): Second image as a NumPy array.
-        
-        Returns:
-            np.ndarray: Image with blue boxes around differing tiles.
-        """
-        if img1.shape != img2.shape:
-            raise ValueError("Images must have the same dimensions")
-        
-        # Copy the original image to draw on
-        output_img = img1.copy()
-        
-        height, width, _ = img1.shape
-        tile_size = 8
-        
-        for y in range(0, height, tile_size):
-            for x in range(0, width, tile_size):
-                roi1 = img1[y:y+tile_size, x:x+tile_size]
-                roi2 = img2[y:y+tile_size, x:x+tile_size]
-                
-                if not np.array_equal(roi1, roi2):
-                    cv2.rectangle(output_img, (x, y), (x + tile_size, y + tile_size), (255, 0, 0), 1)
-        
-        return output_img
-
-
-
     def transfer_blocks(self):
         original_image = self.original_image.copy()
         target_image = self.original_image.copy()
@@ -390,16 +354,11 @@ class MainWindow(QMainWindow):
                 processed_block
             )
 
-        drawn_image = self.draw_diff(original_image,  target_image)
-
         oheight, owidth, ochannels = original_image.shape
         obytes_per_line = ochannels * owidth
 
         theight, twidth, tchannels = target_image.shape
         tbytes_per_line = tchannels * twidth
-
-        dheight, dwidth, dchannels = drawn_image.shape
-        dbytes_per_line = dchannels * dwidth
 
         oimg = QImage(
             bytes(original_image.data),
@@ -415,25 +374,13 @@ class MainWindow(QMainWindow):
             tbytes_per_line,
             QImage.Format.Format_RGB888,
         )
-        dimg = QImage(
-            bytes(drawn_image.data),
-            dwidth,
-            dheight,
-            dbytes_per_line,
-            QImage.Format.Format_RGB888,
-        )
 
         pixmap1 = QPixmap(oimg)
         pixmap2 = QPixmap(timg)
-        pixmap3 = QPixmap(dimg)
 
-        # processed_size = target_image.shape*8
-        # original_shape = f"{original_image.shape}"
-        # processed_shape = f"{target_image.shape}"
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
-            pixmap3,
             f"PSNR: {res.PSNR:.3f}\nMSSSIM:{res.MSSSIM:.3f}\nOG Size: {res.original_size//1024}KB\nCompressed Size: {res.size_stats.compressed_image_size:.2f}KB\nCompression Ratio: {res.compression_ratio}",
         )
         self.processed_window.show()
