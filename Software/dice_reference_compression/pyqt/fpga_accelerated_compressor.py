@@ -16,7 +16,7 @@ import image_codec
 DEBUG = False
 DISP_STATS = False
 EN_COMPRESSOR = True
-IMG_SIZE = 1024  # Size of image
+IMG_SIZE = 2048  # Size of image
 TILE_SIZE = 16  # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8  # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE / BLOCK_SIZE)
@@ -27,9 +27,9 @@ np.set_printoptions(threshold=np.inf)
 
 @dataclass
 class SizeStats:
-    total_size: float
-    compressed_size: float
-    uncompressed_size: int
+    compressed_block_size: float
+    compressed_image_size: float
+    uncompressed_size: float
     compressed_blocks: int
     uncompressed_blocks: int
 
@@ -48,7 +48,7 @@ class ProcessedImageData:
     Y_processed: np.ndarray
     Cr_processed: np.ndarray
     Cb_processed: np.ndarray
-    size_stats: SizeStats 
+    size_stats: SizeStats
     tile_id: np.ndarray
     PSNR: float
     MSSSIM: float
@@ -341,30 +341,26 @@ def process_image_channels(usb, R, G, B, Y, Cr, Cb) -> ImageChannels:
         print(f"Shape of Y4d: {Y4d.shape}")
         print(f"Shape of Cr4d: {Cr4d.shape}")
         print(f"Shape of Cb4d: {Cb4d.shape}")
-        """Y_size, _, _ = tile_compressor.process_array(Y4d)
-        Cr_size, _, _ = tile_compressor.process_array(Cr4d)
-        Cb_size, _, _ = tile_compressor.process_array(Cb4d)"""
         Y_size, _ = tile_compressor.verify_compression(Y4d, channel_data)
         Cr_size, _ = tile_compressor.verify_compression(Cr4d, channel_data)
         Cb_size, _ = tile_compressor.verify_compression(Cb4d, channel_data)
-        compressed_size = tile_compressor.write_compressed_channels(
+        compressed_image_size = tile_compressor.write_compressed_channels(
             channel_data, "compressed_image.hex"
         )
 
         compressed_blocks_size = Y_size + Cr_size + Cb_size
-        total_size = compressed_blocks_size
         compressed_block_count = n_tiles_x * n_tiles_y
     else:
         compressed_blocks_size = 0
-        total_size = 0
         compressed_block_count = 0
+        compressed_image_size = 0
 
     print("\nDone...")
     print(f"\nTotal Time Taken: {end_time - start_time:.2f}s")
 
     size_stats = SizeStats(
-        total_size=total_size,
-        compressed_size=compressed_blocks_size,
+        compressed_block_size=compressed_blocks_size,
+        compressed_image_size=compressed_image_size,
         uncompressed_size=uncompressed_blocks_size,
         compressed_blocks=compressed_block_count,
         uncompressed_blocks=uncompressed_block_count,
@@ -409,6 +405,7 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
 
     # Resize image
     img_array = resize_image(image)
+    original_size = img_array.nbytes
 
     # Generate 2d arrays for each color channel
     R = img_array[:, :, 0]
@@ -441,9 +438,7 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
     # Y_processed, Cr_processed, Cb_processed, size_stats, tile_id = (
     #     process_image_channels(usb, R, G, B, Y, Cr, Cb)
     # )
-    res = (
-        process_image_channels(usb, R, G, B, Y, Cr, Cb)
-    )
+    res = process_image_channels(usb, R, G, B, Y, Cr, Cb)
     Y_processed = res.Y_output
     Cr_processed = res.Cr_output
     Cb_processed = res.Cb_output
@@ -454,12 +449,8 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
     usb.close()
 
     # Get input image size stats
-    original_size = (
-        img_array.nbytes / 1024
-    )  # ignores file format data, just gets raw size of pixel array
-    # compressed_size = size_stats["total_size"]  # Use total_size from stats
-    compressed_size = size_stats.total_size # Use total_size from stats
-    compression_ratio = 100 * (1 - (compressed_size / original_size))
+    compressed_size = size_stats.compressed_image_size # Use total_size from stats
+    compression_ratio = 100 * (1 - (compressed_size / original_size/1024))
 
     # Combine processed channels and convert to RGB
     imgProcessed = cv2.merge([Y_processed, Cr_processed, Cb_processed])

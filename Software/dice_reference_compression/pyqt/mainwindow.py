@@ -109,7 +109,7 @@ class MainWindow(QMainWindow):
         self.block_count_slider = QSlider(Qt.Orientation.Horizontal)
         self.block_count_slider.setMinimum(0)  # 2^(0+3) = 8 blocks
         self.block_count_slider.setMaximum(4)  # 2^(4+3) = 128 blocks
-        self.block_count_slider.setValue(1)  # 2^(1+3) = 16 blocks (default)
+        self.block_count_slider.setValue(3)  # 2^(1+3) = 16 blocks (default)
         block_layout.addWidget(block_label)
         block_layout.addWidget(self.block_count_slider)
         block_layout.addWidget(self.block_count_label)
@@ -417,9 +417,9 @@ class MainWindow(QMainWindow):
         )
         dimg = QImage(
             bytes(drawn_image.data),
-            owidth,
-            oheight,
-            obytes_per_line,
+            dwidth,
+            dheight,
+            dbytes_per_line,
             QImage.Format.Format_RGB888,
         )
 
@@ -434,7 +434,7 @@ class MainWindow(QMainWindow):
             pixmap1,
             pixmap2,
             pixmap3,
-            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024//1024} Compressed Size: {res.size_stats.compressed_size//1024//1024} Compression Ratio: {res.compression_ratio}",
+            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024}KB Compressed Size: {res.size_stats.compressed_image_size} Compression Ratio: {res.compression_ratio}",
         )
         self.processed_window.show()
 
