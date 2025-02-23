@@ -381,7 +381,7 @@ class MainWindow(QMainWindow):
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
-            f"PSNR: {res.PSNR:.3f}\nMSSSIM:{res.MSSSIM:.3f}\nOG Size: {res.original_size//1024}KB\nCompressed Size: {res.size_stats.compressed_image_size:.2f}KB\nCompression Ratio: {res.compression_ratio}",
+            f"PSNR: {res.PSNR:.3f}\nMSSSIM: {res.MSSSIM:.3f}\nOG Size: {res.original_size//1024}KB\nCompressed Size: {res.size_stats.compressed_image_size:.2f}KB\nCompression Ratio: {res.compression_ratio:.2f}",
         )
         self.processed_window.show()
 
