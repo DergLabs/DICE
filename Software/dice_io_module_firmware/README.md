@@ -9,8 +9,7 @@ $ cmake .. -DCAM_TARGET=<219|477>
 $ make
 ```
 
-If in `dice_io_module_firmware` directory
-If in build directory...
+If in `dice_io_module_firmware` directory...
 ```bash
 $ cmake -S . -B build -DCAM_TARGET=<219|477>
 $ cmake --build build
