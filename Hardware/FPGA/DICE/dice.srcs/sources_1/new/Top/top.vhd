@@ -37,9 +37,10 @@ use xpm.vcomponents.all;
 entity top is
     generic (
         NUM_CHANNELS : integer := 3;
-        BLOCK_SIZE : integer := 4096;
+        BLOCK_SIZE : integer := 4096; -- Configured for 32x32 pixel block (32^2 = 4096 pixels)
         USE_SIM_MODEL : boolean := false;
         ENABLE_ILA : boolean := False;
+        ENABLE_VIO : boolean := False;
         ENABLE_STATS : boolean := False
     );
     port ( 
@@ -96,6 +97,8 @@ architecture Behavioral of top is
 
 
     -- Data from RGB to YCrCb
+    signal ycrcb_o                      : std_logic_vector(23 downto 0);
+    signal ycrcb_valid_o                : std_logic;
     signal ycrcb_x                      : std_logic_vector(23 downto 0);
     signal ycrcb_valid_x                : std_logic;
     signal ycrcb_delayed_x              : std_logic_vector(23 downto 0);
@@ -174,16 +177,22 @@ architecture Behavioral of top is
     signal vio_rst : std_logic;
 
 begin
-    your_instance_name : vio_0
-    PORT MAP (
-        clk => clk_x,
-        probe_out0 => vio_rst
-    );
+
+    -- Test VIO for resetting modules
+    gen_vio:
+    if ENABLE_VIO generate
+        your_instance_name : vio_0
+        PORT MAP (
+            clk => clk_x,
+            probe_out0 => vio_rst
+        );
+    end generate;
 
     -- invert RST for internal use, FT600 core uses active low reset, rest of core uses active high reset
-    -- RST input to FPGA is active high
+    -- RST input to FPGA is active high (silly goofup on PCB design side)
     rst_x <= (not rst_i); 
     
+
     -- debug ILA
     ila_gen : if ENABLE_ILA generate
         ila : ila_0
@@ -210,15 +219,9 @@ begin
         );
     end generate;
 
+
     -- Clocking
     clocking_gen: if not USE_SIM_MODEL generate
-        /*IBUFDS_inst : IBUFDS
-        port map (
-            O => sys_clk_ibuf_x,   -- 1-bit output: Buffer output
-            I => sysclk_p,   -- 1-bit input: Diff_p buffer input (connect directly to top-level port)
-            IB => sysclk_n  -- 1-bit input: Diff_n buffer input (connect directly to top-level port)
-        );*/
-
         -- MMCM instantiation
         sys_clk : sys_clk_mmcm
         port map ( 
@@ -239,7 +242,7 @@ begin
     end generate;
 
 
-    -- FT600 interface, runs on FTDI CLK
+    -- FT600 interface, runs on 66MHz FTDI CLK
     ft600_send_recv : entity work.send_recieve_module
     port map (
         rst_n => rst_i,
@@ -266,11 +269,14 @@ begin
         ready_to_send => data_in_valid -- Data from FT600 is valid and ready to send to BRAM
     );
 
+    -- Register input data and valid signal
     data_from_ft600_r <= data_from_ft600 when rising_edge(ftdi_clk_i);
     data_in_valid_r <= data_in_valid when rising_edge(ftdi_clk_i);
 
-    -- Input fifo, bridges ftdi_clk and core_clk
+    -- Input fifo/Hold memory, bridges ftdi_clk and core_clk
+    -- Data will not be read out until FT600 is done writing. This simplifies architecture since FPGA and FT600 clock are different
     -- Regen FIFO IP if DIN or DOUT width change
+    -- Holds upto 8,192 x 16-bit words On input, outputs upto 4,096 x 32-bit words
     input_memory_fifo : entity work.input_memory
     generic map (
         DIN_WIDTH => data_from_ft600'length,
@@ -292,6 +298,7 @@ begin
         full_o => open
     );
 
+
     -- RGB to YCrCb converter
     rgb_to_ycrcb : entity work.rgb_to_ycrcb
     port map(
@@ -300,104 +307,19 @@ begin
         -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
         rgb_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
         rgb_valid_i => input_fifo_valid,
-        ycrcb_o => ycrcb_x,
-        ycrcb_valid_o => ycrcb_valid_x
+        ycrcb_o => ycrcb_o,
+        ycrcb_valid_o => ycrcb_valid_o
     );
 
-    -- data delay to give statistics core time to process
-    /*data_delay : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH => 265,
-        DATA_WIDTH => 24
-    )
-    port map (
-        clk_i => clk_x,
-        ce_i => '1',
-        rst_i => rst_x,
-        data_i => ycrcb_x,
-        data_o => ycrcb_delayed_x
-    );
-
-    -- delay valid to align with data
-    data_delay_valid : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH => 265,
-        DATA_WIDTH => 1
-    )
-    port map (
-        clk_i => clk_x,
-        ce_i => '1',
-        rst_i => rst_x,
-        data_i(0) => ycrcb_valid_x,
-        data_o(0) => ycrcb_valid_delayed_x
-    );*/
-
-    -- Image compression core
-    lossy_comp_core : entity work.multi_ch_lossy_comp
-    /*generic map (
-        NUM_CHANNELS => NUM_CHANNELS,
-        OUTPUT_WIDTH => OUTPUT_WIDTH
-    )*/
-    port map (
-        clk_i => clk_x,
-        rst_i => rst_x,
-        vio_rst_i => vio_rst or data_in_valid,
-        -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
-        --data_i => ycrcb_delayed_x,
-        --valid_i => ycrcb_valid_delayed_x,
-        data_i => ycrcb_x,
-        valid_i => ycrcb_valid_x,
-        --ce_o => open,
-        --done_o => open,
-        data_o => core_dout,
-        valid_o => core_dout_valid
-    );
-
-
-    -- Order is Core 0 - Cb | Core 2 - Cr | Core 1 - Y
-    -- Core 0 width is 80 bits (10b per pixel), Core 1 width is 96 bits (12b per pixel), Core 2 width is 80 bits (10b per pixel)
-    -- Structure is bits 79:0 Cb (core 0), 255:176 Cr (core 2), 175:80 Y (core 1)
-    core_dout_256b <=   core_dout(79 downto 70) & core_dout(255 downto 246) & core_dout(175 downto 164) &
-                        core_dout(69 downto 60) & core_dout(245 downto 236) & core_dout(163 downto 152) &
-                        core_dout(59 downto 50) & core_dout(235 downto 226) & core_dout(151 downto 140) &
-                        core_dout(49 downto 40) & core_dout(225 downto 216) & core_dout(139 downto 128) &
-                        core_dout(39 downto 30) & core_dout(215 downto 206) & core_dout(127 downto 116) &
-                        core_dout(29 downto 20) & core_dout(205 downto 196) & core_dout(115 downto 104) &
-                        core_dout(19 downto 10) & core_dout(195 downto 186) & core_dout(103 downto 92) &
-                        core_dout(9 downto 0)   & core_dout(185 downto 176) & core_dout(91 downto 80);
-
-
-    output_memory : entity work.output_memory
-    generic map (
-        DIN_WIDTH => 256,
-        DOUT_WIDTH => data_to_ft600'length,
-        NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
-        NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
-        --DEPTH => 2048
-    )
-    port map (
-        rst_i => rst_x,
-        
-        -- Converting to 256b bus for output memory, may fix later but this keeps things simple
-        data_i => core_dout_256b,
-        data_in_valid => core_dout_valid(0),
-        write_clk_i => clk_x,
-
-        reciever_ready_i => ft600_ready_for_data,
-        data_o => data_to_ft600,
-        data_out_valid => open,
-        read_clk_i => ftdi_clk_i,
-
-        memory_clear_o => fifo_clear
-    );
 
     -- Image statistics core
     gen_image_statistics :
     if ENABLE_STATS generate
+
         -- Image statistics core
         image_statistics_core : entity work.image_statistics_top
         generic map (
-            NUM_SAMPLES => 28 -- # of 9 pixel samples to process, 256/9 = 28.77 so we round down to 28
+            NUM_SAMPLES => 28 -- # of 9 pixel blocks to process, 256/9 = 28.77 so we round down to 28
         )
         port map (
             clk_i => clk_x, 
@@ -418,7 +340,7 @@ begin
             gradient_valid_o => gradient_valid
         );
 
-        -- Simple decision Logic for image stats
+        -- Simple decision Logic for image stats, need to fix/update
         process(clk_x, rst_x)
         begin
             if rst_x = '1' then
@@ -432,7 +354,104 @@ begin
             end if;
         end process;
 
+
+        -- data delay to give statistics core time to process before we send data to compression core. Need to update this
+        data_delay : entity work.data_delay_reg
+        generic map (
+            SHIFT_DEPTH => 265,
+            DATA_WIDTH => 24
+        )
+        port map (
+            clk_i => clk_x,
+            ce_i => '1',
+            rst_i => rst_x,
+            data_i => ycrcb_o,
+            data_o => ycrcb_delayed_x
+        );
+
+
+        -- delay valid to align with data
+        data_delay_valid : entity work.data_delay_reg
+        generic map (
+            SHIFT_DEPTH => 265,
+            DATA_WIDTH => 1
+        )
+        port map (
+            clk_i => clk_x,
+            ce_i => '1',
+            rst_i => rst_x,
+            data_i(0) => ycrcb_valid_o,
+            data_o(0) => ycrcb_valid_delayed_x
+        );
     end generate;
+
+    -- Select which data source to use for compression core
+    gen_core_data_input_with_stats:
+    if ENABLE_STATS generate
+        ycrcb_x <= ycrcb_delayed_x;
+        ycrcb_valid_x <= ycrcb_valid_delayed_x;
+    end generate;
+    
+    -- Select which valid source to use for compression core
+    gen_core_data_input_without_stats:
+    if NOT ENABLE_STATS generate
+        ycrcb_x <= ycrcb_o;
+        ycrcb_valid_x <= ycrcb_valid_o;
+    end generate;
+
+
+    -- 3 Channel Image compression core
+    lossy_comp_core : entity work.multi_ch_lossy_comp
+    port map (
+        clk_i => clk_x,
+        rst_i => rst_x,
+        -- Test signal to manually reset modules from VIO core
+        vio_rst_i => vio_rst or data_in_valid, 
+        -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
+        data_i => ycrcb_x,
+        valid_i => ycrcb_valid_x,
+        data_o => core_dout,
+        valid_o => core_dout_valid
+    );
+
+    -- Order is Core 0 - Cb | Core 2 - Cr | Core 1 - Y
+    -- Core 0 width is 80 bits (10b per pixel), Core 1 width is 96 bits (12b per pixel), Core 2 width is 80 bits (10b per pixel)
+    -- Structure is bits 79:0 Cb (core 0), 255:176 Cr (core 2), 175:80 Y (core 1)
+    core_dout_256b <=   core_dout(79 downto 70) & core_dout(255 downto 246) & core_dout(175 downto 164) &
+                        core_dout(69 downto 60) & core_dout(245 downto 236) & core_dout(163 downto 152) &
+                        core_dout(59 downto 50) & core_dout(235 downto 226) & core_dout(151 downto 140) &
+                        core_dout(49 downto 40) & core_dout(225 downto 216) & core_dout(139 downto 128) &
+                        core_dout(39 downto 30) & core_dout(215 downto 206) & core_dout(127 downto 116) &
+                        core_dout(29 downto 20) & core_dout(205 downto 196) & core_dout(115 downto 104) &
+                        core_dout(19 downto 10) & core_dout(195 downto 186) & core_dout(103 downto 92) &
+                        core_dout(9 downto 0)   & core_dout(185 downto 176) & core_dout(91 downto 80);
+
+
+
+
+    -- Dual Clock output memory, can write 512 x 256-Bit words, reads out 8,192 x 16-bit words for FT600
+    output_memory : entity work.output_memory
+    generic map (
+        DIN_WIDTH => 256,
+        DOUT_WIDTH => data_to_ft600'length,
+        NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
+        NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
+        --DEPTH => 2048
+    )
+    port map (
+        rst_i => rst_x,
+        
+        data_i => core_dout_256b,
+        data_in_valid => core_dout_valid(0),
+        write_clk_i => clk_x,
+
+        reciever_ready_i => ft600_ready_for_data,
+        data_o => data_to_ft600,
+        data_out_valid => open,
+        read_clk_i => ftdi_clk_i,
+
+        memory_clear_o => fifo_clear
+    );
 
 
 end Behavioral;
