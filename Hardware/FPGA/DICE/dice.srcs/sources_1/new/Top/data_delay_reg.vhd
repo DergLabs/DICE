@@ -1,14 +1,14 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
--- Create Date: 01/10/2025 05:42:45 PM
+-- Create Date:
 -- Design Name: 
 -- Module Name: data_delay_reg - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Configurable delay register for pipelining/delaying signals. Shift depth = how many cycles to delay by, data width = bus width
 -- 
 -- Dependencies: 
 -- 

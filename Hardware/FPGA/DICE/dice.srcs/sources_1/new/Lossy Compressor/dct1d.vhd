@@ -1,14 +1,14 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
--- Create Date: 01/21/2025 11:19:48 AM
+-- Create Date:
 -- Design Name: 
 -- Module Name: dct1d - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Fully integer based 1D Discrete Cosine Transform. Based on this paper: https://doi.org/10.1109/ICMCS.2011.5945659
 -- 
 -- Dependencies: 
 -- 

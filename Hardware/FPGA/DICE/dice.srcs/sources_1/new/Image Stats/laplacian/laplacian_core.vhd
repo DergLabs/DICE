@@ -1,7 +1,27 @@
-
--- Total logic delay: 9 cycles
--- Core Accepts 72-bit pixel data and outputs 11-bit laplacian value
--- Core accepts one block of pixel data per clock cycle
+----------------------------------------------------------------------------------
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
+-- 
+-- Create Date: 01/12/2025 07:28:33 PM
+-- Design Name: 
+-- Module Name: laplacian_core - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: Implements 2D Laplacian calculation using standard laplacian kernel. Operates on a full 3x3 block of pixels each clock cycle, outputs single averaged gradient value
+--              Output = (X_Gradient + Y_Gradient) / 2
+--              Total Latency = 9 clock cycles
+--              Laplacian Kernel:
+--              |0|1|0|
+--              |1|4|1|
+--              |0|1|0|
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

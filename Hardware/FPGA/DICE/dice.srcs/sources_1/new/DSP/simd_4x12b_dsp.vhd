@@ -1,36 +1,13 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 01/21/2025 11:19:48 AM
--- Design Name: 
--- Module Name: simd_4x12b_dsp - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- This module implements a 4 x 12-bit Add or Sub DSP block. DSP is inferred in Synthesis
+-- Implements either A + B or A - B based on OP value. OP = "ADD" for A + B, OP = "SUB" for A - B
+-- Inputs and outputs are signed values
+-- 2 Cycle latency from Din to Dout
 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
-library UNISIM;
-use UNISIM.VComponents.all;
--- Implements either A+B or A-B. Operation is applied to 4 12-bit signed inputs
 entity simd_4x12b_dsp is
     generic (
         W : integer := 12;

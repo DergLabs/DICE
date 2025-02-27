@@ -8,8 +8,8 @@
 -- Project Name: DICE
 -- Target Devices: XCKU3P-2FFVA676
 -- Tool Versions: 2023.2
--- Description: Serial-In Parallel-Out Register
--- 
+-- Description: Serial-In Parallel-Out Register. Out_Taps = number of registers to tap off of for output, Tap_End = which register to stop at
+--              output bus width = (# output taps * input width) - (tap end + 1) downto 0
 -- Dependencies: 
 -- 
 -- Revision:

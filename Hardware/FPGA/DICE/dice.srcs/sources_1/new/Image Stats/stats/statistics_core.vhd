@@ -1,3 +1,24 @@
+----------------------------------------------------------------------------------
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
+-- 
+-- Create Date: 01/12/2025 07:28:33 PM
+-- Design Name: 
+-- Module Name: Statistics Core - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: Implements Mean, Variance and Std. Dev Calculation
+--              Total Latency = # of values (defined by variance width) + 8 clock cycles
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.math_real."ceil";

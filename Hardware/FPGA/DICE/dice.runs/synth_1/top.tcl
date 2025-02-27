@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/top.tcl"
+  variable script "/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,13 +70,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 4
-set_param power.BramSDPPropagationFix 1
-set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
+set_param checkpoint.writeSynthRtdsInDcp 1
+set_param power.BramSDPPropagationFix 1
+set_param synth.incrementalSynthesisCache ./.Xil/Vivado-49627-john-linux-desktop/incrSyn
+set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-20208-DESKTOP-U9NB2CD/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -86,79 +85,79 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/wt [current_project]
-set_property parent.project_path C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.xpr [current_project]
+set_property webtalk.parent_dir /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/wt [current_project]
+set_property parent.project_path /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_COMP_DECL XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/ip [current_project]
+set_property ip_output_repo /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
-  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv}
+  /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv}
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {
-  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd
-  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/DSP/simd_4x12b_dsp.vhd
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/dct1d.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/sipo_reg.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd}
-  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_subsampler.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/lossy_compressor.vhd}
-  {C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_ch_lossy_comp.vhd}
-  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd
-  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd
+  /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd
+  /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/DSP/simd_4x12b_dsp.vhd
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/dct1d.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/sipo_reg.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd}
+  /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_subsampler.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/pixel_divider.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/transpose.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantization_table.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/quantizer.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/lossy_compressor.vhd}
+  {/home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Lossy Compressor/multi_ch_lossy_comp.vhd}
+  /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd
+  /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd
 }
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_board.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/output_buffer_ram/output_buffer_ram.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/output_buffer_ram/output_buffer_ram_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/output_buffer_ram/output_buffer_ram.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/output_buffer_ram/output_buffer_ram_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/input_data_fifo/input_data_fifo.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo_clocks.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/input_data_fifo/input_data_fifo.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/ila_0/ila_0.xci
-set_property used_in_synthesis false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_0_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/ila_0/ila_0.xci
+set_property used_in_synthesis false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_0_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_mac/dsp_mac.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_mac/dsp_mac_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_mac/dsp_mac.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_mac/dsp_mac_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_msub/dsp_msub.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_msub/dsp_msub_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_msub/dsp_msub.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_msub/dsp_msub_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_acum/dsp_acum.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_acum/dsp_acum_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_acum/dsp_acum.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_acum/dsp_acum_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd_ooc.xdc]
 
-read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/vio_0/vio_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0_ooc.xdc]
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/vio_0/vio_0.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0.xdc]
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -169,12 +168,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc
-set_property used_in_implementation false [get_files C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc]
+read_xdc /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc
+set_property used_in_implementation false [get_files /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/utils_1/imports/synth_1/top.dcp
+read_checkpoint -auto_incremental -incremental /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/utils_1/imports/synth_1/top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

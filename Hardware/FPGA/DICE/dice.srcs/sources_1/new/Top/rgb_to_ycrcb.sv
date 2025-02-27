@@ -1,3 +1,7 @@
+// Company: Drexel University
+// Engineer: Claudia Offutt
+// Description: Implements RGB to YCrCb conversion
+
 `timescale 1ns / 1ps
 
 module rgb_to_ycrcb (

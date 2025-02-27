@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr & Claudia Offutt
 -- 
 -- Create Date: 01/21/2025 11:13:08 PM
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Implements dual transposition buffer. Transposes 8x8 matrix one roww per clock cycle
 -- 
 -- Dependencies: 
 -- 

@@ -1,5 +1,8 @@
--- This code implements a parameterizable adder followed by multiplier which will be packed into DSP Block. Widths must be less than or equal to what is supported by the DSP block else exta logic will be inferred
--- Operation : (a+b) * c
+-- This code implements a parameterizable adder followed by multiplier which will be packed into DSP Block. 
+-- Widths must be less than or equal to what is supported by the DSP block else exta logic will be inferred
+-- Operation : (a + b) * c
+-- 3 Cycle latency from Din to Dout
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

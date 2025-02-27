@@ -1,8 +1,9 @@
 
---  Multiply-accumulate unit
+--  Synthesis Inferred Multiply-accumulate unit
 --  The following code implements a parameterizable Multiply-accumulate unit
 --  with synchronous load to reset the accumulator without losing a clock cycle
 --  Size of inputs/output should be less than/equal to what is supported by the architecture else extra logic/dsps will be inferred
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

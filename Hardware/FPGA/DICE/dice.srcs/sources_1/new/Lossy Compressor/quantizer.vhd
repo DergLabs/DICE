@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
 -- Create Date: 01/21/2025 08:29:31 PM
 -- Design Name: 
@@ -10,7 +10,7 @@
 -- Tool Versions: 
 -- Description: 
 -- 
--- Dependencies: 
+-- Dependencies: Implements quantization via bit shift. Uses following formula to round to nearest integer: N = (X + (Y/2)) / Y, Y = 1 << QuantizationValue
 -- 
 -- Revision:
 -- Revision 0.01 - File Created

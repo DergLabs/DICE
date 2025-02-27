@@ -1,37 +1,12 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 02/11/2025 03:40:37 PM
--- Design Name: 
--- Module Name: dsp_cascade_add - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- Synthesis will Infer DSP48E2
+-- operation (A + B) + C, 
+-- 3 cycle latency from Din to Dout
 
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
--- operation (A+B)+C, 3 cycle latency
 entity dsp_cascade_add is
     generic (
         AWIDTH : natural := 24;  -- Width of A input, max is 27b

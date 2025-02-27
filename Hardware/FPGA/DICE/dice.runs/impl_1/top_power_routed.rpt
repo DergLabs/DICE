@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Tue Feb 18 17:20:23 2025
-| Host             : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date             : Thu Feb 27 13:32:10 2025
+| Host             : john-linux-desktop running 64-bit Ubuntu 22.04.5 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
 | Device           : xcku3p-ffva676-2-i
@@ -52,9 +52,9 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.029 |        6 |       --- |             --- |
+| Clocks                   |     0.028 |        6 |       --- |             --- |
 | CLB Logic                |     0.021 |    18129 |       --- |             --- |
-|   LUT as Logic           |     0.013 |     5353 |    162720 |            3.29 |
+|   LUT as Logic           |     0.013 |     5352 |    162720 |            3.29 |
 |   LUT as Shift Register  |     0.005 |      571 |     99840 |            0.57 |
 |   Register               |     0.003 |     8914 |    325440 |            2.74 |
 |   CARRY8                 |    <0.001 |      123 |     27120 |            0.45 |
@@ -62,7 +62,7 @@ Table of Contents
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |      332 |       --- |             --- |
 |   F7/F8 Muxes            |     0.000 |      144 |    216960 |            0.07 |
-| Signals                  |     0.019 |    12898 |       --- |             --- |
+| Signals                  |     0.019 |    12901 |       --- |             --- |
 | Block RAM                |     0.008 |        8 |       360 |            2.22 |
 | MMCM                     |     0.098 |        0 |       --- |             --- |
 | DSPs                     |     0.007 |       29 |      1368 |            2.12 |
@@ -163,13 +163,13 @@ Table of Contents
 |   input_memory_fifo      |     0.005 |
 |     input_cdc_fifo       |     0.005 |
 |       U0                 |     0.005 |
-|   lossy_comp_core        |     0.067 |
+|   lossy_comp_core        |     0.066 |
 |     core_0               |     0.022 |
 |       col_dct            |     0.001 |
 |       pixel_divider      |     0.001 |
 |       pixel_transpose    |     0.009 |
 |       quantizer          |     0.003 |
-|       row_dct            |     0.007 |
+|       row_dct            |     0.006 |
 |     core_1               |     0.022 |
 |       col_dct            |     0.001 |
 |       pixel_divider      |     0.001 |
@@ -186,8 +186,6 @@ Table of Contents
 |     output_memory        |     0.006 |
 |       U0                 |     0.006 |
 |   rgb_to_ycrcb           |     0.002 |
-|   your_instance_name     |     0.001 |
-|     inst                 |     0.001 |
 +--------------------------+-----------+
 
 

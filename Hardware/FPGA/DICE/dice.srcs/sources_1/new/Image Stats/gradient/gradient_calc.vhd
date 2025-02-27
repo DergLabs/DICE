@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
 -- Create Date: 01/12/2025 07:28:33 PM
 -- Design Name: 
@@ -8,8 +8,9 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
--- 
+-- Description: Implements 2D Gradient calculation using X and Y sobel kernels. Operates on a full 3x3 block of pixels each clock cycle, outputs single averaged gradient value
+--              Output = (X_Gradient + Y_Gradient) / 2
+--              Total Latency = 9 clock cycles
 -- Dependencies: 
 -- 
 -- Revision:
@@ -151,11 +152,11 @@ begin
             if (ce_i = '1') then
                 sobel_x_px2 <=  unsigned(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
                 sobel_x_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
-                sobel_x_px5 <=  unsigned(resize(unsigned(pixel_reg_x(47 downto 40)), 12)) sll 1;
+                sobel_x_px5 <=  unsigned(resize(shift_left(unsigned(pixel_reg_x(47 downto 40)), 12), 1));
 
                 sobel_x_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
                 sobel_x_px6 <= -signed(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
-                sobel_x_px3 <= -signed(resize(unsigned(pixel_reg_x(31 downto 24)), 12)) sll 1;
+                sobel_x_px3 <= -signed(resize(shift_left(unsigned(pixel_reg_x(31 downto 24)), 12), 1));
             else
                 sobel_x_px2 <= sobel_x_px2;
                 sobel_x_px8 <= sobel_x_px8;
@@ -181,11 +182,11 @@ begin
             if (ce_i = '1') then
                 sobel_y_px6 <=  unsigned(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
                 sobel_y_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
-                sobel_y_px7 <=  unsigned(resize(unsigned(pixel_reg_x(63 downto 56)), 12)) sll 1;
+                sobel_y_px7 <=  unsigned(resize(shift_left(unsigned(pixel_reg_x(63 downto 56)), 12), 1));
 
                 sobel_y_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
                 sobel_y_px2 <= -signed(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
-                sobel_y_px1 <= -signed(resize(unsigned(pixel_reg_x(15 downto 8)), 12)) sll 1;
+                sobel_y_px1 <= -signed(resize(shift_left(unsigned(pixel_reg_x(15 downto 8)), 12), 1));
             else
                 sobel_y_px6 <= sobel_y_px6;
                 sobel_y_px8 <= sobel_y_px8;
@@ -243,39 +244,6 @@ begin
     );
     
 
-    /*final_adder_0 : dsp_macro_add_22b
-    PORT MAP (
-        CLK => clk_i,
-        CE => '1',
-        SCLR => new_pixel_i,
-        A => std_logic_vector(sobel_x_dsp_result_1(11 downto 0)),
-        C => std_logic_vector(sobel_x_dsp_result_2(11 downto 0)),
-        D => std_logic_vector(sobel_y_dsp_result_1(11 downto 0)),
-        P => dsp1_final_result_x
-    );
-
-    data_delay : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH =>3,
-        DATA_WIDTH => sobel_y_dsp_result_2'length
-    )
-    port map (
-        clk_i => clk_i,
-        rst_i => rst_i,
-        data_i => sobel_y_dsp_result_2,
-        data_o => sobel_y_dsp_result_2_delay
-    );
-
-    final_adder_1 : dsp_macro_add_22b
-    PORT MAP (
-        CLK => clk_i,
-        CE => '1',
-        SCLR => new_pixel_i,
-        A => std_logic_vector(dsp1_final_result_x(11 downto 0)),
-        C => std_logic_vector(sobel_y_dsp_result_2_delay(11 downto 0)),
-        D => "000000000000",
-        P => dsp2_final_result_x
-    );*/
 
     process(clk_i, rst_i)
     begin
@@ -298,6 +266,7 @@ begin
             end if;
         end if;
     end process;
+
 
     process(clk_i, rst_i)
     begin

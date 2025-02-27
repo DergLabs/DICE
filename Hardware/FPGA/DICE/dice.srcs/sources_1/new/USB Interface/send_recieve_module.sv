@@ -1,5 +1,10 @@
 
 // V1.5
+// Company: Drexel University
+// Engineer: Michael Haahr
+// Description: Implements Bi-directional 16-bit Interface for FT600 USB FIFO
+
+
 module send_recieve_module (
     //input  wire         sysclk_p,            // main clock, connect to on-board crystal oscillator
     //input  wire         sysclk_n,

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
 -- Create Date: 01/13/2025 09:00:54 PM
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Top level module that Ties together Laplacian, Gradient and Statistics cores. Num samples defines how many input values to use for statistics calculation
 -- 
 -- Dependencies: 
 -- 

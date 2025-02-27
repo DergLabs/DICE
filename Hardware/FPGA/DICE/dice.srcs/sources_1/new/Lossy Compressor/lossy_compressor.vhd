@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
 -- Create Date: 01/21/2025 03:44:15 PM
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Top level module for Lossy compressor, ties Subsample, DCT and Quantization together 
 -- 
 -- Dependencies: 
 -- 

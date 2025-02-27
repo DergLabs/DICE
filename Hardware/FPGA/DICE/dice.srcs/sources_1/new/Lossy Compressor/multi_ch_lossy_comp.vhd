@@ -1,3 +1,23 @@
+----------------------------------------------------------------------------------
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
+-- 
+-- Create Date: 01/21/2025 03:44:15 PM
+-- Design Name: 
+-- Module Name: multi_ch_loss_comp - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: Top level module for multi-channel compression core. Creates 3 compressor instances for Y, Cr and Cb channels
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

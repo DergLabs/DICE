@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Drexel University
+-- Engineer: John Hofmeyr
 -- 
 -- Create Date: 01/23/2025 01:56:31 AM
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Implements simple integer divide by 8 with rounding to nearest integer. Uses the following equation for N = X/Y: N = (X + (Y/2)) / Y
 -- 
 -- Dependencies: 
 -- 
