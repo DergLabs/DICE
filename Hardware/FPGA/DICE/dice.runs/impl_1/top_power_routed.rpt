@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Mon Feb 17 17:13:09 2025
+| Date             : Tue Feb 18 17:20:23 2025
 | Host             : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.754        |
+| Total On-Chip Power (W)  | 0.644        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.299        |
-| Device Static (W)        | 0.455        |
+| Dynamic (W)              | 0.192        |
+| Device Static (W)        | 0.452        |
 | Effective TJA (C/W)      | 1.7          |
-| Max Ambient (C)          | 98.7         |
-| Junction Temperature (C) | 26.3         |
+| Max Ambient (C)          | 98.9         |
+| Junction Temperature (C) | 26.1         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,22 +52,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.047 |        6 |       --- |             --- |
-| CLB Logic                |     0.013 |    34979 |       --- |             --- |
-|   LUT as Logic           |     0.007 |     9321 |    162720 |            5.73 |
-|   LUT as Shift Register  |     0.004 |     1557 |     99840 |            1.56 |
-|   Register               |     0.001 |    16496 |    325440 |            5.07 |
-|   LUT as Distributed RAM |    <0.001 |      156 |     99840 |            0.16 |
-|   CARRY8                 |    <0.001 |      312 |     27120 |            1.15 |
-|   Others                 |     0.000 |     2223 |       --- |             --- |
-|   F7/F8 Muxes            |     0.000 |      783 |    216960 |            0.36 |
-| Signals                  |     0.021 |    26237 |       --- |             --- |
-| Block RAM                |     0.102 |      301 |       360 |           83.61 |
+| Clocks                   |     0.029 |        6 |       --- |             --- |
+| CLB Logic                |     0.021 |    18129 |       --- |             --- |
+|   LUT as Logic           |     0.013 |     5353 |    162720 |            3.29 |
+|   LUT as Shift Register  |     0.005 |      571 |     99840 |            0.57 |
+|   Register               |     0.003 |     8914 |    325440 |            2.74 |
+|   CARRY8                 |    <0.001 |      123 |     27120 |            0.45 |
+|   LUT as Distributed RAM |    <0.001 |       44 |     99840 |            0.04 |
+|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
+|   Others                 |     0.000 |      332 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |      144 |    216960 |            0.07 |
+| Signals                  |     0.019 |    12898 |       --- |             --- |
+| Block RAM                |     0.008 |        8 |       360 |            2.22 |
 | MMCM                     |     0.098 |        0 |       --- |             --- |
-| DSPs                     |     0.006 |       41 |      1368 |            3.00 |
-| I/O                      |     0.012 |       33 |       256 |           12.89 |
-| Static Power             |     0.455 |          |           |                 |
-| Total                    |     0.754 |          |           |                 |
+| DSPs                     |     0.007 |       29 |      1368 |            2.12 |
+| I/O                      |     0.010 |       33 |       256 |           12.89 |
+| Static Power             |     0.452 |          |           |                 |
+| Total                    |     0.644 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -77,14 +78,14 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.363 |       0.220 |      0.143 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.237 |       0.098 |      0.139 |       NA    | Unspecified | NA         |
 | Vccint_io  |       0.850 |     0.036 |       0.001 |      0.035 |       NA    | Unspecified | NA         |
-| Vccbram    |       0.850 |     0.005 |       0.003 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.003 |       0.001 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.183 |       0.054 |      0.128 |       NA    | Unspecified | NA         |
 | Vccaux_io  |       1.800 |     0.036 |       0.004 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18     |       1.800 |     0.002 |       0.002 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco18     |       1.800 |     0.001 |       0.001 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -149,50 +150,44 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------------------------------------------+-----------+
-| Name                                         | Power (W) |
-+----------------------------------------------+-----------+
-| top                                          |     0.299 |
-|   clocking_gen.sys_clk                       |     0.100 |
-|     inst                                     |     0.100 |
-|       clkin1_ibufds                          |     0.002 |
-|   dbg_hub                                    |     0.002 |
-|     inst                                     |     0.002 |
-|       BSCANID.u_xsdbm_id                     |     0.002 |
-|   ft600_send_recv                            |     0.007 |
-|   gen_image_statistics.image_statistics_core |     0.007 |
-|     gradient_core                            |     0.001 |
-|     statistics_core_gradient                 |     0.002 |
-|     statistics_core_laplacian                |     0.002 |
-|   ila_gen.ila                                |     0.135 |
-|     U0                                       |     0.135 |
-|       ila_core_inst                          |     0.135 |
-|   input_memory_fifo                          |     0.002 |
-|     input_cdc_fifo                           |     0.002 |
-|       U0                                     |     0.002 |
-|   lossy_comp_core                            |     0.035 |
-|     core_0                                   |     0.011 |
-|       col_dct                                |     0.002 |
-|       pixel_divider                          |     0.001 |
-|       pixel_transpose                        |     0.005 |
-|       quantizer                              |     0.001 |
-|       row_dct                                |     0.001 |
-|     core_1                                   |     0.011 |
-|       col_dct                                |     0.002 |
-|       pixel_divider                          |     0.001 |
-|       pixel_transpose                        |     0.005 |
-|       quantizer                              |     0.001 |
-|       row_dct                                |     0.001 |
-|     core_2                                   |     0.012 |
-|       col_dct                                |     0.002 |
-|       pixel_divider                          |     0.001 |
-|       pixel_transpose                        |     0.005 |
-|       quantizer                              |     0.001 |
-|       row_dct                                |     0.001 |
-|   output_memory                              |     0.005 |
-|     output_memory                            |     0.004 |
-|       U0                                     |     0.004 |
-|   rgb_to_ycrcb                               |     0.002 |
-+----------------------------------------------+-----------+
++--------------------------+-----------+
+| Name                     | Power (W) |
++--------------------------+-----------+
+| top                      |     0.192 |
+|   clocking_gen.sys_clk   |     0.100 |
+|     inst                 |     0.100 |
+|       clkin1_ibufds      |     0.002 |
+|   dbg_hub                |     0.002 |
+|     inst                 |     0.002 |
+|       BSCANID.u_xsdbm_id |     0.002 |
+|   input_memory_fifo      |     0.005 |
+|     input_cdc_fifo       |     0.005 |
+|       U0                 |     0.005 |
+|   lossy_comp_core        |     0.067 |
+|     core_0               |     0.022 |
+|       col_dct            |     0.001 |
+|       pixel_divider      |     0.001 |
+|       pixel_transpose    |     0.009 |
+|       quantizer          |     0.003 |
+|       row_dct            |     0.007 |
+|     core_1               |     0.022 |
+|       col_dct            |     0.001 |
+|       pixel_divider      |     0.001 |
+|       pixel_transpose    |     0.009 |
+|       quantizer          |     0.003 |
+|       row_dct            |     0.007 |
+|     core_2               |     0.022 |
+|       col_dct            |     0.001 |
+|       pixel_divider      |     0.001 |
+|       pixel_transpose    |     0.009 |
+|       quantizer          |     0.003 |
+|       row_dct            |     0.007 |
+|   output_memory          |     0.006 |
+|     output_memory        |     0.006 |
+|       U0                 |     0.006 |
+|   rgb_to_ycrcb           |     0.002 |
+|   your_instance_name     |     0.001 |
+|     inst                 |     0.001 |
++--------------------------+-----------+
 
 

@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon Feb 17 11:39:44 2025
+// Date        : Mon Feb 17 18:47:29 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/output_buffer_ram/output_buffer_ram_stub.v
@@ -17,18 +17,18 @@
 (* x_core_info = "blk_mem_gen_v8_4_7,Vivado 2023.2" *)
 module output_buffer_ram(clka, ena, wea, addra, dina, clkb, rstb, enb, addrb, doutb, 
   rsta_busy, rstb_busy)
-/* synthesis syn_black_box black_box_pad_pin="ena,wea[0:0],addra[6:0],dina[255:0],rstb,enb,addrb[10:0],doutb[15:0],rsta_busy,rstb_busy" */
+/* synthesis syn_black_box black_box_pad_pin="ena,wea[0:0],addra[8:0],dina[255:0],rstb,enb,addrb[12:0],doutb[15:0],rsta_busy,rstb_busy" */
 /* synthesis syn_force_seq_prim="clka" */
 /* synthesis syn_force_seq_prim="clkb" */;
   input clka /* synthesis syn_isclock = 1 */;
   input ena;
   input [0:0]wea;
-  input [6:0]addra;
+  input [8:0]addra;
   input [255:0]dina;
   input clkb /* synthesis syn_isclock = 1 */;
   input rstb;
   input enb;
-  input [10:0]addrb;
+  input [12:0]addrb;
   output [15:0]doutb;
   output rsta_busy;
   output rstb_busy;

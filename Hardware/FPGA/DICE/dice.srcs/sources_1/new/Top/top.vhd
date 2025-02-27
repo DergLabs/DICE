@@ -37,10 +37,10 @@ use xpm.vcomponents.all;
 entity top is
     generic (
         NUM_CHANNELS : integer := 3;
-        BLOCK_SIZE : integer := 1024;
+        BLOCK_SIZE : integer := 4096;
         USE_SIM_MODEL : boolean := false;
-        ENABLE_ILA : boolean := True;
-        ENABLE_STATS : boolean := True
+        ENABLE_ILA : boolean := False;
+        ENABLE_STATS : boolean := False
     );
     port ( 
         -- Inputs
@@ -106,8 +106,8 @@ architecture Behavioral of top is
     signal core_dout_valid              : std_logic_vector(NUM_CHANNELS-1 downto 0);
 
     -- Special case for 3 cores
-    --signal core_dout_256b               : std_logic_vector(255 downto 0);
-    signal core_dout_512b               : std_logic_vector(511 downto 0);
+    signal core_dout_256b               : std_logic_vector(255 downto 0);
+    --signal core_dout_512b               : std_logic_vector(511 downto 0);
 
     -- Data to FT600
     signal data_to_ft600                : std_logic_vector(15 downto 0);
@@ -163,11 +163,26 @@ architecture Behavioral of top is
     );
     END COMPONENT;
 
+
+    COMPONENT vio_0
+    PORT (
+        clk : IN STD_LOGIC;
+        probe_out0 : OUT std_logic 
+    );
+    END COMPONENT;
+
+    signal vio_rst : std_logic;
+
 begin
+    your_instance_name : vio_0
+    PORT MAP (
+        clk => clk_x,
+        probe_out0 => vio_rst
+    );
 
     -- invert RST for internal use, FT600 core uses active low reset, rest of core uses active high reset
     -- RST input to FPGA is active high
-    rst_x <= not rst_i; 
+    rst_x <= (not rst_i); 
     
     -- debug ILA
     ila_gen : if ENABLE_ILA generate
@@ -326,6 +341,7 @@ begin
     port map (
         clk_i => clk_x,
         rst_i => rst_x,
+        vio_rst_i => vio_rst or data_in_valid,
         -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
         --data_i => ycrcb_delayed_x,
         --valid_i => ycrcb_valid_delayed_x,

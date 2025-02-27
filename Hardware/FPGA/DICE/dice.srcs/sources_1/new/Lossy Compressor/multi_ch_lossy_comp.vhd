@@ -10,6 +10,7 @@ entity multi_ch_lossy_comp is
     port ( 
         clk_i      : in  std_logic;
         rst_i      : in  std_logic;
+        vio_rst_i  : in  std_logic;
         data_i     : in  std_logic_vector(23 downto 0);
         valid_i    : in  std_logic;
         --ce_o       : out std_logic_vector(2 downto 0);
@@ -43,6 +44,7 @@ begin
     port map (
         clk_i   => clk_i,
         rst_i   => rst_i,
+        vio_rst_i => vio_rst_i,
         data_i  => data_i(7 downto 0),
         valid_i => valid_i,
         q_scale_i => X"02",
@@ -61,6 +63,7 @@ begin
     port map (
         clk_i   => clk_i,
         rst_i   => rst_i,
+        vio_rst_i => vio_rst_i,
         data_i  => data_i(15 downto 8),
         valid_i => valid_i,
         q_scale_i => X"00",
@@ -79,6 +82,7 @@ begin
     port map (
         clk_i   => clk_i,
         rst_i   => rst_i,
+        vio_rst_i => vio_rst_i,
         data_i  => data_i(23 downto 16),
         valid_i => valid_i,
         q_scale_i => X"02",

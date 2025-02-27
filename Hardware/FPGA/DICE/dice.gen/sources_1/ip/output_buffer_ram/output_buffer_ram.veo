@@ -58,12 +58,12 @@ output_buffer_ram your_instance_name (
   .clka(clka),            // input wire clka
   .ena(ena),              // input wire ena
   .wea(wea),              // input wire [0 : 0] wea
-  .addra(addra),          // input wire [6 : 0] addra
+  .addra(addra),          // input wire [8 : 0] addra
   .dina(dina),            // input wire [255 : 0] dina
   .clkb(clkb),            // input wire clkb
   .rstb(rstb),            // input wire rstb
   .enb(enb),              // input wire enb
-  .addrb(addrb),          // input wire [10 : 0] addrb
+  .addrb(addrb),          // input wire [12 : 0] addrb
   .doutb(doutb),          // output wire [15 : 0] doutb
   .rsta_busy(rsta_busy),  // output wire rsta_busy
   .rstb_busy(rstb_busy)  // output wire rstb_busy

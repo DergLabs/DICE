@@ -39,6 +39,7 @@ entity lossy_compressor is
     port ( 
         clk_i      : in std_logic;
         rst_i      : in std_logic;
+        vio_rst_i  : in std_logic;
 
         data_i     : in std_logic_vector(7 downto 0);
         valid_i    : in std_logic;
@@ -270,7 +271,7 @@ begin
     port map (
         clk_i => clk_i,
         ce_i => '1',
-        rst_i => rst_i,
+        rst_i => vio_rst_i,
         data_i => resized_pixels,
         valid_i => divided_pixels_valid,
         data_o => pixel_rows,

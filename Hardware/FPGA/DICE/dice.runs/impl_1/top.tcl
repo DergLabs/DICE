@@ -130,7 +130,7 @@ set rc [catch {
   set_param power.enableUnconnectedCarry8PinPower 1
   set_param power.enableCarry8RouteBelPower 1
   set_param power.enableLutRouteBelPower 1
-  set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-20532-DESKTOP-U9NB2CD/incrSyn
+  set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-20208-DESKTOP-U9NB2CD/incrSyn
   set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xcku3p-ffva676-2-i
@@ -156,6 +156,7 @@ OPTRACE "add files" START { }
   read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_acum/dsp_acum.xci
   read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci
   read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_simd/dsp_macro_simd.xci
+  read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/vio_0/vio_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc
 OPTRACE "read constraints: implementation" END { }

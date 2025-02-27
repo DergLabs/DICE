@@ -84,7 +84,10 @@ begin
     -- control fsm for the writing of the data to the banks
     process(clk_i, rst_i)
     begin
-        if rising_edge(clk_i) then
+        if(rst_i = '1') then
+            wr_state_r <= RST;
+            wr_counter_r <= 0;
+        elsif rising_edge(clk_i) then
             case wr_state_r is
                 when RST =>
                     wr_counter_r <= 0;
@@ -113,10 +116,6 @@ begin
                     end if;
             end case;
 
-        end if;
-
-        if (rst_i = '1') then
-            wr_state_r <= RST;
         end if;
     end process;
 
@@ -148,7 +147,10 @@ begin
     -- control fsm for reading data from the banks
     process(clk_i, rst_i)
     begin
-        if rising_edge(clk_i) then
+        if(rst_i = '1') then
+            rd_state_r <= RST;
+            rd_counter_r <= 0;
+        elsif rising_edge(clk_i) then
             case rd_state_r is
                 when RST =>
                     rd_counter_r <= 0;
@@ -171,10 +173,6 @@ begin
                     end if;
 
             end case;
-        end if;
-
-        if (rst_i = '1') then
-            rd_state_r <= RST;
         end if;
     end process;
    

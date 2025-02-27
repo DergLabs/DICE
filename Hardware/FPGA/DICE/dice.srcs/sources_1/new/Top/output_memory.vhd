@@ -44,7 +44,6 @@ entity output_memory is
         DOUT_WIDTH : integer := 16;
         NUM_WRITE_WORDS : integer := 8;
         NUM_READ_WORDS : integer := 64
-        --DEPTH : integer := 64
     );
     port ( 
         rst_i               : in std_logic;
@@ -67,8 +66,8 @@ end output_memory;
 architecture Behavioral of output_memory is
 
     -- Output Ram Signals
-    signal output_ram_wr_addr           : std_logic_vector(6 downto 0);
-    signal output_ram_rd_addr           : std_logic_vector(10 downto 0);
+    signal output_ram_wr_addr           : std_logic_vector(integer(log2(real(NUM_WRITE_WORDS))) - 1 downto 0);
+    signal output_ram_rd_addr           : std_logic_vector(integer(log2(real(NUM_READ_WORDS))) - 1 downto 0);
 
     -- Counters
     signal write_counter : integer := 0;
@@ -83,13 +82,13 @@ architecture Behavioral of output_memory is
         clka        : IN STD_LOGIC;
         ena         : IN STD_LOGIC;
         wea         : IN STD_LOGIC;
-        addra       : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+        addra       : IN STD_LOGIC_VECTOR(integer(log2(real(NUM_WRITE_WORDS))) - 1 DOWNTO 0);
         dina        : IN STD_LOGIC_VECTOR((DIN_WIDTH - 1) DOWNTO 0);
 
         clkb        : IN STD_LOGIC;
         rstb        : IN STD_LOGIC;
         enb         : IN STD_LOGIC;
-        addrb       : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+        addrb       : IN STD_LOGIC_VECTOR(integer(log2(real(NUM_READ_WORDS))) - 1 DOWNTO 0);
         doutb       : OUT STD_LOGIC_VECTOR((DOUT_WIDTH - 1) DOWNTO 0);
         rsta_busy   : OUT STD_LOGIC;
         rstb_busy   : OUT STD_LOGIC 
@@ -131,6 +130,7 @@ begin
     begin
         if rst_i = '1' then
             read_counter <= 0;
+            output_ram_rd_addr <= (others => '0');
         elsif falling_edge(read_clk_i) then
             if reciever_ready_i = '1' then
                 if (read_counter = NUM_READ_WORDS - 1) then
