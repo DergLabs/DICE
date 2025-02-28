@@ -291,6 +291,8 @@ def process_image_channels(
 
                     uncompressed_block_count += 1
 
+    Cr4d = Cr4d[:, ::2]
+    Cb4d = Cb4d[:, ::2]
     end_time = time.time()
 
     print("Packaging Tiles...")

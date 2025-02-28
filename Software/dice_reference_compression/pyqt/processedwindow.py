@@ -48,7 +48,8 @@ class ProcessedWindow(QMainWindow):
         self.label3.setPixmap(scaled_pixmap3)
 
         # Create text label
-        text_label = QLabel(text)
+        text_label = QLabel()
+        text_label.setText(text)
         text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # Layout for images

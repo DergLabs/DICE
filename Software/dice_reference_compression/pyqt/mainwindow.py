@@ -364,18 +364,20 @@ class MainWindow(QMainWindow):
                     # Apply overlay
                     w = 32
                     h = 32
-                    x = col*w
-                    y = row*h
+                    x = col * w
+                    y = row * h
                     overlay_color = (255, 0, 1)  # Purple
                     overlay = output_img[y : y + h, x : x + w].copy()
                     color_overlay = np.full((h, w, 3), overlay_color, dtype=np.uint8)
                     alpha = 0.3
-                    cv2.addWeighted(color_overlay, alpha, overlay, 1.0 - alpha, 0, overlay)
+                    cv2.addWeighted(
+                        color_overlay, alpha, overlay, 1.0 - alpha, 0, overlay
+                    )
                     output_img[y : y + h, x : x + w] = overlay
                     cv2.rectangle(
                         output_img,
-                        (col*32, row*32),
-                        (col*32 + tile_size, row*32 + tile_size),
+                        (col * 32, row * 32),
+                        (col * 32 + tile_size, row * 32 + tile_size),
                         (255, 0, 0),
                         1,
                     )
@@ -438,14 +440,15 @@ class MainWindow(QMainWindow):
         pixmap2 = QPixmap(timg)
         pixmap3 = QPixmap(dimg)
 
-        # processed_size = target_image.shape*8
-        # original_shape = f"{original_image.shape}"
-        # processed_shape = f"{target_image.shape}"
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
             pixmap3,
-            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024//1024} Compressed Size: {res.size_stats.compressed_size//1024//1024} Compression Ratio: {res.compression_ratio}",
+            f"""PSNR: {res.PSNR:.3f}
+MSSSIM: {res.MSSSIM:.3f}
+OG Size: {res.original_size}KB
+Compressed Size: {res.size_stats.compressed_size:.2f}KB
+Compression Ratio: {res.compression_ratio:.2f}""",
         )
         self.processed_window.show()
 
