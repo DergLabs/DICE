@@ -109,7 +109,7 @@ class MainWindow(QMainWindow):
         self.block_count_slider = QSlider(Qt.Orientation.Horizontal)
         self.block_count_slider.setMinimum(0)  # 2^(0+3) = 8 blocks
         self.block_count_slider.setMaximum(4)  # 2^(4+3) = 128 blocks
-        self.block_count_slider.setValue(1)  # 2^(1+3) = 16 blocks (default)
+        self.block_count_slider.setValue(3)  # 2^(1+3) = 16 blocks (default)
         block_layout.addWidget(block_label)
         block_layout.addWidget(self.block_count_slider)
         block_layout.addWidget(self.block_count_label)
@@ -362,10 +362,10 @@ class MainWindow(QMainWindow):
                 if block2d[row][col] == 1:
                     cv2.rectangle(
                         output_img,
-                        (col, row),
-                        (col + tile_size, col + tile_size),
+                        (col*32, row*32),
+                        (col*32 + tile_size, row*32 + tile_size),
                         (255, 0, 0),
-                        1,
+                        -1,
                     )
 
         return output_img
@@ -378,6 +378,13 @@ class MainWindow(QMainWindow):
             target_image, self.block_ids
         )
         target_image = res.imgRGB
+
+        print(f"Num Compressed Blocks: {res.size_stats.compressed_blocks}")
+        print(f"Num Lossless Blocks: {res.size_stats.uncompressed_blocks}")
+        print(f"Compressed Size: {res.size_stats.compressed_size}")
+        print(f"Uncompressed Size: {res.size_stats.uncompressed_size}")
+        print(f"Original Size: {res.original_size}")
+        print(f"Compression Ratio: {res.compression_ratio}")
 
         original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
         target_image = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)
