@@ -363,7 +363,7 @@ class MainWindow(QMainWindow):
                     cv2.rectangle(
                         output_img,
                         (col, row),
-                        (col + tile_size, col + tile_size),
+                        (col + tile_size, row + tile_size),
                         (255, 0, 0),
                         1,
                     )
