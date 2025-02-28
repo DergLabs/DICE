@@ -448,7 +448,10 @@ class MainWindow(QMainWindow):
 MSSSIM: {res.MSSSIM:.3f}
 OG Size: {res.original_size}KB
 Compressed Size: {res.size_stats.compressed_size:.2f}KB
-Compression Ratio: {res.compression_ratio:.2f}""",
+Compression Ratio: {res.compression_ratio:.2f}
+Compressed Blocks: {res.size_stats.compressed_blocks}
+Uncompressed Blocks: {res.size_stats.uncompressed_blocks}
+""",
         )
         self.processed_window.show()
 
