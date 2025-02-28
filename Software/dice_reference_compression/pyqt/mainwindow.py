@@ -360,12 +360,24 @@ class MainWindow(QMainWindow):
         for row in range(block2d.shape[0]):
             for col in range(block2d.shape[1]):
                 if block2d[row][col] == 1:
+
+                    # Apply overlay
+                    w = 32
+                    h = 32
+                    x = col*w
+                    y = row*h
+                    overlay_color = (255, 0, 1)  # Purple
+                    overlay = output_img[y : y + h, x : x + w].copy()
+                    color_overlay = np.full((h, w, 3), overlay_color, dtype=np.uint8)
+                    alpha = 0.3
+                    cv2.addWeighted(color_overlay, alpha, overlay, 1.0 - alpha, 0, overlay)
+                    output_img[y : y + h, x : x + w] = overlay
                     cv2.rectangle(
                         output_img,
                         (col*32, row*32),
                         (col*32 + tile_size, row*32 + tile_size),
                         (255, 0, 0),
-                        -1,
+                        1,
                     )
 
         return output_img
