@@ -2,13 +2,13 @@ from cv2.typing import MatLike
 import numpy as np
 import cv2
 from dataclasses import dataclass
-import time
 
 # import matplotlib.pyplot as plt
 # import matplotlib.gridspec as gridspec
 
 # Local Libraries
 from USB_FTX232H_FT60X import USB_FTX232H_FT60X_sync245mode
+import time
 import tile_compressor
 import quality_statistics
 import image_codec
