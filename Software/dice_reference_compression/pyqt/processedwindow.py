@@ -3,7 +3,7 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 
 class ProcessedWindow(QMainWindow):
-    def __init__(self, i1: QPixmap, i2: QPixmap, text: str):
+    def __init__(self, i1: QPixmap, i2: QPixmap, i3: QPixmap, text: str):
         super().__init__()
         self.setWindowTitle("Image Display")
         self.setGeometry(200, 200, 800, 400)
@@ -23,7 +23,7 @@ class ProcessedWindow(QMainWindow):
         scaled_pixmap1 = i1.scaled(
             self.label1.size(),
             Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation
+            Qt.TransformationMode.SmoothTransformation,
         )
         self.label1.setPixmap(scaled_pixmap1)
 
@@ -33,9 +33,19 @@ class ProcessedWindow(QMainWindow):
         scaled_pixmap2 = i2.scaled(
             self.label2.size(),
             Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation
+            Qt.TransformationMode.SmoothTransformation,
         )
         self.label2.setPixmap(scaled_pixmap2)
+
+        self.label3 = QLabel(self)
+        self.label3.setMinimumSize(640, 480)
+        self.label3.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        scaled_pixmap3 = i3.scaled(
+            self.label3.size(),
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation,
+        )
+        self.label3.setPixmap(scaled_pixmap3)
 
         # Create text label
         text_label = QLabel(text)
@@ -45,6 +55,7 @@ class ProcessedWindow(QMainWindow):
         image_layout = QHBoxLayout()
         image_layout.addWidget(self.label1)
         image_layout.addWidget(self.label2)
+        image_layout.addWidget(self.label3)
 
         # Add image layout and text label to the main layout
         main_layout.addLayout(image_layout)

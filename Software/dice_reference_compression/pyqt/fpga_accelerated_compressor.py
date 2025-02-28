@@ -16,8 +16,9 @@ import image_codec
 DEBUG = False
 DISP_STATS = False
 EN_COMPRESSOR = True
+EN_TILE_REPLACEMENT = True
 IMG_SIZE = 2048  # Size of image
-TILE_SIZE = 16  # Size of the tiles that input 2048x2048 image will be split into
+TILE_SIZE = 32  # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8  # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE / BLOCK_SIZE)
 
@@ -27,9 +28,9 @@ np.set_printoptions(threshold=np.inf)
 
 @dataclass
 class SizeStats:
-    compressed_block_size: float
-    compressed_image_size: float
-    uncompressed_size: float
+    total_size: float
+    compressed_size: float
+    uncompressed_size: int
     compressed_blocks: int
     uncompressed_blocks: int
 
@@ -58,7 +59,9 @@ class ProcessedImageData:
     imgRGB: np.ndarray
 
 
-def process_image_channels(usb, R, G, B) -> ImageChannels:
+def process_image_channels(
+    usb, R, G, B, Y, Cr, Cb, block_ids: np.ndarray
+) -> ImageChannels:
     # Convert Global variables to local scope, slightly improves loop performance
     IMG_SIZE_LOC = IMG_SIZE  # Total 2d Image size (eg 2048 for 2048x2048)
     TILE_SIZE_LOC = TILE_SIZE  # Tile size in px (eg 16 for 16x16)
@@ -70,6 +73,11 @@ def process_image_channels(usb, R, G, B) -> ImageChannels:
     n_tiles_y = IMG_SIZE_LOC // TILE_SIZE_LOC
     n_tiles_x = IMG_SIZE_LOC // TILE_SIZE_LOC
     channel_data = []
+
+    # Reference tiles for lossless replacement
+    Y_ref = image_codec.generate_tiles(Y, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
+    Cr_ref = image_codec.generate_tiles(Cr, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
+    Cb_ref = image_codec.generate_tiles(Cb, TILE_SIZE_LOC, n_tiles_x, n_tiles_y)
 
     Y_returned = np.zeros(
         (
@@ -251,11 +259,37 @@ def process_image_channels(usb, R, G, B) -> ImageChannels:
 
     # Modify final output image based on tile statistics
     # Replace tiles that meet statistics threshold with original input data for "lossless"
+    total_size = 0
     compressed_blocks_size = 0
     uncompressed_blocks_size = 0
     compressed_block_count = 0
     uncompressed_block_count = 0
 
+    MAX_BLUR_THRESHOLD = 14500
+    MAX_GRADIENT_THRESHOLD = 1000
+    MAX_GRADIENT_VAR_THRESHOLD = 7000
+    avg_laplace = 0
+    avg_gradient = 0
+    avg_gradient_var = 0
+    if EN_TILE_REPLACEMENT:
+        for row in range(n_tiles_x):
+            for col in range(n_tiles_y):
+                # Get current tile ID data
+                current_tile = block_ids[row * n_tiles_x + col]
+                # current_tile = tile_id[row][col]
+
+                # lossless
+                if current_tile == 0:
+                    # Replace pixel tile with original input pixels
+                    Y_output[row][col] = Y_ref[row][col]
+                    Cr_output[row][col] = Cr_ref[row][col]
+                    Cb_output[row][col] = Cb_ref[row][col]
+
+                    Y4d[row][col] = Y_ref[row][col]
+                    Cr4d[row][col] = Cr_ref[row][col]
+                    Cb4d[row][col] = Cb_ref[row][col]
+
+                    uncompressed_block_count += 1
 
     end_time = time.time()
 
@@ -269,23 +303,24 @@ def process_image_channels(usb, R, G, B) -> ImageChannels:
         Y_size, _ = tile_compressor.verify_compression(Y4d, channel_data)
         Cr_size, _ = tile_compressor.verify_compression(Cr4d, channel_data)
         Cb_size, _ = tile_compressor.verify_compression(Cb4d, channel_data)
-        compressed_image_size = tile_compressor.write_compressed_channels(
+        compressed_size = tile_compressor.write_compressed_channels(
             channel_data, "compressed_image.hex"
         )
 
         compressed_blocks_size = Y_size + Cr_size + Cb_size
-        compressed_block_count = n_tiles_x * n_tiles_y
+        total_size = compressed_blocks_size
+        compressed_block_count = n_tiles_x * n_tiles_y - uncompressed_block_count
     else:
         compressed_blocks_size = 0
+        total_size = 0
         compressed_block_count = 0
-        compressed_image_size = 0
 
     print("\nDone...")
     print(f"\nTotal Time Taken: {end_time - start_time:.2f}s")
 
     size_stats = SizeStats(
-        compressed_block_size=compressed_blocks_size,
-        compressed_image_size=compressed_image_size,
+        total_size=total_size,
+        compressed_size=compressed_blocks_size,
         uncompressed_size=uncompressed_blocks_size,
         compressed_blocks=compressed_block_count,
         uncompressed_blocks=uncompressed_block_count,
@@ -306,11 +341,30 @@ def process_image_channels(usb, R, G, B) -> ImageChannels:
     )
 
     return image_channels
+    # return (
+    #     Y_output.transpose(0, 2, 1, 3).reshape(
+    #         n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC
+    #     ),
+    #     Cr_output.transpose(0, 2, 1, 3).reshape(
+    #         n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC
+    #     ),
+    #     Cb_output.transpose(0, 2, 1, 3).reshape(
+    #         n_tiles_y * TILE_SIZE_LOC, n_tiles_x * TILE_SIZE_LOC
+    #     ),
+    #     size_stats,
+    #     tile_id,
+    # )
 
-def process_color_image(image: MatLike) -> ProcessedImageData:
+
+def process_color_image(image: MatLike, blocks_ids: np.ndarray) -> ProcessedImageData:
+    # # Read in image
+    # img = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
+    #
+    # # Convert to 2d array
+    # img_array = np.array(img)
+
     # Resize image
     img_array = resize_image(image)
-    original_size = img_array.nbytes
 
     # Generate 2d arrays for each color channel
     R = img_array[:, :, 0]
@@ -339,7 +393,11 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
         % (usb.device_type, usb.device_name)
     )
 
-    res = process_image_channels(usb, R, G, B)
+    # Process channels
+    # Y_processed, Cr_processed, Cb_processed, size_stats, tile_id = (
+    #     process_image_channels(usb, R, G, B, Y, Cr, Cb)
+    # )
+    res = process_image_channels(usb, R, G, B, Y, Cr, Cb, blocks_ids)
     Y_processed = res.Y_output
     Cr_processed = res.Cr_output
     Cb_processed = res.Cb_output
@@ -350,8 +408,12 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
     usb.close()
 
     # Get input image size stats
-    compressed_size = size_stats.compressed_image_size # Use total_size from stats
-    compression_ratio = 100 * (1 - (compressed_size / (original_size/1024)))
+    original_size = (
+        img_array.nbytes / 1024
+    )  # ignores file format data, just gets raw size of pixel array
+    # compressed_size = size_stats["total_size"]  # Use total_size from stats
+    compressed_size = size_stats.total_size  # Use total_size from stats
+    compression_ratio = 100 * (1 - (compressed_size / original_size))
 
     # Combine processed channels and convert to RGB
     imgProcessed = cv2.merge([Y_processed, Cr_processed, Cb_processed])
@@ -375,6 +437,8 @@ def process_color_image(image: MatLike) -> ProcessedImageData:
         imgRGB=imgRGB,
     )
     return processed_image_data
+    # return (img_array, imgRGB, Y_processed, Cr_processed, Cb_processed,
+    #         PSNR, MSSSIM, original_size, size_stats, compression_ratio, tile_id)
 
 
 def resize_image(image):
@@ -399,3 +463,111 @@ def resize_image(image):
 
     # Resize square image to target size
     return cv2.resize(cropped, (IMG_SIZE, IMG_SIZE))
+
+
+# def draw_tile_borders(image, tile_id, tile_size):
+#     # Create a copy of the image to avoid modifying original
+#     bordered_image = image.copy()
+#
+#     # Get dimensions
+#     n_tiles_y = tile_id.shape[0]
+#     n_tiles_x = tile_id.shape[1]
+#
+#     # Border color (red)
+#     border_color = [0, 0, 255]
+#     border_thickness = 2
+#
+#     # Draw borders around modified tiles
+#     for y in range(n_tiles_y):
+#         for x in range(n_tiles_x):
+#             if not tile_id[y, x].all() == 0:
+#                 # Calculate tile coordinates
+#                 y_start = y * tile_size
+#                 y_end = (y + 1) * tile_size
+#                 x_start = x * tile_size
+#                 x_end = (x + 1) * tile_size
+#
+#                 # Draw horizontal lines
+#                 bordered_image[y_start:y_start + border_thickness, x_start:x_end] = border_color
+#                 bordered_image[y_end - border_thickness:y_end, x_start:x_end] = border_color
+#
+#                 # Draw vertical lines
+#                 bordered_image[y_start:y_end, x_start:x_start + border_thickness] = border_color
+#                 bordered_image[y_start:y_end, x_end - border_thickness:x_end] = border_color
+#
+#     return bordered_image
+#
+
+# def create_interactive_display(image_path):
+#     # Create figure with adjusted size and spacing
+#     fig = plt.figure(figsize=(15, 12))
+#
+#     # Adjust GridSpec to reduce vertical spacing and add padding at top
+#     gs = gridspec.GridSpec(5, 3,
+#                            height_ratios=[1, 1, 0.1, 0.15, 0.01],
+#                            hspace=0.3,
+#                            top=0.95,
+#                            bottom=0.05,
+#                            left=0.05,
+#                            right=0.95)
+#
+#     # Process Image
+#     (original, processed, y_channel, cr_channel, cb_channel,
+#      psnr, msssim, orig_size, size_stats, comp_ratio, tile_id) = process_color_image(image_path)
+#
+#     highlighted_image = draw_tile_borders(original, tile_id, TILE_SIZE)
+#
+#     # Create subplots
+#     ax_orig = plt.subplot(gs[0, 0])
+#     ax_proc = plt.subplot(gs[1, 0])
+#     ax_y = plt.subplot(gs[0, 1])
+#     ax_highlighted = plt.subplot(gs[1, 1])
+#     ax_cr = plt.subplot(gs[0, 2])
+#     ax_cb = plt.subplot(gs[1, 2])
+#     ax_metrics = plt.subplot(gs[3, :])
+#     ax_text = plt.subplot(gs[4, :])
+#
+#     # Initial plots
+#     img_orig = ax_orig.imshow(original)
+#     img_proc = ax_proc.imshow(processed)
+#     img_highlighted = ax_highlighted.imshow(highlighted_image)
+#     img_y = ax_y.imshow(y_channel, cmap='gray')
+#     img_cr = ax_cr.imshow(cr_channel, cmap='RdYlBu')
+#     img_cb = ax_cb.imshow(cb_channel, cmap='RdYlBu')
+#
+#     # Set titles with padding
+#     ax_orig.set_title('Original Image', pad=10)
+#     ax_proc.set_title('Processed Image', pad=10)
+#     ax_y.set_title('Y Channel', pad=10)
+#     ax_highlighted.set_title('Modified Tiles Highlighted', pad=10)
+#     ax_cr.set_title('Cr Channel', pad=10)
+#     ax_cb.set_title('Cb Channel', pad=10)
+#
+#     # Remove axes
+#     for ax in [ax_orig, ax_proc, ax_highlighted, ax_y, ax_cr, ax_cb]:
+#         ax.axis('off')
+#
+#     # Initialize metrics display with additional size information
+#     ax_metrics.axis('off')
+#     metrics_text = ax_metrics.text(0.5, 0.5,
+#                                    f'PSNR: {psnr:.2f} dB\n'
+#                                    f'MS-SSIM: {msssim:.4f}\n'
+#                                    f'Original Size: {orig_size:.2f} KB\n'
+#                                    f'Total Compressed Size: {size_stats["total_size"]:.2f} KB\n'
+#                                    f'Compression Ratio: {comp_ratio:.2f}%\n'
+#                                    f'Compressed Blocks: {size_stats["compressed_blocks"]} ({size_stats["compressed_size"]:.2f} KB)\n'
+#                                    f'Uncompressed Blocks: {size_stats["uncompressed_blocks"]} ({size_stats["uncompressed_size"]:.2f} KB)',
+#                                    horizontalalignment='center',
+#                                    verticalalignment='center',
+#                                    fontsize=12)
+#
+#     # Remove axes from text box area
+#     ax_text.axis('off')
+#
+#     plt.show()
+#
+#
+# if __name__ == "__main__":
+#     create_interactive_display(image_path)
+#
+#

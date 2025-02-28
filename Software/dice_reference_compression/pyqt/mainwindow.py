@@ -12,11 +12,14 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import QObject, Qt, QEvent
 from PyQt6.QtGui import QPixmap, QImage, QPalette, QMouseEvent
 import cv2
+from cv2.typing import MatLike
 import numpy as np
+from numpy._core.multiarray import ndarray
 from blockviewer import BlockViewer
 from fpga_accelerated_compressor import resize_image
 import fpga_accelerated_compressor
 from processedwindow import ProcessedWindow
+import image_codec
 
 
 class BlockMetrics:
@@ -106,7 +109,7 @@ class MainWindow(QMainWindow):
         self.block_count_slider = QSlider(Qt.Orientation.Horizontal)
         self.block_count_slider.setMinimum(0)  # 2^(0+3) = 8 blocks
         self.block_count_slider.setMaximum(4)  # 2^(4+3) = 128 blocks
-        self.block_count_slider.setValue(3)  # 2^(1+3) = 16 blocks (default)
+        self.block_count_slider.setValue(1)  # 2^(1+3) = 16 blocks (default)
         block_layout.addWidget(block_label)
         block_layout.addWidget(self.block_count_slider)
         block_layout.addWidget(self.block_count_label)
@@ -253,6 +256,7 @@ class MainWindow(QMainWindow):
         # Process blocks
         self.lossless_blocks = []
         self.lossy_blocks = []
+        self.block_ids = np.zeros(4096)
         for i, metrics in enumerate(self.block_metrics):
             if (
                 metrics.gradient_mean < gradient_threshold
@@ -279,10 +283,13 @@ class MainWindow(QMainWindow):
                 THRESHOLD_DIFF = 0.05
                 if abs(gradient_excess - laplacian_excess) < THRESHOLD_DIFF:
                     overlay_color = (255, 0, 255)  # Purple
+                    self.block_ids[i] = 1
                 elif gradient_excess > laplacian_excess:
                     overlay_color = (0, 0, 255)  # Red
+                    self.block_ids[i] = 1
                 else:
                     overlay_color = (255, 0, 0)  # Blue
+                    self.block_ids[i] = 1
 
                 # Apply overlay
                 x, y, w, h = metrics.region
@@ -330,35 +337,61 @@ class MainWindow(QMainWindow):
 
         return visualization
 
+    def draw_diff(self, img1: np.ndarray, img2: np.ndarray) -> np.ndarray:
+        """
+        Compares two images in 8x8 tiles and draws a blue box on differing tiles.
+
+        Parameters:
+            img1 (np.ndarray): First image as a NumPy array.
+            img2 (np.ndarray): Second image as a NumPy array.
+
+        Returns:
+            np.ndarray: Image with blue boxes around differing tiles.
+        """
+        if img1.shape != img2.shape:
+            raise ValueError("Images must have the same dimensions")
+
+        # Copy the original image to draw on
+        output_img = img1.copy()
+
+        tile_size = 32
+
+        block2d = self.block_ids.reshape((64, 64))
+        for row in range(block2d.shape[0]):
+            for col in range(block2d.shape[1]):
+                if block2d[row][col] == 1:
+                    cv2.rectangle(
+                        output_img,
+                        (col, row),
+                        (col + tile_size, col + tile_size),
+                        (255, 0, 0),
+                        1,
+                    )
+
+        return output_img
+
     def transfer_blocks(self):
         original_image = self.original_image.copy()
         target_image = self.original_image.copy()
 
-        res = fpga_accelerated_compressor.process_color_image(target_image)
+        res = fpga_accelerated_compressor.process_color_image(
+            target_image, self.block_ids
+        )
         target_image = res.imgRGB
 
         original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
         target_image = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)
 
-        for i, _ in enumerate(self.lossless_blocks):
-            current = self.lossless_blocks[i]
-            roi = None
-            if current.metrics == None:
-                return
-            roi = current.metrics.region
-            print(f"Region of Interest: {roi}")
-            processed_block = original_image[
-                roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]
-            ]
-            target_image[roi[0] : roi[0] + roi[2], roi[1] : roi[1] + roi[3]] = (
-                processed_block
-            )
+        drawn_image = self.draw_diff(original_image, target_image)
 
         oheight, owidth, ochannels = original_image.shape
         obytes_per_line = ochannels * owidth
 
         theight, twidth, tchannels = target_image.shape
         tbytes_per_line = tchannels * twidth
+
+        dheight, dwidth, dchannels = drawn_image.shape
+        dbytes_per_line = dchannels * dwidth
 
         oimg = QImage(
             bytes(original_image.data),
@@ -374,14 +407,26 @@ class MainWindow(QMainWindow):
             tbytes_per_line,
             QImage.Format.Format_RGB888,
         )
+        dimg = QImage(
+            bytes(drawn_image.data),
+            dwidth,
+            dheight,
+            dbytes_per_line,
+            QImage.Format.Format_RGB888,
+        )
 
         pixmap1 = QPixmap(oimg)
         pixmap2 = QPixmap(timg)
+        pixmap3 = QPixmap(dimg)
 
+        # processed_size = target_image.shape*8
+        # original_shape = f"{original_image.shape}"
+        # processed_shape = f"{target_image.shape}"
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
-            f"PSNR: {res.PSNR:.3f}\nMSSSIM: {res.MSSSIM:.3f}\nOG Size: {res.original_size//1024}KB\nCompressed Size: {res.size_stats.compressed_image_size:.2f}KB\nCompression Ratio: {res.compression_ratio:.2f}",
+            pixmap3,
+            f"PSNR: {res.PSNR:.3f} MSSSIM: {res.MSSSIM:.3f} OG Size: {res.original_size//1024//1024} Compressed Size: {res.size_stats.compressed_size//1024//1024} Compression Ratio: {res.compression_ratio}",
         )
         self.processed_window.show()
 
