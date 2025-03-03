@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import (
+    QFileDialog,
     QMainWindow,
     QWidget,
     QVBoxLayout,
@@ -115,6 +116,10 @@ class MainWindow(QMainWindow):
         block_layout.addWidget(self.block_count_label)
         control_layout.addLayout(block_layout)
 
+        # Select Image Button
+        select_image_button = QPushButton("Select Image")
+        control_layout.addWidget(select_image_button)
+
         # Transfer blocks button
         transfer_blocks_button = QPushButton("Transfer Blocks")
         control_layout.addWidget(transfer_blocks_button)
@@ -134,6 +139,7 @@ class MainWindow(QMainWindow):
         self.block_count_slider.valueChanged.connect(self.update_block_count_label)
         self.block_count_slider.valueChanged.connect(self.process_and_display_image)
         transfer_blocks_button.clicked.connect(self.transfer_blocks)
+        select_image_button.clicked.connect(self.open_image)
 
         # Set up event filter
         self.image_label.setMouseTracking(True)
@@ -383,6 +389,11 @@ class MainWindow(QMainWindow):
                     )
 
         return output_img
+
+    def open_image(self):
+        filename, _ = QFileDialog.getOpenFileName(self, "Select Image", ".", "Image Files (*.png, *.jpg)")
+        print(f"Selected Image {filename}")
+        self.load_image_from_path(filename)
 
     def transfer_blocks(self):
         original_image = self.original_image.copy()
