@@ -189,8 +189,18 @@ def deserialize_huffman_table(huffman_bytes):
     return HuffmanCodec(reconstructed_table)
 
 
-def process_array(input_array, channel_data=None):
-    """Process a NxMx8x8 array of DCT coefficients with optimized Huffman encoding."""
+def generate_huffman_table(data):
+    """Generate Huffman table from data."""
+    frequencies = defaultdict(int)
+    array = data.flatten().tobytes()
+    for b in bytearray(array):
+        frequencies[b] += 1
+
+    return HuffmanCodec.from_frequencies(frequencies)
+
+
+def process_array(input_array, channel_data=None, table=None):
+    """Process a Nx32x32 array of DCT coefficients with optimized Huffman encoding."""
     block_size = input_array.shape[2]
     ZIGZAG_PATTERN = generate_zigzag_pattern(block_size)
 
@@ -198,21 +208,31 @@ def process_array(input_array, channel_data=None):
     all_encoded_data = bytearray()
 
     # First pass: process all blocks
-    for i in range(input_array.shape[0]):
+    '''for i in range(input_array.shape[0]):
         for j in range(input_array.shape[1]):
             block = input_array[i][j].astype(np.int16)
             zigzagged = zigzag_scan(block, ZIGZAG_PATTERN)
             encoded = rle_encode_int16(zigzagged)
             block_data.append(encoded)
-            all_encoded_data.extend(encoded)
+            all_encoded_data.extend(encoded)'''
+
+    for i in range(input_array.shape[0]):
+        block = input_array[i].astype(np.int16)
+        zigzagged = zigzag_scan(block, ZIGZAG_PATTERN)
+        encoded = rle_encode_int16(zigzagged)
+        block_data.append(encoded)
+        all_encoded_data.extend(encoded)
 
     # Count actual frequencies
+
     frequencies = defaultdict(int)
     for b in all_encoded_data:
         frequencies[b] += 1
 
     # Generate Huffman table only for actually used bytes
     codec = HuffmanCodec.from_frequencies(frequencies)
+    
+    #codec = table
 
     # Second pass: Huffman encode
     final_encoded_blocks = []
