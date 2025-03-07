@@ -113,7 +113,7 @@ def zigzag_order_matrix(matrix):
 
 
 # Compressed 4D Tile array using ANS encoding from constrition library, returns size in KB of compressed file, compressed data
-def compress_tile(tile_array):
+def compress_tile(tile_array, tile_type=None):
 
     #print(f"Tile Array before ZigZag:\n {tile_array[0][0]}")
     '''rle = []
@@ -149,6 +149,10 @@ def compress_tile(tile_array):
     # Get min and max values of tile
     M_min = np.min(image_array)
     M_max = np.max(image_array)
+
+    if M_min == M_max:
+        # Add a small delta to max to ensure a valid range
+        M_max = M_min + 1
 
     #print(f"Min: {M_min}, Max: {M_max}")
 

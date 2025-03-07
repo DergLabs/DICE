@@ -748,13 +748,15 @@ MSSSIM: {res.MSSSIM:.3f}
 
 Raw Image Size: {res.original_size}KB
 Final Compressed Image Size: {res.size_stats.total_size:.2f}KB
-Compression Ratio: {res.compression_ratio:.2f}
+Compression Ratio: {res.compression_ratio:.2f}%
 
 Num Lossy Tiles: {res.size_stats.compressed_blocks}
+Total Lossy Tile Size: {res.size_stats.compressed_size:.2f}KB
 Lossy Tile Size: {lossy_tile_size:.2f}KB
 Lossy Tile Compression Ratio: {lossy_tile_compression_ratio:.2f}%
 
 Num Lossless Tiles: {res.size_stats.uncompressed_blocks}
+Total Lossless Tile Size: {res.size_stats.uncompressed_size:.2f}KB
 Lossless Tile Size: {lossless_tile_size:.2f}KB
 Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%
 """,
@@ -829,9 +831,9 @@ Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%
             f"Image Size: {IMG_SIZE}x{IMG_SIZE} | "
             f"Gradient Threshold: {self.gradient_threshold_slider.value()} | "
             f"Laplacian Threshold: {self.laplacian_threshold_slider.value()} | "
-            f"Colors: Blue = Gradient Determines Compression, "
-            f"Red = Laplacian Determines Compression, "
-            f"Purple = Both Metrics Determine Compression"
+            f"Colors: Blue = Gradient > Threshold, "
+            f"Red = Laplacian > Threshold, "
+            f"Purple = Both > Threshold"
         )
         self.status_bar.showMessage(status)
 

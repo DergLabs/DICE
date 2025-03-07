@@ -2,6 +2,7 @@ from cv2.typing import MatLike
 import numpy as np
 import cv2
 from dataclasses import dataclass
+import zlib
 
 # import matplotlib.pyplot as plt
 # import matplotlib.gridspec as gridspec
@@ -246,9 +247,9 @@ def process_image_channels(
     compressed_block_count = 0
     uncompressed_block_count = 0
 
-    Y_lossles = []
-    Cr_lossles = []
-    Cb_lossles = []
+    Y_lossless = []
+    Cr_lossless = []
+    Cb_lossless = []
     if EN_TILE_REPLACEMENT:
         for row in range(n_tiles_x):
             for col in range(n_tiles_y):
@@ -268,24 +269,48 @@ def process_image_channels(
                     Cr4d[row][col] = Cr_ref[row][col]
                     Cb4d[row][col] = Cb_ref[row][col]'''
 
-                    Y_lossles.append(Y4d[row][col])
-                    Cr_lossles.append(Cr4d[row][col])
-                    Cb_lossles.append(Cb4d[row][col])
+                    Y_lossless.append(Y4d[row][col])
+                    Cr_lossless.append(Cr4d[row][col])
+                    Cb_lossless.append(Cb4d[row][col])
 
                     uncompressed_block_count += 1
                 else:
-                    Y_size, Y_compressed, Y_model = tile_compressorV2.compress_tile(Y4d[row][col])
-                    Cr_size, Cr_compressed, Cr_model = tile_compressorV2.compress_tile(Cr4d[row][col])
-                    Cb_size, Cb_compressed, Cb_model = tile_compressorV2.compress_tile(Cb4d[row][col])
+                    Y_asize, Y_compressed, Y_model = tile_compressorV2.compress_tile(Y4d[row][col])
+                    Cr_asize, Cr_compressed, Cr_model = tile_compressorV2.compress_tile(Cr4d[row][col])
+                    Cb_asize, Cb_compressed, Cb_model = tile_compressorV2.compress_tile(Cb4d[row][col])
+
+                    Y_len = zlib.compress(Y4d[row][col].tobytes(), level=9)
+                    Cr_len = zlib.compress(Cr4d[row][col].tobytes(), level=9)
+                    Cb_len = zlib.compress(Cb4d[row][col].tobytes(), level=9)
+
+                    Y_zsize = len(Y_len) / 1024
+                    Cr_zsize = len(Cr_len) / 1024
+                    Cb_zsize = len(Cb_len) / 1024
+
+                    Y_size = Y_asize if Y_asize < Y_zsize else Y_zsize
+                    Cr_size = Cr_asize if Cr_asize < Cr_zsize else Cr_zsize 
+                    Cb_size = Cb_asize if Cb_asize < Cb_zsize else Cb_zsize
 
                     compressed_block_count += 1
                     compressed_blocks_size += Y_size + (Cr_size/2) + (Cb_size/2)
                     
     # Compress the lossless tiles
-    print(f"\nCompressing Lossless Tiles using Huffman...\n")
-    Y_size, Y_codec, Y_encoded = tile_compressor.process_array(np.array(Y_lossles))
-    Cr_size, Cr_codec, Cr_encoded = tile_compressor.process_array(np.array(Cr_lossles))
-    Cb_size, Cb_codec, Cb_encoded = tile_compressor.process_array(np.array(Cb_lossles))
+    print(f"\nCompressing Lossless Tiles using Zlib...\n")
+    #_, _, _ = tile_compressor.process_array(np.array(Y_lossless), None, None)
+    #_, _, _ = tile_compressor.process_array(np.array(Cr_lossless), None, None)
+    #_, _, _ = tile_compressor.process_array(np.array(Cb_lossless), None, None)
+    Y_bytes = np.array(Y_lossless).tobytes()
+    Cr_bytes = np.array(Cr_lossless).tobytes()
+    Cb_bytes = np.array(Cb_lossless).tobytes()
+
+    Y_compressed = zlib.compress(Y_bytes, level=9)  # Level 9 is maximum compression
+    Cr_compressed = zlib.compress(Cr_bytes, level=9)
+    Cb_compressed = zlib.compress(Cb_bytes, level=9)
+
+    # Calculate compressed sizes in KB
+    Y_size = len(Y_compressed) / 1024
+    Cr_size = len(Cr_compressed) / 1024
+    Cb_size = len(Cb_compressed) / 1024
 
     uncompressed_blocks_size = Y_size + Cr_size + Cb_size
 
@@ -382,7 +407,7 @@ def process_color_image(image: MatLike, blocks_ids: np.ndarray) -> ProcessedImag
     original_size = (
         img_array.nbytes / 1024
     )  # ignores file format data, just gets raw size of pixel array
-    
+
     compression_ratio = 100 * (1 - (size_stats.total_size / original_size))
 
     # Combine processed channels and convert to RGB
