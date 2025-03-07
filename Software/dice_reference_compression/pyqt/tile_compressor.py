@@ -41,21 +41,28 @@ def inverse_zigzag_scan(zigzagged, size, ZIGZAG_PATTERN):
     return block
 
 
-def int16_to_bytes(values):
-    """Convert array of int16 values to bytes."""
-    return bytearray(np.array(values).tobytes())
-    #return struct.pack(f'<{len(values)}h', *values)
+def int8_to_bytes(values):
+    """Convert array of int8 values to bytes while preserving sign bit."""
+    # This ensures the raw byte representation is used without any conversion
+    return bytearray(np.array(values, dtype=np.int8).tobytes())
 
 
-def bytes_to_int16(data):
-    """Convert bytes back to int16 values."""
-    return np.array(struct.unpack(f'<{len(data) // 2}h', data), dtype=np.int16)
+def bytes_to_int8(data):
+    """Convert bytes back to int8 values."""
+    return np.array(struct.unpack(f'<{len(data)}b', data), dtype=np.int8)
 
 
-def rle_encode_int16(data):
-    """RLE encoding for int16 values."""
+def rle_encode_int8(data):
+    """RLE encoding for int8 values with improved run encoding.
+    
+    Uses high bit of count byte to indicate run vs literal:
+    - If high bit is set (count >= 128), then it's a run
+    - If high bit is not set (count < 128), then it's a literal sequence
+    
+    This eliminates the need for separate marker bytes.
+    """
     if not isinstance(data, np.ndarray):
-        data = np.array(data, dtype=np.int16)
+        data = np.array(data, dtype=np.int8)
 
     encoded = bytearray()
     i = 0
@@ -64,54 +71,70 @@ def rle_encode_int16(data):
         run_length = 1
         while (i + run_length < len(data) and
                data[i] == data[i + run_length] and
-               run_length < 255):
+               run_length < 127):  # Max 127 to leave room for high bit
             run_length += 1
 
-        if run_length > 3:  # Run of 4 or more same values
-            encoded.append(0xFE)  # Run marker
-            encoded.extend(int16_to_bytes([data[i]]))  # Value
-            encoded.append(run_length)  # Length
+        if run_length > 1:  # Run of 2 or more same values - more efficient
+            # Set high bit on length byte to indicate it's a run (128 + run_length)
+            encoded.append(128 + run_length)  # Length with high bit set
+            
+            # Convert int8 value to a byte (0-255 range) correctly
+            value_byte = data[i].tobytes()[0]  # Get the raw byte representation
+            encoded.append(value_byte)         # Append as-is to preserve signed value
+            
             i += run_length
-        else:  # Handle non-repeating or short repeating sequences
-            # Look ahead for next potential run
+        else:  # Handle non-repeating sequences
+            # Find length of non-repeating sequence
             non_run_length = 1
-            while (i + non_run_length < len(data) and
-                   (i + non_run_length + 1 >= len(data) or
-                    data[i + non_run_length] != data[i + non_run_length + 1] or
-                    non_run_length >= 255)):
+            j = i + 1
+            while (j < len(data) and 
+                   non_run_length < 127 and  # Max 127 for literals
+                   (j + 1 >= len(data) or data[j] != data[j + 1] or
+                    # Look ahead to see if we'd be better with a run
+                    (j + 2 < len(data) and data[j] == data[j + 1] and data[j] == data[j + 2]))):
                 non_run_length += 1
+                j += 1
 
-            # Write literal sequence
-            encoded.append(0xFF)  # Literal marker
+            # Write literal sequence (length byte without high bit set)
             encoded.append(non_run_length)  # Length
-            encoded.extend(int16_to_bytes(data[i:i + non_run_length]))  # Values
+            
+            # Add each value as a raw byte to preserve signed values
+            for k in range(non_run_length):
+                value_byte = data[i + k].tobytes()[0]
+                encoded.append(value_byte)
+                
             i += non_run_length
 
     return bytes(encoded)
 
 
-def rle_decode_int16(data):
-    """Decode RLE-encoded int16 data."""
+def rle_decode_int8(data):
+    """Decode RLE-encoded int8 data with high-bit marker in count byte."""
     if isinstance(data, list):
         data = bytes(data)
 
     decoded = []
     i = 0
     while i < len(data):
-        if data[i] == 0xFE:  # Run of repeated values
-            value = struct.unpack('<h', data[i + 1:i + 3])[0]  # Read int16 value
-            length = data[i + 3]
-            decoded.extend([value] * length)
-            i += 4  # marker(1) + value(2) + length(1)
-        elif data[i] == 0xFF:  # Literal sequence
-            length = data[i + 1]
-            values = struct.unpack(f'<{length}h', data[i + 2:i + 2 + length * 2])
-            decoded.extend(values)
-            i += 2 + length * 2  # marker(1) + length(1) + values(length*2)
-        else:
-            i += 1
+        count_byte = data[i]
+        i += 1
+        
+        if count_byte >= 128:  # Run (high bit set)
+            run_length = count_byte - 128
+            # Read raw byte and convert to signed int8
+            value = struct.unpack('<b', bytes([data[i]]))[0]
+            decoded.extend([value] * run_length)
+            i += 1  # Skip the value byte
+        else:  # Literal sequence (high bit not set)
+            literal_length = count_byte
+            for j in range(literal_length):
+                if i + j < len(data):
+                    # Read raw byte and convert to signed int8
+                    value = struct.unpack('<b', bytes([data[i + j]]))[0]
+                    decoded.append(value)
+            i += literal_length  # Skip all literal values
 
-    return np.array(decoded, dtype=np.int16)
+    return np.array(decoded, dtype=np.int8)
 
 
 def write_compressed_channels(channel_data, filename):
@@ -165,9 +188,9 @@ def serialize_huffman_table(codec):
 
     # Create compact representation
     compact_data = {
-        'values': values,
-        'lengths': bit_lengths,
-        'codes': codes
+        'v': values,
+        'l': bit_lengths,
+        'c': codes
     }
 
     return json.dumps(compact_data).encode('utf-8')
@@ -180,17 +203,27 @@ def deserialize_huffman_table(huffman_bytes):
     # Reconstruct the code table
     reconstructed_table = {}
     for value, length, code in zip(
-            table_data['values'],
-            table_data['lengths'],
-            table_data['codes']
+            table_data['v'],
+            table_data['l'],
+            table_data['c']
     ):
         reconstructed_table[int(value)] = (length, code)
 
     return HuffmanCodec(reconstructed_table)
 
 
-def process_array(input_array, channel_data=None):
-    """Process a NxMx8x8 array of DCT coefficients with optimized Huffman encoding."""
+def generate_huffman_table(data):
+    """Generate Huffman table from data."""
+    frequencies = defaultdict(int)
+    array = data.flatten().tobytes()
+    for b in bytearray(array):
+        frequencies[b] += 1
+
+    return HuffmanCodec.from_frequencies(frequencies)
+
+
+def process_array(input_array, channel_data=None, table=None):
+    """Process a Nx32x32 array of DCT coefficients with optimized Huffman encoding."""
     block_size = input_array.shape[2]
     ZIGZAG_PATTERN = generate_zigzag_pattern(block_size)
 
@@ -199,21 +232,21 @@ def process_array(input_array, channel_data=None):
 
     # First pass: process all blocks
     for i in range(input_array.shape[0]):
-        for j in range(input_array.shape[1]):
-            block = input_array[i][j].astype(np.int16)
-            zigzagged = zigzag_scan(block, ZIGZAG_PATTERN)
-            encoded = rle_encode_int16(zigzagged)
-            block_data.append(encoded)
-            all_encoded_data.extend(encoded)
+        block = input_array[i].astype(np.int8)  # Using int8 instead of int16
+        zigzagged = zigzag_scan(block, ZIGZAG_PATTERN)
+        encoded = rle_encode_int8(zigzagged)  # Use int8 RLE encoding
+        block_data.append(encoded)
+        all_encoded_data.extend(encoded)
 
+    print(f"Encoded Size: {len(all_encoded_data)/1024}KB")
     # Count actual frequencies
     frequencies = defaultdict(int)
     for b in all_encoded_data:
         frequencies[b] += 1
 
     # Generate Huffman table only for actually used bytes
-    codec = HuffmanCodec.from_frequencies(frequencies)
-
+    codec = HuffmanCodec.from_frequencies(frequencies) if table is None else table
+    
     # Second pass: Huffman encode
     final_encoded_blocks = []
     for encoded in block_data:
@@ -262,7 +295,7 @@ def decompress_array(codec, encoded_blocks, original_shape, ZIGZAG_PATTERN=None)
         ZIGZAG_PATTERN = generate_zigzag_pattern(original_shape[2])
 
     block_size = original_shape[2]
-    result = np.zeros(original_shape, dtype=np.int16)
+    result = np.zeros(original_shape, dtype=np.int8)  # Using int8 for output
 
     # Handle both list of blocks and single block formats
     if len(encoded_blocks) == 1:
@@ -279,8 +312,8 @@ def decompress_array(codec, encoded_blocks, original_shape, ZIGZAG_PATTERN=None)
                 # Extract and process the block from the continuous data
                 block_data = huffman_decoded[offset:]
 
-                # RLE decode to int16 values
-                decoded = rle_decode_int16(block_data)
+                # RLE decode to int8 values
+                decoded = rle_decode_int8(block_data)  # Use int8 RLE decoding
 
                 # Track how many bytes were consumed
                 offset += len(block_data)
@@ -305,9 +338,8 @@ def decompress_array(codec, encoded_blocks, original_shape, ZIGZAG_PATTERN=None)
                 # Huffman decode
                 huffman_decoded = codec.decode(encoded_blocks[block_idx])
 
-
-                # RLE decode to int16 values
-                decoded = rle_decode_int16(huffman_decoded)
+                # RLE decode to int8 values
+                decoded = rle_decode_int8(huffman_decoded)  # Use int8 RLE decoding
 
                 # Ensure correct size
                 if len(decoded) < block_size * block_size:
@@ -326,8 +358,8 @@ def decompress_array(codec, encoded_blocks, original_shape, ZIGZAG_PATTERN=None)
 
 def verify_compression(input_array, channel_data=None):
     """Process array and verify decompression matches input."""
-    # Ensure input is int16
-    input_array = input_array.astype(np.int16)
+    # Ensure input is int8
+    input_array = input_array.astype(np.int8)  # Using int8 instead of int16
 
     # Compress
     size, codec, encoded_blocks = process_array(input_array, channel_data)

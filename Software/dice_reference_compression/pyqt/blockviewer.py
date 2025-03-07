@@ -10,14 +10,11 @@ class BlockViewer(QDialog):
     def __init__(self, block, gradient, laplacian, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Block Viewer")
-        self.cur_block = block.copy()  # Store a copy of the block
 
         # Create layout
         layout = QVBoxLayout(self)
 
         # Create compress button
-        self.compress_button = QPushButton("Compress", self)
-        self.compress_button.clicked.connect(self.compress)
 
         # Create and set up image label
         self.image_label = QLabel()
@@ -49,10 +46,3 @@ class BlockViewer(QDialog):
         # Add widgets to layout
         layout.addWidget(self.image_label)
         layout.addWidget(self.metrics_label)
-        layout.addWidget(self.compress_button)
-
-    def compress(self):
-        # Save current block to temporary file
-        os.makedirs("./temp", exist_ok=True)
-        cv2.imwrite("./temp/curblock.jpg", self.cur_block)
-        fpga_accelerated_compression()
