@@ -152,11 +152,11 @@ begin
             if (ce_i = '1') then
                 sobel_x_px2 <=  unsigned(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
                 sobel_x_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
-                sobel_x_px5 <=  unsigned(resize(shift_left(unsigned(pixel_reg_x(47 downto 40)), 12), 1));
+                sobel_x_px5 <=  unsigned(resize(shift_left(unsigned(pixel_reg_x(47 downto 40)), 1), 12));
 
                 sobel_x_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
                 sobel_x_px6 <= -signed(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
-                sobel_x_px3 <= -signed(resize(shift_left(unsigned(pixel_reg_x(31 downto 24)), 12), 1));
+                sobel_x_px3 <= -signed(resize(shift_left(unsigned(pixel_reg_x(31 downto 24)), 1), 12));
             else
                 sobel_x_px2 <= sobel_x_px2;
                 sobel_x_px8 <= sobel_x_px8;
@@ -182,11 +182,11 @@ begin
             if (ce_i = '1') then
                 sobel_y_px6 <=  unsigned(resize(unsigned(pixel_reg_x(55 downto 48)), 12));
                 sobel_y_px8 <=  unsigned(resize(unsigned(pixel_reg_x(71 downto 64)), 12));
-                sobel_y_px7 <=  unsigned(resize(shift_left(unsigned(pixel_reg_x(63 downto 56)), 12), 1));
+                sobel_y_px7 <=  unsigned(resize(shift_left(unsigned(pixel_reg_x(63 downto 56)), 1), 12));
 
                 sobel_y_px0 <= -signed(resize(unsigned(pixel_reg_x(7 downto 0)), 12));
                 sobel_y_px2 <= -signed(resize(unsigned(pixel_reg_x(23 downto 16)), 12));
-                sobel_y_px1 <= -signed(resize(shift_left(unsigned(pixel_reg_x(15 downto 8)), 12), 1));
+                sobel_y_px1 <= -signed(resize(shift_left(unsigned(pixel_reg_x(15 downto 8)), 1), 12));
             else
                 sobel_y_px6 <= sobel_y_px6;
                 sobel_y_px8 <= sobel_y_px8;

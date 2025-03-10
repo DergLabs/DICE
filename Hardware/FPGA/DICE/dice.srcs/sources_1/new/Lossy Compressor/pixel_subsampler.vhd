@@ -71,9 +71,9 @@ begin
         elsif rising_edge(clk_i) then
             valid_o <= valid_i;
             if sel_pixel = '0' then
-                data_o <= std_logic_vector(resize(shift_right(resize(unsigned(data_i), 16) + resize(prev_pixel, 16)), 1), WIDTH-1);
+                data_o <= std_logic_vector(resize(shift_right(resize(unsigned(data_i), 16) + resize(prev_pixel, 16), 1), WIDTH));
             else
-                prev_pixel <= data_i;
+                prev_pixel <= unsigned(data_i);
                 data_o <= data_o;
             end if;
         end if;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1740680922">
+<GenRun Id="impl_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1740692422">
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="top_postroute_physopted.rqs"/>
@@ -236,14 +236,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram.xci">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/DSP/dsp_mac.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -302,6 +294,7 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="input_pixel_hold_ram"/>
   <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
   <BlockFileSet Type="BlockSrcs" Name="dsp_macro_simd"/>
   <BlockFileSet Type="BlockSrcs" Name="dsp_msub"/>

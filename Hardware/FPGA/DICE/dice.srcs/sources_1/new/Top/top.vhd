@@ -41,7 +41,7 @@ entity top is
         USE_SIM_MODEL : boolean := false;
         ENABLE_ILA : boolean := False;
         ENABLE_VIO : boolean := False;
-        ENABLE_STATS : boolean := False
+        ENABLE_STATS : boolean := True
     );
     port ( 
         -- Inputs
@@ -92,6 +92,7 @@ architecture Behavioral of top is
     -- CDC Input memory
     signal fifo_data_to_core            : std_logic_vector(((NUM_CHANNELS * 16) - 17 ) downto 0);
     signal input_fifo_valid             : std_logic;
+    signal hold_memory_data_o           : std_logic_vector(15 downto 0);
     --Fifo clear signal from output memory controller
     signal fifo_clear                   : std_logic;
 
@@ -108,9 +109,8 @@ architecture Behavioral of top is
     signal core_dout                    : std_logic_vector(255 downto 0);
     signal core_dout_valid              : std_logic_vector(NUM_CHANNELS-1 downto 0);
 
-    -- Special case for 3 cores
     signal core_dout_256b               : std_logic_vector(255 downto 0);
-    --signal core_dout_512b               : std_logic_vector(511 downto 0);
+    signal output_memory_dout           : std_logic_vector(15 downto 0);
 
     -- Data to FT600
     signal data_to_ft600                : std_logic_vector(15 downto 0);
@@ -174,7 +174,7 @@ architecture Behavioral of top is
     );
     END COMPONENT;
 
-    signal vio_rst : std_logic;
+    signal vio_rst : std_logic := '0';
 
 begin
 
@@ -295,7 +295,10 @@ begin
         read_clk_i => clk_x,
 
         empty_o => open,
-        full_o => open
+        full_o => open, 
+
+        hold_ram_data_o => hold_memory_data_o,
+        read_hold_ram_i => ft600_ready_for_data
     );
 
 
@@ -326,8 +329,8 @@ begin
             ce_i => '1',
             rst_i => rst_x,
 
-            pixel_i => ycrcb_x(15 downto 8), -- pass Y channel to statistics core
-            valid_i => ycrcb_valid_x,
+            pixel_i => ycrcb_o(15 downto 8), -- pass Y channel to statistics core
+            valid_i => ycrcb_valid_o,
 
             laplacian_var_o => laplacian_var,
             laplacian_mean_o => laplacian_mean,
@@ -446,12 +449,16 @@ begin
         write_clk_i => clk_x,
 
         reciever_ready_i => ft600_ready_for_data,
-        data_o => data_to_ft600,
+        data_o => output_memory_dout,
         data_out_valid => open,
         read_clk_i => ftdi_clk_i,
 
         memory_clear_o => fifo_clear
     );
+
+    with pixel_select select
+        data_to_ft600 <= hold_memory_data_o when '0',
+                         output_memory_dout when '1';
 
 
 end Behavioral;

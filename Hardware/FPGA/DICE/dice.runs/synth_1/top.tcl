@@ -72,8 +72,9 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param power.enableCarry8RouteBelPower 1
 set_param checkpoint.writeSynthRtdsInDcp 1
+set_param chipscope.maxJobs 4
 set_param power.BramSDPPropagationFix 1
-set_param synth.incrementalSynthesisCache ./.Xil/Vivado-49627-john-linux-desktop/incrSyn
+set_param synth.incrementalSynthesisCache ./.Xil/Vivado-271234-john-linux-desktop/incrSyn
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableLutRouteBelPower 1
 set_msg_config -id {Synth 8-256} -limit 10000
@@ -158,6 +159,9 @@ set_property used_in_implementation false [get_files -all /home/john/Desktop/DIC
 read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/vio_0/vio_0.xci
 set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0.xdc]
 set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0_ooc.xdc]
+
+read_ip -quiet /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram.xci
+set_property used_in_implementation false [get_files -all /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

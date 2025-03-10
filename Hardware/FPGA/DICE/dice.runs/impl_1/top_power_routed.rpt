@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Thu Feb 27 13:32:10 2025
+| Date             : Thu Feb 27 16:43:16 2025
 | Host             : john-linux-desktop running 64-bit Ubuntu 22.04.5 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.644        |
+| Total On-Chip Power (W)  | 0.666        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.192        |
+| Dynamic (W)              | 0.214        |
 | Device Static (W)        | 0.452        |
 | Effective TJA (C/W)      | 1.7          |
-| Max Ambient (C)          | 98.9         |
-| Junction Temperature (C) | 26.1         |
+| Max Ambient (C)          | 98.8         |
+| Junction Temperature (C) | 26.2         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,23 +52,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.028 |        6 |       --- |             --- |
-| CLB Logic                |     0.021 |    18129 |       --- |             --- |
-|   LUT as Logic           |     0.013 |     5352 |    162720 |            3.29 |
-|   LUT as Shift Register  |     0.005 |      571 |     99840 |            0.57 |
-|   Register               |     0.003 |     8914 |    325440 |            2.74 |
-|   CARRY8                 |    <0.001 |      123 |     27120 |            0.45 |
-|   LUT as Distributed RAM |    <0.001 |       44 |     99840 |            0.04 |
+| Clocks                   |     0.024 |        5 |       --- |             --- |
+| CLB Logic                |     0.034 |    17781 |       --- |             --- |
+|   LUT as Logic           |     0.018 |     4954 |    162720 |            3.04 |
+|   LUT as Shift Register  |     0.011 |      824 |     99840 |            0.83 |
+|   Register               |     0.003 |     8892 |    325440 |            2.73 |
+|   CARRY8                 |    <0.001 |      116 |     27120 |            0.43 |
+|   LUT as Distributed RAM |    <0.001 |       24 |     99840 |            0.02 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
-|   Others                 |     0.000 |      332 |       --- |             --- |
+|   Others                 |     0.000 |      268 |       --- |             --- |
 |   F7/F8 Muxes            |     0.000 |      144 |    216960 |            0.07 |
-| Signals                  |     0.019 |    12901 |       --- |             --- |
-| Block RAM                |     0.008 |        8 |       360 |            2.22 |
+| Signals                  |     0.025 |    12800 |       --- |             --- |
+| Block RAM                |     0.013 |       10 |       360 |            2.78 |
 | MMCM                     |     0.098 |        0 |       --- |             --- |
-| DSPs                     |     0.007 |       29 |      1368 |            2.12 |
-| I/O                      |     0.010 |       33 |       256 |           12.89 |
+| DSPs                     |     0.010 |       34 |      1368 |            2.49 |
+| I/O                      |     0.011 |       33 |       256 |           12.89 |
 | Static Power             |     0.452 |          |           |                 |
-| Total                    |     0.644 |          |           |                 |
+| Total                    |     0.666 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,9 +78,9 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.237 |       0.098 |      0.139 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.262 |       0.123 |      0.139 |       NA    | Unspecified | NA         |
 | Vccint_io  |       0.850 |     0.036 |       0.001 |      0.035 |       NA    | Unspecified | NA         |
-| Vccbram    |       0.850 |     0.003 |       0.001 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram    |       0.850 |     0.004 |       0.002 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.183 |       0.054 |      0.128 |       NA    | Unspecified | NA         |
 | Vccaux_io  |       1.800 |     0.036 |       0.004 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -134,14 +134,13 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------+
-| Clock                                                                                               | Domain                                                             | Constraint (ns) |
-+-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------+
-| clk_out1_sys_clk_mmcm                                                                               | clocking_gen.sys_clk/inst/clk_out1_sys_clk_mmcm                    |            10.0 |
-| dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/DRCK |            50.0 |
-| ftdi_clk                                                                                            | ftdi_clk_i                                                         |            10.0 |
-| sysclk_p                                                                                            | sysclk_p                                                           |             5.0 |
-+-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+-----------------+
++-----------------------+-------------------------------------------------+-----------------+
+| Clock                 | Domain                                          | Constraint (ns) |
++-----------------------+-------------------------------------------------+-----------------+
+| clk_out1_sys_clk_mmcm | clocking_gen.sys_clk/inst/clk_out1_sys_clk_mmcm |            10.0 |
+| ftdi_clk              | ftdi_clk_i                                      |            10.0 |
+| sysclk_p              | sysclk_p                                        |             5.0 |
++-----------------------+-------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -150,42 +149,43 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------------------+-----------+
-| Name                     | Power (W) |
-+--------------------------+-----------+
-| top                      |     0.192 |
-|   clocking_gen.sys_clk   |     0.100 |
-|     inst                 |     0.100 |
-|       clkin1_ibufds      |     0.002 |
-|   dbg_hub                |     0.002 |
-|     inst                 |     0.002 |
-|       BSCANID.u_xsdbm_id |     0.002 |
-|   input_memory_fifo      |     0.005 |
-|     input_cdc_fifo       |     0.005 |
-|       U0                 |     0.005 |
-|   lossy_comp_core        |     0.066 |
-|     core_0               |     0.022 |
-|       col_dct            |     0.001 |
-|       pixel_divider      |     0.001 |
-|       pixel_transpose    |     0.009 |
-|       quantizer          |     0.003 |
-|       row_dct            |     0.006 |
-|     core_1               |     0.022 |
-|       col_dct            |     0.001 |
-|       pixel_divider      |     0.001 |
-|       pixel_transpose    |     0.009 |
-|       quantizer          |     0.003 |
-|       row_dct            |     0.007 |
-|     core_2               |     0.022 |
-|       col_dct            |     0.001 |
-|       pixel_divider      |     0.001 |
-|       pixel_transpose    |     0.009 |
-|       quantizer          |     0.003 |
-|       row_dct            |     0.007 |
-|   output_memory          |     0.006 |
-|     output_memory        |     0.006 |
-|       U0                 |     0.006 |
-|   rgb_to_ycrcb           |     0.002 |
-+--------------------------+-----------+
++----------------------------------------------+-----------+
+| Name                                         | Power (W) |
++----------------------------------------------+-----------+
+| top                                          |     0.214 |
+|   clocking_gen.sys_clk                       |     0.100 |
+|     inst                                     |     0.100 |
+|       clkin1_ibufds                          |     0.002 |
+|   gen_image_statistics.data_delay            |     0.006 |
+|   gen_image_statistics.image_statistics_core |     0.002 |
+|     statistics_core_laplacian                |     0.001 |
+|   input_memory_fifo                          |     0.007 |
+|     input_cdc_fifo                           |     0.005 |
+|       U0                                     |     0.005 |
+|     your_instance_name                       |     0.002 |
+|       U0                                     |     0.002 |
+|   lossy_comp_core                            |     0.078 |
+|     core_0                                   |     0.026 |
+|       col_dct                                |     0.001 |
+|       pixel_divider                          |     0.001 |
+|       pixel_transpose                        |     0.011 |
+|       quantizer                              |     0.005 |
+|       row_dct                                |     0.008 |
+|     core_1                                   |     0.025 |
+|       col_dct                                |     0.001 |
+|       pixel_divider                          |     0.001 |
+|       pixel_transpose                        |     0.010 |
+|       quantizer                              |     0.005 |
+|       row_dct                                |     0.008 |
+|     core_2                                   |     0.026 |
+|       pixel_divider                          |     0.001 |
+|       pixel_transpose                        |     0.010 |
+|       quantizer                              |     0.005 |
+|       row_dct                                |     0.008 |
+|   output_memory                              |     0.010 |
+|     output_memory                            |     0.009 |
+|       U0                                     |     0.009 |
+|   rgb_to_ycrcb                               |     0.002 |
++----------------------------------------------+-----------+
 
 

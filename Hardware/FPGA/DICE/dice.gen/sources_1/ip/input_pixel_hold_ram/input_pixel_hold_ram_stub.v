@@ -1,0 +1,35 @@
+// Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+// Date        : Thu Feb 27 16:17:29 2025
+// Host        : john-linux-desktop running 64-bit Ubuntu 22.04.5 LTS
+// Command     : write_verilog -force -mode synth_stub
+//               /home/john/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram_stub.v
+// Design      : input_pixel_hold_ram
+// Purpose     : Stub declaration of top-level module interface
+// Device      : xcku3p-ffva676-2-i
+// --------------------------------------------------------------------------------
+
+// This empty module with port declaration file causes synthesis tools to infer a black box for IP.
+// The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
+// Please paste the declaration into a Verilog source file or add the file as an additional source.
+(* x_core_info = "blk_mem_gen_v8_4_7,Vivado 2023.2" *)
+module input_pixel_hold_ram(clka, ena, wea, addra, dina, clkb, rstb, enb, addrb, doutb, 
+  rsta_busy, rstb_busy)
+/* synthesis syn_black_box black_box_pad_pin="ena,wea[0:0],addra[11:0],dina[15:0],rstb,enb,addrb[11:0],doutb[15:0],rsta_busy,rstb_busy" */
+/* synthesis syn_force_seq_prim="clka" */
+/* synthesis syn_force_seq_prim="clkb" */;
+  input clka /* synthesis syn_isclock = 1 */;
+  input ena;
+  input [0:0]wea;
+  input [11:0]addra;
+  input [15:0]dina;
+  input clkb /* synthesis syn_isclock = 1 */;
+  input rstb;
+  input enb;
+  input [11:0]addrb;
+  output [15:0]doutb;
+  output rsta_busy;
+  output rstb_busy;
+endmodule
