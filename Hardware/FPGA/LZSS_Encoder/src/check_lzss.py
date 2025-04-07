@@ -12,7 +12,6 @@ if __name__ == '__main__':
             elif(line[0] == '1'):
                 offset = int(line[1], 16)
                 length = int(line[2], 16)
-
                 for i in range(length):
                     code_array.append(code_array[-(offset+1)])
     
