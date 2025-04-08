@@ -1,6 +1,8 @@
 # DICE - Dynamic Image Compression Engine
 Developed by John Hofmeyr, Claudia Oufft, Michael Haahr, Shahriyar Shawon, Oscar Balan
+
 Drexel University Senior Class of 2025
+
 Developed under the guidance of Dr. Anup Das
 
 **Overview**
