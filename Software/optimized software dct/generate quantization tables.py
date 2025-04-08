@@ -3,27 +3,27 @@ import numpy as np
 # Baseline Quantization matrix, represents the number of bits to right shift (divide) each DCT coefficient
 # To find actual quantization value, simply do 1 << Q_shift
 Q_shift_base = np.array([
-    [0, 0, 0, 0, 0, 0, 1, 1],
-    [0, 0, 0, 0, 0, 1, 1, 1],
-    [0, 0, 0, 0, 1, 1, 1, 1],
-    [0, 0, 0, 1, 1, 6, 3, 2],
-    [0, 0, 1, 1, 6, 3, 3, 3],
-    [0, 1, 1, 6, 3, 3, 3, 3],
-    [1, 1, 1, 3, 3, 3, 3, 3],
-    [1, 1, 3, 3, 3, 3, 3, 3],
+    [0, 0, 0, 0, 0, 1, 1, 2],
+    [0, 0, 0, 0, 1, 1, 2, 2],
+    [0, 0, 0, 1, 1, 2, 2, 2],
+    [0, 0, 1, 1, 2, 2, 2, 3],
+    [0, 1, 1, 2, 7, 2, 3, 3],
+    [1, 1, 2, 2, 2, 3, 3, 3],
+    [1, 2, 2, 2, 3, 3, 3, 3],
+    [2, 2, 2, 3, 3, 3, 3, 3],
 ], dtype=np.int16)
-
 # Baseline Dequantization Matrix, represents the amount to divide each DCT coefficient by
 # Matrix is not in bit shift form because it is
-Qd_base = np.array([
-    [1, 2, 1, 4, 1, 2, 4, 16],
-    [2, 4, 2, 8, 2, 8, 2, 16],
-    [1, 2, 1, 4, 1, 2, 2, 8],
-    [4, 8, 2, 16, 8, 512, 16, 64],
-    [1, 2, 2, 8, 256, 16, 8, 32],
-    [2, 8, 8, 512, 16, 32, 8, 64],
-    [2, 2, 2, 32, 16, 16, 8, 32],
-    [8, 16, 32, 64, 32, 64, 32, 64]
+Qd_base = np.array(
+[
+    [  1,   2,   1,   4,   1,   4,   4,  32],
+    [  2,   4,   2,   8,   4,   8,   4,  32],
+    [  1,   2,   1,   8,   1,   4,   4,  16],
+    [  4,   8,   4,  16,  16,  32,   8, 128],
+    [  1,   4,   2,  16,  512,   8,   8,  32],
+    [  4,   8,  16,  32,   8,  32,   8,  64],
+    [  2,   4,   4,  16,  16,  16,   8,  32],
+    [ 16,  32,  16,  64,  32,  64,  32,  64]
 ], dtype=np.int16)
 
 # Baseline DeQuantization Matrix, represents the amount to left shift (multiply) each DCT coefficient by
@@ -88,17 +88,22 @@ if __name__ == "__main__":
     # Replace Me with new quantization values
     # Values represent amount to bif shift rigth (divide) each DCT coefficient
     Q_shift_new = np.array([
-        [0, 0, 0, 1, 1, 1, 1, 1],
-        [0, 0, 1, 1, 1, 1, 1, 1],
-        [0, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 3, 2, 2],
-        [1, 1, 1, 1, 6, 3, 3, 3],
-        [1, 1, 1, 3, 3, 3, 3, 3],
-        [1, 1, 1, 2, 3, 3, 3, 3],
-        [1, 1, 2, 3, 3, 3, 3, 3],
+        [0, 0, 0, 0, 0, 1, 1, 2],
+        [0, 0, 0, 0, 1, 1, 2, 2],
+        [0, 0, 0, 1, 1, 2, 2, 2],
+        [0, 0, 1, 1, 2, 2, 2, 3],
+        [0, 1, 1, 2, 2, 2, 3, 3],
+        [1, 1, 2, 2, 2, 3, 3, 3],
+        [1, 2, 2, 2, 3, 3, 3, 3],
+        [2, 2, 2, 3, 3, 3, 3, 3],
     ], dtype=np.int16)
 
+    
+
     Qd_new, Qd_shift_new = adjust_qd(Q_shift_base, Q_shift_new, Qd_base, Qd_shift_base)
+
+    print(f"Q Base: {1 << Q_shift_base}")
+
 
     # Then modify your print statements:
     print("Q_shift_base = np.array(")

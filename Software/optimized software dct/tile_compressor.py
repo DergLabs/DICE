@@ -1,9 +1,5 @@
-from collections import defaultdict
-import numpy as np
-from dahuffman import HuffmanCodec
-import struct
-import json
-
+from app_libraries import *
+from app_constants import *
 
 def generate_zigzag_pattern(size=8):
     """Generate zigzag pattern indices for square matrix of given size."""
