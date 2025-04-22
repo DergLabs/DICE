@@ -36,16 +36,16 @@ use UNISIM.VComponents.all;
 
 entity statistics_core is
     generic (
-        variance_depth  : integer := 1024;
-        data_width      : integer := 11;
-        depth_bits      : integer := integer(ceil(log2(real(variance_depth))))
+        G_VARIANCE_DEPTH  : integer := 1024;
+        G_DATA_WIDTH      : integer := 11;
+        G_DEPTH_BITS      : integer := integer(ceil(log2(real(G_VARIANCE_DEPTH))))
     );
     port(
         clk_i       : in std_logic;
         ce_i        : in std_logic;
         rst_i       : in std_logic;
 
-        data_i      : in signed((data_width-1) downto 0);
+        data_i      : in signed((G_DATA_WIDTH-1) downto 0);
         valid_i     : in std_logic;
 
         var_o       : out std_logic_vector(15 downto 0);
@@ -56,7 +56,7 @@ entity statistics_core is
 end statistics_core;
 
 architecture Behavioral of statistics_core is
-    signal data_in_x        : signed((data_width-1) downto 0);
+    signal data_in_x        : signed((G_DATA_WIDTH-1) downto 0);
     signal ce_x             : std_logic;
     signal valid_x          : std_logic;
     signal input_ce_x       : std_logic;
@@ -266,7 +266,7 @@ begin
             var_o <= (others => '0');
             std_dev_o <= (others => '0');
         elsif rising_edge(clk_i) then
-            if (valid_x = '1' and counter = variance_depth - 1) then
+            if (valid_x = '1' and counter = G_VARIANCE_DEPTH - 1) then
                 valid_o <= '1'; 
                 mean_o <= mean_delayed_x;
                 var_o <= var_delayed_x;

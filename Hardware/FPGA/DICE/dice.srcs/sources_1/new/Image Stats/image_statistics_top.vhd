@@ -198,8 +198,8 @@ begin
     -- Statistics Core for Laplacian
     statistics_core_laplacian : entity work.statistics_core
         generic map (
-            variance_depth => NUM_SAMPLES,
-            data_width => 11
+            G_VARIANCE_DEPTH => NUM_SAMPLES,
+            G_DATA_WIDTH => 11
         )
         port map (
             clk_i => clk_i,
@@ -217,8 +217,8 @@ begin
     -- Statistics Core for Gradient
     statistics_core_gradient : entity work.statistics_core
         generic map (
-            variance_depth => NUM_SAMPLES,
-            data_width => 11
+            G_VARIANCE_DEPTH => NUM_SAMPLES,
+            G_DATA_WIDTH => 11
         )
         port map (
             clk_i => clk_i,
