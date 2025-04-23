@@ -1,4 +1,6 @@
-module hyperram_controller (
+module hyperram_intf_2 #(
+    parameter LATENCY = 4
+)(
     //Clocking input
     input         clk       ,
     input         clk_90o   ,
@@ -20,8 +22,7 @@ module hyperram_controller (
     input  [31:0] ctrl_wr_data_in   ,
     output        ctrl_wr_data_next ,
     output [31:0] ctrl_rd_data_out  ,
-    output        ctrl_rd_data_valid,
-    output        ctrl_busy
+    output        ctrl_rd_data_valid
 );
 
 reg dram_clk_en = 0;
@@ -70,8 +71,6 @@ reg [ 2:0] latency_reg   = 0;
 reg        busy_reg      = 0;
 reg [ 7:0] fsm_ca        = 0;
 
-assign ctrl_busy = busy_reg;
-
 always @(posedge clk) begin
     //Cannot perform read or write while busy
     if(ctrl_cs && !busy_reg) begin
@@ -82,6 +81,7 @@ always @(posedge clk) begin
         rd_sel_reg    <= ctrl_rd_sel;
         wr_sel_reg    <= ctrl_wr_sel;
         busy_reg      <= 1'b1;
+        data_reg      <= ctrl_wr_data_in;
         num_words_reg <= ctrl_num_words - 1;
         latency_reg   <= ctrl_latency;
         //Start command/address FSM
@@ -135,8 +135,8 @@ always @(posedge clk) begin
     //No latency on register writes
     if(wr_sel_reg && reg_sel_reg) begin
         if(fsm_ca[4]) begin
-            dram_dq_out_rise <= {8'h00, ctrl_wr_data_in[15: 8]};
-            dram_dq_out_fall <= {8'h00, ctrl_wr_data_in[ 7: 0]};
+            dram_dq_out_rise <= {8'h00, data_reg[15: 8]};
+            dram_dq_out_fall <= {8'h00, data_reg[ 7: 0]};
         end
         if(fsm_ca[5]) begin
             //Zero dq output for sim validation
@@ -149,7 +149,6 @@ always @(posedge clk) begin
             //End transaction
             dram_cs_reg <= 1'b1;
             dram_clk_en <= 1'b0;
-            busy_reg <= 1'b0;
         end
     end
     //Regular behavior otherwise
@@ -216,6 +215,8 @@ reg        rd_data_valid_reg = 0;
 assign rd_data_out = rd_data_out_reg;
 assign rd_data_valid = rd_data_valid_reg;
 
+reg fsm_reset = 0;
+
 //Handles multiple word reads
 always @(posedge clk) begin
     fsm_read[3:1] <= fsm_read[2:0];
@@ -250,8 +251,6 @@ always @(posedge clk) begin
     if(fsm_read[3] && !fsm_read[2]) begin
         rd_data_out_reg <= 32'd0;
         rd_data_valid_reg <= 1'b0;
-        //Not busy anymore
-        busy_reg <= 1'b0;
     end
 end
 
@@ -280,7 +279,6 @@ end
 //Currently no support for data masking
 always @(posedge clk) begin
     if(fsm_write[0]) begin
-        data_reg <= ctrl_wr_data_in;
         dram_dq_out_rise <= data_reg[31:16];
         dram_dq_out_fall <= data_reg[15: 0];
     end
@@ -294,15 +292,12 @@ always @(posedge clk) begin
         //Disable output to ensure only one cycle
         dram_dq_oe_reg <= 1'b0;
         dram_rwds_oe_reg <= 1'b0;
-        //Not busy anymore
-        busy_reg <= 1'b0;
     end
 end
 
 //=================================================
 // Reset stage, will be removed to cut latency
 //=================================================
-/*
 always @(posedge clk) begin
     if(fsm_reset) begin
         fsm_reset   <= 1'b0;
@@ -315,7 +310,6 @@ always @(posedge clk) begin
         busy_reg    <= 1'b0;
     end
 end
-*/
 
 //=================================================
 // HyperRAM bus management

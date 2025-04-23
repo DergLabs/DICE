@@ -13,13 +13,13 @@ wire [15:0] dram_dq    ;
 wire        mmcm_locked;
 
 reg         cs            = 0;
-reg         rd_sel        = 0;
-reg         wr_sel        = 1;
-reg         mem_sel       = 1;
-reg         reg_sel       = 0;
-reg  [ 7:0] num_words     = 1;
+reg         rd_sel        = 1;
+reg         wr_sel        = 0;
+reg         mem_sel       = 0;
+reg         reg_sel       = 1;
+reg  [31:0] num_words     = 1;
 reg  [ 2:0] latency       = 4;
-reg  [31:0] addr_in       = 32'hAABBCCDD;
+reg  [31:0] addr_in       = 32'h00000004;
 reg  [31:0] wr_data_in    = 32'h1337CAFE;
 wire        wr_data_next ;
 wire [31:0] rd_data_out  ;
@@ -27,7 +27,7 @@ wire        rd_data_valid;
 
 always #CLK_PERIOD sys_clk = ~sys_clk;
 
-hyperram_controller hyperram_controller_inst (
+hyperram_top_2 hyperram_top_inst (
     //Clocking signals
     .sys_clk      (sys_clk      ),
     //Hardware hyperbus interface
@@ -54,7 +54,7 @@ hyperram_controller hyperram_controller_inst (
     .reset_in     (1'b0         )
 );
 
-hyperram_device hyperram_device_inst (
+hyperram_device_2 hyperram_device_inst (
     .clk       (sys_clk   ),
     .rst       (1'b0      ),
     .dram_clk_p(dram_clk_p),

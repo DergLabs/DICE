@@ -1,4 +1,4 @@
-module hyperram_device #(
+module hyperram_device_2 #(
     parameter LATENCY = 4
 )(
     //System clock and reset

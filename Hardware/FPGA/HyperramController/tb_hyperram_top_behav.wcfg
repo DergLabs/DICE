@@ -11,21 +11,20 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="558.333 ns"></ZoomStartTime>
-      <ZoomEndTime time="746.334 ns"></ZoomEndTime>
+      <ZoomStartTime time="427.220 ns"></ZoomStartTime>
+      <ZoomEndTime time="801.856 ns"></ZoomEndTime>
       <Cursor1Time time="625.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="138"></ValueColumnWidth>
+      <ValueColumnWidth column_width="118"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="66" />
+   <WVObjectSize size="125" />
    <wave_markers>
-      <marker label="" time="485000" />
-      <marker label="" time="645000" />
-      <marker label="" time="532599" />
-      <marker label="" time="572599" />
-      <marker label="" time="612599" />
+      <marker label="" time="512582" />
+      <marker label="" time="552599" />
+      <marker label="" time="592599" />
+      <marker label="" time="625000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/tb_top/sys_clk">
       <obj_property name="ElementShortName">sys_clk</obj_property>
@@ -134,13 +133,13 @@
          <obj_property name="ElementShortName">dram_cs</obj_property>
          <obj_property name="ObjectShortName">dram_cs</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_device_inst/dram_clk_n">
-         <obj_property name="ElementShortName">dram_clk_n</obj_property>
-         <obj_property name="ObjectShortName">dram_clk_n</obj_property>
-      </wvobject>
       <wvobject type="logic" fp_name="/tb_top/hyperram_device_inst/dram_clk_p">
          <obj_property name="ElementShortName">dram_clk_p</obj_property>
          <obj_property name="ObjectShortName">dram_clk_p</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_top/hyperram_device_inst/dram_clk_n">
+         <obj_property name="ElementShortName">dram_clk_n</obj_property>
+         <obj_property name="ObjectShortName">dram_clk_n</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group136">
@@ -339,59 +338,19 @@
    <wvobject type="group" fp_name="group223">
       <obj_property name="label">op_sel</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/rd_sel">
-         <obj_property name="ElementShortName">rd_sel</obj_property>
-         <obj_property name="ObjectShortName">rd_sel</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/wr_sel">
-         <obj_property name="ElementShortName">wr_sel</obj_property>
-         <obj_property name="ObjectShortName">wr_sel</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/mem_sel">
-         <obj_property name="ElementShortName">mem_sel</obj_property>
-         <obj_property name="ObjectShortName">mem_sel</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/reg_sel">
-         <obj_property name="ElementShortName">reg_sel</obj_property>
-         <obj_property name="ObjectShortName">reg_sel</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group224">
       <obj_property name="label">op_in</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/addr_in">
-         <obj_property name="ElementShortName">addr_in[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addr_in[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/wr_data_in">
-         <obj_property name="ElementShortName">wr_data_in[31:0]</obj_property>
-         <obj_property name="ObjectShortName">wr_data_in[31:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group225">
       <obj_property name="label">op_out</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/rd_data_out">
-         <obj_property name="ElementShortName">rd_data_out[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rd_data_out[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/rd_data_valid">
-         <obj_property name="ElementShortName">rd_data_valid</obj_property>
-         <obj_property name="ObjectShortName">rd_data_valid</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group228">
       <obj_property name="label">fsm_states</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/fsm_ca">
-         <obj_property name="ElementShortName">fsm_ca[7:0]</obj_property>
-         <obj_property name="ObjectShortName">fsm_ca[7:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/fsm_wait">
-         <obj_property name="ElementShortName">fsm_wait</obj_property>
-         <obj_property name="ObjectShortName">fsm_wait</obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/fsm_read">
          <obj_property name="ElementShortName">fsm_read[3:0]</obj_property>
          <obj_property name="ObjectShortName">fsm_read[3:0]</obj_property>
@@ -404,13 +363,9 @@
          <obj_property name="ElementShortName">fsm_write[3:0]</obj_property>
          <obj_property name="ObjectShortName">fsm_write[3:0]</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/fsm_reset">
-         <obj_property name="ElementShortName">fsm_reset</obj_property>
-         <obj_property name="ObjectShortName">fsm_reset</obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/latency_counter">
-         <obj_property name="ElementShortName">latency_counter[7:0]</obj_property>
-         <obj_property name="ObjectShortName">latency_counter[7:0]</obj_property>
+         <obj_property name="ElementShortName">latency_counter[3:0]</obj_property>
+         <obj_property name="ObjectShortName">latency_counter[3:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_clk_en">
@@ -505,46 +460,6 @@
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/sys_clk_200m">
-      <obj_property name="ElementShortName">sys_clk_200m</obj_property>
-      <obj_property name="ObjectShortName">sys_clk_200m</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/clk_200m">
-      <obj_property name="ElementShortName">clk_200m</obj_property>
-      <obj_property name="ObjectShortName">clk_200m</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/clk_200m_90o">
-      <obj_property name="ElementShortName">clk_200m_90o</obj_property>
-      <obj_property name="ObjectShortName">clk_200m_90o</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/dram_clk">
-      <obj_property name="ElementShortName">dram_clk</obj_property>
-      <obj_property name="ObjectShortName">dram_clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/dram_dq_oe">
-      <obj_property name="ElementShortName">dram_dq_oe</obj_property>
-      <obj_property name="ObjectShortName">dram_dq_oe</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/dram_dq_in">
-      <obj_property name="ElementShortName">dram_dq_in[15:0]</obj_property>
-      <obj_property name="ObjectShortName">dram_dq_in[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/dram_dq_out">
-      <obj_property name="ElementShortName">dram_dq_out[15:0]</obj_property>
-      <obj_property name="ObjectShortName">dram_dq_out[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/dram_rwds_oe">
-      <obj_property name="ElementShortName">dram_rwds_oe</obj_property>
-      <obj_property name="ObjectShortName">dram_rwds_oe</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/dram_rwds_in">
-      <obj_property name="ElementShortName">dram_rwds_in[1:0]</obj_property>
-      <obj_property name="ObjectShortName">dram_rwds_in[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/dram_rwds_out">
-      <obj_property name="ElementShortName">dram_rwds_out[1:0]</obj_property>
-      <obj_property name="ObjectShortName">dram_rwds_out[1:0]</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/tb_top/hyperram_device_inst/rd_or_wr">
       <obj_property name="ElementShortName">rd_or_wr</obj_property>
       <obj_property name="ObjectShortName">rd_or_wr</obj_property>
@@ -568,5 +483,289 @@
    <wvobject type="logic" fp_name="/tb_top/hyperram_device_inst/reg_sel">
       <obj_property name="ElementShortName">reg_sel</obj_property>
       <obj_property name="ObjectShortName">reg_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider320" type="divider">
+      <obj_property name="label">hyperram_impl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/clk_90o">
+      <obj_property name="ElementShortName">clk_90o</obj_property>
+      <obj_property name="ObjectShortName">clk_90o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_clk_p">
+      <obj_property name="ElementShortName">dram_clk_p</obj_property>
+      <obj_property name="ObjectShortName">dram_clk_p</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_clk_n">
+      <obj_property name="ElementShortName">dram_clk_n</obj_property>
+      <obj_property name="ObjectShortName">dram_clk_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_cs">
+      <obj_property name="ElementShortName">dram_cs</obj_property>
+      <obj_property name="ObjectShortName">dram_cs</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq">
+      <obj_property name="ElementShortName">dram_dq[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds">
+      <obj_property name="ElementShortName">dram_rwds[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_cs">
+      <obj_property name="ElementShortName">ctrl_cs</obj_property>
+      <obj_property name="ObjectShortName">ctrl_cs</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_mode">
+      <obj_property name="ElementShortName">ctrl_mode[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_mode[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_num_words">
+      <obj_property name="ElementShortName">ctrl_num_words[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_num_words[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_latency">
+      <obj_property name="ElementShortName">ctrl_latency[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_latency[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_addr_in">
+      <obj_property name="ElementShortName">ctrl_addr_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_addr_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_wr_data_in">
+      <obj_property name="ElementShortName">ctrl_wr_data_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_wr_data_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_wr_data_next">
+      <obj_property name="ElementShortName">ctrl_wr_data_next</obj_property>
+      <obj_property name="ObjectShortName">ctrl_wr_data_next</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_rd_data_out">
+      <obj_property name="ElementShortName">ctrl_rd_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_rd_data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ctrl_rd_data_valid">
+      <obj_property name="ElementShortName">ctrl_rd_data_valid</obj_property>
+      <obj_property name="ObjectShortName">ctrl_rd_data_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/state_reg">
+      <obj_property name="ElementShortName">state_reg[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state_reg[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/mode_reg">
+      <obj_property name="ElementShortName">mode_reg[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mode_reg[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/addr_reg">
+      <obj_property name="ElementShortName">addr_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/data_reg">
+      <obj_property name="ElementShortName">data_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_reg[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/data_next_reg">
+      <obj_property name="ElementShortName">data_next_reg</obj_property>
+      <obj_property name="ObjectShortName">data_next_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/latency_reg">
+      <obj_property name="ElementShortName">latency_reg[2:0]</obj_property>
+      <obj_property name="ObjectShortName">latency_reg[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/num_words_reg">
+      <obj_property name="ElementShortName">num_words_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">num_words_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/rd_sel">
+      <obj_property name="ElementShortName">rd_sel</obj_property>
+      <obj_property name="ObjectShortName">rd_sel</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/wr_sel">
+      <obj_property name="ElementShortName">wr_sel</obj_property>
+      <obj_property name="ObjectShortName">wr_sel</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/reg_sel">
+      <obj_property name="ElementShortName">reg_sel</obj_property>
+      <obj_property name="ObjectShortName">reg_sel</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/mem_sel">
+      <obj_property name="ElementShortName">mem_sel</obj_property>
+      <obj_property name="ObjectShortName">mem_sel</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ca_state">
+      <obj_property name="ElementShortName">ca_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ca_state[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/ca_data_reg">
+      <obj_property name="ElementShortName">ca_data_reg[47:0]</obj_property>
+      <obj_property name="ObjectShortName">ca_data_reg[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/latency_counter">
+      <obj_property name="ElementShortName">latency_counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">latency_counter[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/fsm_read">
+      <obj_property name="ElementShortName">fsm_read[3:0]</obj_property>
+      <obj_property name="ObjectShortName">fsm_read[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/rd_data_out_reg">
+      <obj_property name="ElementShortName">rd_data_out_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_data_out_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/rd_data_valid_reg">
+      <obj_property name="ElementShortName">rd_data_valid_reg</obj_property>
+      <obj_property name="ObjectShortName">rd_data_valid_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/read_buffer">
+      <obj_property name="ElementShortName">read_buffer[15:0]</obj_property>
+      <obj_property name="ObjectShortName">read_buffer[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/fsm_write">
+      <obj_property name="ElementShortName">fsm_write[3:0]</obj_property>
+      <obj_property name="ObjectShortName">fsm_write[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_clk">
+      <obj_property name="ElementShortName">dram_clk</obj_property>
+      <obj_property name="ObjectShortName">dram_clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_in">
+      <obj_property name="ElementShortName">dram_dq_in[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_in[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_out">
+      <obj_property name="ElementShortName">dram_dq_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_out[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_oe">
+      <obj_property name="ElementShortName">dram_dq_oe</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_oe</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_in">
+      <obj_property name="ElementShortName">dram_rwds_in[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_in[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_out">
+      <obj_property name="ElementShortName">dram_rwds_out[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_out[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_oe">
+      <obj_property name="ElementShortName">dram_rwds_oe</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_oe</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_out_rise">
+      <obj_property name="ElementShortName">dram_dq_out_rise[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_out_rise[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_out_fall">
+      <obj_property name="ElementShortName">dram_dq_out_fall[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_out_fall[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_oe_reg">
+      <obj_property name="ElementShortName">dram_dq_oe_reg</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_oe_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_out_rise">
+      <obj_property name="ElementShortName">dram_rwds_out_rise[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_out_rise[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_out_fall">
+      <obj_property name="ElementShortName">dram_rwds_out_fall[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_out_fall[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_oe_reg">
+      <obj_property name="ElementShortName">dram_rwds_oe_reg</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_oe_reg</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_clk_en">
+      <obj_property name="ElementShortName">dram_clk_en</obj_property>
+      <obj_property name="ObjectShortName">dram_clk_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_cs_reg">
+      <obj_property name="ElementShortName">dram_cs_reg</obj_property>
+      <obj_property name="ObjectShortName">dram_cs_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_in_rise">
+      <obj_property name="ElementShortName">dram_dq_in_rise[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_in_rise[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_dq_in_fall">
+      <obj_property name="ElementShortName">dram_dq_in_fall[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_dq_in_fall[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_in_rise">
+      <obj_property name="ElementShortName">dram_rwds_in_rise[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_in_rise[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/dram_rwds_in_fall">
+      <obj_property name="ElementShortName">dram_rwds_in_fall[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dram_rwds_in_fall[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/IDLE">
+      <obj_property name="ElementShortName">IDLE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IDLE[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/COMMAND_ADDRESS">
+      <obj_property name="ElementShortName">COMMAND_ADDRESS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">COMMAND_ADDRESS[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/WAIT">
+      <obj_property name="ElementShortName">WAIT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WAIT[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/READ">
+      <obj_property name="ElementShortName">READ[31:0]</obj_property>
+      <obj_property name="ObjectShortName">READ[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/WRITE">
+      <obj_property name="ElementShortName">WRITE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WRITE[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/CA_INIT">
+      <obj_property name="ElementShortName">CA_INIT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CA_INIT[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/CA_STAGE_1">
+      <obj_property name="ElementShortName">CA_STAGE_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CA_STAGE_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/CA_STAGE_2">
+      <obj_property name="ElementShortName">CA_STAGE_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CA_STAGE_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/CA_STAGE_3">
+      <obj_property name="ElementShortName">CA_STAGE_3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CA_STAGE_3[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/CA_STAGE_4">
+      <obj_property name="ElementShortName">CA_STAGE_4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CA_STAGE_4[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/CA_STAGE_5">
+      <obj_property name="ElementShortName">CA_STAGE_5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CA_STAGE_5[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/RW_STAGE_1">
+      <obj_property name="ElementShortName">RW_STAGE_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RW_STAGE_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/RW_STAGE_2">
+      <obj_property name="ElementShortName">RW_STAGE_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RW_STAGE_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/hyperram_top_inst/hyperram_intf_inst/RW_STAGE_3">
+      <obj_property name="ElementShortName">RW_STAGE_3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RW_STAGE_3[31:0]</obj_property>
    </wvobject>
 </wave_config>
