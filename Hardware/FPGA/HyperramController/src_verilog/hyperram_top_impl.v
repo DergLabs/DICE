@@ -41,7 +41,7 @@ wire clk;
 wire clk_90o;
 wire clk_400m_90o;
 
-wire reset;
+wire reset_vio;
 reg [3:0] reset_reg;
 assign dram_0_rst = reset_reg[0];
 assign dram_1_rst = reset_reg[1];
@@ -79,16 +79,27 @@ wire [31:0] write_val_vio;
 assign rd_sel_vio =  mode_sel_vio[0];
 assign wr_sel_vio = ~rd_sel_vio;
 
+wire fifo_ready_0;
+wire fifo_ready_1;
+wire fifo_ready_2;
+wire fifo_ready_3;
+
 hyperram_vio hyperram_vio_inst (
-  .clk       (clk          ),  // input wire clk
-  .probe_out0(address_vio  ),  // output wire [31 : 0] probe_out0
-  .probe_out1(num_words_vio),  // output wire [31 : 0] probe_out1
-  .probe_out2(latency_vio  ),  // output wire [2  : 0] probe_out2
-  .probe_out3(mode_sel_vio ),  // output wire [1  : 0] probe_out3
-  .probe_out4(start_vio    ),  // output wire [0  : 0] probe_out4
-  .probe_out5(chip_sel     ),  // output wire [1  : 0] probe_out5
-  .probe_out6(reset        ),  // output wire [0  : 0] probe_out6
-  .probe_out7(write_val_vio)   // output wire [31 : 0] probe_out7
+    .clk       (clk          ),  // input wire clk
+
+    .probe_out0(address_vio  ),  // output wire [31 : 0] probe_out0
+    .probe_out1(num_words_vio),  // output wire [31 : 0] probe_out1
+    .probe_out2(latency_vio  ),  // output wire [2  : 0] probe_out2
+    .probe_out3(mode_sel_vio ),  // output wire [1  : 0] probe_out3
+    .probe_out4(start_vio    ),  // output wire [0  : 0] probe_out4
+    .probe_out5(chip_sel     ),  // output wire [1  : 0] probe_out5
+    .probe_out6(reset_vio    ),  // output wire [0  : 0] probe_out6
+    .probe_out7(write_val_vio),  // output wire [31 : 0] probe_out7
+
+    .probe_in0(fifo_ready_0  ),    // input wire [0 : 0] probe_in0
+    .probe_in1(fifo_ready_1  ),    // input wire [0 : 0] probe_in1
+    .probe_in2(fifo_ready_2  ),    // input wire [0 : 0] probe_in2
+    .probe_in3(fifo_ready_3  )     // input wire [0 : 0] probe_in3
 );
 
 localparam IDLE  = 0;
@@ -110,7 +121,7 @@ wire [3:0] packed_rd_valid;
 assign packed_rd_valid = {rd_data_valid[0], rd_data_valid[1], rd_data_valid[2], rd_data_valid[3]};
 
 always @(posedge clk) begin
-    reset_reg[3:0] <= {reset, reset, reset, reset};
+    reset_reg[3:0] <= {reset_vio, reset_vio, reset_vio, reset_vio};
 
     case(state_reg)
         IDLE: begin
@@ -153,83 +164,91 @@ end
 // HyperRAM controller
 //=================================================
 hyperram_intf_impl_wrap hyperram_intf_inst_0 (
-    .clk               (clk          ),
-    .clk_90o           (clk_90o      ),
-    .clk_400m_90o      (clk_400m_90o ),
-    .dram_clk_p        (dram_0_clk_p ),
-    .dram_clk_n        (dram_0_clk_n ),
-    .dram_cs           (dram_0_cs    ),
-    .dram_dq           (dram_0_dq    ),
-    .dram_rwds         (dram_0_rwds  ),
-    .ctrl_cs           (hram_sel[0]  ),
-    .ctrl_mode         (mode_sel_vio ),
-    .ctrl_num_words    (num_words_vio),
-    .ctrl_latency      (latency_vio  ),
-    .ctrl_addr_in      (address_vio  ),
-    .ctrl_wr_data_in   (wr_data      ),
-    .ctrl_wr_data_valid(wr_data_valid),
-    .ctrl_rd_data_out  (rd_data      [0]),
-    .ctrl_rd_data_valid(rd_data_valid[0])
+    .clk               ( clk          ),
+    .clk_90o           ( clk_90o      ),
+    .clk_400m_90o      ( clk_400m_90o ),
+    .rst               (~reset_reg[0] ),
+    .ready             (fifo_ready_0  ),
+    .dram_clk_p        ( dram_0_clk_p ),
+    .dram_clk_n        ( dram_0_clk_n ),
+    .dram_cs           ( dram_0_cs    ),
+    .dram_dq           ( dram_0_dq    ),
+    .dram_rwds         ( dram_0_rwds  ),
+    .ctrl_cs           ( hram_sel[0]  ),
+    .ctrl_mode         ( mode_sel_vio ),
+    .ctrl_num_words    ( num_words_vio),
+    .ctrl_latency      ( latency_vio  ),
+    .ctrl_addr_in      ( address_vio  ),
+    .ctrl_wr_data_in   ( wr_data      ),
+    .ctrl_wr_data_valid( wr_data_valid),
+    .ctrl_rd_data_out  ( rd_data      [0]),
+    .ctrl_rd_data_valid( rd_data_valid[0])
 );
 
 hyperram_intf_impl_wrap hyperram_intf_inst_1 (
-    .clk               (clk          ),
-    .clk_90o           (clk_90o      ),
-    .clk_400m_90o      (clk_400m_90o ),
-    .dram_clk_p        (dram_1_clk_p ),
-    .dram_clk_n        (dram_1_clk_n ),
-    .dram_cs           (dram_1_cs    ),
-    .dram_dq           (dram_1_dq    ),
-    .dram_rwds         (dram_1_rwds  ),
-    .ctrl_cs           (hram_sel[1]  ),
-    .ctrl_mode         (mode_sel_vio ),
-    .ctrl_num_words    (num_words_vio),
-    .ctrl_latency      (latency_vio  ),
-    .ctrl_addr_in      (address_vio  ),
-    .ctrl_wr_data_in   (wr_data      ),
-    .ctrl_wr_data_valid(wr_data_valid),
-    .ctrl_rd_data_out  (rd_data      [1]),
-    .ctrl_rd_data_valid(rd_data_valid[1])
+    .clk               ( clk          ),
+    .clk_90o           ( clk_90o      ),
+    .clk_400m_90o      ( clk_400m_90o ),
+    .rst               (~reset_reg[1] ),
+    .ready             (fifo_ready_1  ),
+    .dram_clk_p        ( dram_1_clk_p ),
+    .dram_clk_n        ( dram_1_clk_n ),
+    .dram_cs           ( dram_1_cs    ),
+    .dram_dq           ( dram_1_dq    ),
+    .dram_rwds         ( dram_1_rwds  ),
+    .ctrl_cs           ( hram_sel[1]  ),
+    .ctrl_mode         ( mode_sel_vio ),
+    .ctrl_num_words    ( num_words_vio),
+    .ctrl_latency      ( latency_vio  ),
+    .ctrl_addr_in      ( address_vio  ),
+    .ctrl_wr_data_in   ( wr_data      ),
+    .ctrl_wr_data_valid( wr_data_valid),
+    .ctrl_rd_data_out  ( rd_data      [1]),
+    .ctrl_rd_data_valid( rd_data_valid[1])
 );
 
 hyperram_intf_impl_wrap hyperram_intf_inst_2 (
-    .clk               (clk          ),
-    .clk_90o           (clk_90o      ),
-    .clk_400m_90o      (clk_400m_90o ),
-    .dram_clk_p        (dram_2_clk_p ),
-    .dram_clk_n        (dram_2_clk_n ),
-    .dram_cs           (dram_2_cs    ),
-    .dram_dq           (dram_2_dq    ),
-    .dram_rwds         (dram_2_rwds  ),
-    .ctrl_cs           (hram_sel[2]  ),
-    .ctrl_mode         (mode_sel_vio ),
-    .ctrl_num_words    (num_words_vio),
-    .ctrl_latency      (latency_vio  ),
-    .ctrl_addr_in      (address_vio  ),
-    .ctrl_wr_data_in   (wr_data      ),
-    .ctrl_wr_data_valid(wr_data_valid),
-    .ctrl_rd_data_out  (rd_data      [2]),
-    .ctrl_rd_data_valid(rd_data_valid[2])
+    .clk               ( clk          ),
+    .clk_90o           ( clk_90o      ),
+    .clk_400m_90o      ( clk_400m_90o ),
+    .rst               (~reset_reg[2] ),
+    .ready             (fifo_ready_2  ),
+    .dram_clk_p        ( dram_2_clk_p ),
+    .dram_clk_n        ( dram_2_clk_n ),
+    .dram_cs           ( dram_2_cs    ),
+    .dram_dq           ( dram_2_dq    ),
+    .dram_rwds         ( dram_2_rwds  ),
+    .ctrl_cs           ( hram_sel[2]  ),
+    .ctrl_mode         ( mode_sel_vio ),
+    .ctrl_num_words    ( num_words_vio),
+    .ctrl_latency      ( latency_vio  ),
+    .ctrl_addr_in      ( address_vio  ),
+    .ctrl_wr_data_in   ( wr_data      ),
+    .ctrl_wr_data_valid( wr_data_valid),
+    .ctrl_rd_data_out  ( rd_data      [2]),
+    .ctrl_rd_data_valid( rd_data_valid[2])
 );
 
 hyperram_intf_impl_wrap hyperram_intf_inst_3 (
-    .clk               (clk          ),
-    .clk_90o           (clk_90o      ),
-    .clk_400m_90o      (clk_400m_90o ),
-    .dram_clk_p        (dram_3_clk_p ),
-    .dram_clk_n        (dram_3_clk_n ),
-    .dram_cs           (dram_3_cs    ),
-    .dram_dq           (dram_3_dq    ),
-    .dram_rwds         (dram_3_rwds  ),
-    .ctrl_cs           (hram_sel[3]  ),
-    .ctrl_mode         (mode_sel_vio ),
-    .ctrl_num_words    (num_words_vio),
-    .ctrl_latency      (latency_vio  ),
-    .ctrl_addr_in      (address_vio  ),
-    .ctrl_wr_data_in   (wr_data      ),
-    .ctrl_wr_data_valid(wr_data_valid),
-    .ctrl_rd_data_out  (rd_data      [3]),
-    .ctrl_rd_data_valid(rd_data_valid[3])
+    .clk               ( clk          ),
+    .clk_90o           ( clk_90o      ),
+    .clk_400m_90o      ( clk_400m_90o ),
+    .rst               (~reset_reg[3] ),
+    .ready             (fifo_ready_3  ),
+    .dram_clk_p        ( dram_3_clk_p ),
+    .dram_clk_n        ( dram_3_clk_n ),
+    .dram_cs           ( dram_3_cs    ),
+    .dram_dq           ( dram_3_dq    ),
+    .dram_rwds         ( dram_3_rwds  ),
+    .ctrl_cs           ( hram_sel[3]  ),
+    .ctrl_mode         ( mode_sel_vio ),
+    .ctrl_num_words    ( num_words_vio),
+    .ctrl_latency      ( latency_vio  ),
+    .ctrl_addr_in      ( address_vio  ),
+    .ctrl_wr_data_in   ( wr_data      ),
+    .ctrl_wr_data_valid( wr_data_valid),
+    .ctrl_rd_data_out  ( rd_data      [3]),
+    .ctrl_rd_data_valid( rd_data_valid[3])
 );
 
 endmodule

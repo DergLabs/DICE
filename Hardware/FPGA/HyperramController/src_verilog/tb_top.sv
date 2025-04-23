@@ -13,11 +13,11 @@ wire [15:0] dram_dq    ;
 wire        mmcm_locked;
 
 reg         cs            = 0;
-reg         rd_sel        = 1;
-reg         wr_sel        = 0;
-reg         mem_sel       = 0;
-reg         reg_sel       = 1;
-reg  [31:0] num_words     = 1;
+reg         rd_sel        = 0;
+reg         wr_sel        = 1;
+reg         mem_sel       = 1;
+reg         reg_sel       = 0;
+reg  [31:0] num_words     = 4;
 reg  [ 2:0] latency       = 4;
 reg  [31:0] addr_in       = 32'h00000004;
 reg  [31:0] wr_data_in    = 32'h1337CAFE;
