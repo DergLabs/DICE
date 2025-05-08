@@ -2,7 +2,8 @@ module oddr_test_top(
     input wire sysclk_p,
     input wire sysclk_n,
 
-    input wire rst_n
+    input wire rst_n,
+    inout wire fpga_output
 
 
 );
@@ -10,7 +11,10 @@ module oddr_test_top(
     wire clk_100m;
     wire enable;
 
-    //VIO
+    vio_0 your_instance_name (
+        .clk(clk_100m),                // input wire clk
+        .probe_out0(enable)  // output wire [0 : 0] probe_out0
+    );
 
 
     clk_wiz_0 clk_wiz_0
@@ -29,12 +33,9 @@ module oddr_test_top(
         .rst_n(rst_n),
         .enable(enable),
         .clk(clk_100m),
-
-
+        .module_output(fpga_output)
 
     );
-
-
 
 
 endmodule

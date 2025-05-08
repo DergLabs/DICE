@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "../../../../ODDR_Test.ip_user_files/ipstatic" \
+"../../../../../src/oddr_test_wrapper.sv" \
+"../../../../../src/oddr_test_sim.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
