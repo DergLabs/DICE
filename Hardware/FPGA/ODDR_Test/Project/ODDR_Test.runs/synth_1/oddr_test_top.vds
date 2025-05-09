@@ -1,0 +1,256 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu May  8 21:04:00 2025
+# Process ID: 23916
+# Current directory: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1
+# Command line: vivado.exe -log oddr_test_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source oddr_test_top.tcl
+# Log file: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1/oddr_test_top.vds
+# Journal file: C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1\vivado.jou
+# Running On: M_Laptop, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33946 MB
+#-----------------------------------------------------------
+source oddr_test_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 486.738 ; gain = 180.957
+Command: synth_design -top oddr_test_top -part xcku3p-ffva676-2-i
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
+INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 38624
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1988.285 ; gain = 418.172
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'O', assumed default net type 'wire' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_wrapper.sv:44]
+INFO: [Synth 8-6157] synthesizing module 'oddr_test_top' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_top.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'vio_0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1/.Xil/Vivado-23916-M_Laptop/realtime/vio_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'vio_0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1/.Xil/Vivado-23916-M_Laptop/realtime/vio_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1/.Xil/Vivado-23916-M_Laptop/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1/.Xil/Vivado-23916-M_Laptop/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'oddr_test_wrapper' [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_wrapper.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'ODDRE1' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:96754]
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
+	Parameter SRVAL bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'ODDRE1' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:96754]
+INFO: [Synth 8-6157] synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:78197]
+INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:78197]
+INFO: [Synth 8-6155] done synthesizing module 'oddr_test_wrapper' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_wrapper.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'oddr_test_top' (0#1) [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_top.sv:1]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_0'. This will prevent further optimization [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_top.sv:14]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'oddr_test_wrapper'. This will prevent further optimization [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_test_top.sv:32]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2095.504 ; gain = 525.391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2095.504 ; gain = 525.391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2095.504 ; gain = 525.391
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2095.504 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_wiz_0'
+Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_wiz_0'
+Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'vio_0'
+Finished Parsing XDC File [c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/vio_0/vio_0/vio_0_in_context.xdc] for cell 'vio_0'
+Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_constr.xdc]
+Finished Parsing XDC File [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_constr.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_constr.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/oddr_test_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/oddr_test_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2144.016 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 1 instance 
+  ODDRE1 => OSERDESE3: 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2144.016 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2144.016 ; gain = 573.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku3p-ffva676-2-i
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2144.016 ; gain = 573.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk_n. (constraint file  c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_n. (constraint file  c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk_p. (constraint file  c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_p. (constraint file  c:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 6).
+Applied set_property KEEP_HIERARCHY = SOFT for clk_wiz_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for vio_0. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2144.016 ; gain = 573.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2144.016 ; gain = 573.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    2 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1368 (col length:96)
+BRAMs: 720 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2144.016 ; gain = 573.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 2537.578 ; gain = 967.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 2537.707 ; gain = 967.594
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 2547.289 ; gain = 977.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |vio_0         |         1|
+|2     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |clk_wiz |     1|
+|2     |vio     |     1|
+|3     |LUT1    |     3|
+|4     |LUT2    |     1|
+|5     |ODDRE1  |     1|
+|6     |FDRE    |     2|
+|7     |IBUF    |     1|
+|8     |IOBUF   |     1|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:40 . Memory (MB): peak = 2562.074 ; gain = 943.449
+Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 2562.074 ; gain = 991.961
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2571.105 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2607.883 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3 instances were transformed.
+  IBUF => IBUF (IBUFCTRL, INBUF): 1 instance 
+  IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 1 instance 
+  ODDRE1 => OSERDESE3: 1 instance 
+
+Synth Design complete | Checksum: 71c8c5d3
+INFO: [Common 17-83] Releasing license: Synthesis
+33 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:53 ; elapsed = 00:01:00 . Memory (MB): peak = 2607.883 ; gain = 2050.695
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2607.883 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.runs/synth_1/oddr_test_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file oddr_test_top_utilization_synth.rpt -pb oddr_test_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu May  8 21:05:17 2025...

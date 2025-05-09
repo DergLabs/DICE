@@ -25,21 +25,19 @@ module oddr_test_wrapper (
    //         Kintex UltraScale
    // Xilinx HDL Language Template, version 2023.2
 
-   ODDR #(
+   ODDRE1 #(
       .IS_C_INVERTED(1'b0),      // Optional inversion for C
       .IS_D1_INVERTED(1'b0),     // Unsupported, do not use
       .IS_D2_INVERTED(1'b0),     // Unsupported, do not use
-      .SIM_DEVICE("ULTRASCALE"), // Set the device version for simulation functionality (ULTRASCALE)
+      .SIM_DEVICE("ULTRASCALE_PLUS"), // Set the device version for simulation functionality (ULTRASCALE)
       .SRVAL(1'b0)               // Initializes the ODDRE1 Flip-Flops to the specified value (1'b0, 1'b1)
    )
-   ODDR_inst (
+   ODDRE1_inst (
       .Q(oddr_output),   // 1-bit output: Data output to IOB
       .C(clk),   // 1-bit input: High-speed clock input
-      .CE(1'b1),
       .D1(data_counter[0]), // 1-bit input: Parallel data input 1
       .D2(data_counter[1]), // 1-bit input: Parallel data input 2
-      .R(1'b0),  // 1-bit input: Active-High Async Reset
-      .S(1'b0)
+      .SR(~rst_n)  // 1-bit input: Active-High Async Reset
    );
 
    IOBUF IOBUF_inst (

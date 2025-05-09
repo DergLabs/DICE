@@ -11,7 +11,7 @@ module oddr_test_top(
     wire clk_100m;
     wire enable;
 
-    vio_0 your_instance_name (
+    vio_0 vio_0 (
         .clk(clk_100m),                // input wire clk
         .probe_out0(enable)  // output wire [0 : 0] probe_out0
     );
