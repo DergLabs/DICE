@@ -10,10 +10,11 @@ import zlib
 # Local Libraries
 from USB_FTX232H_FT60X import USB_FTX232H_FT60X_sync245mode
 import time
-import tile_compressor
 import tile_compressorV2
 import quality_statistics
 import image_codec
+from file_format import create_dice_file
+
 
 DEBUG = False
 DISP_STATS = False
@@ -74,7 +75,6 @@ def process_image_channels(
     tile_size_sq = TILE_SIZE_LOC * TILE_SIZE_LOC
     n_tiles_y = IMG_SIZE_LOC // TILE_SIZE_LOC
     n_tiles_x = IMG_SIZE_LOC // TILE_SIZE_LOC
-    channel_data = []
 
     # Reference tiles for lossless replacement
     Y_ref = image_codec.generate_tiles(Y, TILE_SIZE_LOC)
@@ -182,11 +182,18 @@ def process_image_channels(
             Cr_returned[row][col] = Cr_values[:tile_size_sq]
             Cb_returned[row][col] = Cb_values[:tile_size_sq]
 
+
+
+
     print("\nDecoding...")
     # Reshape flat byte arrays to 2d arrays
     Y_all = Y_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cr_all = Cr_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cb_all = Cb_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
+
+    # TODO: file should save here
+    # Save image file 
+    create_dice_file("test.dice", IMG_SIZE, IMG_SIZE, TILE_SIZE, [Y_all, Cr_all, Cb_all], [], bytes(), bytes())
 
     # create 4d arrays of quantization values for encoding
     Y4d = Y_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC).astype(np.int32)
@@ -389,10 +396,6 @@ def process_color_image(image: MatLike, blocks_ids: np.ndarray) -> ProcessedImag
         % (usb.device_type, usb.device_name)
     )
 
-    # Process channels
-    # Y_processed, Cr_processed, Cb_processed, size_stats, tile_id = (
-    #     process_image_channels(usb, R, G, B, Y, Cr, Cb)
-    # )
     res = process_image_channels(usb, R, G, B, Y, Cr, Cb, blocks_ids)
     Y_processed = res.Y_output
     Cr_processed = res.Cr_output
