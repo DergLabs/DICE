@@ -22,6 +22,7 @@ import fpga_accelerated_compressor
 from processedwindow import ProcessedWindow
 import image_codec
 from ZoomableImageLabel import ZoomableImageLabel
+import os
 
 
 IMG_SIZE = 2048  # Size of image
@@ -663,6 +664,9 @@ class MainWindow(QMainWindow):
         )
         target_image = res.imgRGB
 
+        file_size = os.path.getsize(self.current_image_path)/1024;
+        file_compression_ratio = 100 * (1 - (res.size_stats.total_size / file_size))
+
         lossy_tile_size = res.size_stats.compressed_size / res.size_stats.compressed_blocks
         lossy_tile_compression_ratio = 100 * (1 - (lossy_tile_size / ((TILE_SIZE*TILE_SIZE*3)/1024)))
 
@@ -681,8 +685,11 @@ class MainWindow(QMainWindow):
         print(f"Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%\n")
 
         print(f"Total Processed Image Size: {res.size_stats.total_size:.2f}KB")
-        print(f"Original Image Size: {res.original_size:.2f}KB")
-        print(f"Compression Ratio: {res.compression_ratio:.2f}%")
+        print(f"Raw Image Size: {res.original_size:.2f}KB")
+        print(f"Image File Size: {file_size:.2f}KB")
+        print(f"Compression Ratio (Raw vs Compressed): {res.compression_ratio:.2f}%")
+        print(f"Compression Ratio (Original vs Compressed): {file_compression_ratio:.2f}%")
+
 
         original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
         target_image = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)
@@ -724,21 +731,6 @@ class MainWindow(QMainWindow):
         pixmap2 = QPixmap(timg)
         pixmap3 = QPixmap(dimg)
 
-        print(f"Num Lossy Tiles: {res.size_stats.compressed_blocks}")
-        print(f"Num Lossless Tiles: {res.size_stats.uncompressed_blocks}\n")
-
-        print(f"Lossy Tiles Total Size: {res.size_stats.compressed_size:.2f}KB")
-        print(f"Size of Individual Lossy Tile: {lossy_tile_size:.2f}KB")
-        print(f"Lossy Tile Compression Ratio: {lossy_tile_compression_ratio:.2f}%\n")
-
-        print(f"Lossless Tiles Total Size: {res.size_stats.uncompressed_size:.2f}KB")
-        print(f"Size of Individual Uncompressed Tile: {lossless_tile_size:.2f}KB")
-        print(f"Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%\n")
-
-        print(f"Total Processed Image Size: {res.size_stats.total_size:.2f}KB")
-        print(f"Original Image Size: {res.original_size:.2f}KB")
-        print(f"Compression Ratio: {res.compression_ratio:.2f}%")
-
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
@@ -746,9 +738,11 @@ class MainWindow(QMainWindow):
             f"""PSNR: {res.PSNR:.3f}
 MSSSIM: {res.MSSSIM:.3f}
 
-Raw Image Size: {res.original_size}KB
+Raw Image Size: {res.original_size:.2f}KB
+Original Image File Size: {file_size:.2f}KB
 Final Compressed Image Size: {res.size_stats.total_size:.2f}KB
-Compression Ratio: {res.compression_ratio:.2f}%
+Compression Ratio (Raw vs Compressed): {res.compression_ratio:.2f}%
+Compression Ratio (Original vs Compressed): {file_compression_ratio:.2f}%
 
 Num Lossy Tiles: {res.size_stats.compressed_blocks}
 Total Lossy Tile Size: {res.size_stats.compressed_size:.2f}KB
@@ -792,7 +786,7 @@ Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%
 
 
     def open_image(self):
-        filename, _ = QFileDialog.getOpenFileName(self, "Select Image", ".", "Image Files (*.png, *.jpg)")
+        filename, _ = QFileDialog.getOpenFileName(self, "Select Image", ".", "Image Files (*)")
         print(f"Selected Image {filename}")
         self.load_image_from_path(filename)
 

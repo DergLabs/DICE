@@ -264,17 +264,13 @@ def process_image_channels(
                 current_tile = block_ids[row * n_tiles_x + col]
                 # current_tile = tile_id[row][col]
 
-                # lossless
                 if current_tile == 0:
+                    # Lossless Compression
                     print(f"\rReplacing Tile {row}, {col} with Lossless", end="", flush=True)
                     # Replace pixel tile with original input pixels
                     Y_output[row][col] = Y_ref[row][col]
                     Cr_output[row][col] = Cr_ref[row][col]
                     Cb_output[row][col] = Cb_ref[row][col]
-
-                    '''Y4d[row][col] = Y_ref[row][col]
-                    Cr4d[row][col] = Cr_ref[row][col]
-                    Cb4d[row][col] = Cb_ref[row][col]'''
 
                     Y_lossless.append(Y4d[row][col])
                     Cr_lossless.append(Cr4d[row][col])
@@ -282,17 +278,14 @@ def process_image_channels(
 
                     uncompressed_block_count += 1
                 else:
-                    Y_asize, Y_compressed, Y_model = tile_compressorV2.compress_tile(Y4d[row][col])
-                    Cr_asize, Cr_compressed, Cr_model = tile_compressorV2.compress_tile(Cr4d[row][col])
-                    Cb_asize, Cb_compressed, Cb_model = tile_compressorV2.compress_tile(Cb4d[row][col])
+                    # Lossy Compression
+                    Y_asize, _, _ = tile_compressorV2.compress_tile(Y4d[row][col])
+                    Cr_asize, _, _ = tile_compressorV2.compress_tile(Cr4d[row][col])
+                    Cb_asize, _, _ = tile_compressorV2.compress_tile(Cb4d[row][col])
 
-                    Y_len = zlib.compress(Y4d[row][col].tobytes(), level=9)
-                    Cr_len = zlib.compress(Cr4d[row][col].tobytes(), level=9)
-                    Cb_len = zlib.compress(Cb4d[row][col].tobytes(), level=9)
-
-                    Y_zsize = len(Y_len) / 1024
-                    Cr_zsize = len(Cr_len) / 1024
-                    Cb_zsize = len(Cb_len) / 1024
+                    Y_zsize = len(zlib.compress(Y4d[row][col].tobytes(), level=9))/1024
+                    Cr_zsize = len(zlib.compress(Cr4d[row][col].tobytes(), level=9))/1024
+                    Cb_zsize = len(zlib.compress(Cb4d[row][col].tobytes(), level=9))/1024
 
                     Y_size = Y_asize if Y_asize < Y_zsize else Y_zsize
                     Cr_size = Cr_asize if Cr_asize < Cr_zsize else Cr_zsize 
@@ -303,9 +296,6 @@ def process_image_channels(
                     
     # Compress the lossless tiles
     print(f"\nCompressing Lossless Tiles using Zlib...\n")
-    #_, _, _ = tile_compressor.process_array(np.array(Y_lossless), None, None)
-    #_, _, _ = tile_compressor.process_array(np.array(Cr_lossless), None, None)
-    #_, _, _ = tile_compressor.process_array(np.array(Cb_lossless), None, None)
     Y_bytes = np.array(Y_lossless).tobytes()
     Cr_bytes = np.array(Cr_lossless).tobytes()
     Cb_bytes = np.array(Cb_lossless).tobytes()
