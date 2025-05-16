@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu May  8 21:05:17 2025
+| Date         : Thu May 15 17:35:33 2025
 | Host         : M_Laptop running 64-bit major release  (build 9200)
 | Command      : report_utilization -file oddr_test_top_utilization_synth.rpt -pb oddr_test_top_utilization_synth.pb
 | Design       : oddr_test_top
@@ -96,7 +96,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| Bonded IOB |    2 |     0 |          0 |       256 |  0.78 |
+| Bonded IOB |    4 |     0 |          0 |       256 |  1.56 |
 +------------+------+-------+------------+-----------+-------+
 
 
@@ -156,10 +156,11 @@ Warning! LUT value is adjusted to account for LUT combining.
 |  Ref Name | Used | Functional Category |
 +-----------+------+---------------------+
 | LUT1      |    3 |                 CLB |
+| OSERDESE3 |    2 |                 I/O |
+| OBUF      |    2 |                 I/O |
 | INBUF     |    2 |                 I/O |
 | IBUFCTRL  |    2 |              Others |
 | FDRE      |    2 |            Register |
-| OSERDESE3 |    1 |                 I/O |
 | OBUFT     |    1 |                 I/O |
 | LUT2      |    1 |                 CLB |
 +-----------+------+---------------------+

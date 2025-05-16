@@ -75,7 +75,7 @@ set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/micha/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-31264-M_Laptop/incrSyn
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -120,6 +120,8 @@ read_xdc C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_c
 set_property used_in_implementation false [get_files C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/src/oddr_constr.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/Users/micha/OneDrive/Desktop/DICE/Hardware/FPGA/ODDR_Test/Project/ODDR_Test.srcs/utils_1/imports/synth_1/oddr_test_top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

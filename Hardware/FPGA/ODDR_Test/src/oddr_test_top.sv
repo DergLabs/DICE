@@ -3,7 +3,9 @@ module oddr_test_top(
     input wire sysclk_n,
 
     input wire rst_n,
-    inout wire fpga_output
+    inout wire fpga_output,
+    output wire oddr2_output,
+    output wire straight_clock
 
 
 );
@@ -33,9 +35,12 @@ module oddr_test_top(
         .rst_n(rst_n),
         .enable(enable),
         .clk(clk_100m),
-        .module_output(fpga_output)
+        .module_output(fpga_output),
+        .oddr2_output(oddr2_output)
 
     );
+
+    assign straight_clock = clk_100m;
 
 
 endmodule
