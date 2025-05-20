@@ -167,7 +167,7 @@ def create_lossy_header(lossy_data) -> bytes:
     )
 
 
-def read_dice_file(dice_img_path: str):
+def read_dice_file(dice_img_path: str) -> DiceFile:
     with open(dice_img_path, "rb") as f:
         f.read(32)
         main_header_size: int = struct.unpack("I", f.read(4))[0]
@@ -201,8 +201,9 @@ def read_dice_file(dice_img_path: str):
         # pprint.pprint(mh)
         # pprint.pprint(llh)
         # pprint.pprint(lyh)
-        df = DiceFile(mh, llh, lyh)
+        # df = DiceFile(mh, llh, lyh)
         pprint.pprint(df)
+        return df
     pass
 
 

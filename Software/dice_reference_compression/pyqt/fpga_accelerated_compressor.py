@@ -191,9 +191,6 @@ def process_image_channels(
     Cr_all = Cr_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
     Cb_all = Cb_returned.reshape(-1, TILE_SIZE_LOC * TILE_SIZE_LOC)
 
-    # TODO: file should save here
-    # Save image file 
-    create_dice_file("test.dice", IMG_SIZE, IMG_SIZE, TILE_SIZE, [Y_all, Cr_all, Cb_all], [], bytes(), bytes())
 
     # create 4d arrays of quantization values for encoding
     Y4d = Y_all.reshape(n_tiles_y, n_tiles_x, TILE_SIZE_LOC, TILE_SIZE_LOC).astype(np.int32)

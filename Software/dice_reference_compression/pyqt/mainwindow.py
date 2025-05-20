@@ -18,6 +18,7 @@ from cv2.typing import MatLike
 import numpy as np
 from numpy._core.multiarray import ndarray
 from blockviewer import BlockViewer
+from file_format import read_dice_file
 import fpga_accelerated_compressor
 from processedwindow import ProcessedWindow
 import image_codec
@@ -30,6 +31,20 @@ TILE_SIZE = 32  # Size of the tiles that input 2048x2048 image will be split int
 BLOCK_SIZE = 8  # Size of 8x8 DCT Blocks
 N_TILES = IMG_SIZE // TILE_SIZE
 
+
+class ImageWindow(QMainWindow):
+    def __init__(self, q_image: QImage):
+        super().__init__()
+        self.setWindowTitle("DICE Image")
+        
+        # Create image label
+        self.image_label = QLabel(self)
+        self.setCentralWidget(self.image_label)
+        
+        # Convert QImage to QPixmap and display it
+        pixmap = QPixmap.fromImage(q_image)
+        self.image_label.setPixmap(pixmap)
+        self.resize(pixmap.width(), pixmap.height())
 
 class BlockMetrics:
     def __init__(self):
@@ -379,6 +394,10 @@ class MainWindow(QMainWindow):
         transfer_blocks_button = QPushButton("Transfer Blocks")
         control_layout.addWidget(transfer_blocks_button)
 
+        # Open DICE Encoded Image
+        open_saved_image_button = QPushButton("Open DICE Image")
+        control_layout.addWidget(open_saved_image_button)
+
         # Add zoom instructions
         zoom_instructions = QLabel("Zoom: Mouse Wheel | Pan: Middle Mouse Button + Drag")
         zoom_instructions.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -399,6 +418,7 @@ class MainWindow(QMainWindow):
         self.block_count_slider.valueChanged.connect(self.update_block_count_label)
         self.block_count_slider.valueChanged.connect(self.process_and_display_image)
         transfer_blocks_button.clicked.connect(self.transfer_blocks)
+        open_saved_image_button.clicked.connect(self.open_saved_image)
         select_image_button.clicked.connect(self.open_image)
 
         # Set up event filter for mouse clicks
@@ -654,6 +674,22 @@ class MainWindow(QMainWindow):
 
         return output_img
 
+
+    def open_saved_image(self):
+        filename, _ = QFileDialog.getOpenFileName(self, "Select DICE Encoded Image", ".", "DICE Image files (*.dice)")
+        df = read_dice_file(filename)
+        
+        # Decode
+        # # data = bytes(image_data)
+        # oimg = QImage(
+        #     bytes(original_image.data),
+        #     df.main_header.dim_x,
+        #     df.main_header.dim_y,
+        #     obytes_per_line,
+        #     QImage.Format.Format_RGB888,
+        # )
+        self.image_window = ImageWindow(QImage("REPLACE THIS WITH `oimg`"))
+        self.image_window.show()
 
     def transfer_blocks(self):
         original_image = self.original_image.copy()
