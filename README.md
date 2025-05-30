@@ -39,6 +39,32 @@ The FPGA Module provides all of the processing hardware and implements the custo
 
 **Hardware Architecture**
 
+The harware platform is split between two modules; the IO module and the FPGA module. The IO module contains all user IO, USB Power handling and supporting interface hardware. The FPGA module contains the Kintex US+ KU3P FPGA, 4x HyperRam modules, power supplies, FPGA clock, and onboard microcontroller. 
+
+*IO Module Specifications*
+- USB-C 3.0 Data & Power Port, supports 5Gb/s USB & USB-PD 2.1 (upto 20V 5A)
+- 4 lane MIPI CSI
+- HDMI 1.4b, supports 4K30
+- FT600 USB FIFO, supports 1Gb/s bandwidth over 16-bit bus
+- FT2232 confgired for JTAG and UART
+- RP2040 for data logging & control
+
+*FPGA Module Specifications*
+- Kintex Ultrascale+ KU3P FPGA
+- 4x HyperRam 3.0 512Mb
+- RP2040 MCU
+- LT7200S DC-DC (1.8v, 1.2v, 3.3v, 5v at 3A each)
+- TDA38840A DC-DC (0.85V VCCINT at 40A)
+- INA700 power monitors on 1.8v, 1.2v, 3.3v
+- INA236 power monitor on 0.85V
+- 4x User LED's
+- 8x GPIO debug pads
+- 200MHz System Clock
+- 256Mb configuration memory
+
+The following diagram outlines the top level hardware configuration:
+
+
 TODO: Finish me
 
 **Lossy Compression Architecture**
