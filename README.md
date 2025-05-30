@@ -65,11 +65,12 @@ The harware platform is split between two modules; the IO module and the FPGA mo
 The following diagram outlines the top level hardware configuration:
 ![Hardware Top Level Diagram](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/Hardware%20Architecture/DICE%20General%20Hardware%20Architecture%20-%20Top%20Level%20Architecture.png)
 
-TODO: Finish me
 
 **Lossy Compression Architecture**
 
-TODO: Finish me
+The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. THe simplified architecture for the lossy core is shown below.
+
+![Lossy compression core]()
 
 **Lossless Compression Architecture**
 
