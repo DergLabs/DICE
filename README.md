@@ -68,9 +68,22 @@ The following diagram outlines the top level hardware configuration:
 
 **Lossy Compression Architecture**
 
-The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. THe simplified architecture for the lossy core is shown below.
+The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. The simplified architecture for the lossy core is shown below.
 
-![Lossy compression core]()
+![Lossy compression core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/DCT%20JPEG%20HW%20implementation.png)
+
+In addition to the JPEG compression core, RGB to YCrCb conversion is performed. The implementation for this is shown below.
+
+![RGB to YCrCb](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/FPGA%20Based%20RGB%20to%20YCrCb.png)
+
+In order to determine which compression method to utilize, statistics from the gradient and laplacian kernels is used. The current implementation uses the variance of the X/Y gradient and Laplacian convolutions. Variance was chosen as it provides a good representation of texture, edge transitions, and blur. The implementation of the gradient and laplacian calculations are shown below. Note, only the X sobel computation is shown, however the Y computation is identical.
+
+<ins>Laplacian Core</ins>
+![Laplacian Core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/Laplacian%20Implementation.png)
+
+<ins>Gradient Core</ins>
+![Gradient Core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/Gradient%20Implementation.png)
+
 
 **Lossless Compression Architecture**
 
