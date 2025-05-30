@@ -70,7 +70,7 @@ The following diagram outlines the top level hardware configuration:
 
 The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. The simplified architecture for the lossy core is shown below.
 
-![Lossy compression core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/DCT%20JPEG%20HW%20implementation.png)
+![Lossy compression core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/JPEG%20Core%20Pipeline.png)
 
 In addition to the JPEG compression core, RGB to YCrCb conversion is performed. The implementation for this is shown below.
 
