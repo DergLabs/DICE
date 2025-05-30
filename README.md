@@ -99,10 +99,37 @@ TODO: Finish me
 
 **Research Papers & References**
 
-TODO: Finish me
+The following research papers and references were used during the development of this project.
 
+[1] Jonathan Griffin,
+“The Ultimate Guide to JPEG including JPEG Compression & Encoding”
+www.thewebmaster.com. https://www.thewebmaster.com/jpeg-definitive-guide/
+‌
+[2]H. Anas, “Fast 8*8*8 RCF 3D_DCT/IDCT transform for real time video compression and its FPGA Implementation,” vol. volume 7, no. 2, May 2014, https://www.researchgate.net/publication/262896207_Fast_888_RCF_3D_DCTIDCT_transform_for_real_time_video_compression_and_its_FPGA_Implementation
+‌
+[3]H. Anas, Said Belkouch, M. El Aakif, and Noureddine Chabini, “FPGA implementation of a pipelined 2D-DCT and simplified quantization for real-time applications,” International Conference on Multimedia Computing and Systems, pp. 1–6, Apr. 2011, doi: https://doi.org/10.1109/icmcs.2011.5945659.
+‌
+[4]S. Sudiro, A. Kardian, S. Madenda, and L. Hermanto, “OPEN ACCESS Mean and variance statistic for image processing on FPGA,” vol. 115, no. 1, p. 2020115, doi: https://doi.org/10.6703/IJASE.202103_18(1).115.
+‌
+‌[5] Mark Nelson,
+“Data Compression With Arithmetic Coding”, Mark Nelson, Oct. 19, 2014.
+https://marknelson.us/posts/2014/10/19/data-compression-with-arithmetic-coding.html 
 
+‌[6] Mark Nelson,
+“Arithmetic Coding + Statistical Modeling = Data Compression”, Mark Nelson, Feb. 1, 1991.
+https://marknelson.us/posts/1991/02/01/arithmetic-coding-statistical-modeling-data-compression
 
+‌[7] Wikipedia Contributors,
+“Discrete Cosine Transform”, Wikipedia,
+https://en.wikipedia.org/wiki/Discrete_cosine_transform# 
+
+[8] Wikipedia Contributors,
+“Huffman Coding”, Wikipedia,
+https://en.wikipedia.org/wiki/Huffman_coding 
+‌
+‌[9]
+“LZSS” The Hitchhiker’s Guide to Compression, 2024.
+https://go-compression.github.io/algorithms/lzss/
 
 
 
