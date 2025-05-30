@@ -1,0 +1,1332 @@
+{
+    "ltx_root": {
+        "version": 4,
+        "minor": 0,
+        "ltx_data": [
+            {
+                "name": "EDA_PROBESET",
+                "active": true,
+                "debug_cores": [
+                    {
+                        "type": "XSDB_V3",
+                        "name": "dbg_hub",
+                        "spec": "labtools_xsdbm_v3",
+                        "clk_input_freq_hz": "297000002"
+                    },
+                    {
+                        "type": "ILA_V3",
+                        "name": "mipi/mipi_dphy_ila",
+                        "spec": "labtools_ila_v6",
+                        "ipName": "ila",
+                        "core_location": {
+                            "user_chain": 1,
+                            "slave_index": 0,
+                            "bscan_switch_index": 0
+                        },
+                        "uuid": "A32B7352168C5EA2AD4358D7383B29E2",
+                        "pins": [
+                            {
+                                "name": "probe0",
+                                "id": 0,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "mipi/csi_byte_clock",
+                                        "isBus": false,
+                                        "parentNetId": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe1",
+                                "id": 1,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "mipi/link_reset_out",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe2",
+                                "id": 2,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 2,
+                                "nets": [
+                                    {
+                                        "name": "mipi/wait_for_sync",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe3",
+                                "id": 3,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 3,
+                                "nets": [
+                                    {
+                                        "name": "mipi/packet_done",
+                                        "isBus": false,
+                                        "parentNetId": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe4",
+                                "id": 4,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 4,
+                                "nets": [
+                                    {
+                                        "name": "mipi/word_clock",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe5",
+                                "id": 5,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 5,
+                                "nets": [
+                                    {
+                                        "name": "mipi/word_data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/word_data[31]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[30]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[29]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[28]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[27]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[26]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[25]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[24]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[23]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[22]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[21]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[20]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[19]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[18]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[17]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[16]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[15]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[14]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[13]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[12]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[11]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[10]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[9]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[8]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[7]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[6]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[5]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[4]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[3]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[2]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[1]"
+                                            },
+                                            {
+                                                "name": "mipi/word_data[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe6",
+                                "id": 6,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 6,
+                                "nets": [
+                                    {
+                                        "name": "mipi/word_valid",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe7",
+                                "id": 7,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 7,
+                                "nets": [
+                                    {
+                                        "name": "mipi/packet_payload",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/packet_payload[31]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[30]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[29]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[28]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[27]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[26]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[25]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[24]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[23]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[22]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[21]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[20]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[19]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[18]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[17]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[16]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[15]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[14]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[13]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[12]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[11]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[10]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[9]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[8]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[7]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[6]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[5]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[4]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[3]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[2]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[1]"
+                                            },
+                                            {
+                                                "name": "mipi/packet_payload[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe8",
+                                "id": 8,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 8,
+                                "nets": [
+                                    {
+                                        "name": "mipi/packet_payload_valid",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe9",
+                                "id": 9,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 9,
+                                "nets": [
+                                    {
+                                        "name": "mipi/csi_vsync",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe10",
+                                "id": 10,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 10,
+                                "nets": [
+                                    {
+                                        "name": "mipi/csi_in_frame",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe11",
+                                "id": 11,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 11,
+                                "nets": [
+                                    {
+                                        "name": "mipi/csi_in_line",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe12",
+                                "id": 12,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 39,
+                                "portIndex": 12,
+                                "nets": [
+                                    {
+                                        "name": "mipi/unpack_data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/unpack_data[39]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[38]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[37]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[36]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[35]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[34]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[33]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[32]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[31]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[30]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[29]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[28]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[27]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[26]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[25]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[24]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[23]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[22]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[21]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[20]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[19]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[18]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[17]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[16]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[15]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[14]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[13]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[12]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[11]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[10]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[9]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[8]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[7]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[6]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[5]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[4]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[3]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[2]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[1]"
+                                            },
+                                            {
+                                                "name": "mipi/unpack_data[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe13",
+                                "id": 13,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 13,
+                                "nets": [
+                                    {
+                                        "name": "mipi/unpack_data_valid",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe14",
+                                "id": 14,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 14,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_hsync_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe15",
+                                "id": 15,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 15,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_vsync_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe16",
+                                "id": 16,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 16,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_den_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe17",
+                                "id": 17,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 17,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_line_start_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe18",
+                                "id": 18,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 18,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_odd_line_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe19",
+                                "id": 19,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 19,
+                                "portIndex": 19,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_data_x",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/video_data_x[19]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[18]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[17]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[16]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[15]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[14]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[13]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[12]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[11]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[10]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[9]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[8]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[7]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[6]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[5]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[4]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[3]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[2]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[1]"
+                                            },
+                                            {
+                                                "name": "mipi/video_data_x[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe20",
+                                "id": 20,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 19,
+                                "portIndex": 20,
+                                "nets": [
+                                    {
+                                        "name": "mipi/video_prev_line_x",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/video_prev_line_x[19]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[18]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[17]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[16]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[15]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[14]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[13]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[12]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[11]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[10]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[9]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[8]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[7]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[6]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[5]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[4]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[3]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[2]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[1]"
+                                            },
+                                            {
+                                                "name": "mipi/video_prev_line_x[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe21",
+                                "id": 21,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 21,
+                                "nets": [
+                                    {
+                                        "name": "mipi/debayer_hsync_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe22",
+                                "id": 22,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 22,
+                                "nets": [
+                                    {
+                                        "name": "mipi/debayer_vsync_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe23",
+                                "id": 23,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 23,
+                                "nets": [
+                                    {
+                                        "name": "mipi/debayer_den_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe24",
+                                "id": 24,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 24,
+                                "nets": [
+                                    {
+                                        "name": "mipi/debayer_line_start_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe25",
+                                "id": 25,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 29,
+                                "portIndex": 25,
+                                "nets": [
+                                    {
+                                        "name": "mipi/debayer_data_even",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/debayer_data_even[29]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[28]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[27]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[26]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[25]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[24]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[23]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[22]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[21]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[20]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[19]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[18]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[17]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[16]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[15]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[14]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[13]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[12]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[11]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[10]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[9]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[8]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[7]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[6]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[5]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[4]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[3]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[2]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[1]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_even[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe26",
+                                "id": 26,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 29,
+                                "portIndex": 26,
+                                "nets": [
+                                    {
+                                        "name": "mipi/debayer_data_odd",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "mipi/debayer_data_odd[29]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[28]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[27]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[26]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[25]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[24]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[23]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[22]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[21]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[20]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[19]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[18]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[17]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[16]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[15]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[14]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[13]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[12]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[11]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[10]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[9]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[8]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[7]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[6]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[5]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[4]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[3]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[2]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[1]"
+                                            },
+                                            {
+                                                "name": "mipi/debayer_data_odd[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe27",
+                                "id": 27,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 27,
+                                "nets": [
+                                    {
+                                        "name": "mipi/dci_locked",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe28",
+                                "id": 28,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 28,
+                                "nets": [
+                                    {
+                                        "name": "mipi/enable_phy",
+                                        "isBus": false,
+                                        "parentNetId": 215
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "VIO_V2",
+                        "name": "singal_viewer",
+                        "spec": "labtools_vio_v3",
+                        "ipName": "vio",
+                        "core_location": {
+                            "user_chain": 1,
+                            "slave_index": 1,
+                            "bscan_switch_index": 0
+                        },
+                        "uuid": "940D6FB178C15BD58EC7E92CC06F3464",
+                        "pins": [
+                            {
+                                "name": "probe_in0",
+                                "id": 29,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "dci_lock_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in1",
+                                "id": 30,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "reset_c",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in2",
+                                "id": 31,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 2,
+                                "nets": [
+                                    {
+                                        "name": "clk_lock_x",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in3",
+                                "id": 32,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 3,
+                                "nets": [
+                                    {
+                                        "name": "phy_ready_x",
+                                        "isBus": false,
+                                        "parentNetId": 219
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 0,
+                        "name": "mipi/link/clkphy/byte_clock",
+                        "state_reg": [
+                            {
+                                "name": "mipi/depacket/FSM_sequential_state_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "name": "mipi/depacket/packet_done",
+                        "state_reg": [
+                            {
+                                "name": "mipi/depacket/FSM_sequential_state_reg[2]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 215,
+                        "name": "mipi/enable_phy",
+                        "state_reg": [
+                            {
+                                "name": "mipi/unpack10/FSM_sequential_byte_count_int_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "010"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "001"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 219,
+                        "name": "mipi/enable_phy",
+                        "state_reg": [
+                            {
+                                "name": "mipi/unpack10/FSM_sequential_byte_count_int_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "010"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "001"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

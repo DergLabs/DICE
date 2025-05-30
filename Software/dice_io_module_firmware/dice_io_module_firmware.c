@@ -11,14 +11,7 @@
 #include "constants.h"
 
 #include "functions.h"
-
-#ifdef CAM_TARGET
-#if CAM_TARGET == 219
-#include "dice_imx219.h"
-#else
-#include "dice_imx219.h"
-#endif
-#endif
+#include "dice_imx477.h"
 
 char buffer[BUFFER_SIZE];
 
@@ -73,8 +66,9 @@ int main() {
 
     for(int i = 0; i < MBUS_SIZE; i++) {
         gpio_init(MBUS[i]);
-        gpio_set_dir(MBUS[i], GPIO_OUT);
-        gpio_put(MBUS[i], false);
+        gpio_set_dir(MBUS[i], GPIO_IN);
+        //gpio_pull_down(MBUS[i]);
+        //gpio_put(MBUS[i], false);
     }
 
     // i2c ex
@@ -83,40 +77,56 @@ int main() {
 
     // Initialize I2C port at 400 kHz
     i2c_init(i2c0, I2C0_SPEED * 1000);
-    i2c_init(i2c1, I2C1_SPEED * 1000);
-
+    
     gpio_init(I2C0_SDA);
     gpio_set_function(I2C0_SDA, GPIO_FUNC_I2C);
 
     gpio_init(I2C0_SCL);
     gpio_set_function(I2C0_SCL, GPIO_FUNC_I2C);
 
+    sleep_ms(20000);
+    //gpio_set_dir(MBUS[0], GPIO_IN);
+    //gpio_pull_down(MBUS[0]);
+    int fpga_rdy = gpio_get(MBUS[0]);
+    sleep_ms(3000);
+    printf("MBUS 0: %d\n", gpio_get(MBUS[0]));
+    sleep_ms(3000);
+    
+    /*while (fpga_rdy == 0) {
+        sleep_ms(500);
+        printf("Waiting for FPGA signal on MBUS_0\n");
+        fpga_rdy = gpio_get(MBUS[0]);
+        print("MBUS 0: %d\n", fpga_rdy);
+
+    }*/
+
+    printf("FPGA Signal Received\n");
+    sleep_ms(2000);
+    printf("Initializing I2C1\n");
+    i2c_init(i2c1, I2C1_SPEED * 1000);
     gpio_init(I2C1_SDA);
     gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
 
     gpio_init(I2C1_SCL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
-
-    sleep_ms(2000);
-    printf("I2C Initialized, waiting 20 seconds before setting up camera\n");
-    sleep_ms(20000);
+    printf("I2C1 Initialized\n");
+    sleep_ms(1000);
     printf("Setting up Camera\n");
     sleep_ms(1000);
     // Set up Camera
     gpio_put(CAM_PWR_EN, true);
-    sleep_ms(50);
+    sleep_ms(100);
     gpio_put(CAM_LED_EN, true);
     sleep_ms(50);
-    // imx477_init();
-	imx_init();
-    sleep_ms(10);
+    imx477_init();
+    sleep_ms(50);
 
     // Disable I2C1
     i2c_deinit(i2c1);
     gpio_set_function(I2C1_SDA, GPIO_FUNC_NULL);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_NULL);
 
-    gpio_put(MBUS[0], true);
+    //gpio_put(MBUS[0], true);
     sleep_ms(10);
 
     // USBPD IO Values
@@ -149,6 +159,12 @@ int main() {
         int16_t ina700_current;
         int16_t ina700_voltage;
         uint32_t ina700_power;
+
+        //Read all MBUS values
+        for(int i = 0; i < MBUS_SIZE; i++) {
+            printf("MBUS[%d]: %d\n", i, gpio_get(MBUS[i]));
+        }
+        //printf("MBUS[0]: %d\n", gpio_get(MBUS[0]));
 
         if(!ina700_read_16_reg(INA700_DIETEMP, &ina700_temp)) {
             printf("Failed to read INA700 Temperature\n");

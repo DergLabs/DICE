@@ -1,0 +1,88 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Wed Jan  8 21:58:49 2025
+| Host         : M_Laptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file ft600_16B_loopback_control_sets_placed.rpt
+| Design       : ft600_16B_loopback
+| Device       : xcku3p
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    10 |
+|    Minimum number of control sets                        |    10 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    10 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    10 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     4 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               1 |            1 |
+| No           | No                    | Yes                    |               6 |            2 |
+| No           | Yes                   | No                     |              28 |            4 |
+| Yes          | No                    | No                     |              18 |            3 |
+| Yes          | No                    | Yes                    |              23 |            6 |
+| Yes          | Yes                   | No                     |              22 |            3 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------+------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+|     Clock Signal    |                     Enable Signal                    |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------+------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  ftdi_clk_IBUF_BUFG |                                                      |                                  |                1 |              1 |         1.00 |
+|  ftdi_clk_IBUF_BUFG | send_recieve_module/reg_ftdi_be_i[1]_i_1_n_0         |                                  |                1 |              2 |         2.00 |
+| ~ftdi_clk_IBUF_BUFG | send_recieve_module/ftdi_be_tx_en                    | rst_n_IBUF_inst/O                |                2 |              4 |         2.00 |
+|  ftdi_clk_IBUF_BUFG | send_recieve_module/p_0_in[1]                        |                                  |                1 |              8 |         8.00 |
+|  ftdi_clk_IBUF_BUFG | send_recieve_module/p_0_in[9]                        |                                  |                2 |              8 |         4.00 |
+| ~ftdi_clk_IBUF_BUFG |                                                      | rst_n_IBUF_inst/O                |                3 |             10 |         3.33 |
+| ~ftdi_clk_IBUF_BUFG | send_recieve_module/reg_ftdi_data_output[15]_i_1_n_0 | rst_n_IBUF_inst/O                |                4 |             19 |         4.75 |
+|  ftdi_clk_IBUF_BUFG | custom_sync_fifo/data_out[17]_i_2_n_0                | rst_n_IBUF_inst/O                |                3 |             22 |         7.33 |
+|  ftdi_clk_IBUF_BUFG |                                                      | u_ftdi_clk_beat/count[0]_i_1_n_0 |                3 |             24 |         8.00 |
+| ~ftdi_clk_IBUF_BUFG | custom_sync_fifo/fifo_reg_0_15_0_13_i_2_n_0          |                                  |                2 |             24 |        12.00 |
++---------------------+------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+
+

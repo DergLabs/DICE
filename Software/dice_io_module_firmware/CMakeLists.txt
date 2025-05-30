@@ -33,39 +33,13 @@ project(dice_io_module_firmware C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Option to build with IMX477 or IMX219 with defualt to IMX219
-option(CAM_TARGET "Choose Camera Module to target: 477 or 219" "219")
-# Conditional logic to build the correct binary
-if (CAM_TARGET STREQUAL "219")
-	message(STATUS "Building firmware targetting IMX219 Module")
-    add_executable(
-		dice_io_module_firmware
-		dice_io_module_firmware.c
-		functions.c
-		dice_imx219.c
-	)
-elseif (CAM_TARGET STREQUAL "binary2")
-	message(STATUS "Building firmware targetting IMX477 Module")
-    add_executable(
-		dice_io_module_firmware
-		dice_io_module_firmware.c
-		functions.c
-		dice_imx477.c
-	)
-else()
-    message(FATAL_ERROR "Invalid option for CAM_TARGET. Use '477' or '219'.")
-endif()
-target_compile_definitions(dice_io_module_firmware PRIVATE CAM_TARGET=${CAM_TARGET})
-
 # Add executable. Default name is the project name, version 0.1
 
-# add_executable(
-# 	dice_io_module_firmware
-# 	dice_io_module_firmware.c
-# 	functions.c
-# 	dice_imx477.c
-# )
-
+add_executable(dice_io_module_firmware
+	dice_io_module_firmware.c
+	functions.c
+	dice_imx477.c
+)
 
 pico_set_program_name(dice_io_module_firmware "dice_io_module_firmware")
 pico_set_program_version(dice_io_module_firmware "0.1")

@@ -1,0 +1,19 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../laplacian_core.gen/sources_1/ip/dsp_msub/sim/dsp_msub.vhd" \
+"../../../../laplacian_core.gen/sources_1/ip/dsp_acum/sim/dsp_acum.vhd" \
+"../../../../laplacian_core.gen/sources_1/ip/dsp_mac/sim/dsp_mac.vhd" \
+"../../../../laplacian_core.gen/sources_1/ip/dsp_macro_simd/sim/dsp_macro_simd.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../laplacian_core.srcs/sources_1/new/rgb_to_grayscale.vhd" \
+"../../../../laplacian_core.srcs/sources_1/new/data_delay_reg.vhd" \
+"../../../../laplacian_core.srcs/sources_1/new/laplacian_core.vhd" \
+"../../../../laplacian_core.srcs/sources_1/new/variance_core.vhd" \
+"../../../../laplacian_core.srcs/sources_1/new/lpc_top.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../laplacian_core.srcs/sim_1/new/blur_sim.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../image_dct.srcs/sources_1/new/sipo_reg.vhd" \
+"../../../../image_dct.srcs/sources_1/new/simd_4x12b_dsp.vhd" \
+"../../../../image_dct.srcs/sources_1/imports/new/data_delay_reg.vhd" \
+"../../../../image_dct.srcs/sources_1/new/dct1d.vhd" \
+"../../../../image_dct.srcs/sources_1/new/pixel_divider.vhd" \
+"../../../../image_dct.srcs/sources_1/new/transpose.vhd" \
+"../../../../image_dct.srcs/sources_1/new/quantization_table.vhd" \
+"../../../../image_dct.srcs/sources_1/new/quantizer.vhd" \
+"../../../../image_dct.srcs/sources_1/new/image_compressor.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../image_dct.srcs/sim_1/new/compressor_sim.vhd" \
+
+# Do not sort compile order
+nosort

@@ -115,26 +115,11 @@ def zigzag_order_matrix(matrix):
 # Compressed 4D Tile array using ANS encoding from constrition library, returns size in KB of compressed file, compressed data
 def compress_tile(tile_array, tile_type=None):
 
-    #print(f"Tile Array before ZigZag:\n {tile_array[0][0]}")
-    '''rle = []
-    # Apply ZigZag to each 8x8 block
-    for i in range(tile_array.shape[0]):
-        for j in range(tile_array.shape[1]):
-            tile_array[i][j] = zigzag_order_matrix(tile_array[i][j])
-            rle.append(rle_encode_int16(tile_array[i][j].flatten()))
-    
-    print(f"Tile Array after ZigZag:\n {tile_array[0][0]}")
-
-    # RLE each 8x8 block
-
-
-    print(f"Tile Array after ZigZag:\n {tile_array[0][0]}")'''
-
-
-    #print(f"Tile Array Shape: {tile_array.shape}")
-
     # Convert 32x32 tile to 4x4x8x8 
-    tile_array = np.reshape(tile_array, (4, 4, 8, 8))
+    if tile_array.shape == (1024,):
+        tile_array = np.reshape(tile_array, (4, 4, 8, 8))
+    else:
+        tile_array = np.reshape(tile_array, (4, 2, 8, 8))
 
     # Zigzag order each 8x8 block
     for row in range(tile_array.shape[0]):
@@ -142,9 +127,7 @@ def compress_tile(tile_array, tile_type=None):
             tile_array[row][col] = zigzag_order_matrix(tile_array[row][col])
 
     image_array = tile_array.flatten()
-    
-    #print(f"Image Array Dtype: {image_array.dtype}")
-    #print(f"Image Array Shape: {image_array.shape}")
+
 
     # Get min and max values of tile
     M_min = np.min(image_array)
@@ -154,9 +137,6 @@ def compress_tile(tile_array, tile_type=None):
         # Add a small delta to max to ensure a valid range
         M_max = M_min + 1
 
-    #print(f"Min: {M_min}, Max: {M_max}")
-
-    image_arrayL = image_array.tolist()
     # create a new ANS model
     entropy_model = constriction.stream.model.QuantizedGaussian(M_min, M_max, 0, 1) # Min, Max, Mean, Std. Dev
     encoder = constriction.stream.stack.AnsCoder()

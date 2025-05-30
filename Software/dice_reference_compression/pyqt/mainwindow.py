@@ -22,6 +22,7 @@ import fpga_accelerated_compressor
 from processedwindow import ProcessedWindow
 import image_codec
 from ZoomableImageLabel import ZoomableImageLabel
+import os
 
 
 IMG_SIZE = 2048  # Size of image
@@ -429,8 +430,8 @@ class MainWindow(QMainWindow):
                 # Calculate gradient metrics
                 grad_x = cv2.Sobel(tiles[row][col], cv2.CV_32F, 1, 0)
                 grad_y = cv2.Sobel(tiles[row][col], cv2.CV_32F, 0, 1)
-                magnitude = np.sqrt(grad_x**2 + grad_y**2)
-                gradient_std_val = np.std(magnitude)
+                grad_magnitude = np.sqrt(grad_x**2 + grad_y**2)
+                gradient_std_val = np.std(grad_magnitude)
 
 
                 # Calculate Laplacian variance
@@ -440,7 +441,8 @@ class MainWindow(QMainWindow):
 
                 # Create metrics object
                 metrics = BlockMetrics()
-                metrics.gradient_mean = np.mean(gradient_std_val)
+                #metrics.gradient_mean = np.mean(gradient_std_val)
+                metrics.gradient_mean = np.var(grad_magnitude)
                 metrics.laplacian_var = laplacian_var
                 metrics.loc = (row, col)
                 self.block_metrics.append(metrics)
@@ -477,20 +479,14 @@ class MainWindow(QMainWindow):
         self.metrics_stats.laplacian_median = float(np.median(laplacian_values))
 
         # Update sliders and labels
-        self.gradient_threshold_slider.setMinimum(int(self.metrics_stats.gradient_min))
-        self.gradient_threshold_slider.setMaximum(int(self.metrics_stats.gradient_max))
+        self.gradient_threshold_slider.setMinimum(0)
+        self.gradient_threshold_slider.setMaximum(65535)
         self.gradient_threshold_slider.setValue(int(self.metrics_stats.gradient_median))
         self.update_gradient_label(int(self.metrics_stats.gradient_median))
 
-        self.laplacian_threshold_slider.setMinimum(
-            int(self.metrics_stats.laplacian_min)
-        )
-        self.laplacian_threshold_slider.setMaximum(
-            int(self.metrics_stats.laplacian_max)
-        )
-        self.laplacian_threshold_slider.setValue(
-            int(self.metrics_stats.laplacian_median)
-        )
+        self.laplacian_threshold_slider.setMinimum(0)
+        self.laplacian_threshold_slider.setMaximum(65535)
+        self.laplacian_threshold_slider.setValue(int(self.metrics_stats.laplacian_median))
         self.update_laplacian_label(int(self.metrics_stats.laplacian_median))
 
         self.update_status_bar()
@@ -501,8 +497,8 @@ class MainWindow(QMainWindow):
         visualization = image_codec.generate_tiles(self.original_image, TILE_SIZE)
         #print(f"Visualization shape: {visualization.shape}")
         
-        gradient_threshold = self.gradient_threshold_slider.value()
-        laplacian_threshold = self.laplacian_threshold_slider.value()
+        gradient_threshold = self.gradient_threshold_slider.value()/16
+        laplacian_threshold = self.laplacian_threshold_slider.value()/4
         
         # Initialize block tracking
         self.lossless_blocks = []
@@ -523,9 +519,10 @@ class MainWindow(QMainWindow):
             row, col = metrics.loc
             
             # Determine overlay color based on thresholds
+            # Gradient mean is actually variance, too lazy to rename all variables
             if (metrics.gradient_mean < gradient_threshold) and (metrics.laplacian_var < laplacian_threshold):
                 overlay_color = (255, 0, 255)  # Purple - Both thresholds exceeded
-                self.block_ids[i] = 1
+                self.block_ids[i] = 1 # lossy block
                 self.lossy_blocks.append(iblock)
                 colored_blocks.append((row, col, overlay_color))
             elif metrics.gradient_mean < gradient_threshold:
@@ -539,7 +536,7 @@ class MainWindow(QMainWindow):
                 self.lossy_blocks.append(iblock)
                 colored_blocks.append((row, col, overlay_color))
             else:
-                self.block_ids[i] = 0
+                self.block_ids[i] = 0 # lossless block
                 self.lossless_blocks.append(iblock)
         
         # Create a copy of the visualization for applying highlights
@@ -608,14 +605,14 @@ class MainWindow(QMainWindow):
 
     def draw_diff(self, img1: np.ndarray, img2: np.ndarray) -> np.ndarray:
         """
-        Compares two images in 8x8 tiles and draws a blue box on differing tiles.
+        Compares two images in 8x8 tiles and draws a red box on differing tiles.
 
         Parameters:
             img1 (np.ndarray): First image as a NumPy array.
             img2 (np.ndarray): Second image as a NumPy array.
 
         Returns:
-            np.ndarray: Image with blue boxes around differing tiles.
+            np.ndarray: Image with red boxes around differing tiles.
         """
         if img1.shape != img2.shape:
             raise ValueError("Images must have the same dimensions")
@@ -623,9 +620,9 @@ class MainWindow(QMainWindow):
         # Copy the original image to draw on
         output_img = img1.copy()
 
-        tile_size = 32
+        tile_size = TILE_SIZE
 
-        block2d = self.block_ids.reshape((64, 64))
+        block2d = self.block_ids.reshape((N_TILES, N_TILES))
         for row in range(block2d.shape[0]):
             for col in range(block2d.shape[1]):
                 if block2d[row][col] == 1:
@@ -658,15 +655,32 @@ class MainWindow(QMainWindow):
         original_image = self.original_image.copy()
         target_image = self.original_image.copy()
 
-        res = fpga_accelerated_compressor.process_color_image(
-            target_image, self.block_ids
-        )
+        gradient_threshold = self.gradient_threshold_slider.value()
+        laplacian_threshold = self.laplacian_threshold_slider.value()
+
+        print(f"Gradient Threshold: {gradient_threshold}")
+        print(f"Laplacian Threshold: {laplacian_threshold}")
+
+        res = fpga_accelerated_compressor.process_color_image(target_image, self.block_ids, gradient_threshold, laplacian_threshold)
         target_image = res.imgRGB
 
-        lossy_tile_size = res.size_stats.compressed_size / res.size_stats.compressed_blocks
+        self.block_ids = res.tile_id.reshape(-1)
+
+        file_size = os.path.getsize(self.current_image_path)/1024;
+        file_compression_ratio = 100 * (1 - (res.size_stats.total_size / file_size))
+
+        if res.size_stats.compressed_blocks == 0:
+            lossy_tile_size = 0
+        else:
+            lossy_tile_size = res.size_stats.compressed_size / res.size_stats.compressed_blocks
+
         lossy_tile_compression_ratio = 100 * (1 - (lossy_tile_size / ((TILE_SIZE*TILE_SIZE*3)/1024)))
 
-        lossless_tile_size = res.size_stats.uncompressed_size / res.size_stats.uncompressed_blocks
+        if res.size_stats.uncompressed_blocks == 0:
+            lossless_tile_size = 0
+        else:
+            lossless_tile_size = res.size_stats.uncompressed_size / res.size_stats.uncompressed_blocks
+
         lossless_tile_compresion_ratio = 100 * (1 - (lossless_tile_size / ((TILE_SIZE*TILE_SIZE*3)/1024)))
 
         print(f"Num Lossy Tiles: {res.size_stats.compressed_blocks}")
@@ -681,8 +695,11 @@ class MainWindow(QMainWindow):
         print(f"Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%\n")
 
         print(f"Total Processed Image Size: {res.size_stats.total_size:.2f}KB")
-        print(f"Original Image Size: {res.original_size:.2f}KB")
-        print(f"Compression Ratio: {res.compression_ratio:.2f}%")
+        print(f"Raw Image Size: {res.original_size:.2f}KB")
+        print(f"Image File Size: {file_size:.2f}KB")
+        print(f"Compression Ratio (Raw vs Compressed): {res.compression_ratio:.2f}%")
+        print(f"Compression Ratio (Original vs Compressed): {file_compression_ratio:.2f}%")
+
 
         original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
         target_image = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)
@@ -724,21 +741,6 @@ class MainWindow(QMainWindow):
         pixmap2 = QPixmap(timg)
         pixmap3 = QPixmap(dimg)
 
-        print(f"Num Lossy Tiles: {res.size_stats.compressed_blocks}")
-        print(f"Num Lossless Tiles: {res.size_stats.uncompressed_blocks}\n")
-
-        print(f"Lossy Tiles Total Size: {res.size_stats.compressed_size:.2f}KB")
-        print(f"Size of Individual Lossy Tile: {lossy_tile_size:.2f}KB")
-        print(f"Lossy Tile Compression Ratio: {lossy_tile_compression_ratio:.2f}%\n")
-
-        print(f"Lossless Tiles Total Size: {res.size_stats.uncompressed_size:.2f}KB")
-        print(f"Size of Individual Uncompressed Tile: {lossless_tile_size:.2f}KB")
-        print(f"Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%\n")
-
-        print(f"Total Processed Image Size: {res.size_stats.total_size:.2f}KB")
-        print(f"Original Image Size: {res.original_size:.2f}KB")
-        print(f"Compression Ratio: {res.compression_ratio:.2f}%")
-
         self.processed_window = ProcessedWindow(
             pixmap1,
             pixmap2,
@@ -746,9 +748,11 @@ class MainWindow(QMainWindow):
             f"""PSNR: {res.PSNR:.3f}
 MSSSIM: {res.MSSSIM:.3f}
 
-Raw Image Size: {res.original_size}KB
+Raw Image Size: {res.original_size:.2f}KB
+Original Image File Size: {file_size:.2f}KB
 Final Compressed Image Size: {res.size_stats.total_size:.2f}KB
-Compression Ratio: {res.compression_ratio:.2f}%
+Compression Ratio (Raw vs Compressed): {res.compression_ratio:.2f}%
+Compression Ratio (Original vs Compressed): {file_compression_ratio:.2f}%
 
 Num Lossy Tiles: {res.size_stats.compressed_blocks}
 Total Lossy Tile Size: {res.size_stats.compressed_size:.2f}KB
@@ -792,7 +796,7 @@ Lossless Tile Compression Ratio: {lossless_tile_compresion_ratio:.2f}%
 
 
     def open_image(self):
-        filename, _ = QFileDialog.getOpenFileName(self, "Select Image", ".", "Image Files (*.png, *.jpg)")
+        filename, _ = QFileDialog.getOpenFileName(self, "Select Image", ".", "Image Files (*)")
         print(f"Selected Image {filename}")
         self.load_image_from_path(filename)
 

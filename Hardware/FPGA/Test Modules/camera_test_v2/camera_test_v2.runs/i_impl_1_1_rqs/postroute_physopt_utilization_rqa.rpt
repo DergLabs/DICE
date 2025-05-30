@@ -1,0 +1,76 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Sat Dec 14 01:04:46 2024
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_qor_assessment -pb rqa_stats.pb -exclude_methodology_checks -file postroute_physopt_utilization_rqa.rpt
+| Design       : mipi_csi_top_v2
+| Device       : xcku3p-ffva676-2-i
+| Speed File   : -2
+| Design State : Physopt postRoute
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report QoR Assessment
+
+Table of Contents
+-----------------
+1. Overall Assessment Summary
+2. QoR Assessment Details
+3. Methodology Check Details
+4. ML Strategy Availability
+
+1. Overall Assessment Summary
+-----------------------------
+
++----------------------+---------------------------------------------------------------------------------------------+
+| QoR Assessment Score | 2 - Implementation may complete. Timing will not meet                                       |
++----------------------+---------------------------------------------------------------------------------------------+
+| Flow Guidance        | Run report_qor_suggestions to generate suggestions that will directly improve REVIEW items. |
++----------------------+---------------------------------------------------------------------------------------------+
+
+
+2. QoR Assessment Details
+-------------------------
+
++-----------------------------------------------+-----------+-----------+------+-----------+-------+--------+
+| Name                                          | Threshold | Actual    | Used | Available | Score | Status |
++-----------------------------------------------+-----------+-----------+------+-----------+-------+--------+
+| Utilization                                   |           |           |      |           |   4.0 |     OK |
+| Netlist                                       |           |           |      |           |       |        |
+| *  DONT_TOUCH (cells/nets)                    |         0 |       780 |   -  |        -  |       | REVIEW |
+| *  MARK_DEBUG                                 |         0 |         2 |   -  |        -  |       | REVIEW |
+| Clocking                                      |           |           |      |           |   5.0 |     OK |
+| Congestion                                    |           |           |      |           |   5.0 |     OK |
+| Timing                                        |           |           |      |           |   2.0 |        |
+|    WNS                                        |     0.000 |    -8.056 |   -  |        -  |       | REVIEW |
+|    TNS                                        |     0.000 | -1005.212 |   -  |        -  |       | REVIEW |
+|    WHS                                        |     0.000 |    -0.091 |   -  |        -  |       | REVIEW |
+|    THS                                        |     0.000 |    -0.300 |   -  |        -  |       | REVIEW |
+|    Logic level delays                         |       0.5 |      0.84 |   -  |        -  |       | REVIEW |
+|   Number of paths above Max Net/LUT Budgeting |         0 |       143 |   -  |        -  |       | REVIEW |
++-----------------------------------------------+-----------+-----------+------+-----------+-------+--------+
+* Sub-categories with prefix * do not impact score
+
+
+3. Methodology Check Details
+----------------------------
+
++----+-------------+-------------+----------------------+
+| ID | Description | Criticality | Number of Violations |
++----+-------------+-------------+----------------------+
+
+
+4. ML Strategy Availability
+---------------------------
+
++-----------------------------------------+-------------------+--------+
+| Conditions for ML Strategy Availability | Value             | Status |
++-----------------------------------------+-------------------+--------+
+| opt_design directive                    |           Explore |     OK |
+| place_design directive                  |           Explore |     OK |
+| phys_opt_design directive               | AggressiveExplore |     OK |
+| route_design directive                  |           Explore |     OK |
++-----------------------------------------+-------------------+--------+
+* ML Strategies are available only when the default/explore directives have been used in the implementation flow and the design is successfully routed design. Refer to UG906 for more details.
+
+

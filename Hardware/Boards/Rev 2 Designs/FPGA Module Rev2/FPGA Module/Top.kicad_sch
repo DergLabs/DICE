@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "8ce9ff80-7595-4ac2-a8ef-232a3dc8d55d")
 	(paper "A3")
 	(title_block
@@ -13,9 +13,13 @@
 	)
 	(lib_symbols
 		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.762) hide)
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -113,9 +117,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R_US"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -186,18 +193,6 @@
 			(symbol "R_US_0_1"
 				(polyline
 					(pts
-						(xy 0 -2.286) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 0 2.286) (xy 0 2.54)
 					)
 					(stroke
@@ -210,7 +205,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 -0.762) (xy 1.016 -1.143) (xy 0 -1.524) (xy -1.016 -1.905) (xy 0 -2.286)
+						(xy 0 2.286) (xy 1.016 1.905) (xy 0 1.524) (xy -1.016 1.143) (xy 0 0.762)
 					)
 					(stroke
 						(width 0)
@@ -234,7 +229,19 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.286) (xy 1.016 1.905) (xy 0 1.524) (xy -1.016 1.143) (xy 0 0.762)
+						(xy 0 -0.762) (xy 1.016 -1.143) (xy 0 -1.524) (xy -1.016 -1.905) (xy 0 -2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.286) (xy 0 -2.54)
 					)
 					(stroke
 						(width 0)
@@ -283,12 +290,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -415,7 +427,30 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(text_box "CHANGE LIST:\n- Added Thermal reliefs\n- Added FPGA Reset Button\n- Added Silk corner marker for alignment\n- Replaced DDR4 with 4x 512Mb HyperRam chips\n- Added resistor options for VCCINT DCDC Mode\n- Re-architect IO\n- Added 5V Fan header & PWM Control\n"
+		(exclude_from_sim no)
+		(at 17.78 247.015 0)
+		(size 142.24 34.29)
+		(margins 1.905 1.905 1.905 1.905)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.508)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "a7571148-2dee-4583-ac13-8eb330652741")
 	)
 	(junction
 		(at 201.93 180.34)
@@ -2049,30 +2084,8 @@
 		)
 		(uuid "fe71dd19-3b66-4173-a17f-669d66ce89c8")
 	)
-	(text_box "CHANGE LIST:\n- Added Thermal reliefs\n- Added FPGA Reset Button\n- Added Silk corner marker for alignment\n- Replaced DDR4 with 4x 512Mb HyperRam chips\n- Added resistor options for VCCINT DCDC Mode\n- Re-architect IO\n- Added 5V Fan header & PWM Control\n"
-		(exclude_from_sim no)
-		(at 17.78 247.015 0)
-		(size 142.24 34.29)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 2.54 2.54)
-				(thickness 0.508)
-				(bold yes)
-			)
-			(justify left top)
-		)
-		(uuid "a7571148-2dee-4583-ac13-8eb330652741")
-	)
 	(label "SYS_SPI_MOSI"
 		(at 78.74 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2083,7 +2096,6 @@
 	)
 	(label "SYS_SPI_MISO"
 		(at 78.74 127 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2094,7 +2106,6 @@
 	)
 	(label "SYS_SPI_MOSI"
 		(at 300.99 161.29 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2105,7 +2116,6 @@
 	)
 	(label "SYS_SPI_CS"
 		(at 78.74 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2116,7 +2126,6 @@
 	)
 	(label "SYS_SPI_SCK"
 		(at 78.74 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2127,7 +2136,6 @@
 	)
 	(label "SYS_SPI_MISO"
 		(at 300.99 153.67 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2138,7 +2146,6 @@
 	)
 	(label "SYS_SPI_CS"
 		(at 300.99 156.21 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2149,7 +2156,6 @@
 	)
 	(label "SYS_SPI_SCK"
 		(at 300.99 158.75 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2823,6 +2829,10 @@
 	(sheet
 		(at 237.49 197.485)
 		(size 44.45 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2852,73 +2862,73 @@
 		)
 		(pin "JTAG_TDO" input
 			(at 237.49 200.66 180)
+			(uuid "91505760-b1af-4241-a384-2f74895f9c4d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "91505760-b1af-4241-a384-2f74895f9c4d")
 		)
 		(pin "JTAG_TMS" input
 			(at 237.49 203.2 180)
+			(uuid "757e154e-d24f-4e85-a1a8-ca73f32ed769")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "757e154e-d24f-4e85-a1a8-ca73f32ed769")
 		)
 		(pin "JTAG_TCK" input
 			(at 237.49 205.74 180)
+			(uuid "d4037d4b-2caf-4246-b0eb-70334b8e5858")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "d4037d4b-2caf-4246-b0eb-70334b8e5858")
 		)
 		(pin "JTAG_TDI" input
 			(at 237.49 208.28 180)
+			(uuid "33ce0a8d-9948-4d17-a176-36b670a5b14b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "33ce0a8d-9948-4d17-a176-36b670a5b14b")
 		)
 		(pin "FPGA_MCU_M0" input
 			(at 281.94 205.74 0)
+			(uuid "0620d163-d20f-4ae9-95ae-dbccc822f74b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "0620d163-d20f-4ae9-95ae-dbccc822f74b")
 		)
 		(pin "FPGA_MCU_M2" input
 			(at 281.94 200.66 0)
+			(uuid "96bf0ac4-76c8-4ed4-8cb5-9ca844f1ee4a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "96bf0ac4-76c8-4ed4-8cb5-9ca844f1ee4a")
 		)
 		(pin "FPGA_MCU_M1" input
 			(at 281.94 203.2 0)
+			(uuid "9291d2ad-11d7-4a13-9f4e-ff6fd075687d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9291d2ad-11d7-4a13-9f4e-ff6fd075687d")
 		)
 		(instances
 			(project "FPGA Module"
@@ -2931,6 +2941,10 @@
 	(sheet
 		(at 109.22 22.225)
 		(size 31.75 38.735)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2960,143 +2974,143 @@
 		)
 		(pin "0V85_ISNS_ALERT" input
 			(at 109.22 33.02 180)
+			(uuid "91c6e13e-4f93-47b8-bb1b-f1a92d46f536")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "91c6e13e-4f93-47b8-bb1b-f1a92d46f536")
 		)
 		(pin "PP_VUSB" input
 			(at 140.97 33.02 0)
+			(uuid "f5ddb5b6-4bc4-4ee7-a13d-c6afbc257045")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f5ddb5b6-4bc4-4ee7-a13d-c6afbc257045")
 		)
 		(pin "1V2_EN" input
 			(at 109.22 48.26 180)
+			(uuid "ed1b1459-4eda-4957-9f8e-cfcff0c6f23b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "ed1b1459-4eda-4957-9f8e-cfcff0c6f23b")
 		)
 		(pin "1V8_EN" input
 			(at 109.22 54.61 180)
+			(uuid "47264bd4-13c3-42d8-8f70-c97e415ba670")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "47264bd4-13c3-42d8-8f70-c97e415ba670")
 		)
 		(pin "0V85_EN" input
 			(at 109.22 35.56 180)
+			(uuid "708e89b2-3922-4e5a-b6f9-4298d6130e69")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "708e89b2-3922-4e5a-b6f9-4298d6130e69")
 		)
 		(pin "3V3_ISNS_ALERT" input
 			(at 109.22 58.42 180)
+			(uuid "927af831-5a19-47d7-a435-b1e3fed673f8")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "927af831-5a19-47d7-a435-b1e3fed673f8")
 		)
 		(pin "1V8_ISNS_ALERT" input
 			(at 109.22 52.07 180)
+			(uuid "3d9910f9-a523-4149-be5e-3a3eef089e21")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3d9910f9-a523-4149-be5e-3a3eef089e21")
 		)
 		(pin "1V2_ISNS_ALERT" input
 			(at 109.22 45.72 180)
+			(uuid "20b9db98-dc7e-4b19-9265-7aa5ccca905b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "20b9db98-dc7e-4b19-9265-7aa5ccca905b")
 		)
 		(pin "I2C0_SCL" input
 			(at 109.22 27.94 180)
+			(uuid "395cfdd2-f6de-4b9c-aa11-84c64ed603ec")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "395cfdd2-f6de-4b9c-aa11-84c64ed603ec")
 		)
 		(pin "I2C0_SDA" input
 			(at 109.22 25.4 180)
+			(uuid "94fc2d85-e7bb-4b1e-b29a-583774d264a7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "94fc2d85-e7bb-4b1e-b29a-583774d264a7")
 		)
 		(pin "3V3_EN" input
 			(at 140.97 55.88 0)
+			(uuid "b1eb534d-2fce-48f1-8b59-8d54f284ab54")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "b1eb534d-2fce-48f1-8b59-8d54f284ab54")
 		)
 		(pin "3V3_AON" input
 			(at 140.97 58.42 0)
+			(uuid "5287ebb0-34e6-4593-997d-810e82003372")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "5287ebb0-34e6-4593-997d-810e82003372")
 		)
 		(pin "FAN_PWM" input
 			(at 109.22 41.91 180)
+			(uuid "12590597-bd9e-4e28-ab08-4ba2433023ed")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "12590597-bd9e-4e28-ab08-4ba2433023ed")
 		)
 		(pin "5V0_EN" input
 			(at 109.22 39.37 180)
+			(uuid "e5019221-a296-4559-b70f-baa4db0b8aae")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e5019221-a296-4559-b70f-baa4db0b8aae")
 		)
 		(instances
 			(project "FPGA Module"
@@ -3109,6 +3123,10 @@
 	(sheet
 		(at 302.26 30.48)
 		(size 29.21 81.28)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -3138,283 +3156,283 @@
 		)
 		(pin "D1_[0..15]" input
 			(at 302.26 53.34 180)
+			(uuid "de5ac057-f4c1-459f-8ae7-2f5b974a90b2")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "de5ac057-f4c1-459f-8ae7-2f5b974a90b2")
 		)
 		(pin "CS1" input
 			(at 302.26 55.88 180)
+			(uuid "883e14de-9124-4730-89cf-180bafd34f94")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "883e14de-9124-4730-89cf-180bafd34f94")
 		)
 		(pin "CK1_N" input
 			(at 302.26 66.04 180)
+			(uuid "762185a1-bbd1-4256-9985-e86a8fe16470")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "762185a1-bbd1-4256-9985-e86a8fe16470")
 		)
 		(pin "RWDS1_0" input
 			(at 302.26 60.96 180)
+			(uuid "3986778a-d0fa-4060-8fec-899065823617")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3986778a-d0fa-4060-8fec-899065823617")
 		)
 		(pin "RST1" input
 			(at 302.26 58.42 180)
+			(uuid "f20785fa-042d-4d2e-b87d-5c6e915a6edc")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f20785fa-042d-4d2e-b87d-5c6e915a6edc")
 		)
 		(pin "CK1_P" input
 			(at 302.26 68.58 180)
+			(uuid "dfde90b4-c069-42fd-992c-b44b598cf235")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "dfde90b4-c069-42fd-992c-b44b598cf235")
 		)
 		(pin "RWDS1_1" input
 			(at 302.26 63.5 180)
+			(uuid "acc8fe63-687d-4b12-857c-da4bb5392796")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "acc8fe63-687d-4b12-857c-da4bb5392796")
 		)
 		(pin "CS0" input
 			(at 302.26 35.56 180)
+			(uuid "db172a38-61f3-4c43-800b-712315326291")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "db172a38-61f3-4c43-800b-712315326291")
 		)
 		(pin "RST0" input
 			(at 302.26 38.1 180)
+			(uuid "593f75a5-64e1-4680-9e8d-41b8da319d74")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "593f75a5-64e1-4680-9e8d-41b8da319d74")
 		)
 		(pin "CK0_N" input
 			(at 302.26 45.72 180)
+			(uuid "00e9a50a-c81e-44d4-abcc-296e567a7c59")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "00e9a50a-c81e-44d4-abcc-296e567a7c59")
 		)
 		(pin "RWDS0_0" input
 			(at 302.26 40.64 180)
+			(uuid "0c056d33-f5cf-4fdc-bd8f-c5f1a16b81b3")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "0c056d33-f5cf-4fdc-bd8f-c5f1a16b81b3")
 		)
 		(pin "RWDS0_1" input
 			(at 302.26 43.18 180)
+			(uuid "9f7eaf6e-6470-427e-b498-ea324dd92fe1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9f7eaf6e-6470-427e-b498-ea324dd92fe1")
 		)
 		(pin "CK0_P" input
 			(at 302.26 48.26 180)
+			(uuid "5f34cc8b-73b0-4a7d-8f7d-dacc9217485f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "5f34cc8b-73b0-4a7d-8f7d-dacc9217485f")
 		)
 		(pin "D0_[0..15]" input
 			(at 302.26 33.02 180)
+			(uuid "1c045826-116f-48fd-be26-cf8d10b90ae0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "1c045826-116f-48fd-be26-cf8d10b90ae0")
 		)
 		(pin "D2_[0..15]" input
 			(at 302.26 73.66 180)
+			(uuid "01381b64-0a47-4cb1-80d0-adc8d72f1be1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "01381b64-0a47-4cb1-80d0-adc8d72f1be1")
 		)
 		(pin "CS2" input
 			(at 302.26 76.2 180)
+			(uuid "dbde59d6-1b8b-458d-9dbc-dfb4f81c4fa7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "dbde59d6-1b8b-458d-9dbc-dfb4f81c4fa7")
 		)
 		(pin "RST2" input
 			(at 302.26 78.74 180)
+			(uuid "5140becc-f510-4f3e-8b35-fdb540cb205a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "5140becc-f510-4f3e-8b35-fdb540cb205a")
 		)
 		(pin "CK2_P" input
 			(at 302.26 88.9 180)
+			(uuid "93801441-b478-4509-bc69-80333548bde5")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "93801441-b478-4509-bc69-80333548bde5")
 		)
 		(pin "RWDS2_0" input
 			(at 302.26 81.28 180)
+			(uuid "9a81dec9-437f-48e2-b02d-45fd11a6c2b8")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9a81dec9-437f-48e2-b02d-45fd11a6c2b8")
 		)
 		(pin "CK2_N" input
 			(at 302.26 86.36 180)
+			(uuid "16cf2fa2-6e11-466e-b622-9cf54e228f60")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "16cf2fa2-6e11-466e-b622-9cf54e228f60")
 		)
 		(pin "RWDS2_1" input
 			(at 302.26 83.82 180)
+			(uuid "ae00408b-d046-4477-af37-75c1249b59dd")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "ae00408b-d046-4477-af37-75c1249b59dd")
 		)
 		(pin "CS3" input
 			(at 302.26 96.52 180)
+			(uuid "7fece1e7-87b6-4be4-9478-11d235d063eb")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "7fece1e7-87b6-4be4-9478-11d235d063eb")
 		)
 		(pin "RST3" input
 			(at 302.26 99.06 180)
+			(uuid "7d3b0b4f-f695-456d-92dc-e8b121269868")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "7d3b0b4f-f695-456d-92dc-e8b121269868")
 		)
 		(pin "RWDS3_0" input
 			(at 302.26 101.6 180)
+			(uuid "1105abe5-63f3-4b85-b46b-14d0f7e8e2af")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "1105abe5-63f3-4b85-b46b-14d0f7e8e2af")
 		)
 		(pin "CK3_N" input
 			(at 302.26 106.68 180)
+			(uuid "065373d9-849b-4121-a2c5-fb368bfa3c1f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "065373d9-849b-4121-a2c5-fb368bfa3c1f")
 		)
 		(pin "CK3_P" input
 			(at 302.26 109.22 180)
+			(uuid "e6645a28-b6fb-4605-a779-251efc7c6644")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e6645a28-b6fb-4605-a779-251efc7c6644")
 		)
 		(pin "RWDS3_1" input
 			(at 302.26 104.14 180)
+			(uuid "f6624ead-4279-40c6-8772-5483268c7a85")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f6624ead-4279-40c6-8772-5483268c7a85")
 		)
 		(pin "D3_[0..15]" input
 			(at 302.26 93.98 180)
+			(uuid "690aa4cc-070c-47ec-b661-a14d4c075c1c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "690aa4cc-070c-47ec-b661-a14d4c075c1c")
 		)
 		(instances
 			(project "FPGA Module"
@@ -3427,6 +3445,10 @@
 	(sheet
 		(at 237.49 30.48)
 		(size 44.45 159.385)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -3456,773 +3478,773 @@
 		)
 		(pin "MIPI_D2_N" input
 			(at 237.49 118.11 180)
+			(uuid "4c605210-7fc5-492d-b58e-e0423fc4282a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4c605210-7fc5-492d-b58e-e0423fc4282a")
 		)
 		(pin "MIPI_CLK_N" input
 			(at 237.49 128.27 180)
+			(uuid "9aac7faf-f100-4760-9fae-8c0ea647c773")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9aac7faf-f100-4760-9fae-8c0ea647c773")
 		)
 		(pin "MIPI_D3_N" input
 			(at 237.49 123.19 180)
+			(uuid "5a5fc1a3-5915-41a5-b34b-2365b9b2a977")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "5a5fc1a3-5915-41a5-b34b-2365b9b2a977")
 		)
 		(pin "MIPI_D3_P" input
 			(at 237.49 120.65 180)
+			(uuid "db6a8103-f68a-415d-8011-1a2bdb750411")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "db6a8103-f68a-415d-8011-1a2bdb750411")
 		)
 		(pin "MIPI_D2_P" input
 			(at 237.49 115.57 180)
+			(uuid "2f91172c-d583-4ad6-945f-9d4cccee65a1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "2f91172c-d583-4ad6-945f-9d4cccee65a1")
 		)
 		(pin "MIPI_CLK_P" input
 			(at 237.49 125.73 180)
+			(uuid "68463780-9f11-40d5-934b-2e2634c47482")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "68463780-9f11-40d5-934b-2e2634c47482")
 		)
 		(pin "MIPI_D1_N" input
 			(at 237.49 113.03 180)
+			(uuid "e16ab420-3ecc-4638-9487-b98ea8db812b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e16ab420-3ecc-4638-9487-b98ea8db812b")
 		)
 		(pin "MIPI_D1_P" input
 			(at 237.49 110.49 180)
+			(uuid "cbf35206-75c9-4458-8258-1eead74ba5c5")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "cbf35206-75c9-4458-8258-1eead74ba5c5")
 		)
 		(pin "MIPI_D0_N" input
 			(at 237.49 107.95 180)
+			(uuid "4af48c90-6819-4df4-a517-59280e95e49d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4af48c90-6819-4df4-a517-59280e95e49d")
 		)
 		(pin "MIPI_D0_P" input
 			(at 237.49 105.41 180)
+			(uuid "811e0614-0de4-4129-9e53-087c90504341")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "811e0614-0de4-4129-9e53-087c90504341")
 		)
 		(pin "CAM_PWR_EN" input
 			(at 237.49 133.35 180)
+			(uuid "79fc5acd-d1e2-45de-b09c-b6034355e5ec")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "79fc5acd-d1e2-45de-b09c-b6034355e5ec")
 		)
 		(pin "FPGA_I2C_SCL" input
 			(at 237.49 177.8 180)
+			(uuid "165a2922-22e9-459a-b7b2-b95abbf7779a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "165a2922-22e9-459a-b7b2-b95abbf7779a")
 		)
 		(pin "FIFO_D[0..15]" input
 			(at 237.49 171.45 180)
+			(uuid "ae984ac3-e484-4d54-9625-43f1229a7754")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "ae984ac3-e484-4d54-9625-43f1229a7754")
 		)
 		(pin "FT600_WAKEUP" input
 			(at 237.49 161.29 180)
+			(uuid "e8b2059d-6195-4fcd-8ea5-87c485dad194")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e8b2059d-6195-4fcd-8ea5-87c485dad194")
 		)
 		(pin "CAM_LED_EN" input
 			(at 237.49 130.81 180)
+			(uuid "2f7768eb-bd33-4d8d-9809-da7eba468299")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "2f7768eb-bd33-4d8d-9809-da7eba468299")
 		)
 		(pin "FPGA_I2C_SDA" input
 			(at 237.49 180.34 180)
+			(uuid "cf2e4025-65c9-44bb-90e0-0d2a53e50eb0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "cf2e4025-65c9-44bb-90e0-0d2a53e50eb0")
 		)
 		(pin "UART_TX" input
 			(at 237.49 184.15 180)
+			(uuid "7ec1b299-fab9-49b3-adb4-935ef6f5f4d0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "7ec1b299-fab9-49b3-adb4-935ef6f5f4d0")
 		)
 		(pin "UART_RX" input
 			(at 237.49 186.69 180)
+			(uuid "3251f812-f7c4-42cb-9190-81c9b2d668fc")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3251f812-f7c4-42cb-9190-81c9b2d668fc")
 		)
 		(pin "FIFO_BE1" input
 			(at 237.49 163.83 180)
+			(uuid "8f2fcdd4-5d9f-42d5-8460-0dfcb29df6e1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "8f2fcdd4-5d9f-42d5-8460-0dfcb29df6e1")
 		)
 		(pin "FIFO_BE0" input
 			(at 237.49 166.37 180)
+			(uuid "73cde607-29b1-4492-8ca9-05f2b9451146")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "73cde607-29b1-4492-8ca9-05f2b9451146")
 		)
 		(pin "FIFO_CLK" input
 			(at 237.49 168.91 180)
+			(uuid "5d6c7cc9-f766-4aa6-9f54-e349ccbc9ea4")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "5d6c7cc9-f766-4aa6-9f54-e349ccbc9ea4")
 		)
 		(pin "FT600_RXE" input
 			(at 237.49 151.13 180)
+			(uuid "25f2391a-2f5a-4c73-a32b-c1bf99f9ffd5")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "25f2391a-2f5a-4c73-a32b-c1bf99f9ffd5")
 		)
 		(pin "FT600_RST" input
 			(at 237.49 158.75 180)
+			(uuid "f852f4af-1e68-4de2-b1d8-bc34e8817d62")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f852f4af-1e68-4de2-b1d8-bc34e8817d62")
 		)
 		(pin "FT600_TXE" input
 			(at 237.49 153.67 180)
+			(uuid "04a6b43e-6883-4f6d-9971-43d978553e0a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "04a6b43e-6883-4f6d-9971-43d978553e0a")
 		)
 		(pin "FT600_OE" input
 			(at 237.49 156.21 180)
+			(uuid "092e1da9-a32a-4eb3-8aa4-6f837d7dd20b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "092e1da9-a32a-4eb3-8aa4-6f837d7dd20b")
 		)
 		(pin "FT600_RD" input
 			(at 237.49 148.59 180)
+			(uuid "4e0477b7-1ec6-4ae3-8cec-2bc162d1e2da")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4e0477b7-1ec6-4ae3-8cec-2bc162d1e2da")
 		)
 		(pin "FT600_WR" input
 			(at 237.49 146.05 180)
+			(uuid "e3ea8546-9dfa-4223-a174-dc12c7623c1b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e3ea8546-9dfa-4223-a174-dc12c7623c1b")
 		)
 		(pin "SYS_SPI_SCK" input
 			(at 281.94 158.75 0)
+			(uuid "135efdad-a0b4-4e68-a129-58c1bdf44ea7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "135efdad-a0b4-4e68-a129-58c1bdf44ea7")
 		)
 		(pin "SYS_SPI_MOSI" input
 			(at 281.94 161.29 0)
+			(uuid "03c80843-b9fd-4aae-9187-94554b5a23db")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "03c80843-b9fd-4aae-9187-94554b5a23db")
 		)
 		(pin "SYS_SPI_MISO" input
 			(at 281.94 153.67 0)
+			(uuid "fb23d7f1-79b5-4e29-9d8f-dcb9914d2e0a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fb23d7f1-79b5-4e29-9d8f-dcb9914d2e0a")
 		)
 		(pin "SYS_SPI_CS" input
 			(at 281.94 156.21 0)
+			(uuid "d24266e3-de77-401d-ac96-4fc3b2922a88")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d24266e3-de77-401d-ac96-4fc3b2922a88")
 		)
 		(pin "D1_[0..15]" input
 			(at 281.94 53.34 0)
+			(uuid "a53c124c-a8f9-4ff4-9c98-c15b485b61a0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a53c124c-a8f9-4ff4-9c98-c15b485b61a0")
 		)
 		(pin "D0_[0..15]" input
 			(at 281.94 33.02 0)
+			(uuid "593f5226-c52e-49d9-a077-43f801f0ed13")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "593f5226-c52e-49d9-a077-43f801f0ed13")
 		)
 		(pin "CS1" input
 			(at 281.94 55.88 0)
+			(uuid "67f05a3a-5e2f-4b76-ada7-1a1da8e11135")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "67f05a3a-5e2f-4b76-ada7-1a1da8e11135")
 		)
 		(pin "RST1" input
 			(at 281.94 58.42 0)
+			(uuid "935ad9ee-6210-401d-bf6a-4bfe5c97e581")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "935ad9ee-6210-401d-bf6a-4bfe5c97e581")
 		)
 		(pin "CK1_N" input
 			(at 281.94 66.04 0)
+			(uuid "e83c0553-9569-4efb-af87-d06d4b456c53")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "e83c0553-9569-4efb-af87-d06d4b456c53")
 		)
 		(pin "CK1_P" input
 			(at 281.94 68.58 0)
+			(uuid "521f6346-a044-4c9f-aa77-879e6f1ce475")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "521f6346-a044-4c9f-aa77-879e6f1ce475")
 		)
 		(pin "CS0" input
 			(at 281.94 35.56 0)
+			(uuid "eb787c16-72b5-4960-a02e-15a0dc5f7948")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "eb787c16-72b5-4960-a02e-15a0dc5f7948")
 		)
 		(pin "CK0_N" input
 			(at 281.94 45.72 0)
+			(uuid "71fc5aff-3d0c-43bc-a32e-8c31904973f3")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "71fc5aff-3d0c-43bc-a32e-8c31904973f3")
 		)
 		(pin "CK0_P" input
 			(at 281.94 48.26 0)
+			(uuid "e96cc601-c42f-4079-8fb3-1b0e93d3bff9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "e96cc601-c42f-4079-8fb3-1b0e93d3bff9")
 		)
 		(pin "RST0" input
 			(at 281.94 38.1 0)
+			(uuid "338acb7a-b11b-42b2-8446-eec95870c862")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "338acb7a-b11b-42b2-8446-eec95870c862")
 		)
 		(pin "RWDS0_0" input
 			(at 281.94 40.64 0)
+			(uuid "c8946257-bcea-4f33-8716-e29cd4f4be22")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c8946257-bcea-4f33-8716-e29cd4f4be22")
 		)
 		(pin "RWDS0_1" input
 			(at 281.94 43.18 0)
+			(uuid "2d5d5e83-7986-49b7-a5d0-97bf6cf0532d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "2d5d5e83-7986-49b7-a5d0-97bf6cf0532d")
 		)
 		(pin "RWDS1_1" input
 			(at 281.94 63.5 0)
+			(uuid "3eb0192e-1f8b-4e10-b9a3-99e9ac3b751a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3eb0192e-1f8b-4e10-b9a3-99e9ac3b751a")
 		)
 		(pin "RWDS1_0" input
 			(at 281.94 60.96 0)
+			(uuid "da37b306-6c72-4845-b4bf-f6fd969de047")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "da37b306-6c72-4845-b4bf-f6fd969de047")
 		)
 		(pin "D2_[0..15]" input
 			(at 281.94 73.66 0)
+			(uuid "c1b92687-6e32-46bf-994c-6144dbe9e1f0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c1b92687-6e32-46bf-994c-6144dbe9e1f0")
 		)
 		(pin "D3_[0..15]" input
 			(at 281.94 93.98 0)
+			(uuid "cdf11ab0-8734-4283-8a2b-9dd73a87ba16")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "cdf11ab0-8734-4283-8a2b-9dd73a87ba16")
 		)
 		(pin "CK2_N" input
 			(at 281.94 86.36 0)
+			(uuid "d64a3da8-12f3-47b1-b2d3-f91e2a850e80")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d64a3da8-12f3-47b1-b2d3-f91e2a850e80")
 		)
 		(pin "CK2_P" input
 			(at 281.94 88.9 0)
+			(uuid "dbea0999-6198-40f0-8c52-b21823fab1de")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "dbea0999-6198-40f0-8c52-b21823fab1de")
 		)
 		(pin "RWDS2_1" input
 			(at 281.94 83.82 0)
+			(uuid "3a4b75f9-9837-4f7b-a5e9-d935fcc35fc0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3a4b75f9-9837-4f7b-a5e9-d935fcc35fc0")
 		)
 		(pin "RWDS2_0" input
 			(at 281.94 81.28 0)
+			(uuid "45bdba41-bfe9-4257-8213-0a4a5b3d9c54")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "45bdba41-bfe9-4257-8213-0a4a5b3d9c54")
 		)
 		(pin "CS3" input
 			(at 281.94 96.52 0)
+			(uuid "64f3279c-ce40-4bf1-ab3e-9f69f4024d10")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "64f3279c-ce40-4bf1-ab3e-9f69f4024d10")
 		)
 		(pin "RST3" input
 			(at 281.94 99.06 0)
+			(uuid "a0114134-852d-4a1d-ba51-8bcf4ec22c2b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a0114134-852d-4a1d-ba51-8bcf4ec22c2b")
 		)
 		(pin "CK3_N" input
 			(at 281.94 106.68 0)
+			(uuid "d7c5a74a-b1ed-45d4-961e-036bdf801271")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d7c5a74a-b1ed-45d4-961e-036bdf801271")
 		)
 		(pin "CK3_P" input
 			(at 281.94 109.22 0)
+			(uuid "da395e64-0b7c-4f2a-bbde-fb83d95dd6c9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "da395e64-0b7c-4f2a-bbde-fb83d95dd6c9")
 		)
 		(pin "RWDS3_1" input
 			(at 281.94 104.14 0)
+			(uuid "a2c64a0b-22f4-4566-9b8f-73bd6bba5ead")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a2c64a0b-22f4-4566-9b8f-73bd6bba5ead")
 		)
 		(pin "RWDS3_0" input
 			(at 281.94 101.6 0)
+			(uuid "74c8db19-f2c8-4933-af1f-b06351efaeb9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "74c8db19-f2c8-4933-af1f-b06351efaeb9")
 		)
 		(pin "RST2" input
 			(at 281.94 78.74 0)
+			(uuid "d77d486a-db37-4a2f-afed-6ff6e76292aa")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d77d486a-db37-4a2f-afed-6ff6e76292aa")
 		)
 		(pin "CS2" input
 			(at 281.94 76.2 0)
+			(uuid "4a4c700f-a8ac-4d87-904f-f9d4815fa410")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "4a4c700f-a8ac-4d87-904f-f9d4815fa410")
 		)
 		(pin "HDMI_SD3_DR2" input
 			(at 237.49 55.88 180)
+			(uuid "629e9f9d-3175-4c05-9f55-ecfd0ed58f94")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "629e9f9d-3175-4c05-9f55-ecfd0ed58f94")
 		)
 		(pin "HDMI_SD2_DL1" input
 			(at 237.49 58.42 180)
+			(uuid "d66c3148-765c-4187-be70-48b3fdcad384")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "d66c3148-765c-4187-be70-48b3fdcad384")
 		)
 		(pin "HDMI_SD1_DR1" input
 			(at 237.49 60.96 180)
+			(uuid "fad6ead9-a597-4a47-b25e-296f85d12fa1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "fad6ead9-a597-4a47-b25e-296f85d12fa1")
 		)
 		(pin "HDMI_WS_DR0" input
 			(at 237.49 48.26 180)
+			(uuid "0c808f67-cfed-44b6-bbe9-8a3360bfa8ac")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "0c808f67-cfed-44b6-bbe9-8a3360bfa8ac")
 		)
 		(pin "HDMI_SPDIF" input
 			(at 237.49 53.34 180)
+			(uuid "ec88e3c3-acf1-49da-a0a9-7a65327454be")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "ec88e3c3-acf1-49da-a0a9-7a65327454be")
 		)
 		(pin "HDMI_SD0_DL0" input
 			(at 237.49 50.8 180)
+			(uuid "3f390839-87dc-407c-aa28-c622788707f4")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3f390839-87dc-407c-aa28-c622788707f4")
 		)
 		(pin "HDMI_MCLK" input
 			(at 237.49 45.72 180)
+			(uuid "d8f579d6-ffa8-4ed2-9631-336df76ae6ce")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "d8f579d6-ffa8-4ed2-9631-336df76ae6ce")
 		)
 		(pin "HDMI_RST" input
 			(at 237.49 66.04 180)
+			(uuid "9e073321-d6a2-41c1-a6b2-8c4633f1ecfe")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9e073321-d6a2-41c1-a6b2-8c4633f1ecfe")
 		)
 		(pin "HDMI_SCK" input
 			(at 237.49 43.18 180)
+			(uuid "f7e0797a-5405-4755-9b2a-3e3fd8693105")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f7e0797a-5405-4755-9b2a-3e3fd8693105")
 		)
 		(pin "HDMI_INT" input
 			(at 237.49 63.5 180)
+			(uuid "02ddfb56-39d8-44f1-af17-82e6cbed5e46")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "02ddfb56-39d8-44f1-af17-82e6cbed5e46")
 		)
 		(pin "HDMI_IDCLK" input
 			(at 237.49 33.02 180)
+			(uuid "ad6d347c-e4b6-417a-92d2-dbd06dc4fdd0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "ad6d347c-e4b6-417a-92d2-dbd06dc4fdd0")
 		)
 		(pin "HDMI_DE" input
 			(at 237.49 40.64 180)
+			(uuid "86048959-916f-4039-b6e5-a90d00995ef9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "86048959-916f-4039-b6e5-a90d00995ef9")
 		)
 		(pin "HDMI_VSYNC" input
 			(at 237.49 35.56 180)
+			(uuid "0af413b5-6237-4ecc-9118-e4b555110f44")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "0af413b5-6237-4ecc-9118-e4b555110f44")
 		)
 		(pin "HDMI_HSYNC" input
 			(at 237.49 38.1 180)
+			(uuid "b39fd173-c0e9-4b03-8fbf-5a7dbaf78acf")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "b39fd173-c0e9-4b03-8fbf-5a7dbaf78acf")
 		)
 		(pin "HDMI_DR[0..7]" input
 			(at 237.49 71.12 180)
+			(uuid "524d2f2b-44fc-4a91-a28e-205e86aea9ed")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "524d2f2b-44fc-4a91-a28e-205e86aea9ed")
 		)
 		(pin "HDMI_DG[0..7]" input
 			(at 237.49 73.66 180)
+			(uuid "8d08fa4e-8cf9-440c-a4e9-16efa887634d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "8d08fa4e-8cf9-440c-a4e9-16efa887634d")
 		)
 		(pin "HDMI_DB[0..7]" input
 			(at 237.49 76.2 180)
+			(uuid "596701d5-8f35-4cf9-b548-b39bb2e2c06f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "596701d5-8f35-4cf9-b548-b39bb2e2c06f")
 		)
 		(pin "MBUS_D[0..14]" input
 			(at 237.49 139.7 180)
+			(uuid "822351f3-6a06-4986-abb5-4e1522009142")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "822351f3-6a06-4986-abb5-4e1522009142")
 		)
 		(instances
 			(project "FPGA Module"
@@ -4235,6 +4257,10 @@
 	(sheet
 		(at 97.79 67.31)
 		(size 43.18 80.01)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -4264,243 +4290,243 @@
 		)
 		(pin "I2C0_SCL" input
 			(at 97.79 102.87 180)
+			(uuid "df96aacf-75f7-4a9d-8c37-8a01d8628d3e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "df96aacf-75f7-4a9d-8c37-8a01d8628d3e")
 		)
 		(pin "I2C1_SCL" input
 			(at 97.79 118.11 180)
+			(uuid "4d213c25-7313-4734-b801-23eb86fe47c8")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4d213c25-7313-4734-b801-23eb86fe47c8")
 		)
 		(pin "I2C1_SDA" input
 			(at 97.79 115.57 180)
+			(uuid "33af86e9-656f-47b5-b79f-764a970b5fdb")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "33af86e9-656f-47b5-b79f-764a970b5fdb")
 		)
 		(pin "I2C0_SDA" input
 			(at 97.79 105.41 180)
+			(uuid "54225faf-b549-4af9-87b9-4c80c58b4ffb")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "54225faf-b549-4af9-87b9-4c80c58b4ffb")
 		)
 		(pin "USB_SYSMON_D_N" input
 			(at 140.97 101.6 0)
+			(uuid "9f6c6d48-bf77-480b-9687-3a2419c49a46")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9f6c6d48-bf77-480b-9687-3a2419c49a46")
 		)
 		(pin "USB_SYSMON_D_P" input
 			(at 140.97 99.06 0)
+			(uuid "3c89c3c3-048a-4354-b196-1b3ef30add29")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3c89c3c3-048a-4354-b196-1b3ef30add29")
 		)
 		(pin "1V8_EN" input
 			(at 97.79 74.93 180)
+			(uuid "693dadf7-2023-41a8-aeb0-45c51976e180")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "693dadf7-2023-41a8-aeb0-45c51976e180")
 		)
 		(pin "3V3_ISNS_ALERT" input
 			(at 97.79 69.85 180)
+			(uuid "97291049-59fa-43b6-b0d7-2a2cdcacbb07")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "97291049-59fa-43b6-b0d7-2a2cdcacbb07")
 		)
 		(pin "0V85_ISNS_ALERT" input
 			(at 97.79 99.06 180)
+			(uuid "6b2ada44-0520-4a2c-b1a4-e16ebacd4211")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "6b2ada44-0520-4a2c-b1a4-e16ebacd4211")
 		)
 		(pin "1V8_ISNS_ALERT" input
 			(at 97.79 77.47 180)
+			(uuid "149f4a82-b7ea-44e8-be15-1ad44f5b8c61")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "149f4a82-b7ea-44e8-be15-1ad44f5b8c61")
 		)
 		(pin "1V2_ISNS_ALERT" input
 			(at 97.79 85.09 180)
+			(uuid "626e5db5-6c90-4f01-9761-12cc114672db")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "626e5db5-6c90-4f01-9761-12cc114672db")
 		)
 		(pin "0V85_EN" input
 			(at 97.79 96.52 180)
+			(uuid "4a6fca78-d3aa-4eaa-826e-cfa80ff30979")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4a6fca78-d3aa-4eaa-826e-cfa80ff30979")
 		)
 		(pin "1V2_EN" input
 			(at 97.79 82.55 180)
+			(uuid "902e0f8e-aed8-4d09-afc3-2e0142d4a2cf")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "902e0f8e-aed8-4d09-afc3-2e0142d4a2cf")
 		)
 		(pin "SYS_SPI_MISO" input
 			(at 97.79 127 180)
+			(uuid "9d12ed9c-801b-478b-9b21-13cb7e19d1aa")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9d12ed9c-801b-478b-9b21-13cb7e19d1aa")
 		)
 		(pin "SYS_SPI_CS" input
 			(at 97.79 129.54 180)
+			(uuid "47b8bfed-9622-4639-a3fc-6dca67311e10")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "47b8bfed-9622-4639-a3fc-6dca67311e10")
 		)
 		(pin "SYS_SPI_SCK" input
 			(at 97.79 132.08 180)
+			(uuid "f747057f-8db5-4f73-9df1-2aa1d3238a28")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f747057f-8db5-4f73-9df1-2aa1d3238a28")
 		)
 		(pin "SYS_SPI_MOSI" input
 			(at 97.79 134.62 180)
+			(uuid "9997a193-39d9-4cdf-b553-e487e99ab15d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9997a193-39d9-4cdf-b553-e487e99ab15d")
 		)
 		(pin "3V3_EN" input
 			(at 140.97 72.39 0)
+			(uuid "fc938306-9f03-4e3b-93eb-0717f09a99f0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fc938306-9f03-4e3b-93eb-0717f09a99f0")
 		)
 		(pin "3V3_AON" input
 			(at 140.97 69.85 0)
+			(uuid "cc74be9a-ed6d-4d8c-b12c-d56cd7897b0b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "cc74be9a-ed6d-4d8c-b12c-d56cd7897b0b")
 		)
 		(pin "FPGA_MCU_M2" input
 			(at 140.97 143.51 0)
+			(uuid "7341cba4-745c-47c3-a4e4-d9fc98d9084b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "7341cba4-745c-47c3-a4e4-d9fc98d9084b")
 		)
 		(pin "FPGA_MCU_M1" input
 			(at 140.97 140.97 0)
+			(uuid "9e9ad26c-ee7b-453e-9887-1115f2243e10")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9e9ad26c-ee7b-453e-9887-1115f2243e10")
 		)
 		(pin "FPGA_MCU_M0" input
 			(at 140.97 138.43 0)
+			(uuid "56bf6c4d-03a6-4a13-85d7-84dd68c1eee3")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "56bf6c4d-03a6-4a13-85d7-84dd68c1eee3")
 		)
 		(pin "FAN_PWM" input
 			(at 97.79 90.17 180)
+			(uuid "e890112f-0f31-4fe9-b5de-447a6834a4ad")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e890112f-0f31-4fe9-b5de-447a6834a4ad")
 		)
 		(pin "5V0_EN" input
 			(at 97.79 92.71 180)
+			(uuid "896995cd-79fd-4a80-b5bc-2a6f7e42cf52")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "896995cd-79fd-4a80-b5bc-2a6f7e42cf52")
 		)
 		(instances
 			(project "FPGA Module"
@@ -4513,6 +4539,10 @@
 	(sheet
 		(at 156.21 30.48)
 		(size 36.83 180.975)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -4542,523 +4572,523 @@
 		)
 		(pin "MIPI_D1_P" input
 			(at 193.04 110.49 0)
+			(uuid "baf3e57f-fab4-4b7e-b38e-b7454d83466c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "baf3e57f-fab4-4b7e-b38e-b7454d83466c")
 		)
 		(pin "MIPI_CLK_P" input
 			(at 193.04 125.73 0)
+			(uuid "a811f8d4-c926-4f2f-8f06-a7c508777894")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a811f8d4-c926-4f2f-8f06-a7c508777894")
 		)
 		(pin "MIPI_D0_P" input
 			(at 193.04 105.41 0)
+			(uuid "99a61950-514e-497d-b73d-d3eae1e7c937")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "99a61950-514e-497d-b73d-d3eae1e7c937")
 		)
 		(pin "MIPI_D0_N" input
 			(at 193.04 107.95 0)
+			(uuid "559377f6-c526-433e-b18c-f99297e58641")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "559377f6-c526-433e-b18c-f99297e58641")
 		)
 		(pin "MIPI_D1_N" input
 			(at 193.04 113.03 0)
+			(uuid "38c0dcf7-b6a9-4a49-bece-b458fd612731")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "38c0dcf7-b6a9-4a49-bece-b458fd612731")
 		)
 		(pin "MIPI_D3_P" input
 			(at 193.04 120.65 0)
+			(uuid "b017a6ee-5610-4ca2-a9c4-3a956544d155")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "b017a6ee-5610-4ca2-a9c4-3a956544d155")
 		)
 		(pin "MIPI_CLK_N" input
 			(at 193.04 128.27 0)
+			(uuid "5af4482a-4d4f-4eea-be8d-c5ecc7dde515")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "5af4482a-4d4f-4eea-be8d-c5ecc7dde515")
 		)
 		(pin "MIPI_D2_N" input
 			(at 193.04 118.11 0)
+			(uuid "dba38f02-0869-4fb6-b093-9649611e2532")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "dba38f02-0869-4fb6-b093-9649611e2532")
 		)
 		(pin "MIPI_D3_N" input
 			(at 193.04 123.19 0)
+			(uuid "86fd107c-628e-4a39-96c8-e1851c3b154e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "86fd107c-628e-4a39-96c8-e1851c3b154e")
 		)
 		(pin "MIPI_D2_P" input
 			(at 193.04 115.57 0)
+			(uuid "1e343e19-0e4d-4eb0-84c7-337989dc9a9d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "1e343e19-0e4d-4eb0-84c7-337989dc9a9d")
 		)
 		(pin "FT600_TXE" input
 			(at 193.04 153.67 0)
+			(uuid "3ca44154-2e20-4699-a609-e4b864e3a5e2")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3ca44154-2e20-4699-a609-e4b864e3a5e2")
 		)
 		(pin "FT600_RXE" input
 			(at 193.04 151.13 0)
+			(uuid "5f5d57c9-dcdf-4d79-9d45-110c698157dc")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "5f5d57c9-dcdf-4d79-9d45-110c698157dc")
 		)
 		(pin "FT600_OE" input
 			(at 193.04 156.21 0)
+			(uuid "431d7c4e-c14f-4e70-88e7-a3793cae2a69")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "431d7c4e-c14f-4e70-88e7-a3793cae2a69")
 		)
 		(pin "FT600_WAKEUP" input
 			(at 193.04 161.29 0)
+			(uuid "96d1b4b7-698f-48ee-a437-9f96c1e35559")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "96d1b4b7-698f-48ee-a437-9f96c1e35559")
 		)
 		(pin "FT600_RST" input
 			(at 193.04 158.75 0)
+			(uuid "33f76d89-ec71-4be2-90d8-793cc8a5eec9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "33f76d89-ec71-4be2-90d8-793cc8a5eec9")
 		)
 		(pin "CAM_PWR_EN" input
 			(at 193.04 133.35 0)
+			(uuid "3cffff8c-9eb3-412a-9ade-00958829ebb6")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3cffff8c-9eb3-412a-9ade-00958829ebb6")
 		)
 		(pin "CAM_LED_EN" input
 			(at 193.04 130.81 0)
+			(uuid "152b5d4f-a5df-4e4b-9d7d-237ce4a77c5e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "152b5d4f-a5df-4e4b-9d7d-237ce4a77c5e")
 		)
 		(pin "JTAG_TMS" input
 			(at 193.04 203.2 0)
+			(uuid "9fb2142b-6a1b-4a84-be64-b32b73c433de")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9fb2142b-6a1b-4a84-be64-b32b73c433de")
 		)
 		(pin "JTAG_TCK" input
 			(at 193.04 205.74 0)
+			(uuid "4d8410ea-1570-4a8b-9527-05dfdeea0a43")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "4d8410ea-1570-4a8b-9527-05dfdeea0a43")
 		)
 		(pin "JTAG_TDO" input
 			(at 193.04 200.66 0)
+			(uuid "05cfa7f5-5698-4493-b4bc-f62989a3dc8c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "05cfa7f5-5698-4493-b4bc-f62989a3dc8c")
 		)
 		(pin "JTAG_TDI" input
 			(at 193.04 208.28 0)
+			(uuid "3853ded1-9b1f-4737-a6e5-8fdfee0e3975")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3853ded1-9b1f-4737-a6e5-8fdfee0e3975")
 		)
 		(pin "UART_RX" input
 			(at 193.04 186.69 0)
+			(uuid "6d7e8ec2-7d41-4f35-bd94-ca3e60a7b3bc")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "6d7e8ec2-7d41-4f35-bd94-ca3e60a7b3bc")
 		)
 		(pin "UART_TX" input
 			(at 193.04 184.15 0)
+			(uuid "7991bcc4-2bd7-444d-ac04-72de2b77b769")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "7991bcc4-2bd7-444d-ac04-72de2b77b769")
 		)
 		(pin "FT600_WR" input
 			(at 193.04 146.05 0)
+			(uuid "1be642a8-cf27-4223-bf89-05f9c3a3d7ea")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "1be642a8-cf27-4223-bf89-05f9c3a3d7ea")
 		)
 		(pin "FT600_RD" input
 			(at 193.04 148.59 0)
+			(uuid "c033cdbb-6da0-4551-8917-a851adf33ff6")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "c033cdbb-6da0-4551-8917-a851adf33ff6")
 		)
 		(pin "FIFO_D[0..15]" input
 			(at 193.04 171.45 0)
+			(uuid "5176ad66-fa0a-478f-9f90-ba2d5f5f10c7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "5176ad66-fa0a-478f-9f90-ba2d5f5f10c7")
 		)
 		(pin "FPGA_I2C_SDA" input
 			(at 193.04 180.34 0)
+			(uuid "cc03a72f-8e73-463c-bf2a-d283330b882c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "cc03a72f-8e73-463c-bf2a-d283330b882c")
 		)
 		(pin "USB_SYSMON_D_N" input
 			(at 156.21 101.6 180)
+			(uuid "523b6843-85df-4d8e-a875-f6eeb6c3e0d1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "523b6843-85df-4d8e-a875-f6eeb6c3e0d1")
 		)
 		(pin "USB_SYSMON_D_P" input
 			(at 156.21 99.06 180)
+			(uuid "da6d41d6-993a-4303-9b5d-7aecfb2b43ce")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "da6d41d6-993a-4303-9b5d-7aecfb2b43ce")
 		)
 		(pin "FPGA_I2C_SCL" input
 			(at 193.04 177.8 0)
+			(uuid "cb787a1d-16c5-432e-97d7-a2dbb9371348")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "cb787a1d-16c5-432e-97d7-a2dbb9371348")
 		)
 		(pin "PP_VUSB" input
 			(at 156.21 33.02 180)
+			(uuid "ce05f3b5-bf8b-45af-9569-2142d6343f6e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "ce05f3b5-bf8b-45af-9569-2142d6343f6e")
 		)
 		(pin "FIFO_BE1" input
 			(at 193.04 163.83 0)
+			(uuid "b51f45cf-5c6d-485a-a596-ccd8d37b8d5a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "b51f45cf-5c6d-485a-a596-ccd8d37b8d5a")
 		)
 		(pin "FIFO_BE0" input
 			(at 193.04 166.37 0)
+			(uuid "1d63dca7-046e-424b-880c-259dd1151838")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "1d63dca7-046e-424b-880c-259dd1151838")
 		)
 		(pin "FIFO_CLK" input
 			(at 193.04 168.91 0)
+			(uuid "8cf2e1dd-411f-4572-b49f-33ac3e7b7bfd")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "8cf2e1dd-411f-4572-b49f-33ac3e7b7bfd")
 		)
 		(pin "HDMI_IDCLK" input
 			(at 193.04 33.02 0)
+			(uuid "7f0e5c8e-7540-4217-9a08-366d3abecf42")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "7f0e5c8e-7540-4217-9a08-366d3abecf42")
 		)
 		(pin "HDMI_VSYNC" input
 			(at 193.04 35.56 0)
+			(uuid "14718c94-005a-4e4c-84ed-f65c1a0c5e85")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "14718c94-005a-4e4c-84ed-f65c1a0c5e85")
 		)
 		(pin "HDMI_HSYNC" input
 			(at 193.04 38.1 0)
+			(uuid "869bd0fb-7940-4ed4-b201-80da9c5b026a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "869bd0fb-7940-4ed4-b201-80da9c5b026a")
 		)
 		(pin "HDMI_DE" input
 			(at 193.04 40.64 0)
+			(uuid "b1a0d880-6d92-42a2-b63f-46512c69b6bf")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "b1a0d880-6d92-42a2-b63f-46512c69b6bf")
 		)
 		(pin "HDMI_SCK" input
 			(at 193.04 43.18 0)
+			(uuid "15463ae0-3224-4731-895f-c51f97819766")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "15463ae0-3224-4731-895f-c51f97819766")
 		)
 		(pin "HDMI_MCLK" input
 			(at 193.04 45.72 0)
+			(uuid "622eb108-8f9e-47b7-a615-91f5caacea9e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "622eb108-8f9e-47b7-a615-91f5caacea9e")
 		)
 		(pin "HDMI_WS_DR0" input
 			(at 193.04 48.26 0)
+			(uuid "97c09f4a-c4ef-4bf4-92ea-478449e480c9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "97c09f4a-c4ef-4bf4-92ea-478449e480c9")
 		)
 		(pin "HDMI_SD0_DL0" input
 			(at 193.04 50.8 0)
+			(uuid "0cfd7dd7-fb45-4f43-bbf9-ad9e35e7e7e1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "0cfd7dd7-fb45-4f43-bbf9-ad9e35e7e7e1")
 		)
 		(pin "HDMI_SPDIF" input
 			(at 193.04 53.34 0)
+			(uuid "a45cfe52-a9c4-4932-8150-589241271a42")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a45cfe52-a9c4-4932-8150-589241271a42")
 		)
 		(pin "HDMI_SD3_DR2" input
 			(at 193.04 55.88 0)
+			(uuid "f4babf44-faba-4e04-9a99-bbafafd0bf0f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f4babf44-faba-4e04-9a99-bbafafd0bf0f")
 		)
 		(pin "HDMI_SD2_DL1" input
 			(at 193.04 58.42 0)
+			(uuid "4a1004da-4e54-4879-853a-6a6bc3ca0f51")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "4a1004da-4e54-4879-853a-6a6bc3ca0f51")
 		)
 		(pin "HDMI_SD1_DR1" input
 			(at 193.04 60.96 0)
+			(uuid "ffb7bf3f-55b8-4b67-8095-68fac92061fb")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "ffb7bf3f-55b8-4b67-8095-68fac92061fb")
 		)
 		(pin "HDMI_DR[0..7]" input
 			(at 193.04 71.12 0)
+			(uuid "d2970114-2034-4bc6-9254-22c7037798d4")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d2970114-2034-4bc6-9254-22c7037798d4")
 		)
 		(pin "HDMI_DG[0..7]" input
 			(at 193.04 73.66 0)
+			(uuid "bc360bfe-2bbd-4b61-b73c-db2ecd11f624")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "bc360bfe-2bbd-4b61-b73c-db2ecd11f624")
 		)
 		(pin "HDMI_DB[0..7]" input
 			(at 193.04 76.2 0)
+			(uuid "3e8c60a3-eb39-4521-a166-20b3ca9abe66")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3e8c60a3-eb39-4521-a166-20b3ca9abe66")
 		)
 		(pin "HDMI_INT" input
 			(at 193.04 63.5 0)
+			(uuid "fb501df0-e750-4871-8986-fbe43d2e6f8d")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fb501df0-e750-4871-8986-fbe43d2e6f8d")
 		)
 		(pin "HDMI_RST" input
 			(at 193.04 66.04 0)
+			(uuid "622601cc-b545-4e78-945f-097ee8d7755e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "622601cc-b545-4e78-945f-097ee8d7755e")
 		)
 		(pin "MBUS_D[0..11]" input
 			(at 193.04 139.7 0)
+			(uuid "339b0cc8-1dbf-4aa5-af8a-720de0578d78")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "339b0cc8-1dbf-4aa5-af8a-720de0578d78")
 		)
 		(instances
 			(project "FPGA Module"
@@ -5071,6 +5101,10 @@
 	(sheet
 		(at 309.88 201.93)
 		(size 20.955 12.065)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)

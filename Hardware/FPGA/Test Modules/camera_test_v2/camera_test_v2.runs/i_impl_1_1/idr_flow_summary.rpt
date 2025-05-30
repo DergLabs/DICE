@@ -1,0 +1,69 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Sat Dec 14 01:20:43 2024
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Design Analysis
+
+Table of Contents
+-----------------
+1. IDR Flow Summary
+2. Design QoR Summary
+
+1. IDR Flow Summary
+-------------------
+ +-------------------------+---------------+-------------------+-------------------+---------------+--------------+--------------------------------------------+--------------------------+
+ | IDR Flow Stage          | IDR Flow Step | PostPlace WNS/WHS | PostRoute WNS/WHS | PostRoute-RQA | Route-Status | Suggestions & Strategy files               | Status                   |
+ +-------------------------+---------------+-------------------+-------------------+---------------+--------------+--------------------------------------------+--------------------------+
+ | RQS Design Improvements | First Pass    | -                 | -                 | -             | -            | -                                          | -                        |
+ | RQS Design Improvements | Utilization   | -8.145 / -5.612   | -8.056 / -0.091   | 2.000         | Routed       | stage1_utilization_suggestions.rqs         | Best result from stage 1 |
+ | RQS Design Improvements | Clocking      | -                 | -                 | -             | -            | -                                          | Skipped - No issue found |
+ | RQS Design Improvements | Congestion    | -                 | -                 | -             | -            | -                                          | Skipped - No issue found |
+ | RQS Design Improvements | Timing        | -                 | -                 | -             | -            | -                                          | Skipped - No issue found |
+ | Expand Placer Solution  | ML Strategy-1 | -                 | -                 | -             | -            | -                                          | -                        |
+ | Expand Placer Solution  | ML Strategy-2 | -8.108 / -5.600   | -7.963 / -0.091   | 2.000         | Routed       | checkpoint_postlogicoptSuggestionFile2.rqs | -                        |
+ | Expand Placer Solution  | ML Strategy-3 | -8.108 / -5.599   | -7.924 / -0.091   | 2.000         | Routed       | checkpoint_postlogicoptSuggestionFile3.rqs | Best result from stage 2 |
+ | Last Mile               | RQS-ECO       | -                 | -                 | -             | -            | -                                          | -                        |
+ +-------------------------+---------------+-------------------+-------------------+---------------+--------------+--------------------------------------------+--------------------------+
+
+2. Design QoR Summary
+---------------------
+
++----------------------------+---------------------------+--------+-----------+--------+-----------+-------+---------------------------+-------------------------+--------------------------+---------------------------+-------------------------+--------------------------+
+|           COMMAND          |         STAGE/STEP        |   WNS  |    TNS    |   WHS  |    THS    |  RQA  | Global Cong Level N-E-S-W | Long Cong Level N-E-S-W | Short Cong Level N-E-S-W | Global Cong Tile% N-E-S-W | Long Cong Tile% N-E-S-W | Short Cong Tile% N-E-S-W |
++----------------------------+---------------------------+--------+-----------+--------+-----------+-------+---------------------------+-------------------------+--------------------------+---------------------------+-------------------------+--------------------------+
+| opt_design                 | 1-CLEANUP_XDC             | -7.211 |  -803.011 | -7.076 | -1083.861 | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| opt_design                 | 1-CLEANUP_UTILIZATION*    | -7.211 |  -836.941 | -4.464 |  -715.628 | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| place_design               | 1-CLEANUP_UTILIZATION*    | -8.145 |  -947.407 | -5.612 |  -349.891 | 2.000 |             -             |            -            |          1 0 0 0         |             -             |            -            |             -            |
+| phys_opt_design            | 1-CLEANUP_UTILIZATION*    | -8.090 |  -988.645 | -2.437 |   -3.326  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| route_design               | 1-CLEANUP_UTILIZATION*    | -8.064 | -1008.956 | -0.091 |   -0.300  | 2.000 |          - - - 0          |         - - 0 0         |          - - - 0         |         - - - 0.0         |       - - 0.0 0.0       |         - - - 0.0        |
+| post-route phys_opt_design | 1-CLEANUP_UTILIZATION*    | -8.056 | -1005.212 | -0.091 |   -0.300  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| opt_design                 | 1-CLEANUP_CLOCKING*       | -6.777 |  -651.335 | -4.480 |  -400.189 | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| place_design               | 1-CLEANUP_CLOCKING*       | -7.338 |  -687.013 | -3.149 |  -115.101 | 2.000 |             -             |            -            |          0 0 0 1         |             -             |            -            |             -            |
+| phys_opt_design            | 1-CLEANUP_CLOCKING*       | -7.334 |  -716.421 | -0.623 |   -1.298  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| route_design               | 1-CLEANUP_CLOCKING*       | -7.153 |  -716.994 | -0.088 |   -0.288  | 2.000 |             -             |         - 0 0 0         |             -            |             -             |      - 0.0 0.0 0.0      |             -            |
+| post-route phys_opt_design | 1-CLEANUP_CLOCKING*       | -7.153 |  -716.517 | -0.088 |   -0.288  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+|                            |                           |        |           |        |           |       |                           |                         |                          |                           |                         |                          |
+| opt_design                 | 2-i_impl_1_1_ml_strat_1$* | -6.777 |  -651.358 | -4.480 |  -400.724 | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| place_design               | 2-i_impl_1_1_ml_strat_1$* | -7.338 |  -686.534 | -3.164 |  -115.272 | 2.000 |             -             |            -            |          0 1 0 0         |             -             |            -            |             -            |
+| phys_opt_design            | 2-i_impl_1_1_ml_strat_1$* | -7.334 |  -713.616 | -0.627 |   -1.209  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| route_design               | 2-i_impl_1_1_ml_strat_1$* | -7.152 |  -714.653 | -0.088 |   -0.288  | 2.000 |             -             |         0 0 0 0         |          - 0 - -         |             -             |     0.0 0.0 0.0 0.0     |         - 0.0 - -        |
+| post-route phys_opt_design | 2-i_impl_1_1_ml_strat_1$* | -7.152 |  -713.786 | -0.088 |   -0.288  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| opt_design                 | 2-i_impl_1_1_ml_strat_2   | -7.211 |  -837.195 | -4.464 |  -716.183 | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| place_design               | 2-i_impl_1_1_ml_strat_2   | -8.108 |  -944.045 | -5.600 |  -344.253 | 2.000 |             -             |            -            |          1 2 1 1         |             -             |            -            |             -            |
+| phys_opt_design            | 2-i_impl_1_1_ml_strat_2   | -8.062 |  -983.703 | -2.385 |   -3.693  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| route_design               | 2-i_impl_1_1_ml_strat_2   | -8.028 | -1000.343 | -0.091 |   -0.300  | 2.000 |          - - - 0          |         0 0 0 -         |          - 0 - 0         |         - - - 0.0         |      0.0 0.0 0.0 -      |        - 0.0 - 0.0       |
+| post-route phys_opt_design | 2-i_impl_1_1_ml_strat_2   | -7.963 |  -996.871 | -0.091 |   -0.326  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| opt_design                 | 2-i_impl_1_1_ml_strat_3$* | -7.211 |  -837.195 | -4.464 |  -716.183 | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| place_design               | 2-i_impl_1_1_ml_strat_3$* | -8.108 |  -942.618 | -5.599 |  -344.191 | 2.000 |             -             |            -            |          1 2 1 0         |             -             |            -            |             -            |
+| phys_opt_design            | 2-i_impl_1_1_ml_strat_3$* | -8.091 |  -983.449 | -2.385 |   -3.728  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+| route_design               | 2-i_impl_1_1_ml_strat_3$* | -8.003 |  -989.659 | -0.091 |   -0.300  | 2.000 |             -             |         0 0 0 0         |          - 0 - -         |             -             |     0.0 0.0 0.0 0.0     |         - 0.0 - -        |
+| post-route phys_opt_design | 2-i_impl_1_1_ml_strat_3$* | -7.924 |  -985.843 | -0.091 |   -0.360  | 2.000 |             -             |            -            |             -            |             -             |            -            |             -            |
+|                            |                           |        |           |        |           |       |                           |                         |                          |                           |                         |                          |
++----------------------------+---------------------------+--------+-----------+--------+-----------+-------+---------------------------+-------------------------+--------------------------+---------------------------+-------------------------+--------------------------+
+* indicates best run in a stage and $ indicates the best overall run.
+** Timing numbers are estimates only. Use report timing summary to get accurate numbers.
+
+

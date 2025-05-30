@@ -1,0 +1,78 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Sat Dec 14 00:57:38 2024
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_qor_assessment -pb rqa_stats.pb -exclude_methodology_checks -file postopt_utilization_rqa.rpt
+| Design       : mipi_csi_top_v2
+| Device       : xcku3p-ffva676-2-i
+| Speed File   : -2
+| Design State : Optimized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report QoR Assessment
+
+Table of Contents
+-----------------
+1. Overall Assessment Summary
+2. QoR Assessment Details
+3. Methodology Check Details
+4. ML Strategy Availability
+
+1. Overall Assessment Summary
+-----------------------------
+
++----------------------+---------------------------------------------------------------------------------------------+
+| QoR Assessment Score | 2 - Implementation may complete. Timing will not meet                                       |
++----------------------+---------------------------------------------------------------------------------------------+
+| Flow Guidance        | Run report_qor_suggestions to generate suggestions that will directly improve REVIEW items. |
++----------------------+---------------------------------------------------------------------------------------------+
+
+
+2. QoR Assessment Details
+-------------------------
+
++-----------------------------------------------+-----------+----------+------+-----------+-------+--------+
+| Name                                          | Threshold | Actual   | Used | Available | Score | Status |
++-----------------------------------------------+-----------+----------+------+-----------+-------+--------+
+| Utilization                                   |           |          |      |           |   5.0 |        |
+|    LUT Combined                               |     <2.00 |     0.00 |    0 |      2403 |       | REVIEW |
+| Netlist                                       |           |          |      |           |       |        |
+| *  DONT_TOUCH (cells/nets)                    |         0 |      780 |   -  |        -  |       | REVIEW |
+| *  MARK_DEBUG                                 |         0 |        2 |   -  |        -  |       | REVIEW |
+| *  High Fanout Nets driven by FFs/LUTs        |         5 |     4.50 |   -  |        -  |       | REVIEW |
+| Clocking                                      |           |          |      |           |   3.0 |        |
+|    Setup Skew                                 |    -0.350 |   -0.400 |   -  |        -  |       | REVIEW |
+|    Hold Skew                                  |     0.350 |    9.060 |   -  |        -  |       | REVIEW |
+| Congestion                                    |           |          |      |           |   3.0 |
+|   Predicted Congestion Score                  |         5 |        3 |      |           |   3.0 | REVIEW |
+| Timing                                        |           |          |      |           |   2.0 |        |
+|    WNS                                        |    -0.100 |   -7.211 |   -  |        -  |       | REVIEW |
+|    TNS                                        |    -0.100 | -836.941 |   -  |        -  |       | REVIEW |
+|   Number of paths above Max Net/LUT Budgeting |         0 |      156 |   -  |        -  |       | REVIEW |
++-----------------------------------------------+-----------+----------+------+-----------+-------+--------+
+* Sub-categories with prefix * do not impact score
+
+
+3. Methodology Check Details
+----------------------------
+
++----+-------------+-------------+----------------------+
+| ID | Description | Criticality | Number of Violations |
++----+-------------+-------------+----------------------+
+
+
+4. ML Strategy Availability
+---------------------------
+
++-----------------------------------------+---------+--------+
+| Conditions for ML Strategy Availability | Value   | Status |
++-----------------------------------------+---------+--------+
+| opt_design directive                    | Explore |     OK |
+| place_design directive                  |         |      - |
+| phys_opt_design directive               |         |      - |
+| route_design directive                  |         |      - |
++-----------------------------------------+---------+--------+
+* ML Strategies are available only when the default/explore directives have been used in the implementation flow and the design is successfully routed design. Refer to UG906 for more details.
+
+

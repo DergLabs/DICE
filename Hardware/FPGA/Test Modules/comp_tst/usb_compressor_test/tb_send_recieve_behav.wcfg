@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_send_recieve_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_send_recieve" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="182,494.400 ns"></ZoomStartTime>
+      <ZoomEndTime time="182,975.801 ns"></ZoomEndTime>
+      <Cursor1Time time="182,758.600 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="371"></NameColumnWidth>
+      <ValueColumnWidth column_width="552"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="28" />
+   <wvobject fp_name="/tb_send_recieve/top_proc/ftdi_clk_i" type="logic">
+      <obj_property name="ElementShortName">ftdi_clk_i</obj_property>
+      <obj_property name="ObjectShortName">ftdi_clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/core_clk" type="logic">
+      <obj_property name="ElementShortName">core_clk</obj_property>
+      <obj_property name="ObjectShortName">core_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider202">
+      <obj_property name="label">FT600 Interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group203" type="group">
+      <obj_property name="label">FT600 Interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_send_recieve/ftdi_clk" type="logic">
+         <obj_property name="ElementShortName">ftdi_clk</obj_property>
+         <obj_property name="ObjectShortName">ftdi_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/rst_n" type="logic">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/ftdi_data" type="array">
+         <obj_property name="ElementShortName">ftdi_data[15:0]</obj_property>
+         <obj_property name="ObjectShortName">ftdi_data[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/ftdi_be" type="array">
+         <obj_property name="ElementShortName">ftdi_be[1:0]</obj_property>
+         <obj_property name="ObjectShortName">ftdi_be[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/tb_ftdi_data_i" type="array">
+         <obj_property name="ElementShortName">tb_ftdi_data_i[15:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_ftdi_data_i[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/tb_ftdi_data_o" type="array">
+         <obj_property name="ElementShortName">tb_ftdi_data_o[15:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_ftdi_data_o[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/ft600_send_recv/ready_to_send" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">ready_to_send</obj_property>
+         <obj_property name="ObjectShortName">ready_to_send</obj_property>
+         <obj_property name="label">data_in_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/ft600_send_recv/ready_to_recieve" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">ready_to_recieve</obj_property>
+         <obj_property name="ObjectShortName">ready_to_recieve</obj_property>
+         <obj_property name="label">ft600_ready_for_data</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/data_from_ft600" type="array">
+         <obj_property name="ElementShortName">data_from_ft600[15:0]</obj_property>
+         <obj_property name="ObjectShortName">data_from_ft600[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/ft600_send_recv/data_from_ft600" type="array">
+      <obj_property name="ElementShortName">data_from_ft600[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_from_ft600[15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/ftdi_rxf_n" type="logic">
+      <obj_property name="ElementShortName">ftdi_rxf_n</obj_property>
+      <obj_property name="ObjectShortName">ftdi_rxf_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/ft600_send_recv/ready_to_send" type="logic">
+      <obj_property name="ElementShortName">ready_to_send</obj_property>
+      <obj_property name="ObjectShortName">ready_to_send</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/ft600_send_recv/data_to_ft600" type="array">
+      <obj_property name="ElementShortName">data_to_ft600[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_to_ft600[15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/ft600_send_recv/ready_to_recieve" type="logic">
+      <obj_property name="ElementShortName">ready_to_recieve</obj_property>
+      <obj_property name="ObjectShortName">ready_to_recieve</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider227">
+      <obj_property name="label">Input SIPO Register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group200" type="group">
+      <obj_property name="label">Input SIPO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider201">
+      <obj_property name="label">Input CDC FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group217" type="group">
+      <obj_property name="label">Input CDC FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/rst_i" type="logic">
+         <obj_property name="ElementShortName">rst_i</obj_property>
+         <obj_property name="ObjectShortName">rst_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/data_i" type="array">
+         <obj_property name="ElementShortName">data_i[15:0]</obj_property>
+         <obj_property name="ObjectShortName">data_i[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/data_in_valid" type="logic">
+         <obj_property name="ElementShortName">data_in_valid</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/write_clk_i" type="logic">
+         <obj_property name="ElementShortName">write_clk_i</obj_property>
+         <obj_property name="ObjectShortName">write_clk_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/data_out_valid" type="logic">
+         <obj_property name="ElementShortName">data_out_valid</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/read_clk_i" type="logic">
+         <obj_property name="ElementShortName">read_clk_i</obj_property>
+         <obj_property name="ObjectShortName">read_clk_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/wr_rst_busy" type="logic">
+         <obj_property name="ElementShortName">wr_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">wr_rst_busy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/rd_rst_busy" type="logic">
+         <obj_property name="ElementShortName">rd_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">rd_rst_busy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/fifo_data_o" type="array">
+         <obj_property name="ElementShortName">fifo_data_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_o[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/DIN_WIDTH" type="other">
+         <obj_property name="ElementShortName">DIN_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">DIN_WIDTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/DOUT_WIDTH" type="other">
+         <obj_property name="ElementShortName">DOUT_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">DOUT_WIDTH</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/data_o" type="array">
+      <obj_property name="ElementShortName">data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/input_memory_fifo/data_out_valid" type="logic">
+      <obj_property name="ElementShortName">data_out_valid</obj_property>
+      <obj_property name="ObjectShortName">data_out_valid</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider208">
+      <obj_property name="label">Pixel Processor</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group91" type="group">
+      <obj_property name="label">Processor</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/channel_inputs" type="array">
+         <obj_property name="ElementShortName">channel_inputs[0:2][7:0]</obj_property>
+         <obj_property name="ObjectShortName">channel_inputs[0:2][7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider691">
+         <obj_property name="label">Input SIPO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/data_i" type="array">
+         <obj_property name="ElementShortName">data_i[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_i[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/valid_i" type="logic">
+         <obj_property name="ElementShortName">valid_i</obj_property>
+         <obj_property name="ObjectShortName">valid_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="group69" type="group">
+         <obj_property name="label">Input SIPO Reg</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/clk_i" type="logic">
+            <obj_property name="ElementShortName">clk_i</obj_property>
+            <obj_property name="ObjectShortName">clk_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/rst_i" type="logic">
+            <obj_property name="ElementShortName">rst_i</obj_property>
+            <obj_property name="ObjectShortName">rst_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/data_i" type="array">
+            <obj_property name="ElementShortName">data_i[7:0]</obj_property>
+            <obj_property name="ObjectShortName">data_i[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/valid_i" type="logic">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/data_o" type="array">
+            <obj_property name="ElementShortName">data_o[63:0]</obj_property>
+            <obj_property name="ObjectShortName">data_o[63:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/valid_o" type="logic">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/pixel_counter_x" type="array">
+            <obj_property name="ElementShortName">pixel_counter_x[15:0]</obj_property>
+            <obj_property name="ObjectShortName">pixel_counter_x[15:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/data_x" type="array">
+            <obj_property name="ElementShortName">data_x[63:0]</obj_property>
+            <obj_property name="ObjectShortName">data_x[63:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/valid_x" type="logic">
+            <obj_property name="ElementShortName">valid_x</obj_property>
+            <obj_property name="ObjectShortName">valid_x</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/IN_WIDTH" type="other">
+            <obj_property name="ElementShortName">IN_WIDTH</obj_property>
+            <obj_property name="ObjectShortName">IN_WIDTH</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/OUT_TAPS" type="other">
+            <obj_property name="ElementShortName">OUT_TAPS</obj_property>
+            <obj_property name="ObjectShortName">OUT_TAPS</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/TAP_END" type="other">
+            <obj_property name="ElementShortName">TAP_END</obj_property>
+            <obj_property name="ObjectShortName">TAP_END</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/DEPTH" type="other">
+            <obj_property name="ElementShortName">DEPTH</obj_property>
+            <obj_property name="ObjectShortName">DEPTH</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/SHIFT_DIR" type="array">
+            <obj_property name="ElementShortName">SHIFT_DIR[1:10]</obj_property>
+            <obj_property name="ObjectShortName">SHIFT_DIR[1:10]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[63:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/gen_subsample/input_sipo_reg/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider690">
+         <obj_property name="label">Col DCT</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group82" type="group">
+         <obj_property name="label">col_dct</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/clk_i" type="logic">
+            <obj_property name="ElementShortName">clk_i</obj_property>
+            <obj_property name="ObjectShortName">clk_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/ce_i" type="logic">
+            <obj_property name="ElementShortName">ce_i</obj_property>
+            <obj_property name="ObjectShortName">ce_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/rst_i" type="logic">
+            <obj_property name="ElementShortName">rst_i</obj_property>
+            <obj_property name="ObjectShortName">rst_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/data_i" type="array">
+            <obj_property name="ElementShortName">data_i[95:0]</obj_property>
+            <obj_property name="ObjectShortName">data_i[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/valid_i" type="logic">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp_layer_1_out" type="array">
+            <obj_property name="ElementShortName">dsp_layer_1_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dsp_layer_1_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="group391" type="group">
+            <obj_property name="label">dsp1_add</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a0" type="array">
+               <obj_property name="ElementShortName">a0[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a0[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b0" type="array">
+               <obj_property name="ElementShortName">b0[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b0[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a1" type="array">
+               <obj_property name="ElementShortName">a1[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a1[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b1" type="array">
+               <obj_property name="ElementShortName">b1[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b1[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a2" type="array">
+               <obj_property name="ElementShortName">a2[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a2[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b2" type="array">
+               <obj_property name="ElementShortName">b2[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b2[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a3" type="array">
+               <obj_property name="ElementShortName">a3[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a3[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b3" type="array">
+               <obj_property name="ElementShortName">b3[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b3[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/out0" type="array">
+               <obj_property name="ElementShortName">out0[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out0[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/out1" type="array">
+               <obj_property name="ElementShortName">out1[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out1[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/out2" type="array">
+               <obj_property name="ElementShortName">out2[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out2[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/out3" type="array">
+               <obj_property name="ElementShortName">out3[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out3[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a0_r" type="array">
+               <obj_property name="ElementShortName">a0_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a0_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b0_r" type="array">
+               <obj_property name="ElementShortName">b0_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b0_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a1_r" type="array">
+               <obj_property name="ElementShortName">a1_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a1_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b1_r" type="array">
+               <obj_property name="ElementShortName">b1_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b1_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a2_r" type="array">
+               <obj_property name="ElementShortName">a2_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a2_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b2_r" type="array">
+               <obj_property name="ElementShortName">b2_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b2_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/a3_r" type="array">
+               <obj_property name="ElementShortName">a3_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a3_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp1_add/b3_r" type="array">
+               <obj_property name="ElementShortName">b3_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b3_r[11:0]</obj_property>
+               <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group412" type="group">
+            <obj_property name="label">dsp2_sub</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a0" type="array">
+               <obj_property name="ElementShortName">a0[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a0[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b0" type="array">
+               <obj_property name="ElementShortName">b0[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b0[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a1" type="array">
+               <obj_property name="ElementShortName">a1[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a1[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b1" type="array">
+               <obj_property name="ElementShortName">b1[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b1[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a2" type="array">
+               <obj_property name="ElementShortName">a2[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a2[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b2" type="array">
+               <obj_property name="ElementShortName">b2[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b2[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a3" type="array">
+               <obj_property name="ElementShortName">a3[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a3[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b3" type="array">
+               <obj_property name="ElementShortName">b3[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b3[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/out0" type="array">
+               <obj_property name="ElementShortName">out0[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out0[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/out1" type="array">
+               <obj_property name="ElementShortName">out1[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out1[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/out2" type="array">
+               <obj_property name="ElementShortName">out2[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out2[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/out3" type="array">
+               <obj_property name="ElementShortName">out3[11:0]</obj_property>
+               <obj_property name="ObjectShortName">out3[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a0_r" type="array">
+               <obj_property name="ElementShortName">a0_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a0_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b0_r" type="array">
+               <obj_property name="ElementShortName">b0_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b0_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a1_r" type="array">
+               <obj_property name="ElementShortName">a1_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a1_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b1_r" type="array">
+               <obj_property name="ElementShortName">b1_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b1_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a2_r" type="array">
+               <obj_property name="ElementShortName">a2_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a2_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b2_r" type="array">
+               <obj_property name="ElementShortName">b2_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b2_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/a3_r" type="array">
+               <obj_property name="ElementShortName">a3_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">a3_r[11:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp2_sub/b3_r" type="array">
+               <obj_property name="ElementShortName">b3_r[11:0]</obj_property>
+               <obj_property name="ObjectShortName">b3_r[11:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/layer_2_tmp_x" type="array">
+            <obj_property name="ElementShortName">layer_2_tmp_x[47:0]</obj_property>
+            <obj_property name="ObjectShortName">layer_2_tmp_x[47:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp_layer_2_out" type="array">
+            <obj_property name="ElementShortName">dsp_layer_2_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dsp_layer_2_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/dsp_layer_3_out" type="array">
+            <obj_property name="ElementShortName">dsp_layer_3_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dsp_layer_3_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/data_o" type="array">
+            <obj_property name="ElementShortName">data_o[95:0]</obj_property>
+            <obj_property name="ObjectShortName">data_o[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/valid_o" type="logic">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[95:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[95:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/col_dct/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider692">
+         <obj_property name="label">Pixel Divider</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group89" type="group">
+         <obj_property name="label">Pixel Divider</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/clk_i" type="logic">
+            <obj_property name="ElementShortName">clk_i</obj_property>
+            <obj_property name="ObjectShortName">clk_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/rst_i" type="logic">
+            <obj_property name="ElementShortName">rst_i</obj_property>
+            <obj_property name="ObjectShortName">rst_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/pixel_i" type="array">
+            <obj_property name="ElementShortName">pixel_i[95:0]</obj_property>
+            <obj_property name="ObjectShortName">pixel_i[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/valid_i" type="logic">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/pixel_o" type="array">
+            <obj_property name="ElementShortName">pixel_o[95:0]</obj_property>
+            <obj_property name="ObjectShortName">pixel_o[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/valid_o" type="logic">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/dct1_pixel_out" type="array">
+            <obj_property name="ElementShortName">dct1_pixel_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dct1_pixel_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/corrected_data" type="array">
+            <obj_property name="ElementShortName">corrected_data[95:0]</obj_property>
+            <obj_property name="ObjectShortName">corrected_data[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/shifted_pixels" type="array">
+            <obj_property name="ElementShortName">shifted_pixels[95:0]</obj_property>
+            <obj_property name="ObjectShortName">shifted_pixels[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/valid_x" type="logic">
+            <obj_property name="ElementShortName">valid_x</obj_property>
+            <obj_property name="ObjectShortName">valid_x</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/pixel_o" type="array">
+         <obj_property name="ElementShortName">pixel_o[95:0]</obj_property>
+         <obj_property name="ObjectShortName">pixel_o[95:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_divider/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider693">
+         <obj_property name="label">Pixel Transpose</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group110" type="group">
+         <obj_property name="label">pixel transpose</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/clk_i" type="logic">
+            <obj_property name="ElementShortName">clk_i</obj_property>
+            <obj_property name="ObjectShortName">clk_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/ce_i" type="logic">
+            <obj_property name="ElementShortName">ce_i</obj_property>
+            <obj_property name="ObjectShortName">ce_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/rst_i" type="logic">
+            <obj_property name="ElementShortName">rst_i</obj_property>
+            <obj_property name="ObjectShortName">rst_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/data_i" type="array">
+            <obj_property name="ElementShortName">data_i[71:0]</obj_property>
+            <obj_property name="ObjectShortName">data_i[71:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/valid_i" type="logic">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/input_pixel_r" type="array">
+            <obj_property name="ElementShortName">input_pixel_r[71:0]</obj_property>
+            <obj_property name="ObjectShortName">input_pixel_r[71:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/valid_r" type="logic">
+            <obj_property name="ElementShortName">valid_r</obj_property>
+            <obj_property name="ObjectShortName">valid_r</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/pixel_bank_0" type="array">
+            <obj_property name="ElementShortName">pixel_bank_0[575:0]</obj_property>
+            <obj_property name="ObjectShortName">pixel_bank_0[575:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/pixel_bank_1" type="array">
+            <obj_property name="ElementShortName">pixel_bank_1[575:0]</obj_property>
+            <obj_property name="ObjectShortName">pixel_bank_1[575:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/pixel_output" type="array">
+            <obj_property name="ElementShortName">pixel_output[575:0]</obj_property>
+            <obj_property name="ObjectShortName">pixel_output[575:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/wr_state_r" type="other">
+            <obj_property name="ElementShortName">wr_state_r</obj_property>
+            <obj_property name="ObjectShortName">wr_state_r</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/rd_state_r" type="other">
+            <obj_property name="ElementShortName">rd_state_r</obj_property>
+            <obj_property name="ObjectShortName">rd_state_r</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/wr_counter_r" type="other">
+            <obj_property name="ElementShortName">wr_counter_r</obj_property>
+            <obj_property name="ObjectShortName">wr_counter_r</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/rd_counter_r" type="other">
+            <obj_property name="ElementShortName">rd_counter_r</obj_property>
+            <obj_property name="ObjectShortName">rd_counter_r</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/data_o" type="array">
+            <obj_property name="ElementShortName">data_o[71:0]</obj_property>
+            <obj_property name="ObjectShortName">data_o[71:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/valid_o" type="logic">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/ELEMENT_WIDTH" type="other">
+            <obj_property name="ElementShortName">ELEMENT_WIDTH</obj_property>
+            <obj_property name="ObjectShortName">ELEMENT_WIDTH</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/NUM_ELEMENTS" type="other">
+            <obj_property name="ElementShortName">NUM_ELEMENTS</obj_property>
+            <obj_property name="ObjectShortName">NUM_ELEMENTS</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/DEPTH" type="other">
+            <obj_property name="ElementShortName">DEPTH</obj_property>
+            <obj_property name="ObjectShortName">DEPTH</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[71:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[71:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/pixel_transpose/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider694">
+         <obj_property name="label">Row DCT</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group123" type="group">
+         <obj_property name="label">row dct</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/clk_i" type="logic">
+            <obj_property name="ElementShortName">clk_i</obj_property>
+            <obj_property name="ObjectShortName">clk_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/ce_i" type="logic">
+            <obj_property name="ElementShortName">ce_i</obj_property>
+            <obj_property name="ObjectShortName">ce_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/rst_i" type="logic">
+            <obj_property name="ElementShortName">rst_i</obj_property>
+            <obj_property name="ObjectShortName">rst_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/data_i" type="array">
+            <obj_property name="ElementShortName">data_i[95:0]</obj_property>
+            <obj_property name="ObjectShortName">data_i[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/valid_i" type="logic">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/dsp_layer_1_out" type="array">
+            <obj_property name="ElementShortName">dsp_layer_1_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dsp_layer_1_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/valid_x" type="logic">
+            <obj_property name="ElementShortName">valid_x</obj_property>
+            <obj_property name="ObjectShortName">valid_x</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/dsp_layer_2_out" type="array">
+            <obj_property name="ElementShortName">dsp_layer_2_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dsp_layer_2_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/dsp_layer_3_out" type="array">
+            <obj_property name="ElementShortName">dsp_layer_3_out[95:0]</obj_property>
+            <obj_property name="ObjectShortName">dsp_layer_3_out[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/layer_2_tmp_x" type="array">
+            <obj_property name="ElementShortName">layer_2_tmp_x[47:0]</obj_property>
+            <obj_property name="ObjectShortName">layer_2_tmp_x[47:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/data_o" type="array">
+            <obj_property name="ElementShortName">data_o[95:0]</obj_property>
+            <obj_property name="ObjectShortName">data_o[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/valid_o" type="logic">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[95:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[95:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/row_dct/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider695">
+         <obj_property name="label">Quantizer</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="group138" type="group">
+         <obj_property name="label">quantizer</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/clk_i" type="logic">
+            <obj_property name="ElementShortName">clk_i</obj_property>
+            <obj_property name="ObjectShortName">clk_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/ce_i" type="logic">
+            <obj_property name="ElementShortName">ce_i</obj_property>
+            <obj_property name="ObjectShortName">ce_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/rst_i" type="logic">
+            <obj_property name="ElementShortName">rst_i</obj_property>
+            <obj_property name="ObjectShortName">rst_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/data_i" type="array">
+            <obj_property name="ElementShortName">data_i[95:0]</obj_property>
+            <obj_property name="ObjectShortName">data_i[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/valid_i" type="logic">
+            <obj_property name="ElementShortName">valid_i</obj_property>
+            <obj_property name="ObjectShortName">valid_i</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/data_o" type="array">
+            <obj_property name="ElementShortName">data_o[63:0]</obj_property>
+            <obj_property name="ObjectShortName">data_o[63:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/valid_o" type="logic">
+            <obj_property name="ElementShortName">valid_o</obj_property>
+            <obj_property name="ObjectShortName">valid_o</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/valid_x" type="logic">
+            <obj_property name="ElementShortName">valid_x</obj_property>
+            <obj_property name="ObjectShortName">valid_x</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/data_x" type="array">
+            <obj_property name="ElementShortName">data_x[95:0]</obj_property>
+            <obj_property name="ObjectShortName">data_x[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/quantized_data" type="array">
+            <obj_property name="ElementShortName">quantized_data[95:0]</obj_property>
+            <obj_property name="ObjectShortName">quantized_data[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/ram_addr" type="array">
+            <obj_property name="ElementShortName">ram_addr[4:0]</obj_property>
+            <obj_property name="ObjectShortName">ram_addr[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/quantization_factor" type="array">
+            <obj_property name="ElementShortName">quantization_factor[63:0]</obj_property>
+            <obj_property name="ObjectShortName">quantization_factor[63:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/resized_data" type="array">
+            <obj_property name="ElementShortName">resized_data[63:0]</obj_property>
+            <obj_property name="ObjectShortName">resized_data[63:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/quantization_factor_delayed" type="array">
+            <obj_property name="ElementShortName">quantization_factor_delayed[63:0]</obj_property>
+            <obj_property name="ObjectShortName">quantization_factor_delayed[63:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/corrected_data" type="array">
+            <obj_property name="ElementShortName">corrected_data[95:0]</obj_property>
+            <obj_property name="ObjectShortName">corrected_data[95:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/correction_factors" type="array">
+            <obj_property name="ElementShortName">correction_factors[95:0]</obj_property>
+            <obj_property name="ObjectShortName">correction_factors[95:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[63:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/\gen_channels(2)\/channel_inst/quantizer/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider209">
+      <obj_property name="label">Output Ram</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/channel_outputs" type="array">
+      <obj_property name="ElementShortName">channel_outputs[0:2][63:0]</obj_property>
+      <obj_property name="ObjectShortName">channel_outputs[0:2][63:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/compression_core/valid_o" type="array">
+      <obj_property name="ElementShortName">valid_o[2:0]</obj_property>
+      <obj_property name="ObjectShortName">valid_o[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group209" type="group">
+      <obj_property name="label">Output Memory</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/rst_i" type="logic">
+         <obj_property name="ElementShortName">rst_i</obj_property>
+         <obj_property name="ObjectShortName">rst_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/data_i" type="array">
+         <obj_property name="ElementShortName">data_i[255:0]</obj_property>
+         <obj_property name="ObjectShortName">data_i[255:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/data_in_valid" type="logic">
+         <obj_property name="ElementShortName">data_in_valid</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/write_clk_i" type="logic">
+         <obj_property name="ElementShortName">write_clk_i</obj_property>
+         <obj_property name="ObjectShortName">write_clk_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[15:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/data_out_valid" type="logic">
+         <obj_property name="ElementShortName">data_out_valid</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/read_clk_i" type="logic">
+         <obj_property name="ElementShortName">read_clk_i</obj_property>
+         <obj_property name="ObjectShortName">read_clk_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/memory_clear_o" type="logic">
+         <obj_property name="ElementShortName">memory_clear_o</obj_property>
+         <obj_property name="ObjectShortName">memory_clear_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/output_ram_wr_addr" type="array">
+         <obj_property name="ElementShortName">output_ram_wr_addr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">output_ram_wr_addr[8:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/output_ram_rd_addr" type="array">
+         <obj_property name="ElementShortName">output_ram_rd_addr[12:0]</obj_property>
+         <obj_property name="ObjectShortName">output_ram_rd_addr[12:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/reciever_ready_i" type="logic">
+         <obj_property name="ElementShortName">reciever_ready_i</obj_property>
+         <obj_property name="ObjectShortName">reciever_ready_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/write_counter" type="other">
+         <obj_property name="ElementShortName">write_counter</obj_property>
+         <obj_property name="ObjectShortName">write_counter</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/read_counter" type="other">
+         <obj_property name="ElementShortName">read_counter</obj_property>
+         <obj_property name="ObjectShortName">read_counter</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/DIN_WIDTH" type="other">
+         <obj_property name="ElementShortName">DIN_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">DIN_WIDTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/DOUT_WIDTH" type="other">
+         <obj_property name="ElementShortName">DOUT_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">DOUT_WIDTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/NUM_WRITE_WORDS" type="other">
+         <obj_property name="ElementShortName">NUM_WRITE_WORDS</obj_property>
+         <obj_property name="ObjectShortName">NUM_WRITE_WORDS</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/NUM_READ_WORDS" type="other">
+         <obj_property name="ElementShortName">NUM_READ_WORDS</obj_property>
+         <obj_property name="ObjectShortName">NUM_READ_WORDS</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/DEPTH" type="other">
+         <obj_property name="ElementShortName">DEPTH</obj_property>
+         <obj_property name="ObjectShortName">DEPTH</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/data_o" type="array">
+      <obj_property name="ElementShortName">data_o[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/data_out_valid" type="logic">
+      <obj_property name="ElementShortName">data_out_valid</obj_property>
+      <obj_property name="ObjectShortName">data_out_valid</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/reciever_ready_i" type="logic">
+      <obj_property name="ElementShortName">reciever_ready_i</obj_property>
+      <obj_property name="ObjectShortName">reciever_ready_i</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/read_clk_i" type="logic">
+      <obj_property name="ElementShortName">read_clk_i</obj_property>
+      <obj_property name="ObjectShortName">read_clk_i</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/top_proc/gen_modified_core_input/output_memory/memory_clear_o" type="logic">
+      <obj_property name="ElementShortName">memory_clear_o</obj_property>
+      <obj_property name="ObjectShortName">memory_clear_o</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_send_recieve/ftdi_txe_n" type="logic">
+      <obj_property name="ElementShortName">ftdi_txe_n</obj_property>
+      <obj_property name="ObjectShortName">ftdi_txe_n</obj_property>
+   </wvobject>
+</wave_config>

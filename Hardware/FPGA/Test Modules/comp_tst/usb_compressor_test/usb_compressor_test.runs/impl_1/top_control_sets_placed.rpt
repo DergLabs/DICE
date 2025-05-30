@@ -1,0 +1,132 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Mon Feb 10 15:25:07 2025
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xcku3p
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    54 |
+|    Minimum number of control sets                        |    54 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    41 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    54 |
+| >= 0 to < 4        |     9 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     5 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    33 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             814 |          141 |
+| No           | No                    | Yes                    |            1756 |          530 |
+| No           | Yes                   | No                     |              14 |            6 |
+| Yes          | No                    | No                     |             234 |           57 |
+| Yes          | No                    | Yes                    |            4737 |          812 |
+| Yes          | Yes                   | No                     |             180 |           31 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|             Clock Signal            |                                                              Enable Signal                                                             |                                                                      Set/Reset Signal                                                                      | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+| ~ftdi_clk_i_IBUF_BUFG               | ft600_send_recv/reg_ftdi_wr_n_i_1_n_0                                                                                                  | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              1 |         1.00 |
+|  ftdi_clk_i_IBUF_BUFG               |                                                                                                                                        | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.xpm_cdc_sync_rst_inst_wrst/syncstages_ff[4] |                1 |              1 |         1.00 |
+|  ftdi_clk_i_IBUF_BUFG               | rst_i_IBUF_inst/O                                                                                                                      |                                                                                                                                                            |                1 |              1 |         1.00 |
+|  ftdi_clk_i_IBUF_BUFG               |                                                                                                                                        | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_wr_rst_ic_reg_0                |                1 |              2 |         2.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/E[0]                                                     | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              3 |         3.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/E[0]                                                     | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              3 |         3.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_transpose/FSM_onehot_wr_state_r[2]_i_1_n_0                 | rst_i_IBUF_inst/O                                                                                                                                          |                2 |              3 |         1.50 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_transpose/FSM_onehot_wr_state_r[2]_i_1__0_n_0              | rst_i_IBUF_inst/O                                                                                                                                          |                2 |              3 |         1.50 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/E[0]                                                     | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              3 |         3.00 |
+| ~ftdi_clk_i_IBUF_BUFG               | ft600_send_recv/reg_LED_data_out[3]_i_1_n_0                                                                                            | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              4 |         4.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_transpose/FSM_sequential_rd_state_r[1]_i_1__1_n_0          | rst_i_IBUF_inst/O                                                                                                                                          |                3 |              4 |         1.33 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_transpose/FSM_sequential_rd_state_r[1]_i_1__0_n_0          | rst_i_IBUF_inst/O                                                                                                                                          |                3 |              5 |         1.67 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_transpose/FSM_sequential_rd_state_r[1]_i_1_n_0             | rst_i_IBUF_inst/O                                                                                                                                          |                2 |              5 |         2.50 |
+| ~ftdi_clk_i_IBUF_BUFG               |                                                                                                                                        | rst_i_IBUF_inst/O                                                                                                                                          |                3 |              6 |         2.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/gen_subsample.pixel_subsampler_inst/sel_pixel_i_1_n_0            | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              8 |         8.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_transpose/FSM_onehot_wr_state_r[2]_i_1__1_n_0              | rst_i_IBUF_inst/O                                                                                                                                          |                3 |              8 |         2.67 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/gen_subsample.pixel_subsampler_inst/sel_pixel_i_1__0_n_0         | rst_i_IBUF_inst/O                                                                                                                                          |                1 |              8 |         8.00 |
+|  ftdi_clk_i_IBUF_BUFG               | ft600_send_recv/reg_ftdi_data_i[15]_i_1_n_0                                                                                            |                                                                                                                                                            |                2 |              8 |         4.00 |
+|  ftdi_clk_i_IBUF_BUFG               | ft600_send_recv/reg_ftdi_data_i_n_0                                                                                                    |                                                                                                                                                            |                3 |              8 |         2.67 |
+|  ftdi_clk_i_IBUF_BUFG               | rst_i_IBUF_inst/O                                                                                                                      | gen_modified_core_input.output_memory/output_ram_rd_addr0                                                                                                  |                2 |             10 |         5.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 |                                                                                                                                        | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/SR[0]                                                                         |                4 |             11 |         2.75 |
+|  clocking_gen.sys_clk/inst/clk_out1 | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/ram_empty_fb_i_reg[0] | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/SR[0]                                                                         |                3 |             20 |         6.67 |
+|  clocking_gen.sys_clk/inst/clk_out1 | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/E[0]                  | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/SR[0]                                                                         |                4 |             24 |         6.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | input_memory_fifo/rd_en_delay/E[0]                                                                                                     | rst_i_IBUF_inst/O                                                                                                                                          |                4 |             24 |         6.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_transpose/wr_counter_r                                     | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_transpose/wr_counter_r[31]_i_1__0_n_0                                          |                6 |             31 |         5.17 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_transpose/wr_counter_r                                     | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_transpose/wr_counter_r[31]_i_1__1_n_0                                          |                5 |             31 |         6.20 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_transpose/wr_counter_r                                     | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_transpose/wr_counter_r[31]_i_1_n_0                                             |                6 |             31 |         5.17 |
+|  ftdi_clk_i_IBUF_BUFG               |                                                                                                                                        | rst_i_IBUF_inst/O                                                                                                                                          |                8 |             32 |         4.00 |
+| ~ftdi_clk_i_IBUF_BUFG               | ft600_send_recv/temp_LED_data                                                                                                          | rst_i_IBUF_inst/O                                                                                                                                          |                8 |             32 |         4.00 |
+|  ftdi_clk_i_IBUF_BUFG               | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/E[0]                          | input_memory_fifo/input_cdc_fifo/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_wr_rst_ic_reg_0                |                5 |             33 |         6.60 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/quantizer/valid_o_reg_0[0]                                       | rst_i_IBUF_inst/O                                                                                                                                          |                8 |             39 |         4.88 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/gen_subsample.input_sipo_reg/data_o                              | rst_i_IBUF_inst/O                                                                                                                                          |               11 |             64 |         5.82 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/gen_subsample.input_sipo_reg/data_o                              | rst_i_IBUF_inst/O                                                                                                                                          |               10 |             64 |         6.40 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/gen_subsample.input_sipo_reg/data_o                              | rst_i_IBUF_inst/O                                                                                                                                          |               11 |             64 |         5.82 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_divider/valid_delay/Q[0]                                   | rst_i_IBUF_inst/O                                                                                                                                          |               30 |             72 |         2.40 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_divider/valid_delay/Q[0]                                   | rst_i_IBUF_inst/O                                                                                                                                          |               33 |             72 |         2.18 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_divider/valid_delay/Q[0]                                   | rst_i_IBUF_inst/O                                                                                                                                          |               36 |             72 |         2.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/col_dct/valid_delay/E[0]                                         | rst_i_IBUF_inst/O                                                                                                                                          |               16 |             80 |         5.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/col_dct/valid_delay/E[0]                                         | rst_i_IBUF_inst/O                                                                                                                                          |               21 |             80 |         3.81 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/col_dct/valid_delay/E[0]                                         | rst_i_IBUF_inst/O                                                                                                                                          |               19 |             80 |         4.21 |
+|  ftdi_clk_i_IBUF_BUFG               |                                                                                                                                        |                                                                                                                                                            |               16 |             82 |         5.12 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/row_dct/valid_delay/E[0]                                         | rst_i_IBUF_inst/O                                                                                                                                          |               26 |             96 |         3.69 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/row_dct/valid_delay/E[0]                                         | rst_i_IBUF_inst/O                                                                                                                                          |               24 |             96 |         4.00 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/row_dct/valid_delay/E[0]                                         | rst_i_IBUF_inst/O                                                                                                                                          |               22 |             96 |         4.36 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/gen_subsample.pixel_subsampler_inst/E[0]                         | rst_i_IBUF_inst/O                                                                                                                                          |               39 |            192 |         4.92 |
+|  clocking_gen.sys_clk/inst/clk_out1 | rst_i_IBUF_inst/O                                                                                                                      |                                                                                                                                                            |               51 |            217 |         4.25 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_transpose/pixel_bank_1                                     | rst_i_IBUF_inst/O                                                                                                                                          |              116 |            576 |         4.97 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_transpose/pixel_bank_0                                     | rst_i_IBUF_inst/O                                                                                                                                          |              132 |            576 |         4.36 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[2].channel_inst/pixel_transpose/pixel_bank_1                                     | rst_i_IBUF_inst/O                                                                                                                                          |              121 |            576 |         4.76 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[0].channel_inst/pixel_transpose/pixel_bank_0                                     | rst_i_IBUF_inst/O                                                                                                                                          |              130 |            576 |         4.43 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_transpose/pixel_bank_0                                     | rst_i_IBUF_inst/O                                                                                                                                          |              124 |            576 |         4.65 |
+|  clocking_gen.sys_clk/inst/clk_out1 | gen_modified_core_input.compression_core/gen_channels[1].channel_inst/pixel_transpose/pixel_bank_1                                     | rst_i_IBUF_inst/O                                                                                                                                          |              118 |            576 |         4.88 |
+|  clocking_gen.sys_clk/inst/clk_out1 |                                                                                                                                        |                                                                                                                                                            |              133 |           1342 |        10.09 |
+|  clocking_gen.sys_clk/inst/clk_out1 |                                                                                                                                        | rst_i_IBUF_inst/O                                                                                                                                          |              520 |           1718 |         3.30 |
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+
+

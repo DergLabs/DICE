@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../gradient_core.gen/sources_1/ip/dsp_macro_add_22b/sim/dsp_macro_add_22b.vhd" \
+"../../../../gradient_core.srcs/sources_1/imports/new/data_delay_reg.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../gradient_core.srcs/sources_1/new/gradient_calc.vhd" \
+"../../../../gradient_core.srcs/sim_1/new/gradient_calc_sim.vhd" \
+
+# Do not sort compile order
+nosort

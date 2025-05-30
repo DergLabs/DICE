@@ -1,0 +1,178 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Sat Jan 11 00:39:59 2025
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_methodology -file lpc_top_methodology_drc_routed.rpt -pb lpc_top_methodology_drc_routed.pb -rpx lpc_top_methodology_drc_routed.rpx
+| Design       : lpc_top
+| Device       : xcku3p-ffva676-2-i
+| Speed File   : -2
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 27
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert  | 1          |
+| TIMING-18 | Warning  | Missing input or output delay | 26         |
++-----------+----------+-------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell laplacian/counter[3]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) vairiance/vsum_shifted_reg[37]/CLR, vairiance/vsum_shifted_reg[38]/CLR,
+vairiance/vsum_shifted_reg[39]/CLR, vairiance/vsum_shifted_reg[3]/CLR,
+vairiance/vsum_shifted_reg[40]/CLR, vairiance/vsum_shifted_reg[41]/CLR,
+vairiance/vsum_shifted_reg[42]/CLR, vairiance/vsum_shifted_reg[43]/CLR,
+vairiance/vsum_shifted_reg[44]/CLR, vairiance/vsum_shifted_reg[4]/CLR,
+vairiance/vsum_shifted_reg[5]/CLR, vairiance/vsum_shifted_reg[6]/CLR,
+vairiance/vsum_shifted_reg[7]/CLR, vairiance/vsum_shifted_reg[8]/CLR,
+vairiance/vsum_shifted_reg[9]/CLR (the first 15 of 126 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[0] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[10] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[11] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[12] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[13] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[14] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[15] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[16] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[17] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[18] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[19] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[1] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[20] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[21] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#15 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[22] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#16 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[23] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#17 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[2] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#18 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[3] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#19 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[4] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#20 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[5] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#21 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[6] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#22 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[7] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#23 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[8] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#24 Warning
+Missing input or output delay  
+An input delay is missing on pixel_i[9] relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#25 Warning
+Missing input or output delay  
+An input delay is missing on rst_i relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+TIMING-18#26 Warning
+Missing input or output delay  
+An input delay is missing on valid_i relative to the rising and/or falling clock edge(s) of clk_i.
+Related violations: <none>
+
+

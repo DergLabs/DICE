@@ -62,7 +62,6 @@ bool imx477_read(uint16_t reg, uint8_t *buf, size_t buflen) {
     //printf("Buffer if read passes: %x\n", *buf);
 }
 
-
 void readInput(char *buffer) {
     int i = 0;
     int ch;

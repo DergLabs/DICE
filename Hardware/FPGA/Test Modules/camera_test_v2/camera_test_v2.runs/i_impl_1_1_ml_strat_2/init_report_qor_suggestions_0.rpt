@@ -1,0 +1,52 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Sat Dec 14 01:05:46 2024
+| Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
+| Command      : report_qor_suggestions -of_objects {RQS_STRAT-37-1 RQS_CLOCK-1-1} -file init_report_qor_suggestions_0.rpt -pb init_report_qor_suggestions_0.pb
+| Design       : mipi_csi_top_v2
+| Device       : xcku3p
+| Design State : Synthesized
+| ML Models    : v2020.1.0
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report QoR Suggestions
+
+Table of Contents
+-----------------
+1. QoR Suggestions Report Summary
+2. ML Strategies
+3. QoR Suggestions - Clocking
+
+1. QoR Suggestions Report Summary
+---------------------------------
+
++---------------+-------------+----------+--------------+----------------+-----------+-------------+----------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
+|      Name     |      Id     |  Status  | Generated At | Applicable For | Automatic |    Scope    | Incremental Friendly |                                        Description                                       |                                            Source                                            |
++---------------+-------------+----------+--------------+----------------+-----------+-------------+----------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
+| RQS_CLOCK-1-1 | RQS_CLOCK-1 | Existing | opt_design   | place_design   | Yes       | GLOBALSCOPE | No                   | Critical paths with high clock skew due to sub-optimal clock roots. Apply                | C:/Users/johnh/Desktop/camera_test_v2/camera_test_v2.runs/i_impl_1_1_rqs/rqs_suggestions.rqs |
+|               |             |          |              |                |           |             |                      | CLOCK_DELAY_GROUP property to each global clock net to match clock roots and clock       |                                                                                              |
+|               |             |          |              |                |           |             |                      | network delays.                                                                          |                                                                                              |
++---------------+-------------+----------+--------------+----------------+-----------+-------------+----------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
+* By default the number of failing paths is limited to 100. Use the -max_paths options to override.
+** The design checks report may change until design is completely implemented/routed
+
+
+2. ML Strategies
+----------------
+
++---+----+---------+---------+
+| # | Id | Command | Options |
++---+----+---------+---------+
+* ML Strategies are available only in default/explore at successfully routed design.
+** The design is not compatible for suggesting strategy, as it was not run using vivado implementation default or vivado implementation explore strategy.
+
+
+3. QoR Suggestions - Clocking
+-----------------------------
+
++------+-----------+------+-------+------+----------------+-------+--------+--------------+-------------------+-----------------------+----------------------------+------------+----------+
+| Name | Path Type | Skew | Slack | Req. | Datapath Delay | Cell% | Route% | Source Clock | Destination Clock | Source Clock Topology | Destination Clock Topology | Startpoint | Endpoint |
++------+-----------+------+-------+------+----------------+-------+--------+--------------+-------------------+-----------------------+----------------------------+------------+----------+
+
+
