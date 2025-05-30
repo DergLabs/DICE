@@ -16,13 +16,12 @@ import quality_statistics
 import image_codec
 
 DEBUG = False
-DISP_STATS = False
-EN_COMPRESSOR = False
-EN_TILE_REPLACEMENT = True
+EN_COMPRESSOR = True
 IMG_SIZE = 2048  # Size of image
 TILE_SIZE = 32  # Size of the tiles that input 2048x2048 image will be split into
 BLOCK_SIZE = 8  # Size of 8x8 DCT Blocks
 N_BLOCKS = int(TILE_SIZE / BLOCK_SIZE)
+N_TILES = int(IMG_SIZE / TILE_SIZE)  # Number of tiles in the image, 128 for 4096x4096 image with 32x32 tiles
 
 # image_path = "img5.jpg"  # Replace with your image path
 np.set_printoptions(threshold=np.inf)
@@ -61,7 +60,7 @@ class ProcessedImageData:
     imgRGB: np.ndarray
 
 fpga_tile_id = np.zeros(
-    (64, 64), dtype=np.uint8,
+    (N_TILES, N_TILES), dtype=np.uint8,
 )
 
 def process_image_channels(
@@ -84,6 +83,9 @@ def process_image_channels(
     Cr_returned = np.zeros((n_tiles_x, n_tiles_y, tile_size_sq), dtype=np.int16)
     Cb_returned = np.zeros((n_tiles_x, n_tiles_y, tile_size_sq), dtype=np.int16)
     tile_id = np.zeros((n_tiles_x, n_tiles_y), dtype=np.int16)
+
+    Cr_half = np.zeros((n_tiles_x, n_tiles_y, tile_size_sq // 2), dtype=np.uint8)
+    Cb_half = np.zeros((n_tiles_x, n_tiles_y, tile_size_sq // 2), dtype=np.uint8)
 
     # Arrays to hold the decoded returned data
     Y_decoded = np.zeros((n_tiles_x, n_tiles_y, TILE_SIZE_LOC, TILE_SIZE_LOC), dtype=np.uint8)
@@ -140,10 +142,10 @@ def process_image_channels(
     id_offset = 0
 
     total_size = 0
-    compressed_blocks_size = 0
-    uncompressed_blocks_size = 0
-    compressed_block_count = 0
-    uncompressed_block_count = 0
+    lossy_block_size = 0
+    lossless_block_size = 0
+    lossy_block_count = 0
+    lossless_block_count = 0
 
     Y_lossless = []
     Cr_lossless = []
@@ -217,12 +219,18 @@ def process_image_channels(
                 Y_lossless.append(Y_decoded[row][col])
                 Cr_lossless.append(Cr_decoded[row][col])
                 Cb_lossless.append(Cb_decoded[row][col])
-                uncompressed_block_count += 1
+                lossless_block_count += 1
 
                 G_decoded = Y_decoded[row][col].astype(np.uint8)
                 R_decoded = Cr_decoded[row][col].astype(np.uint8)
                 B_decoded = Cb_decoded[row][col].astype(np.uint8)
                 merged_tile = cv2.merge((R_decoded, G_decoded, B_decoded))
+
+                if EN_COMPRESSOR:
+                    _, png_encoded = cv2.imencode('.png', merged_tile)
+                    tile_size_bytes = len(png_encoded.tobytes())
+                    lossless_block_size += tile_size_bytes / 1024  # Convert to KB
+            
                 converted_tiles[row][col] = merged_tile
 
             else:
@@ -262,20 +270,24 @@ def process_image_channels(
 
                 if EN_COMPRESSOR:
                     # Compress for size calculation
+                    # remove every 2nd value from Cr and Cb
+                    Cr_half[row][col] = Cr_returned[row][col][::2]
+                    Cb_half[row][col] = Cb_returned[row][col][::2]
+
                     Y_asize, _, _ = tile_compressorV2.compress_tile(Y_returned[row][col].astype(np.int32))
-                    Cr_asize, _, _ = tile_compressorV2.compress_tile(Cr_returned[row][col].astype(np.int32))
-                    Cb_asize, _, _ = tile_compressorV2.compress_tile(Cb_returned[row][col].astype(np.int32))
+                    Cr_asize, _, _ = tile_compressorV2.compress_tile(Cr_half[row][col].astype(np.int32))
+                    Cb_asize, _, _ = tile_compressorV2.compress_tile(Cb_half[row][col].astype(np.int32))
 
                     Y_zsize = len(zlib.compress(Y_returned[row][col].tobytes(), level=9))/1024
-                    Cr_zsize = len(zlib.compress(Cr_returned[row][col].tobytes(), level=9))/1024
-                    Cb_zsize = len(zlib.compress(Cb_returned[row][col].tobytes(), level=9))/1024
+                    Cr_zsize = len(zlib.compress(Cr_half[row][col].tobytes(), level=9))/1024
+                    Cb_zsize = len(zlib.compress(Cb_half[row][col].tobytes(), level=9))/1024
 
                     Y_size = Y_asize if Y_asize < Y_zsize else Y_zsize
                     Cr_size = Cr_asize if Cr_asize < Cr_zsize else Cr_zsize 
                     Cb_size = Cb_asize if Cb_asize < Cb_zsize else Cb_zsize
 
-                    compressed_block_count += 1
-                    compressed_blocks_size += Y_size + (Cr_size/2) + (Cb_size/2)
+                    lossy_block_count += 1
+                    lossy_block_size += Y_size + (Cr_size) + (Cb_size)
 
                 # Lossy tile, merge the channels and convert to RGB
                 Y_output = Y_decoded[row][col].astype(np.uint8)
@@ -291,28 +303,21 @@ def process_image_channels(
     print(fpga_tile_id)
     block_ids = fpga_tile_id.reshape(-1)
 
-    if EN_COMPRESSOR:
-        # Compress the lossless tiles
-        print(f"\nCompressing Lossless Tiles using Zlib...\n")
-        Y_bytes = np.array(Y_lossless).tobytes()
-        Cr_bytes = np.array(Cr_lossless).tobytes()
-        Cb_bytes = np.array(Cb_lossless).tobytes()
-        Y_compressed = zlib.compress(Y_bytes, level=9)  # Level 9 is maximum compression
-        Cr_compressed = zlib.compress(Cr_bytes, level=9)
-        Cb_compressed = zlib.compress(Cb_bytes, level=9)
+    if lossy_block_count == 0:
+        print("No lossy blocks found, all tiles are lossless.")
+        lossy_block_size = 0
+    else:
+        print(f"Lossy Blocks size: {lossy_block_size/lossy_block_count:.2f}KB per Block")
 
-        # Calculate compressed sizes in KB
-        Y_size = len(Y_compressed) / 1024
-        Cr_size = len(Cr_compressed) / 1024
-        Cb_size = len(Cb_compressed) / 1024
-        uncompressed_blocks_size = Y_size + Cr_size + Cb_size
+    if lossless_block_count == 0:
+        print("No lossless blocks found, all tiles are lossy.")
+        lossless_block_size = 0
+    else:
+        print(f"Lossless Blocks size: {lossless_block_size/lossless_block_count:.2f}KB per Block")
 
-    if EN_COMPRESSOR:
-        compressed_blocks_size += 8
-    print(f"Uncompressed Blocks size: {uncompressed_blocks_size:.2f}KB")
-    print(f"Compressed Blocks size: {compressed_blocks_size:.2f}KB")
+    print(f"Raw Tile Size: {TILE_SIZE_LOC * TILE_SIZE_LOC * 3 / 1024:.2f}KB per Block")
 
-    total_size = compressed_blocks_size + uncompressed_blocks_size
+    total_size = lossy_block_size + lossless_block_size
     print(f"Total Size: {total_size:.2f}KB")
 
 
@@ -333,10 +338,10 @@ def process_image_channels(
 
     size_stats = SizeStats(
         total_size=total_size,
-        compressed_size=compressed_blocks_size,
-        uncompressed_size=uncompressed_blocks_size,
-        compressed_blocks=compressed_block_count,
-        uncompressed_blocks=uncompressed_block_count,
+        compressed_size=lossy_block_size,
+        uncompressed_size=lossless_block_size,
+        compressed_blocks=lossy_block_count,
+        uncompressed_blocks=lossless_block_count,
     )
 
     image_channels = ImageChannels(red_ch, green_ch, blue_ch, size_stats, block_ids)

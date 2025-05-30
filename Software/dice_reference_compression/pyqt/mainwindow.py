@@ -479,20 +479,14 @@ class MainWindow(QMainWindow):
         self.metrics_stats.laplacian_median = float(np.median(laplacian_values))
 
         # Update sliders and labels
-        self.gradient_threshold_slider.setMinimum(int(self.metrics_stats.gradient_min))
-        self.gradient_threshold_slider.setMaximum(int(self.metrics_stats.gradient_max))
+        self.gradient_threshold_slider.setMinimum(0)
+        self.gradient_threshold_slider.setMaximum(65535)
         self.gradient_threshold_slider.setValue(int(self.metrics_stats.gradient_median))
         self.update_gradient_label(int(self.metrics_stats.gradient_median))
 
-        self.laplacian_threshold_slider.setMinimum(
-            int(self.metrics_stats.laplacian_min)
-        )
-        self.laplacian_threshold_slider.setMaximum(
-            int(self.metrics_stats.laplacian_max)
-        )
-        self.laplacian_threshold_slider.setValue(
-            int(self.metrics_stats.laplacian_median)
-        )
+        self.laplacian_threshold_slider.setMinimum(0)
+        self.laplacian_threshold_slider.setMaximum(65535)
+        self.laplacian_threshold_slider.setValue(int(self.metrics_stats.laplacian_median))
         self.update_laplacian_label(int(self.metrics_stats.laplacian_median))
 
         self.update_status_bar()
@@ -503,8 +497,8 @@ class MainWindow(QMainWindow):
         visualization = image_codec.generate_tiles(self.original_image, TILE_SIZE)
         #print(f"Visualization shape: {visualization.shape}")
         
-        gradient_threshold = self.gradient_threshold_slider.value()
-        laplacian_threshold = self.laplacian_threshold_slider.value()
+        gradient_threshold = self.gradient_threshold_slider.value()/16
+        laplacian_threshold = self.laplacian_threshold_slider.value()/4
         
         # Initialize block tracking
         self.lossless_blocks = []
@@ -525,6 +519,7 @@ class MainWindow(QMainWindow):
             row, col = metrics.loc
             
             # Determine overlay color based on thresholds
+            # Gradient mean is actually variance, too lazy to rename all variables
             if (metrics.gradient_mean < gradient_threshold) and (metrics.laplacian_var < laplacian_threshold):
                 overlay_color = (255, 0, 255)  # Purple - Both thresholds exceeded
                 self.block_ids[i] = 1 # lossy block
@@ -625,9 +620,9 @@ class MainWindow(QMainWindow):
         # Copy the original image to draw on
         output_img = img1.copy()
 
-        tile_size = 32
+        tile_size = TILE_SIZE
 
-        block2d = self.block_ids.reshape((64, 64))
+        block2d = self.block_ids.reshape((N_TILES, N_TILES))
         for row in range(block2d.shape[0]):
             for col in range(block2d.shape[1]):
                 if block2d[row][col] == 1:
@@ -660,12 +655,16 @@ class MainWindow(QMainWindow):
         original_image = self.original_image.copy()
         target_image = self.original_image.copy()
 
-        res = fpga_accelerated_compressor.process_color_image(
-            target_image, self.block_ids
-        )
+        gradient_threshold = self.gradient_threshold_slider.value()
+        laplacian_threshold = self.laplacian_threshold_slider.value()
+
+        print(f"Gradient Threshold: {gradient_threshold}")
+        print(f"Laplacian Threshold: {laplacian_threshold}")
+
+        res = fpga_accelerated_compressor.process_color_image(target_image, self.block_ids, gradient_threshold, laplacian_threshold)
         target_image = res.imgRGB
 
-        #self.block_ids = res.tile_id.reshape(-1)
+        self.block_ids = res.tile_id.reshape(-1)
 
         file_size = os.path.getsize(self.current_image_path)/1024;
         file_compression_ratio = 100 * (1 - (res.size_stats.total_size / file_size))
