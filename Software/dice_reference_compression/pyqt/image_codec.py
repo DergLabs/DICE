@@ -53,20 +53,26 @@ def decode_image_array(image, BLOCK_SIZE, N_BLOCKS, TILE_SIZE, k):
     return idct_output.transpose(0, 2, 1, 3).reshape(TILE_SIZE_LOC, TILE_SIZE_LOC)
 
 
-def decode_lossless_tile(image, BLOCK_SIZE, N_BLOCKS, TILE_SIZE):
-    # Simply does the inverse of the format_image_array function since we pass through the RGB values
-    # Convert global variables to local for improved loop performance
+def decode_lossless_tile(tile, BLOCK_SIZE, N_BLOCKS, TILE_SIZE):
+    # Convert to local variable for performance
     BLOCK_SIZE_LOC = BLOCK_SIZE
-    X_LOC = N_BLOCKS
-    Y_LOC = N_BLOCKS
-    TILE_SIZE_LOC = TILE_SIZE
-    # Reshape the image to blocks
-    blocks = image.reshape(X_LOC, Y_LOC, 1, -1)
-    # Rearrange dimensions to get blocks in correct order and transpose each 8x8 block
-    # The last two dimensions (3, 5) represent the rows and columns of each 8x8 block
-    # By swapping them in the transpose operation, we transpose each 8x8 block
-    return blocks.transpose(0, 1, 2, 4, 5, 3).reshape(X_LOC * BLOCK_SIZE_LOC, Y_LOC * BLOCK_SIZE_LOC, -1)   
-
+    
+    # Get the number of elements in the flattened tile
+    #total_elements = tile.shape[1]
+    
+    # Calculate how many blocks are in this tile
+    #blocks_per_channel = total_elements // (BLOCK_SIZE_LOC * BLOCK_SIZE_LOC)
+    
+    # Reshape the flattened tile to reveal the block structure
+    # tile shape: (1, total_elements) -> (blocks_per_channel, BLOCK_SIZE, BLOCK_SIZE)
+    blocks = tile.reshape(N_BLOCKS, N_BLOCKS, BLOCK_SIZE_LOC, BLOCK_SIZE_LOC)
+    
+    # Transpose each block to undo the original transpose
+    # Original transpose swapped the last two dimensions, so we swap them back
+    blocks_transposed = blocks.transpose(0, 1, 3, 2)
+    
+    # Reshape back to 2D tile
+    return blocks_transposed.transpose(0, 2, 1, 3).reshape(TILE_SIZE, TILE_SIZE).astype(np.uint8)
 
 def format_image_array(image_blocks, BLOCK_SIZE):
     # Convert global variables to local for improved loop performance
