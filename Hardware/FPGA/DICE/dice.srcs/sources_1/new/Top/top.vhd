@@ -2,7 +2,7 @@
 -- Company: Drexel University
 -- Engineer: John Hofmeyr
 -- 
--- Create Date:
+-- Create Date: 01/25/2025 05:18:28 PM
 -- Design Name: 
 -- Module Name: top - Behavioral
 -- Project Name: DICE
@@ -37,11 +37,11 @@ use xpm.vcomponents.all;
 entity top is
     generic (
         NUM_CHANNELS : integer := 3;
-        BLOCK_SIZE : integer := 4096; -- Configured for 32x32 pixel block (32^2 = 4096 pixels)
+        BLOCK_SIZE : integer := 4096; -- # of bytes per block, block contains 1024 pixels
         USE_SIM_MODEL : boolean := false;
-        ENABLE_ILA : boolean := False;
-        ENABLE_VIO : boolean := False;
-        ENABLE_STATS : boolean := True
+        ENABLE_ILA : boolean := false;
+        ENABLE_STATS : boolean := true;
+        ENABLE_VIO : boolean := false 
     );
     port ( 
         -- Inputs
@@ -74,9 +74,6 @@ architecture Behavioral of top is
 
     -- Clocking & Reset Signals
     signal rst_x                        : std_logic;
-    signal sys_clk_ibuf_x               : std_logic; -- IBUFDS 200MHz Clock to global buffer
-    signal sys_clk_bufg_x               : std_logic; -- Global buffer output to MMCM and logic
-    signal clk_200m                     : std_logic; -- ILA Clock
     signal clk_x                        : std_logic;
     signal locked                       : std_logic;
 
@@ -92,14 +89,11 @@ architecture Behavioral of top is
     -- CDC Input memory
     signal fifo_data_to_core            : std_logic_vector(((NUM_CHANNELS * 16) - 17 ) downto 0);
     signal input_fifo_valid             : std_logic;
-    signal hold_memory_data_o           : std_logic_vector(15 downto 0);
     --Fifo clear signal from output memory controller
     signal fifo_clear                   : std_logic;
 
 
     -- Data from RGB to YCrCb
-    signal ycrcb_o                      : std_logic_vector(23 downto 0);
-    signal ycrcb_valid_o                : std_logic;
     signal ycrcb_x                      : std_logic_vector(23 downto 0);
     signal ycrcb_valid_x                : std_logic;
     signal ycrcb_delayed_x              : std_logic_vector(23 downto 0);
@@ -109,10 +103,13 @@ architecture Behavioral of top is
     signal core_dout                    : std_logic_vector(255 downto 0);
     signal core_dout_valid              : std_logic_vector(NUM_CHANNELS-1 downto 0);
 
+    -- Special case for 3 cores
     signal core_dout_256b               : std_logic_vector(255 downto 0);
-    signal output_memory_dout           : std_logic_vector(15 downto 0);
+    --signal core_dout_512b               : std_logic_vector(511 downto 0);
 
     -- Data to FT600
+    signal output_memory_data           : std_logic_vector(15 downto 0); -- Data from processed output memory
+    signal hold_memory_data             : std_logic_vector(15 downto 0); -- Data from hold memory
     signal data_to_ft600                : std_logic_vector(15 downto 0);
     signal ft600_ready_for_data         : std_logic; -- Data to FT600 is valid, driven by FT600
     signal be_to_ft600                  : std_logic_vector(1 downto 0);
@@ -128,8 +125,16 @@ architecture Behavioral of top is
     signal gradient_std_dev             : std_logic_vector(15 downto 0);
     signal gradient_valid               : std_logic;
 
+    signal gradient_threshold           : std_logic_vector(15 downto 0) := X"0000"; -- Default threshold for gradient
+    signal laplacian_threshold          : std_logic_vector(15 downto 0) := X"0000"; -- Default threshold for laplacian
+
+    -- Selection signal for lossless vs lossy data
     signal pixel_select                 : std_logic;
 
+    -- output memory debug signals
+    signal output_ram_wr_addr_dbg       : std_logic_vector(8 downto 0);
+    signal output_ram_rd_addr_dbg       : std_logic_vector(12 downto 0);
+    signal read_counter_dbg             : std_logic_vector(15 downto 0); -- Debug read counter for output memory
 
     -- Core clock gen
     component sys_clk_mmcm
@@ -162,48 +167,75 @@ architecture Behavioral of top is
         probe10     : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
         probe11     : IN STD_LOGIC_VECTOR(15 DOWNTO 0); 
         probe12     : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-        probe13     : IN STD_LOGIC
+        probe13     : IN STD_LOGIC;
+        probe14     : IN STD_LOGIC
     );
     END COMPONENT;
 
 
     COMPONENT vio_0
     PORT (
-        clk : IN STD_LOGIC;
-        probe_out0 : OUT std_logic 
+      clk : IN STD_LOGIC;
+      probe_out0 : OUT STD_LOGIC;
+      probe_out1 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      probe_out2 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      probe_out3 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      probe_out4 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      probe_out5 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      probe_out6 : OUT STD_LOGIC_VECTOR(15 DOWNTO 0) 
     );
     END COMPONENT;
 
-    signal vio_rst : std_logic := '0';
+    signal vio_rst : std_logic;
+
+    signal vio_gradient_mean : std_logic_vector(15 downto 0);
+    signal vio_gradient_std_dev : std_logic_vector(15 downto 0);
+    signal vio_gradient_var : std_logic_vector(15 downto 0);
+
+    signal vio_laplacian_mean : std_logic_vector(15 downto 0);
+    signal vio_laplacian_std_dev : std_logic_vector(15 downto 0);
+    signal vio_laplacian_var : std_logic_vector(15 downto 0);
 
 begin
 
-    -- Test VIO for resetting modules
-    gen_vio:
-    if ENABLE_VIO generate
-        your_instance_name : vio_0
+    vio_gen : if ENABLE_VIO generate
+        system_vio : vio_0
         PORT MAP (
             clk => clk_x,
-            probe_out0 => vio_rst
+            probe_out0 => vio_rst,
+            probe_out1 => vio_gradient_mean,
+            probe_out2 => vio_gradient_std_dev,
+            probe_out3 => vio_gradient_var,
+            probe_out4 => vio_laplacian_mean,
+            probe_out5 => vio_laplacian_std_dev,
+            probe_out6 => vio_laplacian_var
         );
+    else generate
+        vio_rst <= '0';
+        vio_gradient_mean <= (others => '0');
+        vio_gradient_std_dev <= (others => '0');
+        vio_gradient_var <= X"dead"; -- Currently only used stat
+
+        vio_laplacian_mean <= (others => '0');
+        vio_laplacian_std_dev <= (others => '0');
+        vio_laplacian_var <= X"beef"; -- Currently only used stat
     end generate;
 
     -- invert RST for internal use, FT600 core uses active low reset, rest of core uses active high reset
-    -- RST input to FPGA is active high (silly goofup on PCB design side)
+    -- RST input to FPGA is active high
     rst_x <= (not rst_i); 
     
-
     -- debug ILA
     ila_gen : if ENABLE_ILA generate
         ila : ila_0
         PORT MAP (
             clk => clk_x,
 
-            probe0 => data_from_ft600, 
+            probe0 => gradient_threshold, -- was data_from_ft600
             probe1 => data_in_valid, 
             probe2 => fifo_data_to_core,
             probe3 => input_fifo_valid, 
-            probe4 => data_to_ft600,
+            probe4 => laplacian_threshold, -- was data_to_ft600
             probe5 => ft600_ready_for_data,
 
             probe6 => laplacian_var,
@@ -214,15 +246,18 @@ begin
             probe10 => gradient_var,
             probe11 => gradient_mean,
             probe12 => gradient_std_dev,
-            probe13 => gradient_valid
+            probe13 => gradient_valid,
+
+            probe14 => pixel_select -- Pixel select signal for lossless vs lossy block
             
         );
     end generate;
 
-
     -- Clocking
-    clocking_gen: if not USE_SIM_MODEL generate
-        -- MMCM instantiation
+    clocking_gen: if USE_SIM_MODEL generate
+        clk_x <= sim_clk; -- Tie system clk (clk_x) to simulation clock (sim_clk)
+    else generate
+        -- MMCM instantiation, configured for 200MHz output clock
         sys_clk : sys_clk_mmcm
         port map ( 
             -- Clock out ports  
@@ -236,16 +271,11 @@ begin
         );
     end generate;
 
-    -- Tie clk_x to sim_clk for simulation
-    sim_clocking_gen : if USE_SIM_MODEL generate
-        clk_x <= sim_clk;
-    end generate;
 
-
-    -- FT600 interface, runs on 66MHz FTDI CLK
+    -- FT600 interface, runs on FTDI CLK
     ft600_send_recv : entity work.send_recieve_module
     port map (
-        rst_n => rst_i,
+        rst_n => rst_i or vio_rst,
         LED_data => led_o,
 
         ftdi_resetn => ftdi_rstn_o,
@@ -269,14 +299,11 @@ begin
         ready_to_send => data_in_valid -- Data from FT600 is valid and ready to send to BRAM
     );
 
-    -- Register input data and valid signal
     data_from_ft600_r <= data_from_ft600 when rising_edge(ftdi_clk_i);
     data_in_valid_r <= data_in_valid when rising_edge(ftdi_clk_i);
 
-    -- Input fifo/Hold memory, bridges ftdi_clk and core_clk
-    -- Data will not be read out until FT600 is done writing. This simplifies architecture since FPGA and FT600 clock are different
+    -- Input fifo, bridges ftdi_clk and core_clk
     -- Regen FIFO IP if DIN or DOUT width change
-    -- Holds upto 8,192 x 16-bit words On input, outputs upto 4,096 x 32-bit words
     input_memory_fifo : entity work.input_memory
     generic map (
         DIN_WIDTH => data_from_ft600'length,
@@ -290,132 +317,71 @@ begin
         write_clk_i => ftdi_clk_i,
         write_en_i => data_in_valid,
 
+        read_hold_ram_i => ft600_ready_for_data,
+        hold_ram_data_o => hold_memory_data,
+
         data_o => fifo_data_to_core,
         data_out_valid => input_fifo_valid,
         read_clk_i => clk_x,
 
         empty_o => open,
-        full_o => open, 
-
-        hold_ram_data_o => hold_memory_data_o,
-        read_hold_ram_i => ft600_ready_for_data
+        full_o => open
     );
 
-
-    -- RGB to YCrCb converter
-    rgb_to_ycrcb : entity work.rgb_to_ycrcb
+    -- RGB to YCrCb converter (system verilog version)
+    /*rgb_to_ycrcb : entity work.rgb_to_ycrcb
     port map(
         clk_i => clk_x,
         rst_i => rst_x,
         -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
         rgb_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
         rgb_valid_i => input_fifo_valid,
-        ycrcb_o => ycrcb_o,
-        ycrcb_valid_o => ycrcb_valid_o
+        ycrcb_o => ycrcb_x,
+        ycrcb_valid_o => ycrcb_valid_x
+    );*/
+
+
+    -- RGB to YCrCb converter (VHDL version)
+    rgb_to_ycrcb : entity work.rgb_to_ycrcb
+    port map(
+        clk_i => clk_x,
+        rst_i => rst_x,
+
+        -- data_i order is | B | R | G | <- |23:16|15:8|7:0|
+        rgb_i => fifo_data_to_core(31 downto 24) & fifo_data_to_core(23 downto 16) & fifo_data_to_core(7 downto 0),
+        valid_i => input_fifo_valid,
+
+        ycrcb_o => ycrcb_x,
+        valid_o => ycrcb_valid_x
     );
 
-
-    -- Image statistics core
-    gen_image_statistics :
-    if ENABLE_STATS generate
-
-        -- Image statistics core
-        image_statistics_core : entity work.image_statistics_top
-        generic map (
-            NUM_SAMPLES => 28 -- # of 9 pixel blocks to process, 256/9 = 28.77 so we round down to 28
-        )
-        port map (
-            clk_i => clk_x, 
-            ce_i => '1',
-            rst_i => rst_x,
-
-            pixel_i => ycrcb_o(15 downto 8), -- pass Y channel to statistics core
-            valid_i => ycrcb_valid_o,
-
-            laplacian_var_o => laplacian_var,
-            laplacian_mean_o => laplacian_mean,
-            laplacian_std_dev_o => laplacian_std_dev,
-            laplacian_valid_o => laplacian_valid,
-
-            gradient_var_o => gradient_var,
-            gradient_mean_o => gradient_mean,
-            gradient_std_dev_o => gradient_std_dev,
-            gradient_valid_o => gradient_valid
-        );
-
-        -- Simple decision Logic for image stats, need to fix/update
-        process(clk_x, rst_x)
-        begin
-            if rst_x = '1' then
-                pixel_select <= '0';
-            elsif rising_edge(clk_x) then
-                if laplacian_var > X"0200" then 
-                    pixel_select <= '1';
-                else
-                    pixel_select <= '0';
-                end if;
-            end if;
-        end process;
-
-
-        -- data delay to give statistics core time to process before we send data to compression core. Need to update this
-        data_delay : entity work.data_delay_reg
-        generic map (
-            SHIFT_DEPTH => 265,
-            DATA_WIDTH => 24
-        )
-        port map (
-            clk_i => clk_x,
-            ce_i => '1',
-            rst_i => rst_x,
-            data_i => ycrcb_o,
-            data_o => ycrcb_delayed_x
-        );
-
-
-        -- delay valid to align with data
-        data_delay_valid : entity work.data_delay_reg
-        generic map (
-            SHIFT_DEPTH => 265,
-            DATA_WIDTH => 1
-        )
-        port map (
-            clk_i => clk_x,
-            ce_i => '1',
-            rst_i => rst_x,
-            data_i(0) => ycrcb_valid_o,
-            data_o(0) => ycrcb_valid_delayed_x
-        );
-    end generate;
-
-    -- Select which data source to use for compression core
-    gen_core_data_input_with_stats:
-    if ENABLE_STATS generate
-        ycrcb_x <= ycrcb_delayed_x;
-        ycrcb_valid_x <= ycrcb_valid_delayed_x;
-    end generate;
-    
-    -- Select which valid source to use for compression core
-    gen_core_data_input_without_stats:
-    if NOT ENABLE_STATS generate
-        ycrcb_x <= ycrcb_o;
-        ycrcb_valid_x <= ycrcb_valid_o;
-    end generate;
-
-
-    -- 3 Channel Image compression core
+    -- Image compression core
     lossy_comp_core : entity work.multi_ch_lossy_comp
+    generic map (
+        Y_BITS => 12,
+        CR_BITS => 10,
+        CB_BITS => 10,
+
+        EN_Y_SUBSAMPLE => false,
+        EN_CR_SUBSAMPLE => true,
+        EN_CB_SUBSAMPLE => true,
+        EN_ZIGZAG => false
+    )
     port map (
         clk_i => clk_x,
         rst_i => rst_x,
-        -- Test signal to manually reset modules from VIO core
-        vio_rst_i => vio_rst or data_in_valid, 
+        vio_rst_i => vio_rst or data_in_valid,
         -- data_i order is | Core 2 - Cb | Core 1 - Y | Core 0 - Cr | <- |23:16|15:8|7:0|
+        --data_i => ycrcb_delayed_x,
+        --valid_i => ycrcb_valid_delayed_x,
         data_i => ycrcb_x,
         valid_i => ycrcb_valid_x,
+        --ce_o => open,
+        --done_o => open,
         data_o => core_dout,
         valid_o => core_dout_valid
     );
+
 
     -- Order is Core 0 - Cb | Core 2 - Cr | Core 1 - Y
     -- Core 0 width is 80 bits (10b per pixel), Core 1 width is 96 bits (12b per pixel), Core 2 width is 80 bits (10b per pixel)
@@ -430,35 +396,98 @@ begin
                         core_dout(9 downto 0)   & core_dout(185 downto 176) & core_dout(91 downto 80);
 
 
-
-
-    -- Dual Clock output memory, can write 512 x 256-Bit words, reads out 8,192 x 16-bit words for FT600
     output_memory : entity work.output_memory
     generic map (
         DIN_WIDTH => 256,
         DOUT_WIDTH => data_to_ft600'length,
-        NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256),
-        NUM_READ_WORDS => ((BLOCK_SIZE * 32)/16)
+        NUM_WRITE_WORDS => ((BLOCK_SIZE * 32)/256), -- Extra write space for now
+        NUM_READ_WORDS => 2048 -- Hard coded for 1024 pixel blocks, 
+                                --each block is 32b so we read out 2048 16b words + 1 16b word for end of block marker
         --DEPTH => 2048
     )
     port map (
         rst_i => rst_x,
         
+        -- Converting to 256b bus for output memory, may fix later but this keeps things simple
         data_i => core_dout_256b,
         data_in_valid => core_dout_valid(0),
         write_clk_i => clk_x,
 
         reciever_ready_i => ft600_ready_for_data,
-        data_o => output_memory_dout,
+        data_o => output_memory_data,
         data_out_valid => open,
         read_clk_i => ftdi_clk_i,
 
-        memory_clear_o => fifo_clear
+        memory_clear_o => fifo_clear,
+
+        -- Debug signals
+        output_ram_wr_addr_o => output_ram_wr_addr_dbg,
+        output_ram_rd_addr_o => output_ram_rd_addr_dbg,
+        read_counter_o => read_counter_dbg
     );
 
-    with pixel_select select
-        data_to_ft600 <= hold_memory_data_o when '0',
-                         output_memory_dout when '1';
+    -- Image statistics core
+    gen_image_statistics :
+    if ENABLE_STATS generate
+        -- Image statistics core
+        image_statistics_core : entity work.image_statistics_top
+        generic map (
+            NUM_SAMPLES => 28 -- # of 9 pixel samples to process, 256/9 = 28.77 so we round down to 28
+        )
+        port map (
+            clk_i => clk_x, 
+            ce_i => '1',
+            rst_i => rst_x or data_in_valid, -- reset core every time new data is received from the FT600
+
+            pixel_i => ycrcb_x(15 downto 8), -- pass Y channel to statistics core
+            valid_i => ycrcb_valid_x,
+
+            laplacian_var_o => laplacian_var,
+            laplacian_mean_o => laplacian_mean,
+            laplacian_std_dev_o => laplacian_std_dev,
+            laplacian_valid_o => laplacian_valid,
+
+            gradient_var_o => gradient_var,
+            gradient_mean_o => gradient_mean,
+            gradient_std_dev_o => gradient_std_dev,
+            gradient_valid_o => gradient_valid
+        );
+
+        tile_selector : entity work.tile_selection_logic
+        port map(
+            clk_i => clk_x,
+            rst_i => rst_x,
+
+            gradient_var_i => gradient_var,
+            gradient_mean_i => gradient_mean,
+            gradient_std_dev_i => gradient_std_dev,
+            gradient_valid_i => gradient_valid,
+
+            laplacian_var_i => laplacian_var,
+            laplacian_mean_i => laplacian_mean,
+            laplacian_std_dev_i => laplacian_std_dev,
+            laplacian_valid_i => laplacian_valid,
+
+            fifo_data_i => fifo_data_to_core,
+            fifo_valid_i => input_fifo_valid,
+            clear_threshold_i => data_in_valid,
+
+            lossy_tile_data_i => output_memory_data, -- Data from output memory
+            lossless_tile_data_i => hold_memory_data, -- Data from hold memory
+
+            tile_data_o => data_to_ft600, -- Data to FT600
+            tile_select => pixel_select, -- Output tile selection signal
+
+            -- Debug signals
+            gradient_threshold_o => gradient_threshold, -- Debug output for gradient mean
+            laplacian_threshold_o => laplacian_threshold -- Debug output for laplacian mean
+        );
+    
+    else generate
+        -- No statistics core, only use processed data
+        data_to_ft600 <= output_memory_data;
+
+    end generate;
 
 
 end Behavioral;

@@ -14,7 +14,7 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source ila_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 484.277 ; gain = 179.109
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 484.449 ; gain = 181.016
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: ila_0
 Command: synth_design -top ila_0 -part xcku3p-ffva676-2-i -incremental_mode off -mode out_of_context
 Starting synth_design
@@ -23,9 +23,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku3p'
 INFO: [Device 21-403] Loading part xcku3p-ffva676-2-i
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 14020
+INFO: [Synth 8-7075] Helper process launched with PID 13272
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2004.492 ; gain = 419.117
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2004.172 ; gain = 418.113
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:30]
 INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:32]
@@ -128,7 +128,7 @@ INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 
 INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:275]
 INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:277]
 INFO: [Common 17-14] Message 'Synth 8-11241' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-638] synthesizing module 'ila_0' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'ila_0' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:76]
 	Parameter C_XLNX_HW_PROBE_INFO bound to: DEFAULT - type: string 
 	Parameter C_XDEVICEFAMILY bound to: virtexu - type: string 
 	Parameter C_CORE_TYPE bound to: 1 - type: integer 
@@ -137,7 +137,7 @@ INFO: [Synth 8-638] synthesizing module 'ila_0' [c:/Users/johnh/Desktop/DICE/Har
 	Parameter C_CAPTURE_TYPE bound to: 0 - type: integer 
 	Parameter C_MU_TYPE bound to: 0 - type: integer 
 	Parameter C_TC_TYPE bound to: 0 - type: integer 
-	Parameter C_NUM_OF_PROBES bound to: 14 - type: integer 
+	Parameter C_NUM_OF_PROBES bound to: 15 - type: integer 
 	Parameter C_DATA_DEPTH bound to: 65536 - type: integer 
 	Parameter C_MAJOR_VERSION bound to: 2023 - type: integer 
 	Parameter C_MINOR_VERSION bound to: 2 - type: integer 
@@ -1197,7 +1197,7 @@ INFO: [Synth 8-638] synthesizing module 'ila_0' [c:/Users/johnh/Desktop/DICE/Har
 	Parameter C_PROBE11_MU_CNT bound to: 2 - type: integer 
 	Parameter C_PROBE12_MU_CNT bound to: 2 - type: integer 
 	Parameter C_PROBE13_MU_CNT bound to: 2 - type: integer 
-	Parameter C_PROBE14_MU_CNT bound to: 1 - type: integer 
+	Parameter C_PROBE14_MU_CNT bound to: 2 - type: integer 
 	Parameter C_PROBE15_MU_CNT bound to: 1 - type: integer 
 	Parameter C_PROBE16_MU_CNT bound to: 1 - type: integer 
 	Parameter C_PROBE17_MU_CNT bound to: 1 - type: integer 
@@ -2221,7 +2221,7 @@ INFO: [Synth 8-638] synthesizing module 'ila_0' [c:/Users/johnh/Desktop/DICE/Har
 	Parameter C_PROBE11_TYPE bound to: 0 - type: integer 
 	Parameter C_PROBE12_TYPE bound to: 0 - type: integer 
 	Parameter C_PROBE13_TYPE bound to: 0 - type: integer 
-	Parameter C_PROBE14_TYPE bound to: 1 - type: integer 
+	Parameter C_PROBE14_TYPE bound to: 0 - type: integer 
 	Parameter C_PROBE15_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE16_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE17_TYPE bound to: 1 - type: integer 
@@ -3231,7 +3231,7 @@ INFO: [Synth 8-638] synthesizing module 'ila_0' [c:/Users/johnh/Desktop/DICE/Har
 	Parameter C_PROBE1021_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE1022_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE1023_TYPE bound to: 1 - type: integer 
-INFO: [Synth 8-3491] module 'ila_v6_2_14_ila' declared at 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/hdl/ila_v6_2_syn_rfs.v:6191' bound to instance 'U0' of component 'ila_v6_2_14_ila' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:4260]
+INFO: [Synth 8-3491] module 'ila_v6_2_14_ila' declared at 'c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/hdl/ila_v6_2_syn_rfs.v:6191' bound to instance 'U0' of component 'ila_v6_2_14_ila' [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:4261]
 INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
 INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
 INFO: [Synth 8-6157] synthesizing module 'CARRY4' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
@@ -3244,9 +3244,10 @@ INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [C:/Xilinx/Vivado/2023.2/scri
 INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133826]
 INFO: [Synth 8-6157] synthesizing module 'FDRE' [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
 INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [C:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
-INFO: [Synth 8-256] done synthesizing module 'ila_0' (0#1) [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:75]
-WARNING: [Synth 8-3848] Net sl_iport0 in module/entity ila_0 does not have driver. [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:4257]
+INFO: [Synth 8-256] done synthesizing module 'ila_0' (0#1) [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:76]
+WARNING: [Synth 8-3848] Net sl_iport0 in module/entity ila_0 does not have driver. [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/synth/ila_0.vhd:4258]
 WARNING: [Synth 8-7129] Port CLKB in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[166] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[165] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[164] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[163] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
@@ -3345,23 +3346,22 @@ WARNING: [Synth 8-7129] Port DOUTA_I[71] in module blk_mem_gen_v8_4_7_blk_mem_ou
 WARNING: [Synth 8-7129] Port DOUTA_I[70] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[69] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[68] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[67] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:16 ; elapsed = 00:01:20 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished RTL Elaboration : Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 2901.145 ; gain = 1315.086
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:16 ; elapsed = 00:01:21 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:13 ; elapsed = 00:01:18 . Memory (MB): peak = 2901.145 ; gain = 1315.086
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:16 ; elapsed = 00:01:21 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:13 ; elapsed = 00:01:18 . Memory (MB): peak = 2901.145 ; gain = 1315.086
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.553 . Memory (MB): peak = 2901.164 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1068 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.547 . Memory (MB): peak = 2901.145 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1082 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -3374,17 +3374,17 @@ Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/ila_0
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/ila_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2901.164 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2975.969 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 816 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 752 instances
-  CFGLUT5 => SRLC32E: 64 instances
+  A total of 826 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 760 instances
+  CFGLUT5 => SRLC32E: 66 instances
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.555 . Memory (MB): peak = 2901.164 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.558 . Memory (MB): peak = 2976.762 ; gain = 0.793
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:37 ; elapsed = 00:01:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Constraint Validation : Time (s): cpu = 00:01:33 ; elapsed = 00:01:39 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -3392,14 +3392,14 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:37 ; elapsed = 00:01:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:33 ; elapsed = 00:01:39 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/ila_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:37 ; elapsed = 00:01:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:34 ; elapsed = 00:01:39 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized0'
@@ -3467,6 +3467,8 @@ INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in modul
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized62'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized63'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized64'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized65'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized66'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'ltlib_v1_0_1_generic_memrd'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -4132,6 +4134,26 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
 *
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized65'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized66'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
               RESET_ADDR |                          0000001 |                          0000001
             REQUEST_READ |                          0000010 |                          0000010
            WAIT_READ_ACK |                          0000100 |                          0000100
@@ -4142,7 +4164,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'ltlib_v1_0_1_generic_memrd'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:44 ; elapsed = 00:01:49 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:40 ; elapsed = 00:01:46 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -4164,25 +4186,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:13 ; elapsed = 00:02:19 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:09 ; elapsed = 00:02:16 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:24 ; elapsed = 00:02:31 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:20 ; elapsed = 00:02:27 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:26 ; elapsed = 00:02:33 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Timing Optimization : Time (s): cpu = 00:02:22 ; elapsed = 00:02:29 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:29 ; elapsed = 00:02:36 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Technology Mapping : Time (s): cpu = 00:02:25 ; elapsed = 00:02:32 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -4238,37 +4260,37 @@ INFO: [Synth 8-3295] tying undriven pin U0:sl_iport0[2] to constant 0
 INFO: [Synth 8-3295] tying undriven pin U0:sl_iport0[1] to constant 0
 INFO: [Synth 8-3295] tying undriven pin U0:sl_iport0[0] to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:33 ; elapsed = 00:02:40 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished IO Insertion : Time (s): cpu = 00:02:29 ; elapsed = 00:02:36 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:33 ; elapsed = 00:02:40 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:29 ; elapsed = 00:02:36 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:34 ; elapsed = 00:02:41 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:30 ; elapsed = 00:02:37 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:34 ; elapsed = 00:02:41 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:30 ; elapsed = 00:02:37 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:35 ; elapsed = 00:02:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:30 ; elapsed = 00:02:38 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:35 ; elapsed = 00:02:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:31 ; elapsed = 00:02:38 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -4284,58 +4306,58 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |CARRY4   |   252|
+|1     |CARRY4   |   256|
 |2     |CARRY8   |    12|
-|3     |CFGLUT5  |   816|
-|4     |LUT1     |    97|
-|5     |LUT2     |   275|
-|6     |LUT3     |   344|
-|7     |LUT4     |   691|
-|8     |LUT5     |   379|
-|9     |LUT6     |  2600|
-|10    |MUXF7    |   459|
-|11    |MUXF8    |   180|
+|3     |CFGLUT5  |   826|
+|4     |LUT1     |    98|
+|5     |LUT2     |   277|
+|6     |LUT3     |   352|
+|7     |LUT4     |   706|
+|8     |LUT5     |   405|
+|9     |LUT6     |  2634|
+|10    |MUXF7    |   474|
+|11    |MUXF8    |   164|
 |12    |RAM64M   |     4|
 |13    |RAM64M8  |    12|
-|14    |RAMB36E2 |   296|
-|17    |SRL16E   |   173|
+|14    |RAMB36E2 |   298|
+|17    |SRL16E   |   174|
 |18    |SRLC16E  |     2|
 |19    |SRLC32E  |    17|
-|20    |FDRE     |  6260|
+|20    |FDRE     |  6422|
 |21    |FDSE     |    12|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:35 ; elapsed = 00:02:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:31 ; elapsed = 00:02:38 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 14667 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:04 ; elapsed = 00:02:27 . Memory (MB): peak = 2901.164 ; gain = 1315.789
-Synthesis Optimization Complete : Time (s): cpu = 00:02:35 ; elapsed = 00:02:42 . Memory (MB): peak = 2901.164 ; gain = 1315.789
+Synthesis finished with 0 errors, 0 critical warnings and 14825 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:03 ; elapsed = 00:02:23 . Memory (MB): peak = 2976.762 ; gain = 1315.086
+Synthesis Optimization Complete : Time (s): cpu = 00:02:31 ; elapsed = 00:02:38 . Memory (MB): peak = 2976.762 ; gain = 1390.703
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.324 . Memory (MB): peak = 2901.164 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1735 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.329 . Memory (MB): peak = 2976.762 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1748 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2915.137 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2976.762 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 985 instances were transformed.
-  (CARRY4) => CARRY8: 153 instances
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 752 instances
-  CFGLUT5 => SRLC32E: 64 instances
+  A total of 997 instances were transformed.
+  (CARRY4) => CARRY8: 155 instances
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 760 instances
+  CFGLUT5 => SRLC32E: 66 instances
   RAM64M => RAM64M (RAMD64E(x4)): 4 instances
   RAM64M8 => RAM64M8 (RAMD64E(x8)): 12 instances
 
 The system cannot find the path specified.
-Synth Design complete | Checksum: 5f1776a7
+Synth Design complete | Checksum: 99c57efb
 INFO: [Common 17-83] Releasing license: Synthesis
-308 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
+312 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:47 ; elapsed = 00:02:56 . Memory (MB): peak = 2915.137 ; gain = 2341.555
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 2915.137 ; gain = 0.000
+synth_design: Time (s): cpu = 00:02:42 ; elapsed = 00:02:51 . Memory (MB): peak = 2976.762 ; gain = 2403.117
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 2976.762 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/ila_0_synth_1/ila_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP ila_0, cache-ID = 42ef2cb83897fe8a
-INFO: [Coretcl 2-1174] Renamed 1123 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 2915.137 ; gain = 0.000
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP ila_0, cache-ID = 3f9066a9a603d922
+INFO: [Coretcl 2-1174] Renamed 1135 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 2976.762 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/ila_0_synth_1/ila_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file ila_0_utilization_synth.rpt -pb ila_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Feb 10 19:42:40 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu May 29 22:08:31 2025...

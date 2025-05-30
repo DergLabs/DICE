@@ -57,78 +57,47 @@ end statistics_core;
 
 architecture Behavioral of statistics_core is
     type shift_reg is array (natural range <>) of std_logic;
-    constant C_SUM_WIDTH    : integer := 48;
+    constant C_SUM_WIDTH            : integer := 48;
+    constant C_NUM_SAMPLES          : integer := 28; -- Number of samples for variance calculation
+    constant C_SAMPLE_DIV           : signed(15 downto 0) := to_signed(2340, 16);
 
-    signal ce_x             : std_logic;
 
-    signal dsp_vsum_tmp_X   : signed(C_SUM_WIDTH-1 downto 0) := (others => '0');
-    signal dsp_vsum_valid_d3_r : shift_reg(2 downto 0) := (others => '0');
-    signal dsp_vsum_data_in_x : signed((G_DATA_WIDTH-1) downto 0);
+    signal ce_x                     : std_logic;
+    signal valid_x                  : std_logic;
 
-    signal dsp_hsum_tmp_x   : signed(C_SUM_WIDTH-1 downto 0) := (others => '0');
-    signal dsp_hsum_valid_d2_r : shift_reg(1 downto 0) := (others => '0');
-    signal dsp_hsum_data_in_x : signed((G_DATA_WIDTH-1) downto 0);
+    signal dsp_vsum_tmp_x           : signed(C_SUM_WIDTH-1 downto 0) := (others => '0');
+    signal dsp_vsum_valid_x         : std_logic := '0';
+    signal dsp_vsum_valid_d3_r      : shift_reg(2 downto 0) := (others => '0');
+    signal dsp_vsum_data_in_x       : signed((G_DATA_WIDTH-1) downto 0);
 
-    signal dsp_var_tmp_x    : std_logic_vector(C_SUM_WIDTH-1 downto 0) := (others => '0');
-    signal dsp_var_valid_d4_r : shift_reg(3 downto 0) := (others => '0');
+    signal dsp_hsum_tmp_x           : signed(C_SUM_WIDTH-1 downto 0) := (others => '0');
+    signal dsp_hsum_valid_x         : std_logic := '0';
+    signal dsp_hsum_valid_d2_r      : shift_reg(1 downto 0) := (others => '0');
+    signal dsp_hsum_data_in_x       : signed((G_DATA_WIDTH-1) downto 0);
 
-    signal vsum             : unsigned(C_SUM_WIDTH-1 downto 0) := (others => '0');
-    signal htsum            : signed(31 downto 0) := (others => '0');
+    signal dsp_var_tmp_x            : std_logic_vector(C_SUM_WIDTH-1 downto 0) := (others => '0');
+    signal dsp_var_valid_d4_r       : shift_reg(3 downto 0) := (others => '0');
 
-    signal vsum_shifted     : unsigned(C_SUM_WIDTH-1 downto 0) := (others => '0');
-    signal vsum_shifted_valid_r : std_logic := '0'; 
-    signal htsum_shifted    : signed(17 downto 0) := (others => '0');
-    signal htsum_shifted_valid_r : std_logic := '0';
+    signal vsum                     : unsigned(C_SUM_WIDTH-1 downto 0) := (others => '0');
+    signal htsum                    : signed(31 downto 0) := (others => '0');
 
-    signal mean_r           : std_logic_vector(15 downto 0) := (others => '0');
-    signal mean_valid_r     : std_logic := '0';
-    signal var_x            : std_logic_vector(15 downto 0) := (others => '0');
-    signal var_valid_x      : std_logic := '0';
-    signal std_dev_x        : std_logic_vector(15 downto 0) := (others => '0');
-    signal std_dev_valid_x  : std_logic := '0';
-    signal hold_var_mean_x  : std_logic := '0';
+    signal vsum_shifted             : unsigned(C_SUM_WIDTH-1 downto 0) := (others => '0');
+    signal vsum_multiplied          : unsigned(63 downto 0) := (others => '0');
+    signal vsum_shifted_valid_r     : std_logic := '0'; 
 
-    component dsp_mac
-    generic (
-        SIZEIN  : natural; -- width of the inputs
-        SIZEOUT : natural  -- width of the output
-    );
-    port (
-        clk         : in std_logic;
-        rst         : in std_logic;
-        ce          : in std_logic;
-        sload       : in  std_logic;
-        a           : in  signed (SIZEIN-1 downto 0);
-        b           : in  signed (SIZEIN-1 downto 0);
-        accum_out   : out signed (SIZEOUT-1 downto 0));
-    end component;
+    signal htsum_shifted            : signed(17 downto 0) := (others => '0');
+    signal htsum_multiplied         : signed(63 downto 0) := (others => '0');
+    signal htsum_shifted_valid_r    : std_logic := '0';
 
-    component dsp_acum
-      generic (
-        SIZEIN  : natural := 16; -- width of the inputs
-        SIZEOUT : natural := 40  -- width of the output
-      );
-      port (
-        clk         : in std_logic;
-        rst         : in std_logic;
-        ce          : in std_logic;
-        sload       : in  std_logic;
-        a           : in  signed (SIZEIN-1 downto 0);
-        accum_out   : out signed (SIZEOUT-1 downto 0));
-    end component;
+    signal mean_r                   : std_logic_vector(15 downto 0) := (others => '0');
+    signal mean_valid_r             : std_logic := '0';
+    signal var_x                    : std_logic_vector(15 downto 0) := (others => '0');
+    signal var_valid_x              : std_logic := '0';
+    signal std_dev_x                : std_logic_vector(15 downto 0) := (others => '0');
+    signal std_dev_valid_x          : std_logic := '0';
+    signal hold_var_mean_x          : std_logic := '0';
 
-    -- Multiply subtract block, C-A*A
-    COMPONENT dsp_msub
-    PORT (
-        CLK : IN STD_LOGIC;
-        CE : IN STD_LOGIC;
-        SCLR : IN STD_LOGIC;
-        A : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
-        C : IN STD_LOGIC_VECTOR(47 DOWNTO 0);
-        P : OUT STD_LOGIC_VECTOR(47 DOWNTO 0) 
-    );
-    END COMPONENT;
-
+    -- SQRT Cordic IP Block
     COMPONENT sqrt_cordic
     PORT (
         aclk : IN STD_LOGIC;
@@ -145,30 +114,41 @@ begin
 
     ce_x <= ce_i;
 
-    -------------------- VSUM MAC Logic --------------------
-    -- valid goes through 3 delay cycles to match up with the output data from the dsp mac
-    vsum_valid_p: process(clk_i)
-    begin
-        if (rising_edge(clk_i)) then
-            dsp_vsum_valid_d3_r(0) <= valid_i;
-            for i in 1 to dsp_vsum_valid_d3_r'high loop
-                dsp_vsum_valid_d3_r(i) <= dsp_vsum_valid_d3_r(i-1);
-            end loop;
-        end if;
-    end process;
-
     -- if data is valid, send to accumulator. otherwise send 0's (to hold prev sum)
-    vsum_data_p : process(all)
+    process(clk_i)
     begin
-        if valid_i then
-            dsp_vsum_data_in_x <= data_i;
-        else
-            dsp_vsum_data_in_x <= (others => '0');
+        if rising_edge(clk_i) then
+            if valid_i = '1' then
+                dsp_vsum_data_in_x <= data_i;
+                dsp_hsum_data_in_x <= data_i;
+            else 
+                dsp_vsum_data_in_x <= (others => '0');
+                dsp_hsum_data_in_x <= (others => '0');
+            end if;
+
+            valid_x <= valid_i;
+
         end if;
     end process;
+    
 
+    -------------------- VSUM MAC Logic --------------------
+    vsum_valid_p : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 3,
+        DATA_WIDTH => 1
+    )
+    port map (
+        clk_i => clk_i,
+        ce_i => '1',
+        rst_i => rst_i,
+        data_i(0) => valid_x,
+        data_o(0) => dsp_vsum_valid_x
+    );
+
+    
     -- DSP MAC - Performs vsum = vsum + a*b - 3 cycles latency - updated to behavioral
-    dsp_vsum_mac : dsp_mac
+    dsp_vsum_mac : entity work.dsp_mac
     GENERIC MAP (
         SIZEIN => G_DATA_WIDTH,
         SIZEOUT => C_SUM_WIDTH
@@ -180,33 +160,12 @@ begin
         sload => rst_i,
         a => dsp_vsum_data_in_x,
         b => dsp_vsum_data_in_x,
-        accum_out => dsp_vsum_tmp_X
+        accum_out => dsp_vsum_tmp_x
     );
 
     -------------------- HSUM ACUM Logic --------------------
-    -- valid goes through 2 delay cycles to match up with the output data from the dsp mac
-    hsum_valid_p: process(clk_i)
-    begin
-        if (rising_edge(clk_i)) then
-            dsp_hsum_valid_d2_r(0) <= valid_i;
-            for i in 1 to dsp_hsum_valid_d2_r'high loop
-                dsp_hsum_valid_d2_r(i) <= dsp_hsum_valid_d2_r(i-1);
-            end loop;
-        end if;
-    end process;
-
-    -- if data is valid, send to accumulator. otherwise send 0's (to hold prev sum)
-    hsum_data_p : process(all)
-    begin
-        if valid_i then
-            dsp_hsum_data_in_x <= data_i;
-        else
-            dsp_hsum_data_in_x <= (others => '0');
-        end if;
-    end process;
-
     -- ACUM - Performs htsum = htsum + data_in - 2 cycles latency - updated to behavioral
-    hsum_acum_i : dsp_acum
+    hsum_acum_i : entity work.dsp_acum
     generic map (
         SIZEIN =>   G_DATA_WIDTH, -- width of the inputs
         SIZEOUT =>  C_SUM_WIDTH  -- width of the output
@@ -217,69 +176,106 @@ begin
         ce => ce_x,
         sload => rst_i,
         a => dsp_hsum_data_in_x,
-        accum_out => dsp_hsum_tmp_X
+        accum_out => dsp_hsum_tmp_x
     );
 
-    -- propogate bit shifted values - 1 cycle latency
+    -- delay valid signal to match the output data from the hsum acum
+    hsum_valid_p : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 2,
+        DATA_WIDTH => 1
+    )
+    port map (
+        clk_i => clk_i,
+        ce_i => '1',
+        rst_i => rst_i,
+        data_i(0) => valid_x,
+        data_o(0) => dsp_hsum_valid_x
+    );
+
+    -- delay mean valid signal
+    mean_valid_p : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 3,
+        DATA_WIDTH => 1
+    )
+    port map (
+        clk_i => clk_i,
+        ce_i => '1',
+        rst_i => rst_i,
+        data_i(0) => dsp_hsum_valid_x,
+        data_o(0) => mean_valid_r
+    );
+
+    -- compute divided hsum for mean, using fabric 
     process(clk_i)
     begin
         if rising_edge(clk_i) then
-            if (rst_i = '1') then
-                vsum_shifted <= (others => '0');
-                htsum_shifted_valid_r <= '0';
+            if rst_i = '1' then
+                htsum_multiplied <= (others => '0');
                 htsum_shifted <= (others => '0');
-                vsum_shifted_valid_r <= '0';
-                mean_r <= (others => '0');
-                mean_valid_r <= '0';
-            elsif (ce_x = '1') then
-                if htsum_shifted_valid_r then
-                    mean_r <= std_logic_vector(resize(htsum_shifted, 16));
-                    mean_valid_r <= '1';
+                htsum_shifted_valid_r <= '0';
+            else
+                if dsp_hsum_valid_x = '1' then
+                    -- multiply hsum by C_SAMPLE_DIV
+                    htsum_multiplied <= dsp_hsum_tmp_x * C_SAMPLE_DIV;
                 end if;
-                htsum_shifted <= shift_right(resize(signed(dsp_hsum_tmp_X), 18), G_DEPTH_BITS);
-                htsum_shifted_valid_r <= dsp_hsum_valid_d2_r(dsp_hsum_valid_d2_r'high);
-                vsum_shifted <= shift_right(unsigned(dsp_vsum_tmp_X), G_DEPTH_BITS);
-                vsum_shifted_valid_r <= dsp_vsum_valid_d3_r(dsp_vsum_valid_d3_r'high);
+
+                -- shift right by 16
+                htsum_shifted <= resize(shift_right(htsum_multiplied, 16), 18);
+                -- set mean
+                mean_r <= std_logic_vector(resize(htsum_shifted, 16));
             end if;
         end if;
     end process;
 
-    -- vsum always updates 1 cycle later than hsum, so that valid is carried
-    -- 3 cycles of latency to match the variance dsp
-    var_valid_p: process(clk_i)
+
+    -- compute divided vsum
+    process(clk_i)
     begin
-        if (rising_edge(clk_i)) then
-            dsp_var_valid_d4_r(0) <= vsum_shifted_valid_r;
-            for i in 1 to dsp_var_valid_d4_r'high loop
-                dsp_var_valid_d4_r(i) <= dsp_var_valid_d4_r(i-1);
-            end loop;
+        if rising_edge(clk_i) then
+            if rst_i = '1' then
+                vsum_multiplied <= (others => '0');
+                vsum_shifted <= (others => '0');
+            else
+                if dsp_vsum_valid_x = '1' then
+                    -- multiply vsum by C_SAMPLE_DIV
+                    vsum_multiplied <= unsigned(dsp_vsum_tmp_x * C_SAMPLE_DIV);
+                end if;
+                    -- shift right by 16
+                vsum_shifted <= resize(shift_right(vsum_multiplied, 16), C_SUM_WIDTH);
+            end if;
         end if;
     end process;
 
-    -- Final variance calculation DSP - performs P = C - (A*A) - 3 cycles latency - left as IP
-    dsp_var_msub : dsp_msub
-    PORT MAP (
-      CLK => clk_i,
-      CE => ce_x,
-      SCLR => rst_i,
-      A => std_logic_vector(htsum_shifted),
-      C => std_logic_vector(vsum_shifted),
-      P => dsp_var_tmp_x
+    dsp_var_msub : entity work.dsp_msub
+    generic map (
+        AWIDTH => 16, -- width of A input
+        CWIDTH => C_SUM_WIDTH  -- width of C input
+    )
+    port map(
+        clk => clk_i,
+        ce => ce_x,
+        rst => rst_i,
+        ain => std_logic_vector(mean_r),
+        cin => std_logic_vector(vsum_shifted),
+        pout => dsp_var_tmp_x
     );
 
-    -- resize variance. 1 cycle latency
-    var_shift_p : process(all)
-    begin
-        if rst_i then
-            var_x <= (others => '0');
-            var_valid_x <= '0';
-        elsif dsp_var_valid_d4_r(dsp_var_valid_d4_r'high) then
-            var_x <= std_logic_vector(resize(shift_right(unsigned(dsp_var_tmp_x), 4), 16));
-            var_valid_x <= '1';
-        else
-            var_valid_x <= '0';
-        end if;
-    end process;
+    var_valid_delay : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 6,
+        DATA_WIDTH => 1
+    )
+    port map (
+        clk_i => clk_i,
+        ce_i => '1',
+        rst_i => rst_i,
+        data_i(0) => dsp_vsum_valid_x,
+        data_o(0) => var_valid_x
+    );
+
+    var_x <= std_logic_vector(resize(shift_right(unsigned(dsp_var_tmp_x), 2), 16));
 
     -- std dev calculations. 5 cycles latency
     std_dev_sqrt : sqrt_cordic
@@ -316,4 +312,5 @@ begin
             end if;
         end if;
     end process;
+
 end Behavioral;

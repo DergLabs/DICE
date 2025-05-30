@@ -53,7 +53,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1__100.00000______0.000______50.0______106.024_____82.655
+// clk_out1__500.00000______0.000______50.0_______68.800_____74.580
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -120,25 +120,29 @@ wire clk_in2_sys_clk_mmcm;
   wire        clkinstopped_unused;
   wire        reset_high;
 
+ 
+
+// Auto Instantiation//
+
 
   
     MMCME4_ADV
 
-  #(.BANDWIDTH            ("OPTIMIZED"),
+  #(.BANDWIDTH            ("HIGH"),
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("AUTO"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (6.000),
+    .DIVCLK_DIVIDE        (2),
+    .CLKFBOUT_MULT_F      (15.625),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (12.000),
+    .CLKOUT0_DIVIDE_F     (3.125),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (5.000))
   
-  mmcme4_adv_inst
+     mmcme4_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_sys_clk_mmcm),
@@ -181,6 +185,8 @@ wire clk_in2_sys_clk_mmcm;
     .CLKFBSTOPPED        (clkfbstopped_unused),
     .PWRDWN              (1'b0),
     .RST                 (reset_high));
+
+
   assign reset_high = reset; 
 
   assign locked = locked_int;

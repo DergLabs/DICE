@@ -76,7 +76,7 @@ set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-20532-DESKTOP-U9NB2CD/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-21472-DESKTOP-U9NB2CD/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 set_param project.vivado.isBlockSynthRun true

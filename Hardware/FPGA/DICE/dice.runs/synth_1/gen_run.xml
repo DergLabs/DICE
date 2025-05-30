@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1740692422" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
-  <File Type="VDS-TIMING-PB" Name="top_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="top.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="top_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="top_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="top.vds"/>
-  <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xcku3p-ffva676-2-i" LaunchTime="1748584468" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
   <File Type="PA-TCL" Name="top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="top_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
+  <File Type="RDS-RDS" Name="top.vds"/>
+  <File Type="RDS-UTIL" Name="top_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/ip/input_data_fifo/input_data_fifo.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/Top/rgb_to_ycrcb.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -22,6 +29,30 @@
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_acum.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_mac.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_msub.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Top/tile_selection_logic.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
@@ -38,6 +69,24 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/Lossy Compressor/dct1d.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_madd.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_mult.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_presub_mult.vhd">
       <FileInfo SFType="VHDL2008">
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -109,6 +158,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Lossy Compressor/zigzag_encoder.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/Lossy Compressor/lossy_compressor.vhd">
       <FileInfo SFType="VHDL2008">
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -127,6 +182,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Top/rgb_to_ycrcb.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/Top/top.vhd">
       <FileInfo SFType="VHDL2008">
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -140,28 +201,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_mult.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_presub_mult.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/DSP/dsp_preadd_mult.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/DSP/dsp_mac.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -171,6 +211,12 @@
     <File Path="$PSRCDIR/sources_1/new/DSP/dsp_preaddsub_mad.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/output_buffer_ram/output_ram_init.coe">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -208,19 +254,22 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
-    <Step Id="synth_design"/>
+    <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2023"/>
+    <Step Id="synth_design">
+      <Option Id="Directive">7</Option>
+      <Option Id="FsmExtraction">1</Option>
+      <Option Id="KeepEquivalentRegisters">1</Option>
+      <Option Id="NoCombineLuts">1</Option>
+      <Option Id="ResourceSharing">2</Option>
+      <Option Id="ShregMinSize">5</Option>
+    </Step>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="input_pixel_hold_ram"/>
-  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="dsp_macro_simd"/>
-  <BlockFileSet Type="BlockSrcs" Name="dsp_msub"/>
-  <BlockFileSet Type="BlockSrcs" Name="dsp_macro_add_22b"/>
-  <BlockFileSet Type="BlockSrcs" Name="dsp_mac"/>
-  <BlockFileSet Type="BlockSrcs" Name="dsp_acum"/>
-  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="input_data_fifo"/>
   <BlockFileSet Type="BlockSrcs" Name="sqrt_cordic"/>
+  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="dsp_macro_add_22b"/>
+  <BlockFileSet Type="BlockSrcs" Name="dsp_macro_simd"/>
   <BlockFileSet Type="BlockSrcs" Name="output_buffer_ram"/>
+  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="input_pixel_hold_ram"/>
   <BlockFileSet Type="BlockSrcs" Name="sys_clk_mmcm"/>
 </GenRun>

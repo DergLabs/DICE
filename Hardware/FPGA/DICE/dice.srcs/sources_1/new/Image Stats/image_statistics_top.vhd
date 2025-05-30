@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: Drexel University
--- Engineer: John Hofmeyr
+-- Company: 
+-- Engineer: 
 -- 
 -- Create Date: 01/13/2025 09:00:54 PM
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: Top level module that Ties together Laplacian, Gradient and Statistics cores. Num samples defines how many input values to use for statistics calculation
+-- Description: 
 -- 
 -- Dependencies: 
 -- 
@@ -43,14 +43,14 @@ entity image_statistics_top is
         pixel_i     : in std_logic_vector(7 downto 0);
         valid_i     : in std_logic;
 
-        laplacian_var_o : out std_logic_vector(15 downto 0);
-        laplacian_mean_o : out std_logic_vector(15 downto 0);
-        laplacian_std_dev_o : out std_logic_vector(15 downto 0);
+        laplacian_var_o : out std_logic_vector(15 downto 0); -- Variance, unsigned 16b integer
+        laplacian_mean_o : out std_logic_vector(15 downto 0); -- mean, signed 16b integer
+        laplacian_std_dev_o : out std_logic_vector(15 downto 0); -- std. deviation, unsigned 16b integer
         laplacian_valid_o : out std_logic;
 
-        gradient_var_o : out std_logic_vector(15 downto 0);
-        gradient_mean_o : out std_logic_vector(15 downto 0);
-        gradient_std_dev_o : out std_logic_vector(15 downto 0);
+        gradient_var_o : out std_logic_vector(15 downto 0); -- Variance, unsigned 16b integer
+        gradient_mean_o : out std_logic_vector(15 downto 0); -- mean, signed 16b integer
+        gradient_std_dev_o : out std_logic_vector(15 downto 0); -- std. deviation, unsigned 16b integer
         gradient_valid_o : out std_logic
     );
 end image_statistics_top;
@@ -99,20 +99,8 @@ begin
         end if;
     end process;
 
-    -- Convert pixel from RGB to grayscale
-    /*rgb_to_gray : entity work.rgb_to_gray
-        port map (
-            clk_i => clk_i,
-            ce_i => ce_i,
-            rst_i => rst_i,
-            pixel_i => pixel_reg_x,
-            valid_i => valid_x,
 
-            pixel_o => gray_pixel_o,
-            valid_o => gray_valid_o
-    );*/
-
-    -- Shift register for pixel data
+    -- Shift register for pixel data, serial input stream becomes parallel output of 9 pixels (3x3 grid)
     input_sipo : entity work.sipo_reg
     generic map(
         IN_WIDTH => 8,
@@ -205,6 +193,7 @@ begin
             clk_i => clk_i,
             ce_i => '1',
             rst_i => rst_i,
+
             data_i => signed(lapplacian_x),
             valid_i => laplacian_valid_x,
 
@@ -224,6 +213,7 @@ begin
             clk_i => clk_i,
             ce_i => '1',
             rst_i => rst_i,
+            
             data_i => signed(graient_x),
             valid_i => gradient_valid_x,
 

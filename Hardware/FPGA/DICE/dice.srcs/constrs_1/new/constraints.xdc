@@ -1,3 +1,6 @@
+# Constrain design placement to Clock Tiles X0Y3 and X0Y2
+
+
 
 set_property IOSTANDARD LVDS [get_ports sysclk_p]
 
@@ -147,33 +150,8 @@ set_property DRIVE 12 [get_ports ftdi_oe_n_o]
 set_property DRIVE 12 [get_ports ftdi_rd_n_o]
 set_property DRIVE 12 [get_ports ftdi_wr_n_o]
 set_property DRIVE 12 [get_ports ftdi_wakeup_o]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_oe_n_o]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_rd_n_o]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_rstn_o]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_wakeup_o]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_wr_n_o]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_be_io[1]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_be_io[0]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[15]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[14]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[13]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[12]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[11]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[10]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[9]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[8]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[7]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[6]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[5]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[4]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[3]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[2]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[1]]
-set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[0]]
-set_property OFFCHIP_TERM NONE [get_ports led_o[3]]
-set_property OFFCHIP_TERM NONE [get_ports led_o[2]]
-set_property OFFCHIP_TERM NONE [get_ports led_o[1]]
-set_property OFFCHIP_TERM NONE [get_ports led_o[0]]
+
+
 set_property PROHIBIT true [get_bels GTYE4_COMMON_X0Y2/REFCLK0N]
 set_property PROHIBIT true [get_bels GTYE4_COMMON_X0Y2/REFCLK0P]
 set_property PROHIBIT true [get_bels GTYE4_COMMON_X0Y2/REFCLK1N]
@@ -254,3 +232,45 @@ set_property PROHIBIT true [get_bels GTYE4_CHANNEL_X0Y0/IPAD1]
 set_property PROHIBIT true [get_bels GTYE4_CHANNEL_X0Y0/IPAD2]
 set_property PROHIBIT true [get_bels GTYE4_CHANNEL_X0Y0/OPAD1]
 set_property PROHIBIT true [get_bels GTYE4_CHANNEL_X0Y0/OPAD2]
+
+
+
+
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets clk_x]
+
+
+create_pblock pblock_1
+add_cells_to_pblock [get_pblocks pblock_1] [get_cells -quiet [list clocking_gen.sys_clk ft600_send_recv gen_image_statistics.image_statistics_core input_memory_fifo lossy_comp_core output_memory rgb_to_ycrcb]]
+resize_pblock [get_pblocks pblock_1] -add {CLOCKREGION_X0Y2:CLOCKREGION_X0Y3}
+set_property IS_SOFT FALSE [get_pblocks pblock_1]
+
+set_property OFFCHIP_TERM NONE [get_ports ftdi_oe_n_o]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_rd_n_o]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_rstn_o]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_wakeup_o]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_wr_n_o]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_be_io[1]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_be_io[0]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[15]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[14]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[13]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[12]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[11]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[10]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[9]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[8]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[7]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[6]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[5]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[4]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[3]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[2]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[1]]
+set_property OFFCHIP_TERM NONE [get_ports ftdi_data_io[0]]
+set_property OFFCHIP_TERM NONE [get_ports led_o[3]]
+set_property OFFCHIP_TERM NONE [get_ports led_o[2]]
+set_property OFFCHIP_TERM NONE [get_ports led_o[1]]
+set_property OFFCHIP_TERM NONE [get_ports led_o[0]]

@@ -9,6 +9,8 @@
 -- Target Devices: 
 -- Tool Versions: 
 -- Description: Configurable delay register for pipelining/delaying signals. Shift depth = how many cycles to delay by, data width = bus width
+-- Works by creating a shift register for each bit within a bus and reading the output of each register, concatenating the bits back together
+-- N-bit Parallel Bus -> N single bit shfit registers with D depth -> N-bit Parallel Bus
 -- 
 -- Dependencies: 
 -- 
@@ -17,6 +19,7 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
+
 
 
 library IEEE;

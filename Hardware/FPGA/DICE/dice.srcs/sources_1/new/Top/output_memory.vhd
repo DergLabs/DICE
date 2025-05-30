@@ -14,6 +14,7 @@
 -- Implementation: Simple Dual Port Ram, non-common Clock
 -- Port A operating Mode - No Change, Use ENA Pin, Port A Write Width = DIN_WIDTH, Port A Depth = DIN_WIDTH/DOUT_WIDTH, no RST 
 -- Port B operating Mode - Write First (doesnt really matter), Use ENB Pin, Port B Read Width = DOUT_WIDTH, Port B Depth = DEPTH (Auto Calculated), no RST
+-- !!!! IMPORTANT !!! Block ram is initialized to all 1's. when reading, we read 2048 16b words, the 2049th word (addr 2048) will be all 1's. This is the lossy ID block
 -- Dependencies: 
 -- 
 -- Revision:
@@ -58,7 +59,13 @@ entity output_memory is
         data_out_valid      : out std_logic;
         read_clk_i          : in std_logic;
 
-        memory_clear_o      : out std_logic
+        memory_clear_o      : out std_logic;
+
+        -- debug
+        output_ram_wr_addr_o  : out std_logic_vector(8 downto 0);
+        output_ram_rd_addr_o  : out std_logic_vector(12 downto 0);
+        read_counter_o        : out std_logic_vector(15 downto 0)
+
 
     );
 end output_memory;
@@ -68,6 +75,7 @@ architecture Behavioral of output_memory is
     -- Output Ram Signals
     signal output_ram_wr_addr           : std_logic_vector(integer(log2(real(NUM_WRITE_WORDS))) - 1 downto 0);
     signal output_ram_rd_addr           : std_logic_vector(integer(log2(real(NUM_READ_WORDS))) - 1 downto 0);
+    signal output_ram_data              : std_logic_vector(DOUT_WIDTH - 1 downto 0);
 
     -- Counters
     signal write_counter : integer := 0;
@@ -82,14 +90,14 @@ architecture Behavioral of output_memory is
         clka        : IN STD_LOGIC;
         ena         : IN STD_LOGIC;
         wea         : IN STD_LOGIC;
-        addra       : IN STD_LOGIC_VECTOR(integer(log2(real(NUM_WRITE_WORDS))) - 1 DOWNTO 0);
-        dina        : IN STD_LOGIC_VECTOR((DIN_WIDTH - 1) DOWNTO 0);
+        addra       : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+        dina        : IN STD_LOGIC_VECTOR(255 DOWNTO 0);
 
         clkb        : IN STD_LOGIC;
         rstb        : IN STD_LOGIC;
         enb         : IN STD_LOGIC;
-        addrb       : IN STD_LOGIC_VECTOR(integer(log2(real(NUM_READ_WORDS))) - 1 DOWNTO 0);
-        doutb       : OUT STD_LOGIC_VECTOR((DOUT_WIDTH - 1) DOWNTO 0);
+        addrb       : IN STD_LOGIC_VECTOR(12 DOWNTO 0);
+        doutb       : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
         rsta_busy   : OUT STD_LOGIC;
         rstb_busy   : OUT STD_LOGIC 
     );
@@ -133,7 +141,7 @@ begin
             output_ram_rd_addr <= (others => '0');
         elsif falling_edge(read_clk_i) then
             if reciever_ready_i = '1' then
-                if (read_counter = NUM_READ_WORDS - 1) then
+                if (read_counter = NUM_READ_WORDS) then
                     read_counter <= 0;
                     output_ram_rd_addr <= (others => '0');
                 else
@@ -159,12 +167,24 @@ begin
         clkb => read_clk_i,
         rstb => rst_i,
         enb => reciever_ready_i,
-        addrb => output_ram_rd_addr,
-        doutb => data_o,
+        addrb => std_logic_vector(resize(unsigned(output_ram_rd_addr), 13)),
+        doutb => output_ram_data,
         rsta_busy => open,
         rstb_busy => open
     );
+
+    -- Output 0xFFFF for last read, (ID block)
+    with read_counter select
+        data_o <= (others => '1') when NUM_READ_WORDS-1,
+                output_ram_data when others;
+                
+    --data_o <= output_ram_data;
     
     data_out_valid <= reciever_ready_i when rising_edge(read_clk_i);
+
+    -- Output signals
+    output_ram_wr_addr_o <= output_ram_wr_addr;
+    output_ram_rd_addr_o <= std_logic_vector(resize(unsigned(output_ram_rd_addr), 13));
+    read_counter_o <= std_logic_vector(to_unsigned(read_counter, 16));
 
 end Behavioral;

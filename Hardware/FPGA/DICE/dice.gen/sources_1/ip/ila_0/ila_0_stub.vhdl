@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Mon Feb 10 19:42:35 2025
+-- Date        : Thu May 29 22:08:26 2025
 -- Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/ila_0/ila_0_stub.vhdl
@@ -29,7 +29,8 @@ entity ila_0 is
     probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
 
 end ila_0;
@@ -38,7 +39,7 @@ architecture stub of ila_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk,probe0[15:0],probe1[0:0],probe2[31:0],probe3[0:0],probe4[15:0],probe5[0:0],probe6[15:0],probe7[15:0],probe8[15:0],probe9[0:0],probe10[15:0],probe11[15:0],probe12[15:0],probe13[0:0]";
+attribute black_box_pad_pin of stub : architecture is "clk,probe0[15:0],probe1[0:0],probe2[31:0],probe3[0:0],probe4[15:0],probe5[0:0],probe6[15:0],probe7[15:0],probe8[15:0],probe9[0:0],probe10[15:0],probe11[15:0],probe12[15:0],probe13[0:0],probe14[0:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "ila,Vivado 2023.2";
 begin

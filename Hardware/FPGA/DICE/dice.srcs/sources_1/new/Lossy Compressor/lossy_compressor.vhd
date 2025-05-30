@@ -33,7 +33,8 @@ use UNISIM.VComponents.all;
 
 entity lossy_compressor is
     generic (
-        EN_SUBSAMPLE : boolean := true;
+        EN_SUBSAMPLE : boolean := true; -- 4:2:2 subsampling
+        EN_ZIGZAG : boolean := true; -- zigzag reordering of output data
         OUTPUT_WIDTH : integer := 8 -- Bit width of each word
     );
     port ( 
@@ -45,28 +46,28 @@ entity lossy_compressor is
         valid_i    : in std_logic;
         q_scale_i  : in unsigned(7 downto 0);
 
-        ce_o       : out std_logic;
-        done_o     : out std_logic;
         data_o     : out std_logic_vector((OUTPUT_WIDTH * 8) - 1 downto 0);
         valid_o    : out std_logic
     );
 end lossy_compressor;
 
 architecture Behavioral of lossy_compressor is
+    constant INTERMEDIATE_WIDTH : integer := 12;
+    constant DIVIDED_WIDTH : integer := 9;
+
     signal valid_x : std_logic;
 
     signal subsampled_pixel : std_logic_vector(7 downto 0);
     signal subsample_valid : std_logic;
 
     signal pixel_cols : std_logic_vector(63 downto 0);
-    signal pixel_cols_wide : std_logic_vector(95 downto 0);
+    signal pixel_cols_wide : std_logic_vector((INTERMEDIATE_WIDTH * 8) - 1 downto 0);
     signal col_valid : std_logic;
 
-    signal dct1_pixel_out : std_logic_vector(95 downto 0);
+    signal dct1_pixel_out : std_logic_vector((INTERMEDIATE_WIDTH * 8) - 1 downto 0);
     signal dct1_valid_out : std_logic;
 
-    signal shifted_pixels : std_logic_vector(95 downto 0);
-    signal divided_pixels : std_logic_vector(95 downto 0);
+    signal divided_pixels : std_logic_vector((INTERMEDIATE_WIDTH * 8) - 1 downto 0);
     signal pixel_0        : std_logic_vector(8 downto 0);
     signal pixel_1        : std_logic_vector(8 downto 0);
     signal pixel_2        : std_logic_vector(8 downto 0);
@@ -75,33 +76,23 @@ architecture Behavioral of lossy_compressor is
     signal pixel_5        : std_logic_vector(8 downto 0);
     signal pixel_6        : std_logic_vector(8 downto 0);
     signal pixel_7        : std_logic_vector(8 downto 0);
-    signal resized_pixels : std_logic_vector(71 downto 0);
+    signal resized_pixels : std_logic_vector((DIVIDED_WIDTH * 8) - 1 downto 0);
 
-    signal pixel_rows_resized : std_logic_vector(95 downto 0);
-    signal pixel_rows : std_logic_vector(71 downto 0);
+    signal pixel_rows : std_logic_vector((DIVIDED_WIDTH * 8) - 1 downto 0);
     signal row_valid : std_logic;
-    signal row_num : std_logic_vector(3 downto 0);
 
-    signal pixel_rows_wide : std_logic_vector(95 downto 0);
+    signal pixel_rows_wide : std_logic_vector((INTERMEDIATE_WIDTH * 8) - 1 downto 0);
     
-    signal dct2_pixel_out : std_logic_vector(95 downto 0);
+    signal dct2_pixel_out : std_logic_vector((INTERMEDIATE_WIDTH * 8) - 1 downto 0);
     signal dct2_valid_out : std_logic;
 
-    signal transpose_ce_x : std_logic := '0';
-    signal row_dct_ce_x : std_logic := '0';
-    signal quantizer_ce_x : std_logic := '0';
-
-    signal enable_ce_counter : boolean := false;
-
-    signal counter : integer := 0;
-
-    signal resized_pixels_delay : std_logic_vector(71 downto 0);
-    signal transpose_ce_x_delay : std_logic;
-    signal dct1_valid_out_delay : std_logic;
     signal divided_pixels_valid : std_logic;
     
     signal delayed_pixel_in : std_logic_vector(7 downto 0);
     signal delayed_valid_in : std_logic;
+
+    signal quantized_data : std_logic_vector((OUTPUT_WIDTH * 8) - 1 downto 0);
+    signal quantized_valid : std_logic;
 
 begin
 
@@ -125,7 +116,7 @@ begin
             clk_i => clk_i,
             rst_i => rst_i,
             data_i => data_i,
-            valid_i => valid_x,
+            valid_i => valid_i,
             data_o => subsampled_pixel,
             valid_o => subsample_valid
         );
@@ -153,7 +144,7 @@ begin
 
         input_data_delay_reg : entity work.data_delay_reg
         generic map (
-            SHIFT_DEPTH => 2,
+            SHIFT_DEPTH => 3,
             DATA_WIDTH => 8
         )
         port map (
@@ -166,7 +157,7 @@ begin
 
         input_valid_delay_reg : entity work.data_delay_reg
         generic map (
-            SHIFT_DEPTH => 2,
+            SHIFT_DEPTH => 3,
             DATA_WIDTH => 1
         )
         port map (
@@ -197,9 +188,6 @@ begin
             valid_o => col_valid
         );
     end generate;
-
-
-
 
     -- Resize pixel data from 8bit unsigned to 12bit signed for 1st DCT
     pixel_cols_wide <=  X"0" & pixel_cols(63 downto 56) &
@@ -246,37 +234,23 @@ begin
 
     resized_pixels <= pixel_7 & pixel_6 & pixel_5 & pixel_4 & pixel_3 & pixel_2 & pixel_1 & pixel_0;
 
-
-    transpose_valid_delay : entity work.data_delay_reg
-    generic map (
-        SHIFT_DEPTH => 1,
-        DATA_WIDTH => 1
-    )
-    port map (
-        clk_i => clk_i,
-        ce_i => '1',
-        rst_i => rst_i,
-        data_i(0) => divided_pixels_valid,
-        data_o(0) => dct1_valid_out_delay
-    );
-
     -- Transpose 8x8 pixel matrix
     -- Transpose requires 8 clock cycles to load in 8 columns before a row is output
     pixel_transpose : entity work.transpose
     generic map (
-        ELEMENT_WIDTH => 9,
-        NUM_ELEMENTS => 8,
-        DEPTH => 8
+        -- Number of bits per element
+        ELEMENT_WIDTH => 9
+        -- Leave NUM_ELEMENTS and DEPTH as default for 8x8 matrix
+        --NUM_ELEMENTS => 8,
+        --DEPTH => 8
     )
     port map (
         clk_i => clk_i,
-        ce_i => '1',
         rst_i => vio_rst_i,
         data_i => resized_pixels,
         valid_i => divided_pixels_valid,
         data_o => pixel_rows,
-        valid_o => row_valid,
-        row_num_o => row_num
+        valid_o => row_valid
     );
 
     -- Resize from 9bit signed to 12bit signed for 2nd DCT stage
@@ -314,21 +288,29 @@ begin
         data_i => dct2_pixel_out,
         valid_i => dct2_valid_out,
         scale_factor_i => q_scale_i,
-        data_o => data_o,
-        valid_o => valid_o
+        data_o => quantized_data,
+        valid_o => quantized_valid
     );
 
-    -- register ce output
-    process(clk_i, rst_i)
-    begin
-        if rst_i = '1' then
-            ce_o <= '0';
-        elsif rising_edge(clk_i) then
-            ce_o <= '1';
-        end if;
-    end process;
-
-    --valid_o <= valid_o_test;
-    --data_o <= data_o_test;
+    gen_zigzag : 
+    if EN_ZIGZAG generate
+        -- Zigzag reorder quantized DCT output
+        zigzag_encode : entity work.zigzag_encoder
+        generic map (
+            ELEMENT_WIDTH => OUTPUT_WIDTH
+        )
+        port map(
+            clk_i => clk_i,
+            rst_i => rst_i,
+            data_i => quantized_data,
+            valid_i => quantized_valid,
+            data_o => data_o,
+            valid_o => valid_o
+        );
+    else generate
+        -- No zigzag reordering, output quantized data directly
+        data_o <= quantized_data;
+        valid_o <= quantized_valid;
+    end generate;
 
 end Behavioral;

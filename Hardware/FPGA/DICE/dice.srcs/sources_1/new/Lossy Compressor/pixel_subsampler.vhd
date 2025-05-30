@@ -48,34 +48,83 @@ entity pixel_subsampler is
 end pixel_subsampler;
 
 architecture Behavioral of pixel_subsampler is
-    signal sel_pixel : std_logic;
-    signal prev_pixel : unsigned(WIDTH-1 downto 0);
+    signal update_pixel : std_logic;
+
+    signal pixel_reg_0 : unsigned(WIDTH-1 downto 0);
+    signal pixel_reg_1 : unsigned(WIDTH-1 downto 0);
+
+    signal pixel_adder_out : unsigned(WIDTH downto 0);
+    signal pixel_shifted_out : unsigned(WIDTH-1 downto 0);
+    
+    signal valid_x : std_logic;
+    signal valid_delayed : std_logic;
+
 begin
 
+    -- register valid signal, used to delay pixel select by 1 cycle
+    valid_x <= valid_i when rising_edge(clk_i);
+
+    -- Create pixel update signal, toggles every 2 cycles
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
-            sel_pixel <= '0';
+            update_pixel <= '0';
         elsif rising_edge(clk_i) then
-            sel_pixel <= not sel_pixel;
+            if valid_x = '1' then
+                update_pixel <= not update_pixel;
+            end if;
         end if;
     end process;
 
+    -- delay valid signal by 2 cycles
+    valid_delay_reg : entity work.data_delay_reg
+    generic map (
+        SHIFT_DEPTH => 2,
+        DATA_WIDTH => 1
+    )
+    port map (
+        clk_i => clk_i,
+        ce_i => '1',
+        rst_i => rst_i,
+        data_i(0) => valid_i,
+        data_o(0) => valid_delayed
+    );
 
+    -- register chain for incoming data
+    process(clk_i, rst_i)
+    begin
+        if rst_i = '1' then
+            pixel_reg_0 <= (others => '0');
+            pixel_reg_1 <= (others => '0');
+        elsif rising_edge(clk_i) then
+            if valid_i = '1' then
+                pixel_reg_0 <= unsigned(data_i);
+                pixel_reg_1 <= pixel_reg_0;
+            else
+                pixel_reg_0 <= (others => '0');
+                pixel_reg_1 <= (others => '0');
+            end if;
+        end if;
+    end process;
+    
+    -- pixel adder
+    pixel_adder_out <= resize(pixel_reg_0, WIDTH+1) + resize(pixel_reg_1, WIDTH+1);
+
+    -- pixel shift
+    pixel_shifted_out <= resize(shift_right(pixel_adder_out, 1), WIDTH);
+
+    -- pixel hold register
     process(clk_i, rst_i)
     begin
         if rst_i = '1' then
             data_o <= (others => '0');
-            prev_pixel <= (others => '0');
             valid_o <= '0';
         elsif rising_edge(clk_i) then
-            valid_o <= valid_i;
-            if sel_pixel = '0' then
-                data_o <= std_logic_vector(resize(shift_right(resize(unsigned(data_i), 16) + resize(prev_pixel, 16), 1), WIDTH));
-            else
-                prev_pixel <= unsigned(data_i);
-                data_o <= data_o;
+            if update_pixel = '1' and valid_delayed = '1' then
+                data_o <= std_logic_vector(pixel_shifted_out); -- every 2 cycles output the shifted pixel value
             end if;
+
+            valid_o <= valid_delayed;
         end if;
     end process;
 

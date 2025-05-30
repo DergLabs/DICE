@@ -56,7 +56,13 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 vio_0 your_instance_name (
   .clk(clk),                // input wire clk
-  .probe_out0(probe_out0)  // output wire [0 : 0] probe_out0
+  .probe_out0(probe_out0),  // output wire [0 : 0] probe_out0
+  .probe_out1(probe_out1),  // output wire [15 : 0] probe_out1
+  .probe_out2(probe_out2),  // output wire [15 : 0] probe_out2
+  .probe_out3(probe_out3),  // output wire [15 : 0] probe_out3
+  .probe_out4(probe_out4),  // output wire [15 : 0] probe_out4
+  .probe_out5(probe_out5),  // output wire [15 : 0] probe_out5
+  .probe_out6(probe_out6)  // output wire [15 : 0] probe_out6
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

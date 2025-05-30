@@ -31,8 +31,8 @@ architecture sim of rgb_to_ycrcb_sim is
     
 begin
     
-
-    TOP : entity work.rgb_to_ycrcb
+    -- System verilog version
+    /*TOP : entity work.rgb_to_ycrcb
         port map (
             clk_i => clk,
             rst_i => rst,
@@ -40,7 +40,21 @@ begin
             rgb_valid_i => valid_i,
             ycrcb_o => data_o,
             ycrcb_valid_o => valid_o
+    );*/
+
+    -- VHDL version
+    TOP : entity work.rgb_to_ycrcb
+        port map (
+            clk_i => clk,
+            rst_i => rst,
+
+            rgb_i => data_i,
+            valid_i => valid_i,
+            
+            ycrcb_o => data_o,
+            valid_o => valid_o
     );
+
 
 
     clk <= not clk after clk_period / 2;

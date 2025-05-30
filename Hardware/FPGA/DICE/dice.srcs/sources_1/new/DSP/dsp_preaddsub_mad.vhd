@@ -1,10 +1,8 @@
 
 -- This module describes a dynamic pre add/sub followed by multiplier, adder
 -- Make sure the widths are less than what is supported by the architecture
--- Implements ((A + B) * C) + D when subadd is 0 
--- Implements ((A - B) * C) + D when subadd is 1 
+-- Implements ((A+B)*C)+D when subadd is 0 or ((A-B)*C)+D when subadd is 1 
 -- Maximum width for A, B and D are 18 bits, Max width for C is 25 bits, Max with for D is 43 bits
--- 4 Cycle latency from Din to Dout
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

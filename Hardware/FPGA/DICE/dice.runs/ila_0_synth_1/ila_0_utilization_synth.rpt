@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Feb 10 19:42:35 2025
+| Date         : Thu May 29 22:08:26 2025
 | Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command      : report_utilization -file ila_0_utilization_synth.rpt -pb ila_0_utilization_synth.pb
 | Design       : ila_0
@@ -32,17 +32,17 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*                  | 5047 |     0 |          0 |    162720 |  3.10 |
-|   LUT as Logic             | 3927 |     0 |          0 |    162720 |  2.41 |
-|   LUT as Memory            | 1120 |     0 |          0 |     99840 |  1.12 |
+| CLB LUTs*                  | 5138 |     0 |          0 |    162720 |  3.16 |
+|   LUT as Logic             | 4007 |     0 |          0 |    162720 |  2.46 |
+|   LUT as Memory            | 1131 |     0 |          0 |     99840 |  1.13 |
 |     LUT as Distributed RAM |  112 |     0 |            |           |       |
-|     LUT as Shift Register  | 1008 |     0 |            |           |       |
-| CLB Registers              | 6272 |     0 |          0 |    325440 |  1.93 |
-|   Register as Flip Flop    | 6272 |     0 |          0 |    325440 |  1.93 |
+|     LUT as Shift Register  | 1019 |     0 |            |           |       |
+| CLB Registers              | 6434 |     0 |          0 |    325440 |  1.98 |
+|   Register as Flip Flop    | 6434 |     0 |          0 |    325440 |  1.98 |
 |   Register as Latch        |    0 |     0 |          0 |    325440 |  0.00 |
-| CARRY8                     |  165 |     0 |          0 |     27120 |  0.61 |
-| F7 Muxes                   |  459 |     0 |          0 |    108480 |  0.42 |
-| F8 Muxes                   |  180 |     0 |          0 |     54240 |  0.33 |
+| CARRY8                     |  167 |     0 |          0 |     27120 |  0.62 |
+| F7 Muxes                   |  474 |     0 |          0 |    108480 |  0.44 |
+| F8 Muxes                   |  164 |     0 |          0 |     54240 |  0.30 |
 | F9 Muxes                   |    0 |     0 |          0 |     27120 |  0.00 |
 +----------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -64,7 +64,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 12    |          Yes |         Set |            - |
-| 6260  |          Yes |       Reset |            - |
+| 6422  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -74,9 +74,9 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-------------------+------+-------+------------+-----------+-------+
 |     Site Type     | Used | Fixed | Prohibited | Available | Util% |
 +-------------------+------+-------+------------+-----------+-------+
-| Block RAM Tile    |  296 |     0 |          0 |       360 | 82.22 |
-|   RAMB36/FIFO*    |  296 |     0 |          0 |       360 | 82.22 |
-|     RAMB36E2 only |  296 |       |            |           |       |
+| Block RAM Tile    |  298 |     0 |          0 |       360 | 82.78 |
+|   RAMB36/FIFO*    |  298 |     0 |          0 |       360 | 82.78 |
+|     RAMB36E2 only |  298 |       |            |           |       |
 |   RAMB18          |    0 |     0 |          0 |       720 |  0.00 |
 | URAM              |    0 |     0 |          0 |        48 |  0.00 |
 +-------------------+------+-------+------------+-----------+-------+
@@ -158,20 +158,20 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 6260 |            Register |
-| LUT6     | 2600 |                 CLB |
-| SRL16E   |  925 |                 CLB |
-| SRLC32E  |  833 |                 CLB |
-| LUT4     |  691 |                 CLB |
-| MUXF7    |  459 |                 CLB |
-| LUT5     |  379 |                 CLB |
-| LUT3     |  344 |                 CLB |
-| RAMB36E2 |  296 |            BLOCKRAM |
-| LUT2     |  275 |                 CLB |
-| MUXF8    |  180 |                 CLB |
-| CARRY8   |  165 |                 CLB |
+| FDRE     | 6422 |            Register |
+| LUT6     | 2634 |                 CLB |
+| SRL16E   |  934 |                 CLB |
+| SRLC32E  |  843 |                 CLB |
+| LUT4     |  706 |                 CLB |
+| MUXF7    |  474 |                 CLB |
+| LUT5     |  405 |                 CLB |
+| LUT3     |  352 |                 CLB |
+| RAMB36E2 |  298 |            BLOCKRAM |
+| LUT2     |  277 |                 CLB |
+| CARRY8   |  167 |                 CLB |
+| MUXF8    |  164 |                 CLB |
 | RAMD64E  |  112 |                 CLB |
-| LUT1     |   97 |                 CLB |
+| LUT1     |   98 |                 CLB |
 | FDSE     |   12 |            Register |
 | SRLC16E  |    2 |                 CLB |
 +----------+------+---------------------+

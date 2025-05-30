@@ -46,16 +46,17 @@ entity input_memory is
         data_in_valid   : in std_logic;    
         write_clk_i     : in std_logic;
         write_en_i      : in std_logic;
+
+        read_hold_ram_i : in std_logic;
+        hold_ram_data_o : out std_logic_vector(DIN_WIDTH-1 downto 0);
         
         data_o          : out std_logic_vector(DOUT_WIDTH-1 downto 0);
         data_out_valid  : out std_logic;
+        
         read_clk_i      : in std_logic;
 
         empty_o         : out std_logic;
-        full_o          : out std_logic;
-
-        hold_ram_data_o : out std_logic_vector(DIN_WIDTH-1 downto 0);
-        read_hold_ram_i : in std_logic
+        full_o          : out std_logic
     );
 end input_memory;
 
@@ -69,9 +70,8 @@ architecture Behavioral of input_memory is
     signal rd_rst_busy              : std_logic;
     signal fifo_data_o              : std_logic_vector(DOUT_WIDTH-1 downto 0);
 
-    signal hold_ram_wr_addr         : unsigned(11 downto 0);
-    signal hold_ram_rd_addr         : unsigned(11 downto 0);
-
+    signal hold_mem_wr_addr        : std_logic_vector(11 downto 0);
+    signal hold_mem_rd_addr        : std_logic_vector(11 downto 0);
 
     COMPONENT input_data_fifo
     PORT (
@@ -90,23 +90,26 @@ architecture Behavioral of input_memory is
     );
     END COMPONENT;
 
+
+    -- Port A 16-bit wide, 2048 Elements Deep (4KB)
+    -- Port B Also 16-bit wide, 2048 Elements Deep (4KB)
+    -- When writing 32x32 tile, total of 1024 32-bit words are sent or 2048 16-bit chunks
     COMPONENT input_pixel_hold_ram
     PORT (
         clka : IN STD_LOGIC;
         ena : IN STD_LOGIC;
         wea : IN STD_LOGIC;
         addra : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-        dina : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        dina : IN STD_LOGIC_VECTOR(DIN_WIDTH-1 DOWNTO 0);
         clkb : IN STD_LOGIC;
         rstb : IN STD_LOGIC;
         enb : IN STD_LOGIC;
         addrb : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-        doutb : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+        doutb : OUT STD_LOGIC_VECTOR(DIN_WIDTH-1 DOWNTO 0);
         rsta_busy : OUT STD_LOGIC;
         rstb_busy : OUT STD_LOGIC 
     );
-    END COMPONENT;
-
+    END COMPONENT; 
 begin
 
     input_fifo_rd_en <= not(write_en_i) when rising_edge(read_clk_i);
@@ -144,7 +147,7 @@ begin
       rd_rst_busy => rd_rst_busy
     );
     
-    -- Read out FIFO Data to core
+    -- Output data to processing core and set valid flag
     process(read_clk_i, rst_i)
     begin
         if rst_i = '1' then
@@ -161,60 +164,42 @@ begin
         end if;
     end process;
 
-    -- Store Input data in hold ram, used for passthrough
-    -- Same clock used for read and write, both operate on the FT600 clock
-    your_instance_name : input_pixel_hold_ram
+    -- Counter for hold memory read/write address
+    -- Memory is 8KB, 4096x16b
+    -- When reading, we read from 
+    process(write_clk_i, rst_i)
+    begin
+        if rst_i = '1' then
+            hold_mem_wr_addr <= X"000";
+            hold_mem_rd_addr <= X"000";
+        elsif rising_edge(write_clk_i) then
+            if data_in_valid = '1' then
+                hold_mem_wr_addr <= std_logic_vector(unsigned(hold_mem_wr_addr) + 1);
+                hold_mem_rd_addr <= X"000"; -- reset read address when writing
+            end if;
+
+            if read_hold_ram_i = '1' then
+                hold_mem_rd_addr <= std_logic_vector(unsigned(hold_mem_rd_addr) + 1);
+                hold_mem_wr_addr <= X"000"; -- reset write address when reading
+            end if;
+        end if;
+    end process;
+
+    -- Hold memory to store input data, initialized to all zeros, when reading last word we look for 0x0000
+    pixel_hold_ram : input_pixel_hold_ram
     PORT MAP (
         clka => write_clk_i,
         ena => '1',
         wea => data_in_valid,
-        addra => std_logic_vector(hold_ram_wr_addr),
+        addra => hold_mem_wr_addr,
         dina => data_i,
-
-        clkb => write_clk_i,
+        clkb => write_clk_i, -- Same clock is used as write clock since we read directly to FT600
         rstb => rst_i,
         enb => read_hold_ram_i,
-        addrb => std_logic_vector(hold_ram_rd_addr),
+        addrb => hold_mem_rd_addr,
         doutb => hold_ram_data_o,
-
         rsta_busy => open,
         rstb_busy => open
     );
-
-    -- Hold ram write counter
-    process(write_clk_i, rst_i)
-    begin
-        if (rst_i = '1') then
-            hold_ram_wr_addr <= (others => '0');
-        elsif rising_edge(write_clk_i) then
-            if data_in_valid = '1' then
-                if hold_ram_wr_addr = 4095 then
-                    hold_ram_wr_addr <= (others => '0'); 
-                else
-                    hold_ram_wr_addr <= hold_ram_wr_addr + 1;
-                end if;
-            else 
-                hold_ram_wr_addr <= (others => '0');
-            end if;
-        end if;
-    end process;
-
-    -- Hold ram read counter 
-    process(write_clk_i, rst_i)
-    begin
-        if (rst_i = '1') then
-            hold_ram_rd_addr <= (others => '0');
-        elsif rising_edge(write_clk_i) then
-            if read_hold_ram_i = '1' then
-                if hold_ram_rd_addr = 4095 then
-                    hold_ram_rd_addr <= (others => '0'); 
-                else
-                    hold_ram_rd_addr <= hold_ram_rd_addr + 1;
-                end if;
-            else 
-                hold_ram_rd_addr <= (others => '0');
-            end if;
-        end if;
-    end process;
 
 end Behavioral;

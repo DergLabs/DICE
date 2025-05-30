@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Tue Feb 18 15:43:23 2025
+// Date        : Mon May  5 19:56:57 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/vio_0/vio_0_stub.v
@@ -15,9 +15,16 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "vio,Vivado 2023.2" *)
-module vio_0(clk, probe_out0)
-/* synthesis syn_black_box black_box_pad_pin="probe_out0[0:0]" */
+module vio_0(clk, probe_out0, probe_out1, probe_out2, 
+  probe_out3, probe_out4, probe_out5, probe_out6)
+/* synthesis syn_black_box black_box_pad_pin="probe_out0[0:0],probe_out1[15:0],probe_out2[15:0],probe_out3[15:0],probe_out4[15:0],probe_out5[15:0],probe_out6[15:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   output [0:0]probe_out0;
+  output [15:0]probe_out1;
+  output [15:0]probe_out2;
+  output [15:0]probe_out3;
+  output [15:0]probe_out4;
+  output [15:0]probe_out5;
+  output [15:0]probe_out6;
 endmodule

@@ -1,8 +1,9 @@
+`timescale 1ns / 1ps
+
 // Company: Drexel University
 // Engineer: Claudia Offutt
 // Description: Implements RGB to YCrCb conversion
 
-`timescale 1ns / 1ps
 
 module rgb_to_ycrcb (
     input clk_i,
@@ -13,9 +14,9 @@ module rgb_to_ycrcb (
     output wire ycrcb_valid_o   // output valid signal
 );
 
-    wire [7:0] r;  // Red component
-    wire [7:0] g;  // Green component
-    wire [7:0] b;  // Blue component
+    reg [7:0] r;  // Red component
+    reg [7:0] g;  // Green component
+    reg [7:0] b;  // Blue component
     wire [7:0] y;  // Luma component
     wire [7:0] cr; // Red_difference chroma component
     wire [7:0] cb; // Blue_difference chroma component
@@ -30,6 +31,8 @@ module rgb_to_ycrcb (
 
     //Intermediate signals for multiplication
     //reg [23:0] y;
+
+    reg [23:0] rgb_in;
 
     reg validr;
 
@@ -55,11 +58,12 @@ module rgb_to_ycrcb (
     reg [7:0] b2;
 
     reg [7:0] yr;
-    
 
-    assign r = rgb_i[23:16];
-    assign g = rgb_i[15:8];
-    assign b = rgb_i[7:0];
+    assign rgb_in = rgb_i;
+
+    assign r = rgb_in[23:16];
+    assign g = rgb_in[15:8];
+    assign b = rgb_in[7:0];
     
     // Generate Y component with async reset
     always @(posedge clk_i or posedge rst_i) begin

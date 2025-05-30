@@ -70,6 +70,15 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "sys_clk_mmcm_synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
+set_param chipscope.maxJobs 4
+set_param power.BramSDPPropagationFix 1
+set_param power.enableUnconnectedCarry8PinPower 1
+set_param power.enableCarry8RouteBelPower 1
+set_param power.enableLutRouteBelPower 1
+set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-14456-DESKTOP-U9NB2CD/incrSyn
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -81,14 +90,14 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/wt [current_project]
 set_property parent.project_path C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.xpr [current_project]
-set_property XPM_LIBRARIES XPM_CDC [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property ip_output_repo c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xci
+read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xci
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_ooc.xdc]
