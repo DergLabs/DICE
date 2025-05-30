@@ -63,7 +63,7 @@ The harware platform is split between two modules; the IO module and the FPGA mo
 - 256Mb configuration memory
 
 The following diagram outlines the top level hardware configuration:
-
+![Hardware Top Level Diagram](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/Hardware%20Architecture/DICE%20General%20Hardware%20Architecture%20-%20Top%20Level%20Architecture.png)
 
 TODO: Finish me
 
