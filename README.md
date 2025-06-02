@@ -63,39 +63,50 @@ The harware platform is split between two modules; the IO module and the FPGA mo
 - 256Mb configuration memory
 
 The following diagram outlines the top level hardware configuration:
-![Hardware Top Level Diagram](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/Hardware%20Architecture/DICE%20General%20Hardware%20Architecture%20-%20Top%20Level%20Architecture.png)
+![Hardware Top Level Diagram](https://github.com/DergLabs/DICE/blob/main/Diagrams/Hardware%20Architecture/DICE%20General%20Hardware%20Architecture%20-%20Top%20Level%20Architecture.png)
 
 
 <ins>**Lossy Compression Architecture**</ins>
 
 The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. The simplified architecture for the lossy core is shown below.
 
-![Lossy compression core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/JPEG%20Core%20Pipeline.png)
+![Lossy compression core](https://github.com/DergLabs/DICE/blob/main/Diagrams/FPGA%20Architecture/JPEG%20Core%20Pipeline.png)
 
 In addition to the JPEG compression core, RGB to YCrCb conversion is performed. The implementation for this is shown below.
 
-![RGB to YCrCb](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/FPGA%20Based%20RGB%20to%20YCrCb.png)
+![RGB to YCrCb](https://github.com/DergLabs/DICE/blob/main/Diagrams/FPGA%20Architecture/FPGA%20Based%20RGB%20to%20YCrCb.png)
 
 In order to determine which compression method to utilize, statistics from the gradient and laplacian kernels is used. The current implementation uses the variance of the X/Y gradient and Laplacian convolutions. Variance was chosen as it provides a good representation of texture, edge transitions, and blur. The implementation of the gradient and laplacian calculations are shown below. Note, only the X sobel computation is shown, however the Y computation is identical.
 
 <ins>Laplacian Core</ins>
-![Laplacian Core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/Laplacian%20Implementation.png)
+![Laplacian Core](https://github.com/DergLabs/DICE/blob/main/Diagrams/FPGA%20Architecture/Laplacian%20Implementation.png)
 
 <ins>Gradient Core</ins>
-![Gradient Core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/Gradient%20Implementation.png)
+![Gradient Core](https://github.com/DergLabs/DICE/blob/main/Diagrams/FPGA%20Architecture/Gradient%20Implementation.png)
 
 
 <ins>**Lossless Compression Architecture**</ins>
 
-TODO: Finish me
+<ins>Arithmetic Encoder Core</ins>
+![Arithmetic Encoder]()
+
 
 <ins>**Software Tools**</ins>
 
-TODO: Finish me
+Two main software tools are used; the serial communications tool, and the reference compression tool. 
+
+The serial communications tool provides a serial terminal for connecting to the onboard microcontrollers. This terminal displays important hardware metrics including board temperatures, voltages, currents and power of the various power rails. 
+
+The reference compression tool is used to test and use the DICE hardware. This tool allows users to load in an image, set gradient and laplacian threshold values, format and transfer image data to the FPGA, decode recieved image data, create and save the DICE image files, and display the DICE compressed image with relevant statistics such as PSNR, MS-SSIM, file size and lossy/lossless tile metrics. 
+
 
 <ins>**DICE File Format**</ins>
 
-TODO: Finish me
+The DICE file format is broken into three main sections; the main file header, the lossless header and lossless data, and the lossy header and lossy data. The main file header contains general file information, decoding and dequantization tables as well as the tile ID grid used to identify the location and ID of each image tile. The lossy and lossless headers provide information about the number of tiles, and the size of each tile. All tiles are formatted to be the same size for simplicity sake, however future improvements would include allowing for variable tile sizes to reduce file size. Finally, the lossless tiles are stored as arithmetic encoded R, G and B arrays while the Lossy data is stored as quantized Y, Cr and Cb arrays. The diagram below shows the full file format.
+
+
+<ins>DICE File Format</ins>
+![File Format](https://github.com/DergLabs/DICE/blob/main/Diagrams/Software%20Architecture/DICE%20File%20Format.png)
 
 <ins>**Research Papers & References**</ins>
 
