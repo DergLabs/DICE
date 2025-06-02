@@ -88,7 +88,7 @@ In order to determine which compression method to utilize, statistics from the g
 <ins>**Lossless Compression Architecture**</ins>
 
 <ins>Arithmetic Encoder Core</ins>
-![Arithmetic Encoder]()
+![Arithmetic Encoder](https://github.com/DergLabs/DICE/blob/main/Diagrams/FPGA%20Architecture/Arithmetic%20Encoder.png)
 
 
 <ins>**Software Tools**</ins>
