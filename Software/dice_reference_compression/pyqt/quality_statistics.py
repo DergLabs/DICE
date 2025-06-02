@@ -21,3 +21,19 @@ def calculate_msssim(original, processed):
         processed_gray = processed
     return ssim(original_gray, processed_gray, data_range=255, multichannel=False)
 
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Load images from the script directory
+original = cv2.imread(os.path.join(script_dir, 'tree2048.png'))
+processed = cv2.imread(os.path.join(script_dir, 'tree30.jpg'))
+
+print(f"Original image shape: {original.shape}")
+print(f"Processed image shape: {processed.shape}")
+
+psnr_value = calculate_psnr(original, processed)
+msssim_value = calculate_msssim(original, processed)
+
+print(f"PSNR: {psnr_value:.2f} dB")
+print(f"MSSSIM: {msssim_value:.4f}")
