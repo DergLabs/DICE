@@ -5,13 +5,13 @@
 
 *Developed under the guidance of Dr. Anup Das*
 
-**Overview**
+<ins>**Overview**</ins>
 
 The goal of this project was to develop a hardware based image processing system and hybrid file format that would take advantage of the benefits from both lossy and lossless image compression. 
 
 By utilizing tiling, different image compression formats can be applied throughout an image based on the content of the tile. Improved image quality can be obtained when comapred to fully lossy compression, while maintaining file sizes smaller than that of fully lossless images. Our proposed solution utilizes a hardware optimized JPEG encoder for lossy compression and a novel hardware optimized arithmetic encoder for lossless compression.
 
-**Implementation**
+<ins>**Implementation**</ins>
 
 Image files are loaded and pre-processed into a pixel datastream using the Dice Reference compression tool. Image pre-processing consists of extracting the R, G and B channels from the image, applying matrix folding to create the 32x32 pixel tiles, and finally creating the byte arrays of raw pixels to be sent to the FPGA via USB. 
 
@@ -21,7 +21,7 @@ The pixels are then sent to the hardware statistics core to compute the mean, va
 
 While the tile statistics are calculated, the pixel data is sent to both the Lossy and Lossless compression cores, with the processed data being buffered in output hold ram. Once the compression determination is made, the output data streams from both hold rams are muxed, selecting only one to be transmitted back to the FT600. 
 
-**Hardware Platform** 
+<ins>**Hardware Platform**</ins> 
 
 A dual board hardware platform was developed for this project. The hardware architecture is split into two modules, the IO moduel and FPGA module. The IO module provides video connectivity, high speed USB connectivity, USB-PD power control and monitoring, and Debug/JTAG IO. Below is a list of all IO available: 
 
@@ -37,7 +37,7 @@ A dual board hardware platform was developed for this project. The hardware arch
 
 The FPGA Module provides all of the processing hardware and implements the custom designed image processor. A Xilinx Kintex Ultrascale+ KU3P was utilized. Two DC-DC converters generate all voltage rails, the TDA38840 provides 0.85V at upto 40A for the FPGA VCCINT, and an LT7200 is used to generate 3.3V, 5V, 1.8V and 1.2V at 3A per channel. All rails have voltage, current, power and temperature monitoring. An onboard 200MHz oscillator provides the main system clock for the FPGA. Four 512Mb HyperRam 3.0 memory modules are also present. Each memory chip provides a 16-bit 250MHz DDR bus. The memory chips have been routed to allow for two banks of two chips each with length matching between chips 0/1 and 2/3. 
 
-**Hardware Architecture**
+<ins>**Hardware Architecture**</ins>
 
 The harware platform is split between two modules; the IO module and the FPGA module. The IO module contains all user IO, USB Power handling and supporting interface hardware. The FPGA module contains the Kintex US+ KU3P FPGA, 4x HyperRam modules, power supplies, FPGA clock, and onboard microcontroller. 
 
@@ -66,30 +66,78 @@ The following diagram outlines the top level hardware configuration:
 ![Hardware Top Level Diagram](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/Hardware%20Architecture/DICE%20General%20Hardware%20Architecture%20-%20Top%20Level%20Architecture.png)
 
 
-**Lossy Compression Architecture**
+<ins>**Lossy Compression Architecture**</ins>
 
-The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. THe simplified architecture for the lossy core is shown below.
+The lossy compression method implemented for this design is a hardware optimized version of JPEG encoding. The JPEG implementation has been designed to work on 8 pixels per clock cycle, using a serial-to-parallel input register to convert the serial pixel input stream into 8 parallel pixel streams. The simplified architecture for the lossy core is shown below.
 
-![Lossy compression core]()
+![Lossy compression core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/JPEG%20Core%20Pipeline.png)
 
-**Lossless Compression Architecture**
+In addition to the JPEG compression core, RGB to YCrCb conversion is performed. The implementation for this is shown below.
+
+![RGB to YCrCb](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/FPGA%20Based%20RGB%20to%20YCrCb.png)
+
+In order to determine which compression method to utilize, statistics from the gradient and laplacian kernels is used. The current implementation uses the variance of the X/Y gradient and Laplacian convolutions. Variance was chosen as it provides a good representation of texture, edge transitions, and blur. The implementation of the gradient and laplacian calculations are shown below. Note, only the X sobel computation is shown, however the Y computation is identical.
+
+<ins>Laplacian Core</ins>
+![Laplacian Core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/Laplacian%20Implementation.png)
+
+<ins>Gradient Core</ins>
+![Gradient Core](https://github.com/DergLabs/DICE/blob/main/Hardware/Diagrams/FPGA%20Architecture/Gradient%20Implementation.png)
+
+
+<ins>**Lossless Compression Architecture**</ins>
 
 TODO: Finish me
 
-**Software Tools**
+<ins>**Software Tools**</ins>
 
 TODO: Finish me
 
-**DICE File Format**
+<ins>**DICE File Format**</ins>
 
 TODO: Finish me
 
-**Research Papers & References**
+<ins>**Research Papers & References**</ins>
 
-TODO: Finish me
+The following research papers and references were used during the development of this project.
+
+[1] Jonathan Griffin,
+“The Ultimate Guide to JPEG including JPEG Compression & Encoding”
+www.thewebmaster.com. https://www.thewebmaster.com/jpeg-definitive-guide/
+
+‌
+[2]H. Anas, “Fast 8*8*8 RCF 3D_DCT/IDCT transform for real time video compression and its FPGA Implementation,” vol. volume 7, no. 2, May 2014, https://www.researchgate.net/publication/262896207_Fast_888_RCF_3D_DCTIDCT_transform_for_real_time_video_compression_and_its_FPGA_Implementation
+‌
+
+[3]H. Anas, Said Belkouch, M. El Aakif, and Noureddine Chabini, “FPGA implementation of a pipelined 2D-DCT and simplified quantization for real-time applications,” International Conference on Multimedia Computing and Systems, pp. 1–6, Apr. 2011, doi: https://doi.org/10.1109/icmcs.2011.5945659.
+‌
+
+[4]S. Sudiro, A. Kardian, S. Madenda, and L. Hermanto, “OPEN ACCESS Mean and variance statistic for image processing on FPGA,” vol. 115, no. 1, p. 2020115, doi: https://doi.org/10.6703/IJASE.202103_18(1).115.
+‌
+
+‌[5] Mark Nelson,
+“Data Compression With Arithmetic Coding”, Mark Nelson, Oct. 19, 2014.
+https://marknelson.us/posts/2014/10/19/data-compression-with-arithmetic-coding.html 
 
 
+‌[6] Mark Nelson,
+“Arithmetic Coding + Statistical Modeling = Data Compression”, Mark Nelson, Feb. 1, 1991.
+https://marknelson.us/posts/1991/02/01/arithmetic-coding-statistical-modeling-data-compression
 
+
+‌[7] Wikipedia Contributors,
+“Discrete Cosine Transform”, Wikipedia,
+https://en.wikipedia.org/wiki/Discrete_cosine_transform# 
+
+
+[8] Wikipedia Contributors,
+“Huffman Coding”, Wikipedia,
+https://en.wikipedia.org/wiki/Huffman_coding 
+‌
+
+‌[9]
+“LZSS” The Hitchhiker’s Guide to Compression, 2024.
+https://go-compression.github.io/algorithms/lzss/
 
 
 
