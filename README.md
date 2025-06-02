@@ -89,6 +89,12 @@ In order to determine which compression method to utilize, statistics from the g
 
 <ins>Arithmetic Encoder Core</ins>
 
+For the lossless compression core, a running count adaptive model is used since arithmetic encoding can achieve a higher compression ratio using applicable adaptive models. Data can be ingested and processed at a rate of one byte per clock cycle. A binary tree for storing symbol probability ranges was chosen to reduce the lookup time for the lower bound of the range to O(lg(n)), where n is the bit-width of the symbol. Choosing 8 bits as the symbol size was done to ensure large enough symbols could be processed by the arithmetic compression core, but would not be so large as to make the size of the binary tree for storing the probability ranges of each symbol too big. 
+
+A data dependency between the upper and lower working range of the encoder and the output of the final renormalization stages of the pipeline could result in stalling for several clock cycles while waiting for the updated ranges. Some reorganization and consolidation of the pipeline was done to reduce the length of this dependency in the pipeline, such as moving the division step of the new bounds calculation before this critical path, and reducing the renormalization steps to take one cycle each. The final step employed to overcome stalling in the critical path of the arithmetic coding pipeline is to use multiple working bounds. This effectively strobes the data into multiple compression streams that share the same pipeline, negating the need to stall as long as the number of streams is higher than the number of pipeline stages in the critical path.
+
+A top level architecture diagram of the arithemetic encoder is shown below.
+
 ![Arithmetic Encoder](https://github.com/DergLabs/DICE/blob/main/Diagrams/FPGA%20Architecture/Arithmetic%20Encoder.png)
 
 
