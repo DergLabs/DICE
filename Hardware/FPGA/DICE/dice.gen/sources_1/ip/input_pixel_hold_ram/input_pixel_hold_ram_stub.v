@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon May  5 19:25:33 2025
+// Date        : Mon May  5 19:25:32 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top input_pixel_hold_ram -prefix
+//               input_pixel_hold_ram_ input_pixel_hold_ram_stub.v
 // Design      : input_pixel_hold_ram
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xcku3p-ffva676-2-i

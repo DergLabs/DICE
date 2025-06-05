@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../dice.ip_user_files/ipstatic" \
+"../../../../dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_clk_wiz.v" \
+"../../../../dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm.v" \
+"../../../../dice.gen/sources_1/ip/ila_0/ila_0_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/vio_0/vio_0_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/dsp_macro_simd/dsp_macro_simd_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/output_buffer_ram/output_buffer_ram_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram_sim_netlist.v" \
+"../../../../dice.gen/sources_1/ip/input_data_fifo/sim/input_data_fifo.v" \
+
+sv xil_defaultlib  --include "../../../../dice.ip_user_files/ipstatic" \
+"../../../../dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv" \
+"../../../../dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv" \
+"../../../../dice.srcs/sim_1/new/core_sim.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,9 +1,0 @@
-# compile verilog/system verilog design source files
-sv xil_defaultlib  --include "../../../../dice.ip_user_files/ipstatic" \
-"../../../../dice.srcs/sources_1/new/Top/rgb_to_ycrcb.sv" \
-
-# compile glbl module
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort

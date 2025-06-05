@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon Feb 10 19:01:47 2025
+// Date        : Mon Feb 10 19:01:45 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top sqrt_cordic -prefix
+//               sqrt_cordic_ sqrt_cordic_stub.v
 // Design      : sqrt_cordic
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xcku3p-ffva676-2-i

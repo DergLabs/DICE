@@ -301,7 +301,7 @@ begin
         )
         port map(
             clk_i => clk_i,
-            rst_i => rst_i,
+            rst_i => vio_rst_i,
             data_i => quantized_data,
             valid_i => quantized_valid,
             data_o => data_o,

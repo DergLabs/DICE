@@ -70,14 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "dsp_macro_add_22b_synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param power.BramSDPPropagationFix 1
-set_param power.enableUnconnectedCarry8PinPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableLutRouteBelPower 1
-set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18312-DESKTOP-U9NB2CD/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -96,7 +88,7 @@ set_property ip_output_repo c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci
+read_ip -quiet C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b.xci
 set_property used_in_implementation false [get_files -all c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/dsp_macro_add_22b/dsp_macro_add_22b_ooc.xdc]
 
 OPTRACE "Adding files" END { }

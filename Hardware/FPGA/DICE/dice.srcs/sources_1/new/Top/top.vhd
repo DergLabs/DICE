@@ -231,11 +231,11 @@ begin
         PORT MAP (
             clk => clk_x,
 
-            probe0 => gradient_threshold, -- was data_from_ft600
+            probe0 => data_from_ft600, -- was data_from_ft600
             probe1 => data_in_valid, 
             probe2 => fifo_data_to_core,
             probe3 => input_fifo_valid, 
-            probe4 => laplacian_threshold, -- was data_to_ft600
+            probe4 => data_to_ft600, -- was data_to_ft600
             probe5 => ft600_ready_for_data,
 
             probe6 => laplacian_var,
@@ -365,7 +365,7 @@ begin
         EN_Y_SUBSAMPLE => false,
         EN_CR_SUBSAMPLE => true,
         EN_CB_SUBSAMPLE => true,
-        EN_ZIGZAG => false
+        EN_ZIGZAG => true
     )
     port map (
         clk_i => clk_x,

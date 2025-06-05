@@ -60,20 +60,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="FeatureSet" Val="FeatureSet_Classic"/>
-    <Option Name="WTXSimLaunchSim" Val="404"/>
+    <Option Name="WTXSimLaunchSim" Val="426"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="49"/>
-    <Option Name="WTModelSimExportSim" Val="49"/>
-    <Option Name="WTQuestaExportSim" Val="49"/>
+    <Option Name="WTXSimExportSim" Val="50"/>
+    <Option Name="WTModelSimExportSim" Val="50"/>
+    <Option Name="WTQuestaExportSim" Val="50"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="49"/>
-    <Option Name="WTRivieraExportSim" Val="49"/>
-    <Option Name="WTActivehdlExportSim" Val="49"/>
+    <Option Name="WTVcsExportSim" Val="50"/>
+    <Option Name="WTRivieraExportSim" Val="50"/>
+    <Option Name="WTActivehdlExportSim" Val="50"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -91,13 +91,6 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/ip/input_data_fifo/input_data_fifo.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/Top/rgb_to_ycrcb.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -321,17 +314,17 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sim_1/new/rgb_to_ycrcb_sim.vhd">
-        <FileInfo SFType="VHDL2008">
+      <File Path="$PSRCDIR/sim_1/new/core_sim.sv">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sim_1/new/core_sim.sv">
-        <FileInfo>
+      <File Path="$PSRCDIR/sim_1/new/rgb_to_ycrcb_sim.vhd">
+        <FileInfo SFType="VHDL2008">
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
@@ -347,7 +340,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="rgb_to_ycrcb_sim"/>
+        <Option Name="TopModule" Val="core_sim"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
@@ -493,6 +486,19 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
+    <FileSet Name="input_data_fifo" Type="BlockSrcs" RelSrcDir="$PSRCDIR/input_data_fifo" RelGenDir="$PGENDIR/input_data_fifo">
+      <File Path="$PSRCDIR/sources_1/ip/input_data_fifo/input_data_fifo.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="input_data_fifo"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -611,6 +617,16 @@
       <RQSFiles/>
     </Run>
     <Run Id="sys_clk_mmcm_synth_1" Type="Ft3:Synth" SrcSet="sys_clk_mmcm" Part="xcku3p-ffva676-2-i" ConstrsSet="sys_clk_mmcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/sys_clk_mmcm_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/sys_clk_mmcm_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/sys_clk_mmcm_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="input_data_fifo_synth_1" Type="Ft3:Synth" SrcSet="input_data_fifo" Part="xcku3p-ffva676-2-i" ConstrsSet="input_data_fifo" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/input_data_fifo_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/input_data_fifo_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/input_data_fifo_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
@@ -756,7 +772,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_4" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="Similar to Performance_ExplorePostRoutePhysOpt, but enables logic optimization step (opt_design) with the ExploreWithRemap directive." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_4" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_4" LaunchOptions="-jobs 16 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_4">
+    <Run Id="impl_4" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="Similar to Performance_ExplorePostRoutePhysOpt, but enables logic optimization step (opt_design) with the ExploreWithRemap directive." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_4" LaunchOptions="-jobs 16 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_4">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_ExploreWithRemap" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
@@ -780,12 +796,11 @@
         </Step>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_7" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="Finalize placement of Block RAM and DSPs in the early stages of global placement." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_7" LaunchOptions="-jobs 16 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_7">
+    <Run Id="impl_7" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="Finalize placement of Block RAM and DSPs in the early stages of global placement." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_7" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_7" LaunchOptions="-jobs 32 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_7">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_EarlyBlockPlacement" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
@@ -806,11 +821,12 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_8" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="To compensate for optimistic delay estimation, add extra delay cost to long distance and high fanout connections. (high setting, most pessimistic)" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_8" LaunchOptions="-jobs 16 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_8">
+    <Run Id="impl_8" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="To compensate for optimistic delay estimation, add extra delay cost to long distance and high fanout connections. (high setting, most pessimistic)" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_8" LaunchOptions="-jobs 32 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_8">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_NetDelay_high" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
@@ -833,7 +849,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_10" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="Combines retiming in phys_opt_design with extra placement optimization and higher router delay cost." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_10" LaunchOptions="-jobs 16 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_10">
+    <Run Id="impl_10" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="constrs_1" Description="Combines retiming in phys_opt_design with extra placement optimization and higher router delay cost." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_10" LaunchOptions="-jobs 32 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_10">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_Retiming" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
@@ -857,6 +873,23 @@
       <RQSFiles/>
     </Run>
     <Run Id="sys_clk_mmcm_impl_1" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="sys_clk_mmcm" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="sys_clk_mmcm_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/sys_clk_mmcm_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/sys_clk_mmcm_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="input_data_fifo_impl_1" Type="Ft2:EntireDesign" Part="xcku3p-ffva676-2-i" ConstrsSet="input_data_fifo" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="input_data_fifo_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/input_data_fifo_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/input_data_fifo_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>

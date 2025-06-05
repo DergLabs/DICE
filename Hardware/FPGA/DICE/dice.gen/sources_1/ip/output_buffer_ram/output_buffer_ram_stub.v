@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 // Date        : Mon May 26 23:28:00 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/output_buffer_ram/output_buffer_ram_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top output_buffer_ram -prefix
+//               output_buffer_ram_ output_buffer_ram_stub.v
 // Design      : output_buffer_ram
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xcku3p-ffva676-2-i
