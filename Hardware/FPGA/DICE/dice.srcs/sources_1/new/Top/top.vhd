@@ -365,7 +365,7 @@ begin
         EN_Y_SUBSAMPLE => false,
         EN_CR_SUBSAMPLE => true,
         EN_CB_SUBSAMPLE => true,
-        EN_ZIGZAG => true
+        EN_ZIGZAG => false
     )
     port map (
         clk_i => clk_x,

@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Sat May 31 18:48:23 2025
+-- Date        : Fri Jun  6 13:04:08 2025
 -- Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_sim_netlist.vhdl
@@ -92,7 +92,7 @@ mmcme4_adv_inst: unisim.vcomponents.MMCME4_ADV
       CLKFBOUT_USE_FINE_PS => "FALSE",
       CLKIN1_PERIOD => 5.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 4.500000,
+      CLKOUT0_DIVIDE_F => 7.875000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => "FALSE",

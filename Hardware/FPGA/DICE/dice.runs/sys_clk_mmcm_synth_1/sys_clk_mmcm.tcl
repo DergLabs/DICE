@@ -70,11 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "sys_clk_mmcm_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 8
-set_param power.BramSDPPropagationFix 1
-set_param power.enableUnconnectedCarry8PinPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableLutRouteBelPower 1
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
