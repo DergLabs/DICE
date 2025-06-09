@@ -41,6 +41,7 @@ entity zigzag_encoder is
     port ( 
         clk_i       : in std_logic;
         rst_i       : in std_logic;
+
         data_i      : in std_logic_vector((ELEMENT_WIDTH*NUM_ELEMENTS)-1 downto 0);
         valid_i     : in std_logic;
 
@@ -88,7 +89,7 @@ begin
     end process;
 
 
-    -- delay reg to propagate valid signal
+    -- delay reg to propagate valid signal after 8 blocks of pixels have been read in
     valid_delay_reg : entity work.data_delay_reg
     generic map (
         SHIFT_DEPTH => 8,
@@ -103,7 +104,7 @@ begin
     );
 
 
-    -- Counter to increment pixel bank readout
+    -- Counter to increment pixel bank readout, counter starts after 8 pixel banks have been read in (valid_x = '1')
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -118,7 +119,7 @@ begin
     end process;
 
 
-    -- output data register, output configured for zigzag order
+    -- output data register and bus MUX, output configured for zigzag order
     process(clk_i, rst_i)
     begin
         if (rst_i = '1') then
@@ -189,8 +190,8 @@ begin
                                     pixel_bank((ELEMENT_WIDTH * 52) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 52)) &  -- Pixel 52
                                     pixel_bank((ELEMENT_WIDTH * 45) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 45)) &  -- Pixel 45
                                     pixel_bank((ELEMENT_WIDTH * 38) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 38)) &  -- Pixel 28
-                                    pixel_bank((ELEMENT_WIDTH * 23) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 23)) &  -- Pixel 23
-                                    pixel_bank((ELEMENT_WIDTH * 31) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 31));   -- Pixel 31
+                                    pixel_bank((ELEMENT_WIDTH * 31) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 31)) &  -- Pixel 23
+                                    pixel_bank((ELEMENT_WIDTH * 23) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 23));   -- Pixel 31
                     when 7 => 
                         data_o <=   pixel_bank((ELEMENT_WIDTH * 63) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 63)) &  -- Pixel 63
                                     pixel_bank((ELEMENT_WIDTH * 55) + (ELEMENT_WIDTH - 1) downto (ELEMENT_WIDTH * 55)) &  -- Pixel 55

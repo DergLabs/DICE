@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Jun  6 13:13:07 2025
+| Date         : Mon Jun  9 16:45:53 2025
 | Host         : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,11 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 364
+             Violations found: 367
 +-----------+----------+------------------------------------------+------------+
 | Rule      | Severity | Description                              | Violations |
 +-----------+----------+------------------------------------------+------------+
 | DPIR-2    | Warning  | Asynchronous driver check                | 291        |
+| LUTAR-1   | Warning  | LUT drives async reset alert             | 3          |
 | TIMING-9  | Warning  | Unknown CDC Logic                        | 1          |
 | TIMING-10 | Warning  | Missing property on synchronizer         | 1          |
 | TIMING-18 | Warning  | Missing input or output delay            | 24         |
@@ -1490,6 +1491,66 @@ Related violations: <none>
 DPIR-2#291 Warning
 Asynchronous driver check  
 DSP rgb_to_ycrcb/dsp_r_madd/gen_dsp_madd_unsigned.mult0 input pin rgb_to_ycrcb/dsp_r_madd/gen_dsp_madd_unsigned.mult0/B[7] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell lossy_comp_core/core_0/i_/i_, with 2 or more inputs, drives asynchronous preset/clear pin(s) lossy_comp_core/core_0/quantizer/data_o_reg[72]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[73]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[74]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[75]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[76]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[77]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[78]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[79]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[7]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[8]/CLR,
+lossy_comp_core/core_0/quantizer/data_o_reg[9]/CLR,
+lossy_comp_core/core_0/quantizer/ram_addr_reg[2]/CLR,
+lossy_comp_core/core_0/quantizer/ram_addr_reg[3]/CLR,
+lossy_comp_core/core_0/quantizer/ram_addr_reg[4]/CLR,
+lossy_comp_core/core_0/quantizer/valid_o_reg/CLR
+ (the first 15 of 547 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell lossy_comp_core/core_1/i_/i_, with 2 or more inputs, drives asynchronous preset/clear pin(s) lossy_comp_core/core_1/quantizer/data_o_reg[87]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[88]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[89]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[8]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[90]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[91]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[92]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[93]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[94]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[95]/CLR,
+lossy_comp_core/core_1/quantizer/data_o_reg[9]/CLR,
+lossy_comp_core/core_1/quantizer/ram_addr_reg[2]/CLR,
+lossy_comp_core/core_1/quantizer/ram_addr_reg[3]/CLR,
+lossy_comp_core/core_1/quantizer/ram_addr_reg[4]/CLR,
+lossy_comp_core/core_1/quantizer/valid_o_reg/CLR
+ (the first 15 of 547 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#3 Warning
+LUT drives async reset alert  
+LUT cell lossy_comp_core/core_2/i_/i_, with 2 or more inputs, drives asynchronous preset/clear pin(s) lossy_comp_core/core_2/quantizer/data_o_reg[72]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[73]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[74]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[75]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[76]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[77]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[78]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[79]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[7]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[8]/CLR,
+lossy_comp_core/core_2/quantizer/data_o_reg[9]/CLR,
+lossy_comp_core/core_2/quantizer/ram_addr_reg[2]/CLR,
+lossy_comp_core/core_2/quantizer/ram_addr_reg[3]/CLR,
+lossy_comp_core/core_2/quantizer/ram_addr_reg[4]/CLR,
+lossy_comp_core/core_2/quantizer/valid_o_reg/CLR
+ (the first 15 of 547 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
 Related violations: <none>
 
 TIMING-9#1 Warning

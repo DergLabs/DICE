@@ -115,6 +115,7 @@ proc step_failed { step } {
 OPTRACE "impl_7" END { }
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 
@@ -131,7 +132,7 @@ set rc [catch {
   set_param power.enableUnconnectedCarry8PinPower 1
   set_param power.enableCarry8RouteBelPower 1
   set_param power.enableLutRouteBelPower 1
-  set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-17176-DESKTOP-U9NB2CD/incrSyn
+  set_param synth.incrementalSynthesisCache C:/Users/johnh/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-2940-DESKTOP-U9NB2CD/incrSyn
   set_param runs.launchOptions { -jobs 32  }
   open_checkpoint top_routed.dcp
   set_property webtalk.parent_dir C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.cache/wt [current_project]

@@ -284,7 +284,7 @@ begin
     port map (
         clk_i => clk_i,
         ce_i => '1',
-        rst_i => rst_i,
+        rst_i => rst_i or vio_rst_i,
         data_i => dct2_pixel_out,
         valid_i => dct2_valid_out,
         scale_factor_i => q_scale_i,

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Jun  6 13:13:14 2025
+| Date             : Mon Jun  9 16:46:01 2025
 | Host             : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.779        |
+| Total On-Chip Power (W)  | 0.789        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.326        |
+| Dynamic (W)              | 0.336        |
 | Device Static (W)        | 0.453        |
 | Effective TJA (C/W)      | 1.7          |
-| Max Ambient (C)          | 98.7         |
-| Junction Temperature (C) | 26.3         |
+| Max Ambient (C)          | 98.6         |
+| Junction Temperature (C) | 26.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,22 +52,22 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.056 |        5 |       --- |             --- |
-| CLB Logic                |     0.059 |    20299 |       --- |             --- |
-|   LUT as Logic           |     0.051 |     8269 |    162720 |            5.08 |
-|   Register               |     0.006 |    10904 |    325440 |            3.35 |
-|   CARRY8                 |     0.001 |      186 |     27120 |            0.69 |
-|   LUT as Shift Register  |    <0.001 |       40 |     99840 |            0.04 |
-|   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
+| Clocks                   |     0.060 |        5 |       --- |             --- |
+| CLB Logic                |     0.061 |    23902 |       --- |             --- |
+|   LUT as Logic           |     0.053 |     9144 |    162720 |            5.62 |
+|   Register               |     0.007 |    13585 |    325440 |            4.17 |
+|   CARRY8                 |     0.001 |      198 |     27120 |            0.73 |
+|   LUT as Shift Register  |    <0.001 |       43 |     99840 |            0.04 |
 |   LUT as Distributed RAM |    <0.001 |       24 |     99840 |            0.02 |
-|   Others                 |     0.000 |      308 |       --- |             --- |
-| Signals                  |     0.054 |    15915 |       --- |             --- |
+|   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
+|   Others                 |     0.000 |      325 |       --- |             --- |
+| Signals                  |     0.058 |    19241 |       --- |             --- |
 | Block RAM                |     0.008 |        7 |       360 |            1.94 |
 | MMCM                     |     0.116 |        0 |       --- |             --- |
 | DSPs                     |     0.022 |       39 |      1368 |            2.85 |
 | I/O                      |     0.011 |       33 |       256 |           12.89 |
 | Static Power             |     0.453 |          |           |                 |
-| Total                    |     0.779 |          |           |                 |
+| Total                    |     0.789 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -77,7 +77,7 @@ Table of Contents
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint     |       0.850 |     0.375 |       0.235 |      0.140 |       NA    | Unspecified | NA         |
+| Vccint     |       0.850 |     0.386 |       0.246 |      0.140 |       NA    | Unspecified | NA         |
 | Vccint_io  |       0.850 |     0.036 |       0.001 |      0.035 |       NA    | Unspecified | NA         |
 | Vccbram    |       0.850 |     0.003 |       0.001 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.193 |       0.064 |      0.128 |       NA    | Unspecified | NA         |
@@ -151,7 +151,7 @@ Table of Contents
 +----------------------------------------------+-----------+
 | Name                                         | Power (W) |
 +----------------------------------------------+-----------+
-| top                                          |     0.326 |
+| top                                          |     0.336 |
 |   clocking_gen.sys_clk                       |     0.118 |
 |     inst                                     |     0.118 |
 |       clkin1_ibufds                          |     0.002 |
@@ -173,41 +173,44 @@ Table of Contents
 |       dsp_var_msub                           |     0.003 |
 |       dsp_vsum_mac                           |     0.005 |
 |       hsum_acum_i                            |     0.007 |
-|   input_memory_fifo                          |     0.008 |
+|   input_memory_fifo                          |     0.007 |
 |     input_cdc_fifo                           |     0.004 |
 |       U0                                     |     0.004 |
 |     pixel_hold_ram                           |     0.003 |
 |       U0                                     |     0.003 |
-|   lossy_comp_core                            |     0.128 |
-|     core_0                                   |     0.043 |
-|       col_dct                                |     0.004 |
+|   lossy_comp_core                            |     0.138 |
+|     core_0                                   |     0.046 |
+|       col_dct                                |     0.003 |
 |       gen_subsample.input_sipo_reg           |     0.001 |
+|       gen_zigzag.zigzag_encode               |     0.004 |
 |       pixel_divider                          |     0.003 |
-|       pixel_transpose                        |     0.030 |
+|       pixel_transpose                        |     0.029 |
 |       quantizer                              |     0.003 |
 |       row_dct                                |     0.002 |
-|     core_1                                   |     0.043 |
-|       col_dct                                |     0.004 |
+|     core_1                                   |     0.047 |
+|       col_dct                                |     0.003 |
 |       gen_subsample.input_sipo_reg           |     0.001 |
+|       gen_zigzag.zigzag_encode               |     0.005 |
 |       pixel_divider                          |     0.003 |
-|       pixel_transpose                        |     0.030 |
+|       pixel_transpose                        |     0.029 |
 |       quantizer                              |     0.003 |
 |       row_dct                                |     0.002 |
-|     core_2                                   |     0.043 |
-|       col_dct                                |     0.004 |
+|     core_2                                   |     0.045 |
+|       col_dct                                |     0.003 |
 |       gen_subsample.input_sipo_reg           |     0.001 |
+|       gen_zigzag.zigzag_encode               |     0.004 |
 |       pixel_divider                          |     0.003 |
-|       pixel_transpose                        |     0.030 |
+|       pixel_transpose                        |     0.029 |
 |       quantizer                              |     0.003 |
 |       row_dct                                |     0.002 |
 |   output_memory                              |     0.004 |
 |     output_memory                            |     0.003 |
 |       U0                                     |     0.003 |
-|   rgb_to_ycrcb                               |     0.008 |
+|   rgb_to_ycrcb                               |     0.007 |
 |     dsp_b_madd                               |     0.002 |
 |     dsp_cb_presub_mult                       |     0.001 |
 |     dsp_cr_presub_mult                       |     0.001 |
-|     dsp_r_madd                               |     0.002 |
+|     dsp_r_madd                               |     0.001 |
 +----------------------------------------------+-----------+
 
 

@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 
+
 def idct_vectorized(dct_blocks, k):
     # Magic matrices - don't touch! Used for IDCT and Dequantization
     T = np.array([
@@ -40,6 +41,39 @@ def idct_vectorized(dct_blocks, k):
     return np.maximum(np.minimum(temp.transpose(0, 2, 1).reshape(original_shape), 255), 0).astype(np.uint8)
 
 
+def decode_zigzag(zigzag_data):
+    ZIGZAG_DECODE_INDICES = np.array([
+    (0,0), (1,0), (0,1), (0,2), (1,1), (2,0), (3,0), (2,1),
+    (1,2), (0,3), (0,4), (1,3), (2,2), (3,1), (4,0), (5,0),
+    (4,1), (3,2), (2,3), (1,4), (0,5), (0,6), (1,5), (2,4),
+    (3,3), (4,2), (5,1), (6,0), (7,0), (6,1), (5,2), (4,3),
+    (3,4), (2,5), (1,6), (0,7), (1,7), (2,6), (3,5), (4,4),
+    (5,3), (6,2), (7,1), (7,2), (6,3), (5,4), (4,5), (3,6),
+    (2,7), (3,7), (4,6), (5,5), (6,4), (7,3), (7,4), (6,5),
+    (5,6), (4,7), (5,7), (6,6), (7,5), (7,6), (6,7), (7,7)
+    ])
+
+    # Get the original shape
+    original_shape = zigzag_data.shape
+    
+    # Create output array with shape to hold 8x8 blocks
+    # If input is (4, 4, 64), output should be (4, 4, 8, 8)
+    decoded = np.zeros(original_shape[:-1] + (8, 8), dtype=zigzag_data.dtype)
+    rows, cols = ZIGZAG_DECODE_INDICES.T
+    
+    # Apply zigzag decoding to each 8x8 block
+    for i in range(zigzag_data.shape[0]):  # 4
+        for j in range(zigzag_data.shape[1]):  # 4
+            # Get the flattened 64-element block
+            block_flat = zigzag_data[i, j]  # This is (64,) shape
+            # Decode the zigzag for this block
+            decoded_block = np.zeros((8, 8), dtype=zigzag_data.dtype)
+            decoded_block[rows, cols] = block_flat
+            decoded[i, j] = decoded_block
+    
+    return decoded
+
+
 def decode_image_array(image, BLOCK_SIZE, N_BLOCKS, TILE_SIZE, k):
     # Convert global variables to local for improved loop performance
     BLOCK_SIZE_LOC = BLOCK_SIZE
@@ -47,8 +81,11 @@ def decode_image_array(image, BLOCK_SIZE, N_BLOCKS, TILE_SIZE, k):
     Y_LOC = N_BLOCKS
     TILE_SIZE_LOC = TILE_SIZE
 
+    # Reshape and decode zigzag
+    zigzag_decoded = decode_zigzag(image.reshape(X_LOC, Y_LOC, BLOCK_SIZE_LOC * BLOCK_SIZE_LOC))
+    
     # Process all blocks at once
-    idct_output = idct_vectorized(image.reshape(X_LOC, Y_LOC, BLOCK_SIZE_LOC, BLOCK_SIZE_LOC), k)
+    idct_output = idct_vectorized(zigzag_decoded, k)
 
     return idct_output.transpose(0, 2, 1, 3).reshape(TILE_SIZE_LOC, TILE_SIZE_LOC)
 
@@ -73,6 +110,7 @@ def decode_lossless_tile(tile, BLOCK_SIZE, N_BLOCKS, TILE_SIZE):
     
     # Reshape back to 2D tile
     return blocks_transposed.transpose(0, 2, 1, 3).reshape(TILE_SIZE, TILE_SIZE).astype(np.uint8)
+
 
 def format_image_array(image_blocks, BLOCK_SIZE):
     # Convert global variables to local for improved loop performance

@@ -12,13 +12,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="94.050001 us"></ZoomEndTime>
-      <Cursor1Time time="17.523500 us"></Cursor1Time>
+      <ZoomStartTime time="12,741.150 ns"></ZoomStartTime>
+      <ZoomEndTime time="14,129.151 ns"></ZoomEndTime>
+      <Cursor1Time time="13,475.650 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="317"></NameColumnWidth>
-      <ValueColumnWidth column_width="338"></ValueColumnWidth>
+      <ValueColumnWidth column_width="322"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="35" />
    <wave_markers>
@@ -27,6 +27,7 @@
       <marker time="140000" label="" />
       <marker time="820000" label="" />
       <marker time="17523500" label="" />
+      <marker time="13443100" label="" />
    </wave_markers>
    <wvobject type="divider" fp_name="divider25">
       <obj_property name="label">FT600 Interface</obj_property>
@@ -1310,6 +1311,7 @@
    <wvobject fp_name="group137" type="group">
       <obj_property name="label">Quantizer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/quantizer/data_i" type="array">
          <obj_property name="ElementShortName">data_i[95:0]</obj_property>
          <obj_property name="ObjectShortName">data_i[95:0]</obj_property>
@@ -1344,6 +1346,7 @@
    <wvobject fp_name="group146" type="group">
       <obj_property name="label">ZigZag Encoder</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/clk_i" type="logic">
          <obj_property name="ElementShortName">clk_i</obj_property>
          <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -1360,18 +1363,6 @@
          <obj_property name="ElementShortName">valid_i</obj_property>
          <obj_property name="ObjectShortName">valid_i</obj_property>
       </wvobject>
-      <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/data_o" type="array">
-         <obj_property name="ElementShortName">data_o[79:0]</obj_property>
-         <obj_property name="ObjectShortName">data_o[79:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/valid_o" type="logic">
-         <obj_property name="ElementShortName">valid_o</obj_property>
-         <obj_property name="ObjectShortName">valid_o</obj_property>
-      </wvobject>
-      <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/rd_counter_r" type="other">
-         <obj_property name="ElementShortName">rd_counter_r</obj_property>
-         <obj_property name="ObjectShortName">rd_counter_r</obj_property>
-      </wvobject>
       <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/input_pixel_r" type="array">
          <obj_property name="ElementShortName">input_pixel_r[79:0]</obj_property>
          <obj_property name="ObjectShortName">input_pixel_r[79:0]</obj_property>
@@ -1383,6 +1374,18 @@
       <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/pixel_bank" type="array">
          <obj_property name="ElementShortName">pixel_bank[639:0]</obj_property>
          <obj_property name="ObjectShortName">pixel_bank[639:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/rd_counter_r" type="other">
+         <obj_property name="ElementShortName">rd_counter_r</obj_property>
+         <obj_property name="ObjectShortName">rd_counter_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/data_o" type="array">
+         <obj_property name="ElementShortName">data_o[79:0]</obj_property>
+         <obj_property name="ObjectShortName">data_o[79:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/valid_o" type="logic">
+         <obj_property name="ElementShortName">valid_o</obj_property>
+         <obj_property name="ObjectShortName">valid_o</obj_property>
       </wvobject>
       <wvobject fp_name="/core_sim/top_proc/lossy_comp_core/core_0/gen_zigzag/zigzag_encode/ELEMENT_WIDTH" type="other">
          <obj_property name="ElementShortName">ELEMENT_WIDTH</obj_property>

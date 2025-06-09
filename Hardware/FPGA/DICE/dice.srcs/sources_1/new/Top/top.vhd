@@ -41,7 +41,9 @@ entity top is
         USE_SIM_MODEL : boolean := false;
         ENABLE_ILA : boolean := false;
         ENABLE_STATS : boolean := true;
-        ENABLE_VIO : boolean := false 
+        ENABLE_VIO : boolean := false;
+        ENABLE_SUBSAMPLE : boolean := true; -- Enable subsampling for Cr/Cb channel
+        ENABLE_ZIGZAG : boolean := true -- Enable zigzag encoding for Cr/Cb channel
     );
     port ( 
         -- Inputs
@@ -362,10 +364,10 @@ begin
         CR_BITS => 10,
         CB_BITS => 10,
 
-        EN_Y_SUBSAMPLE => false,
-        EN_CR_SUBSAMPLE => true,
-        EN_CB_SUBSAMPLE => true,
-        EN_ZIGZAG => false
+        EN_Y_SUBSAMPLE => false, -- Always false, Y channel is always full resolution
+        EN_CR_SUBSAMPLE => ENABLE_SUBSAMPLE,
+        EN_CB_SUBSAMPLE => ENABLE_SUBSAMPLE,
+        EN_ZIGZAG => ENABLE_ZIGZAG
     )
     port map (
         clk_i => clk_x,

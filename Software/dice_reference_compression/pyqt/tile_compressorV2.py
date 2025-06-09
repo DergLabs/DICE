@@ -53,65 +53,6 @@ def rle_encode_int16(data):
     return bytes(encoded)
 
 
-def zigzag_order_matrix(matrix):
-    """
-    Takes an 8x8 2D NumPy matrix and returns an 8x8 matrix with elements
-    reordered in a zigzag pattern from top left to bottom right.
-    
-    Args:
-        matrix: An 8x8 NumPy array
-        
-    Returns:
-        An 8x8 NumPy array with elements ordered in zigzag pattern
-    """
-    # Check if input matrix is 8x8
-    if matrix.shape != (8, 8):
-        raise ValueError("Input matrix must be 8x8")
-    
-    # Create a new matrix to store the zigzag ordered elements
-    result = np.zeros((8, 8), dtype=matrix.dtype)
-    
-    # Zigzag pattern coordinates generator
-    def zigzag_indices():
-        # Start at top-left corner
-        row, col = 0, 0
-        yield row, col
-        
-        # Move through all diagonals
-        for diagonal in range(1, 2 * 8 - 1):
-            # Moving up-right on even diagonals, down-left on odd diagonals
-            if diagonal % 2 == 1:
-                # Start at the left edge or top edge
-                if diagonal < 8:
-                    row, col = diagonal, 0
-                else:
-                    row, col = 7, diagonal - 7
-                
-                # Move up and right until we hit an edge
-                while row >= 0 and col < 8:
-                    yield row, col
-                    row -= 1
-                    col += 1
-            else:
-                # Start at the top edge or right edge
-                if diagonal < 8:
-                    row, col = 0, diagonal
-                else:
-                    row, col = diagonal - 7, 7
-                
-                # Move down and left until we hit an edge
-                while row < 8 and col >= 0:
-                    yield row, col
-                    row += 1
-                    col -= 1
-    
-    # Fill the result matrix using the zigzag pattern
-    for idx, (r, c) in enumerate(zigzag_indices()):
-        result[idx // 8, idx % 8] = matrix[r, c]
-    
-    return result
-
-
 # Compressed 4D Tile array using ANS encoding from constrition library, returns size in KB of compressed file, compressed data
 def compress_tile(tile_array, tile_type=None):
 
@@ -122,9 +63,9 @@ def compress_tile(tile_array, tile_type=None):
         tile_array = np.reshape(tile_array, (4, 2, 8, 8))
 
     # Zigzag order each 8x8 block
-    for row in range(tile_array.shape[0]):
+    '''for row in range(tile_array.shape[0]):
         for col in range(tile_array.shape[1]):
-            tile_array[row][col] = zigzag_order_matrix(tile_array[row][col])
+            tile_array[row][col] = zigzag_order_matrix(tile_array[row][col])'''
 
     image_array = tile_array.flatten()
 

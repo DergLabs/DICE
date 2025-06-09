@@ -131,10 +131,6 @@ def process_image_channels(
     img_byte_array[:, :, 11] = laplacian_threshold_bytes[0] # First byte of laplacian threshold
     img_byte_array[:, :, 15] = laplacian_threshold_bytes[1] # Second byte of laplacian threshold
 
-    # Every 4th byte starting at index 3 (ie 3, 7, 11, 15 ...) is 0, future versions add threshold value here
-    # Final Byte order: G, R, B, 0, G, R, B, 0
-    # Sent as 16b chunks: RG, 0B, RG, 0B...
-
     print(f"Sending {len(img_byte_array[0][1])} bytes...")
     start_time = time.time()
     total_bytes_sent = 0
@@ -278,13 +274,17 @@ def process_image_channels(
                     Cr_asize, _, _ = tile_compressorV2.compress_tile(Cr_half[row][col].astype(np.int32))
                     Cb_asize, _, _ = tile_compressorV2.compress_tile(Cb_half[row][col].astype(np.int32))
 
-                    Y_zsize = len(zlib.compress(Y_returned[row][col].tobytes(), level=9))/1024
+                    '''Y_zsize = len(zlib.compress(Y_returned[row][col].tobytes(), level=9))/1024
                     Cr_zsize = len(zlib.compress(Cr_half[row][col].tobytes(), level=9))/1024
                     Cb_zsize = len(zlib.compress(Cb_half[row][col].tobytes(), level=9))/1024
 
                     Y_size = Y_asize if Y_asize < Y_zsize else Y_zsize
                     Cr_size = Cr_asize if Cr_asize < Cr_zsize else Cr_zsize 
-                    Cb_size = Cb_asize if Cb_asize < Cb_zsize else Cb_zsize
+                    Cb_size = Cb_asize if Cb_asize < Cb_zsize else Cb_zsize'''
+
+                    Y_size = Y_asize
+                    Cr_size = Cr_asize
+                    Cb_size = Cb_asize
 
                     lossy_block_count += 1
                     lossy_block_size += Y_size + (Cr_size) + (Cb_size)
