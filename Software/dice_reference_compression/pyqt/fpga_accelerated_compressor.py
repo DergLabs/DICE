@@ -274,20 +274,13 @@ def process_image_channels(
                     Cr_asize, _, _ = tile_compressorV2.compress_tile(Cr_half[row][col].astype(np.int32))
                     Cb_asize, _, _ = tile_compressorV2.compress_tile(Cb_half[row][col].astype(np.int32))
 
-                    '''Y_zsize = len(zlib.compress(Y_returned[row][col].tobytes(), level=9))/1024
-                    Cr_zsize = len(zlib.compress(Cr_half[row][col].tobytes(), level=9))/1024
-                    Cb_zsize = len(zlib.compress(Cb_half[row][col].tobytes(), level=9))/1024
-
-                    Y_size = Y_asize if Y_asize < Y_zsize else Y_zsize
-                    Cr_size = Cr_asize if Cr_asize < Cr_zsize else Cr_zsize 
-                    Cb_size = Cb_asize if Cb_asize < Cb_zsize else Cb_zsize'''
-
                     Y_size = Y_asize
                     Cr_size = Cr_asize
                     Cb_size = Cb_asize
-
-                    lossy_block_count += 1
+                    
                     lossy_block_size += Y_size + (Cr_size) + (Cb_size)
+
+                lossy_block_count += 1
 
                 # Lossy tile, merge the channels and convert to RGB
                 Y_output = Y_decoded[row][col].astype(np.uint8)
@@ -298,9 +291,8 @@ def process_image_channels(
                 converted_tiles[row][col] = merged_tile
 
 
-
-    print("\nTile ID Array:")
-    print(fpga_tile_id)
+    #print("\nTile ID Array:")
+    #print(fpga_tile_id)
     block_ids = fpga_tile_id.reshape(-1)
 
     if lossy_block_count == 0:

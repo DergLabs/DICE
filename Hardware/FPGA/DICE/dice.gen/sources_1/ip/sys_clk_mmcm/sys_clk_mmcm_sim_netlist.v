@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri Jun  6 13:04:08 2025
+// Date        : Fri May 30 01:29:10 2025
 // Host        : DESKTOP-U9NB2CD running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top sys_clk_mmcm -prefix
+//               sys_clk_mmcm_ sys_clk_mmcm_sim_netlist.v
 // Design      : sys_clk_mmcm
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -32,7 +32,7 @@ module sys_clk_mmcm
   wire locked;
   wire reset;
 
-  sys_clk_mmcm_clk_wiz inst
+  sys_clk_mmcm_sys_clk_mmcm_clk_wiz inst
        (.clk_in1_n(clk_in1_n),
         .clk_in1_p(clk_in1_p),
         .clk_out1(clk_out1),
@@ -40,7 +40,7 @@ module sys_clk_mmcm
         .reset(reset));
 endmodule
 
-module sys_clk_mmcm_clk_wiz
+module sys_clk_mmcm_sys_clk_mmcm_clk_wiz
    (clk_out1,
     reset,
     locked,
@@ -104,12 +104,12 @@ module sys_clk_mmcm_clk_wiz
   (* OPT_MODIFIED = "MLO" *) 
   MMCME4_ADV #(
     .BANDWIDTH("HIGH"),
-    .CLKFBOUT_MULT_F(7.875000),
+    .CLKFBOUT_MULT_F(15.625000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(5.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(7.875000),
+    .CLKOUT0_DIVIDE_F(3.125000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -139,7 +139,7 @@ module sys_clk_mmcm_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("INTERNAL"),
-    .DIVCLK_DIVIDE(1),
+    .DIVCLK_DIVIDE(2),
     .IS_CLKFBIN_INVERTED(1'b0),
     .IS_CLKIN1_INVERTED(1'b0),
     .IS_CLKIN2_INVERTED(1'b0),

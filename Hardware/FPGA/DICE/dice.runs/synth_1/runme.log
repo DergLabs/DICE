@@ -14,6 +14,7 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source top.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 501.758 ; gain = 180.219
 Command: read_checkpoint -auto_incremental -incremental C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/utils_1/imports/synth_1/top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,13 +27,13 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 11468
+INFO: [Synth 8-7075] Helper process launched with PID 28684
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2035.254 ; gain = 419.707
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2035.762 ; gain = 419.836
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:75]
-INFO: [Synth 8-3491] module 'sys_clk_mmcm' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:6' bound to instance 'sys_clk' of component 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:263]
-INFO: [Synth 8-638] synthesizing module 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'sys_clk_mmcm' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:6' bound to instance 'sys_clk' of component 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/top.vhd:263]
+INFO: [Synth 8-638] synthesizing module 'sys_clk_mmcm' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/sys_clk_mmcm_stub.vhdl:17]
 INFO: [Synth 8-6157] synthesizing module 'send_recieve_module' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv:3]
 INFO: [Synth 8-6155] done synthesizing module 'send_recieve_module' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/USB Interface/send_recieve_module.sv:3]
 INFO: [Synth 8-638] synthesizing module 'input_memory' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:63]
@@ -42,10 +43,10 @@ INFO: [Synth 8-638] synthesizing module 'data_delay_reg' [C:/Users/johnh/Desktop
 	Parameter SHIFT_DEPTH bound to: 2 - type: integer 
 	Parameter DATA_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'data_delay_reg' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/data_delay_reg.vhd:51]
-INFO: [Synth 8-3491] module 'input_data_fifo' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:6' bound to instance 'input_cdc_fifo' of component 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:130]
-INFO: [Synth 8-638] synthesizing module 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:24]
-INFO: [Synth 8-3491] module 'input_pixel_hold_ram' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/input_pixel_hold_ram_stub.vhdl:6' bound to instance 'pixel_hold_ram' of component 'input_pixel_hold_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:189]
-INFO: [Synth 8-638] synthesizing module 'input_pixel_hold_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/input_pixel_hold_ram_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'input_data_fifo' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:6' bound to instance 'input_cdc_fifo' of component 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:130]
+INFO: [Synth 8-638] synthesizing module 'input_data_fifo' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/input_data_fifo_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'input_pixel_hold_ram' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/input_pixel_hold_ram_stub.vhdl:6' bound to instance 'pixel_hold_ram' of component 'input_pixel_hold_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:189]
+INFO: [Synth 8-638] synthesizing module 'input_pixel_hold_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/input_pixel_hold_ram_stub.vhdl:24]
 INFO: [Synth 8-256] done synthesizing module 'input_memory' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/input_memory.vhd:63]
 INFO: [Synth 8-638] synthesizing module 'xil_defaultlib_rgb_to_ycrcb' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/rgb_to_ycrcb.vhd:47]
 INFO: [Synth 8-638] synthesizing module 'dsp_mult' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/DSP/dsp_mult.vhd:22]
@@ -203,8 +204,8 @@ INFO: [Synth 8-638] synthesizing module 'output_memory' [C:/Users/johnh/Desktop/
 	Parameter DOUT_WIDTH bound to: 16 - type: integer 
 	Parameter NUM_WRITE_WORDS bound to: 512 - type: integer 
 	Parameter NUM_READ_WORDS bound to: 2048 - type: integer 
-INFO: [Synth 8-3491] module 'output_buffer_ram' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:6' bound to instance 'output_memory' of component 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:159]
-INFO: [Synth 8-638] synthesizing module 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'output_buffer_ram' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:6' bound to instance 'output_memory' of component 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:159]
+INFO: [Synth 8-638] synthesizing module 'output_buffer_ram' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/output_buffer_ram_stub.vhdl:24]
 INFO: [Synth 8-256] done synthesizing module 'output_memory' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:73]
 INFO: [Synth 8-638] synthesizing module 'image_statistics_top' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd:58]
 	Parameter NUM_SAMPLES bound to: 28 - type: integer 
@@ -218,19 +219,19 @@ INFO: [Synth 8-638] synthesizing module 'laplacian_core' [C:/Users/johnh/Desktop
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:84]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:170]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:181]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add1_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:170]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_simd' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_simd_stub.vhdl:6' bound to instance 'dsp_add2_11b' of component 'dsp_macro_simd' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:181]
 INFO: [Synth 8-256] done synthesizing module 'laplacian_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/laplacian/laplacian_core.vhd:52]
 INFO: [Synth 8-638] synthesizing module 'gradient_calc' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:52]
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'SRLC32E_inst' to cell 'SRLC32E' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:112]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:202]
-INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:213]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:224]
-INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:235]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:202]
+INFO: [Synth 8-638] synthesizing module 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_x_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:213]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp1' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:224]
+INFO: [Synth 8-3491] module 'dsp_macro_add_22b' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/dsp_macro_add_22b_stub.vhdl:6' bound to instance 'sobel_y_dsp2' of component 'dsp_macro_add_22b' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:235]
 INFO: [Synth 8-256] done synthesizing module 'gradient_calc' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/gradient/gradient_calc.vhd:52]
 INFO: [Synth 8-638] synthesizing module 'statistics_core' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:58]
 	Parameter G_VARIANCE_DEPTH bound to: 28 - type: integer 
@@ -247,8 +248,8 @@ INFO: [Synth 8-638] synthesizing module 'dsp_msub' [C:/Users/johnh/Desktop/DICE/
 	Parameter AWIDTH bound to: 16 - type: integer 
 	Parameter CWIDTH bound to: 48 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'dsp_msub' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/DSP/dsp_msub.vhd:41]
-INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:281]
-INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-30140-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'sqrt_cordic' declared at 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:6' bound to instance 'std_dev_sqrt' of component 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:281]
+INFO: [Synth 8-638] synthesizing module 'sqrt_cordic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/.Xil/Vivado-27396-DESKTOP-U9NB2CD/realtime/sqrt_cordic_stub.vhdl:19]
 INFO: [Synth 8-256] done synthesizing module 'statistics_core' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/stats/statistics_core.vhd:58]
 INFO: [Synth 8-256] done synthesizing module 'image_statistics_top' (0#1) [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Image Stats/image_statistics_top.vhd:58]
 INFO: [Synth 8-638] synthesizing module 'tile_selection_logic' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/tile_selection_logic.vhd:67]
@@ -349,24 +350,26 @@ WARNING: [Synth 8-7129] Port fifo_data_i[1] in module tile_selection_logic is ei
 WARNING: [Synth 8-7129] Port fifo_data_i[0] in module tile_selection_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sim_clk in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2173.781 ; gain = 558.234
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2174.379 ; gain = 558.453
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2173.781 ; gain = 558.234
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2192.285 ; gain = 576.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2173.781 ; gain = 558.234
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2192.285 ; gain = 576.359
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.272 . Memory (MB): peak = 2173.781 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.280 . Memory (MB): peak = 2204.344 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
+Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc] for cell 'clocking_gen.sys_clk'
+Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc] for cell 'clocking_gen.sys_clk'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'gen_image_statistics.image_statistics_core/statistics_core_laplacian/std_dev_sqrt'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'gen_image_statistics.image_statistics_core/statistics_core_laplacian/std_dev_sqrt'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sqrt_cordic/sqrt_cordic/sqrt_cordic_in_context.xdc] for cell 'gen_image_statistics.image_statistics_core/statistics_core_gradient/std_dev_sqrt'
@@ -387,8 +390,6 @@ Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/source
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/output_buffer_ram/output_buffer_ram/output_buffer_ram_in_context.xdc] for cell 'output_memory/output_memory'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram/input_pixel_hold_ram_in_context.xdc] for cell 'input_memory_fifo/pixel_hold_ram'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_pixel_hold_ram/input_pixel_hold_ram/input_pixel_hold_ram_in_context.xdc] for cell 'input_memory_fifo/pixel_hold_ram'
-Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc] for cell 'clocking_gen.sys_clk'
-Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc] for cell 'clocking_gen.sys_clk'
 Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo/input_data_fifo_in_context.xdc] for cell 'input_memory_fifo/input_cdc_fifo'
 Finished Parsing XDC File [c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/input_data_fifo/input_data_fifo/input_data_fifo_in_context.xdc] for cell 'input_memory_fifo/input_cdc_fifo'
 Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc]
@@ -397,30 +398,32 @@ WARNING: [Vivado 12-508] No pins matched 'clocking_gen.sys_clk/inst/mmcme4_adv_i
 Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2279.109 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2316.500 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 6 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 6 instances
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 2279.109 ; gain = 0.000
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_x_dsp1' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_x_dsp2' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_y_dsp1' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_y_dsp2' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/laplacian_core/dsp_add1_11b' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/laplacian_core/dsp_add2_11b' at clock pin 'CLK' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/statistics_core_gradient/std_dev_sqrt' at clock pin 'aclk' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/statistics_core_laplacian/std_dev_sqrt' at clock pin 'aclk' is different from the actual clock period '5.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'input_memory_fifo/input_cdc_fifo' at clock pin 'rd_clk' is different from the actual clock period '5.000', this can lead to different synthesis results.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 2316.500 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_x_dsp1' at clock pin 'CLK' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_x_dsp2' at clock pin 'CLK' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_y_dsp1' at clock pin 'CLK' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/gradient_core/sobel_y_dsp2' at clock pin 'CLK' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/laplacian_core/dsp_add1_11b' at clock pin 'CLK' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/laplacian_core/dsp_add2_11b' at clock pin 'CLK' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/statistics_core_gradient/std_dev_sqrt' at clock pin 'aclk' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'gen_image_statistics.image_statistics_core/statistics_core_laplacian/std_dev_sqrt' at clock pin 'aclk' is different from the actual clock period '2.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'input_memory_fifo/input_cdc_fifo' at clock pin 'rd_clk' is different from the actual clock period '2.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'input_memory_fifo/pixel_hold_ram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'output_memory/output_memory' at clock pin 'clka' is different from the actual clock period '5.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'output_memory/output_memory' at clock pin 'clka' is different from the actual clock period '2.000', this can lead to different synthesis results.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2290.262 ; gain = 674.715
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2316.500 ; gain = 700.574
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -428,7 +431,7 @@ Start Loading Part and Timing Information
 Loading part: xcku3p-ffva676-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2290.262 ; gain = 674.715
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2316.500 ; gain = 700.574
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -437,6 +440,7 @@ Applied set_property IO_BUFFER_TYPE = NONE for sysclk_n. (constraint file  c:/Us
 Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_n. (constraint file  c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc, line 4).
 Applied set_property IO_BUFFER_TYPE = NONE for sysclk_p. (constraint file  c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc, line 5).
 Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_p. (constraint file  c:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.gen/sources_1/ip/sys_clk_mmcm/sys_clk_mmcm/sys_clk_mmcm_in_context.xdc, line 6).
+Applied set_property KEEP_HIERARCHY = SOFT for \clocking_gen.sys_clk . (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_statistics_core /statistics_core_laplacian/std_dev_sqrt. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_statistics_core /statistics_core_gradient/std_dev_sqrt. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_statistics_core /gradient_core/sobel_x_dsp1. (constraint file  auto generated constraint).
@@ -447,10 +451,9 @@ Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_stati
 Applied set_property KEEP_HIERARCHY = SOFT for \gen_image_statistics.image_statistics_core /laplacian_core/dsp_add2_11b. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for output_memory/output_memory. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for input_memory_fifo/pixel_hold_ram. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for \clocking_gen.sys_clk . (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for input_memory_fifo/input_cdc_fifo. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2290.262 ; gain = 674.715
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2316.500 ; gain = 700.574
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'wr_state_r_reg' in module 'transpose'
 INFO: [Synth 8-802] inferred FSM for state register 'rd_state_r_reg' in module 'transpose'
@@ -472,7 +475,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'wr_state_r_reg' using enco
 INFO: [Synth 8-3354] encoded FSM with state register 'rd_state_r_reg' using encoding 'one-hot' in module 'transpose'
 WARNING: [Synth 8-327] inferring latch for variable 'memory_clear_o_reg' [C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.srcs/sources_1/new/Top/output_memory.vhd:115]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2290.262 ; gain = 674.715
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2316.500 ; gain = 700.574
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -972,7 +975,7 @@ DSP Report: Generating DSP rgb_to_ycrcb/dsp_cb_presub_mult/p0, operation Mode is
 DSP Report: operator rgb_to_ycrcb/dsp_cb_presub_mult/p0 is absorbed into DSP rgb_to_ycrcb/dsp_cb_presub_mult/p0.
 WARNING: [Synth 8-7129] Port sim_clk in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2290.262 ; gain = 674.715
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2316.500 ; gain = 700.574
 ---------------------------------------------------------------------------------
  Sort Area is lossy_compressor simd_sub.out0_reg_16 : 0 0 : 150 150 : Used 2 time 100
  Sort Area is lossy_compressor__parameterized0 simd_sub.out0_reg_26 : 0 0 : 150 150 : Used 1 time 100
@@ -1263,19 +1266,19 @@ Folded 4 DSPs into a single DSP slice (USE_SIMD=FOUR12, ALUMODE=0000, OPMODE=110
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 2654.188 ; gain = 1038.641
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 2650.652 ; gain = 1034.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 2706.285 ; gain = 1090.738
+Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:45 . Memory (MB): peak = 2704.695 ; gain = 1088.770
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 2725.207 ; gain = 1109.660
+Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 2723.797 ; gain = 1107.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1293,37 +1296,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:50 ; elapsed = 00:00:52 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1432,16 +1435,16 @@ Report Cell Usage:
 |23    |DSP_OUTPUT                |    33|
 |24    |DSP_PREADD                |    33|
 |25    |DSP_PREADD_DATA           |    33|
-|27    |LUT1                      |    53|
-|28    |LUT2                      |  4292|
-|29    |LUT3                      |   740|
-|30    |LUT4                      |   459|
-|31    |LUT5                      |  1579|
-|32    |LUT6                      |  2469|
+|27    |LUT1                      |    50|
+|28    |LUT2                      |  4287|
+|29    |LUT3                      |   734|
+|30    |LUT4                      |   456|
+|31    |LUT5                      |  1573|
+|32    |LUT6                      |  2490|
 |33    |RAM32M                    |     6|
 |34    |SRL16E                    |    36|
 |35    |SRLC32E                   |     2|
-|36    |FDCE                      | 12706|
+|36    |FDCE                      | 12704|
 |37    |FDPE                      |    11|
 |38    |FDRE                      |   518|
 |39    |IBUF                      |     4|
@@ -1449,18 +1452,18 @@ Report Cell Usage:
 |41    |OBUF                      |     9|
 +------+--------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 303 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:00:46 . Memory (MB): peak = 2740.727 ; gain = 1008.699
-Synthesis Optimization Complete : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2740.727 ; gain = 1125.180
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:39 ; elapsed = 00:00:48 . Memory (MB): peak = 2740.211 ; gain = 1000.070
+Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 2740.211 ; gain = 1124.285
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.237 . Memory (MB): peak = 2749.723 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.237 . Memory (MB): peak = 2750.262 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 256 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2795.516 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2795.449 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 62 instances were transformed.
   BUFG => BUFGCE: 1 instance 
@@ -1470,12 +1473,12 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 6 instances
 
 The system cannot find the path specified.
-Synth Design complete | Checksum: dcaaa3d9
+Synth Design complete | Checksum: 867c9e33
 INFO: [Common 17-83] Releasing license: Synthesis
 147 Infos, 211 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:01:02 . Memory (MB): peak = 2795.516 ; gain = 2205.426
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2795.516 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 2795.449 ; gain = 2220.840
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2795.449 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/johnh/Desktop/DICE/Hardware/FPGA/DICE/dice.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jun  9 16:41:45 2025...
+INFO: [Common 17-206] Exiting Vivado at Mon Jun  9 21:34:30 2025...
